@@ -41,6 +41,7 @@ class Election:
         self.total      = total
         self.quota      = quota
         self.eliminated = {}
+        self.max_votes  = 0
 
         ## Preprocessing
         for name, rounds in self.rounds.items():
@@ -53,6 +54,7 @@ class Election:
             ## Extract just the votes from the rounds
             self.votes[name]     = [x.total for x in rounds]
             self.truncated[name] = truncateList(self.votes[name])
+            self.max_votes = max(self.max_votes, max(self.votes[name]))
 
 
 def toIntMaybe(x):
