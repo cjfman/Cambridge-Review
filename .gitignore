@@ -1,0 +1,11 @@
+*.swp
+*.swo
+*.log
+GIS/
+by_address/
+by_id/
+gis_property_info/
+graphs/
+maps/
+*/__pycache__
+*.tgz
