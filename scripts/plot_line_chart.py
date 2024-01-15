@@ -21,6 +21,7 @@ def nextOpenVPostition(
         fontsize:float=plt.rcParams["font.size"],
         dec=2
     ) -> float:
+    """Return the next highest space available for a new line of text"""
     if not existing:
         return max_v
 
@@ -29,12 +30,14 @@ def nextOpenVPostition(
 
 
 def filterTickmarks(ticks:Sequence[list], add:Sequence[list], exclude:Sequence[list]) -> List[float]:
+    """Remove any tickmarks that are too close to protected ticks"""
     exclude = exclude + add
     ticks = filter(lambda tik: not any(map(lambda x: tik and abs(tik-x)/tik < 0.1, exclude)), ticks)
     return list(ticks) + add
 
 
 def main():
+    """Plot line graph of election"""
     election = elections.loadElectionsFile(FILE)
 
     ## Y-axis
@@ -64,29 +67,27 @@ def main():
         va='center',
         ha='left',
         weight='bold',
-        #bbox=dict(facecolor='white', edgecolor='white', alpha=1),
     )
 
     ## Add vote lines
-    line_labels = [(election.quota, 'Quota', { 'color': 'black', 'weight': 'bold' })]
+    line_labels = []
     for name, votes in election.truncated.items():
+        ## Skip write-ins with no votes
         if "write-in" in name.lower() and not votes[0]:
             continue
 
+        ## Plot line
         round_count = len(votes)
         p = None
-        ## Plot line
         if not votes[-1]:
             ## Candidate lost
             p = plt.plot(np.array(range(1, round_count)), np.array(votes[:-1]), linewidth=1)
-            #plt.scatter(round_count-1, votes[-2], marker='x', color='red')
             plt.text(round_count-1, votes[-2], "x", va='center', ha='center', color='red', size=15)
         else:
             ## Candidate won
-#            p = plt.plot(np.array(range(1, round_count + 1)), np.array(votes), linewidth=1)
-#            color = p[-1].get_color()
             ## Were they at or above quota?
             if round_count == 1 or votes[-2] > election.quota:
+                ## Place win diamon on round where they won, not the transfer round
                 p = plt.plot(np.array(range(1, round_count + 1)), np.array(votes), linewidth=1, zorder=-1)
                 color = p[-1].get_color()
                 plt.scatter(round_count-1, votes[-2], marker='D', color=color, zorder=10000)
@@ -98,17 +99,17 @@ def main():
         line_labels.append((votes[0], name, { 'color': p[-1].get_color() }))
 
 
-    ## Write names in order
+    ## Write names in order of most #1 votes to least
+    ## Order is important for nextOpenVPostition(...)
+    line_labels.append((election.quota, 'Quota', { 'color': 'black', 'weight': 'bold' }))
     text_v_pos = []
     for vpos, name, opts in sorted(line_labels, reverse=True):
         v = min(vpos, nextOpenVPostition(text_v_pos, election.max_votes))
-        plt.text(1, v, name + ' ', horizontalalignment='right', **opts)
+        plt.text(1, v, name + ' ', va='center', ha='right', **opts)
         text_v_pos.append(v)
-        #print(f"{name} {vpos} -> {v}")
 
     ## Add extra tick mark for max votes
     if election.max_votes > election.quota:
-        #plt.yticks(list(plt.yticks()[0]) + [election.max_votes])
         plt.yticks(filterTickmarks(list(plt.yticks()[0]), [election.max_votes], [election.quota]))
 
     ## Legend
@@ -118,11 +119,10 @@ def main():
     ]
     ax.legend(handles=legend_elements)
 
-    ## Add labels to plot
+    ## Add labels and plot
     plt.xlabel('Round',   weight='bold')
     plt.ylabel('Votes',   weight='bold')
     plt.title('School Comittee Election 2023', weight='bold')
-    #plt.legend(loc='best', ncol=1)
     plt.tight_layout()
     plt.grid()
     plt.show()
