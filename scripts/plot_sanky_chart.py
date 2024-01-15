@@ -9,14 +9,14 @@ import plotly.graph_objects as go
 
 import elections
 
-PLOT=False
+PLOT=True
 DEBUG=True
 
 
 def main(vote_file, title="Untitled", chart_file=None):
     """Plot sankey graph of election"""
     print(f"Reading '{vote_file}'")
-    election = elections.loadElectionsFile(vote_file)
+    election = elections.loadElectionsFile(vote_file, include_exhausted=True)
     labels:List[str]        = []
     label_map:Dict[str, int] = {}
     round_votes:List[int] = [0] * election.num_rounds
@@ -24,6 +24,7 @@ def main(vote_file, title="Untitled", chart_file=None):
     target_map:Dict[str, int] = {}
     label_rounds = {}
     previous_label = {}
+    self_transfers = {}
 
     ## First pass of candidates
     next_index = 0
@@ -35,10 +36,11 @@ def main(vote_file, title="Untitled", chart_file=None):
             n = i + 1
             ## Generate labels, one per candidate per round in which they exist
             label = f"{name} - {n}"
+            prev_label = f"{name} - {n-1}"
             labels.append(label)
             label_map[label] = next_index
             label_rounds[label] = n
-            previous_label[label] = f"{name} - {n-1}"
+            previous_label[label] = prev_label
             next_index += 1
             ## Add to round vote count. This may be less than the total number of votes
             ## as we're not keeping track of candidates that have been elected
@@ -48,6 +50,10 @@ def main(vote_file, title="Untitled", chart_file=None):
                 target_map[label] = e_round.transfer
             elif e_round.transfer < 0:
                 source_map[n][label] = e_round.transfer * -1
+
+            ## Self transfer
+            if n > 1:
+                self_transfers[(prev_label, label)] = e_round.total - e_round.transfer
 
     ## Track transfers. Note that more than one candidate can lose per round, so transfers
     ## cannot be perfectly accurate in that case
@@ -73,8 +79,8 @@ def main(vote_file, title="Untitled", chart_file=None):
                 print(f"'{source}' eliminated")
                 values.append(available)
                 needed -= available
-                del source_map[n][source]
-            else:
+                #del source_map[n][source]
+            elif needed < available:
                 ## Source can provide all needed votes
                 print(f'Transfer {needed} votes from "{prev_label}" to "{label}"')
                 values.append(needed)
@@ -84,6 +90,17 @@ def main(vote_file, title="Untitled", chart_file=None):
             ## Do we have enough
             if not needed:
                 break
+
+    if needed:
+        raise ValueError(f'Failed to get enough votes for "{label}"')
+
+    ## Add self transfers
+    for key, total in self_transfers.items():
+        src, dst = key
+        sources.append(label_map[src])
+        targets.append(label_map[dst])
+        values.append(total)
+        print(f'Pass through {total} votes from "{src}" to "{dst}"')
 
     if DEBUG:
         print('label_map', label_map)
