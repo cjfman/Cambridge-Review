@@ -2,7 +2,7 @@
 
 import sys
 
-from typing import Sequence
+from typing import List, Sequence
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -11,7 +11,7 @@ import numpy as np
 
 import elections
 
-FILE = "/home/charles/Projects/cambridge_review/elections/csvs_sc/sc_election_2015.csv"
+FILE = "/home/charles/Projects/cambridge_review/elections/csvs_sc/sc_election_2013.csv"
 
 
 def nextOpenVPostition(
@@ -28,6 +28,12 @@ def nextOpenVPostition(
     return round(lowest - max_v/scale*fontsize, dec)
 
 
+def filterTickmarks(ticks:Sequence[list], add:Sequence[list], exclude:Sequence[list]) -> List[float]:
+    exclude = exclude + add
+    ticks = filter(lambda tik: not any(map(lambda x: tik and abs(tik-x)/tik < 0.1, exclude)), ticks)
+    return list(ticks) + add
+
+
 def main():
     election = elections.loadElectionsFile(FILE)
 
@@ -36,7 +42,7 @@ def main():
     ax = f.add_subplot(111)
     ax.yaxis.tick_right()
     ax.yaxis.set_label_position("right")
-    ax.set_ylim(bottom=0, top=max(election.max_votes, election.quota*1.05))
+    ax.set_ylim(bottom=0, top=max(election.max_votes, election.quota)*1.05)
     ax.get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ','))
     )
@@ -102,7 +108,8 @@ def main():
 
     ## Add extra tick mark for max votes
     if election.max_votes > election.quota:
-        plt.yticks(list(plt.yticks()[0]) + [election.max_votes])
+        #plt.yticks(list(plt.yticks()[0]) + [election.max_votes])
+        plt.yticks(filterTickmarks(list(plt.yticks()[0]), [election.max_votes], [election.quota]))
 
     ## Legend
     legend_elements = [
@@ -114,7 +121,7 @@ def main():
     ## Add labels to plot
     plt.xlabel('Round',   weight='bold')
     plt.ylabel('Votes',   weight='bold')
-    plt.title('School Comittee Election 2015', weight='bold')
+    plt.title('School Comittee Election 2013', weight='bold')
     #plt.legend(loc='best', ncol=1)
     plt.tight_layout()
     plt.grid()
