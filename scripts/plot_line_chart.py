@@ -4,6 +4,7 @@ import sys
 
 from typing import Sequence
 
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -34,8 +35,12 @@ def main():
     ax = f.add_subplot(111)
     ax.yaxis.tick_right()
     ax.yaxis.set_label_position("right")
+    ax.set_ylim(bottom=0, top=election.max_votes)
+    ax.get_yaxis().set_major_formatter(
+        matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ','))
+    )
 
-    ## X-axis
+    ## X axis
     ax.set_xlim([1, election.num_rounds])
 
     ## Add quota line
@@ -47,29 +52,44 @@ def main():
     )
 
     ## Add vote lines
-    line_labels = [(election.quota, 'Quota', 'black')]
+    line_labels = [(election.quota, 'Quota', { 'color': 'black', 'weight': 'bold' })]
     for name, votes in election.truncated.items():
+        if "Write-In" in name and not votes[0]:
+            continue
+
         round_count = len(votes)
         p = None
         ## Plot line
         if not votes[-1]:
             ## Candidate lost
-            p = plt.plot(np.array(range(1, round_count)), np.array(votes[:-1]), label=name)
-            plt.text(round_count-1, votes[-2], "X", verticalalignment='center', color='red')
+            p = plt.plot(np.array(range(1, round_count)), np.array(votes[:-1]), linewidth=1)
+            plt.text(round_count-1, votes[-2], "x", va='center', ha='center', color='red', size=15)
         else:
             ## Candidate won
-            p = plt.plot(np.array(range(1, round_count + 1)), np.array(votes), label=name)
+            p = plt.plot(np.array(range(1, round_count + 1)), np.array(votes), linewidth=1)
+            color = p[-1].get_color()
+            ## Were they at or above quota?
+            if round_count == 1 or votes[-2] > election.quota:
+                plt.scatter(round_count-1, votes[-2], marker='D', color=color, zorder=10000)
+            else:
+                plt.scatter(round_count, votes[-1], marker='D', color=color, zorder=10000)
 
-        line_labels.append((votes[0], name, p[-1].get_color()))
+        line_labels.append((votes[0], name, { 'color': p[-1].get_color() }))
 
 
     ## Write names in order
     text_v_pos = []
-    for vpos, name, color in sorted(line_labels, reverse=True):
+    for vpos, name, opts in sorted(line_labels, reverse=True):
         v = min(vpos, nextOpenVPostition(text_v_pos, election.max_votes))
-        plt.text(1, v, name + ' ', horizontalalignment='right', color=color)
+        plt.text(1, v, name + ' ', horizontalalignment='right', **opts)
         text_v_pos.append(v)
-        print(f"{name} {vpos} -> {v}")
+        #print(f"{name} {vpos} -> {v}")
+
+    ## Change Y limit
+    #ax.set_ylim(bottom=0, top=ax.get_ylim()[1])
+
+    ## Add extra tick mark for quota
+    plt.yticks(list(plt.yticks()[0]) + [election.quota])
 
     ## Add labels to plot
     plt.xlabel("Round")
@@ -77,6 +97,7 @@ def main():
     plt.title("Election")
     #plt.legend(loc='best', ncol=1)
     plt.tight_layout()
+    plt.grid()
     plt.show()
 
     return 0
