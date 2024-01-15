@@ -1,4 +1,4 @@
-Candidates,Count 1,Transfer 2,Count 2,Transfer 3,Count 3,Transfer 4,Count 4,Transfer 5,Count 5,Transfer 6,Count 6
+Candidate,Count 1,Transfer 2,Count 2,Transfer 3,Count 3,Transfer 4,Count 4,Transfer 5,Count 5,Transfer 6,Count 6
 "Fantini, Alfred B",2045,4,2049,6,2055,42,2097,81,2178,26,2204
 "Grassi, Joseph G.",1881,3,1884,5,1889,20,1909,94,2003,-2003,0
 "Harding, Richard, Jr.",1996,1,1997,6,2003,128,2131,73,2204,0,2204
@@ -8,11 +8,10 @@ Candidates,Count 1,Transfer 2,Count 2,Transfer 3,Count 3,Transfer 4,Count 4,Tran
 "Steinert, Alan Jr.",1447,1,1448,2,1450,47,1497,-1497,0,0,0
 "Tauber, Nancy",2043,4,2047,3,2050,26,2076,128,2204,0,2204
 "Turkel, Alice L.",1793,5,1798,7,1805,29,1834,335,2169,35,2204
-"WRiTTEN-IN Decker, Marjorie",67,1,68,-68,0,0,0,0,0,0,0
-Other positions,62,-62,0,0,0,0,0,0,0,0,0
-INVALID,584,0,584,0,584,0,584,0,584,0,584
-EXHAUSTED,0,39,39,17,56,58,114,327,441,1760,2201
-TOTAL,16009,0,16009,0,16009,0,16009,0,16009,0,16009
+"Write-In Decker, Marjorie",67,1,68,-68,0,0,0,0,0,0,0
+Write-In Other,62,-62,0,0,0,0,0,0,0,0,0
+Invalid,584,0,584,0,584,0,584,0,584,0,584
+Exhausted,0,39,39,17,56,58,114,327,441,1760,2201
 ,,,,,,,,,,,
 Election Date,11/3/2009,,,,,,,,,,
 Count Dates,11/30/2009,12/5/2009,,,,,,,,,
