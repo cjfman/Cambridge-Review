@@ -1,5 +1,6 @@
 #! /usr/bin/python3
 
+import re
 import sys
 
 from typing import List, Sequence
@@ -40,17 +41,22 @@ def main(vote_file, title, chart_file=None):
     election = elections.loadElectionsFile(vote_file)
     print(f"Generating plot")
 
-    ## Y-axis
+    ## Make figure
     f = plt.figure()
+    f.set_figheight(10)
+    f.set_figwidth(f.get_figheight()*1.2)
+
+    ## Y-axis
     ax = f.add_subplot(111)
     ax.yaxis.tick_right()
     ax.yaxis.set_label_position("right")
-    ax.set_ylim(bottom=0, top=max(election.max_votes, election.quota)*1.05)
+    ax.set_ylim(bottom=0, top=max(election.max_votes, election.quota*1.05))
     ax.get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ','))
     )
 
     ## X axis
+    plt.xticks(list(range(election.num_rounds + 1)))
     ax.set_xlim([1, election.num_rounds])
 
     ## Add quota line and tick mark
@@ -71,9 +77,10 @@ def main(vote_file, title, chart_file=None):
 
     ## Add vote lines
     line_labels = []
-    for name, votes in election.truncated.items():
+    for name, votes in sorted(tuple(election.truncated.items()), key=lambda x: x[1]):
         ## Skip write-ins with no votes
-        if "write-in" in name.lower() and not votes[0]:
+        #if "write-in" in name.lower() and not votes[0]:
+        if re.match(r"write-in (\d+|other)", name, re.IGNORECASE):
             continue
 
         ## Plot line
@@ -104,7 +111,7 @@ def main(vote_file, title, chart_file=None):
     line_labels.append((election.quota, 'Quota', { 'color': 'black', 'weight': 'bold' }))
     text_v_pos = []
     for vpos, name, opts in sorted(line_labels, reverse=True):
-        v = min(vpos, nextOpenVPostition(text_v_pos, election.max_votes))
+        v = min(vpos, nextOpenVPostition(text_v_pos, election.max_votes, scale=600))
         plt.text(1, v, name + ' ', va='center', ha='right', **opts)
         text_v_pos.append(v)
 
