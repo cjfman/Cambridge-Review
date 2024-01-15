@@ -96,12 +96,17 @@ def processCandidate(votes:Sequence[str]) -> CandidateRounds:
     return rounds
 
 
-def loadElectionsFile(path) -> Election:
+def loadElectionsFile(path, include_exhausted=False) -> Election:
     state = 'start'
     round_count = 0
     candidates = {}
     stats = {}
     elected = []
+    exclude = ['invalid', 'total']
+    if not include_exhausted:
+        exclude.append('exhausted')
+
+    ## Open file and parse it
     with open(path, 'r', encoding='utf8') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
@@ -114,7 +119,7 @@ def loadElectionsFile(path) -> Election:
                 ## Collect candidate info
                 if col1 == '':
                     state = 'stats'
-                elif col1.lower() not in ('exhausted', 'invalid', 'total'):
+                elif col1.lower() not in exclude:
                     ## Check number of rows
                     if len(row) != round_count * 2:
                         raise FormatError(f"Candidate '{col1}' doesn't have the correct number of columns. Found {len(row)} expected {round_count*2}")
