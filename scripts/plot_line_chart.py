@@ -11,7 +11,7 @@ import numpy as np
 
 import elections
 
-FILE = "/home/charles/Projects/cambridge_review/elections/csvs_sc/sc_election_2013.csv"
+FILE = "/home/charles/Projects/cambridge_review/elections/csvs_sc/sc_election_2023.csv"
 
 
 def nextOpenVPostition(
@@ -121,7 +121,7 @@ def main():
     ## Add labels to plot
     plt.xlabel('Round',   weight='bold')
     plt.ylabel('Votes',   weight='bold')
-    plt.title('School Comittee Election 2013', weight='bold')
+    plt.title('School Comittee Election 2023', weight='bold')
     #plt.legend(loc='best', ncol=1)
     plt.tight_layout()
     plt.grid()
