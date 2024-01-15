@@ -10,15 +10,19 @@ VotePair = namedtuple("VotePair", "transfer total")
 CandidateRounds = List[VotePair]
 
 
-def truncateList(l:Sequence) -> Sequence:
+def truncateList(l:Sequence, *, key=None) -> Sequence:
     """Remove duplicate values from the end of a list"""
     if len(l) < 2:
         return l
 
-    last_val = l[-1]
+    l2 = l
+    if key is not None:
+        l2 = [key(x) for x in l]
+
+    last_val = l2[-1]
     last_idx = len(l) - 1
     for i in range(last_idx, 0, -1):
-        if l[i] == last_val:
+        if l2[i] == last_val:
             last_idx = i
         else:
             break
@@ -37,6 +41,7 @@ class Election:
         self.rounds     = all_rounds
         self.votes      = {}
         self.truncated  = {}
+        self.truncated2 = {}
         self.elected    = elected
         self.total      = total
         self.quota      = quota
@@ -52,8 +57,9 @@ class Election:
                     break
 
             ## Extract just the votes from the rounds
-            self.votes[name]     = [x.total for x in rounds]
-            self.truncated[name] = truncateList(self.votes[name])
+            self.votes[name]      = [x.total for x in rounds]
+            self.truncated[name]  = truncateList(self.votes[name])
+            self.truncated2[name] = truncateList(self.rounds[name], key=lambda x: x.total)
             self.max_votes = max(self.max_votes, max(self.votes[name]))
 
 

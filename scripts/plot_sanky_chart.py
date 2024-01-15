@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 import elections
 
 PLOT=True
-DEBUG=True
+DEBUG=False
 
 
 def main(vote_file, title="Untitled", chart_file=None):
@@ -28,7 +28,7 @@ def main(vote_file, title="Untitled", chart_file=None):
 
     ## First pass of candidates
     next_index = 0
-    for name, rounds in election.rounds.items():
+    for name, rounds in election.truncated2.items():
         for i, e_round in enumerate(rounds):
             if not e_round:
                 continue
@@ -46,14 +46,16 @@ def main(vote_file, title="Untitled", chart_file=None):
             ## as we're not keeping track of candidates that have been elected
             round_votes[i] += e_round.total
             ## Map sources and targets
-            if e_round.transfer > 0:
+            if n > 1 and e_round.transfer > 0:
                 target_map[label] = e_round.transfer
             elif e_round.transfer < 0:
                 source_map[n][label] = e_round.transfer * -1
 
-            ## Self transfer
-            if n > 1:
-                self_transfers[(prev_label, label)] = e_round.total - e_round.transfer
+            if n > 1 and e_round.total:
+                if e_round.transfer > 0:
+                    self_transfers[(prev_label, label)] = e_round.total - e_round.transfer
+                else:
+                    self_transfers[(prev_label, label)] = e_round.total
 
     ## Track transfers. Note that more than one candidate can lose per round, so transfers
     ## cannot be perfectly accurate in that case
@@ -91,8 +93,8 @@ def main(vote_file, title="Untitled", chart_file=None):
             if not needed:
                 break
 
-    if needed:
-        raise ValueError(f'Failed to get enough votes for "{label}"')
+        if needed:
+            raise ValueError(f'Failed to get enough votes for "{label}". Still need {needed}')
 
     ## Add self transfers
     for key, total in self_transfers.items():
