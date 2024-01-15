@@ -86,7 +86,7 @@ def main(vote_file, title, chart_file=None):
     for name, votes in sorted(tuple(election.truncated.items()), key=lambda x: x[1]):
         ## Skip write-ins with no votes
         #if "write-in" in name.lower() and not votes[0]:
-        if re.match(r"write-in (\d+|other)", name, re.IGNORECASE):
+        if re.match(r"write-in p?(\d+|other)", name, re.IGNORECASE):
             continue
 
         ## Plot line
