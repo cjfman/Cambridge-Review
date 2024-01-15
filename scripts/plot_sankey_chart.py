@@ -25,6 +25,7 @@ def main(vote_file, title="Untitled", chart_file=None):
     label_rounds = {}
     previous_label = {}
     self_transfers = {}
+    y_pos_map = {}
 
     ## First pass of candidates
     next_index = 0
@@ -41,6 +42,7 @@ def main(vote_file, title="Untitled", chart_file=None):
             label_map[label] = next_index
             label_rounds[label] = n
             previous_label[label] = prev_label
+            y_pos_map[label] = election.candidates.index(name)
             next_index += 1
             ## Add to round vote count. This may be less than the total number of votes
             ## as we're not keeping track of candidates that have been elected
@@ -112,18 +114,20 @@ def main(vote_file, title="Untitled", chart_file=None):
 
     ## Make plot
     fig = go.Figure(data=[go.Sankey(
-        node = dict(
-            pad = 15,
-            thickness = 20,
-            line = dict(color = "black", width = 0.5),
-            label = labels,
-            color = "blue",
-        ),
-        link = dict(
-            source = sources,
-            target = targets,
-            value  = values,
-        ),
+        node = {
+            'pad':       15,
+            'thickness': 20,
+            'line':      dict(color = "black", width = 0.5),
+            'label':     labels,
+            'color':     "blue",
+            #'x': [label_rounds[x]/6 for x in labels],
+            #'y': [y_pos_map[x]/6 for x in labels],
+        },
+        link = {
+            'source': sources,
+            'target': targets,
+            'value':  values,
+        },
     )])
 
     fig.update_layout(title_text=title, font_size=10)
