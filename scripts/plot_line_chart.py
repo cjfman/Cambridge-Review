@@ -11,8 +11,6 @@ import numpy as np
 
 import elections
 
-FILE = "/home/charles/Projects/cambridge_review/elections/csvs_sc/sc_election_2023.csv"
-
 
 def nextOpenVPostition(
         existing:Sequence[float],
@@ -36,9 +34,9 @@ def filterTickmarks(ticks:Sequence[list], add:Sequence[list], exclude:Sequence[l
     return list(ticks) + add
 
 
-def main():
+def main(vote_file, title, chart_file=None):
     """Plot line graph of election"""
-    election = elections.loadElectionsFile(FILE)
+    election = elections.loadElectionsFile(vote_file)
 
     ## Y-axis
     f = plt.figure()
@@ -122,13 +120,28 @@ def main():
     ## Add labels and plot
     plt.xlabel('Round',   weight='bold')
     plt.ylabel('Votes',   weight='bold')
-    plt.title('School Comittee Election 2023', weight='bold')
+    plt.title(title, weight='bold')
     plt.tight_layout()
     plt.grid()
-    plt.show()
+    if chart_file:
+        if '.' not in chart_file:
+            chart_file += ".png"
+            print(f"Saving as png '{chart_file}'")
+
+        plt.savefig(chart_file)
+    else:
+        plt.show()
 
     return 0
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    usage = f"Usage: {sys.argv[0]} <vote file> <title> [chart file]"
+    num_args = len(sys.argv)
+    if num_args == 3:
+        sys.exit(main(sys.argv[1], sys.argv[2]))
+    elif num_args == 4:
+        sys.exit(main(sys.argv[1], sys.argv[2], sys.argv[3]))
+    else:
+        print(usage)
+        sys.exit(1)
