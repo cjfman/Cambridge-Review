@@ -30,15 +30,22 @@ def nextOpenVPostition(
 
 def filterTickmarks(ticks:Sequence[list], add:Sequence[list], exclude:Sequence[list]) -> List[float]:
     """Remove any tickmarks that are too close to protected ticks"""
-    exclude = exclude + add
-    ticks = filter(lambda tik: not any(map(lambda x: tik and abs(tik-x)/tik < 0.1, exclude)), ticks)
-    return list(ticks) + add
+    ## This lamda purpusfully references the 'exclude' list
+    filter_fn = lambda tik: not any(map(lambda x: tik and abs(tik-x)/tik < 0.05, exclude))
+    add = list(filter(filter_fn, add))
+    exclude = exclude + add ## Modify exclude, knowing that 'filter_fn' lambda will pick it up
+    ticks = list(filter(filter_fn, ticks))
+    return ticks + add
 
 
 def main(vote_file, title, chart_file=None):
     """Plot line graph of election"""
     print(f"Reading '{vote_file}'")
     election = elections.loadElectionsFile(vote_file)
+    top_line = election.quota
+    if election.max_votes > top_line:
+        top_line *= 1.10
+
     print(f"Generating plot")
 
     ## Make figure
@@ -50,7 +57,6 @@ def main(vote_file, title, chart_file=None):
     ax = f.add_subplot(111)
     ax.yaxis.tick_right()
     ax.yaxis.set_label_position("right")
-    ax.set_ylim(bottom=0, top=max(election.max_votes, election.quota*1.05))
     ax.get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ','))
     )
@@ -95,9 +101,10 @@ def main(vote_file, title, chart_file=None):
             ## Were they at or above quota?
             if round_count == 1 or votes[-2] > election.quota:
                 ## Place win diamon on round where they won, not the transfer round
-                p = plt.plot(np.array(range(1, round_count + 1)), np.array(votes), linewidth=1, zorder=-1)
+                votes_cropped = list(map(lambda x: min(x, top_line), votes))
+                p = plt.plot(np.array(range(1, round_count + 1)), np.array(votes_cropped), linewidth=1, zorder=-1)
                 color = p[-1].get_color()
-                plt.scatter(round_count-1, votes[-2], marker='D', color=color, zorder=10000)
+                plt.scatter(round_count-1, votes_cropped[-2], marker='D', color=color, zorder=10000)
             else:
                 p = plt.plot(np.array(range(1, round_count + 1)), np.array(votes), linewidth=1)
                 color = p[-1].get_color()
@@ -110,14 +117,24 @@ def main(vote_file, title, chart_file=None):
     ## Order is important for nextOpenVPostition(...)
     line_labels.append((election.quota, 'Quota', { 'color': 'black', 'weight': 'bold' }))
     text_v_pos = []
-    for vpos, name, opts in sorted(line_labels, reverse=True):
-        v = min(vpos, nextOpenVPostition(text_v_pos, election.max_votes, scale=600))
-        plt.text(1, v, name + ' ', va='center', ha='right', **opts)
-        text_v_pos.append(v)
+    over_quota = 0
+    for vote_count, name, opts in sorted(line_labels, reverse=True):
+        ## Plot name and avoid overlapping with other names
+        v_pos = min([vote_count, top_line, nextOpenVPostition(text_v_pos, top_line, scale=600)])
+        ## Label vote count if it above the top line
+        if vote_count > top_line:
+            h_pos = 1 + 0.1*(1+over_quota)
+            over_quota += 1
+            plt.text(1, v_pos, name + ' ', va='bottom', ha='right', **opts)
+            plt.text(h_pos, v_pos, format(vote_count, ','), va='bottom', ha='left', weight='bold', **opts)
+        else:
+            plt.text(1, v_pos, name + ' ', va='center', ha='right', **opts)
 
-    ## Add extra tick mark for max votes
-    if election.max_votes > election.quota:
-        plt.yticks(filterTickmarks(list(plt.yticks()[0]), [election.max_votes], [election.quota]))
+        text_v_pos.append(v_pos)
+
+    ## Set Y axis limit and add tickmarks
+    ax.set_ylim(bottom=0, top=top_line)
+    plt.yticks(filterTickmarks(list(plt.yticks()[0]), [top_line], [election.quota]))
 
     ## Legend
     legend_elements = [
@@ -127,6 +144,7 @@ def main(vote_file, title, chart_file=None):
     ax.legend(handles=legend_elements)
 
     ## Add labels and plot
+    ax.set_ylim(bottom=0, top=top_line)
     plt.xlabel('Round',   weight='bold')
     plt.ylabel('Votes',   weight='bold')
     plt.title(title, weight='bold')
