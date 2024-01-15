@@ -117,9 +117,12 @@ def loadElectionsFile(path) -> Election:
                 elif col1.lower() not in ('exhausted', 'invalid', 'total'):
                     ## Check number of rows
                     if len(row) != round_count * 2:
-                        raise FormatError(f"Candidate '{col1}' doesn't have enough rows")
+                        raise FormatError(f"Candidate '{col1}' doesn't have the correct number of columns. Found {len(row)} expected {round_count*2}")
 
-                    candidates[col1] = processCandidate(row[1:])
+                    try:
+                        candidates[col1] = processCandidate(row[1:])
+                    except Exception as e:
+                        raise FormatError(f"Error when processing candidate '{col1}'") from e
             elif state == 'stats':
                 if col1 == 'Elected':
                     state = 'elected'
