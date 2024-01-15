@@ -69,7 +69,7 @@ def getRoundCount(headers:Sequence[str]) -> int:
     num_headers = len(headers)
     if num_headers < 2 or num_headers % 2 != 0:
         raise FormatError("Expected an even number of headers")
-    if headers[0] != 'Candidate':
+    if headers[0].lower() not in ('candidate', 'candidates'):
         print(type(headers[0]), headers[0], headers[0][0], 'CATCH!', headers[0][1])
         raise FormatError(f"First column header isn't 'Candidate'. Found '{headers[0]}'")
     if headers[1] != 'Count 1':
@@ -114,7 +114,7 @@ def loadElectionsFile(path) -> Election:
                 ## Collect candidate info
                 if col1 == '':
                     state = 'stats'
-                elif col1 not in ('Exhausted', 'Invalid', 'Total'):
+                elif col1.lower() not in ('exhausted', 'invalid', 'total'):
                     ## Check number of rows
                     if len(row) != round_count * 2:
                         raise FormatError(f"Candidate '{col1}' doesn't have enough rows")
@@ -124,7 +124,7 @@ def loadElectionsFile(path) -> Election:
                 if col1 == 'Elected':
                     state = 'elected'
                 else:
-                    stats[col1] = toIntMaybe(row[1])
+                    stats[col1.lower()] = toIntMaybe(row[1])
             elif state == 'elected':
                 if col1 == '':
                     state = 'stats'
@@ -134,8 +134,8 @@ def loadElectionsFile(path) -> Election:
                 elected.append(row[1])
 
     ## Check for required stats
-    missing = [x for x in ('Total', 'Quota') if x not in stats]
+    missing = [x for x in ('total', 'quota') if x not in stats]
     if missing:
         raise FormatError("Missing required stats: " + ", ".join(missing))
 
-    return Election(round_count, candidates, elected, stats['Total'], stats['Quota'])
+    return Election(round_count, candidates, elected, stats['total'], stats['quota'])

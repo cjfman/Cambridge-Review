@@ -11,7 +11,7 @@ import numpy as np
 
 import elections
 
-FILE = "/home/charles/Projects/cambridge_review/elections/csvs_sc/sc_election_2003.csv"
+FILE = "/home/charles/Projects/cambridge_review/elections/csvs_sc/sc_election_2015.csv"
 
 
 def nextOpenVPostition(
@@ -36,7 +36,7 @@ def main():
     ax = f.add_subplot(111)
     ax.yaxis.tick_right()
     ax.yaxis.set_label_position("right")
-    ax.set_ylim(bottom=0, top=election.max_votes)
+    ax.set_ylim(bottom=0, top=max(election.max_votes, election.quota*1.05))
     ax.get_yaxis().set_major_formatter(
         matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ','))
     )
@@ -44,19 +44,27 @@ def main():
     ## X axis
     ax.set_xlim([1, election.num_rounds])
 
-    ## Add quota line
+    ## Add quota line and tick mark
     plt.plot(
         np.array(range(1, election.num_rounds+1)),
         np.array([election.quota]*election.num_rounds),
         color='black',
         linewidth=3,
     )
-    plt.text(election.num_rounds, election.quota, "- " + format(election.quota, ','), va='center', ha='left', weight='bold')
+    plt.text(
+        election.num_rounds,
+        election.quota,
+        "- " + format(election.quota, ','),
+        va='center',
+        ha='left',
+        weight='bold',
+        #bbox=dict(facecolor='white', edgecolor='white', alpha=1),
+    )
 
     ## Add vote lines
     line_labels = [(election.quota, 'Quota', { 'color': 'black', 'weight': 'bold' })]
     for name, votes in election.truncated.items():
-        if "Write-In" in name and not votes[0]:
+        if "write-in" in name.lower() and not votes[0]:
             continue
 
         round_count = len(votes)
@@ -92,8 +100,9 @@ def main():
         text_v_pos.append(v)
         #print(f"{name} {vpos} -> {v}")
 
-    ## Add extra tick mark for quota
-    plt.yticks(list(plt.yticks()[0]) + [election.max_votes])
+    ## Add extra tick mark for max votes
+    if election.max_votes > election.quota:
+        plt.yticks(list(plt.yticks()[0]) + [election.max_votes])
 
     ## Legend
     legend_elements = [
@@ -105,7 +114,7 @@ def main():
     ## Add labels to plot
     plt.xlabel('Round',   weight='bold')
     plt.ylabel('Votes',   weight='bold')
-    plt.title('School Comittee Election 2003', weight='bold')
+    plt.title('School Comittee Election 2015', weight='bold')
     #plt.legend(loc='best', ncol=1)
     plt.tight_layout()
     plt.grid()
