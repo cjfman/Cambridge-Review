@@ -36,7 +36,9 @@ def filterTickmarks(ticks:Sequence[list], add:Sequence[list], exclude:Sequence[l
 
 def main(vote_file, title, chart_file=None):
     """Plot line graph of election"""
+    print(f"Reading '{vote_file}'")
     election = elections.loadElectionsFile(vote_file)
+    print(f"Generating plot")
 
     ## Y-axis
     f = plt.figure()
@@ -127,9 +129,12 @@ def main(vote_file, title, chart_file=None):
         if '.' not in chart_file:
             chart_file += ".png"
             print(f"Saving as png '{chart_file}'")
+        else:
+            print(f"Saving as '{chart_file}'")
 
         plt.savefig(chart_file)
     else:
+        print("Showing plot")
         plt.show()
 
     return 0
