@@ -13,6 +13,10 @@ PLOT=True
 DEBUG=True
 
 
+def boundNumber(num, bottom, top):
+    return min(top, max(bottom, num))
+
+
 def makeNodes(source_map, target_map, label_map, label_rounds, previous_labels):
     ## Track transfers. Note that more than one candidate can lose per round, so transfers
     ## cannot be perfectly accurate in that case
@@ -62,16 +66,17 @@ def calcXYPositions(election, round_labels, label_total, label_rounds):
     y_used = defaultdict(int)
     for n in sorted(round_labels):
         for label in sorted(round_labels[n], key=lambda x: label_total[x], reverse=False):
-            height = min(round(label_total[label] / election.total, 3), 0.05)
-            y_pos_map[label] = round(max(min(y_used[n], 0.999), 0.001), 3)
+            height = max(round(label_total[label] / election.total, 3), 0.05)
+            y_pos_map[label] = round(boundNumber(0.001, 0.999, y_used[n]), 4)
             y_used[n] += height
-            x_pos_map[label] = round(min(0.999, label_rounds[label]/election.num_rounds), 3)
+            x_pos = round((label_rounds[label] - 1)/election.num_rounds, 3)
+            x_pos_map[label] = boundNumber(0.01, 0.99, x_pos)
             if DEBUG:
                 x_pos = x_pos_map[label]
                 y_pos = y_pos_map[label]
                 print(f"Label '{label}' height:{height} y-pos:{y_pos} x-pos:{x_pos}")
-    return x_pos_map, y_pos_map
 
+    return x_pos_map, y_pos_map
 
 
 def main(vote_file, title="Untitled", chart_file=None):
@@ -152,7 +157,7 @@ def main(vote_file, title="Untitled", chart_file=None):
             'label':     labels,
             'color':     "blue",
             #'x': [x_pos_map[x] for x in labels],
-            #'y': [y_pos_map[x]*2 for x in labels],
+            #'y': [y_pos_map[x] for x in labels],
         },
         link = {
             'source': sources,
