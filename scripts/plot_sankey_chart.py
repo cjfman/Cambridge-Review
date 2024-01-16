@@ -17,6 +17,14 @@ def boundNumber(num, bottom, top):
     return min(top, max(bottom, num))
 
 
+def fixOrder(sources, targets, values):
+    zipped = list(sorted(zip(sources, targets, values)))
+    src = [x[0] for x in zipped]
+    dst = [x[1] for x in zipped]
+    val = [x[2] for x in zipped]
+    return (src, dst, val)
+
+
 def makeNodes(source_map, target_map, label_map, label_rounds, previous_labels):
     ## Track transfers. Note that more than one candidate can lose per round, so transfers
     ## cannot be perfectly accurate in that case
@@ -56,7 +64,7 @@ def makeNodes(source_map, target_map, label_map, label_rounds, previous_labels):
         if needed:
             raise ValueError(f'Failed to get enough votes for "{label}". Still need {needed}')
 
-    return sources, targets, values
+    return fixOrder(sources, targets, values)
 
 
 def calcXYPositions(election, round_labels, label_total, label_rounds):
@@ -64,13 +72,15 @@ def calcXYPositions(election, round_labels, label_total, label_rounds):
     x_pos_map = {}
     y_pos_map = {}
     y_used = defaultdict(int)
+    xtra = 0 ## plotly is breaking when multiple nodes have the same x
     for n in sorted(round_labels):
         for label in sorted(round_labels[n], key=lambda x: label_total[x], reverse=False):
             height = max(round(label_total[label] / election.total, 3), 0.05)
             y_pos_map[label] = round(boundNumber(0.001, 0.999, y_used[n]), 4)
             y_used[n] += height
-            x_pos = round((label_rounds[label] - 1)/election.num_rounds, 3)
-            x_pos_map[label] = boundNumber(0.01, 0.99, x_pos)
+            x_pos = round((label_rounds[label] - 1)/election.num_rounds + xtra, 3)
+            xtra += 0.001
+            x_pos_map[label] = boundNumber(0.001, 0.999, x_pos)
             if DEBUG:
                 x_pos = x_pos_map[label]
                 y_pos = y_pos_map[label]
@@ -156,8 +166,8 @@ def main(vote_file, title="Untitled", chart_file=None):
             'line':      dict(color = "black", width = 0.5),
             'label':     labels,
             'color':     "blue",
-            #'x': [x_pos_map[x] for x in labels],
-            #'y': [y_pos_map[x] for x in labels],
+            'x': [x_pos_map[x] for x in labels],
+            'y': [y_pos_map[x] for x in labels],
         },
         link = {
             'source': sources,
