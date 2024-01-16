@@ -10,22 +10,24 @@ import plotly.graph_objects as go
 import elections
 
 PLOT=True
-DEBUG=False
+DEBUG=True
 
 
 def main(vote_file, title="Untitled", chart_file=None):
     """Plot sankey graph of election"""
     print(f"Reading '{vote_file}'")
     election = elections.loadElectionsFile(vote_file, include_exhausted=True)
+    election.printStats()
     labels:List[str]        = []
     label_map:Dict[str, int] = {}
-    round_votes:List[int] = [0] * election.num_rounds
     source_map = defaultdict(dict)
     target_map:Dict[str, int] = {}
     label_rounds = {}
+    round_labels = defaultdict(list)
     previous_label = {}
     self_transfers = {}
-    y_pos_map = {}
+    y_order = {}
+    label_total = {}
 
     ## First pass of candidates
     next_index = 0
@@ -41,12 +43,11 @@ def main(vote_file, title="Untitled", chart_file=None):
             labels.append(label)
             label_map[label] = next_index
             label_rounds[label] = n
+            round_labels[n].append(label)
             previous_label[label] = prev_label
-            y_pos_map[label] = election.candidates.index(name)
+            y_order[label] = election.candidates.index(name)
+            label_total[label] = e_round.total
             next_index += 1
-            ## Add to round vote count. This may be less than the total number of votes
-            ## as we're not keeping track of candidates that have been elected
-            round_votes[i] += e_round.total
             ## Map sources and targets
             if n > 1 and e_round.transfer > 0:
                 target_map[label] = e_round.transfer
@@ -73,18 +74,17 @@ def main(vote_file, title="Untitled", chart_file=None):
             sources.append(label_map[prev_label])
             targets.append(label_map[label])
             ## Get needed votes
-            available = source_map[n][source]
-            if available < 0:
+            availabel = source_map[n][source]
+            if availabel < 0:
                 ## This should never happen
-                raise ValueError(f'Label "{source}" ran out of votes. Found {available}')
-            elif needed >= available:
+                raise ValueError(f'Label "{source}" ran out of votes. Found {availabel}')
+            elif needed >= availabel:
                 ## Source exhausted
-                print(f'Transfer {available} votes from "{prev_label}" to "{label}"')
+                print(f'Transfer {availabel} votes from "{prev_label}" to "{label}"')
                 print(f"'{source}' eliminated")
-                values.append(available)
-                needed -= available
-                #del source_map[n][source]
-            elif needed < available:
+                values.append(availabel)
+                needed -= availabel
+            elif needed < availabel:
                 ## Source can provide all needed votes
                 print(f'Transfer {needed} votes from "{prev_label}" to "{label}"')
                 values.append(needed)
@@ -106,6 +106,23 @@ def main(vote_file, title="Untitled", chart_file=None):
         values.append(total)
         print(f'Pass through {total} votes from "{src}" to "{dst}"')
 
+    ## Calcualte X/Y positions
+    x_pos_map = {}
+    y_pos_map = {}
+    y_used = defaultdict(int)
+    for n in sorted(round_labels):
+        for label in sorted(round_labels[n], key=lambda x: label_total[x], reverse=False):
+            height = min(round(label_total[label] / election.total, 3), 0.05)
+            y_pos_map[label] = round(max(min(y_used[n], 0.999), 0.001), 3)
+            y_used[n] += height
+            x_pos_map[label] = round(min(0.999, label_rounds[label]/election.num_rounds), 3)
+            if DEBUG:
+                x_pos = x_pos_map[label]
+                y_pos = y_pos_map[label]
+                print(f"Label '{label}' height:{height} y-pos:{y_pos} x-pos:{x_pos}")
+
+
+    ## Print values
     if DEBUG:
         print('label_map', label_map)
         print('sources', sources)
@@ -114,14 +131,15 @@ def main(vote_file, title="Untitled", chart_file=None):
 
     ## Make plot
     fig = go.Figure(data=[go.Sankey(
+        arrangement = 'snap',
         node = {
             'pad':       15,
             'thickness': 20,
             'line':      dict(color = "black", width = 0.5),
             'label':     labels,
             'color':     "blue",
-            #'x': [label_rounds[x]/6 for x in labels],
-            #'y': [y_pos_map[x]/6 for x in labels],
+            #'x': [x_pos_map[x] for x in labels],
+            #'y': [y_pos_map[x]*2 for x in labels],
         },
         link = {
             'source': sources,

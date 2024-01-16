@@ -3,6 +3,7 @@
 import csv
 
 from collections import namedtuple
+from textwrap import dedent
 from typing import Dict, List, Sequence
 
 
@@ -62,6 +63,15 @@ class Election:
             self.truncated2[name] = truncateList(self.rounds[name], key=lambda x: x.total)
             self.max_votes = max(self.max_votes, max(self.votes[name]))
 
+    def printStats(self):
+        print(dedent(f"""\
+            Election stats
+            Total: {self.total}
+            Quota: {self.quota}
+            Number of rounds: {self.num_rounds}
+            Number of candidates: {len(self.candidates)}
+        """))
+
 
 def toIntMaybe(x):
     try:
@@ -108,15 +118,13 @@ def loadElectionsFile(path, include_exhausted=False) -> Election:
     candidates = {}
     stats = {}
     elected = []
-    exclude = ['invalid', 'total']
-    if not include_exhausted:
-        exclude.append('exhausted')
 
     ## Open file and parse it
     with open(path, 'r', encoding='utf8') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
             col1 = row[0]
+            col_low = col1.lower()
             if state == 'start':
                 ## Get the round count
                 round_count = getRoundCount(row)
@@ -125,7 +133,13 @@ def loadElectionsFile(path, include_exhausted=False) -> Election:
                 ## Collect candidate info
                 if col1 == '':
                     state = 'stats'
-                elif col1.lower() not in exclude:
+                elif col_low == 'invalid':
+                    stats['invalid'] = int(row[1])
+                elif col_low == 'total':
+                    stats['total'] = int(row[1])
+                elif col_low == 'exhausted' and not include_exhausted:
+                    pass
+                else:
                     ## Check number of rows
                     if len(row) != round_count * 2:
                         raise FormatError(f"Candidate '{col1}' doesn't have the correct number of columns. Found {len(row)} expected {round_count*2}")
@@ -135,7 +149,7 @@ def loadElectionsFile(path, include_exhausted=False) -> Election:
                     except Exception as e:
                         raise FormatError(f"Error when processing candidate '{col1}'") from e
             elif state == 'stats':
-                if col1 == 'Elected':
+                if col_low == 'elected':
                     state = 'elected'
                 else:
                     stats[col1.lower()] = toIntMaybe(row[1])
@@ -148,8 +162,9 @@ def loadElectionsFile(path, include_exhausted=False) -> Election:
                 elected.append(row[1])
 
     ## Check for required stats
-    missing = [x for x in ('total', 'quota') if x not in stats]
+    missing = [x for x in ('total', 'quota', 'invalid') if x not in stats]
     if missing:
         raise FormatError("Missing required stats: " + ", ".join(missing))
 
-    return Election(round_count, candidates, elected, stats['total'], stats['quota'])
+    valid = stats['total'] - stats['invalid']
+    return Election(round_count, candidates, elected, valid, stats['quota'])
