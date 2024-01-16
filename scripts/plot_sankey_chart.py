@@ -13,53 +13,7 @@ PLOT=True
 DEBUG=True
 
 
-def main(vote_file, title="Untitled", chart_file=None):
-    """Plot sankey graph of election"""
-    print(f"Reading '{vote_file}'")
-    election = elections.loadElectionsFile(vote_file, include_exhausted=True)
-    election.printStats()
-    labels:List[str]        = []
-    label_map:Dict[str, int] = {}
-    source_map = defaultdict(dict)
-    target_map:Dict[str, int] = {}
-    label_rounds = {}
-    round_labels = defaultdict(list)
-    previous_label = {}
-    self_transfers = {}
-    y_order = {}
-    label_total = {}
-
-    ## First pass of candidates
-    next_index = 0
-    for name, rounds in election.truncated2.items():
-        for i, e_round in enumerate(rounds):
-            if not e_round:
-                continue
-
-            n = i + 1
-            ## Generate labels, one per candidate per round in which they exist
-            label = f"{name} - {n}"
-            prev_label = f"{name} - {n-1}"
-            labels.append(label)
-            label_map[label] = next_index
-            label_rounds[label] = n
-            round_labels[n].append(label)
-            previous_label[label] = prev_label
-            y_order[label] = election.candidates.index(name)
-            label_total[label] = e_round.total
-            next_index += 1
-            ## Map sources and targets
-            if n > 1 and e_round.transfer > 0:
-                target_map[label] = e_round.transfer
-            elif e_round.transfer < 0:
-                source_map[n][label] = e_round.transfer * -1
-
-            if n > 1 and e_round.total:
-                if e_round.transfer > 0:
-                    self_transfers[(prev_label, label)] = e_round.total - e_round.transfer
-                else:
-                    self_transfers[(prev_label, label)] = e_round.total
-
+def makeNodes(source_map, target_map, label_map, label_rounds, previous_labels):
     ## Track transfers. Note that more than one candidate can lose per round, so transfers
     ## cannot be perfectly accurate in that case
     sources = []
@@ -70,7 +24,7 @@ def main(vote_file, title="Untitled", chart_file=None):
         ## Find sources from the correct round
         n = label_rounds[label]
         for source in source_map[n].keys():
-            prev_label = previous_label[source]
+            prev_label = previous_labels[source]
             sources.append(label_map[prev_label])
             targets.append(label_map[label])
             ## Get needed votes
@@ -98,15 +52,11 @@ def main(vote_file, title="Untitled", chart_file=None):
         if needed:
             raise ValueError(f'Failed to get enough votes for "{label}". Still need {needed}')
 
-    ## Add self transfers
-    for key, total in self_transfers.items():
-        src, dst = key
-        sources.append(label_map[src])
-        targets.append(label_map[dst])
-        values.append(total)
-        print(f'Pass through {total} votes from "{src}" to "{dst}"')
+    return sources, targets, values
 
-    ## Calcualte X/Y positions
+
+def calcXYPositions(election, round_labels, label_total, label_rounds):
+    """Calcualte X/Y positions"""
     x_pos_map = {}
     y_pos_map = {}
     y_used = defaultdict(int)
@@ -120,7 +70,70 @@ def main(vote_file, title="Untitled", chart_file=None):
                 x_pos = x_pos_map[label]
                 y_pos = y_pos_map[label]
                 print(f"Label '{label}' height:{height} y-pos:{y_pos} x-pos:{x_pos}")
+    return x_pos_map, y_pos_map
 
+
+
+def main(vote_file, title="Untitled", chart_file=None):
+    """Plot sankey graph of election"""
+    print(f"Reading '{vote_file}'")
+    election = elections.loadElectionsFile(vote_file, include_exhausted=True)
+    election.printStats()
+    labels:List[str]        = []
+    label_map:Dict[str, int] = {}
+    source_map = defaultdict(dict)
+    target_map:Dict[str, int] = {}
+    label_rounds = {}
+    round_labels = defaultdict(list)
+    previous_labels = {}
+    self_transfers = {}
+    y_order = {}
+    label_total = {}
+
+    ## First pass of candidates
+    next_index = 0
+    for name, rounds in election.truncated2.items():
+        for i, e_round in enumerate(rounds):
+            if not e_round:
+                continue
+
+            n = i + 1
+            ## Generate labels, one per candidate per round in which they exist
+            label = f"{name} - {n}"
+            prev_label = f"{name} - {n-1}"
+            labels.append(label)
+            label_map[label] = next_index
+            label_rounds[label] = n
+            round_labels[n].append(label)
+            previous_labels[label] = prev_label
+            y_order[label] = election.candidates.index(name)
+            label_total[label] = e_round.total
+            next_index += 1
+            ## Map sources and targets
+            if n > 1 and e_round.transfer > 0:
+                target_map[label] = e_round.transfer
+            elif e_round.transfer < 0:
+                source_map[n][label] = e_round.transfer * -1
+
+            if n > 1 and e_round.total:
+                if e_round.transfer > 0:
+                    self_transfers[(prev_label, label)] = e_round.total - e_round.transfer
+                else:
+                    self_transfers[(prev_label, label)] = e_round.total
+
+    ## Make nodes
+    sources, targets, values = makeNodes(source_map, target_map, label_map, label_rounds, previous_labels)
+
+    ## Add self transfers
+    for key, total in self_transfers.items():
+        src, dst = key
+        sources.append(label_map[src])
+        targets.append(label_map[dst])
+        values.append(total)
+        print(f'Pass through {total} votes from "{src}" to "{dst}"')
+
+    ## Calcualte X/Y positions
+    x_pos_map, y_pos_map = calcXYPositions(election, round_labels, label_total, label_rounds)
 
     ## Print values
     if DEBUG:
