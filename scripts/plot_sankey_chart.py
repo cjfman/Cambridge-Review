@@ -25,7 +25,7 @@ def fixOrder(sources, targets, values):
     return (src, dst, val)
 
 
-def makeNodes(source_map, target_map, label_map, label_rounds, previous_labels):
+def makeNodes(source_map, target_map, label_rounds, previous_labels):
     ## Track transfers. Note that more than one candidate can lose per round, so transfers
     ## cannot be perfectly accurate in that case
     sources = []
@@ -37,8 +37,8 @@ def makeNodes(source_map, target_map, label_map, label_rounds, previous_labels):
         n = label_rounds[label]
         for source in source_map[n].keys():
             prev_label = previous_labels[source]
-            sources.append(label_map[prev_label])
-            targets.append(label_map[label])
+            sources.append(prev_label)
+            targets.append(label)
             ## Get needed votes
             availabel = source_map[n][source]
             if availabel < 0:
@@ -140,23 +140,32 @@ def main(vote_file, title="Untitled", chart_file=None):
                     self_transfers[(prev_label, label)] = e_round.total
 
 
-    labels.sort(key=lambda x: (label_rounds[x], election.total - label_total[x]))
-    #labels.sort(key=lambda x: (label_rounds[x], label_total[x]))
-    label_map = { x: i for i, x in enumerate(labels) }
 
     ## Make nodes
-    sources, targets, values = makeNodes(source_map, target_map, label_map, label_rounds, previous_labels)
+    sources, targets, values = makeNodes(source_map, target_map, label_rounds, previous_labels)
 
     ## Add self transfers
     for key, total in self_transfers.items():
+        if not total:
+            continue
+
         src, dst = key
-        sources.append(label_map[src])
-        targets.append(label_map[dst])
+        sources.append(src)
+        targets.append(dst)
         values.append(total)
         print(f'Pass through {total} votes from "{src}" to "{dst}"')
 
     ## Calcualte X/Y positions
     x_pos_map, y_pos_map = calcXYPositions(election, round_labels, label_total, label_rounds)
+
+    ## Convert labels to indices
+    labels = [x for x in labels if label_total[x]]
+    labels.sort(key=lambda x: (label_rounds[x], election.total - label_total[x]))
+    #labels.sort(key=lambda x: (label_rounds[x], label_total[x]))
+    label_map = { x: i for i, x in enumerate(labels) }
+    sources = [label_map[x] for x in sources]
+    targets = [label_map[x] for x in targets]
+
 
     ## Print values
     if DEBUG:
