@@ -64,7 +64,7 @@ def makeNodes(source_map, target_map, label_rounds, previous_labels):
         if needed:
             raise ValueError(f'Failed to get enough votes for "{label}". Still need {needed}')
 
-    return fixOrder(sources, targets, values)
+    return sources, targets, values
 
 
 def calcXYPositions(election, round_labels, label_total, label_rounds):
@@ -77,14 +77,14 @@ def calcXYPositions(election, round_labels, label_total, label_rounds):
             if not label_total[label]:
                 continue
 
-            height = round(label_total[label] / election.total, 4)
-            y_pos_map[label] = round(boundNumber(0.001, 0.999, y_used[n]), 4)
-            y_used[n] += height + 0.01
-            x_pos = round(label_rounds[label]/election.num_rounds, 4)
-            x_pos_map[label] = boundNumber(0.001, 0.999, x_pos)
+            height = round(label_total[label] / election.total, 5)
+            y_pos_map[label] = boundNumber(y_used[n], 0.001, 0.999)
+            y_used[n] += height + 0.02
+            x_pos = label_rounds[label]/election.num_rounds
+            x_pos_map[label] = boundNumber(x_pos, 0.001, 0.999)
             if DEBUG:
-                x_pos = x_pos_map[label]
-                y_pos = y_pos_map[label]
+                x_pos = round(x_pos_map[label], 3)
+                y_pos = round(y_pos_map[label], 3)
                 print(f"Label '{label}' height:{height} y-pos:{y_pos} x-pos:{x_pos}")
 
     return x_pos_map, y_pos_map
@@ -168,7 +168,7 @@ def main(vote_file, title="Untitled", chart_file=None):
     label_map = { x: i for i, x in enumerate(labels) }
     sources = [label_map[x] for x in sources]
     targets = [label_map[x] for x in targets]
-
+    sources, targets, values = fixOrder(sources, targets, values)
 
     ## Print values
     if DEBUG:
