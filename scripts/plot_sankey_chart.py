@@ -74,7 +74,7 @@ def calcXYPositions(election, round_labels, label_total, label_rounds):
     y_used    = {}
     for n in sorted(round_labels):
         round_count = sum([label_total[x] for x in round_labels[n]])
-        y_used[n] = round((election.total - round_count) / election.total / 2, 5)
+        y_used[n] = round((election.total - round_count) / election.total, 5)
         print(f"Starting round {n} at {y_used[n]}")
         for label in sorted(round_labels[n], key=lambda x: label_total[x], reverse=True):
             votes = label_total[label]
