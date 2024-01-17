@@ -71,21 +71,25 @@ def calcXYPositions(election, round_labels, label_total, label_rounds):
     """Calcualte X/Y positions"""
     x_pos_map = {}
     y_pos_map = {}
-    y_used = defaultdict(int)
+    y_used    = {}
     for n in sorted(round_labels):
+        round_count = sum([label_total[x] for x in round_labels[n]])
+        y_used[n] = round((election.total - round_count) / election.total / 2, 5)
+        print(f"Starting round {n} at {y_used[n]}")
         for label in sorted(round_labels[n], key=lambda x: label_total[x], reverse=False):
-            if not label_total[label]:
+            votes = label_total[label]
+            if not votes:
                 continue
 
-            height = round(label_total[label] / election.total, 5)
-            y_pos_map[label] = boundNumber(y_used[n], 0.001, 0.999)
+            height = round(votes / election.total, 5)
+            y_pos_map[label] = boundNumber(y_used[n], 0.001, 0.99)
             y_used[n] += height + 0.02
             x_pos = label_rounds[label]/election.num_rounds
-            x_pos_map[label] = boundNumber(x_pos, 0.001, 0.999)
+            x_pos_map[label] = boundNumber(x_pos, 0.001, 0.99)
             if DEBUG:
                 x_pos = round(x_pos_map[label], 3)
                 y_pos = round(y_pos_map[label], 3)
-                print(f"Label '{label}' height:{height} y-pos:{y_pos} x-pos:{x_pos}")
+                print(f"Label '{label}' votes:{votes} height:{height} y-pos:{y_pos} x-pos:{x_pos}")
 
     return x_pos_map, y_pos_map
 
@@ -139,8 +143,11 @@ def main(vote_file, title="Untitled", chart_file=None):
             if n > 1 and e_round.total:
                 if e_round.transfer > 0:
                     self_transfers[(prev_label, label)] = e_round.total - e_round.transfer
-                elif not e_round.transfer:
-                    self_transfers[(prev_label, label)] = e_round.total
+                else:
+                    if not e_round.transfer:
+                        self_transfers[(prev_label, label)] = e_round.total
+                    else:
+                        label_total[label ] = 0 ## Zero out count for winners
 
 
 
@@ -150,6 +157,7 @@ def main(vote_file, title="Untitled", chart_file=None):
     ## Add self transfers
     for key, total in self_transfers.items():
         if not total:
+            print(f'Skip pass through from "{src}" to "{dst}"')
             continue
 
         src, dst = key
