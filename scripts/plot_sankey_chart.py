@@ -72,14 +72,12 @@ def calcXYPositions(election, round_labels, label_total, label_rounds):
     x_pos_map = {}
     y_pos_map = {}
     y_used = defaultdict(int)
-    xtra = 0 ## plotly is breaking when multiple nodes have the same x
     for n in sorted(round_labels):
         for label in sorted(round_labels[n], key=lambda x: label_total[x], reverse=False):
             height = max(round(label_total[label] / election.total, 3), 0.05)
             y_pos_map[label] = round(boundNumber(0.001, 0.999, y_used[n]), 4)
             y_used[n] += height
-            x_pos = round((label_rounds[label] - 1)/election.num_rounds + xtra, 3)
-            xtra += 0.001
+            x_pos = round(label_rounds[label]/election.num_rounds, 3)
             x_pos_map[label] = boundNumber(0.001, 0.999, x_pos)
             if DEBUG:
                 x_pos = x_pos_map[label]
@@ -102,11 +100,18 @@ def main(vote_file, title="Untitled", chart_file=None):
     round_labels = defaultdict(list)
     previous_labels = {}
     self_transfers = {}
-    y_order = {}
     label_total = {}
 
+    ## Add initial count
+    init_label = "Valid votes"
+    labels.append(init_label)
+    label_rounds[init_label] = 0
+    round_labels[0].append(init_label)
+    source_map[1][init_label] = election.total
+    label_total[init_label] = election.total
+    previous_labels[init_label] = init_label
+
     ## First pass of candidates
-    next_index = 0
     for name, rounds in election.truncated2.items():
         for i, e_round in enumerate(rounds):
             if not e_round:
@@ -117,15 +122,13 @@ def main(vote_file, title="Untitled", chart_file=None):
             label = f"{name} - {n}"
             prev_label = f"{name} - {n-1}"
             labels.append(label)
-            label_map[label] = next_index
             label_rounds[label] = n
             round_labels[n].append(label)
             previous_labels[label] = prev_label
-            y_order[label] = election.candidates.index(name)
             label_total[label] = e_round.total
-            next_index += 1
+
             ## Map sources and targets
-            if n > 1 and e_round.transfer > 0:
+            if e_round.transfer > 0:
                 target_map[label] = e_round.transfer
             elif e_round.transfer < 0:
                 source_map[n][label] = e_round.transfer * -1
@@ -135,6 +138,9 @@ def main(vote_file, title="Untitled", chart_file=None):
                     self_transfers[(prev_label, label)] = e_round.total - e_round.transfer
                 else:
                     self_transfers[(prev_label, label)] = e_round.total
+
+    labels.sort(key=lambda x: (label_rounds[x], election.total - label_total[x]))
+    label_map = { x: i for i, x in enumerate(labels) }
 
     ## Make nodes
     sources, targets, values = makeNodes(source_map, target_map, label_map, label_rounds, previous_labels)
@@ -152,6 +158,7 @@ def main(vote_file, title="Untitled", chart_file=None):
 
     ## Print values
     if DEBUG:
+        print('labels', labels)
         print('label_map', label_map)
         print('sources', sources)
         print('targets', targets)
