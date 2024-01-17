@@ -76,16 +76,16 @@ def calcXYPositions(election, round_labels, label_total, label_rounds):
         round_count = sum([label_total[x] for x in round_labels[n]])
         y_used[n] = round((election.total - round_count) / election.total / 2, 5)
         print(f"Starting round {n} at {y_used[n]}")
-        for label in sorted(round_labels[n], key=lambda x: label_total[x], reverse=False):
+        for label in sorted(round_labels[n], key=lambda x: label_total[x], reverse=True):
             votes = label_total[label]
             if not votes:
                 continue
 
             height = round(votes / election.total, 5)
-            y_pos_map[label] = boundNumber(y_used[n], 0.001, 0.99)
-            y_used[n] += height + 0.02
+            y_pos_map[label] = boundNumber(y_used[n], 0.001, 0.999)
+            y_used[n] += height
             x_pos = label_rounds[label]/election.num_rounds
-            x_pos_map[label] = boundNumber(x_pos, 0.001, 0.99)
+            x_pos_map[label] = boundNumber(x_pos, 0.001, 0.999)
             if DEBUG:
                 x_pos = round(x_pos_map[label], 3)
                 y_pos = round(y_pos_map[label], 3)
@@ -171,8 +171,7 @@ def main(vote_file, title="Untitled", chart_file=None):
 
     ## Convert labels to indices
     labels = [x for x in labels if label_total[x]]
-    #labels.sort(key=lambda x: (label_rounds[x], election.total - label_total[x]))
-    labels.sort(key=lambda x: (label_rounds[x], label_total[x]))
+    labels.sort(key=lambda x: (label_rounds[x], election.total - label_total[x]))
     label_map = { x: i for i, x in enumerate(labels) }
     sources = [label_map[x] for x in sources]
     targets = [label_map[x] for x in targets]
