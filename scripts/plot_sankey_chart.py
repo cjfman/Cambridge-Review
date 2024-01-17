@@ -74,10 +74,10 @@ def calcXYPositions(election, round_labels, label_total, label_rounds):
     y_used = defaultdict(int)
     for n in sorted(round_labels):
         for label in sorted(round_labels[n], key=lambda x: label_total[x], reverse=False):
-            height = round(label_total[label] / election.total, 3)
+            height = round(label_total[label] / election.total, 4)
             y_pos_map[label] = round(boundNumber(0.001, 0.999, y_used[n]), 4)
-            y_used[n] += max(height, .01)
-            x_pos = round(label_rounds[label]/election.num_rounds, 3)
+            y_used[n] += height + 0.01
+            x_pos = round(label_rounds[label]/election.num_rounds, 4)
             x_pos_map[label] = boundNumber(0.001, 0.999, x_pos)
             if DEBUG:
                 x_pos = x_pos_map[label]
@@ -140,8 +140,8 @@ def main(vote_file, title="Untitled", chart_file=None):
                     self_transfers[(prev_label, label)] = e_round.total
 
 
-    #labels.sort(key=lambda x: (label_rounds[x], election.total - label_total[x]))
-    labels.sort(key=lambda x: (label_rounds[x], label_total[x]))
+    labels.sort(key=lambda x: (label_rounds[x], election.total - label_total[x]))
+    #labels.sort(key=lambda x: (label_rounds[x], label_total[x]))
     label_map = { x: i for i, x in enumerate(labels) }
 
     ## Make nodes
