@@ -15,16 +15,16 @@ DEBUG=False
 COLORS_FOR_NODES = ['steelblue', 'gold', 'steelblue', 'green', 'maroon']
 COLORS_FOR_LINKS = ['goldenrod', 'lightgreen', 'LightSkyBlue', 'indianred']
 ## https://davidmathlogic.com/colorblind/#%23332288-%23117733-%2344AA99-%2388CCEE-%23DDCC77-%23CC6677-%23AA4499-%23882255
-#COLOR_BLIND_FRIENDLY = [
-#    "#332288", ## Dark Blue
-#    "#117733", ## Green
-#    "#44AA99", ## Turquoise
-#    "#88CCEE", ## Light Blue
-#    "#DDCC77", ## Yellow
-#    "#CC6677", ## Salmon
-#    "#AA4499", ## Purple
-#    "#882255", ## Dark Pink
-#]
+COLOR_BLIND_FRIENDLY_HEX = [
+    "#332288", ## Dark Blue
+    "#117733", ## Green
+    "#44AA99", ## Turquoise
+    "#88CCEE", ## Light Blue
+    "#DDCC77", ## Yellow
+    "#CC6677", ## Salmon
+    "#AA4499", ## Purple
+    "#882255", ## Dark Pink
+]
 COLOR_BLIND_FRIENDLY = [
     (51, 34, 136),   ## Dark Blue
     (17, 119, 51),   ## Green
@@ -35,6 +35,7 @@ COLOR_BLIND_FRIENDLY = [
     (170, 68, 153),  ## Purple
     (136, 34, 85),   ## Dark Pink
 ]
+GREY = (68, 68, 68)
 
 def boundNumber(num, bottom, top):
     return min(top, max(bottom, num))
@@ -42,6 +43,10 @@ def boundNumber(num, bottom, top):
 
 def mockColors(num, colors, alpha=1):
     return ['rgba' + str(colors[i%len(colors)] + (alpha,)) for i in range(num)]
+
+
+def makeColors(colors, alpha=1):
+    return ['rgba' + str((r, g, b, alpha)) for r, g, b in colors]
 
 
 def fixOrder(sources, targets, values):
@@ -132,7 +137,7 @@ def main(vote_file, title="Untitled", chart_file=None):
     ## Mappings and info
     ## Labels are text fields used to identify graph nodes in both visually and in code
     ## Each node represents the votes any particular candidate has in a given round
-    ## The order of the lables is important, as plotly uses their indices to identify
+    ## The order of the labels is important, as plotly uses their indices to identify
     ## transfers
     labels:List[str]          = []                ## Label per candidate per round
     source_map                = defaultdict(dict) ## Sources of transfer votes each round
@@ -144,12 +149,21 @@ def main(vote_file, title="Untitled", chart_file=None):
     self_transfers            = {}                ## Pairs of nodes for same candidate transfers
     label_total               = {}                ## The number of votes for a given label
 
+    ## Candidate colors
+    num_colors = len(COLOR_BLIND_FRIENDLY)
+    candidate_colors = {
+        name: COLOR_BLIND_FRIENDLY[i % num_colors] for i, name in enumerate(election.candidates)
+    }
+    candidate_colors['Exhausted'] = GREY
+    label_colors = {}
+
     ## Add initial count
     init_label = "Valid votes"
     labels.append(init_label)
     label_rounds[init_label]    = 0 ## psudo round
     round_labels[0].append(init_label)
-    source_map[1][init_label]   = election.total ## All votes are available as a source in round 1
+    label_colors[init_label]    = GREY
+    source_map[1][init_label]   = election.total ## All votes are availabel as a source in round 1
     label_total[init_label]     = election.total
     previous_labels[init_label] = init_label     ## This is needed so that the makeNodes(...)
                                                  ## function knows what source to use in round 1
@@ -170,6 +184,7 @@ def main(vote_file, title="Untitled", chart_file=None):
             label_rounds[label] = n
             round_labels[n].append(label)
             label_total[label] = e_round.total
+            label_colors[label] = candidate_colors[name]
 
             ## Map sources and targets
             if e_round.transfer > 0:
@@ -253,8 +268,8 @@ def main(vote_file, title="Untitled", chart_file=None):
     )])
 
     ## Colors
-    node_colors = mockColors(len(labels), COLOR_BLIND_FRIENDLY)
-    link_colors = mockColors(len(sources), COLOR_BLIND_FRIENDLY, alpha=0.6)
+    node_colors = makeColors([label_colors[x] for x in labels])
+    link_colors = makeColors([label_colors[labels[x]] for x in sources], alpha=0.6)
     fig.update_traces(node_color=node_colors, link_color=link_colors)
 
     ## Title and text
