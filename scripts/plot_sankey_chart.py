@@ -18,6 +18,8 @@ def boundNumber(num, bottom, top):
 
 
 def fixOrder(sources, targets, values):
+    """Order by source, then target, then value"""
+    ## This is nessessary because plotly is sensitive to order
     zipped = list(sorted(zip(sources, targets, values)))
     src = [x[0] for x in zipped]
     dst = [x[1] for x in zipped]
@@ -99,33 +101,41 @@ def main(vote_file, title="Untitled", chart_file=None):
     print(f"Reading '{vote_file}'")
     election = elections.loadElectionsFile(vote_file, include_exhausted=True)
     election.printStats()
-    labels:List[str]        = []
-    label_map:Dict[str, int] = {}
-    source_map = defaultdict(dict)
-    target_map:Dict[str, int] = {}
-    label_rounds = {}
-    round_labels = defaultdict(list)
-    candidate_labels = defaultdict(dict)
-    previous_labels = {}
-    self_transfers = {}
-    label_total = {}
+
+    ## Mappings and info
+    ## Labels are text fields used to identify graph nodes in both visually and in code
+    ## Each node represents the votes any particular candidate has in a given round
+    ## The order of the lables is important, as plotly uses their indices to identify
+    ## transfers
+    labels:List[str]          = []                ## Label per candidate per round
+    source_map                = defaultdict(dict) ## Sources of transfer votes each round
+    target_map:Dict[str, int] = {}                ## Candidates receiving transfers each round
+    label_rounds              = {}                ## Maps labels to their respective rounds
+    round_labels              = defaultdict(list) ## List of labels in each round
+    candidate_labels          = defaultdict(dict) ## List of labels for each candidate per round
+    previous_labels           = {}                ## Mapping of previous label for a label
+    self_transfers            = {}                ## Pairs of nodes for same candidate transfers
+    label_total               = {}                ## The number of votes for a given label
 
     ## Add initial count
     init_label = "Valid votes"
     labels.append(init_label)
-    label_rounds[init_label] = 0
+    label_rounds[init_label]    = 0 ## psudo round
     round_labels[0].append(init_label)
-    source_map[1][init_label] = election.total
-    label_total[init_label] = election.total
-    previous_labels[init_label] = init_label
+    source_map[1][init_label]   = election.total ## All votes are available as a source in round 1
+    label_total[init_label]     = election.total
+    previous_labels[init_label] = init_label     ## This is needed so that the makeNodes(...)
+                                                 ## function knows what source to use in round 1
 
     ## First pass of candidates
     for name, rounds in election.truncated2.items():
+        ## Loop over every round for a candidate
         for i, e_round in enumerate(rounds):
+            ## Exclude candidates that have no votes
             if not e_round:
                 continue
 
-            n = i + 1
+            n = i + 1 ## Round number
             ## Generate labels, one per candidate per round in which they exist
             label = f"{name} - {n}: {e_round.total:,}"
             candidate_labels[name][n] = label
@@ -157,8 +167,6 @@ def main(vote_file, title="Untitled", chart_file=None):
                             ## The candidate was elected
                             label_total[label] = 0 ## Zero out count for winners
 
-
-
     ## Make nodes
     sources, targets, values = makeNodes(source_map, target_map, label_rounds, previous_labels)
 
@@ -166,6 +174,7 @@ def main(vote_file, title="Untitled", chart_file=None):
     for key, total in self_transfers.items():
         src, dst = key
         if not total:
+            ## Don't add 0 vote transfers
             print(f'Skip pass through from "{src}" to "{dst}"')
             continue
 
@@ -178,12 +187,16 @@ def main(vote_file, title="Untitled", chart_file=None):
     x_pos_map, y_pos_map = calcXYPositions(election, round_labels, label_total, label_rounds)
 
     ## Convert labels to indices
+    ## Plotly is sensitive to ordering. Nodes should be in the order from top to bottom, left to right
+    ## Sort them by round, then decreasing vote total
     labels = [x for x in labels if label_total[x]]
     labels.sort(key=lambda x: (label_rounds[x], election.total - label_total[x]))
     label_map = { x: i for i, x in enumerate(labels) }
     sources = [label_map[x] for x in sources]
     targets = [label_map[x] for x in targets]
     sources, targets, values = fixOrder(sources, targets, values)
+    x_vals = [x_pos_map[x] for x in labels]
+    y_vals = [y_pos_map[x] for x in labels]
 
     ## Print values
     if DEBUG:
@@ -202,8 +215,8 @@ def main(vote_file, title="Untitled", chart_file=None):
             'line':      dict(color = "black", width = 0.5),
             'label':     labels,
             'color':     "blue",
-            'x': [x_pos_map[x] for x in labels],
-            'y': [y_pos_map[x] for x in labels],
+            'x': x_vals,
+            'y': y_vals,
         },
         link = {
             'source': sources,
