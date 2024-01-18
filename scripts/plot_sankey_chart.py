@@ -14,14 +14,34 @@ DEBUG=False
 
 COLORS_FOR_NODES = ['steelblue', 'gold', 'steelblue', 'green', 'maroon']
 COLORS_FOR_LINKS = ['goldenrod', 'lightgreen', 'LightSkyBlue', 'indianred']
-
+## https://davidmathlogic.com/colorblind/#%23332288-%23117733-%2344AA99-%2388CCEE-%23DDCC77-%23CC6677-%23AA4499-%23882255
+#COLOR_BLIND_FRIENDLY = [
+#    "#332288", ## Dark Blue
+#    "#117733", ## Green
+#    "#44AA99", ## Turquoise
+#    "#88CCEE", ## Light Blue
+#    "#DDCC77", ## Yellow
+#    "#CC6677", ## Salmon
+#    "#AA4499", ## Purple
+#    "#882255", ## Dark Pink
+#]
+COLOR_BLIND_FRIENDLY = [
+    (51, 34, 136),   ## Dark Blue
+    (17, 119, 51),   ## Green
+    (68, 170, 153),  ## Turquoise
+    (136, 204, 238), ## Light Blue
+    (221, 204, 119), ## Yellow
+    (204, 102, 119), ## Salmon
+    (170, 68, 153),  ## Purple
+    (136, 34, 85),   ## Dark Pink
+]
 
 def boundNumber(num, bottom, top):
     return min(top, max(bottom, num))
 
 
-def mockColors(num, colors):
-    return [colors[i%len(colors)] for i in range(num)]
+def mockColors(num, colors, alpha=1):
+    return ['rgba' + str(colors[i%len(colors)] + (alpha,)) for i in range(num)]
 
 
 def fixOrder(sources, targets, values):
@@ -219,7 +239,7 @@ def main(vote_file, title="Untitled", chart_file=None):
         node = {
             'pad':       15,
             'thickness': 20,
-            'line':      dict(color = "black", width = 0.5),
+            'line':      dict(color="black", width=0.5),
             'label':     labels,
             'color':     "blue",
             'x': x_vals,
@@ -233,8 +253,8 @@ def main(vote_file, title="Untitled", chart_file=None):
     )])
 
     ## Colors
-    node_colors = mockColors(len(labels), COLORS_FOR_NODES)
-    link_colors = mockColors(len(sources), COLORS_FOR_LINKS)
+    node_colors = mockColors(len(labels), COLOR_BLIND_FRIENDLY)
+    link_colors = mockColors(len(sources), COLOR_BLIND_FRIENDLY, alpha=0.6)
     fig.update_traces(node_color=node_colors, link_color=link_colors)
 
     ## Title and text
