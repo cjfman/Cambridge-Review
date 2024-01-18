@@ -105,6 +105,7 @@ def main(vote_file, title="Untitled", chart_file=None):
     target_map:Dict[str, int] = {}
     label_rounds = {}
     round_labels = defaultdict(list)
+    candidate_labels = defaultdict(dict)
     previous_labels = {}
     self_transfers = {}
     label_total = {}
@@ -126,12 +127,11 @@ def main(vote_file, title="Untitled", chart_file=None):
 
             n = i + 1
             ## Generate labels, one per candidate per round in which they exist
-            label = f"{name} - {n}"
-            prev_label = f"{name} - {n-1}"
+            label = f"{name} - {n}: {e_round.total:,}"
+            candidate_labels[name][n] = label
             labels.append(label)
             label_rounds[label] = n
             round_labels[n].append(label)
-            previous_labels[label] = prev_label
             label_total[label] = e_round.total
 
             ## Map sources and targets
@@ -140,14 +140,22 @@ def main(vote_file, title="Untitled", chart_file=None):
             elif e_round.transfer < 0:
                 source_map[n][label] = e_round.transfer * -1
 
-            if n > 1 and e_round.total:
-                if e_round.transfer > 0:
-                    self_transfers[(prev_label, label)] = e_round.total - e_round.transfer
-                else:
-                    if not e_round.transfer:
-                        self_transfers[(prev_label, label)] = e_round.total
+            ## Do additional mappings if this isn't the first round
+            if n > 1:
+                prev_label = candidate_labels[name][n-1]
+                previous_labels[label] = prev_label
+                if e_round.total:
+                    ## The candidate is still in the running
+                    if e_round.transfer > 0:
+                        ## The candidate is receiving transfer votes
+                        self_transfers[(prev_label, label)] = e_round.total - e_round.transfer
                     else:
-                        label_total[label ] = 0 ## Zero out count for winners
+                        if not e_round.transfer:
+                            ## Transfer carry over votes to the next round
+                            self_transfers[(prev_label, label)] = e_round.total
+                        else:
+                            ## The candidate was elected
+                            label_total[label] = 0 ## Zero out count for winners
 
 
 
@@ -156,11 +164,11 @@ def main(vote_file, title="Untitled", chart_file=None):
 
     ## Add self transfers
     for key, total in self_transfers.items():
+        src, dst = key
         if not total:
             print(f'Skip pass through from "{src}" to "{dst}"')
             continue
 
-        src, dst = key
         sources.append(src)
         targets.append(dst)
         values.append(total)
