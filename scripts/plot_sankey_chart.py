@@ -10,11 +10,18 @@ import plotly.graph_objects as go
 import elections
 
 PLOT=True
-DEBUG=True
+DEBUG=False
+
+COLORS_FOR_NODES = ['steelblue', 'gold', 'steelblue', 'green', 'maroon']
+COLORS_FOR_LINKS = ['goldenrod', 'lightgreen', 'LightSkyBlue', 'indianred']
 
 
 def boundNumber(num, bottom, top):
     return min(top, max(bottom, num))
+
+
+def mockColors(num, colors):
+    return [colors[i%len(colors)] for i in range(num)]
 
 
 def fixOrder(sources, targets, values):
@@ -225,6 +232,12 @@ def main(vote_file, title="Untitled", chart_file=None):
         },
     )])
 
+    ## Colors
+    node_colors = mockColors(len(labels), COLORS_FOR_NODES)
+    link_colors = mockColors(len(sources), COLORS_FOR_LINKS)
+    fig.update_traces(node_color=node_colors, link_color=link_colors)
+
+    ## Title and text
     fig.update_layout(title_text=title, font_size=10)
 
     if PLOT:
