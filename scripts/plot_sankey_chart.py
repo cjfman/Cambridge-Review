@@ -130,6 +130,7 @@ def calcXYPositions(election, round_labels, label_total, label_rounds):
 
 def main(vote_file, title="Untitled", chart_file=None):
     """Plot sankey graph of election"""
+    ## pylint: disable=too-many-nested-blocks,too-many-locals,too-many-branches,too-many-statements
     print(f"Reading '{vote_file}'")
     election = elections.loadElectionsFile(vote_file, include_exhausted=True)
     election.printStats()
@@ -179,6 +180,9 @@ def main(vote_file, title="Untitled", chart_file=None):
             n = i + 1 ## Round number
             ## Generate labels, one per candidate per round in which they exist
             label = f"{name} - {n}: {e_round.total:,}"
+            if election.electedInRound(name, n):
+                label += '<br>ELECTED'
+
             candidate_labels[name][n] = label
             labels.append(label)
             label_rounds[label] = n
@@ -197,17 +201,13 @@ def main(vote_file, title="Untitled", chart_file=None):
                 prev_label = candidate_labels[name][n-1]
                 previous_labels[label] = prev_label
                 if e_round.total:
-                    ## The candidate is still in the running
-                    if e_round.transfer > 0:
-                        ## The candidate is receiving transfer votes
+                    ## Candidate is still in the running
+                    if e_round.transfer >= 0:
+                        ## Candidate is still in the running or won with no extra votes
                         self_transfers[(prev_label, label)] = e_round.total - e_round.transfer
                     else:
-                        if not e_round.transfer:
-                            ## Transfer carry over votes to the next round
-                            self_transfers[(prev_label, label)] = e_round.total
-                        else:
-                            ## The candidate was elected
-                            label_total[label] = 0 ## Zero out count for winners
+                        ## Candidate won with extra votes
+                        label_total[label] = 0 ## Zero out count to hide node
 
     ## Make nodes
     sources, targets, values = makeNodes(source_map, target_map, label_rounds, previous_labels)

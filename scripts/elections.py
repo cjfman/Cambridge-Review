@@ -63,6 +63,9 @@ class Election:
             self.truncated2[name] = truncateList(self.rounds[name], key=lambda x: x.total)
             self.max_votes = max(self.max_votes, max(self.votes[name]))
 
+    def electedInRound(self, candidate, n):
+        return (candidate in self.elected and (n == len(self.truncated[candidate]) or self.truncated2[candidate][-1].transfer < 0))
+
     def printStats(self):
         print(dedent(f"""\
             Election stats
