@@ -112,7 +112,8 @@ def calcXYPositions(election, round_labels, label_total, label_rounds):
     for n in sorted(round_labels):
         round_count = sum([label_total[x] for x in round_labels[n]])
         y_used[n] = round((election.total - round_count) / election.total, 5)
-        print(f"Starting round {n} at {y_used[n]}")
+        if DEBUG:
+            print(f"Starting round {n} at {y_used[n]}")
         for label in sorted(round_labels[n], key=lambda x: label_total[x], reverse=True):
             votes = label_total[label]
             if not votes:
@@ -294,16 +295,17 @@ def main(vote_file, title="Untitled", chart_file=None):
     ## Save to file
     if chart_file:
         height = election.total / 10
+        w_factor = int(375*max(30, max(map(len, labels)))/30)
         font_size = max(14, int(14*election.total / 10000)) ## Goal is for 14 when vote total is 10k
         if re.search(r"\.html$", chart_file, re.IGNORECASE):
             plotly.offline.plot(fig, filename=chart_file)
         elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
             height *= 3/4
             font_size = max(10, int(font_size*5/6))
-            fig.update_layout(font_size=font_size, width=election.num_rounds*375, height=height)
+            fig.update_layout(font_size=font_size, width=election.num_rounds*w_factor, height=height)
             fig.write_image(chart_file)
         else:
-            fig.update_layout(font_size=font_size, width=election.num_rounds*375, height=height)
+            fig.update_layout(font_size=font_size, width=election.num_rounds*w_factor, height=height)
             if '.' not in chart_file:
                 chart_file += ".png"
                 print(f"Saving as png '{chart_file}'")
