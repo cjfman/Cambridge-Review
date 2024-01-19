@@ -117,10 +117,19 @@ def calcXYPositions(election, round_labels, label_total, label_rounds):
             if not votes:
                 continue
 
+            ## Calculate Y position
             height = round(votes / election.total, 5)
             y_pos_map[label] = boundNumber(y_used[n], 0.001, 0.999)
             y_used[n] += height
-            x_pos = label_rounds[label]/election.num_rounds
+
+            ## Calculate X position
+            denom = election.num_rounds
+            xtra = 0
+            if n < election.num_rounds:
+                xtra = 1/election.num_rounds/3
+                denom = election.num_rounds + 0.25
+
+            x_pos = (label_rounds[label] / denom) - xtra
             x_pos_map[label] = boundNumber(x_pos, 0.001, 0.999)
             if DEBUG:
                 x_pos = round(x_pos_map[label], 3)
@@ -181,9 +190,12 @@ def main(vote_file, title="Untitled", chart_file=None):
 
             n = i + 1 ## Round number
             ## Generate labels, one per candidate per round in which they exist
-            label = f"{name} - {n}: {e_round.total:,}"
+            #label = f"{name} - {n}: {e_round.total:,}"
+            label = f"{name} - {n}"
             if election.electedInRound(name, n):
-                label += '<br>ELECTED'
+                label += f"<br>ELECTED: "
+
+            label += f": {e_round.total:,}"
 
             candidate_labels[name][n] = label
             labels.append(label)
@@ -282,10 +294,10 @@ def main(vote_file, title="Untitled", chart_file=None):
         if re.search(r"\.html$", chart_file, re.IGNORECASE):
             plotly.offline.plot(fig, filename=chart_file)
         elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
-            fig.update_layout(font_size=14, width=election.num_rounds*375, height=1000)
+            fig.update_layout(font_size=14, width=election.num_rounds*400, height=1000)
             fig.write_image(chart_file)
         else:
-            fig.update_layout(font_size=14, width=election.num_rounds*375, height=1000)
+            fig.update_layout(font_size=14, width=election.num_rounds*400, height=1000)
             if '.' not in chart_file:
                 chart_file += ".png"
                 print(f"Saving as png '{chart_file}'")
