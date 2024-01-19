@@ -13,6 +13,7 @@ import elections
 
 PLOT=True
 DEBUG=False
+SQUEEZE=True
 
 COLORS_FOR_NODES = ['steelblue', 'gold', 'steelblue', 'green', 'maroon']
 COLORS_FOR_LINKS = ['goldenrod', 'lightgreen', 'LightSkyBlue', 'indianred']
@@ -125,7 +126,8 @@ def calcXYPositions(election, round_labels, label_total, label_rounds):
             ## Calculate X position
             denom = election.num_rounds
             xtra = 0
-            if n < election.num_rounds:
+            if SQUEEZE and n < election.num_rounds:
+                ## Squeeze together all but the last round
                 xtra = 1/election.num_rounds/3
                 denom = election.num_rounds + 0.25
 
@@ -291,13 +293,17 @@ def main(vote_file, title="Untitled", chart_file=None):
 
     ## Save to file
     if chart_file:
+        height = election.total / 10
+        font_size = max(14, int(14*election.total / 10000)) ## Goal is for 14 when vote total is 10k
         if re.search(r"\.html$", chart_file, re.IGNORECASE):
             plotly.offline.plot(fig, filename=chart_file)
         elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
-            fig.update_layout(font_size=14, width=election.num_rounds*400, height=1000)
+            height *= 3/4
+            font_size = max(10, int(font_size*5/6))
+            fig.update_layout(font_size=font_size, width=election.num_rounds*375, height=height)
             fig.write_image(chart_file)
         else:
-            fig.update_layout(font_size=14, width=election.num_rounds*400, height=1000)
+            fig.update_layout(font_size=font_size, width=election.num_rounds*375, height=height)
             if '.' not in chart_file:
                 chart_file += ".png"
                 print(f"Saving as png '{chart_file}'")
