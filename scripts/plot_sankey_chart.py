@@ -1,10 +1,12 @@
 #! /usr/bin/python3
 
+import re
 import sys
 
 from collections import defaultdict
 from typing import Dict, List
 
+import plotly
 import plotly.graph_objects as go
 
 import elections
@@ -273,9 +275,26 @@ def main(vote_file, title="Untitled", chart_file=None):
     fig.update_traces(node_color=node_colors, link_color=link_colors)
 
     ## Title and text
-    fig.update_layout(title_text=title, font_size=10)
+    fig.update_layout(title_text=title, font_size=12)
 
-    if PLOT:
+    ## Save to file
+    if chart_file:
+        if re.search(r"\.html$", chart_file, re.IGNORECASE):
+            plotly.offline.plot(fig, filename=chart_file)
+        elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
+            fig.update_layout(font_size=14, width=election.num_rounds*375, height=1000)
+            fig.write_image(chart_file)
+        else:
+            fig.update_layout(font_size=14, width=election.num_rounds*375, height=1000)
+            if '.' not in chart_file:
+                chart_file += ".png"
+                print(f"Saving as png '{chart_file}'")
+            else:
+                print(f"Saving as '{chart_file}'")
+
+            fig.write_image(chart_file)
+    elif PLOT:
+        ## Plot now
         fig.show()
 
     return 0
