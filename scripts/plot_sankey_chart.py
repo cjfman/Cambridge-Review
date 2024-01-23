@@ -151,6 +151,14 @@ def calcXYPositions(election, round_labels, label_total, label_rounds, previous_
         else:
             ## Only order by vote total for that round
             round_order[n] = sorted(round_labels[n], key=lambda x: label_total[x], reverse=True)
+
+        ## Make sure 'Exhausted' is last
+        if 'Exhausted' not in round_order[n][-1]:
+            for i in range(len(round_order[n])):
+                if 'Exhausted' in round_order[n][i]:
+                    round_order[n] = round_order[n][:i] + round_order[n][i+1:] + [round_order[n][i]]
+
+        ## Determine position for each label
         for label in round_order[n]:
             votes = label_total[label]
             if not votes:
@@ -234,7 +242,7 @@ def main(args):
             #label = f"{name} - {n}: {e_round.total:,}"
             label = f"{name} - {n}"
             if election.electedInRound(name, n):
-                label += f"<br>ELECTED: "
+                label += f"<br>ELECTED"
 
             label += f": {e_round.total:,}"
 
