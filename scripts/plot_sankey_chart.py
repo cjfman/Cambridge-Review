@@ -1,5 +1,6 @@
 #! /usr/bin/python3
 
+import argparse
 import re
 import sys
 
@@ -39,6 +40,30 @@ COLOR_BLIND_FRIENDLY = [
     (136, 34, 85),   ## Dark Pink
 ]
 GREY = (68, 68, 68)
+
+
+def parseArgs():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--height-ratio", type=int, default=10,
+        help="Ratio of votes to height")
+    parser.add_argument("--height", type=int,
+        help="Height of graph. Overrides --height-ratio")
+    parser.add_argument("--width-ratio", type=int, default=375,
+        help="Ratio used to calculate the width of a round. This will scale with the label length")
+    parser.add_argument("--width", type=int,
+        help="Width of the graph. Overrides --width-factor")
+    parser.add_argument("--font-size-ratio", type=int, default=14,
+        help="The font size to be used with 10k votes. Will scale with number of votes")
+    parser.add_argument("--font-size-min", type=int, default=14,
+        help="The minimum font size")
+    parser.add_argument("vote_file",
+        help="CSV of vote counts")
+    parser.add_argument("title", default="Election Results",
+        help="Title of the graph")
+    parser.add_argument("chart_file", nargs="?",
+        help="Where to save the chart. If no extention is provided '.png' will be added.")
+    return parser.parse_args()
+
 
 def boundNumber(num, bottom, top):
     return min(top, max(bottom, num))
@@ -142,11 +167,12 @@ def calcXYPositions(election, round_labels, label_total, label_rounds):
     return x_pos_map, y_pos_map
 
 
-def main(vote_file, title="Untitled", chart_file=None):
+#def main(vote_file, title="Untitled", chart_file=None):
+def main(args):
     """Plot sankey graph of election"""
     ## pylint: disable=too-many-nested-blocks,too-many-locals,too-many-branches,too-many-statements
-    print(f"Reading '{vote_file}'")
-    election = elections.loadElectionsFile(vote_file, include_exhausted=True)
+    print(f"Reading '{args.vote_file}'")
+    election = elections.loadElectionsFile(args.vote_file, include_exhausted=True)
     election.printStats()
 
     ## Mappings and info
@@ -290,13 +316,15 @@ def main(vote_file, title="Untitled", chart_file=None):
     fig.update_traces(node_color=node_colors, link_color=link_colors)
 
     ## Title and text
-    fig.update_layout(title_text=title, font_size=12)
+    fig.update_layout(title_text=args.title, font_size=12)
 
     ## Save to file
-    if chart_file:
-        height = election.total / 10
-        w_factor = int(375*max(30, max(map(len, labels)))/30)
-        font_size = max(14, int(14*election.total / 10000)) ## Goal is for 14 when vote total is 10k
+    if args.chart_file:
+        chart_file = args.chart_file
+        height = election.total / args.height_ratio
+        w_factor = int(args.width_ratio*max(30, max(map(len, labels)))/30)
+        ## Goal is for 14 when vote total is 10k
+        font_size = max(args.font_size_min, int(args.font_size_min*election.total / 10000))
         if re.search(r"\.html$", chart_file, re.IGNORECASE):
             plotly.offline.plot(fig, filename=chart_file)
         elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
@@ -321,10 +349,4 @@ def main(vote_file, title="Untitled", chart_file=None):
 
 
 if __name__ == '__main__':
-    usage = f"Usage: {sys.argv[0]} <vote file> <title> [chart file]"
-    num_args = len(sys.argv)
-    if num_args not in (2, 3, 4):
-        print(usage)
-        sys.exit(main(sys.argv[1]))
-
-    sys.exit(main(*sys.argv[1:]))
+    sys.exit(main(parseArgs()))
