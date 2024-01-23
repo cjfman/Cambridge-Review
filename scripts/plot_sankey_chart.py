@@ -46,16 +46,18 @@ def parseArgs():
     parser = argparse.ArgumentParser()
     parser.add_argument("--height-ratio", type=int, default=10,
         help="Ratio of votes to height")
-    parser.add_argument("--height", type=int,
-        help="Height of graph. Overrides --height-ratio")
+#    parser.add_argument("--height", type=int,
+#        help="Height of graph. Overrides --height-ratio")
     parser.add_argument("--width-ratio", type=int, default=375,
         help="Ratio used to calculate the width of a round. This will scale with the label length")
-    parser.add_argument("--width", type=int,
-        help="Width of the graph. Overrides --width-factor")
+#    parser.add_argument("--width", type=int,
+#        help="Width of the graph. Overrides --width-factor")
     parser.add_argument("--font-size-ratio", type=int, default=14,
         help="The font size to be used with 10k votes. Will scale with number of votes")
     parser.add_argument("--font-size-min", type=int, default=14,
         help="The minimum font size")
+    parser.add_argument("--font-size", type=int,
+        help="Font size. Overrides --font-size-ratio and --font-size-min")
     parser.add_argument("vote_file",
         help="CSV of vote counts")
     parser.add_argument("title", nargs="?", default="Election Results",
@@ -174,7 +176,7 @@ def calcXYPositions(election, round_labels, label_total, label_rounds, previous_
             xtra = 0
             if SQUEEZE and n < election.num_rounds:
                 ## Squeeze together all but the last round
-                xtra = 1/election.num_rounds/3
+                xtra = 1/election.num_rounds/2
                 denom = election.num_rounds + 0.25
 
             x_pos = (label_rounds[label] / denom) - xtra
@@ -336,7 +338,7 @@ def main(args):
     fig.update_traces(node_color=node_colors, link_color=link_colors)
 
     ## Title and text
-    fig.update_layout(title_text=args.title, font_size=12)
+    fig.update_layout(title_text=args.title, font_size=args.font_size)
 
     ## Save to file
     if args.chart_file:
@@ -345,7 +347,11 @@ def main(args):
         w_factor = int(args.width_ratio*max(30, max(map(len, labels)))/30)
         ## Goal is for 14 when vote total is 10k
         font_size = max(args.font_size_min, int(args.font_size_min*election.total / 10000))
+        if args.font_size is not None:
+            font_size = args.font_size
+
         if re.search(r"\.html$", chart_file, re.IGNORECASE):
+            fig.update_layout(width=election.num_rounds*w_factor/3)
             plotly.offline.plot(fig, filename=chart_file)
         elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
             height *= 3/4
