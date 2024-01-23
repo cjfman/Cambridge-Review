@@ -58,7 +58,7 @@ def parseArgs():
         help="The minimum font size")
     parser.add_argument("vote_file",
         help="CSV of vote counts")
-    parser.add_argument("title", default="Election Results",
+    parser.add_argument("title", nargs="?", default="Election Results",
         help="Title of the graph")
     parser.add_argument("chart_file", nargs="?",
         help="Where to save the chart. If no extention is provided '.png' will be added.")
@@ -129,17 +129,29 @@ def makeNodes(source_map, target_map, label_rounds, previous_labels):
     return sources, targets, values
 
 
-def calcXYPositions(election, round_labels, label_total, label_rounds):
+def calcXYPositions(election, round_labels, label_total, label_rounds, previous_labels):
     """Calcualte X/Y positions"""
     x_pos_map = {}
     y_pos_map = {}
     y_used    = {}
+    round_order = {}
     for n in sorted(round_labels):
         round_count = sum([label_total[x] for x in round_labels[n]])
         y_used[n] = round((election.total - round_count) / election.total, 5)
         if DEBUG:
             print(f"Starting round {n} at {y_used[n]}")
-        for label in sorted(round_labels[n], key=lambda x: label_total[x], reverse=True):
+        if n > 1:
+            ## Consider position in previous round
+            previous_round = round_order[n-1]
+            round_order[n] = sorted(
+                round_labels[n],
+                reverse=True,
+                key=lambda x: (label_total[x], -1*previous_round.index(previous_labels[x]))
+            )
+        else:
+            ## Only order by vote total for that round
+            round_order[n] = sorted(round_labels[n], key=lambda x: label_total[x], reverse=True)
+        for label in round_order[n]:
             votes = label_total[label]
             if not votes:
                 continue
@@ -269,7 +281,7 @@ def main(args):
         print(f'Pass through {total} votes from "{src}" to "{dst}"')
 
     ## Calcualte X/Y positions
-    x_pos_map, y_pos_map = calcXYPositions(election, round_labels, label_total, label_rounds)
+    x_pos_map, y_pos_map = calcXYPositions(election, round_labels, label_total, label_rounds, previous_labels)
 
     ## Convert labels to indices
     ## Plotly is sensitive to ordering. Nodes should be in the order from top to bottom, left to right
