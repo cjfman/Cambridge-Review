@@ -126,6 +126,7 @@ class Election:
             rows.append(row)
 
         if include_total:
+            rows.append([])
             rows.append(["Total", format(self.total,",")])
 
         return rows
