@@ -1,6 +1,7 @@
 #! /usr/bin/python3
 
 import csv
+import re
 
 from collections import namedtuple
 from textwrap import dedent
@@ -35,9 +36,29 @@ class FormatError(Exception):
     pass
 
 
+
+def isWritein(name):
+    match = re.match(r"^write[ \-]in\b", name, re.IGNORECASE)
+    return bool(match)
+
+
+def candidateSortKey(name):
+    match = re.match(r"^write[ \-]in\b\D*(\d+)?", name, re.IGNORECASE)
+    if not match:
+        return (-1, name)
+
+    groups = match.groups()
+    if groups and groups[0] is not None:
+        return (int(groups[0]), name)
+    elif 'other' in name.lower():
+        return (100, name)
+
+    return (0, name)
+
+
 class Election:
-    def __init__(self, num_rounds:int, all_rounds:Dict[str, CandidateRounds], elected:Sequence[str], total, quota):
-        self.candidates = list(all_rounds.keys())
+    def __init__(self, num_rounds:int, all_rounds:Dict[str, CandidateRounds], elected:Sequence[str], total, quota, date=None, counted_on=None):
+        self.candidates = sorted(all_rounds.keys(), key=candidateSortKey)
         self.num_rounds = num_rounds
         self.rounds     = all_rounds
         self.votes      = {}
@@ -47,7 +68,10 @@ class Election:
         self.total      = total
         self.quota      = quota
         self.eliminated = {}
+        self.date       = date
+        self.counted_on = counted_on or [date]
         self.max_votes  = 0
+        self.last_round = {}
 
         ## Preprocessing
         for name, rounds in self.rounds.items():
@@ -63,6 +87,10 @@ class Election:
             self.truncated2[name] = truncateList(self.rounds[name], key=lambda x: x.total)
             self.max_votes = max(self.max_votes, max(self.votes[name]))
 
+        ## Last round
+        for name, rounds in self.truncated.items():
+            self.last_round[name] = len(rounds)
+
     def electedInRound(self, candidate, n):
         return (candidate in self.elected and (n == len(self.truncated[candidate]) or self.truncated2[candidate][-1].transfer < 0))
 
@@ -74,6 +102,33 @@ class Election:
             Number of rounds: {self.num_rounds}
             Number of candidates: {len(self.candidates)}
         """))
+
+    def generateTableRows(self, *, separate_writeins=True, include_total=True):
+        ## |Candidate |Round1 Count| |Round2 Transfer|Round2 Count| |Round3 Transfer|Round3 Count| |Round4 Transfer|Round4 Count| |Round5 Transfer|Round5 Count|
+        rows = []
+        headers = ["Candidate", "Round1 Count"]
+        for n in range(2, self.num_rounds + 1):
+            headers.extend([" ", f"Round{n} Transfer", f"Round{n} Count"])
+
+        rows.append(headers)
+
+        ## Candidates
+        for candidate in self.candidates:
+            if separate_writeins and isWritein(candidate):
+                rows.append([])
+                separate_writeins = False
+
+            rounds = self.rounds[candidate]
+            row = [candidate, format(rounds[0].total, ",")]
+            for tx, total in rounds[1:]:
+                row.extend([" ", format(tx, ","), format(total, ",")])
+
+            rows.append(row)
+
+        if include_total:
+            rows.append(["Total", format(self.total,",")])
+
+        return rows
 
 
 def toIntMaybe(x):
@@ -116,11 +171,13 @@ def processCandidate(votes:Sequence[str]) -> CandidateRounds:
 
 
 def loadElectionsFile(path, include_exhausted=False) -> Election:
+    ## pylint: disable=too-many-nested-blocks,too-many-locals,too-many-branches,too-many-statements
     state = 'start'
     round_count = 0
     candidates = {}
     stats = {}
     elected = []
+    counted_on = None
 
     ## Open file and parse it
     with open(path, 'r', encoding='utf8') as csvfile:
@@ -154,6 +211,8 @@ def loadElectionsFile(path, include_exhausted=False) -> Election:
             elif state == 'stats':
                 if col_low == 'elected':
                     state = 'elected'
+                elif col_low == 'counted dates':
+                    counted_on = [x for x in row[1:] if x != '']
                 else:
                     stats[col1.lower()] = toIntMaybe(row[1])
             elif state == 'elected':
@@ -161,13 +220,19 @@ def loadElectionsFile(path, include_exhausted=False) -> Election:
                     state = 'stats'
                 elif int(col1) - 1 != len(elected):
                     raise FormatError(f"Elected candidate out of order. Found '{col1}'")
+                else:
+                    elected.append(row[1])
 
-                elected.append(row[1])
+    if 'election date' in stats:
+        stats['date'] = stats['election date']
+        del stats['election date']
 
     ## Check for required stats
-    missing = [x for x in ('total', 'quota', 'invalid') if x not in stats]
+    missing = [x for x in ('total', 'quota', 'invalid', 'date') if x not in stats]
     if missing:
         raise FormatError("Missing required stats: " + ", ".join(missing))
 
     valid = stats['total'] - stats['invalid']
-    return Election(round_count, candidates, elected, valid, stats['quota'])
+    return Election(
+        round_count, candidates, elected, valid, stats['quota'], stats['date'], counted_on,
+    )
