@@ -176,7 +176,7 @@ def calcXYPositions(election, round_labels, label_total, label_rounds, previous_
             xtra = 0
             if SQUEEZE and n < election.num_rounds:
                 ## Squeeze together all but the last round
-                xtra = 1/election.num_rounds/2
+                xtra = 1/election.num_rounds/3
                 denom = election.num_rounds + 0.25
 
             x_pos = (label_rounds[label] / denom) - xtra

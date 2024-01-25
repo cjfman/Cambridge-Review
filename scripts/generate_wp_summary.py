@@ -70,7 +70,7 @@ def summarizeElection(elcn):
         line = f"Round {n}: "
         if elected:
             line += formatList(elected) + " elected. "
-            if excess:
+            if excess and n != elcn.num_rounds:
                 line += f"Excesss {excess} votes transfered. "
 
         if eliminated:
@@ -78,7 +78,7 @@ def summarizeElection(elcn):
                 line += "All others defeated."
             else:
                 line += formatList(eliminated) + " eliminated"
-                if excess:
+                if transfered and n != elcn.num_rounds:
                     line += f" with {transfered} votes transfered."
 
         if not elected and not eliminated:
