@@ -17,6 +17,8 @@ def parseArgs():
         help="Output file")
     parser.add_argument("--title", default="Election",
         help="Title to give each election")
+    parser.add_argument("--full", action="store_true",
+        help="Generate full wordpress HTML")
     parser.add_argument("election_file",
         help="Election file to be parsed")
 
@@ -90,6 +92,17 @@ def summarizeElection(elcn):
     return lines
 
 
+def makeTable(elcn):
+    table = generate_markdown(table_from_string_list(elcn.generateTableRows(), Alignment.RIGHT))
+    ## Switch first row to be left aligned
+    lines = table.split("\n")
+    formatter = lines[1]
+    formatter = formatter.replace(':', '-', 1)
+    formatter = formatter.replace('-', ':', 1)
+    lines[1] = formatter
+    return lines
+
+
 def write(f, elcn, title, year):
     f.write(f"{title}\n\n")
 
@@ -133,15 +146,151 @@ def write(f, elcn, title, year):
 
     ## Table
     f.write("\n------\n\nVote Table\n\n")
-    table = generate_markdown(table_from_string_list(elcn.generateTableRows(), Alignment.RIGHT))
-    ## Switch first row to be left aligned
-    lines = table.split("\n")
-    formatter = lines[1]
-    formatter = formatter.replace(':', '-', 1)
-    formatter = formatter.replace('-', ':', 1)
-    lines[1] = formatter
-    f.write("\n".join(lines))
+    f.write("\n".join(makeTable(elcn)))
     f.write("\n")
+
+
+def writeFull(f, elcn, year):
+    ## Do not change any newliens that look extemporaneous
+    counted_on = ", ".join(elcn.counted_on)
+    ## Basic info, image, and start of "All Candidates" list
+    f.write(dedent(f"""\
+        <!-- wp:heading -->
+        <h2 class="wp-block-heading">Basic Stats</h2>
+        <!-- /wp:heading -->
+
+        <!-- wp:paragraph -->
+        <p>Election Date: {elcn.date}<br>Counted Dates: {counted_on}<br>Total: {elcn.total}<br>Quota: {elcn.quota}</p>
+        <!-- /wp:paragraph -->
+
+    """))
+    f.write(dedent("""\
+        <!-- wp:image {"align":"center","lightbox":{"enabled":true},"id":136,"width":"722px","height":"auto","sizeSlug":"full","linkDestination":"none"} -->
+    """))
+    f.write(dedent(f"""\
+        <figure class="wp-block-image aligncenter size-full is-resized"><img src="https://cambridgereview.org/wp-content/uploads/election_charts/school_committee/line/sc_election_{year}_linechart.png" alt="" class="wp-image-136" style="width:722px;height:auto"/></figure>
+    """))
+    f.write(dedent("""\
+        <!-- /wp:image -->
+
+        <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+        <div class="wp-block-group"><!-- wp:columns -->
+        <div class="wp-block-columns"><!-- wp:column {"verticalAlignment":"top"} -->
+        <div class="wp-block-column is-vertically-aligned-top"><!-- wp:heading -->
+        <h2 class="wp-block-heading">All Candidates</h2>
+        <!-- /wp:heading -->
+
+        <!-- wp:list -->
+    """))
+
+    ## Candidates list
+    f.write("<ul>")
+    candidate_txts = []
+    for name in elcn.getNamedCandidates():
+        candidate_txts.append(dedent(f"""\
+            <!-- wp:list-item -->
+            <li>{name}</li>
+            <!-- /wp:list-item -->"""
+    ))
+
+    f.write("\n\n".join(candidate_txts))
+    f.write("</ul>\n")
+
+    ## End Candidate list and start elected list
+    f.write(dedent("""\
+        <!-- /wp:list --></div>
+        <!-- /wp:column --></div>
+        <!-- /wp:columns -->
+
+        <!-- wp:columns -->
+        <div class="wp-block-columns"><!-- wp:column {"verticalAlignment":"top"} -->
+        <div class="wp-block-column is-vertically-aligned-top"><!-- wp:heading -->
+        <h2 class="wp-block-heading">Elected</h2>
+        <!-- /wp:heading -->
+
+        <!-- wp:list {"ordered":true} -->
+    """))
+
+    ## Elected list
+    f.write("<ol>")
+    candidate_txts = []
+    for name in elcn.elected:
+        candidate_txts.append(dedent(f"""\
+            <!-- wp:list-item -->
+            <li>{name}</li>
+            <!-- /wp:list-item -->"""
+    ))
+
+    f.write("\n\n".join(candidate_txts))
+    f.write("</ol>\n")
+
+    ## End elected list and start voting round summary
+    f.write(dedent("""\
+        <!-- /wp:list --></div>
+        <!-- /wp:column --></div>
+        <!-- /wp:columns --></div>
+        <!-- /wp:group -->
+
+        <!-- wp:heading -->
+        <h2 class="wp-block-heading">Voting Rounds</h2>
+        <!-- /wp:heading -->
+
+        <!-- wp:heading {"level":3} -->
+        <h3 class="wp-block-heading">Summary</h3>
+        <!-- /wp:heading -->
+
+        <!-- wp:list -->
+    """))
+
+    ## Voting rounds summary list
+    f.write("<ul>")
+    rounds_txts = []
+    for line in summarizeElection(elcn):
+        rounds_txts.append(dedent(f"""\
+            <!-- wp:list-item -->
+            <li>{line}</li>
+            <!-- /wp:list-item -->"""
+    ))
+
+    f.write("\n\n".join(rounds_txts))
+    f.write("</ul>\n")
+
+    ## End voting rounds summary list and do sankey image
+    f.write(dedent("""\
+        <!-- /wp:list -->
+
+        <!-- wp:image {"align":"center","lightbox":{"enabled":true},"id":158,"width":"1330px","height":"auto","sizeSlug":"full","linkDestination":"none"} -->
+    """))
+    f.write(dedent(f"""\
+        <figure class="wp-block-image aligncenter size-full is-resized"><img src="/wp-content/uploads/election_charts/school_committee/sankey/sc_election_sankey_{year}.png" alt="" class="wp-image-158" style="width:1330px;height:auto"/></figure>
+        <!-- /wp:image -->
+
+    """))
+
+    ## Markdown table
+    table_lines = makeTable(elcn)
+    table_txt = "\\n".join(table_lines).replace("--", "\\u002d\\u002d")
+    f.write('<!-- wp:jetpack/markdown {"source":"\\n')
+    f.write(table_txt)
+    f.write('","className":"table-wrapper"} -->\n')
+
+    ## End markdown table and do table only link
+    f.write(dedent(f"""\
+        <!-- /wp:jetpack/markdown -->
+
+        <!-- wp:paragraph -->
+        <p><a href="/elections/election-tables/sc-{year}-table-only/" target="_blank" rel="noreferrer noopener">View Full Table</a></p>
+        <!-- /wp:paragraph -->
+
+    """))
+
+    if elcn.source is not None:
+        f.write(dedent(f"""\
+            <!-- wp:paragraph -->
+            <p>Source: <a href="{elcn.source}" target="_blank" rel="noreferrer noopener">{elcn.source}</a></p>
+            <!-- /wp:paragraph -->
+
+        """))
 
 
 def main(args):
@@ -156,7 +305,10 @@ def main(args):
     if args.output_file is not None:
         print(f"Writing to '{args.output_file}'")
         with open(args.output_file, 'w', encoding='utf8') as f:
-            write(f, elcn, title, year)
+            if not args.full:
+                write(f, elcn, title, year)
+            else:
+                writeFull(f, elcn, year)
     else:
         print("Writing to stdout")
         write(sys.stdout, elcn, title, year)

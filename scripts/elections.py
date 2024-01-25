@@ -37,9 +37,11 @@ class FormatError(Exception):
 
 
 
-def isWritein(name):
-    match = re.match(r"^write[ \-]in\b", name, re.IGNORECASE)
-    return bool(match)
+def isWritein(name, *, unnamed=False):
+    if not unnamed:
+        return bool(re.search(r"^write[ \-]in\b", name, re.IGNORECASE))
+
+    return bool(re.search(r"^write[ \-]in\s+(?:P?\d+|other)", name, re.IGNORECASE))
 
 
 def candidateSortKey(name):
@@ -57,19 +59,20 @@ def candidateSortKey(name):
 
 
 class Election:
-    def __init__(self, num_rounds:int, all_rounds:Dict[str, CandidateRounds], elected:Sequence[str], total, quota, date=None, counted_on=None):
+    def __init__(self, num_rounds:int, all_rounds:Dict[str, CandidateRounds], elected:Sequence[str], *, total=0, quota=0, date=None, counted_on=None, source=None, **kwargs):
         self.candidates = sorted(all_rounds.keys(), key=candidateSortKey)
         self.num_rounds = num_rounds
         self.rounds     = all_rounds
-        self.votes      = {}
-        self.truncated  = {}
-        self.truncated2 = {}
+        self.source     = source
         self.elected    = elected
         self.total      = total
         self.quota      = quota
-        self.eliminated = {}
         self.date       = date
         self.counted_on = counted_on or [date]
+        self.votes      = {}
+        self.truncated  = {}
+        self.truncated2 = {}
+        self.eliminated = {}
         self.max_votes  = 0
         self.last_round = {}
 
@@ -90,6 +93,9 @@ class Election:
         ## Last round
         for name, rounds in self.truncated.items():
             self.last_round[name] = len(rounds)
+
+    def getNamedCandidates(self):
+        return [x for x in self.candidates if not isWritein(x, unnamed=True)]
 
     def electedInRound(self, candidate, n):
         return (candidate in self.elected and (n == len(self.truncated[candidate]) or self.truncated2[candidate][-1].transfer < 0))
@@ -233,7 +239,7 @@ def loadElectionsFile(path, include_exhausted=False) -> Election:
     if missing:
         raise FormatError("Missing required stats: " + ", ".join(missing))
 
-    valid = stats['total'] - stats['invalid']
+    stats['total'] = stats['total'] - stats['invalid']
     return Election(
-        round_count, candidates, elected, valid, stats['quota'], stats['date'], counted_on,
+        round_count, candidates, elected, counted_on=counted_on, **stats,
     )
