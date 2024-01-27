@@ -19,6 +19,8 @@ def parseArgs():
         help="Title to give each election")
     parser.add_argument("--full", action="store_true",
         help="Generate full wordpress HTML")
+    parser.add_argument("--table-only", action="store_true",
+        help="Only generate the markdown table")
     parser.add_argument("election_file",
         help="Election file to be parsed")
 
@@ -150,6 +152,11 @@ def write(f, elcn, title, year):
     f.write("\n")
 
 
+def writeTable(f, elcn):
+    f.write("\n".join(makeTable(elcn)))
+    f.write("\n")
+
+
 def writeFull(f, elcn, year):
     ## Do not change any newliens that look extemporaneous
     counted_on = ", ".join(elcn.counted_on)
@@ -165,10 +172,10 @@ def writeFull(f, elcn, year):
 
     """))
     f.write(dedent("""\
-        <!-- wp:image {"align":"center","lightbox":{"enabled":true},"id":136,"width":"722px","height":"auto","sizeSlug":"full","linkDestination":"none"} -->
+        <!-- wp:image {"align":"center","lightbox":{"enabled":true},"width":"722px","height":"auto","sizeSlug":"full","linkDestination":"none"} -->
     """))
     f.write(dedent(f"""\
-        <figure class="wp-block-image aligncenter size-full is-resized"><img src="https://cambridgereview.org/wp-content/uploads/election_charts/school_committee/line/sc_election_{year}_linechart.png" alt="" class="wp-image-136" style="width:722px;height:auto"/></figure>
+        <figure class="wp-block-image aligncenter size-full is-resized"><img src="/wp-content/uploads/election_charts/school_committee/line/sc_election_{year}_linechart.png" alt="" style="width:722px;height:auto"/></figure>
     """))
     f.write(dedent("""\
         <!-- /wp:image -->
@@ -259,11 +266,14 @@ def writeFull(f, elcn, year):
     f.write(dedent("""\
         <!-- /wp:list -->
 
-        <!-- wp:image {"align":"center","lightbox":{"enabled":true},"id":158,"width":"1330px","height":"auto","sizeSlug":"full","linkDestination":"none"} -->
+        <!-- wp:image {"align":"center","lightbox":{"enabled":true},"width":"1330px","height":"auto","sizeSlug":"full","linkDestination":"none"} -->
     """))
     f.write(dedent(f"""\
-        <figure class="wp-block-image aligncenter size-full is-resized"><img src="/wp-content/uploads/election_charts/school_committee/sankey/sc_election_sankey_{year}.png" alt="" class="wp-image-158" style="width:1330px;height:auto"/></figure>
+        <figure class="wp-block-image aligncenter size-full is-resized"><img src="/wp-content/uploads/election_charts/school_committee/sankey/sc_election_sankey_{year}.png" alt="" style="width:1330px;height:auto"/></figure>
         <!-- /wp:image -->
+        <!-- wp:paragraph -->
+        <p><a href="/wp-content/uploads/election_charts/school_committee/sankey/sc_election_sankey_{year}.png" target="_blank" rel="noreferrer noopener">View Full Image</a></p>
+        <!-- /wp:paragraph -->
 
     """))
 
@@ -273,6 +283,7 @@ def writeFull(f, elcn, year):
     f.write('<!-- wp:jetpack/markdown {"source":"\\n')
     f.write(table_txt)
     f.write('","className":"table-wrapper"} -->\n')
+    f.write('<div class="wp-block-jetpack-markdown table-wrapper"></div>\n')
 
     ## End markdown table and do table only link
     f.write(dedent(f"""\
@@ -294,7 +305,7 @@ def writeFull(f, elcn, year):
 
 
 def main(args):
-    print(f"Opening '{args.election_file}'")
+    print(f"Opening '{args.election_file}'", file=sys.stderr)
     elcn = elections.loadElectionsFile(args.election_file)
     match = re.search(r"(\d{4})", elcn.date)
     if not match:
@@ -303,15 +314,22 @@ def main(args):
     year = match.groups()[0]
     title = args.title + " " + year
     if args.output_file is not None:
-        print(f"Writing to '{args.output_file}'")
+        print(f"Writing to '{args.output_file}'", file=sys.stderr)
         with open(args.output_file, 'w', encoding='utf8') as f:
-            if not args.full:
-                write(f, elcn, title, year)
-            else:
+            if args.table_only:
+                writeTable(f, elcn)
+            elif args.full:
                 writeFull(f, elcn, year)
+            else:
+                write(f, elcn, title, year)
     else:
-        print("Writing to stdout")
-        write(sys.stdout, elcn, title, year)
+        print("Writing to stdout", file=sys.stderr)
+        if args.table_only:
+            writeTable(sys.stdout, elcn)
+        elif args.full:
+            writeFull(sys.stdout, elcn, year)
+        else:
+            write(sys.stdout, elcn, title, year)
 
 
 if __name__ == '__main__':
