@@ -58,10 +58,10 @@ def parseArgs():
         help="The minimum font size")
     parser.add_argument("--font-size", type=int,
         help="Font size. Overrides --font-size-ratio and --font-size-min")
+    parser.add_argument("--title", default="Election Results",
+        help="Title of the graph")
     parser.add_argument("vote_file",
         help="CSV of vote counts")
-    parser.add_argument("title", nargs="?", default="Election Results",
-        help="Title of the graph")
     parser.add_argument("chart_file", nargs="?",
         help="Where to save the chart. If no extention is provided '.png' will be added.")
     return parser.parse_args()
@@ -351,12 +351,14 @@ def main(args):
             font_size = args.font_size
 
         if re.search(r"\.html$", chart_file, re.IGNORECASE):
-            fig.update_layout(width=election.num_rounds*w_factor/3)
+            #fig.update_layout(width=election.num_rounds*w_factor/3)
+            print(f"Saving as '{chart_file}'")
             plotly.offline.plot(fig, filename=chart_file)
         elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
             height *= 3/4
             font_size = max(10, int(font_size*5/6))
             fig.update_layout(font_size=font_size, width=election.num_rounds*w_factor, height=height)
+            print(f"Saving as '{chart_file}'")
             fig.write_image(chart_file)
         else:
             fig.update_layout(font_size=font_size, width=election.num_rounds*w_factor, height=height)
