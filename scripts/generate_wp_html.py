@@ -272,7 +272,7 @@ def writeFull(f, elcn, year):
         <figure class="wp-block-image aligncenter size-full is-resized"><img src="/wp-content/uploads/election_charts/school_committee/sankey/sc_election_sankey_{year}.png" alt="" style="width:1330px;height:auto"/></figure>
         <!-- /wp:image -->
         <!-- wp:paragraph -->
-        <p><a href="/wp-content/uploads/election_charts/school_committee/sankey/sc_election_sankey_{year}.png" target="_blank" rel="noreferrer noopener">Full Image</a><br><a href="/interactive-election-charts/sc-election-{year}-interactive/" target="_blank" rel="noreferrer noopener">Interactive</a></p>
+        <p><a href="/wp-content/uploads/election_charts/school_committee/sankey/sc_election_sankey_{year}.png" target="_blank" rel="noreferrer noopener">Full Image</a><br><a href="/election/school-committee-election-{year}-interactive/" target="_blank" rel="noreferrer noopener">Interactive</a></p>
         <!-- /wp:paragraph -->
 
     """))
@@ -290,7 +290,7 @@ def writeFull(f, elcn, year):
         <!-- /wp:jetpack/markdown -->
 
         <!-- wp:paragraph -->
-        <p><a href="/elections/election-tables/sc-{year}-table-only/" target="_blank" rel="noreferrer noopener">View Full Table</a></p>
+        <p><a href="/election/school-committee-election-{year}-table/" target="_blank" rel="noreferrer noopener">View Full Table</a></p>
         <!-- /wp:paragraph -->
 
     """))
