@@ -58,6 +58,8 @@ def parseArgs():
         help="The minimum font size")
     parser.add_argument("--font-size", type=int,
         help="Font size. Overrides --font-size-ratio and --font-size-min")
+    parser.add_argument("--two-line-count", type=int, default=500,
+        help="The vote count at which a label should take two lines")
     parser.add_argument("--title", default="Election Results",
         help="Title of the graph")
     parser.add_argument("vote_file",
@@ -241,8 +243,11 @@ def main(args):
 
             n = i + 1 ## Round number
             ## Generate labels, one per candidate per round in which they exist
-            #label = f"{name} - {n}: {e_round.total:,}"
-            label = f"{name} - {n}"
+            nl = ' - '
+            if e_round.total > args.two_line_count:
+                nl = '<br>'
+
+            label = f"{name}{nl}{n}"
             if election.electedInRound(name, n):
                 label += f"<br>ELECTED"
 
