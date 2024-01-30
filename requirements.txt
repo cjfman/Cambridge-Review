@@ -1,0 +1,7 @@
+bs4
+glob
+html5lib
+markdown_table_generator
+matplotlib
+numpy
+plotly
