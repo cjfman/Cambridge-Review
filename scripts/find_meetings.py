@@ -3,6 +3,7 @@
 import argparse
 import csv
 import os
+import re
 import sys
 
 import html5lib ## pylint: disable=unused-import
@@ -50,6 +51,7 @@ def parseMeeting(args, meeting_row):
     mtype       = details[1].replace(" Meeting", "")
     other       = ''
     status      = ''
+    m_id        = ''
     if len(details) > 2:
         other = " - ".join(details[2:])
 
@@ -57,6 +59,10 @@ def parseMeeting(args, meeting_row):
     date, url = findATag(meeting_row, 'RowLink')
     if args.base_url not in url and url[0] == '/':
         url = os.path.join(args.base_url, url[1:])
+
+    match = re.search(r"Detail_Meeting.aspx\?.*\bID=(\d+)", url, re.IGNORECASE)
+    if match:
+        m_id = match.groups()[0]
 
     ## Get other links
     links = { x: y for x, y in findAllATags(meeting_row, 'MeetingLinks') }
@@ -79,6 +85,7 @@ def parseMeeting(args, meeting_row):
         'Other':          other,
         'Date':           date,
         'Status':         status,
+        'Id':             m_id,
         'url':            url,
         'Agenda Summary': links['Agenda Summary'],
         'Agenda Packet':  links['Agenda Packet'],
@@ -90,7 +97,7 @@ def parseMeeting(args, meeting_row):
 
 def writeCsv(f, rows):
     headers = (
-        'Body', 'Type', 'Other', 'Date', 'Status', 'url',
+        'Body', 'Type', 'Other', 'Date', 'Status', 'Id', 'url',
         'Agenda Summary', 'Agenda Packet', 'Final Actions', 'Minutes',
     )
     writer = csv.DictWriter(f, fieldnames=headers)
