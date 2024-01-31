@@ -77,6 +77,37 @@ class CMA:
 
 
 @dataclass
+class Application:
+    uid:      str
+    num:      int
+    category: str
+    name:     str
+    subject:  str
+    url:      str
+    meeting_uid:  str = ""
+    meeting_date: str = ""
+
+    def setMeeting(self, meeting):
+        self.meeting_uid  = meeting.uid
+        self.meeting_date = meeting.date
+        msg = " ".join([self.uid, self.name, self.meeting_uid])
+        if len(self.subject) > MAX_MSG_LEN:
+            return msg + self.subject[:MAX_MSG_LEN] + "..."
+
+        return msg + self.subject
+
+    def __str__(self):
+        msg = " ".join([self.uid, self.category, self.name, self.meeting_uid])
+        if len(self.subject) > MAX_MSG_LEN:
+            return msg + " - " + self.subject[:MAX_MSG_LEN] + "..."
+
+        return msg + " - " + self.subject
+
+    def __repr__(self):
+        return f"[Application: {str(self)}]"
+
+
+@dataclass
 class Communication:
     uid: str
     num: int
@@ -259,6 +290,7 @@ def processItem(args, row, num):
 
     handlers = {
         'CMA': processCma,
+        'APP': processApp,
         'COM': processCom,
         'RES': processRes,
         'POR': processPor,
@@ -274,16 +306,28 @@ def processCma(args, uid, num, title, link, vote, action):
     cma_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
     fetched = fetchUrl(link, cma_path)
     soup = BeautifulSoup(fetched, 'html.parser')
-    table = findTag(soup, 'table', 'LegiFileSectionContents')
+    table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
 
-    ## Find category
-    category = ""
-    for row in table.find_all('tr'):
-        th = findText(row, 'th')
-        if 'category' in th.lower():
-            category = findText(row, 'td')
+    return CMA(uid, num, table['Category'], link, action, vote, title)
 
-    return CMA(uid, num, category, link, action, vote, title)
+
+def processApp(args, uid, num, title, link, vote, action):
+    ## pylint: disable=unused-argument
+    app_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
+    fetched = fetchUrl(link, app_path)
+    soup = BeautifulSoup(fetched, 'html.parser')
+    table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
+
+    ## Attempt to get the name
+    name    = ""
+    subject = ""
+    match = re.search(r"An application was received from (.+?),? (requesting permission .+)", title)
+    if match:
+        name, subject = match.groups()
+    else:
+        subject = title
+
+    return Application(uid, num, table['Category'], name, subject, link)
 
 
 def processCom(args, uid, num, title, link, vote, action):
@@ -364,7 +408,7 @@ def processMeeting(args, meeting):
 
 def fetchUrl(url, cache_path=None):
     if cache_path is not None and os.path.isfile(cache_path):
-        print(f"Reading from cache '{cache_path}'")
+        print(f"Reading '{url}' from cache '{cache_path}'")
         with open(cache_path, 'r', encoding='utf8') as f:
             return f.read()
 
