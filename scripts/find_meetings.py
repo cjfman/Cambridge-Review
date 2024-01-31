@@ -2,6 +2,7 @@
 
 import argparse
 import csv
+import datetime as dt
 import os
 import re
 import sys
@@ -19,6 +20,13 @@ def parseArgs():
     parser.add_argument("output_file", nargs='?',
         help="The output csv file. Print to stdout otherwise")
     return parser.parse_args()
+
+
+def getDate(date):
+    try:
+        return dt.datetime.strptime(date, "%b %d, %Y %I:%M %p")
+    except ValueError:
+        return dt.datetime.strptime(date, "%b %d, %Y")
 
 
 def findATag(div, cls=None):
@@ -50,13 +58,14 @@ def parseMeeting(args, meeting_row):
     body        = details[0]
     mtype       = details[1].replace(" Meeting", "")
     other       = ''
-    status      = ''
+    status      = 'completed'
     m_id        = ''
     if len(details) > 2:
         other = " - ".join(details[2:])
 
     ## Extract the date and main link
     date, url = findATag(meeting_row, 'RowLink')
+    date = getDate(date)
     if args.base_url not in url and url[0] == '/':
         url = os.path.join(args.base_url, url[1:])
 
@@ -66,8 +75,7 @@ def parseMeeting(args, meeting_row):
 
     ## Get other links
     links = { x: y for x, y in findAllATags(meeting_row, 'MeetingLinks') }
-    if not links and meeting_row.find('div', {'class': 'MeetingCancelled'}):
-        #print(f"No meeting links for meeting '{date} {details_txt}'", file=sys.stderr)
+    if meeting_row.find('span', {'class': 'MeetingCancelled'}) is not None:
         status = 'cancelled'
 
     for name in ('Agenda Summary', 'Agenda Packet', 'Final Actions', 'Minutes'):
@@ -83,7 +91,8 @@ def parseMeeting(args, meeting_row):
         'Body':           body,
         'Type':           mtype,
         'Other':          other,
-        'Date':           date,
+        'Date':           date.strftime("%x"),
+        'Time':           date.strftime("%I:%M %p"),
         'Status':         status,
         'Id':             m_id,
         'url':            url,
@@ -97,7 +106,7 @@ def parseMeeting(args, meeting_row):
 
 def writeCsv(f, rows):
     headers = (
-        'Body', 'Type', 'Other', 'Date', 'Status', 'Id', 'url',
+        'Body', 'Type', 'Other', 'Date', 'Time', 'Status', 'Id', 'url',
         'Agenda Summary', 'Agenda Packet', 'Final Actions', 'Minutes',
     )
     writer = csv.DictWriter(f, fieldnames=headers)
