@@ -6,6 +6,8 @@ import os
 import re
 import sys
 
+from collections import defaultdict
+
 import requests
 from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-order
 
@@ -86,6 +88,7 @@ class Application:
     url:      str
     meeting_uid:  str = ""
     meeting_date: str = ""
+    notes:        str = ""
 
     def setMeeting(self, meeting):
         self.meeting_uid  = meeting.uid
@@ -95,6 +98,9 @@ class Application:
             return msg + self.subject[:MAX_MSG_LEN] + "..."
 
         return msg + self.subject
+
+    def setNotes(self, notes):
+        self.notes = notes
 
     def __str__(self):
         msg = " ".join([self.uid, self.category, self.name, self.meeting_uid])
@@ -109,14 +115,15 @@ class Application:
 
 @dataclass
 class Communication:
-    uid: str
-    num: int
-    name: str
+    uid:     str
+    num:     int
+    name:    str
     address: str
     subject: str
-    link: str
+    link:    str
     meeting_uid:  str = ""
     meeting_date: str = ""
+    notes:        str = ""
 
     def setMeeting(self, meeting):
         self.meeting_uid  = meeting.uid
@@ -126,6 +133,9 @@ class Communication:
             return msg + self.subject[:MAX_MSG_LEN] + "..."
 
         return msg + self.subject
+
+    def setNotes(self, notes):
+        self.notes = notes
 
     def __str__(self):
         msg = None
@@ -156,10 +166,14 @@ class Resolution:
     description:  str = ""
     meeting_uid:  str = ""
     meeting_date: str = ""
+    notes:        str = ""
 
     def setMeeting(self, meeting):
         self.meeting_uid  = meeting.uid
         self.meeting_date = meeting.date
+
+    def setNotes(self, notes):
+        self.notes = notes
 
     def __str__(self):
         msg = " ".join([self.uid, self.category, self.sponsor, self.meeting_uid])
@@ -178,19 +192,28 @@ class PolicyOrder:
     num:      int
     url:      str
     sponsor:  str
-    cosponsors:   str = ""
-    action:       str = ""
-    vote:         str = ""
-    description:  str = ""
-    meeting_uid:  str = ""
-    meeting_date: str = ""
+    cosponsors:    str = ""
+    action:        str = ""
+    vote:          str = ""
+    charter_right: str = ""
+    description:   str = ""
+    meeting_uid:   str = ""
+    meeting_date:  str = ""
+    notes:         str = ""
 
     def setMeeting(self, meeting):
         self.meeting_uid  = meeting.uid
         self.meeting_date = meeting.date
 
+    def setNotes(self, notes):
+        self.notes = notes
+
     def __str__(self):
         msg = " ".join([self.uid, self.sponsor, self.meeting_uid])
+        if self.charter_right:
+            msg += f" - charter right {self.charter_right}"
+        if self.notes:
+            msg += " - " + self.notes
         if len(self.description) > MAX_MSG_LEN:
             return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
 
@@ -211,6 +234,8 @@ def parseArgs():
         help="Stop processing meetings if there is an error")
     parser.add_argument("--num-meetings", type=int, default=0,
         help="The maximum number of meetings to process. Set 0 for no limit")
+    parser.add_argument("--meeting",
+        help="Process this specific meeting")
     parser.add_argument("meetings_file",
         help="The html file containing meeting info")
 #    parser.add_argument("output_dir",
@@ -235,6 +260,13 @@ def findTag(con, tag, cls=None):
     return con.find(tag, {'class': cls})
 
 
+def findAllTags(con, tag, cls=None):
+    if cls is None:
+        return con.find_all(tag)
+
+    return con.find_all(tag, {'class': cls})
+
+
 def findATag(con, tag=None, cls=None):
     if tag is not None:
         con = findTag(con, tag, cls)
@@ -254,6 +286,11 @@ def findText(con, tag, cls=None):
         return ''
 
     return found.text.strip()
+
+
+def findAllText(con, tag, cls=None):
+    found = findAllTags(con, tag, cls)
+    return [x.text.strip() for x in found if x is not None]
 
 
 def uidToFileSafe(uid):
@@ -364,7 +401,15 @@ def processPor(args, uid, num, title, link, vote, action):
     soup = BeautifulSoup(fetched, 'html.parser')
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
     sponsors = table['Sponsors'].split(',')
-    return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, title)
+    charter_right = ""
+
+    ## Check for charter right
+    header = findTag(soup, 'h1', 'LegiFileHeading').text
+    match = re.search(r"charter right exercised by councillor (\w+) in\b", header, re.IGNORECASE)
+    if match:
+        charter_right = match.groups()[0].lower()
+
+    return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, charter_right, title)
 
 
 def processMeeting(args, meeting):
@@ -387,10 +432,10 @@ def processMeeting(args, meeting):
                 items.append(item)
         elif item is not None:
             ## Look for comments
-            td = findTag(row, 'Comments')
+            td = findTag(row, 'td', 'Comments')
             if td is not None:
                 ## Set comment for most recent item
-                items[-1].setNotes(findText(td, 'span'))
+                items[-1].setNotes(". ".join(findAllText(td, 'span')))
         elif td is not None:
             if VERBOSE:
                 print(f"Tag td didn't match anything: {td.text}")
@@ -429,6 +474,24 @@ def fetchUrl(url, cache_path=None):
     return content
 
 
+def postProcessItems(args, items):
+    item_map = defaultdict(list)
+    for item in items:
+        if isinstance(item, CMA):
+            item_map['CMA'].append(item)
+        elif isinstance(item, Application):
+            item_map['APP'].append(item)
+        elif isinstance(item, Communication):
+            item_map['COM'].append(item)
+        elif isinstance(item, Resolution):
+            item_map['RES'].append(item)
+        elif isinstance(item, PolicyOrder):
+            item_map['POR'].append(item)
+        else:
+            print(f"Post process skipping '{item}'")
+            continue
+
+
 def main(args):
     ## Open meetings file
     meetings = []
@@ -443,12 +506,15 @@ def main(args):
     num = 0
     for meeting in meetings:
         try:
+            if args.meeting and meeting.id != args.meeting and args.meeting != meeting.date:
+                continue
             if meeting.body.lower() != 'city council' or meeting.type.lower() not in ALLOWED_TYPES:
                 print(f"Skipping meeting '{meeting}'")
                 continue
 
-            print(f"Processing meeting '{meeting}'")
             processMeeting(args, meeting)
+            if args.meeting:
+                break
 
             ## Finalize
             num += 1
