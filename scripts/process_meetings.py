@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 
 VERBOSE = False
 ALLOWED_TYPES = ('regular', 'special')
+MAX_MSG_LEN = 48
 REQUEST_HDR = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
 }
@@ -66,8 +67,8 @@ class CMA:
 
     def __str__(self):
         msg = " ".join([self.uid, self.category, self.action, f"[{self.vote}]", self.meeting_uid])
-        if len(self.description) > 10:
-            return msg + " - " + self.description[:10] + "..."
+        if len(self.description) > MAX_MSG_LEN:
+            return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
 
         return msg + " - " + self.description
 
@@ -90,8 +91,8 @@ class Communication:
         self.meeting_uid  = meeting.uid
         self.meeting_date = meeting.date
         msg = " ".join([self.uid, self.name, self.meeting_uid])
-        if len(self.subject) > 10:
-            return msg + self.subject[:10] + "..."
+        if len(self.subject) > MAX_MSG_LEN:
+            return msg + self.subject[:MAX_MSG_LEN] + "..."
 
         return msg + self.subject
 
@@ -102,13 +103,43 @@ class Communication:
         else:
             msg = " ".join([self.uid, self.name, self.meeting_uid])
 
-        if len(self.subject) > 10:
-            return msg + " - " + self.subject[:10] + "..."
+        if len(self.subject) > MAX_MSG_LEN:
+            return msg + " - " + self.subject[:MAX_MSG_LEN] + "..."
 
         return msg + " - " + self.subject
 
     def __repr__(self):
-        return f"[COM: {str(self)}]"
+        return f"[Communication: {str(self)}]"
+
+
+@dataclass
+class Resolution:
+    uid:      str
+    num:      int
+    category: str
+    url:      str
+    sponsor:  str
+    cosponsors:   str = ""
+    action:       str = ""
+    vote:         str = ""
+    description:  str = ""
+    meeting_uid:  str = ""
+    meeting_date: str = ""
+
+    def setMeeting(self, meeting):
+        self.meeting_uid  = meeting.uid
+        self.meeting_date = meeting.date
+
+    def __str__(self):
+        msg = " ".join([self.uid, self.category, self.sponsor, self.meeting_uid])
+        if len(self.description) > MAX_MSG_LEN:
+            return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
+
+        return msg + " - " + self.description
+
+    def __repr__(self):
+        return f"[Resolution: {str(self)}]"
+
 
 
 def parseArgs():
@@ -170,6 +201,16 @@ def uidToFileSafe(uid):
     return uid.replace(' ', '_').replace('#', 'no')
 
 
+def processKeyWordTable(table):
+    ths = []
+    tds = []
+    for row in table.find_all('tr'):
+        ths.extend([x.text.strip().replace(':', '') for x in row.find_all('th')])
+        tds.extend([x.text.strip().replace(':', '') for x in row.find_all('td')])
+
+    return { x: y for x, y in zip(ths, tds) }
+
+
 def processItem(args, row, num):
     ## Process the title and link
     title, link = findATag(row, 'td', 'Title')
@@ -192,14 +233,16 @@ def processItem(args, row, num):
     if itype == 'CMA':
         return processCma(args, uid, num, title, link, vote, action)
     elif itype == 'COM':
-        return processCom(args, uid, num, title, link)
+        return processCom(uid, num, title, link)
+    elif itype == 'RES':
+        return processRes(args, uid, num, title, link, vote, action)
 
     return None
 
 
 def processCma(args, uid, num, title, link, vote, action):
     ## Fetch CMA page from city website
-    cma_path = os.path.join(args.cache_dir, f"cma_{uidToFileSafe(uid)}.html")
+    cma_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
     fetched = fetchUrl(link, cma_path)
     soup = BeautifulSoup(fetched, 'html.parser')
     table = findTag(soup, 'table', 'LegiFileSectionContents')
@@ -214,7 +257,7 @@ def processCma(args, uid, num, title, link, vote, action):
     return CMA(uid, num, category, link, action, vote, title)
 
 
-def processCom(args, uid, num, title, link):
+def processCom(uid, num, title, link):
     ## Attempt to get the name
     name    = ""
     subject = ""
@@ -228,6 +271,16 @@ def processCom(args, uid, num, title, link):
 
     return Communication(uid, num, name, address, subject, link)
 
+
+def processRes(args, uid, num, title, link, vote, action):
+    ## Fetch Res page from city website
+    cma_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
+    fetched = fetchUrl(link, cma_path)
+    soup = BeautifulSoup(fetched, 'html.parser')
+    table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
+    category = table['Category']
+    sponsors = table['Sponsors']
+    return Resolution(uid, num, category, link, sponsors[0], sponsors[1:], action, vote, title)
 
 
 def processMeeting(args, meeting):
