@@ -7,6 +7,7 @@ import re
 import sys
 
 from collections import defaultdict
+from typing import Any, Dict, List, Tuple
 
 import requests
 from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-order
@@ -225,6 +226,7 @@ class PolicyOrder:
 
 
 def parseArgs():
+    """Parse command line arguments"""
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-url", default="https://cambridgema.iqm2.com",
         help="The base URL")
@@ -238,13 +240,14 @@ def parseArgs():
         help="Process this specific meeting")
     parser.add_argument("meetings_file",
         help="The html file containing meeting info")
-#    parser.add_argument("output_dir",
-#        help="Where to save all of the output files")
+   parser.add_argument("output_dir",
+       help="Where to save all of the output files")
 
     return parser.parse_args()
 
 
-def expandUrl(base, url):
+def expandUrl(base, url) -> str:
+    """Expand a URL found from HTML"""
     if url[0] == '/':
         return os.path.join(base, url[1:])
     elif re.search(r"^\w+\.aspx", url):
@@ -253,51 +256,58 @@ def expandUrl(base, url):
     return url
 
 
-def findTag(con, tag, cls=None):
+def findTag(node, tag, cls=None):
+    """Find a tag in a soup node"""
     if cls is None:
-        return con.find(tag)
+        return node.find(tag)
 
-    return con.find(tag, {'class': cls})
+    return node.find(tag, {'class': cls})
 
 
-def findAllTags(con, tag, cls=None):
+def findAllTags(node, tag, cls=None):
+    """Find all matching tags in a soup node"""
     if cls is None:
-        return con.find_all(tag)
+        return node.find_all(tag)
 
-    return con.find_all(tag, {'class': cls})
+    return node.find_all(tag, {'class': cls})
 
 
-def findATag(con, tag=None, cls=None):
+def findATag(node, tag=None, cls=None) -> Tuple[str, str]:
+    """Find an A tag in a soup node. Return the text and href"""
     if tag is not None:
-        con = findTag(con, tag, cls)
-    if con is None:
+        node = findTag(node, tag, cls)
+    if node is None:
         raise Exception(f"Couldn't find a '{tag}' tag")
 
-    a_tag = con.find('a')
+    a_tag = node.find('a')
     if a_tag is None:
         raise Exception("Couldn't find an 'a' tag")
 
     return (a_tag.text.strip(), a_tag['href'])
 
 
-def findText(con, tag, cls=None):
-    found = findTag(con, tag, cls)
+def findText(node, tag, cls=None) -> str:
+    """Find the text in a soup node"""
+    found = findTag(node, tag, cls)
     if found is None:
         return ''
 
     return found.text.strip()
 
 
-def findAllText(con, tag, cls=None):
-    found = findAllTags(con, tag, cls)
+def findAllText(node, tag, cls=None) List[str]:
+    """Find all the text in a soup node"""
+    found = findAllTags(node, tag, cls)
     return [x.text.strip() for x in found if x is not None]
 
 
-def uidToFileSafe(uid):
+def uidToFileSafe(uid) -> str:
+    """Take a meeting agenda item UID and make it file name safe"""
     return uid.replace(' ', '_').replace('#', 'no')
 
 
-def processKeyWordTable(table):
+def processKeyWordTable(table) -> Dict[str, str]:
+    """Take a table from a city agenda item website and process it into a dictionary"""
     ths = []
     tds = []
     for row in table.find_all('tr'):
@@ -308,6 +318,7 @@ def processKeyWordTable(table):
 
 
 def processItem(args, row, num):
+    """Process a meeting agenda item"""
     ## Process the title and link
     title, link = findATag(row, 'td', 'Title')
     link = expandUrl(args.base_url, link)
@@ -325,6 +336,7 @@ def processItem(args, row, num):
     if match:
         action, vote = match.groups()
 
+    ## Init item type
     handlers = {
         'CMA': processCma,
         'APP': processApp,
@@ -338,7 +350,8 @@ def processItem(args, row, num):
     return None
 
 
-def processCma(args, uid, num, title, link, vote, action):
+def processCma(args, uid, num, title, link, vote, action) -> CMA:
+    """Process a CMA agenda item"""
     ## Fetch CMA page from city website
     cma_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
     fetched = fetchUrl(link, cma_path)
@@ -348,7 +361,8 @@ def processCma(args, uid, num, title, link, vote, action):
     return CMA(uid, num, table['Category'], link, action, vote, title)
 
 
-def processApp(args, uid, num, title, link, vote, action):
+def processApp(args, uid, num, title, link, vote, action) -> Application:
+    """Process an application agenda item"""
     ## pylint: disable=unused-argument
     app_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
     fetched = fetchUrl(link, app_path)
@@ -367,7 +381,8 @@ def processApp(args, uid, num, title, link, vote, action):
     return Application(uid, num, table['Category'], name, subject, link)
 
 
-def processCom(args, uid, num, title, link, vote, action):
+def processCom(args, uid, num, title, link, vote, action) -> Communication:
+    """Process a communication agenda item"""
     ## pylint: disable=unused-argument
     ## Attempt to get the name
     name    = ""
@@ -383,7 +398,8 @@ def processCom(args, uid, num, title, link, vote, action):
     return Communication(uid, num, name, address, subject, link)
 
 
-def processRes(args, uid, num, title, link, vote, action):
+def processRes(args, uid, num, title, link, vote, action) -> Resolution:
+    """Process a resolution agenda item"""
     ## Fetch Res page from city website
     cma_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
     fetched = fetchUrl(link, cma_path)
@@ -394,7 +410,8 @@ def processRes(args, uid, num, title, link, vote, action):
     return Resolution(uid, num, category, link, sponsors[0], sponsors[1:], action, vote, title)
 
 
-def processPor(args, uid, num, title, link, vote, action):
+def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
+    """Process a policy order agenda item"""
     ## Fetch Res page from city website
     cma_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
     fetched = fetchUrl(link, cma_path)
@@ -412,7 +429,8 @@ def processPor(args, uid, num, title, link, vote, action):
     return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, charter_right, title)
 
 
-def processMeeting(args, meeting):
+def processMeeting(args, meeting) -> List[Any]:
+    """Process a meeting"""
     meeting_path = os.path.join(args.cache_dir, f"meeting_{meeting.id}.html")
     soup = BeautifulSoup(fetchUrl(meeting.url, meeting_path), 'html.parser')
 
@@ -451,7 +469,8 @@ def processMeeting(args, meeting):
     return items
 
 
-def fetchUrl(url, cache_path=None):
+def fetchUrl(url, cache_path=None) -> str:
+    """Fetch the data from a URL. Optionally cache it locally to disk"""
     if cache_path is not None and os.path.isfile(cache_path):
         print(f"Reading '{url}' from cache '{cache_path}'")
         with open(cache_path, 'r', encoding='utf8') as f:
@@ -504,6 +523,7 @@ def main(args):
 
     ## Process each meeting
     num = 0
+    items = []
     for meeting in meetings:
         try:
             if args.meeting and meeting.id != args.meeting and args.meeting != meeting.date:
@@ -512,7 +532,8 @@ def main(args):
                 print(f"Skipping meeting '{meeting}'")
                 continue
 
-            processMeeting(args, meeting)
+            print(f"Processing meeting '{meeting}'")
+            items.extend(processMeeting(args, meeting))
             if args.meeting:
                 break
 
