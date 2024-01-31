@@ -141,6 +141,34 @@ class Resolution:
         return f"[Resolution: {str(self)}]"
 
 
+@dataclass
+class PolicyOrder:
+    uid:      str
+    num:      int
+    url:      str
+    sponsor:  str
+    cosponsors:   str = ""
+    action:       str = ""
+    vote:         str = ""
+    description:  str = ""
+    meeting_uid:  str = ""
+    meeting_date: str = ""
+
+    def setMeeting(self, meeting):
+        self.meeting_uid  = meeting.uid
+        self.meeting_date = meeting.date
+
+    def __str__(self):
+        msg = " ".join([self.uid, self.sponsor, self.meeting_uid])
+        if len(self.description) > MAX_MSG_LEN:
+            return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
+
+        return msg + " - " + self.description
+
+    def __repr__(self):
+        return f"[Resolution: {str(self)}]"
+
+
 
 def parseArgs():
     parser = argparse.ArgumentParser()
@@ -229,13 +257,14 @@ def processItem(args, row, num):
     if match:
         action, vote = match.groups()
 
-    ## Act on type
-    if itype == 'CMA':
-        return processCma(args, uid, num, title, link, vote, action)
-    elif itype == 'COM':
-        return processCom(uid, num, title, link)
-    elif itype == 'RES':
-        return processRes(args, uid, num, title, link, vote, action)
+    handlers = {
+        'CMA': processCma,
+        'COM': processCom,
+        'RES': processRes,
+        'POR': processPor,
+    }
+    if itype in handlers:
+        return handlers[itype](args, uid, num, title, link, vote, action)
 
     return None
 
@@ -257,7 +286,8 @@ def processCma(args, uid, num, title, link, vote, action):
     return CMA(uid, num, category, link, action, vote, title)
 
 
-def processCom(uid, num, title, link):
+def processCom(args, uid, num, title, link, vote, action):
+    ## pylint: disable=unused-argument
     ## Attempt to get the name
     name    = ""
     subject = ""
@@ -279,8 +309,18 @@ def processRes(args, uid, num, title, link, vote, action):
     soup = BeautifulSoup(fetched, 'html.parser')
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
     category = table['Category']
-    sponsors = table['Sponsors']
+    sponsors = table['Sponsors'].split(',')
     return Resolution(uid, num, category, link, sponsors[0], sponsors[1:], action, vote, title)
+
+
+def processPor(args, uid, num, title, link, vote, action):
+    ## Fetch Res page from city website
+    cma_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
+    fetched = fetchUrl(link, cma_path)
+    soup = BeautifulSoup(fetched, 'html.parser')
+    table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
+    sponsors = table['Sponsors'].split(',')
+    return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, title)
 
 
 def processMeeting(args, meeting):
