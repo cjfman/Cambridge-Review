@@ -80,6 +80,7 @@ class Communication:
     uid: str
     num: int
     name: str
+    address: str
     subject: str
     link: str
     meeting_uid:  str = ""
@@ -95,7 +96,12 @@ class Communication:
         return msg + self.subject
 
     def __str__(self):
-        msg = " ".join([self.uid, self.name, self.meeting_uid])
+        msg = None
+        if self.address:
+            msg = " ".join([self.uid, self.name, f'"{self.address}"', self.meeting_uid])
+        else:
+            msg = " ".join([self.uid, self.name, self.meeting_uid])
+
         if len(self.subject) > 10:
             return msg + " - " + self.subject[:10] + "..."
 
@@ -210,15 +216,17 @@ def processCma(args, uid, num, title, link, vote, action):
 
 def processCom(args, uid, num, title, link):
     ## Attempt to get the name
-    name = ""
+    name    = ""
     subject = ""
-    match = re.search(r"A communication was received from (.+?),? regarding (.+)", title)
+    address = ""
+    match = re.search(r"A communication was received from (.+?)(?:, (\d.+?))?,? regarding (.+)", title)
     if match:
-        name, subject = match.groups()
+        name, address, subject = match.groups()
+        address = address or ""
     else:
         subject = title
 
-    return Communication(uid, num, name, subject, link)
+    return Communication(uid, num, name, address, subject, link)
 
 
 
