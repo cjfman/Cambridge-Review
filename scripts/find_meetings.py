@@ -131,6 +131,8 @@ def main(args):
     else:
         writeCsv(sys.stdout, data)
 
+    return 0
+
 
 if __name__ == '__main__':
     sys.exit(main(parseArgs()))
