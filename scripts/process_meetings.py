@@ -22,6 +22,70 @@ REQUEST_HDR = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
 }
 
+CMA_HDRS = (
+    "Unique Identifier",
+    "Meeting",
+    "Meeting Date",
+    "Agenda Number",
+    "Category",
+    "Link",
+    "Outcome",
+    "Vote",
+    "Notes",
+)
+
+APP_HDRS = (
+    "Unique Identifier",
+    "Meeting",
+    "Meeting Date",
+    "Agenda Number",
+    "Category",
+    "Name",
+    "Subject",
+    "Link",
+    "Notes",
+)
+
+COM_HDRS = (
+    "Unique Identifier",
+    "Agenda Number",
+    "Meeting",
+    "Meeting Date",
+    "Name",
+    "Address",
+    "Subject",
+    "Link",
+    "Notes",
+)
+
+RES_HDRS = (
+    "Unique Identifier",
+    "Agenda Number",
+    "Meeting",
+    "Meeting Date",
+    "Category",
+    "Outcome",
+    "Vote",
+    "Link",
+    "Description",
+    "Notes",
+)
+
+POR_HDRS = (
+    "Unique Identifier",
+    "Agenda Number",
+    "Meeting",
+    "Meeting Date",
+    "Sponsor",
+    "Co-Sponsors",
+    "Charter Right",
+    "Outcome",
+    "Vote",
+    "Link",
+    "Description",
+    "Notes",
+)
+
 @dataclass
 class Meeting:
     body: str
@@ -68,6 +132,20 @@ class CMA:
     def setNotes(self, notes):
         self.notes = notes
 
+    def to_dict(self):
+        return {
+            "Unique Identifier": self.uid,
+            "Agenda Number":     self.num,
+            "Category":          self.category,
+            "Link":              self.url,
+            "Outcome":           self.action,
+            "Vote":              self.vote,
+            "Description":       self.description,
+            "Meeting":           self.meeting_uid,
+            "Meeting Date":      self.meeting_date,
+            "Notes":             self.notes,
+        }
+
     def __str__(self):
         msg = " ".join([self.uid, self.category, self.action, f"[{self.vote}]", self.meeting_uid])
         if len(self.description) > MAX_MSG_LEN:
@@ -103,6 +181,19 @@ class Application:
     def setNotes(self, notes):
         self.notes = notes
 
+    def to_dict(self):
+        return {
+            "Unique Identifier": self.uid,
+            "Agenda Number":     self.num,
+            "Category":          self.category,
+            "Name":              self.name,
+            "Subject":           self.subject,
+            "Link":              self.url,
+            "Meeting":           self.meeting_uid,
+            "Meeting Date":      self.meeting_date,
+            "Notes":             self.notes,
+        }
+
     def __str__(self):
         msg = " ".join([self.uid, self.category, self.name, self.meeting_uid])
         if len(self.subject) > MAX_MSG_LEN:
@@ -121,7 +212,7 @@ class Communication:
     name:    str
     address: str
     subject: str
-    link:    str
+    url:     str
     meeting_uid:  str = ""
     meeting_date: str = ""
     notes:        str = ""
@@ -137,6 +228,19 @@ class Communication:
 
     def setNotes(self, notes):
         self.notes = notes
+
+    def to_dict(self):
+        return {
+            "Unique Identifier": self.uid,
+            "Agenda Number":     self.num,
+            "Name":              self.name,
+            "Address":           self.address,
+            "Subject":           self.subject,
+            "Link":              self.url,
+            "Meeting":           self.meeting_uid,
+            "Meeting Date":      self.meeting_date,
+            "Notes":             self.notes,
+        }
 
     def __str__(self):
         msg = None
@@ -176,6 +280,20 @@ class Resolution:
     def setNotes(self, notes):
         self.notes = notes
 
+    def to_dict(self):
+        return {
+            "Unique Identifier": self.uid,
+            "Agenda Number":     self.num,
+            "Category":          self.category,
+            "Link":              self.url,
+            "Outcome":           self.action,
+            "Vote":              self.vote,
+            "Description":       self.description,
+            "Meeting":           self.meeting_uid,
+            "Meeting Date":      self.meeting_date,
+            "Notes":             self.notes,
+        }
+
     def __str__(self):
         msg = " ".join([self.uid, self.category, self.sponsor, self.meeting_uid])
         if len(self.description) > MAX_MSG_LEN:
@@ -209,6 +327,22 @@ class PolicyOrder:
     def setNotes(self, notes):
         self.notes = notes
 
+    def to_dict(self):
+        return {
+            "Unique Identifier": self.uid,
+            "Agenda Number":     self.num,
+            "Link":              self.url,
+            "Sponsor":           self.sponsor,
+            "Co-Sponsors":       ",".join(self.cosponsors),
+            "Outcome":           self.action,
+            "Vote":              self.vote,
+            "Charter Right":     self.charter_right,
+            "Description":       self.description,
+            "Meeting":           self.meeting_uid,
+            "Meeting Date":      self.meeting_date,
+            "Notes":             self.notes,
+        }
+
     def __str__(self):
         msg = " ".join([self.uid, self.sponsor, self.meeting_uid])
         if self.charter_right:
@@ -240,7 +374,7 @@ def parseArgs():
         help="Process this specific meeting")
     parser.add_argument("meetings_file",
         help="The html file containing meeting info")
-   parser.add_argument("output_dir",
+    parser.add_argument("output_dir",
        help="Where to save all of the output files")
 
     return parser.parse_args()
@@ -295,7 +429,7 @@ def findText(node, tag, cls=None) -> str:
     return found.text.strip()
 
 
-def findAllText(node, tag, cls=None) List[str]:
+def findAllText(node, tag, cls=None) -> List[str]:
     """Find all the text in a soup node"""
     found = findAllTags(node, tag, cls)
     return [x.text.strip() for x in found if x is not None]
@@ -304,6 +438,20 @@ def findAllText(node, tag, cls=None) List[str]:
 def uidToFileSafe(uid) -> str:
     """Take a meeting agenda item UID and make it file name safe"""
     return uid.replace(' ', '_').replace('#', 'no')
+
+
+def buildRow(item, hdrs):
+    """Make a csv row from an agenda item"""
+    ## Every row dict must have exactly the keys in the header
+    row = {}
+    d = item.to_dict()
+    for key in hdrs:
+        if key in d and d[key] is not None:
+            row[key] = str(d[key])
+        else:
+            row[key] = ""
+
+    return row
 
 
 def processKeyWordTable(table) -> Dict[str, str]:
@@ -384,16 +532,26 @@ def processApp(args, uid, num, title, link, vote, action) -> Application:
 def processCom(args, uid, num, title, link, vote, action) -> Communication:
     """Process a communication agenda item"""
     ## pylint: disable=unused-argument
-    ## Attempt to get the name
     name    = ""
     subject = ""
     address = ""
+
+    ## Attempt to match the name of a person
     match = re.search(r"A communication was received from (.+?)(?:, (\d.+?))?,? regarding (.+)", title)
     if match:
         name, address, subject = match.groups()
         address = address or ""
-    else:
+
+    ## Attempt to match 'Sundry'
+    match = re.search(r"Sundry communications were received regarding(?:,)? (.+)", title)
+    if match:
+        name = 'Sundry'
+        subject = match.groups()[0]
+
+    ## Backup
+    if not subject:
         subject = title
+
 
     return Communication(uid, num, name, address, subject, link)
 
@@ -417,7 +575,7 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
     fetched = fetchUrl(link, cma_path)
     soup = BeautifulSoup(fetched, 'html.parser')
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
-    sponsors = table['Sponsors'].split(',')
+    sponsors = [x.strip() for x in table['Sponsors'].split(',')]
     charter_right = ""
 
     ## Check for charter right
@@ -493,8 +651,10 @@ def fetchUrl(url, cache_path=None) -> str:
     return content
 
 
-def postProcessItems(args, items):
+def postProcessItems(writers, items):
     item_map = defaultdict(list)
+
+    ## Group items
     for item in items:
         if isinstance(item, CMA):
             item_map['CMA'].append(item)
@@ -510,6 +670,45 @@ def postProcessItems(args, items):
             print(f"Post process skipping '{item}'")
             continue
 
+    sets = (
+        ('CMA', CMA_HDRS),
+        ('APP', APP_HDRS),
+        ('COM', COM_HDRS),
+        ('RES', RES_HDRS),
+        ('POR', POR_HDRS),
+    )
+    for key, hdrs in sets:
+        for item in item_map[key]:
+            writers[key].writerow(buildRow(item, hdrs))
+
+
+
+def setupOutputFiles(output_dir):
+    ## Open output files
+    files   = {}
+    writers = {}
+
+    sets = (
+        ('CMA', CMA_HDRS, "cma.csv"),
+        ('APP', APP_HDRS, "applications_and_petitions.csv"),
+        ('COM', COM_HDRS, "communications.csv"),
+        ('RES', RES_HDRS, "resolutions.csv"),
+        ('POR', POR_HDRS, "policy_orders.csv"),
+    )
+    for key, hdrs, name in sets:
+        path = os.path.join(output_dir, name)
+        try:
+            f = open(path, 'w', encoding='utf8')
+            w = csv.DictWriter(f, fieldnames=hdrs)
+            w.writeheader()
+            files[key]   = f
+            writers[key] = w
+        except Exception as e:
+            print(f"Failed to open file '{path}' for writing: {e}")
+            return None
+
+    return (files, writers)
+
 
 def main(args):
     ## Open meetings file
@@ -520,10 +719,13 @@ def main(args):
             meetings.append(Meeting(**{ k.lower().replace(' ', '_'): v for k, v in row.items() }))
 
     print(f"Read {len(meetings)} meetings from '{args.meetings_file}'")
+    print("Opening output files")
+    output_files, writers = setupOutputFiles(args.output_dir)
+    if output_files is None:
+        return 1
 
     ## Process each meeting
     num = 0
-    items = []
     for meeting in meetings:
         try:
             if args.meeting and meeting.id != args.meeting and args.meeting != meeting.date:
@@ -533,7 +735,8 @@ def main(args):
                 continue
 
             print(f"Processing meeting '{meeting}'")
-            items.extend(processMeeting(args, meeting))
+            items = processMeeting(args, meeting)
+            postProcessItems(writers, items)
             if args.meeting:
                 break
 
@@ -541,10 +744,21 @@ def main(args):
             num += 1
             if args.num_meetings and num >= args.num_meetings:
                 break
+        except KeyboardInterrupt:
+            print(f"User requested exit")
+            break
         except Exception as e:
             print(f"Failed to process meeting '{meeting}': {e}")
             if args.exit_on_error:
+                ## Close all files
+                for f in output_files.values():
+                    f.close()
                 raise e
+
+
+    ## Close files
+    for f in output_files.values():
+        f.close()
 
     return 0
 
