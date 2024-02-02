@@ -1,0 +1,1114 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en" lang="en">
+<head id="HeadMain"><title>
+	2022/10/03 05:30 PM City Council Regular Meeting - Web Outline - Cambridge City, MA
+</title><meta http-equiv="X-UA-Compatible" content="IE=9" /><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"2fdd6b8d1a","applicationID":"142416098","transactionName":"YwdbYEZTVxYHABALW1pNeGdkHVoMEgoeB1pHTV1RQFNQCTkOAQdAXQxeGlVBSR0=","queueTime":0,"applicationTime":1453,"agent":"","atts":"T0BYFg5JGwsUTRAQXUQrXRYOEHpRJ1EmJwACWgl1AncMVVNBGR8="}</script><script type="text/javascript">(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:false},ajax:{deny_list:[]}};(window.NREUM||(NREUM={})).loader_config={xpid:"UQEHVFZACQcCUFBUBwgP",licenseKey:"2fdd6b8d1a",applicationID:"142416098"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var i,o=t("ee"),a=t(27),s={};try{i=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,i.indexOf("dev")!==-1&&(s.dev=!0),i.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&o.on("internal-error",function(t){r(t.stack)}),s.dev&&o.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{p?p-=1:i(s||new UncaughtException(t,e,n),!0)}catch(f){try{o("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function i(t,e){var n=e?null:c.now();o("err",[t,n])}var o=t("handle"),a=t(28),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError";if(!c.disabled){var p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(10),t(9),"addEventListener"in window&&t(6),c.xhrWrappable&&t(11),d=!0)}s.on("fn-start",function(t,e,n){d&&(p+=1)}),s.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,i(n))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){o("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(){var t=new PerformanceObserver(function(t,e){var n=t.getEntries();s(v,[n])});try{t.observe({entryTypes:["resource"]})}catch(e){}}function i(t){if(s(v,[window.performance.getEntriesByType(w)]),window.performance["c"+l])try{window.performance[h](m,i,!1)}catch(t){}else try{window.performance[h]("webkit"+m,i,!1)}catch(t){}}function o(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var a=t("ee"),s=t("handle"),c=t(10),f=t(9),u=t(5),d=t(19),l="learResourceTimings",p="addEventListener",h="removeEventListener",m="resourcetimingbufferfull",v="bstResource",w="resource",g="-start",y="-end",x="fn"+g,b="fn"+y,E="bstTimer",R="pushState",S=t("loader");if(!S.disabled){S.features.stn=!0,t(8),"addEventListener"in window&&t(6);var O=NREUM.o.EV;a.on(x,function(t,e){var n=t[0];n instanceof O&&(this.bstStart=S.now())}),a.on(b,function(t,e){var n=t[0];n instanceof O&&s("bst",[n,e,this.bstStart,S.now()])}),c.on(x,function(t,e,n){this.bstStart=S.now(),this.bstType=n}),c.on(b,function(t,e){s(E,[e,this.bstStart,S.now(),this.bstType])}),f.on(x,function(){this.bstStart=S.now()}),f.on(b,function(t,e){s(E,[e,this.bstStart,S.now(),"requestAnimationFrame"])}),a.on(R+g,function(t){this.time=S.now(),this.startPath=location.pathname+location.hash}),a.on(R+y,function(t){s("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),u()?(s(v,[window.performance.getEntriesByType("resource")]),r()):p in window.performance&&(window.performance["c"+l]?window.performance[p](m,i,d(!1)):window.performance[p]("webkit"+m,i,d(!1))),document[p]("scroll",o,d(!1)),document[p]("keypress",o,d(!1)),document[p]("click",o,d(!1))}}},{}],5:[function(t,e,n){e.exports=function(){return"PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&i(e)}function i(t){s.inPlace(t,[u,d],"-",o)}function o(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(i(window),i(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1];if(null!==n&&("function"==typeof n||"object"==typeof n)){var r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=o(arguments),e={};i.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return i.emit(n+"start",[t,a],s),s.then(function(t){return i.emit(n+"end",[null,t],s),t},function(t){throw i.emit(n+"end",[t],s),t})})}var i=t("ee").get("fetch"),o=t(28),a=t(27);e.exports=i;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(s,"fetch",c),i.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),i.emit(c+"done",[null,e],n)}else i.emit(c+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),i=t("wrap-function")(r);e.exports=r;var o=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;o&&o.pushState&&o.replaceState&&(a=o),i.inPlace(a,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){var r=t("ee").get("raf"),i=t("wrap-function")(r),o="equestAnimationFrame";e.exports=r,i.inPlace(window,["r"+o,"mozR"+o,"webkitR"+o,"msR"+o],"raf-"),r.on("raf-start",function(t){t[0]=i(t[0],"fn-")})},{}],10:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function i(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var o=t("ee").get("timer"),a=t("wrap-function")(o),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=o,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),o.on(c+u,r),o.on(s+u,i)},{}],11:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function i(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function o(t){x.push(t),m&&(E?E.then(a):w?w(a):(R=-R,S.data=R))}function a(){for(var t=0;t<x.length;t++)r([],x[t]);x.length&&(x=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=t(19),p=NREUM.o,h=p.XHR,m=p.MO,v=p.PR,w=p.SI,g="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],x=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new h(t);try{u.emit("new-xhr",[e],e),e.addEventListener(g,i,l(!1))}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(h,b),b.prototype=h.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),o(e)}),u.on("open-xhr-start",r),m){var E=v&&v.resolve();if(!w&&!v){var R=1,S=document.createTextNode(R);new m(a).observe(S,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===g||a()})},{}],12:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=p.generateSpanId(),m=p.generateTraceId(),v=Date.now(),w={spanId:h,traceId:m,timestamp:v};return(t.sameOrigin||c(t)&&l())&&(w.traceContextParentHeader=i(h,m),w.traceContextStateHeader=o(h,v,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(w.newrelicHeader=a(h,m,v,n,r,f)),w}function i(t,e){return"00-"+e+"-"+t+"-01"}function o(t,e,n,r,i){var o=0,a="",s=1,c="",f="";return i+"@nr="+o+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,i,o){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:i,id:t,tr:e,ti:n}};return o&&r!==o&&(s.d.tk=o),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var i=h(n.allowed_origins[r]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function l(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var p=t(24),h=t(14);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],13:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);return e.protocol&&"data"===e.protocol?void g("Ajax/DataUrl/Excluded"):void(e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):o(this,t),n.cbTime=this.cbTime,s("xhr",[e,n,this.startTime,this.endTime,"xhr"],this)))}}function i(t,e){var n=c(e),r=t.params;r.hostname=n.hostname,r.port=n.port,r.protocol=n.protocol,r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function o(t,e){t.params.status=e.status;var n=v(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(14),f=t(12).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(20),m=t(18),v=t(15),w=t(19),g=t(21).recordSupportability,y=NREUM.o.REQ,x=window.XMLHttpRequest;a.features.xhr=!0,t(11),t(7),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){o(e,t)},w(!1)),h&&(h>34||h<10)||t.addEventListener("progress",function(t){e.lastSize=t.loaded},w(!1))}),u.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],i=this;if(n&&r){var o=m(r);o&&(n.txSize=o)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||i.loadCaptureCalled||(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<l;s++)e.addEventListener(d[s],this.listener,w(!1))}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("xhr-resolved",function(){this.endTime=a.now()}),u.on("addEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof x&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var i=f(this.parsedOrigin);if(i&&(i.newrelicHeader||i.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var o={};for(var a in r)o[a]=r[a];o.headers=new Headers(r.headers||{}),e(o.headers,i)&&(this.dt=i),t.length>1?t[1]=o:t.push(o)}else t[0]&&t[0].headers&&e(t[0].headers,i)&&(this.dt=i)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),this.dt=e,t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},o=this.target;if("string"==typeof o?n=o:"object"==typeof o&&o instanceof y?n=o.url:window.URL&&"object"==typeof o&&o instanceof URL&&(n=o.href),i(this,n),"data"!==this.params.protocol){var s=(""+(o&&o instanceof y&&o.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}}),u.on("fetch-done",function(t,e){if(this.endTime=a.now(),this.params||(this.params={}),"data"===this.params.protocol)return void g("Ajax/DataUrl/Excluded");this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime,this.endTime,"fetch"],this)})}},{}],14:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];if(0===(t||"").indexOf("data:"))return{protocol:"data"};var e=document.createElement("a"),n=window.location,i={};e.href=t,i.port=e.port;var o=e.href.split("://");!i.port&&o[1]&&(i.port=o[1].split("/")[0].split("@").pop().split(":")[1]),i.port&&"0"!==i.port||(i.port="https"===o[0]?"443":"80"),i.hostname=e.hostname||n.hostname,i.pathname=e.pathname,i.protocol=o[0],"/"!==i.pathname.charAt(0)&&(i.pathname="/"+i.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return i.sameOrigin=a&&(!e.hostname||s),"/"===i.pathname&&(r[t]=i),i}},{}],15:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?i(t.response):"text"===n||""===n||void 0===n?i(t.responseText):void 0}var i=t(18);e.exports=r},{}],16:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return u.recordSupportability("API/"+e+"/called"),o(t+e,[f.now()].concat(s(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(27),s=t(28),c=t("ee").get("tracer"),f=t("loader"),u=t(21),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var l=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",h=p+"ixn-";a(l,function(t,e){d[e]=i(p,e,!0,"api")}),d.addPageAction=i(p,"addPageAction",!0),d.setCurrentRouteName=i(p,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(h+"tracer",[f.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[f.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(h,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),u.recordSupportability("API/noticeError/called"),o("err",[t,f.now(),!1,e])}},{}],17:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],20:[function(t,e,n){var r=0,i=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);i&&(r=+i[1]),e.exports=r},{}],21:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[s,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",s="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:s},recordSupportability:r,recordCustom:i}},{}],22:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,s=t(29);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],23:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?p("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&p("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(f&&f<r.startTime)return;var i=[r],o=a({});o&&i.push(o),p("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||p("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function s(t){if(t instanceof w&&!y){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=h.now()?n.fid=h.now()-e:e>h.offset&&e<=Date.now()?(e-=h.offset,n.fid=h.now()-e):e=h.now(),y=!0,p("timing",["fi",e,n])}}function c(t){"hidden"===t&&(f=h.now(),p("pageHide",[f]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,d,l,p=t("handle"),h=t("loader"),m=t(26),v=t(19),w=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){u=new PerformanceObserver(r);try{u.observe({entryTypes:["paint"]})}catch(g){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(g){}l=new PerformanceObserver(o);try{l.observe({type:"layout-shift",buffered:!0})}catch(g){}}if("addEventListener"in document){var y=!1,x=["click","keydown","mousedown","pointerdown","touchstart"];x.forEach(function(t){document.addEventListener(t,s,v(!1))})}m(c)}},{}],24:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var i,o="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<o.length;s++)i=o[s],"x"===i?a+=t().toString(16):"y"===i?(i=3&t()|8,a+=i.toString(16)):a+=i;return a}function i(){return a(16)}function o(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,i=window.crypto||window.msCrypto;i&&i.getRandomValues&&Uint8Array&&(n=i.getRandomValues(new Uint8Array(t)));for(var o=[],a=0;a<t;a++)o.push(e().toString(16));return o.join("")}e.exports={generateUuid:r,generateSpanId:i,generateTraceId:o}},{}],25:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],26:[function(t,e,n){function r(t){function e(){t(s&&document[s]?document[s]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(19);e.exports=r;var o,a,s;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",s="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",s="webkitVisibilityState")},{}],27:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],28:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],29:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!p.aborted||o){t&&a&&t(n,r,i);for(var s=e(i),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var l=d[y[n]];return l&&l.push([x,n,r,s]),s}}function o(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function v(t){return l[t]=l[t]||i(n)}function w(t,e){p.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:o,addEventListener:o,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:s,aborted:!1};return x}function o(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(p.aborted=!0,d=p.backlog={})}var c="nr@context",f=t("gos"),u=t(27),d={},l={},p=e.exports=i();e.exports.getOrSetContext=o,p.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!O++){var t=S.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+S.offset],null,"api"),s("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=p+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){s("mark",["domContent",a()+S.offset],null,"api")}var a=t(22),s=t("handle"),c=t(27),f=t("ee"),u=t(25),d=t(17),l=t(19),p=d.getConfiguration("ssl")===!1?"http":"https",h=window,m=h.document,v="addEventListener",w="attachEvent",g=h.XMLHttpRequest,y=g&&g.prototype,x=!1;NREUM.o={ST:setTimeout,SI:h.setImmediate,CT:clearTimeout,XHR:g,REQ:h.Request,EV:h.Event,PR:h.Promise,MO:h.MutationObserver};var b=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1216.min.js"},R=g&&y&&y[v]&&!/CriOS/.test(navigator.userAgent),S=e.exports={offset:a.getLastTimestamp(),now:a,origin:b,features:{},xhrWrappable:R,userAgent:u,disabled:x};if(!x){t(16),t(23),m[v]?(m[v]("DOMContentLoaded",o,l(!1)),h[v]("load",r,l(!1))):(m[w]("onreadystatechange",i),h[w]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var O=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var o,a,u,l;try{a=this,o=d(arguments),u="function"==typeof r?r(o,a):r||{}}catch(p){i([p,"",[o,a,c],u],t)}s(n+"start",[o,a,c],u,f);try{return l=e.apply(a,o)}catch(h){throw s(n+"err",[o,a,h],u,f),h}finally{s(n+"end",[o,a,l],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[l]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,i,c,o))}function s(n,r,o,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=l,n}function i(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)p.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[l])}function s(t,e){var n=e(t);return n[l]=t,o(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(28),l="nr@original",p=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,13,4,3]);</script>
+
+    <!-- this fixes a minor rendering issue with tables on the ipad -->
+    <meta content="width=device-width, initial-scale=1.0;" name="viewport" />
+
+    <!-- Agency specific meta tags -->
+    <meta name='google-site-verification' content='gk1uzLohfTCOHIcLpPfTMdkFQr1kAWFQpfsKsziX7T8' />
+<meta name='msvalidate.01' content='E8AC0C05C619B2FA426BD3B3D08FF440' />
+
+
+    <!-- open search discovery -->
+    <link rel="search" type="application/opensearchdescription+xml" href="/Services/GetFederatedSearch.aspx" title="IQM2 search" />
+
+    <!-- Icon -->
+    <link href="/favicon.ico?v=2018" rel="icon" />
+
+    <!-- CSS Links -->
+    <link type="text/css" href="/App_Themes/Main.css?v=86" rel="Stylesheet" /><link type="text/css" href="/lib/jquery-ui.css" rel="stylesheet" />
+ 
+  <script>
+      !function () { var a, b, c, d = window, e = document, f = arguments, g = "script", h = ["config", "track", "trackForm", "trackClick", "identify", "visit", "push", "call"], i = function () { var a, b = this, c = function (a) { b[a] = function () { return b._e.push([a].concat(Array.prototype.slice.call(arguments, 0))), b } }; for (b._e = [], a = 0; a < h.length; a++) c(h[a]) }; for (d.__woo = d.__woo || {}, a = 0; a < f.length; a++) d.__woo[f[a]] = d[f[a]] = d[f[a]] || new i; b = e.createElement(g), b.async = 1, b.src = "//static.woopra.com/js/w.js", c = e.getElementsByTagName(g)[0], c.parentNode.insertBefore(b, c) }("woopra");
+
+      woopra.config({
+          domain: "iqm2.com",
+          cookie_name:"accelaTracker"
+      });
+      woopra.track("mp_pv", {
+          domain: window.location.hostname,
+          title: document.title,
+          url: window.location.href,
+          uri: window.location.pathname,
+          hash: window.location.hash,
+          error: null
+      });
+  </script>
+    <!-- IQM2 Scripts -->
+    <script type="text/javascript" src="/lib/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="/App_Themes/Global.js?v=8_10_48"></script>
+    <script type="text/javascript" src="/lib/MinuteTraq.PopupWindow.js"></script>
+    <script type="text/javascript" src="/lib/jquery-ui.js"></script>
+    <link href="https://unpkg.com/video.js@7.21.1/dist/video-js.css" rel="stylesheet" /><link href="/Scripts/videojs-live-dvr/videojs-dvrseekbar.css" rel="stylesheet" />
+    <script src="https://unpkg.com/video.js@7.21.1/dist/video.js"></script>
+    <script src='https://unpkg.com/videojs-flash@2.1.0/dist/videojs-flash.min.js'></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+    <script src="/Scripts/videojs-live-dvr/videojs-dvrseekbar.min.js"></script>
+    <script type='text/javascript' src='/Scripts/player.js'></script>
+    <script type="text/javascript" src="/Scripts/js.cookie-2.0.3.min.js"></script>
+    <!-- RSS Feeds (Site) -->
+    
+
+    <!-- Generated CSS Link -->
+    
+  
+    <!-- External CSS / Script Links -->
+    <link type='text/css' href='/Lib/GetCustomCSS.ashx?timestamp=638315118790000000' rel='Stylesheet' /><link type='text/css' href='/Citizens/GetImage.aspx?ID=1012' rel='Stylesheet' /><script type='text/javascript' src='/Citizens/GetImage.aspx?ID=1013'></script>
+    
+   
+    <!--[if IE 7]>
+	   <style type="text/css">
+        .Section H2 { display:inline;}
+        .RowTop div { display:inline;}
+   </style>
+	
+	<![endif]-->
+    
+    <script type="text/javascript" src="/Lib/MinuteTraq.Search.js?v=8_10_66"></script>
+    
+    <script type="text/javascript">
+        
+        // configure tracker
+        
+        $(function () {
+            
+            
+            FixFooterPosition();
+            $(window).on('resize', FixFooterPosition);
+
+            var h = $("#Banner").height();
+            //  var w = $("body").width();
+
+            var sCoords = "0,0,5000," + h;
+
+            $("#lnkBanner").attr("coords", sCoords);
+            var hideTopBanner = Cookies.get('hideTopBanner');
+            var appStyles = {display:'block'};
+            if (hideTopBanner) {
+                appStyles.display = 'none';
+            }
+            $('#topbarAppBanner').css(appStyles);
+            $('.close-topbar-app-banner').bind('click', function () {
+                $('#topbarAppBanner').css('display', 'none');
+                Cookies.set('hideTopBanner', true);
+            });
+            $('.link-wrapper-banner').bind('click', function () {
+                woopra.track('portal-wegovern-banner', {
+                    agency: Cookies.get('AgencyName'),
+                    username: Cookies.get('WebUserName')
+                });
+                return true;
+            });
+        });
+
+        function FixFooterPosition() {
+            //hack for the footer, display at bottom of screen if page is short
+            if ($("form").height() < $(window).height() - 100) {
+                $("#Footer").css("position", "absolute");
+                $("#Footer").css("bottom", "0");
+            }
+            else {
+                $("#Footer").css("position", "");
+            }
+        }
+
+    </script>
+    <style type="text/css" media="screen">
+        #topbarAppBanner {
+            min-height: 40px;
+            z-index: 1000;
+        }
+        .top-banner-app-inner{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 40px;
+            border: 1px solid rgba(10,10,10,.5);
+            box-shadow: 0px 0px 16px 0px #303030;
+            background-color: #456ca7;
+        }
+        .close-topbar-app-banner {
+            position: absolute;
+            display: block;
+            top: 25px;
+            right: 5%;
+            font-size: 1em;
+            color: #e3e3e3
+        }
+        .app-link{
+            display: block;
+            margin: 0 auto;
+            width: 40%;
+        }
+        .wegovern-banner-logo {
+            left: 22px;
+            position: relative;
+            padding-top: 1px;
+        }
+
+        @media screen and (max-width: 981px ){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width: 1595px){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (max-width: 1594px){
+            .inside-banner-link {
+                position: relative;
+                top: -30px;
+                left: 75px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width:1100px){
+            .app-link{
+                display: block;
+                margin: 0 auto;
+                width: 40%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+        }
+        @media screen and (max-width:1099px){
+            .app-link {
+                display: block;
+                margin: 0 auto;
+                width: 65%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+    </style>
+    
+
+    <!-- Page Level Header Stuff -->
+    
+
+    <!-- JQuery & UI -->
+    <link type="text/css" href="/lib/jquery-ui.css" rel="stylesheet" />
+	<script type="text/javascript" src="/lib/jquery-ui.js"></script>
+	<script type="text/javascript" src="/lib/jquery.caret.js"></script>
+
+    <script type="text/javascript" src="/lib/MinuteTraq.UserComment.js"></script>
+    
+    <script type="text/javascript">
+        
+        function showSpeakerSignup(meetingid) 
+        {
+            PopupWindowShow("/Citizens/SpeakerSignup.aspx?ID=" + meetingid);
+        }
+        
+        $(function () {
+           
+            $('.tracked').bind('click', function () {
+                var $link = $(this);
+
+                if (woopra) {
+                    woopra.track("download", {
+                        url: window.location.href,
+                        type: $link.attr('data-type')
+                    });
+                }
+            });
+            $(".ShowMoreSpeakersButton").click(function ()
+            {
+                var link = $(this);
+                link.css("display", "none");
+                var hidden = link.parent().find(".HiddenSpeakers");
+                hidden.slideDown();
+                return false;
+            });
+
+            $(".ShowFewerSpeakersButton").click(function () {
+                var link = $(this);
+                var hidden = link.parent().parent().find(".HiddenSpeakers");
+                hidden.slideUp();
+
+                var showMoreLink = link.parent().parent().find(".ShowMoreSpeakersButton");
+                showMoreLink.css("display", "");
+                return false;
+            });
+        });
+
+      
+    </script>
+    <style>
+        a.lastClicked {
+            background-color: khaki;
+            color: #000;
+        }
+        #MeetingDetail * {
+            max-width:685px;
+        }
+    </style>
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <meta http-equiv="EXPIRES" content="0">
+</head>
+
+<body id="MainLayout">
+    
+    <form method="post" action="./Detail_Meeting.aspx?ID=4179" id="aspnetForm" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="QQPPW1FQY5szk0hqp+VY8oi8Pbkwg5W7qnNHQ7poMo9cy2xQtc5X4Dmubd+WaIhhsH1cO8Rqj+dxJjpUuRpkzZJ4NM2aqBpPqmgmGc7onHlHT1yG9SvzLWuRvmJAHlbErr7KymqlNF7JVImOxjENui32t+1WxFbA9sCY4WC29Axfb+lchQEtK3YOXW9TeKi80oWLnNKwfnI3wKftjpE0Tw==" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1BACF619" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="bXhaB5dmjV/dCMkHmTRdL9SEV5POAvnYzdm+QwtQ6OVCXm7tpIe2+SSxqYDAzNVYmvlGuhT8Aj9c3Lef/4uzLtq2Ji67PLy1UbsBuCCHHyc+F2FUcOb2/O5ru39MsaEamR23UYMYjKzyP16LZkIuJRZDontJZOSPb5Iw7bBJ/O7M5zHNmX4bpV65I/vt9pTok3sEjn4qor4dReYmAtfs9PhFZEa+Quvus5dD465xfCTFGd/XJ1MoIkjNTt9ZRoOtNDiEv5UqYV6PZ7LC6c9HAer8EiEPDfkAUaLJiBGzak36xcmpDt/pNU8Pptiu8Noe" />
+</div>
+        <div style="display: none">
+            <input type="submit" name="ctl00$btnRefreshPageAfterLogin" value="Button" id="btnRefreshPageAfterLogin" class="btnRefreshPage" />
+            <input name="ctl00$hfShowPopupOnLoad" type="hidden" id="hfShowPopupOnLoad" class="hfShowPopup" />
+        </div>
+        <span id="lblScript"></span>
+  
+    <div id="MainWindow">
+    
+            <div id="Banner" role="banner"  >
+                <img usemap="#bannerMap" src="/Citizens/GetImage.aspx?ID=1017&TimeStamp=638315118790000000" alt="IQM2 Meeting Portal" />
+                <map name="bannerMap">
+                    <area href="/Citizens/Default.aspx" id="lnkBanner" shape="rect" alt="Home" Target="_self" />
+                </map>
+
+                <div id="LogoHeaderTextHolder">
+                    
+                                                                       
+                </div>
+            </div>
+            
+            <div id="ToolStrip" role="navigation" aria-label="site">
+                <div id="Tabs">
+                    <div class="Shadow"></div>
+                    <a href="http://www.cambridgema.gov/" id="lnkMainSite" class="Tab LeftTab"><div><span>&laquo;Back to Main Site</span></div></a>
+                    <a href="/Citizens/default.aspx" class="Tab NormalTab"><div><span id="tabWelcome">Welcome</span></div></a>
+                    <a href="/Citizens/calendar.aspx" class="Tab NormalTab"><div><span id="tabMeetings">Meetings</span></div></a>                
+                    <a href="/Citizens/" style="display:none" class="Tab NormalTab"><div dropdown="Browse"><span>Browse</span></div></a>
+                                        
+                                        
+                    <a href="/Citizens/LegalNotice.aspx" id="lnkNotices" class="Tab NormalTab"><div id="tabNotices"><span>Notices</span></div></a>                                        
+                    <a href="/Citizens/Board" class="Tab NormalTab"><div><span id="tabContactUs">Boards+</span></div></a>                                                        
+                </div>
+                <div id="TopExtraBoxTransparentBG"></div>
+                <div id="TopExtraBox">  
+                    <div id="TopLine">
+                        
+                     <a href="../MasterPages/#" id="lnkLogin" onclick="javascript:return PopupWindowShow(&#39;/Citizens/Login.aspx&#39;);">Log in</a><span id="spnThatOneStupidBar"> | </span><a href="mailto:support@granicus.com" id="lnkHelp">Help</a> <span id="spnHelpBar">|</span> <a href="../MasterPages/#" id="lnkRegister" onclick="javascript:return PopupWindowShow(&#39;/Citizens/MyAccount.aspx&#39;);">Register</a>                                                
+                    </div> 
+                    <div id="BottomLine">                       
+                          
+                    </div>                            
+                   <input name="ctl00$txtQuickSearch" type="text" id="txtQuickSearch" value="Search" title="Search" />
+                   <input type="image" name="ctl00$btnQuickSearch" id="btnQuickSearch" alt="Search" src="/Lib/images/search.png" style="cursor:pointer" />                   
+                </div>     
+            </div>
+                     
+            <table class="LayoutTable" role="presentation">
+                <tr>
+                    <td id="tdLeftPanel" class="LeftPanel">
+                        
+                        <div role="navigation" aria-label="Meeting Group">
+                            
+                        </div>
+                        
+                        <div class="DetailBox">
+                            <img src="/Citizens/images/Print.gif" border="0" alt="Print" />
+                            <a href="/Citizens/Detail_Meeting.aspx?ID=4179&Print=Yes" id="lnkPrint" class="PrintButton" target="_blank">Print This Page</a>                           
+                        </div>
+                        
+                        
+                                                
+                       <!-- <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 1" />
+                            <a href="#">Quick Link #1</a>
+                        </div>
+                        <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 2"  />
+                            <a href="#">Quick Link #2</a>
+                        </div>     -->
+                                      
+                    </td>
+
+                    <td id="MainContentHolder">
+                        <div style="width:100%;height:100%;position:relative;margin:0;padding:0;border:0;">
+                            <div id="MainContentLeftShadow">                           
+                            </div>   
+                          
+                            <div class="MainContentPlaceholder" role="main">
+                                
+                                
+
+    <style>
+        a.lastClicked {
+            background-color: khaki;
+            color: #000;
+        }
+    </style>
+    <script>
+        $('#divOutlineScroller a').click(function (e) {
+            $('a.lastClicked').removeClass('lastClicked');
+            $(e.currentTarget).addClass('lastClicked');
+        });
+    </script>
+    
+
+    <div       
+        >        
+        <div id="CC" style="background: Black; color: White; display:none;"></div>
+           
+        <div id="ContentPlaceholder1_pnlStart" style="width:100%;">
+	
+            <table border="0" width="100%" id="table1" cellpadding="5" role="presentation">
+                <tr>
+                    <td colspan="2" align="center" class="MeetingHeading">
+                        <span id="ContentPlaceholder1_lblMeetingGroup">City Council</span><br />
+                        <span id="ContentPlaceholder1_lblMeetingType">Regular Meeting</span><br />
+                        <span id="ContentPlaceholder1_lblMeetingDate">10/3/2022 5:30 PM</span>
+                        <br /> Sullivan Chamber<div class='MeetingAddress'>Cambridge City Hall&nbsp;&nbsp;&nbsp;795 Massachusetts Ave&nbsp;&nbsp;&nbsp;Cambridge, MA  02139</div>
+                       
+                        <span id="ContentPlaceholder1_lblMeetingStatus"></span>
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtMeetingID" id="ContentPlaceholder1_txtMeetingID" value="4179" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtMinutesID" id="ContentPlaceholder1_txtMinutesID" value="2568" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtAgendaID" id="ContentPlaceholder1_txtAgendaID" value="3720" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtFileFormat" id="ContentPlaceholder1_txtFileFormat" value="pdf" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">
+                        
+                    </td>
+                </tr>
+                <tr id="ContentPlaceholder1_trMeetingDetail">
+		<td id="ContentPlaceholder1_tdMainContent" align="left" valign="top" colspan="2" role="main" class=""> 
+                        <div id="ContentPlaceholder1_pnlDownloads" class="MeetingDownloads" style="width:100%;">
+			
+                            <strong>Downloads:</strong><br />
+                            <img id="ContentPlaceholder1_imgPublicAgendaFile" src="images/PublicAgenda.jpg" />
+                            <a id="ContentPlaceholder1_hlPublicAgendaFile" class="tracked Link" data-type="agenda" href="FileOpen.aspx?Type=14&amp;ID=3720&amp;Inline=True" target="_blank">Agenda Summary</a>
+                            <img id="ContentPlaceholder1_imgFullAgendaFile" src="images/FullAgenda.jpg" />
+                            <a id="ContentPlaceholder1_hlFullAgendaFile" class="tracked Link" data-type="agenda_packet" href="FileOpen.aspx?Type=1&amp;ID=3720&amp;Inline=True" target="_blank">Agenda Packet</a>
+                            
+                            
+                            
+                            
+                            
+                            <br />
+                            <img id="ContentPlaceholder1_imgPublicMinutesFile" src="images/PublicMinutes.jpg" />
+                            <a id="ContentPlaceholder1_hlPublicMinutesFile" class="Link" data-type="minutes" href="FileOpen.aspx?Type=15&amp;ID=2568&amp;Inline=True" target="_blank">Final Actions</a>
+                            <img id="ContentPlaceholder1_imgFullMinutesFile" src="images/FullMinutes.jpg" />
+                            <a id="ContentPlaceholder1_hlFullMinutesFile" class="Link" data-type="minutes_package" href="FileOpen.aspx?Type=12&amp;ID=2568&amp;Inline=True" target="_blank">Minutes</a>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+		</div>
+                        
+                        <span id="ContentPlaceholder1_lblOutline"><table id='MeetingDetail' class='MeetingDetail' cellpadding='0' cellspacing='0'>
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Call to Order</strong></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'>Roll Call</td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Pledge of Allegiance</strong></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Submission of the Record</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4179&MinutesID=2568&MediaPosition=&ID=52250&Type=30&AcceptMinutesID=2559&CssClass= style='cursor: hand'>Minutes of Sep 12, 2022 5:30 PM</a><span class = 'ItemVoteResult'> Accepted as Amended [Unanimous] </span></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Public Comment</strong></td></tr>
+
+<tr><td class='Num'><strong>I. </strong></td><td class='Title' colspan='10'><strong>City Manager's Agenda</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16989&CssClass='>CMA 2022 #183 : A communication transmitted from Yi-An Huang, City Manager, relative to Awaiting Report Item Number 22-61, regarding the Cambridge Birth Center.</a><span class = 'ItemVoteResult'> NOT ACCEPTED </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83572&MeetingID=4179'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12612&MeetingID=4179'>CHA Response to POR 2022 #160</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16990&CssClass='>CMA 2022 #184 : A communication transmitted from Yi-An Huang, City Manager, relative to Awaiting Report Item Number 22-41, regarding establishing evening off-leash dog hours at Hoyt Field.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83573&MeetingID=4179'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16991&CssClass='>CMA 2022 #185 : A communication transmitted from Yi-An Huang, City Manager, relative to Policy Order 2022 #167, regarding the meal program continuation.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83574&MeetingID=4179'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17001&CssClass='>CMA 2022 #186 : A communication transmitted from Yi-An Huang, City Manager, relative to an update on new positions.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83575&MeetingID=4179'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16997&CssClass='>CMA 2022 #187 : A communication transmitted from Yi-An Huang, City Manager, relative to Awaiting Report Item Number 22-62, regarding requests for a legal opinion and additional analysis on linkage fee rate increase discussion.</a><span class = 'ItemVoteResult'> REFERRED TO THE PETITION [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83576&MeetingID=4179'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12618&MeetingID=4179'>Council Ord Rsp Incent Zoning Rate Qs 10-3-22</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12619&MeetingID=4179'>Council Ord Rsp Linkage Rate Amend Zoning Petition 9-7-22</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12622&MeetingID=4179'>PO Response Incentive Rate Analysis 9-29-2022</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16994&CssClass='>CMA 2022 #188 : A communication transmitted from Yi-An Huang, City Manager, relative to a Planning Board report with a recommendation not to adopt the Incentive Zoning Rate Increase Petition.</a><span class = 'ItemVoteResult'> REFERRED TO THE PETITION [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83577&MeetingID=4179'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12615&MeetingID=4179'>Incentiverate_PBReport</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16995&CssClass='>CMA 2022 #189 : A communication transmitted from Yi-An Huang, City Manager, relative to a communication received from the Cambridge Affordable Housing Trust regarding the Incentive Zoning amendment.</a><span class = 'ItemVoteResult'> REFERRED TO THE PETITION [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83578&MeetingID=4179'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12616&MeetingID=4179'>AHT Letter re Incentive Zoning Amendment 9.29.22</a></td></tr>
+
+<tr><td class='Num'><strong>II. </strong></td><td class='Title' colspan='10'><strong>Calendar</strong></td></tr>
+
+<tr><td></td><td class='Num'><strong></strong></td><td class='Title' colspan='9'><strong>Charter Right</strong></td></tr>
+
+<tr><td></td><td></td><td class='Num'>1. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16855&CssClass='>POR 2022 #169 : That the City Manager is requested to direct the Community Development Department to convene a North Massachusetts Avenue Corridor District Zoning Proposal Working Group Policy Order Proposing a North Massachusetts Avenue (NMA) Corridor Working Group for the purpose of developing comprehensive zoning recommendations. CHARTER RIGHT EXERCISED BY COUNCILLOR AZEEM IN COUNCIL SEPTEMBER 19, 2022.</a><span class = 'ItemVoteResult'> ORDER WITHDRAWN </span></td></tr>
+<tr><td></td><td></td><td></td><td class='Comments' colspan='8'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">BY COUNCILLOR TONER</span></p></div></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=83579&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>2. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16892&CssClass='>POR 2022 #171 : That the City Manager is requested to direct the Traffic, Transportation and Parking Department to convene a series of meetings with the Vision Zero, Pedestrian Committee, Bicycle Committee, the newly appointed Bicycling Advisory Committee, Cambridge Police Department, and any other departments deemed necessary, to review and revise the Cambridge Street Code. CHARTER RIGHT EXERCISED BY COUNCILLOR SIMMONS</a><span class = 'ItemVoteResult'> ORDER WITHDRAWN </span></td></tr>
+<tr><td></td><td></td><td></td><td class='Comments' colspan='8'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">BY COUNCILLOR TONER</span></p></div></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=83580&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'><strong></strong></td><td class='Title' colspan='9'><strong>On the Table</strong></td></tr>
+
+<tr><td></td><td></td><td class='Num'>3. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16821&CssClass='>POR 2022 #161 : That the City Council refer the zoning petition regarding lab use to the Ordinance Committee and Planning Board for a hearing and report. PLACED ON THE TABLE IN COUNCIL SEPTEMBER 19, 2022</a><span class = 'ItemVoteResult'> Order Adopted as Amended [8 to 1] </span></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=83581&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12639&MeetingID=4179'>Orignal Order Calendar 3 Order 10</a></td></tr>
+
+<tr><td></td><td class='Num'><strong></strong></td><td class='Title' colspan='9'><strong>Unfinished Business</strong></td></tr>
+
+<tr><td></td><td></td><td class='Num'>4. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16243&CssClass='>POR 2022 #84 : Section 11.202(b) of Article 11.000 Special Regulations linkage fee., be amended by substitution. (Ordinance #2022-14)  PASSED TO A SECOND READING IN COUNCIL SEPTEMBER 12, 2022 TO BE ORDAINED ON THE OCTOBER 17, 2022 OR OCTOBER 24, 2022 CITY COUNCIL MEETING.</a></td></tr>
+<tr><td></td><td></td><td></td><td class='Comments' colspan='8'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">AMENDED AND REMAIN ON CALENDAR</span></p></div></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=83582&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12500&MeetingID=4179'>Original PO_84LINKAGE</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12640&MeetingID=4179'>Orignal Order Calendar 7 CRT C</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>5. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16538&CssClass='>CMA 2022 #142 : Transmitting Communication from Louis A. DePasquale, City Manager, relative to the appropriation of appropriation and authorization to borrow $4,500,000 to provide funds for the design and construction of building renovations to the vacant City owned property at 105 Windsor Street.  PASSED TO A SECOND READING IN COUNCIL SEPTEMBER 12, 2022 TO BE ADOPTED ON OR AFTER OCTOBER 3, 2022</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=83583&MeetingID=4179'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12308&MeetingID=4179'>Loan Order - 105 Windsor Street</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>6. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16793&CssClass='>POR 2022 #150 : That the Ordinance Committee refer Categories M (Shared Vehicle) and N (Publicly-accessible, Privately-owned Electric Vehicle Charging System) of the Cambridge Transportation Decarbonization and Congestion Mitigation Bill, along with definitions, to the full City Council with a favorable recommendation.  Ordinance #2022-13 as Amended.</a><span class = 'ItemVoteResult'> NO ACTION TAKEN </span></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=83584&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>7. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16880&CssClass='>POR 2022 #175 : Ordinance #2022-3 Wage Theft. PASSED TO A SECOND READING IN COUNCIL SEPTEMBER 19, 2022 TO BE ORDAINED ON OR AFTER OCTOBER 10, 2022.</a></td></tr>
+<tr><td></td><td></td><td></td><td class='Comments' colspan='8'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">WILL REMAIN ON CALENDAR </span></p></div></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=83585&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>8. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4179&MinutesID=2568&MediaPosition=&ID=52279&Type=30&AcceptMinutesID=2550&CssClass= style='cursor: hand'>Minutes of Jul 27, 2022 5:30 PM</a><span class = 'ItemVoteResult'> No Action Taken </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>9. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4179&MinutesID=2568&MediaPosition=&ID=52280&Type=30&AcceptMinutesID=2557&CssClass= style='cursor: hand'>Minutes of Sep 7, 2022 3:00 PM</a><span class = 'ItemVoteResult'> No Action Taken </span></td></tr>
+
+<tr><td class='Num'><strong>III. </strong></td><td class='Title' colspan='10'><strong>Applications and Petitions</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16998&CssClass='>APP 2022 #45 : An application was received from Derek Jones, requesting permission for a curb cut at the premises numbered 11 Channing Street, said petition has received approval from Inspectional Services, Traffic, Parking and Transportation, Historical Commission and Public Works.  No response has been received from the neighborhood association. CHARTER RIGHT EXERCISED BY COUNCILLOR NOLAN IN COUNCIL OCTOBER 3, 2022</a><span class = 'ItemVoteResult'> Charter Right </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">EXERCISED BY COUNCILLOR NOLAN</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83586&MeetingID=4179'>Application and Petitions Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12620&MeetingID=4179'>11 Channing Street Curb Cut</a></td></tr>
+
+<tr><td class='Num'><strong>IV. </strong></td><td class='Title' colspan='10'><strong>Communications</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16946&CssClass='>COM 661 #2022 : A communication was received from Alice E. Kidder, regarding meals program of Solutions at Work.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12568&MeetingID=4179'>Alice E Kidder Meals program of Solutions at Work</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16947&CssClass='>COM 662 #2022 : A communication was received from Allan Sadun, 237 Elm Street, regarding thanking the Council for their continued action on removing parking minimums.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12569&MeetingID=4179'>Allan Sadun Thank you for continued action on removing parking minimums</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16948&CssClass='>COM 663 #2022 : A communication was received from Andrew Solomon, 3 Linnaean Street, regarding eliminating parking minimums.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12570&MeetingID=4179'>Andrew Solomonplease eliminate parking minimums</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16949&CssClass='>COM 664 #2022 : A communication was received from Anna Bensted, regarding important changes in Cambridge needing better community input.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12571&MeetingID=4179'>Anna Bensted Important changes in Cambridge need better community input</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16950&CssClass='>COM 665 #2022 : A communication was received from Anna Spera and Jean Spera, 12 Sciarappa Street, expressing support for Policy Order 2022 #171 which addresses changes to the "Rules of the Road".</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12572&MeetingID=4179'>Anna Spera and Jean Spera Policy Order 2022 #171</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16951&CssClass='>COM 666 #2022 : A communication was received from Arthur MacEwan, 35 William Street, regarding the proposal to eliminate parking space requirement for new buildings.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12573&MeetingID=4179'>Arthur MacEwan Proposal to eliminate parking space requirement for new buildings</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16952&CssClass='>COM 667 #2022 : A communication was received from Beth Gamse and Judy Singer, 14 Walker Street, regarding upcoming Policy Orders.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12574&MeetingID=4179'>Beth Gamse and Judy Singer Upcoming Policy Orders</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16953&CssClass='>COM 668 #2022 : A communication was received from Betty Desrosiers, 142 Dudley Street, regarding North Mass Ave Policy Order #169.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12575&MeetingID=4179'>Betty Desrosiers North Mass Ave Policy Order #169</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16954&CssClass='>COM 669 #2022 : A communication was received from C. Barrett, 44 Clarendon Avenue, regarding the proposal to eliminate all parking minimums for residential and commercial properties in the city.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12576&MeetingID=4179'>C. Barrett vote on parking minimums</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16955&CssClass='>COM 670 #2022 : A communication was received from Carol O'Hare, 172 Magazine Street, regarding City Council: Taming & "Saning" Rules of the Road, Policy Order 7 (POR 2022 #171).</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12577&MeetingID=4179'>Carol O'Hare City Council Taming  Saning Rules of the Road Policy Order 7 (POR 2022 #171) 91922</a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16956&CssClass='>COM 671 #2022 : A communication was received from Charles R. Norris, 446 Huron Avenue, regarding opposition to revised parking requirements: Council vote on October 3, 2022.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12578&MeetingID=4179'>Charles R. Norris  Opposed to Revised Parking requirements Council vote on October 3 2022</a></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16957&CssClass='>COM 672 #2022 : A communication was received from Diana Yousef, urging support for POR 169 and POR 171.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12579&MeetingID=4179'>Diana Yousef Urging support for POR 169 and POR 171</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16958&CssClass='>COM 673 #2022 : A communication was received from Ed Abrams, 80 Wendell Street, regarding rules of the road policy order.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12580&MeetingID=4179'>Ed Abrams Rules of the road policy order</a></td></tr>
+
+<tr><td></td><td class='Num'>14. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16959&CssClass='>COM 674 #2022 : A communication was received from Frank Kramer, 7 Avon Street, regarding the Rules of the Road policy order.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12581&MeetingID=4179'>Frank Kramer Rules of the Road</a></td></tr>
+
+<tr><td></td><td class='Num'>15. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16960&CssClass='>COM 675 #2022 : A communication was received from Frank LoGerfo, 71 Fresh Pond Lane, regarding the PO submitted by Councilors Toner, Simmons, and Carlone.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12582&MeetingID=4179'>Frank LoGerfo PO submitted by Councilors Toner Simmons Carlone</a></td></tr>
+
+<tr><td></td><td class='Num'>16. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16961&CssClass='>COM 676 #2022 : A communication was received from George Beal, regarding the Rules of the Road policy order.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12583&MeetingID=4179'>George Beal Rules of the Road</a></td></tr>
+
+<tr><td></td><td class='Num'>17. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16962&CssClass='>COM 677 #2022 : A communication was received from Heidi Gitelman, Chestnut Street, regarding bicyclists.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12584&MeetingID=4179'>Heidi Gitelman Bicyclists PLEASE READ</a></td></tr>
+
+<tr><td></td><td class='Num'>18. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16963&CssClass='>COM 678 #2022 : A communication was received from James Mahoney, 234A Walden Street, regarding Councillor Toner's upcoming Road-Rules Policy Order.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12585&MeetingID=4179'>James Mahoney Councillor Toner's Upcoming Road-Rules Policy Order</a></td></tr>
+
+<tr><td></td><td class='Num'>19. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16964&CssClass='>COM 679 #2022 : A communication was received from Jim Stewart, expressing support for continuing City support for the meal distribution program that is scheduled to end October 2, 2022.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12586&MeetingID=4179'>Jim Stewart In Support of order #3 City Council Monday 91922</a></td></tr>
+
+<tr><td></td><td class='Num'>20. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16966&CssClass='>COM 680 #2022 : A communication was received from Joan Pickett, 59 Ellery Street, regarding Ebike action needed.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12589&MeetingID=4179'>Joan Pickett Ebike Action Needed</a></td></tr>
+
+<tr><td></td><td class='Num'>21. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16967&CssClass='>COM 681 #2022 : A communication was received from Joan Pickett, 59 Ellery Street, regarding support for PO #171.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12590&MeetingID=4179'>Joan Pickett Support PO #171</a></td></tr>
+
+<tr><td></td><td class='Num'>22. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16968&CssClass='>COM 682 #2022 : A communication was received from John Pitkin, 18 Fayette Street, regarding Policy Order #171.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12591&MeetingID=4179'>John Pitkin Policy Order #171</a></td></tr>
+
+<tr><td></td><td class='Num'>23. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16969&CssClass='>COM 683 #2022 : A communication was received from John Trevor, 156 Richdale Avenue, regarding parking minimums.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12592&MeetingID=4179'>John Trevor Parking minimums</a></td></tr>
+
+<tr><td></td><td class='Num'>24. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16970&CssClass='>COM 684 #2022 : A communication was received from Karen Klein, 416 Mount Auburn Street, regarding proposal terminating parking minimums.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12593&MeetingID=4179'>Karen Klein oppose proposal terminating parking minimums</a></td></tr>
+
+<tr><td></td><td class='Num'>25. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16971&CssClass='>COM 685 #2022 : A communication was received from Keith Cooper, regarding permitting preferences for priority applicants.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12594&MeetingID=4179'>Keith Cooper Permitting Preferences for Priority Applicants</a></td></tr>
+
+<tr><td></td><td class='Num'>26. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16972&CssClass='>COM 686 #2022 : A communication was received from Marie Elena Saccoccio, Esq. and Betty Lee Saccoccio, 55 Otis Street, regarding Policy Order #171 and Charter Right Labs #2.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12595&MeetingID=4179'>Marie Elena Saccoccio, Esq.  Betty Lee Saccoccio Policy Orders #171 and Charter Right Labs #2</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12596&MeetingID=4179'>Marie Elena Saccoccio, Esq. and Betty Lee Saccoccio Hale and Dorr</a></td></tr>
+
+<tr><td></td><td class='Num'>27. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16973&CssClass='>COM 687 #2022 : A communication was received from Mark Steffen, 120 Montgomery Street, regarding letter in support of Policy Order POR 2022 #171.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12597&MeetingID=4179'>Mark Steffen Letter in support of Policy Order POR 2022 #171</a></td></tr>
+
+<tr><td></td><td class='Num'>28. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16974&CssClass='>COM 688 #2022 : A communication was received from McKelden Smith, 153 Upland Road, regarding parking minimums.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12598&MeetingID=4179'>McKelden Smith Parking minimums</a></td></tr>
+
+<tr><td></td><td class='Num'>29. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16975&CssClass='>COM 689 #2022 : A communication was received from Michael McIntosh, 2397 Massachusetts Avenue, regarding support for Policy Order #171 - "Rules of the Road".</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12599&MeetingID=4179'>Michael McIntosh Please Support Policy Order #171 -- Rules of the Road</a></td></tr>
+
+<tr><td></td><td class='Num'>30. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16976&CssClass='>COM 690 #2022 : A communication was received from Nancy Donohue, regarding linkage fees.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12600&MeetingID=4179'>Nancy Donohue linkage fee - Council meeting 9-19-22</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12601&MeetingID=4179'>Nancy Donohue - DOC091922</a></td></tr>
+
+<tr><td></td><td class='Num'>31. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16977&CssClass='>COM 691 #2022 : A communication was received from Patrick W. Barrett III, regarding BEUDO Meeting Recap.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12602&MeetingID=4179'>Patrick W. Barrett III BEUDO Meeting Recap</a></td></tr>
+
+<tr><td></td><td class='Num'>32. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16978&CssClass='>COM 692 #2022 : A communication was received from Paul Sullivan and Paul Ciampa, regarding the Little League Field Proposal.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12603&MeetingID=4179'>Paul Sullivan and Paul Ciampa Little League Field Proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>33. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16979&CssClass='>COM 693 #2022 : A communication was received from Phyllis Simpkins, 249 Huron Avenue, regarding proposed parking changes.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12604&MeetingID=4179'>Phyllis Simpkins  Proposed Parking changes</a></td></tr>
+
+<tr><td></td><td class='Num'>34. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16980&CssClass='>COM 694 #2022 : A communication was received from Shelagh Hadley, regarding parking minimums.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12605&MeetingID=4179'>Shelagh Hadley Parking minimums</a></td></tr>
+
+<tr><td></td><td class='Num'>35. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16981&CssClass='>COM 695 #2022 : A communication was received from Victoria Lyon Bestor, 149 Upland Road, regarding Policy Order #171 and Charter Right Labs #2.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12606&MeetingID=4179'>Victoria Lyon Bestor Policy Order #171 and Charter Right Labs #2</a></td></tr>
+
+<tr><td></td><td class='Num'>36. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16982&CssClass='>COM 696 #2022 : A communication was received from Victoria Ruff, 30 Sciarappa Street, regarding banning the sale of new fur in Cambridge.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12607&MeetingID=4179'>Victoria Ruff Ban the Sale of New Fur in Cambridge MA</a></td></tr>
+
+<tr><td></td><td class='Num'>37. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16983&CssClass='>COM 697 #2022 : A communication was received from Vivek Sikri, Allston Street, regarding parking minimums.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12608&MeetingID=4179'>Vivek Sikri Parking Minimums</a></td></tr>
+
+<tr><td></td><td class='Num'>38. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16984&CssClass='>COM 698 #2022 : A communication was received from Walter McDonald, 172 Magazine Street, regarding City Council: Taming & "Saning" Rules of the Road, Policy Order 7 (POR 2022 #171).</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12609&MeetingID=4179'>Walter McDonald City Council Taming  Saning Rules of the Road Policy Order 7 (POR 2022 #171) 91922</a></td></tr>
+
+<tr><td></td><td class='Num'>39. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16985&CssClass='>COM 699 #2022 : A communication was received from Young Kim, Norris Street, regarding: Amend and Approve Policy Order Item #7 to revise Cambridge Street Code: Rules and Etiquette.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12610&MeetingID=4179'>Young Kim Amend and Approve Policy Order Item #7 to revise Cambridge Street Code Rules and Etiquette</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12611&MeetingID=4179'>Young Kim Cambridge Traffic Regulations email chain</a></td></tr>
+
+<tr><td></td><td class='Num'>40. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17018&CssClass='>COM 700 #2022 : A communication was received from Nancy E. Donohue, Director of Government and Community Relations, Cambridge Chamber of Commerce regarding joint Business/Institutional BEUDO letter.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12634&MeetingID=4179'>Nancy Donohue Joint BusinessInstitutional BEUDO letter</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12635&MeetingID=4179'>Nancy Donohue BEUDO April 2022 letter</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12636&MeetingID=4179'>Nancy Donohue BEUDO questions from 9-15-22</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>d. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12637&MeetingID=4179'>Nancy Donohue  BEUDO Amendment Requirements</a></td></tr>
+
+<tr><td class='Num'><strong>V. </strong></td><td class='Title' colspan='10'><strong>Resolutions</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16734&CssClass='>RES 2022 #243 : Congratulations on the retirement of Melissa Coco from the Cambridge Health Alliance.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83587&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16735&CssClass='>RES 2022 #244 : Congratulations on the retirement of Brooke Coulter from the Cambridge Health Alliance.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83588&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16736&CssClass='>RES 2022 #245 : Congratulations on the retirement of John Meucci from the Cambridge Public Schools.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83589&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16920&CssClass='>RES 2022 #246 : Congratulations to Cambridge Police Lieutenant Joseph Murphy on the occasion of his promotion.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83590&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16921&CssClass='>RES 2022 #247 : Congratulations to Cambridge Police Lieutenant Darlene Pearson on the occasion of her promotion.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83591&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16922&CssClass='>RES 2022 #248 : Congratulations to Cambridge Police Sergeant Brian Hussey on the occasion of his promotion.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83592&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16923&CssClass='>RES 2022 #249 : Congratulations to Ms. Margaret Unger who received a perfect score in her AP US Government and Politics exam.</a><span class = 'ItemVoteResult'> Order Adopted as Amended [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83593&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16930&CssClass='>RES 2022 #250 : Congratulations to Emilia Sousa on her retirement from the Cambridge Health Alliance.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83594&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16935&CssClass='>RES 2022 #251 : Congratulations on the Retirement of Janet Snedeker from The Cambridge Public Schools</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83595&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16986&CssClass='>RES 2022 #252 : Congratulations to Jennifer and Peter Crane on the birth of their daughter, Mariah Jude Crane.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83596&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16931&CssClass='>RES 2022 #253 : Congratulations to Thomas Nunziato on the occasion of his retirement from the Department of Public Works.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83597&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16933&CssClass='>RES 2022 #254 : Congratulations to Philip Rita on the occasion of his retirement from the Department of Human Services.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83598&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16934&CssClass='>RES 2022 #255 : Congratulations to Kondeleye Ross-Johnson on the occasion of her retirement from the Cambridge Health Alliance.</a><span class = 'ItemVoteResult'> Order Adopted as Amended [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83599&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>14. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16936&CssClass='>RES 2022 #256 : Congratulations to Jay Stephens on the occasion of his retirement from the Cambridge Health Alliance.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83600&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>15. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16937&CssClass='>RES 2022 #257 : Congratulations to Samuel Tripp on the occasion of his retirement from the Cambridge Health Alliance.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83601&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>16. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16992&CssClass='>RES 2022 #258 : Congratulations to Sacred Heart of Jesus Parish on its 180th Anniversary.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83602&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>17. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17004&CssClass='>RES 2022 #259 : Congratulations to Paula Cushner on the occasion of her retirement from the Cambridge Health Alliance.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83603&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>18. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17012&CssClass='>RES 2022 #260 : Happy 80th Birthday wishes to Bill Cunningham.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83604&MeetingID=4179'>Resolution Printout</a></td></tr>
+
+<tr><td class='Num'><strong>VI. </strong></td><td class='Title' colspan='10'><strong>Policy Order and Resolution List</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16987&CssClass='>POR 2022 #179 : That the City Manager is requested to convene an advisory group to determine ways in which the City can work to lift up the voices and experiences of the descendants of the Indigenous People who currently reside in our community.</a><span class = 'ItemVoteResult'> Order Adopted as Amended [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83605&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12641&MeetingID=4179'>Original Policy Order #1</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16999&CssClass='>POR 2022 #180 : That the City Manager is requested to direct the Traffic, Parking, and Transportation Department to meet with and receive input from the Vision Zero, Pedestrian, Bicycle Committee, the Council on Aging, the Transit Advisory Committee, the Commission for Persons with Disabilities Advisory Board, Cambridge Police Department, and any other departments, to review and revise the Cambridge Street Code, promulgate the updated guide throughout the city, and develop recommendations for staffing and methods of improving traffic enforcement. CHARTER EXERCISED BY COUNCILLOR ZONDERVAN IN COUNCIL OCTOBER 3, 2022.</a><span class = 'ItemVoteResult'> Charter Right </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">EXERCISED BY COUNCILLOR ZONDERAN</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83606&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17000&CssClass='>POR 2022 #181 : That the City Manager is requested to direct the Community Development Department to convene a North Massachusetts Avenue Corridor District Zoning Proposal Working Group by June 15, 2023.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83607&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17002&CssClass='>POR 2022 #182 : That the City Manager is requested to work with appropriate City departments to complete a needs assessment of the entire Danehy Park complex.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83608&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17005&CssClass='>POR 2022 #183 : That the City Manager is requested to direct the appropriate City staff to affix the Indigenous Peoples’ Day Banner above JFK Street and Mount Auburn Street beginning on October 4, 2022, for no less than one week and recognize Indigenous Peoples' Day on October 10, 2022.</a><span class = 'ItemVoteResult'> Order Adopted as Amended [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83609&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17007&CssClass='>POR 2022 #184 : That the City Manager is requested to work with the Department of Public Works, Inspectional Services and other relevant departments to produce a report outlining the efficacy of the Private Property Rodent Control Program and the SMART Digital Rodent Control Boxes, and any changes being contemplated to these current programs.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83610&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17009&CssClass='>POR 2022 #185 : That the City Manager is requested to work with the Law Department to automatically provide an initial legal opinion to the City Council and the City Clerk at least three business days in advance of the first Public Hearing on any amendment to the Code of Ordinances formally introduced in the City Council.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83611&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17013&CssClass='>POR 2022 #186 : Amendment to section 22.25.1(c) of Article 22, entitled Sustainable Design and Development (Ordinance #2022-20).</a><span class = 'ItemVoteResult'> Order Adopted and Referred [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">TO THE ORDINANCE COMMITTEE AND PLANNING BOARD FOR HEARING AND REPORT</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83612&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17015&CssClass='>POR 2022 #187 : That the City Manager is requested to work with all relevant City departments to install a new irrigation system in Danehy Park as soon as possible and better prepare for tree watering efforts in the future and report on any needed or ongoing irrigation improvements to other parks across the city.</a><span class = 'ItemVoteResult'> Order Adopted as Amended [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83613&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17017&CssClass='>POR 2022 #262 : That the City Council go on record stating its observance of Cybersecurity Awareness Month October 2022.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83614&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17019&CssClass='>POR 2022 #263 : Policy Order</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83622&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17020&CssClass='>POR 2022 #264 : That the City Manager direct the Community Development Department and Law Department to review the amendment that states: “excluding the first 30,000 square feet for buildings less than 60,000 square feet in total size,” and share any feedback.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83623&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17744&CssClass='>POR 2022 #313 : Reappointment of Kathleen L. Born to the Cambridge Redevelopment Authority for a 5-year term to the Full City Council with a favorable recommendation by the Neighborhood & Long-Term Planning, Public Facilities, Arts & Celebration Committee.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83624&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td class='Num'><strong>VII. </strong></td><td class='Title' colspan='10'><strong>Committee Reports</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4179&MinutesID=2568&MediaPosition=&ID=52402&Type=30&AcceptMinutesID=2477&CssClass= style='cursor: hand'>Minutes of Mar 9, 2022 1:00 PM</a><span class = 'ItemVoteResult'> Accepted [Unanimous] </span></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4179&MinutesID=2568&MediaPosition=&ID=52403&Type=30&AcceptMinutesID=2563&CssClass= style='cursor: hand'>Minutes of Jun 2, 2022 5:30 PM</a><span class = 'ItemVoteResult'> Accepted [Unanimous] </span></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4179&MinutesID=2568&MediaPosition=&ID=52404&Type=30&AcceptMinutesID=2566&CssClass= style='cursor: hand'>Minutes of Sep 20, 2022 3:00 PM</a><span class = 'ItemVoteResult'> Accepted [Unanimous] </span></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17014&CssClass='>POR 2022 #188 : That the City Manager be and is hereby requested to direct the City Solicitor to reach out to the Law Department in Somerville, MA to understand and report back to the Council on the legislation passed by the Somerville City Council banning limited services pregnancy centers.</a><span class = 'ItemVoteResult'> Order Adopted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83615&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4179&MinutesID=2568&MediaPosition=&ID=52406&Type=30&AcceptMinutesID=2564&CssClass= style='cursor: hand'>Minutes of Sep 20, 2022 2:00 PM</a><span class = 'ItemVoteResult'> Accepted [Unanimous] </span></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16618&CssClass='>POR 2022 #132 : Fur Sales Ban (Ordinance #2022-17).PASSED TO A SECOND READING AS AMENDED IN COUNCIL OCTOBER 3, 2022
+TO BE ORDAINED ON OR AFTER OCTOBER 24, 2022.</a><span class = 'ItemVoteResult'> Passed to a Second Reading [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">AS AMENDED</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83616&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12348&MeetingID=4179'>Chapter 6.24 Sale of Fur Apparel Products</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12351&MeetingID=4179'>Chapter 6.24 Sale of Fur Apparel Products</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>d. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12627&MeetingID=4179'>Chapter 6.24 Sale of Fur Apparel Products MUNICIPAL CODE AMENDMENT</a></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17749&CssClass='>ORD 2022 # 17 : AAn Ordinance has been received from Diane P. LeBlanc City Clerk, relative to Fur Sales Ban Ordinance #2022-17.</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4179&MinutesID=2568&MediaPosition=&ID=52412&Type=30&AcceptMinutesID=2565&CssClass= style='cursor: hand'>Minutes of Sep 21, 2022 5:30 PM</a><span class = 'ItemVoteResult'> Accepted [Unanimous] </span></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=15557&CssClass='>POR 2022 #19 : That section 6.36 entitled, Schedule of Parking and Loading Requirements, of Article 6.000, entitled OFF STREET PARKING AND LOADING REQUIREMENTS AND NIGHTTIME CURFEW ON LARGE COMMERCIAL THROUGH TRUCKS, of the Zoning Ordinance of the City of Cambridge be amended  (Ordinance #2022-5)PASSED TO A SECOND READING AS AMENDED ON OCTOBER 3, 2022. TO BE ORDAINED ON OR AFTER OCTOBER 24, 2022 EXPIRES NOVEMBER 1, 2022</a><span class = 'ItemVoteResult'> Passed to a Second Reading </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">AS AMENDED</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83617&MeetingID=4179'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=11429&MeetingID=4179'>Parking Minimums  Maximums Policy Order</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12628&MeetingID=4179'>Ordinance #2022-5 Original Policy Order Parking Minimums</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12642&MeetingID=4179'>Original Policy Order #4</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4179&MinutesID=2568&MediaPosition=&ID=52416&Type=30&AcceptMinutesID=2567&CssClass= style='cursor: hand'>Minutes of Sep 28, 2022 2:00 PM</a><span class = 'ItemVoteResult'> Accepted [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11.5pt">MOTION TO ADOPT ORDER FOR REAPPOINTMENT OF KATHLEEN L. BORN TO THE CAMBRIDGE REDEVELOPMENT AUTHORITY FOR A 5-YEAR TERM</span></p></div></td></tr>
+
+<tr><td class='Num'><strong>VIII. </strong></td><td class='Title' colspan='10'><strong>Communications and Reports from Other City Officers</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17003&CssClass='>COF 2022 #119 : A communication was received from Councillor Marc McGovern, transmitting a proposed amendment to the linkage fee.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83618&MeetingID=4179'>Communication and Report from Other City Officers Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12626&MeetingID=4179'>Linkage Fee Amendment</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17008&CssClass='>COF 2022 #120 : A communication was received from Mayor Siddiqui, transmitting information from the School Committee.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83619&MeetingID=4179'>Communication and Report from Other City Officers Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17010&CssClass='>COF 2022 #121 : A communication was received from Mayor Siddiqui, transmitting UPK Ad-Hoc Communication.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83620&MeetingID=4179'>Communication and Report from Other City Officers Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=17016&CssClass='>COF 2022 #122 : communication was received from Diane P. LeBlanc City Clerk, transmitting an update regarding legislative activity.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=83621&MeetingID=4179'>Communication and Report from Other City Officers Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12629&MeetingID=4179'>Hearing Schedule</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12630&MeetingID=4179'>Pending Zoning Ordinances Chart</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=12632&MeetingID=4179'>2022-2023 Referral List (002)</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Appended Information</strong></td></tr>
+
+<tr><td></td><td class='Num'><strong></strong></td><td class='Title' colspan='9'><strong>Awaiting Report List</strong></td></tr>
+
+<tr><td></td><td></td><td class='Num'>1. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=14664&CssClass='>AR-16-111 : Report on the potential of building below market rental housing on City-owned parking lots along Bishop Allen Drive. On a communication from Councillor McGovern requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>2. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=6707&CssClass='>AR-18-38 : Report on inventory of all City-owned vacant buildings and lots and the City's plans for them, if any.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>3. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=9494&CssClass='>AR-19-66 : Report on whether it is possible to reduce or eliminate Building Permit Fees for 100% affordable housing development projects, through an exemption or other means and investigate what types of real estate tax abatements are possible for 100% affordable housing moving forward.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>4. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=10737&CssClass='>AR-19-147 : Report on installing hearing loop technology inside the Sullivan Chamber as part of the upcoming renovations to City Hall, and in other critical City meeting venues wherever possible and other accessibility improvements.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>5. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=11269&CssClass='>AR-20-6 : Report on the acquisition and implementation of interpretation services for City Council meetings and other public City meetings.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>6. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=12143&CssClass='>AR-20-27 : Report on the advantages and disadvantages of continuing with Civil Service, and the process by which Cambridge could exit Civil Service.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>7. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=12969&CssClass='>AR-20-60 : Report on  analyzing eviction data from 2018 through 2021 and come back with a plan on how to use this data to inform our next action steps.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>8. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=13034&CssClass='>AR-20-61 : Report on an update on City-Owned Vacant Properties Inventory.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>9. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=13240&CssClass='>AR-20-72 : Report on the condition of 105 Windsor Street and cost estimates of any repairs needed and provide  recommendations on how to develop any other underused properties based on an inclusive public process centered in the Port neighborhood.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>10. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=13561&CssClass='>AR-21-9 : Report on providing an overview of various programs and services that are designed to assist the City’s chronically unhoused population and those in danger of becoming unhoused, along with the metrics by which the City determines the effectiveness of these programs.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>11. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=13562&CssClass='>AR-21-10 : Report on whether or not the City can require written notice be sent to all abutters, both property owners as well as tenants, regarding the scheduling of a hearing regarding the extension of a building permit request to the Planning Board.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>12. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=13645&CssClass='>AR-21-14 : Report on presenting options to the Council to ensure that the staff at Albany Street are properly compensated for their work, and that guests are treated with the respect and dignity they deserve.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>13. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=13941&CssClass='>AR-21-29 : Report on updating the Parental Leave Policy for employees.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>14. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=13986&CssClass='>AR-21-30 : Report on increasing the affordable homeownership stock over the next 10 years by financing the construction of affordable homeownership units through a bond issue of no less than $500 million.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>15. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=14096&CssClass='>AR-21-36 : Report on developing a holistic plan for managing the traffic and congestion in the Alewife area.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>16. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=14283&CssClass='>AR-21-43 : Report on referring the Cambridge HEART proposal for funding consideration and to engage in a public community process to discuss this proposal and its implementation.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>17. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=14341&CssClass='>AR-21-46 : Report on the feasibility of purchasing properties for sale in the Alewife area to address City goals.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>18. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=14345&CssClass='>AR-21-50 : Report on providing an update on the cost of each license and permit required by businesses, which business license and permit fees are set under state law, which are set by ordinances, and which are determined administratively, as well as which licenses and permits the City has the discretion to waive entirely.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>19. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=14426&CssClass='>AR-21-52 : Report on examining stipend models for the City's multi-member bodies.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>20. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=14651&CssClass='>AR-21-60 : Report on reviewing the residential parking permit program to determine whether the criteria for this program can be modified to limit the issuance of residential permits to vehicles that are primarily utilized for personal, non-commercial use.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>21. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=14767&CssClass='>AR-21-67 : Report on working with the staff at the Cambridge Historical Commission, the DCR Commissioner, and members of Cambridge’s state delegation to approve, fund and execute the design and installation of a suitable historic marker by April 2022 to recognize the vision of Frederick Law Olmsted and others in transforming the Cambridge riverfront landscape.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>22. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=14880&CssClass='>AR-21-71 : Report on placing a cricket field in one of the Cambridge parks.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>23. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=14886&CssClass='>AR-21-74 : Report on supporting the Uplift the Solar Energy Industry in Massachusetts coalition.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>24. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=15148&CssClass='>AR-21-90 : Report on working with partners including the Cambridge Redevelopment Authority (CRA) and the Central Square Business Improvement District on identifying spaces in Central Square that would support the creation and protection of cultural and human service spaces that align with the City’s goals.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>25. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=15286&CssClass='>AR-21-94 : Report on proposing possible zoning language that would achieve the goals of incentivizing all construction to be fossil fuel free through a possible special permit process.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>26. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=15290&CssClass='>AR-21-98 : Report on Reaffirming Commitment to the Goal of 100% Renewable by 2035.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>27. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=15419&CssClass='>AR-22-2 : Report on meeting with the impacted residents and businesses on northern Massachusetts Avenue to discuss their ideas and suggestions for addressing their concerns.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>28. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=15549&CssClass='>AR-22-7 : Report on providing a legal analysis of what uses are currently permitted on the golf course land, information on the history, residency and other demographic information on membership data of golf course users, and any environmental constraints.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>29. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=15601&CssClass='>AR-22-8 : Report on determining the feasibility of establishing additional compensation for the City’s essential employees in accordance with the considered State legislation framework.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>30. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=15887&CssClass='>AR-22-13 : Report on determining how to better integrate more parent response into their decision-making process as they make changes that can have undue impacts upon the families they serve.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>31. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=15889&CssClass='>AR-22-14 : Report on the findings of the "Future of Telework" Committee, and to explain the city’s current policy regarding a remote work policy.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>32. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=15971&CssClass='>AR-22-18 : Report on working with staff of the BB&N school to provide a solution to cars idling beyond the five-minute legal limit, stalled traffic, blocked driveways, and a forced one-way path up Buckingham Street toward Concord where drivers face the risk of coming head-to-head with a vehicle trying to bypass the pickup line; and, such as a tiered drop-off system, a parking area for parents, or more drop-off and pick-up locations.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>33. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16099&CssClass='>AR-22-21 : Report on considering a guaranteed income program that expands on Cambridge RISE and targets families in poverty.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>34. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16101&CssClass='>AR-22-23 : Report on providing an analysis of the impact of current curb cut policies, including (but not limited to) an explanation of the administration’s current procedures for notifying and conducting outreach to abutters and neighbors, the criteria for evaluating curb cut applications, and an approximation of the number of residential parking spaces that have been lost to new curb cuts each year over at least the last decade.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>35. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16205&CssClass='>AR-22-24 : Report on determining what repairs to 205 Western Avenue would be needed to inhabit the space to allow the Cambridge Community Center to house their program.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>36. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16206&CssClass='>AR-22-25 : Report on how the city can meet the goals for diversity and inclusion, while ensuring that any required professional expertise and/or specific knowledge that may be statutorily required will continue to be represented.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>37. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16258&CssClass='>AR-22-28 : Report on looking into the feasibility of placing a covered bike rack at City Hall using FY23 Capital Budget Funding.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>38. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16290&CssClass='>AR-22-29 : Report on introducing a pilot program to open two of our youth centers during the evening and weekend hours during the summer.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>39. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16291&CssClass='>AR-22-30 : Report on adding $1.94 linkage fee to Housing Contribution Rate that is specifically targeted for job training.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>40. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16349&CssClass='>AR-22-33 : Report on consulting with the Executive Director of the Council on Aging, Somerville and Cambridge Elder Services, and the Executive Director of Cadbury Common to determine the feasibility of re-establishing some form of the Kate’s Café Monthly LGBTQ+ Community Dinners either at Cadbury Common or at another suitable location.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>41. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16351&CssClass='>AR-22-34 : Report on providing the progress on the Terminal Road connection and any related projects.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>42. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16352&CssClass='>AR-22-35 : Report on ensuring that every possible material used in construction projects are as safe and healthy and free of potential toxins as possible, and ensure that all construction and manufacturing vendors commit to disclosing all ingredients and using non-toxic materials.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>43. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16377&CssClass='>AR-22-36 : Work on Implementing Recommendations from Working IDEAL Report.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>44. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16378&CssClass='>AR-22-37 : Report on consulting with the appropriate City staff in determining the feasibility of establishing a new “Talent Officer” role for the City.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>45. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16379&CssClass='>AR-22-38 : Report on establishing a method of ensuring that anti-bias training is incorporated into the City’s hiring process at all levels.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>46. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16467&CssClass='>AR-22-40 : Report on developing a standardized, transparent, and cohesive community engagement plan for the entire, department-wide municipal government.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>47. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16513&CssClass='>AR-22-41 : Report on establishing evening, off-leash dog hours during times when Hoyt Field is not being used for other purposes.</a><span class = 'ItemVoteResult'> REPORT RECEIVED AND ACCEPTED </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>48. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16514&CssClass='>AR-22-42 : Report on directing the appropriate City staff to establish a “community healing initiative” plan to address the issues in our city.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>49. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16515&CssClass='>AR-22-43 : Report on establishing a notification system to all neighborhood residents, regardless of whether they own or rent their homes, within a set area where neighborhood disruptions such as infrastructure work or demolitions are scheduled to occur.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>50. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16516&CssClass='>AR-22-44 : Report on working with DCR and all relevant City departments to expand Memorial Drive closures in the summer and fall of 2022</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>51. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16613&CssClass='>AR-22-46 : Report on a plan for piloting more street closures for pedestrianization in Harvard Square.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>52. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16739&CssClass='>AR-22-48 : Report on ID Badges For City Employees.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>53. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16740&CssClass='>AR-22-49 : Report on Establishing a Task Force on Cambridge's African American/Black Residents.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>54. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16741&CssClass='>AR-22-50 : Report on establishing Black Men and Boys Commission.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>55. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16746&CssClass='>AR-22-55 : Report on the status of the long term water projections  and on what measures could be taken to conserve water.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>56. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16748&CssClass='>AR-22-57 : Report on Policy Order to investigate shared EV or Hybrid free bus service.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>57. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16841&CssClass='>AR-22-58 : Report on directing the appropriate City staff to establish a fund designed to assist those City employees in same-sex marriages with paying for surrogacy services in instances where the City’s health insurance providers fail to provide the same coverage afforded to the City’s female employees and those in heterosexual marriages.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>58. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16842&CssClass='>AR-22-59 : Report on repairing the grass at Greene-Rose Heritage Park, and to establish a long- term plan of action.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>59. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16843&CssClass='>AR-22-60 : Report on revising the City block party and play streets signature requirements to a more reasonable threshold, and shorten the timeline between application and event date, and provide more guidance to residents seeking a permit.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>60. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16844&CssClass='>AR-22-61 : Report on communicating to the Cambridge Health Alliance the City Council’s support for the reopening of the Cambridge Birth Center for deliveries as soon as possible and City Council support for the protection of existing birth centers and the creation of new birth centers in Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>61. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16924&CssClass='>AR-22-62 : Report on the City Manager directing the City Solicitor answer any legal questions that came up during the discussion that occurred during the regular City Council meeting on September, 12th.</a><span class = 'ItemVoteResult'> REPORT RECEIVED AND ACCEPTED </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>62. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16939&CssClass='>AR-22-64 : Report on t detailing how other comparable municipalities handle their street corner dedication processes and on ways to honor those individuals who may not ultimately have a street corner named after them but who nonetheless deserve to have their names and accomplishments recognized.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>63. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16940&CssClass='>AR-22-65 : Report on  continue to fund the meals program for the housed and unhoused members of the community for an additional six months.</a><span class = 'ItemVoteResult'> REPORT RECEIVED AND ACCEPTED </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>64. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16941&CssClass='>AR-22-66 : Report on  a plan to install “Walls of Honor” at each home baseball and softball field honoring past and current coaches and volunteers.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>65. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16942&CssClass='>AR-22-67 : Report on necessary preparations for the next Housing Committee meeting in the discussion on potentially allowing multifamily housing to be built citywide.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>66. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16943&CssClass='>AR-22-68 : Report on touring the facility at 2222 Massachusetts Avenue regarding transitioning the facility into a non-congregate homeless shelter with accompanying services.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>67. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4179&MediaPosition=&ID=16988&CssClass='>AR-22-69 : Report on a community process on the future use of 105 Windsor Street.</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Adjournment</strong></td></tr>
+
+</table>
+</span>
+                    </td>
+	</tr>
+	
+            </table>
+        
+</div>
+        
+        
+        <br />
+        <hr class="Dotted" />
+        <br />
+    </div>
+    
+    <!-- Dialog Definition (Do Not Display in Page) -->
+    <div style="display: none;">
+    
+        <div id="UserComment" class="UserComment">
+            <input type="hidden" id="ItemID" />
+            <input type="hidden" id="ItemType" />
+            <table><tr><td colspan="2" style="text-align: center;"><textarea rows="10" cols="10"></textarea></td></tr>
+            <tr>
+                <td class="Status"><img src='/Lib/Images/ui-anim_basic_16x16.gif' alt='Loading' />&nbsp;&nbsp;Loading - Please Wait...</td>
+                <td class="Help"><a href="#" onclick="javascript: ShowHelp(); return false;"><img src="images/Help.png" alt="Help" /></a></td>
+            </tr></table>            
+        </div>
+        
+        <div id="frmHelp">
+            <p><strong>Shortcut Keys:</strong></p>
+            <p><strong>Alt + S</strong> - Save</p>
+            <p><strong>Ctrl + S</strong> - Save (may not be compatible in all browsers)</p>
+            <p><strong>Alt + C</strong> - Save and Close</p>
+            <p><strong>Ctrl + Enter</strong> - Save and Close</p>
+            <p><strong>Escape</strong> - Closes the form (same as Cancel)</p>
+            <p><strong>Alt + Up Arrow</strong> - Previous Item (Saves if changed)</p>
+            <p><strong>Alt + Down Arrow</strong> - Next Item (Saves if changed)</p>
+        </div>
+    
+    </div>
+
+   
+    
+                            </div>
+                        </div>                                                           
+                    </td>
+                </tr>               
+            </table>                                
+        </div>
+        
+    <div id="Footer" role="contentinfo">
+        <br />
+        <span id="lblPoweredBy">
+            Powered by <a href="https://granicus.com/" target="_blank" >Granicus</a>
+        </span>
+    </div>
+
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-21761819-8'></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+  gtag('config', 'UA-21761819-8');</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-70364301-2'></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+  gtag('config', 'UA-70364301-2');</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    
+        <!-- Popup Menus -->
+        <div id="mnuBrowse" class="PopupMenu" dropdown="Browse">
+            <ul>
+                <li><a href="#">Legislative Files</a></li>
+                <li><a href="#">Legal Notices</a></li>
+                <li><a href="#">Some other Sort of Thing</a></li>
+            </ul>
+        </div>
+
+    
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){woopra.identify({ email:"", name:"Anonymous User", agency:"CambridgeMA", userlogin:"Anonymous"}).push(); })//]]>
+</script>
+</form>
+</body>
+</html>
+
+
