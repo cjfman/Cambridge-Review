@@ -1,4 +1,5 @@
 #! /usr/bin/python3.8
+## pylint: disable=too-many-locals,too-many-branches
 
 import argparse
 import csv
@@ -83,6 +84,7 @@ POR_HDRS = (
     "Charter Right",
     "Outcome",
     "Vote",
+    "Amended",
     "Link",
     "Description",
     "Notes",
@@ -344,6 +346,7 @@ class PolicyOrder:
     cosponsors:    str = ""
     action:        str = ""
     vote:          str = ""
+    amended:       str = ""
     charter_right: str = ""
     description:   str = ""
     meeting_uid:   str = ""
@@ -369,6 +372,7 @@ class PolicyOrder:
             "Co-Sponsors":       ",".join(self.cosponsors),
             "Outcome":           self.action,
             "Vote":              self.vote,
+            "Amended":           self.amended,
             "Charter Right":     self.charter_right,
             "Description":       self.description,
             "Meeting":           self.meeting_uid,
@@ -393,6 +397,10 @@ class PolicyOrder:
 
 def print_red(msg):
     print(colored(msg, 'red'))
+
+
+def print_green(msg):
+    print(colored(msg, 'green'))
 
 
 def expandUrl(base, url) -> str:
@@ -606,6 +614,14 @@ def processItem(args, row, num):
     if match:
         action, vote = match.groups()
 
+    ## Action
+    if action == "ADOPTED":
+        action = "Adopted"
+    elif action == "PLACED ON FILE":
+        action = "Placed on File"
+    elif action == "REFERRED TO COMMITTEE":
+        action = "Referred to Committee"
+
     ## Init item type
     handlers = {
         'CMA': processCma,
@@ -674,15 +690,14 @@ def processCom(args, uid, num, title, link, vote, action) -> Communication:
     if not subject:
         subject = title
 
-
     return Communication(uid, num, name, address, subject, link)
 
 
 def processRes(args, uid, num, title, link, vote, action) -> Resolution:
     """Process a resolution agenda item"""
     ## Fetch Res page from city website
-    cma_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, cma_path)
+    res_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
+    fetched = fetchUrl(link, res_path)
     soup = BeautifulSoup(fetched, 'html.parser')
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
     category = table['Category']
@@ -693,8 +708,8 @@ def processRes(args, uid, num, title, link, vote, action) -> Resolution:
 def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
     """Process a policy order agenda item"""
     ## Fetch Res page from city website
-    cma_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, cma_path)
+    por_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
+    fetched = fetchUrl(link, por_path)
     soup = BeautifulSoup(fetched, 'html.parser')
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
     sponsors = [lookUpCouncillorName(x.strip()) for x in table['Sponsors'].split(',')]
@@ -706,7 +721,13 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
     if match:
         charter_right = lookUpCouncillorName(match.groups()[0])
 
-    return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, charter_right, title)
+    ## Amended
+    amended = ""
+    if action == "Adopted as Amended":
+        amended = "Yes"
+        action = "Adopted"
+
+    return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, amended, charter_right, title)
 
 
 def processMeeting(args, meeting) -> List[Any]:
@@ -831,6 +852,9 @@ def postProcessItems(writers, items):
         for item in item_map[key]:
             writers[key].writerow(buildRow(item, hdrs))
 
+    msg = " ".join([f"{k}:{len(v)}" for k, v in item_map.items()])
+    total = sum([len(v) for v in item_map.values()])
+    print_green(f"Wrote {total} items. {msg}")
 
 
 def setupOutputFiles(output_dir):
@@ -894,6 +918,9 @@ def main(args):
             if meeting.body.lower() != 'city council' or meeting.type.lower() not in ALLOWED_TYPES:
                 print(f"Skipping meeting '{meeting}'")
                 continue
+            if meeting.status == 'cancelled':
+                print(f"Meeting '{meeting}' was cancelled. Skipping")
+                continue
 
             print(f"Processing meeting '{meeting}'")
             items = processMeeting(args, meeting)
@@ -909,7 +936,7 @@ def main(args):
             print(f"User requested exit")
             break
         except Exception as e:
-            print_red(f"Failed to process meeting '{meeting}': {e}")
+            print_red(f"Error: Failed to process meeting '{meeting}': {e}")
             if args.exit_on_error:
                 ## Close all files
                 for f in output_files.values():
