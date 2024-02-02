@@ -31,9 +31,11 @@ CMA_HDRS = (
     "Meeting Date",
     "Agenda Number",
     "Category",
-    "Link",
+    "Awaiting Report",
+    "Policy Order",
     "Outcome",
     "Vote",
+    "Link",
     "Notes",
 )
 
@@ -149,9 +151,11 @@ class CMA:
     uid:      str
     num:      int
     category: str
+    awaiting: str
+    order:    str
     url:      str
-    action:   str = ""
-    vote:     str = ""
+    action:   str
+    vote:     str
     description:  str = ""
     meeting_uid:  str = ""
     meeting_date: str = ""
@@ -169,6 +173,8 @@ class CMA:
             "Unique Identifier": self.uid,
             "Agenda Number":     self.num,
             "Category":          self.category,
+            "Awaiting Report":   self.awaiting,
+            "Policy Order":      self.order,
             "Link":              self.url,
             "Outcome":           self.action,
             "Vote":              self.vote,
@@ -595,6 +601,19 @@ def processKeyWordTable(table) -> Dict[str, str]:
     return { x: y for x, y in zip(ths, tds) }
 
 
+def processResLinks(node) -> Dict[str, List[Tuple[str, str]]]:
+    links = defaultdict(list)
+    for reslink in findAllTags(node, 'div', 'ResLink'):
+        ## Process each link type
+        try:
+            name = findText(reslink, 'span', 'LinkType').lower()
+            links[name].append(findATag(reslink))
+        except:
+            pass
+
+    return links
+
+
 def processItem(args, row, num):
     """Process a meeting agenda item"""
     ## Process the title and link
@@ -642,9 +661,25 @@ def processCma(args, uid, num, title, link, vote, action) -> CMA:
     cma_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
     fetched = fetchUrl(link, cma_path)
     soup = BeautifulSoup(fetched, 'html.parser')
-    table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
 
-    return CMA(uid, num, table['Category'], link, action, vote, title)
+    ## Category
+    info_div = findTag(soup, 'div', 'LegiFileInfo')
+    table = processKeyWordTable(findTag(info_div, 'table', 'LegiFileSectionContents'))
+
+    ## Origins if any
+    awaiting = ""
+    order = ""
+    links = processResLinks(soup)
+    if 'origin' in links:
+        for o_name, o_url in links['origin']:
+            match = re.search(r"^(AR\S+)\s+:", o_name)
+            if match:
+                awaiting = match.groups()[0]
+            match = re.search(r"^(POR \d+ #\d+)\s+:", o_name)
+            if match:
+                order = match.groups()[0]
+
+    return CMA(uid, num, table['Category'], awaiting, order, link, action, vote, title)
 
 
 def processApp(args, uid, num, title, link, vote, action) -> Application:

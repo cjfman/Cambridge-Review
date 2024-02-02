@@ -9,3 +9,4 @@ graphs/
 maps/
 */__pycache__
 *.tgz
+sandbox/*
