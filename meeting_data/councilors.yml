@@ -2,17 +2,17 @@ councillors:
   - name: Burhan Azeem
     aliases:
       - Azeem
-  - name: Dennis Carlone
+  - name: Dennis J. Carlone
     aliases:
       - Carlone
-      - Dennis J. Carlone
+      - Dennis Carlone
   - name: Alanna Mallon
     aliases:
       - Mallon
-  - name: Marc McGovern
+  - name: Marc C. McGovern
     aliases:
       - McGovern
-      - Marc C. McGovern
+      - Marc McGovern
   - name: Patricia Nolan
     aliases:
       - Nolan
@@ -20,14 +20,14 @@ councillors:
     postition: Mayor
     aliases:
       - Siddiqui
-  - name: Denise Simmons
+  - name: E. Denise Simmons
     aliases:
-      - E. Denise Simmons
+      - Denise Simmons
       - Simmons
-  - name: Paul Toner
+  - name: Paul F. Toner
     aliases:
       - Toner
-      - Paul F. Toner
+      - Paul Toner
   - name: Quinton Zondervan
     aliases:
       - Zondervan
@@ -37,11 +37,11 @@ sessions:
     vice_mayor: Alanna Mallon
     councillors:
       - Burhan Azeem
-      - Dennis Carlone
+      - Dennis J. Carlone
       - Alanna Mallon
-      - Marc McGovern
+      - Marc C. McGovern
       - Patricia Nolan
       - Sumbul Siddiqui
-      - Denise Simmons
-      - Paul Toner
+      - E. Denise Simmons
+      - Paul F. Toner
       - Quinton Zondervan
