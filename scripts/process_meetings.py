@@ -712,20 +712,45 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
 def processMeeting(args, meeting) -> List[Any]:
     """Process a meeting"""
     meeting_path = os.path.join(args.cache_dir, f"meeting_{meeting.id}.html")
-    soup = BeautifulSoup(fetchUrl(meeting.url, meeting_path), 'html.parser')
+    soup = BeautifulSoup(fetchUrl(meeting.url, meeting_path, verbose=True), 'html.parser')
 
     ## Iterate through agenda table
     table = soup.find('table', {'class': 'MeetingDetail'})
     item  = None
     items = []
     rows = table.find_all('tr')
+    enabled = False
     print(f"Checking {len(rows)} rows")
     for row in rows:
+        ## Look for section title
+        td = findTag(row, 'td', 'Title')
+        if td is not None:
+            title = td.text.strip()
+            if not enabled and title in ("City Manager's Agenda", "Communications", "Resolutions", "Policy Order and Resolution List", "Applications and Petitions"):
+                if VERBOSE:
+                    print(f"""Found section "{title}". Enable agenda item processing""")
+                enabled = True
+                continue
+            elif enabled and title in ("Charter Right", "Calendar"):
+                if VERBOSE:
+                    print(f"""Found section "{title}". Disable agenda item processing""")
+
+                enabled = False
+                continue
+
+        if not enabled:
+            continue
+
         ## Look for agenda item number
         td = findTag(row, 'td', 'Num')
         if td is not None and re.match(r"\d+\.?", td.text.strip()):
             num = td.text.strip().replace('.', '')
-            item = processItem(args, row, num)
+            try:
+                item = processItem(args, row, num)
+            except Exception as e:
+                print_red(f"Failed to process item '{row}': {e}")
+                raise e
+
             if item is not None:
                 items.append(item)
         elif item is not None:
@@ -750,10 +775,10 @@ def processMeeting(args, meeting) -> List[Any]:
     return items
 
 
-def fetchUrl(url, cache_path=None) -> str:
+def fetchUrl(url, cache_path=None, *, verbose=False) -> str:
     """Fetch the data from a URL. Optionally cache it locally to disk"""
     if cache_path is not None and os.path.isfile(cache_path):
-        if VERBOSE:
+        if VERBOSE or verbose:
             print(f"Reading '{url}' from cache '{cache_path}'")
 
         with open(cache_path, 'r', encoding='utf8') as f:
