@@ -13,7 +13,9 @@ import requests
 from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-order
 
 import html5lib ## pylint: disable=unused-import
+import yaml
 from bs4 import BeautifulSoup
+from termcolor import colored
 
 VERBOSE = False
 ALLOWED_TYPES = ('regular', 'special')
@@ -85,6 +87,34 @@ POR_HDRS = (
     "Description",
     "Notes",
 )
+
+
+def parseArgs():
+    """Parse command line arguments"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--base-url", default="https://cambridgema.iqm2.com",
+        help="The base URL")
+    parser.add_argument("--cache-dir", required=True,
+        help="Where to cache downloads from the city website")
+    parser.add_argument("--exit-on-error", action="store_true",
+        help="Stop processing meetings if there is an error")
+    parser.add_argument("--num-meetings", type=int, default=0,
+        help="The maximum number of meetings to process. Set 0 for no limit")
+    parser.add_argument("--meeting",
+        help="Process this specific meeting")
+    parser.add_argument("--councillor-info",
+        help="File with councillor info")
+    parser.add_argument("--session", type=int,
+        help="The session year. Defaults to most recent one found in councillor info file")
+    parser.add_argument("-v", "--verbose", action="store_true",
+        help="Be verbose")
+    parser.add_argument("meetings_file",
+        help="The html file containing meeting info")
+    parser.add_argument("output_dir",
+       help="Where to save all of the output files")
+
+    return parser.parse_args()
+
 
 @dataclass
 class Meeting:
@@ -326,6 +356,9 @@ class PolicyOrder:
 
     def setNotes(self, notes):
         self.notes = notes
+        if "charter right" in self.notes.lower() and not self.charter_right:
+            ## Some mistake has been made
+            self.charter_right = "!!!"
 
     def to_dict(self):
         return {
@@ -358,26 +391,8 @@ class PolicyOrder:
         return f"[Resolution: {str(self)}]"
 
 
-
-def parseArgs():
-    """Parse command line arguments"""
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--base-url", default="https://cambridgema.iqm2.com",
-        help="The base URL")
-    parser.add_argument("--cache-dir", required=True,
-        help="Where to cache downloads from the city website")
-    parser.add_argument("--exit-on-error", action="store_true",
-        help="Stop processing meetings if there is an error")
-    parser.add_argument("--num-meetings", type=int, default=0,
-        help="The maximum number of meetings to process. Set 0 for no limit")
-    parser.add_argument("--meeting",
-        help="Process this specific meeting")
-    parser.add_argument("meetings_file",
-        help="The html file containing meeting info")
-    parser.add_argument("output_dir",
-       help="Where to save all of the output files")
-
-    return parser.parse_args()
+def print_red(msg):
+    print(colored(msg, 'red'))
 
 
 def expandUrl(base, url) -> str:
@@ -452,6 +467,113 @@ def buildRow(item, hdrs):
             row[key] = ""
 
     return row
+
+
+_councillor_info = {}
+_councillor_quick_lookup = {}
+def setCouncillorInfo(path, year=None) -> bool:
+    ## pylint: disable=too-many-return-statements,too-many-branches
+    ## Load file
+    all_info = None
+    try:
+        with open(path, 'r', encoding='utf8') as f:
+            all_info = yaml.load(f)
+    except Exception as e:
+        print_red(f"Failed to councillor info file '{path}': {e}")
+        return False
+
+    ## Validation
+    if 'sessions' not in all_info:
+        print_red(f"Councillor info file missing 'sessions' key")
+        return False
+    if 'councillors' not in all_info:
+        print_red(f"Councillor info file missing 'councillors' key")
+        return False
+
+    if year is None:
+        year = max(all_info['sessions'])
+
+    if year not in all_info['sessions']:
+        print_red(f"Couldn't find year {year} in councillor info file {path}")
+        return False
+
+    session = all_info['sessions'][year]
+    councillors = { x['name']: x for x in all_info['councillors'] }
+
+    ## Set up mayor
+    if 'mayor' not in session:
+        print_red(f"Session year {year} doens't have a mayor")
+        return False
+    if session['mayor'] not in councillors:
+        print_red(f"""Mayor "{session['mayor']}" not found in councillors list""")
+        return False
+
+    _councillor_info[session['mayor']] = dict(councillors[session['mayor']])
+    _councillor_info[session['mayor']]['position'] = 'Mayor'
+
+    ## Set up vice mayor
+    if 'vice_mayor' not in session:
+        print_red(f"Session year {year} doens't have a vice mayor")
+        return False
+    if session['vice_mayor'] not in councillors:
+        print_red(f"""Vice Mayor "{session['vice_mayor']}" not found in councillors list""")
+        return False
+
+    _councillor_info[session['vice_mayor']] = dict(councillors[session['vice_mayor']])
+    _councillor_info[session['vice_mayor']]['position'] = 'Vice Mayor'
+
+    ## Set up councillors
+    if 'councillors' not in session:
+        print_red(f"Session year {year} doesn't have any councillors")
+        return False
+
+    for name in session['councillors']:
+        if name not in councillors:
+            print_red(f"Councillor {name} not found in councillors list")
+            return False
+
+        _councillor_info[name] = dict(councillors[name])
+        _councillor_info[name]['position'] = "Councillor"
+
+    ## Create quick lookups for every name combination
+    for name, info in _councillor_info.items():
+        position = info['position']
+        aliases = [name, f"{position} {name}"]
+        for alias in info['aliases']:
+            aliases.append(alias)
+            aliases.append(f"{position} {alias}")
+
+        for alias in aliases:
+            _councillor_quick_lookup[alias]         = name
+            _councillor_quick_lookup[alias.lower()] = name
+
+    ## Add names to policy order headers
+    global POR_HDRS ## pylint: disable=global-statement
+    idx = POR_HDRS.index("Vote") + 1
+    POR_HDRS = POR_HDRS[:idx] + tuple(_councillor_info.keys()) + POR_HDRS[idx:]
+
+
+    return True
+
+
+def lookUpCouncillorName(name):
+    ## Quick look up
+    if name in _councillor_quick_lookup:
+        return _councillor_quick_lookup[name]
+    if name.lower() in _councillor_quick_lookup:
+        return _councillor_quick_lookup[name.lower()]
+
+    ## Remove title
+    orig_name = name
+    name = name.lower()
+    name = name.replace("vice mayor", "").strip()
+    name = name.replace("mayor", "").strip()
+    name = name.replace("councilor", "").strip()
+    if name in _councillor_quick_lookup:
+        return _councillor_quick_lookup[name]
+
+    print_red(f"""Didn't find full name for councillor "{orig_name}". Using fallback""")
+    return name
 
 
 def processKeyWordTable(table) -> Dict[str, str]:
@@ -564,7 +686,7 @@ def processRes(args, uid, num, title, link, vote, action) -> Resolution:
     soup = BeautifulSoup(fetched, 'html.parser')
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
     category = table['Category']
-    sponsors = table['Sponsors'].split(',')
+    sponsors = [lookUpCouncillorName(x.strip()) for x in table['Sponsors'].split(',')]
     return Resolution(uid, num, category, link, sponsors[0], sponsors[1:], action, vote, title)
 
 
@@ -575,14 +697,14 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
     fetched = fetchUrl(link, cma_path)
     soup = BeautifulSoup(fetched, 'html.parser')
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
-    sponsors = [x.strip() for x in table['Sponsors'].split(',')]
+    sponsors = [lookUpCouncillorName(x.strip()) for x in table['Sponsors'].split(',')]
     charter_right = ""
 
     ## Check for charter right
     header = findTag(soup, 'h1', 'LegiFileHeading').text
     match = re.search(r"charter right exercised by councillor (\w+) in\b", header, re.IGNORECASE)
     if match:
-        charter_right = match.groups()[0].lower()
+        charter_right = lookUpCouncillorName(match.groups()[0])
 
     return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, charter_right, title)
 
@@ -614,15 +736,16 @@ def processMeeting(args, meeting) -> List[Any]:
                 items[-1].setNotes(". ".join(findAllText(td, 'span')))
         elif td is not None:
             if VERBOSE:
-                print(f"Tag td didn't match anything: {td.text}")
+                print_red(f"Tag td didn't match anything: {td.text}")
         else:
             if VERBOSE:
-                print(f"Couldn't find a td with class 'Num'")
+                print_red(f"Couldn't find a td with class 'Num'")
 
     print(f"Found {len(items)} for meeting '{meeting}'")
     for item in items:
         item.setMeeting(meeting)
-        print(item)
+        if VERBOSE:
+            print(item)
 
     return items
 
@@ -630,7 +753,9 @@ def processMeeting(args, meeting) -> List[Any]:
 def fetchUrl(url, cache_path=None) -> str:
     """Fetch the data from a URL. Optionally cache it locally to disk"""
     if cache_path is not None and os.path.isfile(cache_path):
-        print(f"Reading '{url}' from cache '{cache_path}'")
+        if VERBOSE:
+            print(f"Reading '{url}' from cache '{cache_path}'")
+
         with open(cache_path, 'r', encoding='utf8') as f:
             return f.read()
 
@@ -704,13 +829,24 @@ def setupOutputFiles(output_dir):
             files[key]   = f
             writers[key] = w
         except Exception as e:
-            print(f"Failed to open file '{path}' for writing: {e}")
+            print_red(f"Failed to open file '{path}' for writing: {e}")
             return None
 
     return (files, writers)
 
 
 def main(args):
+    ## pylint: disable=too-many-branches
+    if args.verbose:
+        global VERBOSE ## pylint: disable=global-statement
+        VERBOSE = args.verbose
+
+    ## Set councillor info
+    if args.councillor_info is not None:
+        if not setCouncillorInfo(args.councillor_info, args.session):
+            print_red(f"Failed to set up councillor info")
+            return 1
+
     ## Open meetings file
     meetings = []
     with open(args.meetings_file, 'r', encoding='utf8') as f:
@@ -748,7 +884,7 @@ def main(args):
             print(f"User requested exit")
             break
         except Exception as e:
-            print(f"Failed to process meeting '{meeting}': {e}")
+            print_red(f"Failed to process meeting '{meeting}': {e}")
             if args.exit_on_error:
                 ## Close all files
                 for f in output_files.values():

@@ -5,3 +5,5 @@ markdown_table_generator
 matplotlib
 numpy
 plotly
+termcolor
+yaml
