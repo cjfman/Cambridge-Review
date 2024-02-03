@@ -54,10 +54,12 @@ def processCouncillors(line, item, key):
     else:
         item[key] += councilors
 
-    if councilors[-1] == ',':
-        return key
+    return key
 
-    return 'search'
+#    if councilors[-1] == ',':
+#        return key
+#
+#    return 'search'
 
 
 def tabulateVotes(lines):
@@ -130,6 +132,12 @@ def tabulateVotes(lines):
             if match:
                 key, msg = match.groups()
                 key = key.lower()
+                if key in item:
+                    print(f"Found a repeated {key} for item {item['uid']}. Dropping item", file=sys.stderr)
+                    item = None
+                    state = 'search'
+                    continue
+
                 print(f"Start {key}", file=sys.stderr)
                 state = key
                 if msg:

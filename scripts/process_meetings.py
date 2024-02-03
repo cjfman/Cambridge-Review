@@ -3,6 +3,7 @@
 
 import argparse
 import csv
+import json
 import os
 import re
 import sys
@@ -122,6 +123,8 @@ def parseArgs():
         help="Process this specific meeting")
     parser.add_argument("--councillor-info",
         help="File with councillor info")
+    parser.add_argument("--final-actions",
+        help="Json file with the final actions")
     parser.add_argument("--session", type=int,
         help="The session year. Defaults to most recent one found in councillor info file")
     parser.add_argument("-v", "--verbose", action="store_true",
@@ -562,11 +565,19 @@ def uidToFileSafe(uid) -> str:
     return uid.replace(' ', '_').replace('#', 'no')
 
 
-def buildRow(item, hdrs):
+def buildRow(item, hdrs, final_action=None):
     """Make a csv row from an agenda item"""
-    ## Every row dict must have exactly the keys in the header
     row = {}
     d = item.to_dict()
+
+    ## Update with final actions
+    if final_action is not None:
+        d['vote'] = final_action['vote']
+        for key, val in {'yeas': 'yes', 'nays': 'no', 'present': 'present', 'absent': 'absent'}.items():
+            for name in final_action[key]:
+                d[name] = val
+
+    ## Every row dict must have exactly the keys in the header
     for key in hdrs:
         if key in d and d[key] is not None:
             row[key] = str(d[key])
@@ -578,8 +589,12 @@ def buildRow(item, hdrs):
 
 _councillor_info = {}
 _councillor_quick_lookup = {}
+def getCouncillorNames() -> List[str]:
+    return list(_councillor_info.keys())
+
+
 def setCouncillorInfo(path, year=None) -> bool:
-    ## pylint: disable=too-many-return-statements,too-many-branches
+    ## pylint: disable=too-many-return-statements,too-many-branches,too-many-statements
     ## Load file
     all_info = None
     try:
@@ -657,21 +672,22 @@ def setCouncillorInfo(path, year=None) -> bool:
     ## Add names to headers
     ## pylint: disable=global-statement
     global CMA_HDRS, APP_HDRS, RES_HDRS, POR_HDRS
+    names = tuple(sorted(_councillor_info.keys()))
     ## CMA
     idx = CMA_HDRS.index("Vote") + 1
-    CMA_HDRS = CMA_HDRS[:idx] + tuple(_councillor_info.keys()) + CMA_HDRS[idx:]
+    CMA_HDRS = CMA_HDRS[:idx] + names + CMA_HDRS[idx:]
 
     ## APP
     idx = APP_HDRS.index("Vote") + 1
-    APP_HDRS = APP_HDRS[:idx] + tuple(_councillor_info.keys()) + APP_HDRS[idx:]
+    APP_HDRS = APP_HDRS[:idx] + names + APP_HDRS[idx:]
 
     ## RES
     idx = RES_HDRS.index("Vote") + 1
-    RES_HDRS = RES_HDRS[:idx] + tuple(_councillor_info.keys()) + RES_HDRS[idx:]
+    RES_HDRS = RES_HDRS[:idx] + names + RES_HDRS[idx:]
 
     ## POR
     idx = POR_HDRS.index("Vote") + 1
-    POR_HDRS = POR_HDRS[:idx] + tuple(_councillor_info.keys()) + POR_HDRS[idx:]
+    POR_HDRS = POR_HDRS[:idx] + names + POR_HDRS[idx:]
 
     return True
 
@@ -1022,7 +1038,35 @@ def fetchUrl(url, cache_path=None, *, verbose=False) -> str:
     return content
 
 
-def postProcessItems(writers, items):
+def processFinalActions(path):
+    final_actions = None
+    print(f"Opening final actions file '{path}'")
+    with open(path, 'r', encoding='utf8') as f:
+        final_actions = json.load(f)
+
+    regrouped = {}
+    required = ('action', 'charter_right', 'uid', 'vote', 'yeas', 'nays', 'present')
+    all_councillors = set(getCouncillorNames())
+    for uid, actions in final_actions.items():
+        meeting = {}
+        regrouped[uid] = meeting
+        for action in actions:
+            ## Convert votes to lists of names and calculate absent
+            action.update({key: "" for key in required if key not in action})
+            print('yeas', action['yeas'])
+            print('nays', action['nays'])
+            print('present', action['present'])
+            action['yeas']    = [lookUpCouncillorName(x) for x in action['yeas'].split(",") if x]
+            action['nays']    = [lookUpCouncillorName(x) for x in action['nays'].split(",") if x]
+            action['present'] = [lookUpCouncillorName(x) for x in action['present'].split(",") if x]
+            councillors = set(action['yeas'] + action['nays'] + action['present'])
+            action['absent'] = list(sorted(all_councillors.difference(councillors)))
+            meeting[action['uid']] = action
+
+    return regrouped
+
+
+def postProcessItems(writers, items, final_actions=None):
     sets = (
         ('CMA', CMA_HDRS),
         ('APP', APP_HDRS),
@@ -1032,7 +1076,10 @@ def postProcessItems(writers, items):
     )
     for key, hdrs in sets:
         for item in items[key]:
-            writers[key].writerow(buildRow(item, hdrs))
+            if final_actions is not None and item.uid in final_actions:
+                writers[key].writerow(buildRow(item, hdrs, final_actions))
+            else:
+                writers[key].writerow(buildRow(item, hdrs))
 
     types = [x for x, y in sets]
     msg = " ".join([f"{k}:{len(v)}" for k, v in items.items() if k in types])
@@ -1091,6 +1138,9 @@ def main(args):
 
     ## Open meetings file
     meetings = openMeetings(args.meetings_file)
+    final_actions = None
+    if args.final_actions:
+        final_actions = processFinalActions(args.final_actions)
 
     print(f"Read {len(meetings)} meetings from '{args.meetings_file}'")
     print("Opening output files")
@@ -1114,7 +1164,13 @@ def main(args):
 
             print(f"Processing meeting '{meeting}'")
             items = processMeeting(args, meeting)
-            postProcessItems(writers, items)
+            if final_actions is not None and meeting.uid in final_actions:
+                print(f"Found final actions for meeting '{meeting}'")
+                postProcessItems(writers, items, final_actions[meeting.uid])
+            else:
+                postProcessItems(writers, items)
+
+            ## Process awaiting reports
             if 'AR' in items:
                 processNewArs(args, ar_map, items['AR'], writers['AR'])
 

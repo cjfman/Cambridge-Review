@@ -1,0 +1,907 @@
+ECONOMIC DEVELOPMENT & UNIVERSITY RELATIONS
+COMMITTEE
+COMMITTEE MEETING
+~ FINAL ACTIONS ~
+Thursday, July 20, 2023
+
+3:00 PM
+
+Sullivan Chamber
+795 Massachusetts Avenue
+Cambridge, MA 02139
+
+The Economic Development and University Relations Committee will hold a public meeting on
+Thursday, July 20, 2023 from 3:00p.m. to 5:00p.m. to discuss the update on the Community
+Development Department’s Economic Impact Study regarding the implementation of the
+Cambridge Cycling Safety Ordinance.
+Attendee Name
+Paul F. Toner
+Burhan Azeem
+Alanna Mallon
+Patricia Nolan
+Quinton Zondervan
+
+Present
+
+Absent
+
+
+
+
+
+
+
+
+
+
+
+
+
+Late
+
+Arrived
+
+
+
+
+
+
+
+A communication was received from Pardis Saffari, Director of Economic Opportunity and
+Development for Community Development, transmitting a draft data table.
+A communication was received from Pardis Saffari, Director of Economic Opportunity and
+Development for Community Development, transmitting a presentation regarding the Cycling Safety
+Ordinance Impact Study update.
+That the City Manager is requested to confer with the Economic Development division and other
+appropriate departments with the intention of conducting a study to collect relevant economic data
+relating to business impacts from bike lane installations, positive or negative, which will help inform
+future installations of bike lanes along commercial corridors
+That the City Manager is requested to consider measures to improve the Cycling Safety Ordinance
+Business Impact Study. CHARTER RIGHT EXERCISED BY COUNCILLOR TONER IN
+COUNCIL JUNE 26, 2023
+
+City of Cambridge
+
+Page 1
+
+City of Cambridge
+COF 2023 #128
+IN CITY COUNCIL
+July 20, 2023
+
+Packet Pg. 2
+
+Data Source
+
+Longitudinal EmployerHousehold Dynamics
+(LEHD) employment data
+
+Table 1. Study Data Sources
+Rationale
+Description of Source and Potential Relationship to
+Potential
+Study
+for Use in
+Study?
+US Census database of employers and employees,
+including earnings and demographics. LEHD data could
+be used to track changes in employment and businesses
+near newly installed bike facilities, relative to a control
+group. LEHD Origin-Destination Employment Statistics
+dataset with workplace area characteristics can be used
+to analyze employment by census block.
+
+Yes
+
+Due to data privacy, obtaining access to LEHD at a level with more
+granularity than the census block level would involve long lead times.
+Data at the census block level does not allow the level of detail
+necessary to identify businesses facing a particular roadway
+improvement. However, census blocks could be assigned to a corridor
+based on a radius from the roadway. Data at the annual level is more
+aggregated than would be preferred and does not allow for precise
+measurement of changes in employment relative to the completion
+date of a project.
+Employment levels tend to be a lagging and indirect indicator of
+changes in retail activity but may be used to validate control areas
+where sufficient data are available. These data are available in 2011
+through 2020, so sufficient data is not available for more recent
+installations.
+This data may be useful in identifying existing trends in employment
+overall and by industry in the City of Cambridge relative to the
+surrounding area and in identifying existing trends in employment for
+census blocks near specific bike corridors compared to a control area.
+
+Pedestrian and Bike
+Counts, Parking
+information
+
+City-collected counts of pedestrian and bike traffic at
+multiple locations, including before-and-after studies at
+bike facilities.
+
+Limited use
+
+These data do not provide direct evidence on changes in business
+sales but allow other information to be viewed in context.
+
+Limited use
+
+Business openings and closings are affected by many factors and can
+be difficult to associate with changes in bike facilities or other
+projects. However, the data may be useful in providing context for
+other findings.
+
+Parking availability information or studies, as available.
+Business establishments
+opened/closed and by
+type of establishment
+
+City-collected data on business openings and closings
+
+1
+
+Packet Pg. 3
+
+Attachment: Draft Data Table_V1_072023 (COF 2023 #128 : A communication was received from Pardis
+
+a
+
+Data Source
+
+Description of Source and Potential Relationship to
+Study
+
+Potential
+for Use in
+Study?
+
+Rationale
+
+Sidewalk and in-person
+customer intercept
+surveys
+
+City-collected survey data from shopper intercepts at
+bike project locations and controls. These data provide
+information on mode of travel and purpose of trip.
+
+Limited use
+
+These data do not provide direct evidence on changes in business
+sales but allow other information to be viewed in context.
+
+Business surveys
+
+City-collected data from surveys of business owners in
+affected locations versus control groups. This will
+provide information on changes in retail activity relative
+to a pre-covid baseline.
+
+Yes
+
+Because the survey is voluntary and the projects are public in nature,
+there are several sources of potential bias including nonresponse bias.
+
+Private sector providers such as CoStar estimate rental
+rates and vacancy rates for commercial properties. Data
+on properties near bike projects can be compared to a
+control group.
+
+Yes
+
+Commercial real estate
+lease rate and/or
+occupancy/vacancy data
+
+In addition, many macro- and micro-economic factors other than bike
+projects can affect sales volumes. Nonetheless, the survey data, as a
+supplement to other data sources, will a provide direct source of
+information on changes in the business environment in addition to
+information regarding perceived impacts.
+
+Because the value of urban real estate hinges on the commercial
+desirability of its location, changes in rents can provide a useful
+indirect measure of changes in retail activity and overall accessibility.
+Occupancy/ vacancy data also provide a secondary measure.
+These datasets are credible as they are used widely in the real estate
+industry, and they permit geographic analysis. Although property
+values are also available through the city assessor, these involve
+longer time lags, and the assessment methodology may not account
+for smaller changes in neighborhood access.
+Use of data is dependent on availability for identified corridors, and
+some data review and cleaning will be necessary to permit analysis.
+
+2
+
+Packet Pg. 4
+
+Attachment: Draft Data Table_V1_072023 (COF 2023 #128 : A communication was received from Pardis
+
+a
+
+Data Source
+
+Description of Source and Potential Relationship to
+Study
+
+Potential
+for Use in
+Study?
+
+Rationale
+
+Point of interest (POI)
+transaction data
+
+Information from electronic transactions can be
+purchased from a POI data company such as SafeGraph.
+
+Yes
+
+POI transaction data provides anonymized credit and debit card
+transaction information which can be used to track local sales trends
+directly. Use of this data would require a purchase of the dataset. Key
+limitations are the exclusion of non-credit card transactions, and the
+lack of transparency regarding potential gaps in the data. The earliest
+available data is from 2019, so it is likely that this data could only be
+used to assess trends in beginning in the latter half of 2019 or later.
+Based on initial discussion with SafeGraph, the data contains primarily
+full-service restaurants, snack and nonalcoholic beverage bars,
+limited-service restaurants, hair/nail/skin care services, and fitness
+centers. The dataset includes both chain and independent businesses
+at the store level by month. Potential variables of interest could be
+total sales amount, spend per customer, number of transactions, or
+number of customers. Some data review and cleaning will be
+necessary to permit analysis.
+
+Bike lane information
+
+Data Source
+
+Geographic and time information regarding bike lane
+installation
+
+Yes
+
+Assessing bike lane impacts requires location and timing information
+for impacted corridors.
+
+Table 2. Other Data Sources Considered
+Rationale
+Description of Source and Potential Relationship to
+Potential
+Study
+for Use in
+Study?
+
+Payment processor
+transaction data
+
+Information from credit card and other electronic
+transactions could be purchased from a financial
+institution and used to track changes in retail sales
+directly.
+
+No
+
+Unable to find a private sector partner willing to provide such data.
+There would also be key limitations, such as not providing
+information on cash or out-of-network transactions.
+
+City of Cambridge localoption meals tax
+
+These data can be used to shed light on changes in
+restaurant sales, but not on other retail sectors.
+
+No
+
+Lack of information on other retail sectors makes the use of this
+dataset as a primary source of information insufficient. In addition,
+data are only available at aggregate level from the State.
+
+3
+
+Packet Pg. 5
+
+Attachment: Draft Data Table_V1_072023 (COF 2023 #128 : A communication was received from Pardis
+
+a
+
+Data Source
+
+Description of Source and Potential Relationship to
+Study
+
+Potential
+for Use in
+Study?
+
+Rationale
+
+Massachusetts
+Department of Revenue
+meals and sales tax data
+
+Sales and meals tax receipts are based on retailers’ own
+tax documentation, can be analyzed geographically, and
+provide direct evidence of changes in retail activity.
+Most retail activity is covered (except for groceries and
+clothing).
+
+No
+
+The Massachusetts Department of Revenue is unable to release the
+data at a granular level due to taxpayer privacy considerations. It
+may be possible to review information from businesses that “opt in”
+to provide tax data. However, options for this “opt in” process
+appear to be too broad.
+
+Quarterly Census of
+Employment and Wages
+employment and wage
+data
+
+Data from reports filed by employers subject to
+unemployment compensation laws, produced publicly
+at the city/town and county level by NAICS industries.
+
+No
+
+The level of detail for publicly available data is too aggregated to be
+useful. Massachusetts is a non-signatory state, indicating that
+projects are approved based on individual state laws. Obtaining
+data at the establishment level would involve approvals and long
+lead times.
+
+National Establishment
+Time Series employment
+and sales data
+
+This product was established as a potential source via
+literature review of past studies.
+
+No
+
+Unable to find a current source for this data product.
+
+4
+
+Packet Pg. 6
+
+Attachment: Draft Data Table_V1_072023 (COF 2023 #128 : A communication was received from Pardis
+
+a
+
+City of Cambridge
+COF 2023 #129
+IN CITY COUNCIL
+July 20, 2023
+
+Packet Pg. 7
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+City of Cambridge
+Community Development Department
+CSO Economic Impact Study Update
+Economic Development and
+University Relations Committee
+July 20, 2023
+
+Cambridge Community Development Department
+
+Packet Pg. 8
+
+1
+
+a
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+Agenda
+• Overview of Study & Timeline
+• About Volpe National Transportation Systems Center
+• Introduction to Study Methodology
+• Prior Studies Review
+
+• Potential Data Sources Overview
+•
+•
+•
+•
+•
+•
+
+Tax Data
+Transaction Data
+Real Estate Data
+Employment Data
+Transportation Data
+Business & Customer Surveys
+
+City of Cambridge - Community Development Department
+
+Packet Pg. 9
+
+2
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+Study Timeline
+
+Cambridge Community Development Department (CDD) and Volpe National
+Transportation Systems Center (Volpe) entered into an intergovernmental
+agreement to work together on an economic impact study in March 2023
+
+Developing
+methodology
+and data sets
+(Spring/Summer
+2023)
+
+City of Cambridge - Community Development Department
+
+Gathering and
+analyzing data
+(Summer 2023)
+
+Provide
+summary data by
+corridor and
+develop draft
+report/insights
+
+Final report and
+Council
+presentation
+(Fall 2023)
+
+Long term
+reporting
+Ongoing - CDD
+
+Packet Pg. 10
+
+3
+
+About Volpe National
+Transportation Systems Center
+City of Cambridge - Community Development Department
+
+Packet Pg. 11
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+4
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+About the Volpe Center
+• Founded in 1970, the Volpe National Transportation Systems Center
+is a research organization within the U.S. Department of
+Transportation
+• Multi-disciplinary expertise across engineering, human factors,
+planning, economics, and other domains, with projects in all modes
+of transportation
+• Our mission is to advance transportation innovation for the common
+good
+City of Cambridge - Community Development Department
+
+Packet Pg. 12
+
+5
+
+Prior Studies Review
+
+A review of prior studies in different municipalities
+
+City of Cambridge - Community Development Department
+
+Packet Pg. 13
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+6
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+Prior Studies: Overview
+• There are a limited number of published studies that address the
+impacts of bike infrastructure on retail sales in North America
+• Generally, these compare the “treatment” area against one or more
+control areas and citywide trends, plus a before-vs.-after comparison
+• Data sources vary by location due to data availability
+• Overall, the studies generally show small changes that range from
+neutral to slightly positive
+• Variations by city, location, and business type (e.g., dining vs. general retail)
+• The small size of the impacts can be difficult to separate from broader
+economic trends
+
+City of Cambridge - Community Development Department
+
+Packet Pg. 14
+
+7
+
+Prior Studies: Details
+• NYC DOT: The Economic Benefits of Sustainable Streets
+
+• Based primarily on city tax filings, plus commercial lease data and city tax
+assessments
+
+• City of Toronto: Bloor Street West Bike Lane Pilot Project Evaluation
+
+• Based on transaction data from a point-of-sale terminal provider and surveys
+of businesses and pedestrians
+
+• Portland State University: Understanding Economic and Business
+Impacts of Street Improvements for Bicycle and Pedestrian Mobility
+
+• 14 corridors across 6 cities (Indianapolis, Memphis, Minneapolis, SF, Seattle &
+Portland)
+• Primary data sources were employment/wage databases including Census
+LEHD
+
+City of Cambridge - Community Development Department
+
+Packet Pg. 15
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+8
+
+Study Data Sources
+
+Overview of potential data sources for Cambridge Economic Impact Study
+
+City of Cambridge - Community Development Department
+
+Packet Pg. 16
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+9
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+Tax Data
+
+• Tax data are ideal sources due to universal, standardized reporting of
+retail/service sales
+• Unlike NYC, Cambridge has no truly local sales/retail taxes – even the
+local option meals tax is administered by the state
+• After multiple City staff attempts, Massachusetts Department of
+Revenue (DOR) reaffirmed their policy does not allow the release
+granular data or individual data due to taxpayer privacy and other
+record requirements.
+
+City of Cambridge - Community Development Department
+
+Packet Pg. 17
+
+10
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+Point of Sale Transaction Data
+• Point of sale (cash register) transaction data would provide direct
+insight into changes in retail sales
+• This approach was used in a prior study in Toronto
+• However, the US market is split across multiple providers and the study
+team was not able to find a willing data provider
+• Even if an agreement with a POS service provider could be reached,
+such data would not cover all businesses or cash transactions
+
+City of Cambridge - Community Development Department
+
+Packet Pg. 18
+
+11
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+POI / Mobile Data
+• Point of Interest (POI) data is based on location-based mobile phone
+services
+• This allows for estimates of the number of customers at a given retail
+business
+• SafeGraph uses a proprietary model to pair this data with transaction
+data to generate estimates of spending by location over time
+• The study team has access to SafeGraph data for 2019-present
+covering Cambridge and is reviewing the dataset to assess its
+suitability for analysis
+City of Cambridge - Community Development Department
+
+Packet Pg. 19
+
+12
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+Real Estate Data
+• The value of urban real estate reflects its location and accessibility
+• Commercial real estate data such as rent levels and occupancy provide
+an indirect measure of neighborhood retail health and were used in a
+prior NYC study
+• This will be analyzed using a commercial subscription database, CoStar
+• CoStar data cover almost all commercial properties in the city, with
+quarterly updates, but not all variables are available for all properties
+
+City of Cambridge - Community Development Department
+
+Packet Pg. 20
+
+13
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+Employment Data
+• Government products such as Longitudinal Employer-Household
+Dynamics (LEHD) provide information on employment and wages
+• These are indirect and lagging indicators of retail activity have been
+used in some prior studies
+• Publicly available LEHD data go to the Census block level, which is
+generally adequate for identifying project-specific impacts
+• LEHD dataset currently ends in 2020, so this is only useful for
+projects/corridors that were complete by that time
+
+City of Cambridge - Community Development Department
+
+Packet Pg. 21
+
+14
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+Transportation Data
+• City-provided data on transportation system can provide valuable
+context, even though they do not directly cover retail sales
+• Counts of vehicles, pedestrians, bicycles
+• Parking spaces gained/lost
+• Parking utilization studies (limited, but using for corridors when available)
+
+City of Cambridge - Community Development Department
+
+Packet Pg. 22
+
+15
+
+a
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+Business Survey
+Survey data provides one source of data on changes in business sales, along with qualitative insights and information
+that would be difficult to collect through other means (e.g., additional business costs incurred)
+• Various response biases exist, but survey is structured to mitigate those through effective practices such as
+pre-notification, follow-up on nonresponse, and benchmarking of responses
+• Business Survey was sent out to a little over 1600 retail, restaurant, medical, financial and other service
+businesses in commercial and neighborhood corridors of Cambridge the first week of July. As of 7/18/23, 61
+businesses have responded to the survey.
+• Question topics include:
+• Changes to sales/revenue since street changes have occurred, with a 2019 base year (pre-COVID)
+• Whether a bicycle facility was installed nearby and whether there were changes to on-street metered parking
+and loading zones
+• Perceived business impacts of these changes
+• Any business expenses incurred due to these changes
+• Option to provide additional written comments and financial data
+City of Cambridge - Community Development Department
+
+Packet Pg. 23
+
+16
+
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+Customer Surveys
+• This Summer and Fall, CDD will conduct a short customer survey in corridors that
+have either had separated bike installations or will soon be receiving them, covering
+mode of travel, purpose of trip, and related topics
+• The study team has reviewed data from CDD’s Customer Intercept Surveys from
+2009-2022, which include a question about mode of transportation and reason for
+being in the district.
+
+City of Cambridge - Community Development Department
+
+Packet Pg. 24
+
+17
+
+Questions
+
+City of Cambridge - Community Development Department
+Attachment: CSO Economic Impact Study Update Presentation_072023_V2 [Revision 1]
+
+a
+
+Packet Pg. 25
+
+18
+
+City of Cambridge
+
+OFIRST IN COUNCIL
+July 20, 2023
+
+COUNCILLOR MCGOVERN
+VICE MAYOR MALLON
+COUNCILLOR SIMMONS
+COUNCILLOR TONER
+COUNCILLOR CARLONE
+WHEREAS:
+
+The roll out and implementation of separated bike lanes has caused a lot of concern
+among the small business community who have felt left out of the process; and
+
+WHEREAS:
+
+Business owners have fears about the impact on their businesses, and it would be
+beneficial for both the City and the business community to have local economic
+information about the potential impacts, positive and negative, on various types of
+businesses; and
+
+WHEREAS:
+
+Economic studies are often cited from other cities about the impact of bike lanes to
+small businesses, and how they will improve sales; and
+
+WHEREAS:
+
+The City will be implementing bike lanes along business corridors each year until 2026
+per the recent ordinance change, this provides an opportunity to collect relevant data
+and real time experience; and
+
+WHEREAS:
+
+Having local information will help shape future conversations and implementations of
+separated bike lanes and can help inform needed mitigation strategies along
+commercial corridors; now therefore be it
+
+ORDERED:
+
+That the City Manager be and hereby is requested to confer with the Economic
+Development division and other appropriate departments with the intention of
+conducting a study to collect relevant economic data relating to business impacts from
+bike lane installations, positive or negative, which will help inform future installations
+of bike lanes along commercial corridors; and be it further
+
+ORDERED:
+
+That the City Manager be and hereby is requested to confer with appropriate
+departments on what the standard public process will be prior to implementing new
+sections of bike lanes consistent with the Cycling Safety Ordinance, and what general
+evaluation process will take place post-installation now and for a full year once the
+bike network is completed, and to report back to the City Council on these matters; and
+be it further
+
+ORDERED:
+
+That the City Manager be and hereby is requested to report back to the City Council on
+these matters by March 31, 2022.
+
+Packet Pg. 26
+
+History:
+02/28/22
+05/02/23
+
+City Council
+ORDER ADOPTED AS AMENDED
+Economic Development & University Relations Committee
+
+Packet Pg. 27
+
+City of Cambridge
+
+O-5
+Calendar Item #
+FIRST IN COUNCIL
+June 26, 2023
+
+COUNCILLOR NOLAN
+COUNCILLOR ZONDERVAN
+COUNCILLOR MCGOVERN
+VICE MAYOR MALLON
+WHEREAS:
+
+The city is conducting a business impact study related to the installation of separated
+bicycle lanes, which began in 2004 with the installation of the city’s first separated
+bike lane, and accelerated in 2016 with the introduction of quickbuild separated bicycle
+lanes; and
+
+WHEREAS:
+
+It is crucial to ensure that the study utilizes accurate, objective, and reliable data from
+before and after installation to assess the positive or negative economic impacts on
+businesses from separated bicycle lane installations; and
+
+WHEREAS:
+
+The goal is to improve the implementation of separated bicycle lane projects so that
+positive impacts on local businesses are enhanced and negative impacts are avoided or
+mitigated; now therefore be it
+
+Packet Pg. 28
+
+ORDERED:
+
+That the City Manager be and hereby is requested to consider the following measures
+to enhance the aforementioned business impact study:
+1. Prioritize the utilization of objective data sources on economic impact over
+subjective or survey-based data sources: (a) Partner with the state revenue
+agency to conduct sales tax data analysis, avoiding privacy issues; (b) Obtain
+transaction or business utilization data from third-party vendors; (c) Examine
+the long-term impacts on vacancy rates and rent prices on earlier bike lane
+projects, including Cambridge St, Brattle St, Western Ave, and earlier
+segments of Mass Ave, avoiding potential distortions caused by the pandemic;
+2. To the extent that subjective or survey-based data sources are used, work to
+minimize statistical bias (anchoring bias, reporting bias, etc.): (a) Consult with
+a working group of experts, such as quantitative social scientists and policy
+evaluation researchers from local academic institutions, to ensure the
+utilization of best practices; (b) Measure customer perceptions and preferences
+for the retail environment through customer intercept surveys; (c) Consult with
+business staff to understand and assess their priorities, preferences, and
+concerns, in addition to consultations with business owners;
+3. In addition to measuring impacts, aggregate ideas for how to improve the
+implementation of separated bicycle lanes along commercial corridors to
+enhance the business environment: (a) If surveys are conducted, solicit broader
+feedback regarding ways to improve the implementation and operation of bike
+lane projects, potential mitigations for regions with newly implemented bike
+lanes, and curb-use management strategies, including loading, short-term/longterm parking, and outdoor dining; (b) Estimate the potential impacts of
+changes to parking policies and dynamic meter pricing to ensure sufficient
+parking availability;
+and be it further
+
+ORDERED:
+
+That the City Manager be and hereby is requested to report back to the City Council on
+these matters by September 1, 2023, outlining the proposed improvements to the
+business impact study for separated bicycle lanes, including the incorporation of
+objective data sources, collaboration with external partners, and strategies for gathering
+feedback and ideas from businesses.
+
+Packet Pg. 29
+
+History:
+06/26/23
+
+City Council
+
+CHARTER RIGHT
+
+Next: 08/07/23
+
+Packet Pg. 30
+
+

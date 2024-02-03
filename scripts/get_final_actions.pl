@@ -30,4 +30,7 @@ foreach (<FILE>) {
         system './scripts/prep_final_actions.pl', $txt;
     }
     system "./scripts/tabulate_votes.py $txt > $jsn";
+    if (! -s $jsn) {
+        unlink $jsn;
+    }
 }

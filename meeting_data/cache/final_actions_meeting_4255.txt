@@ -1,0 +1,2441 @@
+CITY COUNCIL
+ROUNDTABLE/WORKING MEETING
+~ FINAL ACTIONS ~
+Monday, March 13, 2023
+
+5:30 PM
+
+Remote Meeting
+
+The City Council will hold a Roundtable/Working Meeting for the purpose of receiving an update
+on the Municipal Broadband Feasibility Study.
+Attendee Name
+Burhan Azeem
+Dennis J. Carlone
+Alanna Mallon
+Marc C. McGovern
+Patricia Nolan
+E. Denise Simmons
+Paul F. Toner
+Quinton Zondervan
+Sumbul Siddiqui
+
+Present
+
+Absent
+
+Remote
+Remote
+Remote
+Remote
+
+
+
+
+Remote
+
+
+
+
+
+
+
+
+
+
+
+Late
+
+
+
+
+
+
+
+
+
+
+
+Arrived
+
+5:32 PM
+
+I. Communications and Reports from Other City Officers
+A communication was received from the City Manager's Office, transmitting the Agenda for the City
+Council Roundtable/Working meeting.
+A communication was received from the City Manager's office, transmitting a presentation
+regarding the Municipal Broadband Feasibility and Business Model Options.
+
+City of Cambridge
+
+Page 1
+
+City of Cambridge
+COF 2023 #43
+IN CITY COUNCIL
+March 13, 2023
+
+Packet Pg. 2
+
+1.a
+
+Agenda for March 13, 2023, City Council Roundtable/Working Meeting
+
+Attachment: Agenda for March 13 (COF 2023 #43 : A communication was received from the City Manager's Office)
+
+Update and Discussion on the City’s 21st Century Broadband Initiative
+
+• Opening by City Manager Yi-An Huang
+• Presentation by CTC Technology & Energy and Rebel
+• Discussion with the City Council
+
+Packet Pg. 3
+
+City of Cambridge
+COF 2023 #44
+IN CITY COUNCIL
+March 13, 2023
+
+Packet Pg. 4
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+MUNICIPAL BROADBAND FEASIBILITY
+AND BUSINESS MODEL OPTIONS
+Cambridge City Council Roundtable Discussion
+March 13, 2023
+
+Packet Pg. 5
+
+KEY STUDY FINDINGS
+FTTP in Cambridge will likely require a City contribution to be financially feasible
+• The full capital cost is estimated at ~$194 million, incorporating a 30% contingency and
+inflation over a 5-year construction period, assuming a 40% take-rate.
+• A City contribution of ~$150 million is required to establish a sustainable FTTP business
+from scratch, applying reasonable assumptions under a “base case”. This contribution is
+the investment the City would need to make for which there would likely be no return. The
+remaining capex can be supported from net revenues after operating costs.
+• Entering into a partnership with one or more entities to lease fiber and run the business
+would reduce the City’s risks and potentially reduce costs. A partner could potentially
+leverage existing operations and assets, achieving economies of scale.
+
+Packet Pg.
+2 6
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+CAPITAL COST SUMMARY
+Cost Component
+Project management & engineering
+Utility pole make-ready
+Distribution network construction (aerial & underground, labor & materials)
+MDU fiber laterals and indoor cabling
+Core network electronics
+Total fixed cost
+Fixed cost per passing
+Distribution electronics cost
+Customer activation cost (includes drops & CPE)
+Total cost (without contingency)
+Total cost per customer
+Contingency (30%)
+Total cost (with contingency)
+Total cost per drop (with contingency)
+*Assumes drops are built to 40% of passings
+
+Costs*
+$18.4M
+$4.8M
+$63.3M
+$27.4M
+$8.8M
+$122.6M
+$2,345
+$5.6M
+$20.6M
+$148.9M
+$7,117
+$44.7M
+$194M
+$9,252
+Packet Pg.
+3 7
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+1.a
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+BASE CASE: CAPITAL CONSTRUCTION AND RENEWAL COSTS
+Initial construction is over five years; figures assume 40% take-rate
+CAPITAL EXPENDITURE & CAPITAL RENEWAL
+$70M
+$60M
+$50M
+
+$40M
+$30M
+$20M
+$10M
+
+Outside plant
+
+Core network equipment
+
+Drops
+
+2051
+
+2050
+
+2049
+
+2048
+
+2047
+
+2046
+
+2045
+
+2044
+
+2043
+
+2042
+
+2041
+
+2040
+
+2039
+
+2038
+
+2037
+
+2036
+
+2035
+
+2034
+
+2033
+
+2032
+
+2031
+
+2030
+
+2029
+
+2028
+
+2027
+
+2026
+
+2025
+
+2024
+
+2023
+
+$0M
+
+CPE & distribution electronics
+
+Packet Pg.
+4 8
+
+OPERATING EXPENSES SUMMARY
+Cost categories considered to create full retail operations from scratch
+Labor O&M
+
+Parametric non-labor O&M
+
+Other non-labor O&M
+
+• Fiber technicians
+
+• Underground fiber locates and repairs
+
+• Insurance
+
+• Customer service representatives • Fiber maintenance and relocations
+
+• Utilities
+
+• Integrity Manager
+
+• Core network electronics maintenance
+
+• Office expenses
+
+• GIS analysts
+
+• CPE maintenance
+
+• Legal expenses
+
+• IT Specialists
+
+• Education and training
+
+• Marketing
+
+• Account representatives
+
+• Customer billing
+• Bad debt allowance
+
+• Commodity internet capacity
+• Pole attachment lease fees
+Packet Pg.
+5 9
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+1.a
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+BASE CASE: OPERATIONS AND MAINTENANCE EXPENSES
+Annual operating expenses rise over time with inflation and labor rates
+OPERATIONS & MAINTENANCE
+$25M
+$20M
+$15M
+$10M
+$5M
+
+Labor O&M
+
+Parametric non-labor O&M
+
+2051
+
+2050
+
+2049
+
+2048
+
+2047
+
+2046
+
+2045
+
+2044
+
+2043
+
+2042
+
+2041
+
+2040
+
+2039
+
+2038
+
+2037
+
+2036
+
+2035
+
+2034
+
+2033
+
+2032
+
+2031
+
+2030
+
+2029
+
+2028
+
+2027
+
+2026
+
+2025
+
+2024
+
+2023
+
+$0M
+
+Other non-labor O&M
+
+Packet Pg.
+6 10
+
+BASE CASE: PROJECTED REVENUES AT 40% TAKE-RATE
+Assumes average of $70/mo., rising 3% per year ($30/mo. for low-income residents)
+REVENUE
+$40M
+
+$35M
+$30M
+$25M
+$20M
+$15M
+$10M
+$5M
+
+Subscription revenue
+
+2051
+
+2050
+
+2049
+
+2048
+
+2047
+
+2046
+
+2045
+
+2044
+
+2043
+
+2042
+
+2041
+
+2040
+
+2039
+
+2038
+
+2037
+
+2036
+
+2035
+
+2034
+
+2033
+
+2032
+
+2031
+
+2030
+
+2029
+
+2028
+
+2027
+
+2026
+
+2025
+
+2024
+
+2023
+
+$0M
+
+Connection fee revenue
+
+Packet Pg.
+7 11
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+FINANCIAL MODEL
+A custom financial model was developed to understand the project’s business case
+and key sensitivities with the following key inputs:
+• Capital expenses: Outside plant, network equipment, drops, CPE, buildout schedule, etc.
+• Pricing: Target pricing based on market, mix of full paying vs. low-income
+• Take-rate / adoption curve: Steady state take-rate, take-rate ramp up, churn
+• Operating expenditures:
+– Labor costs
+– Non-labor parametric operating costs (e.g., $x per pole times n poles)
+– Other non-labor operating costs (e.g., $x per month for insurance)
+• Inflation adjustment (capex, opex, revenue)
+• Capital grant funding: City subsidy to reduce initial capital expenses
+• Financing conditions: Interest rate, expected return on equity, debt-to-equity ratio, term, etc.
+Packet Pg.
+8 12
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+FINANCIAL FEASIBILITY ANALYSIS
+The baseline feasibility analysis examines the overall attractiveness of the project
+from a commercial perspective
+• The financial feasibility analysis does not include assumptions around how the citywide FTTP
+network is funded or financed, but assesses whether the project requires external funding for
+it to be financially feasible based on the fundamentals of the operational cash flows (revenue,
+capex, and opex)
+• The financial model calculates the internal rate of return of the project (project IRR) using the
+operational cash flows over the construction period and 25 years of operations
+
+• To evaluate financial feasibility, the analysis determines what combination of take-rates and
+public funding, if any, would be necessary to achieve a sufficient project IRR (assumed to be
+10%), given certain assumptions about average revenue per user (ARPU)
+• The report includes sensitivity analysis on the baseline feasibility assessment for the following
+key variables: Capex, opex, ARPU, and project term
+Packet Pg.
+9 13
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+FINANCIAL FEASIBILITY ANALYSIS OUTPUTS
+Our baseline financial feasibility analysis shows that a ~$150 million upfront
+contribution combined with a 40% take rate would achieve a project IRR of ~10%.
+The sensitivity analysis shows how changes in pricing and capex amounts affect the
+required upfront capital contribution.
+Scenario / sensitivity
+
+Required upfront capital contribution at different take rates
+30%
+
+40%
+
+50%
+
+$178M
+
+$151M
+
+$126M
+
+Baseline analysis with $10 lower pricing
+
+$206M*
+
+$185M
+
+$165M
+
+Baseline analysis with $10 higher pricing
+
+$152M
+
+$121M
+
+$91M
+
+Baseline analysis with 20% capex contingency
+
+$158M
+
+$130M
+
+$172M
+
+Baseline analysis with 40% capex contingency
+
+$199M*
+
+$172M
+
+$148M
+
+Baseline analysis (30% capex contingency)
+
+*Required upfront capital contribution amount exceeds overall capex
+Packet10
+Pg. 14
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+PARTNERSHIP OPTIONS
+Partnership could offer significant advantages while the City could meet key goals
+What City could gain…
+• De-risking business model
+through market validation
+• Operational and marketing
+expertise in a highly
+competitive and fastchanging business
+• Potential private capital
+investment to reduce upfront
+costs
+
+…what City could give up…
+• Upside revenue potential
+• Control over day-to-day
+business operations and
+market rate setting
+
+…what City could retain
+• Fiber service to all City
+premises
+• City long-term ownership of
+fiber infrastructure
+• Affordable options and
+pricing control for low-income
+households
+• Key policy goals around data
+privacy and net neutrality
+
+Packet11
+Pg. 15
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+INTEREST IN A PARTNERSHIP IS LIKELY STRONG
+A range of companies may be interested in partnering with the City
+• Given the attractive Cambridge market, a number of ISPs and infrastructure companies
+would likely look at a City RFP seriously
+• P3 investors are very comfortable with City owning the asset and the P3 investor having a
+long-term commercialization opportunity
+• Some ISPs also might be willing to lease City fiber, but others would want fiber ownership
+• Some ISPs require a larger footprint (now or in near future) than Cambridge, but they would
+explore this themselves
+
+Packet12
+Pg. 16
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+1.a
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+PARTNERSHIPS: ELEMENTS OF THE BROADBAND NETWORK
+Business models are distinguished largely by defining the role of parties at each
+scope element of the network
+Passive Infrastructure
+
+Active Infrastructure
+
+Service Provision
+
+Building and maintaining
+dark fiber network
+
+Setting up and operating
+active electronics on network
+
+Delivering broadband
+services to subscribers
+
+Packet13
+Pg. 17
+
+SUMMARY OF BUSINESS MODELS
+The business models differ regarding how the three scope elements are combined
+into one or several contracts, and how competition is structured in the marketplace
+Model #
+
+Passive Infrastructure
+
+Active Infrastructure
+
+1
+
+City funded/financed
+and maintained
+
+Muni ISP (Broadband department or outsourced)
+
+2
+
+City funded/financed
+and maintained
+
+ISP (one or multiple)
+
+3
+
+City funded/financed
+and maintained
+
+4
+
+Active Infra contractor
+
+Service Provision
+
+Multiple ISPs / open
+market
+
+(Largely) privately funded/financed,
+privately maintained and operated
+
+Packet14
+Pg. 18
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+BUSINESS MODEL TAKEAWAYS
+Models 2 and 4 are likely to attract strong market interest, with Model 4 transferring
+most responsibilities, risk, and control to a private party
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+• The City lacks the operational experience and expertise to successfully implement a citywide network as
+required under Business Model 1, making this model less feasible and attractive to the City
+• Business Model 2 is a viable and attractive business model for the City which leverages the City’s
+access to relatively cheap capital to develop the Passive Infrastructure while transferring most of the
+operational and commercial risks to a private partner
+
+• Business Model 3 is the least proven model, which builds on Business Model 2 to potentially enable
+more competition but creates additional contractual layers which adds significant complexity and is less
+familiar to the market
+• Business Model 4 increases private sector involvement across all project scope elements to also
+include developing and financing Passive Infrastructure
+
+• Regardless of the business model selected, the project will likely require an upfront capital contribution
+from the City. But partners may also bring economies of scale and existing assets to the table,
+potentially reducing the magnitude of the contribution
+Packet Pg. 19
+
+1.a
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+TIMELINE AND POTENTIAL NEXT STEPS
+Below is an indicative 18 to 24 months roadmap that would occur once the City
+makes its initial “go-forward” decision
+Conduct market sounding
+Select business model & draft term sheet
+Launch RFI based on term sheet
+Prepare procurement documentation
+Launch procurement & conduct one-on-one meetings
+Evaluate bids & select preferred bidder
+Conduct final negotiations
+Award contract
+City decision
+
+Packet Pg. 20
+
+QUESTIONS AND
+DISCUSSION
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+Packet17
+Pg. 21
+
+APPENDIX
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+Packet18
+Pg. 22
+
+SENSITIVITY ANALYSIS: CAPEX
+To meet 10 percent project IRR, the upfront capital contribution could be higher or
+lower than if capital costs or take-rates are higher or lower than in the base case
+Capex sensitivity
+
+Required upfront capital contribution at different take rates
+30%
+
+35%
+
+40%
+
+45%
+
+50%
+
+20% capex contingency
+
+$158M
+
+$143M
+
+$130M
+
+$117M
+
+$105M
+
+30% capex contingency (base case)
+
+$178M
+
+$164M
+
+$151M
+
+$138M
+
+$126M
+
+$199M*
+
+$184M
+
+$172M
+
+$159M
+
+$148M
+
+40% capex contingency
+
+*Required upfront capital contribution amount exceeds overall capex
+
+Packet Pg. 23
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+SENSITIVITY ANALYSIS: OPEX
+To meet 10 percent project IRR, the upfront capital contribution could be higher or
+lower if opex is higher or lower than in the base case
+Opex assumption relative to baseline
+
+Required upfront capital contribution at different take rates
+30%
+
+35%
+
+40%
+
+45%
+
+50%
+
+10% decrease in opex
+
+$165M
+
+$151M
+
+$139M
+
+$126M
+
+$114M
+
+Base case
+
+$178M
+
+$164M
+
+$151M
+
+$138M
+
+$126M
+
+10% increase in opex
+
+$191M*
+
+$177M
+
+$164M
+
+$151M
+
+$139M
+
+20% increase in opex
+
+$205M*
+
+$190M
+
+$178M
+
+$164M
+
+$153M
+
+*Required upfront capital contribution amount exceeds overall capex
+
+Packet Pg. 24
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+SENSITIVITY ANALYSIS: AVERAGE REVENUE PER USER
+Changes in pricing dramatically affect the required upfront capital contribution
+required to meet 10 percent project IRR
+
+Low income/full paying: $20/$50
+
+30%
+$230M*
+
+Required upfront capital contribution
+at different take rates
+35%
+40%
+45%
+$223M*
+$217M*
+$210M*
+
+Low income/full paying: $20/$60
+
+$206M*
+
+$195M*
+
+$185M
+
+$174M
+
+$165M
+
+Low income/full paying: $30/$60
+
+$202M*
+
+$190M
+
+$180M
+
+$169M
+
+$159M
+
+Low income/full paying: $30/$70
+
+$178M
+$156M
+$152M
+$133M
+
+$164M
+$140M
+$136M
+$114M
+
+$151M
+$125M
+$121M
+$96M
+
+$138M
+$110M
+$105M
+$79M
+
+$126M
+$96M
+$91M
+$62M
+
+Pricing assumption relative to baseline
+
+Low income/full paying: $30/$80
+Low income/full paying: $40/$80
+Low income/full paying: $40/$90
+
+50%
+$203M*
+
+*Required upfront capital contribution amount exceeds overall capex
+
+Packet Pg. 25
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+SENSITIVITY ANALYSIS: OPERATING PERIOD
+Upfront capital contribution required to meet 10 percent project IRR with varying
+operating periods, at different take rates
+Operating period duration
+
+Required upfront capital contribution at different take rates
+30%
+
+35%
+
+40%
+
+45%
+
+50%
+
+$182M*
+
+$169M
+
+$158M
+
+$146M
+
+$136M
+
+25-year operations period (base case)
+
+$178M
+
+$164M
+
+$151M
+
+$138M
+
+$126M
+
+30-year operations Period
+
+$178M
+
+$162M
+
+$148M
+
+$134M
+
+$121M
+
+20-year operations period
+
+*Required upfront capital contribution amount exceeds overall capex
+
+Packet Pg. 26
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+1.a
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+SURVEY METHODOLOGY
+Mailed survey was met with a strong response and has high degree of statistical
+validity
+• 5,000 survey packets mailed to a random set of Cambridge residential addresses
+• Of these, 3,000 went to low-income households (to plan for typically lower response)
+• Goal was 450 responses; results exceeded goal, with 604 responses
+
+• Results developed data on relevant topics including
+o Current providers used and prices paid
+o Willingness to switch to a new FTTP provider at various price points
+o Level of support for City taking on a role or subsidizing
+
+Packet23
+Pg. 27
+
+MARKET OVERVIEW
+Statistically valid survey shows community support for a municipal fiber network, even
+if a tax subsidy is required
+• 66% agreed or strongly agreed
+that City should facilitate
+building a fiber broadband
+network, even if this requires
+tax subsidy
+
+Agreement with Statement: “The City Should Facilitate a Fiber
+Broadband Network, Even If This Requires a Tax Subsidy”
+100%
+80%
+
+35%
+
+60%
+
+9%
+
+40%
+
+33%
+
+20%
+
+0%
+
+46%
+
+13%
+10%
+
+27%
+
+39%
+
+32%
+
+25%
+
+45%
+
+31%
+
+• Modest differences in such
+support between owners and
+renters (61% vs. 68%)
+
+17%
+
+16%
+
+22%
+
+5%
+6%
+
+3%
+4%
+
+< $50k
+$50-$99k
+1 - Strongly Disagree
+2 - Disagree
+
+44%
+
+13%
+
+7%
+
+$100-$149k
+3 - Neutral
+
+7%
+
+6%
+5%
+
+$150-$199k
+$200k +
+4 - Agree
+5 - Strongly Agree
+
+Notes: Citywide mail survey conducted to a random sample of 5,000 households in summer of 2022, with 604 responses
+exceeding target and providing 95% confidence that the results are within 4% of the population as a whole
+
+Packet24
+Pg. 28
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+MARKET OVERVIEW
+Survey also shows baseline interest in switching to new internet options, particularly
+among Comcast subscribers
+• 87% believe there is need for an
+additional ISP
+
+Likelihood of Acquiring New Internet Service
+100%
+
+9%
+26%
+
+8%
+
+25%
+
+80%
+60%
+
+32%
+
+29%
+60%
+
+40%
+20%
+0%
+
+35%
+
+34%
+
+• Interest in switching strong
+among Comcast subscribers
+(58% likely or very likely)
+• Interest in switching weaker for
+Starry subscribers (17% likely or
+very likely)
+
+8%
+6%
+2%
+
+15%
+
+8%
+4%
+
+Cable modem (Comcast), n=461 Fixed wireless (Starry), n=50
+All Respondents, n=577
+1 - Not at all likely
+2 - Slightly likely
+3 - Moderately likely
+4 - Very likely
+5 - Extremely likely
+
+Notes: Citywide mail survey conducted to a random sample of 5,000 households in summer of 2022, with 604 responses
+exceeding target and providing 95% confidence that the results are within 4% of the population as a whole
+
+Packet25
+Pg. 29
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+MARKET OVERVIEW
+Comparison can be challenging because of differences in speed, bundled services,
+customer experience, and promotional pricing, but the market generally prices FTTP
+products close to cable offerings, around $70/month
+Cambridge provider
+
+Gigabit internet-only service
+
+Monthly price
+
+Comcast
+(Internet/phone/cable – range of
+prices based on services and
+promotions chosen)
+
+1 Gbps download, 35 Mbps upload
+(company says symmetrical gig
+speeds are in development)
+
+$70*
+(promotional price; rises to $102
+after 24 months)
+
+Starry
+(fixed wireless internet)
+
+1 Gbps download/500 Mbps upload
+(in optimal conditions)
+
+$80
+
+Google Fiber (internet)
+
+1 Gbps symmetrical
+
+$70
+
+Ting Internet (internet)
+
+1 Gbps symmetrical
+
+$89
+
+FTTP competitor in other markets
+
+Notes: FTTP = Fiber To The Premises, which references deployments where fibers extends all the way to the end-user and offers higher speed and reliability
+*Prices reflect $10 discount for enrolling in auto-pay. Offer includes free 12 months of HBO Max with ads.
+Packet26
+Pg. 30
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+MARKET OVERVIEW
+Municipal FTTP would primarily compete on a strong local brand with similar pricing to
+existing cable offerings, while achieving key public policy goals
+• Pricing: The service would offer symmetrical gigabit service with indicative price points of
+$70 gigabit ($30 for low-income households, aligned with Affordable Connectivity Program) –
+but would likely face promotional pricing pressure from existing providers
+• Product: While a fiber product would initially provide a stronger product, Comcast is focused
+on infrastructure improvements that could achieve gig symmetry
+• Brand: A key competitive advantage would be brand with marketing focused on local pride
+and values (data privacy, net neutrality, digital equity, strong local customer service) to drive
+adoption and win loyalty
+
+• Public Policy Goals: A municipal offering could ensure policy goals that aren’t being met in
+the market, including increased competition, digital equity, data privacy, and net neutrality
+Packet27
+Pg. 31
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+MARKET OVERVIEW
+Based on national benchmarks, a target take-rate of 30-40% seems feasible in
+Cambridge with strong operational and marketing execution
+• Successful publicly traded telcos with FTTP operations focus
+on achieving 35-40% market penetration
+
+• Higher market penetration above 40% is possible in markets
+with weak or no cable competitor; successful case examples
+with municipal FTTP networks are mostly run by municipal
+electric companies with an existing customer base
+• Municipal FTTP networks that are ending up lower than 30%
+exhibit poor execution, competition from both cable and
+telco FTTP (i.e., Verizon FiOS), and are mostly suburban
+markets
+
+Wired competitors
+
+Weak DSL
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+Take rate
+range for new
+competitor
+
+High ‘40s
+& above
+
+Weak DSL and cable
+(Cambridge market)
+
+35-40%
+
+Partial fiber or fast DSL
+and cable
+
+30-40%
+
+Extensive fiber and cable
+
+12-30%
+
+Packet28
+Pg. 32
+
+1.a
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+DESIGN OVERVIEW
+
+• Citywide FTTP comprised of 130.3 route miles
+• 80.9 miles (62.1%) aerial (utility poles available)
+• 49.4 miles (37.9%) underground
+
+• Redundant core hub sites and fully diverse backbone ring
+• 42 primary Fiber Distribution Cabinets (FDCs)
+• Connected to core hubs over fully diverse primary distribution routes
+• Each serves up to 1,500 subscribers
+• Supports passive and/or active electronics
+
+Packet29
+Pg. 33
+
+DESIGN OVERVIEW
+
+Backbone and Primary
+Distribution
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+Packet30
+Pg. 34
+
+1.a
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+DESIGN OVERVIEW
+Backbone, Primary
+Distribution, and
+Secondary Distribution
+
+Packet31
+Pg. 35
+
+1.a
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+“LAYER 0” CONCEPTUAL DESIGN
+Primary
+Distribution
+Conduit
+
+Hub
+
+Distribution Vault
+FDC
+Tap Access
+Handhole
+
+Secondary
+Distribution
+Conduit
+
+Access Conduit
+
+Drop Access
+Handhole
+
+Packet32
+Pg. 36
+
+PRIMARY CONDUIT CONFIGURATION TYPES AND UNIT COST
+ESTIMATES (COMPOSITE BORE / TRENCH)
+Scenario 1: 38% underground / 62% aerial
+
+Primary & Secondary
+Distribution, Drop Access
+Drop
+Acces s
+Con duit 1"
+
+Primary
+Distribution 2"
+
+Secondary
+Distribution 2"
+
+Secondary
+Distribution and
+Drop Access
+Drop
+Acces s
+Con duit 1"
+
+Secondary
+Distribution 2"
+
+Primary Distribution
+and Drop Access
+
+Backbone & Secondary
+Distribution
+
+Drop
+Acces s
+Con duit 1"
+
+Primary
+Distribution 2"
+
+Primary
+Distribution 2"
+
+Backbone - 2"
+
+Secondary
+Distribution 2"
+
+Primary
+Distribution 2"
+
+$71.20 per foot
+~6.7 miles
+
+Drop Access
+Drop
+Acces s
+Conduit 1"
+
+$56.70 per foot
+~10.9 miles
+
+Drop
+Acces s
+Microduct
+
+$58.2 per foot
+~28.1 miles
+
+$65.20 per foot
+~2.3 miles
+
+$64.20 per foot
+~3.4 miles
+
+<22 mm
+
+$56.70 per foot
+~48.0 miles
+
+Note: Pricing includes all labor and material costs for conduit installation, including tracer wire and hard rock contingency. Pricing does
+not include handholes or fiber-related labor and material.
+Packet33
+Pg. 37
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+1.a
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+INSTALLATION TYPICALS
+Vaults and Strand Trench Profiles
+Trench Details
+
+Typical Vault Installation
+
+Finished
+roadway surface
+(if applicable)
+
+1" to 3"
+
+Min 12"
+
+Compacted select
+backfill
+
+GRADE
+
+GRADE
+10 AWG
+insulated
+tracer wire
+Ground
+rod clamp
+
+6" min.
+
+Concrete base
+(if applicable)
+
+Buried
+warning tape
+6" - 12"
+
+Compacted
+Aggregate backfill /
+subbase
+
+24" min.
+
+Add 1" to 2" of
+additional crushed
+stone / gravel inside
+vault base
+
+6"
+
+2-inch HDPE
+conduits
+4"
+
+4"
+
+2"
+
+Flowable Fill or
+sand in pipe
+area
+6" bed of #57
+crushed stone
+
+Tamped /
+undisturbed
+soil
+
+Min 4"
+
+5/8-inch diameter
+ground rod,
+minimum 10 feet
+long, 25 ohm test
+
+Tamped /
+undisturbed
+soil
+4 x 2-inch HDPE
+conduits,
+minimum ¾-inch
+separation
+
+Packet34
+Pg. 38
+
+1.a
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+INSTALLATION TYPICALS
+Microtrench
+Road/ Sidewalk Microtrench Details (Free Flowing Grout)
+Cross Section View
+
+Cut to Fit Width of Microduct (Max .75")
+
+Asphalt
+Pavement
+(existing)
+
+Free flowing non-shrink grout (asphalt pavement behind)
+Free flowing non-shrink
+grout (road base behind)
+
+Road Base
+(existing)
+Place warning
+tape prior to
+grouting
+
+Max 14"
+
+Free flowing
+non-shrink grout
+
+Min 1.5x trench width
+
+Free flowing non-shrink
+grout (road sub-base
+behind)
+
+Road
+Sub-base
+(existing)
+
+Max 6"
+
+GRADE
+
+1/3 Asphalt
+Thickness
+
+Keyed, Milled, Final
+Hot Patch Mix
+
+Profile Veiw
+
+Microduct
+Pea Gravel to hold Microduct
+flat and prevent floating during
+grouting (Space Min 9' apart)
+
+Microduct
+Max 15"
+
+Packet35
+Pg. 39
+
+1.a
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+PRIMARY VAULT CONFIGURATION TYPES AND UNIT COST
+ESTIMATES
+Scenario 1: 38% underground / 62% aerial
+
+Equipment
+Vault
+(30”x48”x36”)
+
+Distribution
+Vault
+(24”x36”x36”)
+
+Tap Access
+Handhole
+(18”x30”x18”
+
+Drop Access
+Handhole
+(12”x12”x12”)
+
+$1,455 each
+Qty. 638
+
+$6,655 each
+Qty. 16
+
+$1,105 each
+Qty. 3,039
+
+$3,255 each
+Qty. 58
+
+Note: Pricing includes all labor and material costs for vault / handhole installation, including ground rods. Pricing does not include conduit
+or fiber-related labor and material.
+Packet36
+Pg. 40
+
+Primary
+Distribution
+
+Hub Facility
+
+Primary Distribution Route
+
+FDC
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+SAMPLE
+MAP
+
+S A M P L E
+
+1.a
+
+Packet37
+Pg. 41
+
+Secondary
+Distribution
+
+FDC
+Secondary Distribution Route
+Tap Terminal
+
+S A M P L E
+
+SAMPLE
+MAP
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+Packet38
+Pg. 42
+
+Access
+segments
+
+Tap Terminal
+
+Tertiary Route / Service Drop
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+SAMPLE
+MAP
+
+S A M P L E
+
+1.a
+
+Packet39
+Pg. 43
+
+Combined
+distribution &
+access
+segments
+Hub Facility
+
+Primary Distribution Route
+FDC
+Secondary Distribution Route
+Tap Terminal
+
+Tertiary Route / Service Drop
+
+S A M P L E
+
+SAMPLE
+MAP
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+Packet40
+Pg. 44
+
+1.a
+
+• Survey of all 156 miles of candidate public
+right-of-way
+• 62.1% aerial (utility poles available)
+• 37.9% underground
+• Estimate utility pole make-ready costs to be
+$4.1 million based on design encompassing a
+total of 130.3 route miles (underground and
+aerial)
+
+Total estimated utility poles along routes of
+each classification
+Percent of poles requiring make ready
+Cost per existing attachment relocation
+Percent of poles requiring replacement
+Average attachments per pole
+Average poles per mile
+Cost per pole replacement
+Estimated make-ready cost per foot
+Total Strand (ft)
+Total Strand (mi)
+Total make-ready cost
+
+Make-Ready Survey Classification
+Type A
+Type B
+Type C
+3,603
+
+412
+
+28
+
+25.0%
+$500
+5.0%
+1.0
+50
+$10,000
+$8.29
+380,443
+72.05
+$2,837,112
+
+50.0%
+$500
+10.0%
+2.0
+50
+$10,000
+$18.94
+43,552
+8.25
+$742,371
+
+75.0%
+$500
+25.0%
+2.0
+50
+$10,000
+$42.61
+2,989
+0.57
+$114,631
+
+Packet41
+Pg. 45
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+FIELD SURVEY RESULTS
+
+Make-Ready Attribute
+
+1.a
+
+NETWORK
+ELECTRONICS &
+FIBER COMPONENT
+REFERENCE
+DESIGN
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+GP ON 2
+
+GP ON 3
+
+GP ON 4
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+GP ON 1
+
+GP ON 2
+
+GP ON 3
+
+GP ON 4
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+GP ON 1
+
+GP ON 2
+
+GP ON 3
+
+GP ON 4
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+GP ON 1
+
+GP ON 2
+
+GP ON 3
+
+GP ON 4
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+GP ON 1
+
+GP ON 2
+
+GP ON 3
+
+GP ON 4
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+FA IL
+
+GP ON 4
+
+GP ON 1
+
+-2-
+
+CT RL
+
+GP ON 3
+
+SRVC
+
+GP ON 2
+
+GPON-4
+
+CT RL
+
+GP ON 1
+
+SRVC
+
+GPON OLT /
+Ethernet Switch
+
+Core Router
+
+GPON-4
+
+Calix E7
+-2-
+
+CR
+MJ
+
+FA IL
+
+MN
+
+-1-
+
+MGT
+
+-1-
+
+MGT - 4
+
+MGT - 1
+
+ACO
+
+CT RL
+
+SRVC
+
+FA IL
+
+CT RL
+
+SRVC
+
+GPON-4
+
+GPON-4
+
+CT RL
+
+-2-
+
+SRVC
+
+FTA
+
+GPON-4
+
+Calix E7
+-2-
+
+CR
+MJ
+
+FA IL
+
+MN
+
+-1-
+
+MGT
+
+-1-
+
+MGT - 4
+
+MGT - 1
+
+ACO
+
+Dedicated Fiber
+Optic Strand from
+FDC to Each
+Subscriber Tap
+
+Calix E7
+-2-
+
+CR
+MJ
+
+FA IL
+
+-1-
+
+CT RL
+
+MN
+
+GPON-4
+
+MGT
+
+-1-
+
+MGT - 4
+
+MGT - 1
+
+ACO
+FTA
+
+Core
+Network
+
+n x 10 Gbps links
+over redundant
+backbone routes
+Core Router
+
+Splitters
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+GP ON 4
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+FA IL
+
+GP ON 4
+
+GP ON 3
+
+CT RL
+
+GP ON 3
+
+GP ON 2
+
+SRVC
+
+GP ON 2
+
+GP ON 1
+
+GPON-4
+
+CT RL
+
+GP ON 1
+
+-2-
+
+SRVC
+
+GPON OLT /
+Ethernet Switch
+GPON-4
+
+PROVIDER B
+
+FA IL
+
+FTA
+
+-2-
+
+SRVC
+
+Calix E7
+-2-
+
+CR
+MJ
+MN
+
+-1-
+
+FA IL
+
+Flexible architecture
+capable of supporting
+multiple electronics
+architectures and/or
+multiple providers with
+differing approaches
+
+FDC
+
+PROVIDER A
+
+Hub Site
+
+Spare fiber capacity
+for limited Active
+Ethernet and Metro
+Ethernet services
+
+MGT
+
+-1-
+
+MGT - 4
+
+MGT - 1
+
+ACO
+FTA
+
+~1,500 passings per
+FDC
+
+Single
+Customer
+ONU
+
+Backbone Layer
+
+Distribution Layer
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+Large customer/MDU
+access devices
+(wavelength services, dedicated
+1 Gbps to 100 Gbps Ethernet,
+G.Fast aggregation)
+
+Access Layer
+
+Packet42
+Pg. 46
+
+INFRASTRUCTURE BUILDOUT
+Extensive field survey work was conducted to develop preliminary design and inform
+capital expenditure estimate
+
+• Field survey conducted by a team of senior
+telecommunications outside plant (OSP)
+engineers
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+– Physical walk-out or drive survey of 100% of
+156 miles of candidate public right of way:
+62.1% aerial (utility poles available) + 37.9%
+underground
+– Data collected in real-time using custom
+GPS/GIS tools to accurately record findings
+• Generated GIS data to inform cost estimates
+and market conditions
+
+Notes: See Appendix for more detail
+
+– Presence of existing utility poles
+– Make-ready assessment of utility poles
+– Presence of existing broadband
+infrastructure (cable, fiber, legacy telecom)
+Packet43
+Pg. 47
+
+INFRASTRUCTURE BUILDOUT
+Based on field survey, the proposed network design would create a robust
+infrastructure that could serve the city with leading edge technology for decades
+• Citywide FTTP comprised of 130.3 route
+miles:
+– 80.9 miles (62.1%) aerial (utility poles
+available)
+– 49.4 miles (37.9%) underground
+
+• Key elements would include redundant core
+hub sites, fully diverse backbone ring, and
+primary/secondary distribution
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+• 42 primary Fiber Distribution Cabinets (FDCs)
+– Connected to core hubs over fully diverse
+primary distribution routes
+– Each serves up to 1,500 subscribers
+– Supports passive and/or active electronics
+Packet44
+Pg. 48
+
+MUNICIPAL LIGHT PLANT (MLP) STRUCTURE
+MLPs are used by some Massachusetts municipalities that directly run broadband
+businesses in particular contexts
+• An MLP is a Massachusetts legal entity that enables a municipality to directly run an
+electricity, gas or (more recently) communications business
+– Some longstanding MLPs that provide electricity (e.g., Braintree, Norwood) entered the
+cable broadband business about 20 years ago leveraging utility expertise and assets
+– Certain rural western Massachusetts towns created MLP structures solely to provide
+broadband service using one-shot state capital grants, but the context differs
+• Creating a Cambridge MLP would be required if the City wishes to directly run a broadband
+business, but by itself does not affect business feasibility
+• The City does not need an MLP to build a network that would be operated by a partner who
+would in turn provide broadband service
+Note: Statements are general in nature and subject to updated legal guidance by qualified counsel. Neither CTC nor Rebel provide legal advice.
+Packet45
+Pg. 49
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+COST ESTIMATION OBJECTIVES
+Purpose-built analysis to support strategic broadband planning
+Understand the range of costs to deploy a state-of-the-art FTTP network under various scenarios for
+scope and construction methodologies
+• Physical fiber plant construction and design – aerial vs underground, MDU connectivity and interior wiring
+• Network hub facilities – redundancy and scale, use of existing facilities
+• Network electronics at varying take-rates
+• Customer activation costs (service drops and CPE) at varying take-rates
+
+Inform financial modeling and negotiations with candidate private partners
+• Generate breakdowns of component parts corresponding to division of capex contributions for most likely partnership
+scenarios and targeted populations
+– Active vs passive infrastructure
+– Wiring of MDUs containing affordable housing
+• Collect field data and analysis that can be shared with candidate partners to support their own cost modeling
+– Determine availability of existing utility poles and ascertain pole make-ready cost factors
+– Characterize make-up of MDU structure types and related deployment cost
+Packet46
+Pg. 50
+
+Attachment: March 13 City Council Roundtable Deck Rev. 5 (002) (COF 2023 #44 :
+
+1.a
+
+

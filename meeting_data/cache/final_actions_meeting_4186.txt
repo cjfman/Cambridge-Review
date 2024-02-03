@@ -1,0 +1,1799 @@
+CITY COUNCIL
+ROUNDTABLE/WORKING MEETING
+~ FINAL ACTIONS ~
+Monday, November 28, 2022
+
+5:30 PM
+
+Sullivan Chamber
+795 Massachusetts Avenue
+Cambridge, MA 02139
+
+Roundtable/Working City Council Meeting to discuss Municipal Broadband Feasibility Study
+Attendee Name
+Burhan Azeem
+Dennis J. Carlone
+Alanna Mallon
+Marc C. McGovern
+Patricia Nolan
+E. Denise Simmons
+Paul F. Toner
+Quinton Zondervan
+Sumbul Siddiqui
+
+Present
+
+Absent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Late
+
+
+
+
+
+
+
+
+
+
+
+Arrived
+
+6:10 PM
+
+Communications and Reports from Other City Officers
+A communication was received from City Manager Yi-An Huang, transmitting the Agenda for the
+City Council Round Table Working meeting.
+A communication was received from Director of Communications & Community Relations Lee
+Gianetti, transmitting a presentation regarding 21ST Century Broadband for the City of Cambridge.
+
+City of Cambridge
+
+Page 1
+
+City of Cambridge
+COF 2022 #146
+IN CITY COUNCIL
+November 28, 2022
+
+Packet Pg. 2
+
+a
+
+Agenda for November 28, 2022, City Council Roundtable/Working Meeting
+
+•
+
+Opening by City Manager Yi-An Huang
+
+•
+
+Presentation by CTC Technology & Energy and Rebel
+
+•
+
+Discussion with the City Council
+
+Attachment: Agenda for November 28 (COF 2022 #146 : A communication was received from City Manager Yi-An Huang)
+
+Update and Discussion on the City’s 21st Century Broadband Initiative
+
+Packet Pg. 3
+
+City of Cambridge
+COF 2022 #147
+IN CITY COUNCIL
+November 28, 2022
+
+Packet Pg. 4
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+21ST CENTURY BROADBAND FOR THE
+City Council Roundtable Discussion
+November 28, 2022
+
+Packet Pg. 5
+
+EXECUTIVE SUMMARY
+Broadband feasibility study illustrates several paths forward for the City
+• A Cambridge fiber-to-the-premises (FTTP) network would offer symmetrical gigabit internet
+service with affordable option for low-income customers, offering greater choice for
+Cambridge residents, local control, and competition against incumbent cable provider.
+• A detailed cost estimate is being finalized in order to perform a feasibility analysis, which
+shows the take-rates and pricing needed to meet financial return targets and the sensitivity
+of the results to key assumptions—including the potential of City subsidization.
+• The financial feasibility of the network also depends on the structure of the selected
+business model, which could include any of a range of partnerships with private entities in
+which the City sets requirements and goals. Nationally we have observed an increase in
+private market interest in participating in FTTP in certain cable monopoly cities.
+
+• Should the City decide to move forward, the next steps involve engagement with potential
+partners to validate feasibility and explore potential partnership structures.
+Packet Pg.
+2 6
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+MAY 2022 CITY COUNCIL PRESENTATION: A RECAP
+The May update provided a summary of work underway and detailed overviews of
+potential business model partnerships
+• Project overview and summary of work underway:
+– Site surveys and design/cost estimates underway
+– Market analysis underway, statistically valid mail survey launching
+– Engagement planned with business community and universities
+– Coordinating with CHA/City on affordable housing building connectivity and attributes
+• Overview of business model partnerships, including:
+
+– Scope of network elements
+– Summary of four different business models/variations
+– Qualitative assessment across initial objectives with pros/cons
+– Case studies of different structures
+Packet Pg.
+3 7
+
+AGENDA
+The feasibility study has been focused on developing a potential business case for
+municipal broadband across four major areas of work
+Market
+Overview
+
+• Survey of community support, product interest, initial pricing elasticity
+• Overview of competitive landscape and potential product offering
+
+Infrastructure
+Buildout
+
+• Rigorous field survey, GIS mapping, network design, and detailed infrastructure
+assumptions to estimate capital requirements
+
+Financial
+Model
+
+• Full financial model that enables testing key assumptions and sensitivities against
+target outputs (e.g., years to breakeven, IRR, subsidy requirement)
+
+Partnership
+Options
+
+• Development of business model partnership options that fit local context with
+pros/cons and trade-offs identified
+
+This presentation will provide an update on key areas with final numbers and
+recommendations to be presented in early 2023
+
+Packet Pg.
+4 8
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+MARKET OVERVIEW
+Statistically valid survey shows community support for a municipal fiber network, even
+if a tax subsidy is required
+• 66% agreed or strongly agreed
+that City should facilitate
+building a fiber broadband
+network, even if this requires
+tax subsidy
+
+Agreement with Statement: “The City Should Facilitate a Fiber
+Broadband Network, Even If This Requires a Tax Subsidy”
+100%
+80%
+
+35%
+
+60%
+
+9%
+
+40%
+
+33%
+
+20%
+
+0%
+
+46%
+
+13%
+10%
+
+27%
+
+39%
+
+32%
+
+25%
+
+45%
+
+31%
+
+• Modest differences in such
+support between owners and
+renters (61% vs. 68%)
+
+17%
+
+16%
+
+22%
+
+5%
+6%
+
+3%
+4%
+
+< $50k
+$50-$99k
+1 - Strongly Disagree
+2 - Disagree
+
+44%
+
+13%
+
+7%
+
+$100-$149k
+3 - Neutral
+
+7%
+
+6%
+5%
+
+$150-$199k
+$200k +
+4 - Agree
+5 - Strongly Agree
+
+Notes: Citywide mail survey conducted to a random sample of 5,000 households in summer of 2022, with 604 responses
+exceeding target and providing 95% confidence that the results are within 4% of the population as a whole
+
+Packet Pg.
+5 9
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+MARKET OVERVIEW
+Survey also shows baseline interest in switching to new internet options, particularly
+among Comcast subscribers
+• 87% believe there is need for an
+additional ISP
+
+Likelihood of Acquiring New Internet Service
+100%
+
+9%
+26%
+
+8%
+
+25%
+
+80%
+60%
+
+32%
+
+29%
+60%
+
+40%
+20%
+0%
+
+35%
+
+34%
+
+• Interest in switching strong
+among Comcast subscribers
+(58% likely or very likely)
+• Interest in switching weaker for
+Starry subscribers (17% likely or
+very likely)
+
+8%
+6%
+2%
+
+15%
+
+8%
+4%
+
+Cable modem (Comcast), n=461 Fixed wireless (Starry), n=50
+All Respondents, n=577
+1 - Not at all likely
+2 - Slightly likely
+3 - Moderately likely
+4 - Very likely
+5 - Extremely likely
+
+Notes: Citywide mail survey conducted to a random sample of 5,000 households in summer of 2022, with 604 responses
+exceeding target and providing 95% confidence that the results are within 4% of the population as a whole
+
+Packet Pg.
+6 10
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+MARKET OVERVIEW
+Survey tested different price points, with reduced interest for internet-only gigabit
+service beyond ~$70/month
+Willingness to purchase 1 Gbps internet service
+100%
+
+97%
+90%
+94%
+
+80%
+
+85%
+
+60%
+
+77%
+
+66%
+
+55%
+
+37%
+
+40%
+
+41%
+
+20%
+
+22%
+
+0%
+$30/month
+
+$50/month
+
+$70/month
+
+Moderately, very or extremely willing
+
+$90/month
+
+$110/month
+
+Very or extremely willing
+Packet Pg.
+7 11
+
+MARKET OVERVIEW
+Comparison can be challenging because of differences in speed, bundled services,
+customer experience, and promotional pricing, but the market generally prices FTTP
+products close to cable offerings, around $70/month
+Cambridge provider
+
+Gigabit internet-only service
+
+Monthly price
+
+Comcast
+(Internet/phone/cable – range of
+prices based on services and
+promotions chosen)
+
+1 Gbps download, 35 Mbps upload
+(company says symmetrical gig
+speeds are in development)
+
+$70*
+(promotional price; rises to $102
+after 24 months)
+
+Starry
+(fixed wireless internet)
+
+1 Gbps download/500 Mbps upload
+(in optimal conditions)
+
+$80
+
+Google Fiber (internet)
+
+1 Gbps symmetrical
+
+$70
+
+Ting Internet (internet)
+
+1 Gbps symmetrical
+
+$89
+
+FTTP competitor in other markets
+
+Notes: FTTP = Fiber To The Premises, which references deployments where fibers extends all the way to the end-user and offers higher speed and reliability
+*Prices reflect $10 discount for enrolling in auto-pay. Offer includes free 12 months of HBO Max with ads.
+Packet Pg.
+8 12
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+MARKET OVERVIEW
+Municipal FTTP would primarily compete on a strong local brand with similar pricing to
+existing cable offerings, while achieving key public policy goals
+• Pricing: The service would offer symmetrical gigabit service with indicative price points of
+$70 gigabit ($30 for low-income households, aligned with Affordable Connectivity Program) –
+but would likely face promotional pricing pressure from existing providers
+• Product: While a fiber product would initially provide a stronger product, Comcast is focused
+on infrastructure improvements that could achieve gig symmetry
+• Brand: A key competitive advantage would be brand with marketing focused on local pride
+and values (data privacy, net neutrality, digital equity, strong local customer service) to drive
+adoption and win loyalty
+
+• Public Policy Goals: A municipal offering could ensure policy goals that aren’t being met in
+the market, including increased competition, digital equity, data privacy, and net neutrality
+Packet Pg.
+9 13
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+MARKET OVERVIEW
+Based on national benchmarks, a target take-rate of 30-40% seems feasible in
+Cambridge with strong operational and marketing execution
+• Successful publicly traded telcos with FTTP operations focus
+on achieving 35-40% market penetration
+
+• Higher market penetration above 40% is possible in markets
+with weak or no cable competitor; successful case examples
+with municipal FTTP networks are mostly run by municipal
+electric companies with an existing customer base
+• Municipal FTTP networks that are ending up lower than 30%
+exhibit poor execution, competition from both cable and
+telco FTTP (i.e., Verizon FiOS), and are mostly suburban
+markets
+
+Wired competitors
+
+Weak DSL
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+Take rate
+range for new
+competitor
+
+High ‘40s
+& above
+
+Weak DSL and cable
+(Cambridge market)
+
+35-40%
+
+Partial fiber or fast DSL
+and cable
+
+30-40%
+
+Extensive fiber and cable
+
+12-30%
+
+Packet10
+Pg. 14
+
+INFRASTRUCTURE BUILDOUT
+Extensive field survey work was conducted to develop preliminary design and inform
+capital expenditure estimate
+
+• Field survey conducted by a team of senior
+telecommunications outside plant (OSP)
+engineers
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+– Physical walk-out or drive survey of 100% of
+156 miles of candidate public right of way:
+62.1% aerial (utility poles available) + 37.9%
+underground
+– Data collected in real-time using custom
+GPS/GIS tools to accurately record findings
+• Generated GIS data to inform cost estimates
+and market conditions
+
+Notes: See Appendix for more detail
+
+– Presence of existing utility poles
+– Make-ready assessment of utility poles
+– Presence of existing broadband
+infrastructure (cable, fiber, legacy telecom)
+Packet11
+Pg. 15
+
+INFRASTRUCTURE BUILDOUT
+Based on field survey, the proposed network design would create a robust
+infrastructure that could serve the city with leading edge technology for decades
+• Citywide FTTP comprised of 130.3 route
+miles:
+– 80.9 miles (62.1%) aerial (utility poles
+available)
+– 49.4 miles (37.9%) underground
+
+• Key elements would include redundant core
+hub sites, fully diverse backbone ring, and
+primary/secondary distribution
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+• 42 primary Fiber Distribution Cabinets (FDCs)
+– Connected to core hubs over fully diverse
+primary distribution routes
+– Each serves up to 1,500 subscribers
+– Supports passive and/or active electronics
+Packet12
+Pg. 16
+
+INFRASTRUCTURE BUILDOUT
+Buildout scenarios were created based on how many multi-dwelling units were
+included (all scenarios included building out core backbone and infrastructure)
+Scenario
+
+Citywide?
+
+MDUs
+
+Underground vs. Aerial
+
+Passings
+(Normal/MDU)
+
+Buildout
+Schedule
+
+1
+
+Yes
+
+All MDUs
+
+Underground & Aerial
+
+19,500 / 33,000
+
+48+ months
+
+2
+
+Yes
+
+All MDUs
+
+Underground only
+
+19,500 / 33,000
+
+48+ months
+
+3
+
+Yes
+
+All affordable housing MDUs
+
+Underground & Aerial
+
+19,500 / 16,000
+
+48+ months
+
+4
+
+Yes
+
+CHA MDUs only
+
+Underground & Aerial
+
+19,500 / 2,500
+
+36+ months
+
+• Scenarios 3 and 4 represent more limited buildouts to affordable housing, but limit financial returns because of
+less market rate residential presence
+• Scenario 1 and 2 represent full buildouts with Scenario 1 mixing less expensive aerial buildouts
+
+Final report will include full capital estimate for infrastructure buildout scenarios
+Notes: See Appendix for more detail
+
+Packet13
+Pg. 17
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+FINANCIAL MODEL
+A custom financial model is being developed to understand business case and key
+sensitivities
+Key inputs include:
+• Capital expenses: Outside plant, network equipment, drops, CPE, buildout schedule, etc.
+• Pricing: Target pricing based on market, mix of full paying vs. low-income
+
+• Take rate / adoption curve: Steady state take rate, take rate ramp up, churn
+• Operating expenditures:
+– Labor costs
+– Non-labor parametric operating costs (e.g., $x per pole times n poles)
+– Other non-labor operating costs (e.g., $x per month for insurance)
+• Inflation adjustment (capex, opex, revenue)
+• Capital grant funding: City subsidy to reduce initial capital expenses
+• Financing conditions: Interest rate, expected return on equity, debt-to-equity ratio, term, etc.
+Packet14
+Pg. 18
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+FINANCIAL MODEL
+Modeling will enable net cash flow projections over the construction and 25-year
+operating period, as well as testing different sensitivities (e.g., +/- 10% capex, pricing
+scenarios, take-rate ramps, etc.)
+
+O&M
+
+Capex & renewal
+
+Revenues
+
+2051
+
+2050
+
+2049
+
+2048
+
+2047
+
+2046
+
+2045
+
+2044
+
+2043
+
+2042
+
+2041
+
+2040
+
+2039
+
+2038
+
+2037
+
+2036
+
+2035
+
+2034
+
+2033
+
+2032
+
+2031
+
+2030
+
+2029
+
+2028
+
+2027
+
+2026
+
+2025
+
+2024
+
+2023
+
+Illustrative Cash Flow Projection
+
+Net cash flows
+
+Final report will include base case financial projection with sensitivities around key assumptions
+Packet15
+Pg. 19
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+PARTNERSHIP OPTIONS
+The study will examine several business models the City could employ to partner with
+private sector companies while meeting its policy goals
+• Beyond the binary options of fully municipal or fully private networks, there exists several
+distinct and plausible possibilities for structuring the contractual relationships between the
+City and potential partners and the funding/financing of the network
+– Several types of companies could potentially be interested in a partnership with
+Cambridge including P3 (public-private partnership) infrastructure investors (e.g.,
+Meridiam, Plenary), ISPs offering standalone broadband (e.g., Google Fiber, Ting), and
+traditional ISPs.
+• In any partnership, active City involvement would be needed, including by facilitating
+buildout (expedited permitting, micro-trenching, etc.) and possibly contributing financially to
+the project
+• Partnership is likely a critical component given that Cambridge does not have a municipal
+electric utility, which is typically the foundation of successful City-run broadband businesses
+Packet16
+Pg. 20
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+PARTNERSHIP OPTIONS
+Partnership could offer significant advantages while the City could ensure key public
+policy goals are met
+What City could gain…
+• De-risking business model
+through market validation
+• Operational and marketing
+expertise in a highly
+competitive and fastchanging business
+• Potential private capital
+investment to reduce upfront
+costs
+
+…what City could give up…
+• Upside revenue potential
+• Control over day-to-day
+business operations and
+market rate setting
+
+…what City could retain
+• Fiber service to all City
+premises
+• City long-term ownership of
+fiber infrastructure
+• Affordable options and
+pricing control for low-income
+households
+• Key policy goals around data
+privacy and net neutrality
+
+Final report will include recommendations on partnership options and more detailed analysis
+of pros/cons
+Packet17
+Pg. 21
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+QUESTIONS AND
+DISCUSSION
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+Packet18
+Pg. 22
+
+APPENDIX
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+Packet19
+Pg. 23
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+SURVEY METHODOLOGY
+Mailed survey was met with a strong response and has high degree of statistical
+validity
+• 5,000 survey packets mailed to a random set of Cambridge residential addresses
+• Of these, 3,000 went to low-income households (to plan for typically lower response)
+• Goal was 450 responses; results exceeded goal, with 604 responses
+
+• Results developed data on relevant topics including
+o Current providers used and prices paid
+o Willingness to switch to a new FTTP provider at various price points
+o Level of support for City taking on a role or subsidizing
+
+Packet20
+Pg. 24
+
+MUNICIPAL LIGHT PLANT (MLP) STRUCTURE
+MLPs are used by some Massachusetts municipalities that directly run broadband
+businesses in particular contexts
+• An MLP is a Massachusetts legal entity that enables a municipality to directly run an
+electricity, gas or (more recently) telecommunications company
+– Some longstanding MLPs that provide electricity (e.g., Braintree, Norwood) entered the
+cable broadband business about 20 years ago leveraging utility expertise and assets
+– Certain rural western Massachusetts towns created MLP structures solely to provide
+broadband service using one-shot state capital grants, but the context differs
+• Creating a Cambridge MLP would be required if the City wishes to directly run a broadband
+company, but by itself does not affect business feasibility
+• The City does not need an MLP to build a network that would be operated by a partner who
+would in turn provide broadband service
+Note: Statements are general in nature and subject to updated legal guidance by qualified counsel. Neither CTC nor Rebel provide legal advice.
+Packet21
+Pg. 25
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+FIELD SURVEY RESULTS
+• Survey of all 156 miles of candidate
+public right-of-way
+– 62.1% aerial (utility poles available)
+– 37.9% underground
+• Estimate utility pole make-ready costs
+at based on design encompassing a
+total of 130.3 route miles (underground
+and aerial)
+
+Packet22
+Pg. 26
+
+DESIGN GOALS
+Citywide FTTP
+❑ Ubiquitous service within Cambridge City limits
+
+1
+
+Develop a cost-effective,
+flexible architecture –
+optimized for the long term
+
+❑ Support residential gigabit services and up to 10 gigabit symmetrical business
+services
+❑ Maximize use of existing assets, including utility poles and City conduit
+❑ Physical topology capable of supporting full spectrum of access technologies
+(GPON, XGS-PON, NG-PON2, Active Ethernet, etc.)
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+❑ Large fiber counts and access points cable of supporting a range of open access
+models
+
+2
+
+Support resilient and
+survivable services for
+business and carriers
+
+❑ Support deployment of active network components and redundancy closer to the
+customer than with traditional designs for self-healing backbone capabilities
+❑ Primary distribution forming diversely routed rings passing through each
+neighborhood
+Packet23
+Pg. 27
+
+Hub
+
+•
+•
+•
+
+Distribution
+vault
+
+•
+
+•
+
+•
+
+FDC
+•
+
+Tap access
+handholes
+
+•
+•
+•
+
+Drop access
+handholes
+
+•
+•
+•
+•
+•
+
+Fiber cable & components – “Layer 1”
+
+Hardened facility for network electronics
+Approx. 10,000 to 50,000 passings per hub
+Fiber termination for distribution plant
+
+Termination
+panels
+
+Large underground vaults along distribution
+routes, < 750 feet apart for cable pulling &
+direction changes
+Supports cable slack loops
+
+Fiber splice
+enclosures
+
+Outdoor cabinets for fiber equipment (splice
+enclosures, splitters, etc.)
+Capable of supporting City and third-party provider
+electronics
+
+Small underground vault
+Contains FTTP tap terminals for 6 to 12 passings
+(typical);
+< 1,000 feet from each premises
+Small underground vault
+Provides access point to drop conduit
+Placed in ROW adjacent to customer premises
+Supports 1 to 2 passings
+No more than 3 in any service drop path
+
+Fiber distribution
+cabinets /
+splitters
+
+Subscriber taps
+
+Network interface
+device (“NID”)
+Packet Pg. 28
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+Conduit infrastructure – “Layer 0”
+
+a
+
+24
+
+Primary
+Distribution
+
+Hub Facility
+
+Primary Distribution Route
+
+FDC
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+SAMPLE
+MAP
+
+S A M P L E
+
+a
+
+Packet25
+Pg. 29
+
+Secondary
+Distribution
+
+FDC
+
+Secondary Distribution Route
+
+Tap Terminal
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+SAMPLE
+MAP
+
+S A M P L E
+
+a
+
+Packet26
+Pg. 30
+
+Access
+segments
+
+Tap Terminal
+
+Tertiary Route / Service Drop
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+SAMPLE
+MAP
+
+S A M P L E
+
+a
+
+Packet27
+Pg. 31
+
+Combined
+distribution &
+access
+segments
+Hub Facility
+
+Primary Distribution Route
+FDC
+Secondary Distribution Route
+Tap Terminal
+
+Tertiary Route / Service Drop
+
+S A M P L E
+
+SAMPLE
+MAP
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+Packet28
+Pg. 32
+
+NETWORK
+ELECTRONICS &
+FIBER COMPONENT
+REFERENCE
+DESIGN
+
+Large customer/MDU
+access devices
+(wavelength services, dedicated
+1 Gbps to 100 Gbps Ethernet,
+G.Fast aggregation)
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+GP ON 2
+
+GP ON 3
+
+GP ON 4
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+GP ON 1
+
+GP ON 2
+
+GP ON 3
+
+GP ON 4
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+GP ON 1
+
+GP ON 2
+
+GP ON 3
+
+GP ON 4
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+GP ON 1
+
+GP ON 2
+
+GP ON 3
+
+GP ON 4
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+GP ON 1
+
+GP ON 2
+
+GP ON 3
+
+GP ON 4
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+FA IL
+
+GP ON 4
+
+GP ON 1
+
+-2-
+
+CT RL
+
+GP ON 3
+
+SRVC
+
+GP ON 2
+
+GPON-4
+
+CT RL
+
+GP ON 1
+
+SRVC
+
+GPON OLT /
+Ethernet Switch
+
+Core Router
+
+GPON-4
+
+Calix E7
+-2-
+
+CR
+MJ
+
+FA IL
+
+MN
+
+-1-
+
+MGT
+
+-1-
+
+MGT - 4
+
+MGT - 1
+
+ACO
+
+CT RL
+
+SRVC
+
+FA IL
+
+CT RL
+
+SRVC
+
+GPON-4
+
+GPON-4
+
+CT RL
+
+-2-
+
+SRVC
+
+FTA
+
+GPON-4
+
+Calix E7
+-2-
+
+CR
+MJ
+
+FA IL
+
+MN
+
+-1-
+
+MGT
+
+-1-
+
+MGT - 4
+
+MGT - 1
+
+ACO
+
+Dedicated Fiber
+Optic Strand from
+FDC to Each
+Subscriber Tap
+
+Calix E7
+-2-
+
+CR
+MJ
+
+FA IL
+
+-1-
+
+CT RL
+
+MN
+
+GPON-4
+
+MGT
+
+-1-
+
+MGT - 4
+
+MGT - 1
+
+ACO
+FTA
+
+Core
+Network
+
+n x 10 Gbps links
+over redundant
+backbone routes
+Core Router
+
+Splitters
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+GP ON 4
+
+SFP 1
+
+SFP 2
+
+SFP 3
+
+SFP 4
+
+SFP 5
+
+SFP 6
+
+SFP 7
+
+SFP 8
+
+XFP 1
+
+XFP 2
+
+SFP + 1
+
+SFP + 2
+
+FA IL
+
+GP ON 4
+
+GP ON 3
+
+CT RL
+
+GP ON 3
+
+GP ON 2
+
+SRVC
+
+GP ON 2
+
+GP ON 1
+
+GPON-4
+
+CT RL
+
+GP ON 1
+
+-2-
+
+SRVC
+
+GPON OLT /
+Ethernet Switch
+GPON-4
+
+PROVIDER B
+
+FA IL
+
+FTA
+
+-2-
+
+SRVC
+
+Calix E7
+-2-
+
+CR
+MJ
+MN
+
+-1-
+
+FA IL
+
+Flexible architecture
+capable of supporting
+multiple electronics
+architectures and/or
+multiple providers with
+differing approaches
+
+FDC
+
+PROVIDER A
+
+Hub Site
+
+Spare fiber capacity
+for limited Active
+Ethernet and Metro
+Ethernet services
+
+MGT
+
+-1-
+
+MGT - 4
+
+MGT - 1
+
+ACO
+FTA
+
+~1,500 passings per
+FDC
+
+Single
+Customer
+ONU
+
+Backbone Layer
+
+Distribution Layer
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+Access Layer
+
+Packet29
+Pg. 33
+
+COST ESTIMATION OBJECTIVES
+Purpose-built analysis to support strategic broadband planning
+Understand the range of costs to deploy a state-of-the-art FTTP network under various scenarios for
+scope and construction methodologies
+• Physical fiber plant construction and design – aerial vs underground, MDU connectivity and interior wiring
+• Network hub facilities – redundancy and scale, use of existing facilities
+• Network electronics at varying take-rates
+• Customer activation costs (service drops and CPE) at varying take-rates
+
+Inform financial modeling and negotiations with candidate private partners
+• Generate breakdowns of component parts corresponding to division of capex contributions for most likely partnership
+scenarios and targeted populations
+– Active vs passive infrastructure
+– Wiring of MDUs containing affordable housing
+• Collect field data and analysis that can be shared with candidate partners to support their own cost modeling
+– Determine availability of existing utility poles and ascertain pole make-ready cost factors
+– Characterize make-up of MDU structure types and related deployment cost
+Packet30
+Pg. 34
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+SCOPE ELEMENTS OF THE BROADBAND NETWORK
+Business models are distinguished largely by defining the role of parties at each
+scope element of the network
+Passive Infrastructure
+
+Active Infrastructure
+
+Service Provision
+
+Building and maintaining
+the dark fiber network
+
+Setting up and operating the
+active electronics on the network
+
+Delivering broadband
+services to subscribers
+
+Packet31
+Pg. 35
+
+SUMMARY OF BUSINESS MODELS
+The business models differ regarding how the three scope elements are combined
+into one or several contracts, and how competition is structured in the marketplace
+Model #
+
+Passive Infrastructure
+
+1
+
+City funded/financed
+and maintained
+
+Muni ISP (Broadband department or outsourced)
+
+2
+
+City funded/financed
+and maintained
+
+ISP (one or multiple)
+
+3
+
+City funded/financed
+and maintained
+
+4
+
+Active Infrastructure
+
+Active Infra contractor
+
+Service Provision
+
+Multiple ISPs / open market
+
+(Largely) privately funded/financed,
+privately maintained and operated
+
+Packet32
+Pg. 36
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+RISK ALLOCATION
+Differences in risk allocation arise from differences in the financial and contractual
+relationships between the involved parties across the four business models
+Model #
+
+Passive
+Infra
+
+1
+
+City
+
+2
+
+City
+
+3
+
+4
+
+City
+
+Active
+Infra
+
+Construction
+Risk
+
+Maintenance
+Risk
+
+Operating
+Risk
+
+Revenue
+Risk
+
+Muni ISP
+
+Traditional
+
+Traditional
+
+Retained
+by City
+
+Retained
+by City
+
+Private ISP(s)
+
+Traditional
+
+Traditional
+
+Transferred
+to ISP(s)
+
+Transferred
+to ISP(s)
+
+Traditional
+
+Traditional
+
+Transferred
+to Active Infra
+contractor & ISPs
+
+Transferred
+to ISPs
+
+Enhanced
+through longterm private
+financing
+
+Enhanced
+through longterm private
+financing
+
+Transferred to
+private sector
+
+Transferred to
+private sector
+
+Contractor
+
+Private
+
+Service
+Provision
+
+Open
+Market
+
+Packet33
+Pg. 37
+
+Attachment: 2022.11.28 City Council Rountable Presentation FINAL +MLP edit (COF 2022
+
+a
+
+

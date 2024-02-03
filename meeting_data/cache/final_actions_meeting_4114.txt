@@ -1,0 +1,960 @@
+TRANSPORTATION & PUBLIC UTILITIES COMMITTEE
+COMMITTEE MEETING
+~ FINAL ACTIONS ~
+Thursday, May 5, 2022
+
+4:00 PM
+
+Remote Meeting
+
+The transportation and public utilities committee will meet to discuss municipal broadband.
+Attendee Name
+Burhan Azeem
+Marc C. McGovern
+Patricia Nolan
+Paul F. Toner
+Quinton Zondervan
+
+Present
+
+Absent
+
+
+
+
+
+
+
+
+
+
+
+
+
+Late
+
+Arrived
+
+
+
+
+
+
+
+A communication was received from Chief Information Officer, Information Technology Patrick
+McCormick, transmitting a presentation regarding 21st Century Broadband for the City of
+Cambridge from ctc technology & energy.
+
+City of Cambridge
+
+Page 1
+
+City of Cambridge
+COF 2022 #56
+IN CITY COUNCIL
+May 5, 2022
+
+Packet Pg. 2
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+21ST CENTURY BROADBAND FOR THE
+Presentation to the Cambridge City Council Cambridge
+May 5, 2022
+
+Packet Pg. 3
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+PROJECT OVERVIEW
+GOAL: Provide Cambridge the necessary tools, data, and analyses to support
+informed decision-making on municipal broadband options
+
+• Baseline infrastructure analysis
+• Technical analysis and design
+• Market analysis
+• Financial analysis
+• Development of business and ownership models
+• Inform process through stakeholder and community input
+Packet Pg.
+2 4
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+WHERE WE ARE TODAY
+• Site surveys and design/cost estimate underway
+• Exploratory business models developed
+
+• Market analysis underway, residential survey launching soon
+• Planning engagement with business community
+
+• Coordinating with Cambridge Housing Authority/affordable housing
+
+Packet Pg.
+3 5
+
+SCOPE ELEMENTS OF THE BROADBAND NETWORK
+Business models distinguished largely by defining the role of parties at each scope
+element of the network
+Passive Infrastructure
+
+Active Infrastructure
+
+Service Provision
+
+Building and maintaining
+the dark fiber network
+
+Setting up and operating the
+active electronics on the network
+
+Delivering broadband
+services to subscribers
+
+Packet Pg.
+4 6
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+SUMMARY OF BUSINESS MODELS
+Model #
+
+Passive Infrastructure
+
+1
+
+City funded/financed
+and maintained
+
+Muni ISP (Broadband department or outsourced)
+
+2
+
+City funded/financed
+and maintained
+
+ISP (one or multiple)
+
+3
+
+City funded/financed
+and maintained
+
+4a
+
+Hybrid funded/financed,
+privately maintained
+
+4b
+4c
+
+Active Infrastructure
+
+Active Infra contractor
+
+Service Provision
+
+Multiple ISPs / open market
+
+Multiple ISPs
+
+Hybrid funded/financed,
+privately maintained and operated
+
+Multiple ISPs / open market
+
+Hybrid funded/financed,
+privately maintained and operated
+Packet Pg.
+5 7
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+ILLUSTRATION OF BUSINESS MODELS
+The following visuals show the entities and contractual relationships for the various
+business models considered
+#1
+
+#2
+
+#3
+
+#4
+
+Packet Pg.
+6 8
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+COMPARING BUSINESS MODELS TO OBJECTIVES
+We revisited the specific goals developed by the City’s Broadband Task Force and
+assessed how the choice of business model affects meeting those goals.
+• We concluded that three of the City’s goals (#1, #3 and #4) can
+be achieved regardless of the business model chosen.
+• Equity is one of the City’s most important policy objectives.
+Extending high speed affordable broadband to all can be achieved
+through means testing, which can be incorporated into contractual
+provisions even in models with private investment.
+• Irrespective of the business model chosen, entrepreneurs and
+small businesses will benefit greatly from symmetrical gigabit
+connectivity, and the project will spur innovation and excellence.
+• In addition to the Broadband Task Force’s goals, we found it
+necessary to add two additional goals that are important to the
+City: Public ownership and minimizing (the City’s) financial risk.
+
+Broadband Objectives:
+1. Affordability and Equity
+2. Choice and Competition
+3. Supporting Entrepreneurs
+& Small Business
+4. Innovation & Excellence
+5. Local Control
+
+Packet Pg.
+7 9
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+CRITERIA FOR EVALUATION OF BUSINESS MODELS
+Based on the Cambridge Broadband Objectives, we developed the following criteria to
+evaluate the various business models proposed
+• Public Ownership: Does the business model allow the public sector to retain long-term
+ownership of (at minimum) the Passive Infrastructure?
+• Local Control: Does the business model allow the City to incorporate key public policy goals
+into contracts with private partners (e.g., price benchmarking rather than setting rates)?
+
+• Choice & Competition: Does the business model lend itself to increased choice and
+competition for subscribers?
+• Minimizing Financial Risk: Does the business model serve to minimize the long-term
+financial risk to the City as the owner of (at minimum) the Passive Infrastructure?
+
+Packet Pg.
+8 10
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+BUSINESS MODELS: QUALITATIVE ASSESSMENT
+A comparative evaluation based on Cambridge’s broadband objectives
+Model #
+
+Passive
+Infra
+
+1
+
+City
+
+Muni ISP
+
+2
+
+City
+
+Private ISP(s)
+
+3
+
+City
+
+4
+
+Active
+Infra
+
+Active
+Infra
+
+Service
+Provision
+
+Public
+Ownership
+
+Local
+Control
+
+Choice /
+Competition
+
+Minimize
+Financial Risk
+
+Open
+Market
+
+Hybrid
+Fails to meet criteria
+
+Meets criteria
+Packet Pg.
+9 11
+
+BUSINESS MODELS: RISK ALLOCATION OVERVIEW
+A comparative risk allocation of the business models
+Model #
+
+Passive
+Infra
+
+1
+
+City
+
+2
+
+City
+
+3
+
+4
+
+City
+
+Active
+Infra
+
+Construction
+Risk
+
+Maintenance
+Risk
+
+Operating
+Risk
+
+Revenue
+Risk
+
+Muni ISP
+
+Traditional
+
+Traditional
+
+Retained
+by City
+
+Retained
+by City
+
+Private ISP(s)
+
+Traditional
+
+Traditional
+
+Transferred
+to ISP(s)
+
+Transferred
+to ISP(s)
+
+Traditional
+
+Traditional
+
+Transferred
+to Active Infra
+contractor & ISPs
+
+Transferred
+to ISPs
+
+Enhanced
+through longterm private
+financing
+
+Enhanced
+through longterm private
+financing
+
+Transferred to
+private sector
+
+Transferred to
+private sector
+
+Contractor
+
+Hybrid*
+
+Service
+Provision
+
+Open
+Market
+
+Packet10
+Pg. 12
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+PUBLIC FUNDING OPTIONS
+Municipal broadband networks have been funded and financed in many different
+ways across the U.S. and internationally.
+Some networks may be able to be funded entirely through subscription fees (revenue
+collected from subscribers), but public funding is often required to make the project
+financially feasible. Come common public funding sources for municipal broadband include:
+•
+•
+•
+•
+•
+•
+•
+
+General property tax
+Dedicated sales tax or sales tax increment
+Utility fee (charge for services)
+Special assessment districts
+Existing budget/capital funds
+“In-kind” support (e.g., access to rights-of-way, data, or tax breaks)
+Grant funding (federal/state)
+
+Some of these sources can be used to repay financing for the upfront capital investment.
+Packet11
+Pg. 13
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+APPENDIX
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+Packet12
+Pg. 14
+
+COMPETITION
+The City should create competition for or on each of the various scope elements to
+maximize value for taxpayers and subscribers
+Passive Infrastructure
+
+Active Infrastructure
+
+Service Provision
+
+Competition for scope element
+
+Competition for or on scope element
+
+Competition for scope element
+Competition for combined scope elements
+
+13
+
+Packet Pg. 15
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+a
+
+GO Bonds and/or
+Existing City Funds
+
+City of Cambridge
+
+Surplus
+Subscription Fees
+used to Repay Debt
+
+Cambridge
+Broadband
+Department*
+
+Design-Build
+Contract
+
+Passive Infra
+Construction
+Contractor
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+MODEL 1: OVERVIEW
+
+Subscription
+Fees
+
+Maintenance
+Contract
+
+Passive Infra
+Maintenance
+Contractor
+
+Broadband ISP
+(Optional)
+
+* New City broadband entity to develop FTTP network, light fiber, and provide broadband services to end users.
+** ISP (optional) receives payment from City Broadband Department for Active Infrastructure and Service Provision.
+
+Packet14
+Pg. 16
+
+MODEL 1: PROS, CONS & OPTIONS
+Model #
+
+Passive
+Infra
+
+1
+
+City
+
+Active
+Infra
+
+Service
+Provision
+
+Public
+Ownership
+
+Local
+Control
+
+Choice /
+Competition
+
+Minimize
+Financial Risk
+
+Muni ISP
+
+❑ Pros: A City funded and operated network is the only business model in which the City will have full control
+over all aspects of the broadband network construction and operations, including the phasing and
+prioritization of digital equity sites. A municipally-owned and operated fiber to the premises network will
+provide a meaningful alternative to Comcast.
+❑ Cons: The City is missing out on opportunities to transfer risks to a private sector party that may be better
+equipped to manage those risks (including interfaces between scope elements). The City is fully retaining the
+risk on subscriber take rates and long-term subscriber revenues. In addition, the City is responsible for the
+day-to-day operations and retains the risk associated with operation and maintenance costs.
+❑ Options/Alternatives: The City could decide to outsource Active Infrastructure and Service Provision to a
+private company, without transferring revenue risk to that entity. Under this model, the City would not be
+responsible for day-to-day operations of the network although it would continue to be exposed to long-term
+risks associated with operation and maintenance costs.
+Packet Pg. 17
+15
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+CASE STUDY: WHIP CITY FIBER
+This case study highlights an example of a municipally-run ISP delivering services on
+municipally-funded/financed infrastructure, right in Cambridge’s backyard
+• Whip City Fiber is an ISP operated by Westfield Gas & Electric (WG+E), providing
+symmetrical 1GB service to homes and businesses in 20 communities in western MA
+through a municipal utility structure called a Municipal Light Plant (MLP).
+• Under this model, the local municipalities fund and finance the construction of passive
+infrastructure, and Whip City Fiber provides the active infrastructure and services to end
+users.
+• This case demonstrates how a municipal utility with existing experience in delivering
+services to customers can expand into the broadband sector.
+• This example is also unique in that WG+E is serving as ISP for many municipalities.
+• Some other notable examples of municipal broadband networks delivered under a similar
+model include LUS Fiber in Lafayette, LA, Chattanooga, TN, and Deerfield Valley, CO. Packet16Pg. 18
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+MODEL 2: OVERVIEW
+GO Bonds and/or
+Existing City Funds
+
+Design-Build
+Contract
+
+Passive Infra
+Construction
+Contractor
+
+Subscription
+Fees
+
+City of Cambridge
+
+Maintenance
+Contract
+
+Passive Infra
+Maintenance
+Contractor
+
+ISP
+Contract
+
+Broadband
+ISP
+
+Broadband
+ISP
+(optional*)
+
+*Option for one or multiple ISPs. Contract(s) may include lease fee to City for use of dark fiber and/or revenue sharing agreement.
+
+Broadband
+ISP
+(optional*)
+
+Packet17
+Pg. 19
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+MODEL 2: PROS, CONS & OPTIONS
+Model #
+
+Passive
+Infra
+
+2
+
+City
+
+Active
+Infra
+
+Service
+Provision
+
+Public
+Ownership
+
+Local
+Control
+
+Choice /
+Competition
+
+Minimize
+Financial Risk
+
+Private ISP(s)
+
+❑ Pros: The City controls the dark fiber and given market characteristics/conditions, can be confident there will
+be private ISPs interested in leasing the dark fiber network and providing Active Infrastructure and Service
+Provision. City has flexibility to structure combination of lease fees and revenue sharing to potentially
+partake in revenue upside scenarios. Private ISP takes revenue risk and is therefore incentivized to provide
+high quality service.
+❑ Cons: Determining a fair market value for the lease fee can be challenging. ISP(s) may resist constraints on
+pricing, thus limiting the City’s influence over affordability. If there is only one private ISP, as opposed to
+multiple ISPs (see below), competition/choice will be limited.
+❑ Options/Alternatives: Instead of a single ISP for Active Infrastructure and Service Provision, multiple ISPs
+could be invited to provide the same. The size of the City’s network could potentially limit the interest of
+competing ISPs to operate in the City.
+Packet18
+Pg. 20
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+CASE STUDY: COLORADO SPRINGS, CO
+This case study highlights a recent example of a private ISP delivering services on
+municipally-funded/financed infrastructure
+• In Colorado Springs, Ting Internet will provide gigabit Internet service over fiber
+infrastructure built by Colorado Springs Utilities.
+• In this non-exclusive arrangement, Ting Internet will be the initial anchor tenant on a citywide (not-for-profit) fiber network owned by Colorado Springs Utilities.
+• This model leverages the City’s experience in building and managing utilities with Ting’s
+expertise in provisioning and marketing fiber services to customers.
+• Construction on the fiber network will begin by Q3 2022 and is expected to surpass more
+than 200,000 addresses.
+• Other notable examples of municipal networks delivered under a similar model include
+Westminster, MD, Huntsville, AL, Breckenridge, CO and Fort Morgan, CO
+Packet19
+Pg. 21
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+a
+
+GO Bonds and/or
+Existing City Funds
+
+Design-Build
+Contract
+
+Passive Infra
+Construction
+Contractor
+
+Subscription
+Fees
+
+City of Cambridge
+
+Maintenance
+Contract
+
+Design-Build
++ O&M Contract
+
+Passive Infra
+Maintenance
+Contractor
+
+* Contracts may include lease fee and/or revenue sharing agreement.
+
+Active Infra
+Contractor
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+MODEL 3: OVERVIEW
+
+ISP
+Contracts*
+
+Interface
+Agreement
+
+Open Broadband
+ISP Market
+
+Packet20
+Pg. 22
+
+MODEL 3: PROS, CONS & OPTIONS
+Model #
+
+Passive
+Infra
+
+Active
+Infra
+
+Service
+Provision
+
+3
+
+City
+
+Active
+Infra
+
+Open
+Market
+
+Public
+Ownership
+
+Local
+Control
+
+Choice /
+Competition
+
+Minimize
+Financial Risk
+
+❑ Pros: This model allows the City to transfer revenue risk while achieving meaningful competition for both
+Active Infrastructure and Service Provision, even within a small-scale market. Competition for Active
+Infrastructure will be achieved through a competitive procurement process; a single Active Infrastructure
+contractor reduces redundant cost, reducing overall costs. An open market for Service Provision maximizes
+potential for competition, driving affordability.
+❑ Cons: Similar to prior model, it may be challenging to determining fair market value for the lease fees and
+level of pricing control City can exercise over ISPs can be limited. Interface between Active Infrastucture
+contractor and ISPs can be challenging to define.
+❑ Options/Alternatives: Competitive selection of, and strict performance requirement regime for Active
+Infrastructure contractor is critical for success. There are various options for ensuring competitive tension
+and incentivizing performance. There are also various ways to structure the revenue risk allocation between
+the Active Infrastructure contractor and ISPS through lease fees or other mechanisms if desired.
+Packet Pg. 23
+21
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+CASE STUDY: AMMON, ID
+This case study highlights a useful example of the “open access” model layered onto
+municipally-funded dark fiber infrastructure
+• The township of Ammon, ID constructed a dark fiber network, paid for through a
+combination of federal grants, and funds raised through Local Improvement Districts.
+Under this model, the network is not built all at once, but is phased with demand; dark
+fiber is deployed to a neighborhood only when a sufficient percentage of residents “opt
+in” and agree to be part of a new Local Improvement District.
+• Ammon partnered with EntryPoint Networks to pilot and launch network virtualization
+software, which includes an online portal allowing four different ISPs to lease bandwidth
+on the network and offer retail services to customers. This network design is highly
+automated and allows for new ISPs to be added to the network, and for customers to
+switch ISPs seamlessly.
+• This general model is prevalent in Sweden. Another similar, notable US example is
+UTOPIA (UT), although here the active infrastructure is provided by the public sector.
+Packet22
+Pg. 24
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+MODEL 4: OVERVIEW
+GO Bonds and/or
+Existing City Funds
+
+Subscription
+Fees
+
+City of Cambridge
+Milestone &
+Availability
+Payments
+
+Private Debt
+and Equity
+
+Design-Build
+Subcontract
+
+Passive Infra
+Construction
+Contractor
+
+Broadband SPV
+
+Maintenance
+Subcontract
+
+Passive Infra
+Maintenance
+Contractor
+
+Design-Build &
+O&M Subcontracts
+
+Active Infra
+Contractor
+
+Broadband
+ISP
+
+Broadband
+ISP
+(optional)
+
+Broadband
+ISP
+(optional)
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+Sub-option 4a: SPV to provide Passive Infra; SPV takes no revenue risk. City contracts one/multiple ISPs for Active Infra and Service Provision.
+Sub-option 4b: SPV to provide Passive/Active Infra; SPV takes no/limited revenue risk. City contracts one/multiple ISPs/open market for Service Provision.
+Packet23
+Pg. 25
+Sub-option 4c: SPV to provide Passive and Active Infra and Service Provision; SPV takes on revenue risk.
+
+MODEL 4: PROS, CONS & OPTIONS
+Model #
+4
+
+Passive
+Infra
+
+Active
+Infra
+
+Service
+Provision
+
+Public
+Ownership
+
+Local
+Control
+
+Choice /
+Competition
+
+Minimize
+Financial Risk
+
+Hybrid*
+
+❑ Pros: The City is maximizing its potential for long-term risk transfer through a Project Agreement with a P3 Partner. The P3
+Partner has rights of use to the network during the Project Agreement, subject to terms and conditions imposed by the City
+(e.g., the City can step in if the P3 Partner consistently fails to deliver quality service). The City is also leveraging private
+financing to reduce (but not eliminate) the upfront public contribution needed to build the network.
+❑ Cons: Complexity of P3 procurement and contracting process. Higher cost of private financing relative to public financing
+may not create value for money for an asset with limited lifecycle optimization potential.
+❑ Options/Alternatives: As illustrated on the prior slide, there are various sub-options for structuring the contracting and risk
+allocation of a P3. Each sub-option also has its own pros and cons:
+❑ Sub-option 4a: City to procure separate ISP (Active Infra + Service Provision) contract(s). Challenging to estimate fair
+market value for lease fees from ISP(s) to City.
+❑ Sub-option 4b: City to procure separate ISP (Service Provision only) contract(s)/create open market for ISPs.
+Challenging to estimate fair market value for lease fees from ISP(s) to City. Interface between broadband SPV (who is
+also responsible for Active Infra) and ISPs can be challenging to define.
+❑ Sub-option 4c: Single integrated contractor for all scope elements reduces choice for consumers.
+Packet24
+Pg. 26
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+CASE STUDY: DUBLIN, NH
+This case study highlights a useful example of hybrid financing paired with long-term
+public ownership of the network
+• Consolidated Communications Holdings Inc (CCI) has partnered with several small, rural
+towns in Cheshire County, New Hampshire including Dublin, NH to build out fiber-to-thepremises networks.
+• Under these agreements, Dublin and the other towns will sign 20-year contracts with CCI
+to run the network (active infrastructure and services), but the towns will retain
+ownership of the fiber networks.
+• Dublin will finance the construction of the dark fiber with municipal bonds, which will be
+repaid through subscriber fees charged by CCI, who will also cover the costs in any
+shortfalls in subscriber revenue needed to cover the town’s debt service payments.
+• CCI in exchange for its contribution in financing the network will have sole ISP rights.
+Packet25
+Pg. 27
+
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+THANK YOU!
+
+©2022 CTC Technology & Energy
+Attachment: Presentation to Cambridge City Council FINAL 20220505 (COF 2022 #56 : 21st
+
+a
+
+Packet26
+Pg. 28
+
+

@@ -1,0 +1,224 @@
+PUBLIC SAFETY COMMITTEE
+COMMITTEE MEETING
+~ FINAL ACTIONS ~
+
+Tuesday, May 23, 2023
+
+12:30 PM
+
+Sullivan Chamber
+795 Massachusetts Avenue
+Cambridge, MA 02139
+
+I. The Public Safety Committee will hold a public meeting to discuss the 2022 annual surveillance
+reports
+Attendee Name
+Quinton Zondervan
+Burhan Azeem
+Marc C. McGovern
+Patricia Nolan
+Paul F. Toner
+
+Present
+
+Remote
+
+
+
+Remote
+
+Absent
+
+
+
+
+
+
+
+Late
+
+Arrived
+
+
+
+
+
+
+
+A communication was received from Councillor Zondervan, transmitting a presentation titled
+Surveillance Technologies of Concern.
+
+City of Cambridge
+
+Last Updated: 6/1/2023 12:28 PM
+
+cambridgema.gov
+
+City of Cambridge
+(ID # 19618)
+IN CITY COUNCIL
+May 23, 2023
+
+Packet Pg. 2
+
+Surveillance Technologies of Concern
+City of Cambridge Public Safety Committee Hearing, May 23, 2023
+
+Packet Pg. 3
+
+Attachment: Cambridge Public Safety Committee hearing presentation 2023-05-23 (19618 : A
+
+1.a
+
+Attachment: Cambridge Public Safety Committee hearing presentation 2023-05-23 (19618 : A
+
+1.a
+
+Introduction
+• Alex Marthews, chair of Digital Fourth, Belmont resident, works in Cambridge
+• Activist and researcher of government surveillance technologies, adviser on Cambridge’s
+surveillance oversight ordinance
+
+• Digital Fourth:
+• digitalfourth@protonmail.com
+• www.warrantless.org
+Volunteer civil liberties group founded in Cambridge in 2012, focusing on the Fourth
+Amendment (searches and seizures), privacy and government surveillance issues.
+
+Packet Pg. 4
+
+Attachment: Cambridge Public Safety Committee hearing presentation 2023-05-23 (19618 : A
+
+1.a
+
+What are the key surveillance technologies of
+concern in Cambridge in 2023?
+• ShotSpotter
+• The Boston Regional Intelligence Center
+• Thomson Reuters CLEAR
+
+Packet Pg. 5
+
+ShotSpotter
+
+The “Ever-Vigilant Reporting Ear” – For Some Neighborhoods
+Attachment: Cambridge Public Safety Committee hearing presentation 2023-05-23 (19618 : A
+
+1.a
+
+Packet Pg. 6
+
+• No real-time
+audio
+monitoring:
+• West
+Cambridge
+residents
+• Harvard
+students
+• MIT
+students
+• Kendall
+Square
+workers
+
+• Impact of
+using
+historical
+statistical
+patterns
+
+Packet Pg. 7
+
+Attachment: Cambridge Public Safety Committee hearing presentation 2023-05-23 (19618 : A
+
+1.a
+
+Basic information missing from ShotSpotter
+surveillance report
+• ShotSpotter does collect human conversations, not just “gunfire-like sounds”
+• Memo from former Commissioner Bard in 2021 went into ShotSpotter statistics
+• Over 6.5 years, only 35 out of 105 ShotSpotter activations could be confirmed as a shooting
+incident; that’s a false positive rate of over 65%.
+• During that time, only 13 arrests were attributable to ShotSpotter, and we don’t know what
+they were for, or whether there were any convictions, or injuries.
+• At a subscription cost of $50,000 per year, that translates into $25,000 per arrest
+
+• Other cities, including Fall River, MA, have ended their ShotSpotter contracts
+• RECOMMENDATION: END SHOTSPOTTER CONTRACT
+
+Packet Pg. 8
+
+Attachment: Cambridge Public Safety Committee hearing presentation 2023-05-23 (19618 : A
+
+1.a
+
+Attachment: Cambridge Public Safety Committee hearing presentation 2023-05-23 (19618 : A
+
+1.a
+
+Boston Regional Intelligence
+Center (“BRIC”)
+The local mini-NSA that tracks and polices domestic dissent
+
+Packet Pg. 9
+
+Basic information missing from BRIC: Omega
+Dashboard surveillance report
+• BRIC has a long track record of harassing and surveilling dissidents, ethnic and
+religious minorities and immigrants in the greater Boston area. Particularly worried
+about cross-class and cross-race links between Harvard/MIT students and Roxbury
+• CPD cites to BRIC’s Privacy and Civil Liberties Policy, but the policy isn’t real, and
+we know it
+• BRIC claims falsely to follow a regulation, 28 CFR Part 23, that limits them to
+collecting only information based on reasonable suspicion of involvement in a crime.
+• RECOMMENDATION: WITHDRAW CPD FROM PARTICIPATION IN BRIC’S
+OMEGA DASHBOARD, PENDING AN OUTSIDE, INDEPENDENT, RANDOM
+SPOT AUDIT OF BRIC’S FILES ON CAMBRIDGE RESIDENTS
+
+Packet Pg. 10
+
+Attachment: Cambridge Public Safety Committee hearing presentation 2023-05-23 (19618 : A
+
+1.a
+
+Attachment: Cambridge Public Safety Committee hearing presentation 2023-05-23 (19618 : A
+
+1.a
+
+Thomson Reuters CLEAR
+A massive database that contracts with police to help them
+identify people who have had abortions, have performed
+“homosexual acts”, or have “anarchist” political leanings
+
+Packet Pg. 11
+
+Basic information missing from Thomson Reuters
+CLEAR surveillance report
+• Thomson Reuters CLEAR is a data broker product, with profiles on hundreds of
+millions of Americans
+• CLEAR’s “risk inform” product tracks whether people have had an abortion, whether
+they have “anarchist” leanings, whether they “possess a weapon” and whether they
+have performed a “homosexual act.” Several of CLEAR’s “risk inform” flags are
+automatically triggered if the targeted individual changes their name. Members of
+groups that are more likely to change their names—such as women who marry,
+victims of domestic violence, trans people, and Muslim converts—are thereby more
+likely to be tagged as “risky” by CLEAR’s “risk inform” product.
+• RECOMMENDATION: END THOMSON REUTERS CLEAR CONTRACT
+
+Packet Pg. 12
+
+Attachment: Cambridge Public Safety Committee hearing presentation 2023-05-23 (19618 : A
+
+1.a
+
+Attachment: Cambridge Public Safety Committee hearing presentation 2023-05-23 (19618 : A
+
+1.a
+
+Technologies of Minor Concern
+Securly, Cellebrite, Camera-equipped robots, Covert cameras, Water meters
+
+Packet Pg. 13
+
+
