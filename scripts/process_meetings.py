@@ -574,11 +574,27 @@ def setCouncillorInfo(path, year=None) -> bool:
             _councillor_quick_lookup[alias]         = name
             _councillor_quick_lookup[alias.lower()] = name
 
-    ## Add names to policy order headers
-    global POR_HDRS ## pylint: disable=global-statement
+    ## Add names to headers
+    ## pylint: disable=global-statement
+    ## CMA
+    global CMA_HDRS
+    idx = CMA_HDRS.index("Vote") + 1
+    CMA_HDRS = CMA_HDRS[:idx] + tuple(_councillor_info.keys()) + CMA_HDRS[idx:]
+
+    ## APP
+    global APP_HDRS
+    idx = APP_HDRS.index("Vote") + 1
+    APP_HDRS = APP_HDRS[:idx] + tuple(_councillor_info.keys()) + APP_HDRS[idx:]
+
+    ## RES
+    global RES_HDRS
+    idx = RES_HDRS.index("Vote") + 1
+    RES_HDRS = RES_HDRS[:idx] + tuple(_councillor_info.keys()) + RES_HDRS[idx:]
+
+    ## POR
+    global POR_HDRS
     idx = POR_HDRS.index("Vote") + 1
     POR_HDRS = POR_HDRS[:idx] + tuple(_councillor_info.keys()) + POR_HDRS[idx:]
-
 
     return True
 
