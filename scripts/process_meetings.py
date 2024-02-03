@@ -97,6 +97,15 @@ POR_HDRS = (
     "Notes",
 )
 
+AR_HDRS = (
+    "Unique Identifier",
+    "Department",
+    "Category",
+    "Policy Order",
+    "Link",
+    "Description",
+)
+
 
 def parseArgs():
     """Parse command line arguments"""
@@ -431,7 +440,58 @@ class PolicyOrder:
         return msg + " - " + self.description
 
     def __repr__(self):
-        return f"[Resolution: {str(self)}]"
+        return f"[PolicyOrder: {str(self)}]"
+
+
+@dataclass
+class AwaitingReport:
+    uid: str
+    url: str
+    description:  str = ""
+    department:   str = ""
+    category:     str = ""
+    policy_order: str = ""
+    notes:        str = ""
+
+    @property
+    def type(self):
+        return "AR"
+
+    def setMeeting(self, meeting):
+        pass
+
+    def setNotes(self, notes):
+        self.notes = notes
+
+    def update(self, **kwargs):
+        if 'description' in kwargs:
+            self.description = kwargs['description']
+        if 'department' in kwargs:
+            self.department = kwargs['department']
+        if 'category' in kwargs:
+            self.category = kwargs['category']
+        if 'policy_order' in kwargs:
+            self.policy_order = kwargs['policy_order']
+
+    def to_dict(self):
+        return {
+            "Unique Identifier": self.uid,
+            "Department":        self.department,
+            "Category":          self.category,
+            "Policy Order":      self.policy_order,
+            "Link":              self.url,
+            "Description":       self.description,
+        }
+
+    def __str__(self):
+        msg = " ".join([self.uid, self.url])
+        if len(self.description) > MAX_MSG_LEN:
+            return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
+
+        return msg + " - " + self.description
+
+    def __repr__(self):
+        return f"[AwaitingReport: {str(self)}]"
 
 
 def print_red(msg):
@@ -674,8 +734,14 @@ def processItem(args, row, num):
     ## Process the title and link
     title, link = findATag(row, 'td', 'Title')
     link = expandUrl(args.base_url, link)
-    match = re.match(r"((CMA|APP|COM|RES|POR|COF) \d+ #\d+)(?: : )(.*)", title)
+    match = re.match(r"((CMA|APP|COM|RES|POR|COF) \d+ #\d+)\s(?:: )(.*)", title)
     if not match:
+        ## Maybe it's an awaiting report
+        match = re.match(r"(AR-\d+-\d+)\s(?:: )(.*)", title)
+        if match:
+            uid, description = match.groups()
+            return AwaitingReport(uid, link, description)
+
         return None
 
     uid, itype, title = match.groups()
@@ -818,6 +884,51 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
     return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, amended, charter_right, title)
 
 
+def processAr(args, item):
+    ## Fetch AR page from the city website
+    ar_path = os.path.join(args.cache_dir, f"{uidToFileSafe(item.uid)}.html")
+    fetched = fetchUrl(item.url, ar_path)
+    soup = BeautifulSoup(fetched, 'html.parser')
+
+    ## Additional info
+    info_div = findTag(soup, 'div', 'LegiFileInfo')
+    table = processKeyWordTable(findTag(info_div, 'table', 'LegiFileSectionContents'))
+    category   = table['Category']
+    department = table['Department']
+
+    ## Origin if any
+    order = ""
+    links = processResLinks(soup)
+    if 'origin' in links:
+        for o_name, _ in links['origin']:
+            match = re.search(r"^(POR \d+ #\d+)\s+:", o_name)
+            if match:
+                order = match.groups()[0]
+                break
+
+    item.update(department=department, category=category, policy_order=order)
+    return item
+
+
+def processNewArs(args, ar_map, items, writer:csv.DictWriter):
+    """Process awaiting reports"""
+    ## Unlike most agenda items, the list of awaiting reports tends to grow, so track
+    ## ARs across meetings
+    total = 0
+    for item in items:
+        if item.uid in ar_map:
+            continue
+
+        if VERBOSE:
+            print(f"New awaiting report: {item}")
+
+        ar_map[item.uid] = processAr(args, item)
+        writer.writerow(buildRow(item, AR_HDRS))
+        total += 1
+
+    print_green(f"Wrote {total} awaiting reports")
+
+
 def processMeeting(args, meeting) -> Dict[str, List[Any]]:
     """Process a meeting"""
     meeting_path = os.path.join(args.cache_dir, f"meeting_{meeting.id}.html")
@@ -834,6 +945,7 @@ def processMeeting(args, meeting) -> Dict[str, List[Any]]:
         ## Look for section title
         td = findTag(row, 'td', 'Title')
         if td is not None:
+            ## Enable or disable processessing baesd upon section
             title = td.text.strip()
             if not enabled and title in ("City Manager's Agenda", "Communications", "Resolutions", "Policy Order and Resolution List", "Applications and Petitions"):
                 if VERBOSE:
@@ -878,7 +990,7 @@ def processMeeting(args, meeting) -> Dict[str, List[Any]]:
     print(f"Found {len(items)} for meeting '{meeting}'")
     for item in [x for l in items.values() for x in l]:
         item.setMeeting(meeting)
-        if VERBOSE:
+        if VERBOSE and item.type != "AR":
             print(item)
 
     return items
@@ -922,8 +1034,9 @@ def postProcessItems(writers, items):
         for item in items[key]:
             writers[key].writerow(buildRow(item, hdrs))
 
-    msg = " ".join([f"{k}:{len(v)}" for k, v in items.items()])
-    total = sum([len(v) for v in items.values()])
+    types = [x for x, y in sets]
+    msg = " ".join([f"{k}:{len(v)}" for k, v in items.items() if k in types])
+    total = sum([len(v) for k, v in items.items() if k in types])
     print_green(f"Wrote {total} items. {msg}")
 
 
@@ -931,13 +1044,13 @@ def setupOutputFiles(output_dir):
     ## Open output files
     files   = {}
     writers = {}
-
     sets = (
         ('CMA', CMA_HDRS, "cma.csv"),
         ('APP', APP_HDRS, "applications_and_petitions.csv"),
         ('COM', COM_HDRS, "communications.csv"),
         ('RES', RES_HDRS, "resolutions.csv"),
         ('POR', POR_HDRS, "policy_orders.csv"),
+        ('AR',  AR_HDRS,  "awaiting_reports.csv"),
     )
     for key, hdrs, name in sets:
         path = os.path.join(output_dir, name)
@@ -981,6 +1094,7 @@ def main(args):
 
     ## Process each meeting
     num = 0
+    ar_map = {}
     for meeting in meetings:
         try:
             if args.meeting and meeting.id != args.meeting and args.meeting != meeting.date:
@@ -995,10 +1109,13 @@ def main(args):
             print(f"Processing meeting '{meeting}'")
             items = processMeeting(args, meeting)
             postProcessItems(writers, items)
+            if 'AR' in items:
+                processNewArs(args, ar_map, items['AR'], writers['AR'])
+
+            ## Maybe end processing now
             if args.meeting:
                 break
 
-            ## Finalize
             num += 1
             if args.num_meetings and num >= args.num_meetings:
                 break
