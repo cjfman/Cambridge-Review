@@ -167,6 +167,10 @@ class CMA:
     meeting_date:  str = ""
     notes:         str = ""
 
+    @property
+    def type(self):
+        return "CMA"
+
     def setMeeting(self, meeting):
         self.meeting_uid  = meeting.uid
         self.meeting_date = meeting.date
@@ -216,6 +220,10 @@ class Application:
     meeting_uid:   str = ""
     meeting_date:  str = ""
     notes:         str = ""
+
+    @property
+    def type(self):
+        return "APP"
 
     def setMeeting(self, meeting):
         self.meeting_uid  = meeting.uid
@@ -267,6 +275,10 @@ class Communication:
     meeting_uid:  str = ""
     meeting_date: str = ""
     notes:        str = ""
+
+    @property
+    def type(self):
+        return "COM"
 
     def setMeeting(self, meeting):
         self.meeting_uid  = meeting.uid
@@ -324,6 +336,10 @@ class Resolution:
     meeting_date: str = ""
     notes:        str = ""
 
+    @property
+    def type(self):
+        return "RES"
+
     def setMeeting(self, meeting):
         self.meeting_uid  = meeting.uid
         self.meeting_date = meeting.date
@@ -371,6 +387,10 @@ class PolicyOrder:
     meeting_uid:   str = ""
     meeting_date:  str = ""
     notes:         str = ""
+
+    @property
+    def type(self):
+        return "POR"
 
     def setMeeting(self, meeting):
         self.meeting_uid  = meeting.uid
@@ -576,23 +596,20 @@ def setCouncillorInfo(path, year=None) -> bool:
 
     ## Add names to headers
     ## pylint: disable=global-statement
+    global CMA_HDRS, APP_HDRS, RES_HDRS, POR_HDRS
     ## CMA
-    global CMA_HDRS
     idx = CMA_HDRS.index("Vote") + 1
     CMA_HDRS = CMA_HDRS[:idx] + tuple(_councillor_info.keys()) + CMA_HDRS[idx:]
 
     ## APP
-    global APP_HDRS
     idx = APP_HDRS.index("Vote") + 1
     APP_HDRS = APP_HDRS[:idx] + tuple(_councillor_info.keys()) + APP_HDRS[idx:]
 
     ## RES
-    global RES_HDRS
     idx = RES_HDRS.index("Vote") + 1
     RES_HDRS = RES_HDRS[:idx] + tuple(_councillor_info.keys()) + RES_HDRS[idx:]
 
     ## POR
-    global POR_HDRS
     idx = POR_HDRS.index("Vote") + 1
     POR_HDRS = POR_HDRS[:idx] + tuple(_councillor_info.keys()) + POR_HDRS[idx:]
 
@@ -801,7 +818,7 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
     return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, amended, charter_right, title)
 
 
-def processMeeting(args, meeting) -> List[Any]:
+def processMeeting(args, meeting) -> Dict[str, List[Any]]:
     """Process a meeting"""
     meeting_path = os.path.join(args.cache_dir, f"meeting_{meeting.id}.html")
     soup = BeautifulSoup(fetchUrl(meeting.url, meeting_path, verbose=True), 'html.parser')
@@ -809,7 +826,7 @@ def processMeeting(args, meeting) -> List[Any]:
     ## Iterate through agenda table
     table = soup.find('table', {'class': 'MeetingDetail'})
     item  = None
-    items = []
+    items = defaultdict(list)
     rows = table.find_all('tr')
     enabled = False
     print(f"Checking {len(rows)} rows")
@@ -844,13 +861,13 @@ def processMeeting(args, meeting) -> List[Any]:
                 raise e
 
             if item is not None:
-                items.append(item)
+                items[item.type].append(item)
         elif item is not None:
             ## Look for comments
             td = findTag(row, 'td', 'Comments')
             if td is not None:
                 ## Set comment for most recent item
-                items[-1].setNotes(". ".join(findAllText(td, 'span')))
+                item.setNotes(". ".join(findAllText(td, 'span')))
         elif td is not None:
             if VERBOSE:
                 print_red(f"Tag td didn't match anything: {td.text}")
@@ -859,7 +876,7 @@ def processMeeting(args, meeting) -> List[Any]:
                 print_red(f"Couldn't find a td with class 'Num'")
 
     print(f"Found {len(items)} for meeting '{meeting}'")
-    for item in items:
+    for item in [x for l in items.values() for x in l]:
         item.setMeeting(meeting)
         if VERBOSE:
             print(item)
@@ -894,24 +911,6 @@ def fetchUrl(url, cache_path=None, *, verbose=False) -> str:
 
 
 def postProcessItems(writers, items):
-    item_map = defaultdict(list)
-
-    ## Group items
-    for item in items:
-        if isinstance(item, CMA):
-            item_map['CMA'].append(item)
-        elif isinstance(item, Application):
-            item_map['APP'].append(item)
-        elif isinstance(item, Communication):
-            item_map['COM'].append(item)
-        elif isinstance(item, Resolution):
-            item_map['RES'].append(item)
-        elif isinstance(item, PolicyOrder):
-            item_map['POR'].append(item)
-        else:
-            print(f"Post process skipping '{item}'")
-            continue
-
     sets = (
         ('CMA', CMA_HDRS),
         ('APP', APP_HDRS),
@@ -920,11 +919,11 @@ def postProcessItems(writers, items):
         ('POR', POR_HDRS),
     )
     for key, hdrs in sets:
-        for item in item_map[key]:
+        for item in items[key]:
             writers[key].writerow(buildRow(item, hdrs))
 
-    msg = " ".join([f"{k}:{len(v)}" for k, v in item_map.items()])
-    total = sum([len(v) for v in item_map.values()])
+    msg = " ".join([f"{k}:{len(v)}" for k, v in items.items()])
+    total = sum([len(v) for v in items.values()])
     print_green(f"Wrote {total} items. {msg}")
 
 
