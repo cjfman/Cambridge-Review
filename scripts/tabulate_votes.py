@@ -47,8 +47,8 @@ def processResult(line, item):
 
 
 def processCouncillors(line, item, key):
+    print(f"Found {key}: {line}", file=sys.stderr)
     councilors = line.replace(", ", ",")
-    print(f"Found {key}: {councilors}", file=sys.stderr)
     if key not in item:
         item[key] = councilors
     else:
@@ -65,9 +65,12 @@ def tabulateVotes(lines):
     item = None
     state = 'search'
     for line in lines:
-        print(f"State: {state}", file=sys.stderr)
+        #print(f"State: {state}", file=sys.stderr)
         line = line.strip()
         if not line:
+            if state != 'search':
+                print(f"Reset state", file=sys.stderr)
+
             state = 'search'
             continue
 
@@ -97,7 +100,7 @@ def tabulateVotes(lines):
 
             ## Check for item UID
             #match = re.match(r"CMA|APP|ORD|COM|RES|POR|COF \d+ #\d+", title)
-            match = re.match(r"(?:CMA|APP|RES|POR) \d+ #\d+", line)
+            match = re.match(r"^(?:CMA|APP|RES|POR) \d+ #\d+$", line)
             if match:
                 print(f"Found agenda item ID: {line}", file=sys.stderr)
                 if item is not None:
@@ -116,9 +119,9 @@ def tabulateVotes(lines):
             if match:
                 print("Start result", file=sys.stderr)
                 msg = match.groups()[0]
+                state = 'result'
                 if msg:
                     line = msg
-                    state = 'result'
                 else:
                     continue
 
