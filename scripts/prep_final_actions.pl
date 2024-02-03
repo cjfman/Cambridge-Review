@@ -8,7 +8,7 @@ my @headers = map "$_:", qw/RESULT YEAS NAYS PRESENT/;
 
 my $path = $ARGV[0];
 my $lastline;
-open IN_FILE,  '<', $path,      or die "Failed to open '$path': $!";
+open IN_FILE,  '<', $path       or die "Failed to open '$path': $!";
 open OUT_FILE, '>', "$path.tmp" or die "Failed to open '$path.tmp': $!";
 foreach my $line (<IN_FILE>) {
     chomp $line;
@@ -20,4 +20,4 @@ foreach my $line (<IN_FILE>) {
 }
 close IN_FILE;
 close OUT_FILE;
-#rename $path, "$path.tmp"
+rename "$path.tmp", $path

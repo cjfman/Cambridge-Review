@@ -10,3 +10,4 @@ maps/
 */__pycache__
 *.tgz
 sandbox/*
+meeting_data/cache/*.pdf
