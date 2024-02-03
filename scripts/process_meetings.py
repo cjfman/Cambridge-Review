@@ -1067,6 +1067,16 @@ def setupOutputFiles(output_dir):
     return (files, writers)
 
 
+def openMeetings(path):
+    meetings = []
+    with open(path, 'r', encoding='utf8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            meetings.append(Meeting(**{ k.lower().replace(' ', '_'): v for k, v in row.items() }))
+
+    return meetings
+
+
 def main(args):
     ## pylint: disable=too-many-branches
     if args.verbose:
@@ -1080,11 +1090,7 @@ def main(args):
             return 1
 
     ## Open meetings file
-    meetings = []
-    with open(args.meetings_file, 'r', encoding='utf8') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            meetings.append(Meeting(**{ k.lower().replace(' ', '_'): v for k, v in row.items() }))
+    meetings = openMeetings(args.meetings_file)
 
     print(f"Read {len(meetings)} meetings from '{args.meetings_file}'")
     print("Opening output files")
@@ -1113,11 +1119,8 @@ def main(args):
                 processNewArs(args, ar_map, items['AR'], writers['AR'])
 
             ## Maybe end processing now
-            if args.meeting:
-                break
-
             num += 1
-            if args.num_meetings and num >= args.num_meetings:
+            if args.meeting or args.num_meetings and num >= args.num_meetings:
                 break
         except KeyboardInterrupt:
             print(f"User requested exit")
