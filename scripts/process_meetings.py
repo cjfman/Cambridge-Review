@@ -33,6 +33,7 @@ CMA_HDRS = (
     "Category",
     "Awaiting Report",
     "Policy Order",
+    "Charter Right",
     "Outcome",
     "Vote",
     "Link",
@@ -46,6 +47,10 @@ APP_HDRS = (
     "Agenda Number",
     "Category",
     "Name",
+    "Address",
+    "Charter Right",
+    "Outcome",
+    "Vote",
     "Subject",
     "Link",
     "Notes",
@@ -156,10 +161,11 @@ class CMA:
     url:      str
     action:   str
     vote:     str
-    description:  str = ""
-    meeting_uid:  str = ""
-    meeting_date: str = ""
-    notes:        str = ""
+    charter_right: str = ""
+    description:   str = ""
+    meeting_uid:   str = ""
+    meeting_date:  str = ""
+    notes:         str = ""
 
     def setMeeting(self, meeting):
         self.meeting_uid  = meeting.uid
@@ -178,6 +184,7 @@ class CMA:
             "Link":              self.url,
             "Outcome":           self.action,
             "Vote":              self.vote,
+            "Charter Right":     self.charter_right,
             "Description":       self.description,
             "Meeting":           self.meeting_uid,
             "Meeting Date":      self.meeting_date,
@@ -203,9 +210,12 @@ class Application:
     name:     str
     subject:  str
     url:      str
-    meeting_uid:  str = ""
-    meeting_date: str = ""
-    notes:        str = ""
+    action:   str
+    vote:     str
+    charter_right: str = ""
+    meeting_uid:   str = ""
+    meeting_date:  str = ""
+    notes:         str = ""
 
     def setMeeting(self, meeting):
         self.meeting_uid  = meeting.uid
@@ -226,6 +236,9 @@ class Application:
             "Category":          self.category,
             "Name":              self.name,
             "Subject":           self.subject,
+            "Outcome":           self.action,
+            "Vote":              self.vote,
+            "Charter Right":     self.charter_right,
             "Link":              self.url,
             "Meeting":           self.meeting_uid,
             "Meeting Date":      self.meeting_date,
@@ -614,6 +627,15 @@ def processResLinks(node) -> Dict[str, List[Tuple[str, str]]]:
     return links
 
 
+def findCharterRight(soup):
+    header = findTag(soup, 'h1', 'LegiFileHeading').text
+    match = re.search(r"charter right exercised by (?:councillor|vice mayor|mayor) (\w+) in\b", header, re.IGNORECASE)
+    if match:
+        return lookUpCouncillorName(match.groups()[0])
+
+    return ""
+
+
 def processItem(args, row, num):
     """Process a meeting agenda item"""
     ## Process the title and link
@@ -661,17 +683,19 @@ def processCma(args, uid, num, title, link, vote, action) -> CMA:
     cma_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
     fetched = fetchUrl(link, cma_path)
     soup = BeautifulSoup(fetched, 'html.parser')
+    charter_right = findCharterRight(soup)
 
     ## Category
     info_div = findTag(soup, 'div', 'LegiFileInfo')
     table = processKeyWordTable(findTag(info_div, 'table', 'LegiFileSectionContents'))
+    category = table['Category']
 
     ## Origins if any
     awaiting = ""
     order = ""
     links = processResLinks(soup)
     if 'origin' in links:
-        for o_name, o_url in links['origin']:
+        for o_name, _ in links['origin']:
             match = re.search(r"^(AR\S+)\s+:", o_name)
             if match:
                 awaiting = match.groups()[0]
@@ -679,7 +703,7 @@ def processCma(args, uid, num, title, link, vote, action) -> CMA:
             if match:
                 order = match.groups()[0]
 
-    return CMA(uid, num, table['Category'], awaiting, order, link, action, vote, title)
+    return CMA(uid, num, category, awaiting, order, link, action, vote, charter_right, title)
 
 
 def processApp(args, uid, num, title, link, vote, action) -> Application:
@@ -688,7 +712,9 @@ def processApp(args, uid, num, title, link, vote, action) -> Application:
     app_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
     fetched = fetchUrl(link, app_path)
     soup = BeautifulSoup(fetched, 'html.parser')
+    charter_right = findCharterRight(soup)
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
+    category = table['Category']
 
     ## Attempt to get the name
     name    = ""
@@ -699,7 +725,7 @@ def processApp(args, uid, num, title, link, vote, action) -> Application:
     else:
         subject = title
 
-    return Application(uid, num, table['Category'], name, subject, link)
+    return Application(uid, num, category, name, subject, link, action, vote, charter_right)
 
 
 def processCom(args, uid, num, title, link, vote, action) -> Communication:
@@ -748,13 +774,7 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
     soup = BeautifulSoup(fetched, 'html.parser')
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
     sponsors = [lookUpCouncillorName(x.strip()) for x in table['Sponsors'].split(',')]
-    charter_right = ""
-
-    ## Check for charter right
-    header = findTag(soup, 'h1', 'LegiFileHeading').text
-    match = re.search(r"charter right exercised by councillor (\w+) in\b", header, re.IGNORECASE)
-    if match:
-        charter_right = lookUpCouncillorName(match.groups()[0])
+    charter_right = findCharterRight(soup)
 
     ## Amended
     amended = ""
