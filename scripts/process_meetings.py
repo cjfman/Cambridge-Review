@@ -15,9 +15,10 @@ import requests
 from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-order
 
 import html5lib ## pylint: disable=unused-import
-import yaml
 from bs4 import BeautifulSoup
-from termcolor import colored
+
+from councillors import getCouncillorNames, setCouncillorInfo, lookUpCouncillorName
+from utils import print_green, print_red
 
 VERBOSE = False
 ALLOWED_TYPES = ('regular', 'special')
@@ -123,10 +124,10 @@ def parseArgs():
         help="Process this specific meeting")
     parser.add_argument("--councillor-info",
         help="File with councillor info")
-    parser.add_argument("--final-actions",
-        help="Json file with the final actions")
     parser.add_argument("--session", type=int,
         help="The session year. Defaults to most recent one found in councillor info file")
+    parser.add_argument("--final-actions",
+        help="Json file with the final actions")
     parser.add_argument("-v", "--verbose", action="store_true",
         help="Be verbose")
     parser.add_argument("meetings_file",
@@ -497,14 +498,6 @@ class AwaitingReport:
         return f"[AwaitingReport: {str(self)}]"
 
 
-def print_red(msg):
-    print(colored(msg, 'red'))
-
-
-def print_green(msg):
-    print(colored(msg, 'green'))
-
-
 def expandUrl(base, url) -> str:
     """Expand a URL found from HTML"""
     if url[0] == '/':
@@ -587,92 +580,10 @@ def buildRow(item, hdrs, final_action=None):
     return row
 
 
-_councillor_info = {}
-_councillor_quick_lookup = {}
-def getCouncillorNames() -> List[str]:
-    return list(_councillor_info.keys())
-
-
-def setCouncillorInfo(path, year=None) -> bool:
-    ## pylint: disable=too-many-return-statements,too-many-branches,too-many-statements
-    ## Load file
-    all_info = None
-    try:
-        with open(path, 'r', encoding='utf8') as f:
-            all_info = yaml.load(f)
-    except Exception as e:
-        print_red(f"Failed to councillor info file '{path}': {e}")
-        return False
-
-    ## Validation
-    if 'sessions' not in all_info:
-        print_red(f"Councillor info file missing 'sessions' key")
-        return False
-    if 'councillors' not in all_info:
-        print_red(f"Councillor info file missing 'councillors' key")
-        return False
-
-    if year is None:
-        year = max(all_info['sessions'])
-
-    if year not in all_info['sessions']:
-        print_red(f"Couldn't find year {year} in councillor info file {path}")
-        return False
-
-    session = all_info['sessions'][year]
-    councillors = { x['name']: x for x in all_info['councillors'] }
-
-    ## Set up mayor
-    if 'mayor' not in session:
-        print_red(f"Session year {year} doens't have a mayor")
-        return False
-    if session['mayor'] not in councillors:
-        print_red(f"""Mayor "{session['mayor']}" not found in councillors list""")
-        return False
-
-    _councillor_info[session['mayor']] = dict(councillors[session['mayor']])
-    _councillor_info[session['mayor']]['position'] = 'Mayor'
-
-    ## Set up vice mayor
-    if 'vice_mayor' not in session:
-        print_red(f"Session year {year} doens't have a vice mayor")
-        return False
-    if session['vice_mayor'] not in councillors:
-        print_red(f"""Vice Mayor "{session['vice_mayor']}" not found in councillors list""")
-        return False
-
-    _councillor_info[session['vice_mayor']] = dict(councillors[session['vice_mayor']])
-    _councillor_info[session['vice_mayor']]['position'] = 'Vice Mayor'
-
-    ## Set up councillors
-    if 'councillors' not in session:
-        print_red(f"Session year {year} doesn't have any councillors")
-        return False
-
-    for name in session['councillors']:
-        if name not in councillors:
-            print_red(f"Councillor {name} not found in councillors list")
-            return False
-
-        _councillor_info[name] = dict(councillors[name])
-        _councillor_info[name]['position'] = "Councillor"
-
-    ## Create quick lookups for every name combination
-    for name, info in _councillor_info.items():
-        position = info['position']
-        aliases = [name, f"{position} {name}"]
-        for alias in info['aliases']:
-            aliases.append(alias)
-            aliases.append(f"{position} {alias}")
-
-        for alias in aliases:
-            _councillor_quick_lookup[alias]         = name
-            _councillor_quick_lookup[alias.lower()] = name
-
+def setCouncillorColumns(names):
     ## Add names to headers
     ## pylint: disable=global-statement
     global CMA_HDRS, APP_HDRS, RES_HDRS, POR_HDRS
-    names = tuple(sorted(_councillor_info.keys()))
     ## CMA
     idx = CMA_HDRS.index("Vote") + 1
     CMA_HDRS = CMA_HDRS[:idx] + names + CMA_HDRS[idx:]
@@ -688,28 +599,6 @@ def setCouncillorInfo(path, year=None) -> bool:
     ## POR
     idx = POR_HDRS.index("Vote") + 1
     POR_HDRS = POR_HDRS[:idx] + names + POR_HDRS[idx:]
-
-    return True
-
-
-def lookUpCouncillorName(name):
-    ## Quick look up
-    if name in _councillor_quick_lookup:
-        return _councillor_quick_lookup[name]
-    if name.lower() in _councillor_quick_lookup:
-        return _councillor_quick_lookup[name.lower()]
-
-    ## Remove title
-    orig_name = name
-    name = name.lower()
-    name = name.replace("vice mayor", "").strip()
-    name = name.replace("mayor", "").strip()
-    name = name.replace("councilor", "").strip()
-    if name in _councillor_quick_lookup:
-        return _councillor_quick_lookup[name]
-
-    print_red(f"""Didn't find full name for councillor "{orig_name}". Using fallback""")
-    return name
 
 
 def processKeyWordTable(table) -> Dict[str, str]:
@@ -1053,9 +942,6 @@ def processFinalActions(path):
         for action in actions:
             ## Convert votes to lists of names and calculate absent
             action.update({key: "" for key in required if key not in action})
-            print('yeas', action['yeas'])
-            print('nays', action['nays'])
-            print('present', action['present'])
             action['yeas']    = [lookUpCouncillorName(x) for x in action['yeas'].split(",") if x]
             action['nays']    = [lookUpCouncillorName(x) for x in action['nays'].split(",") if x]
             action['present'] = [lookUpCouncillorName(x) for x in action['present'].split(",") if x]
@@ -1135,6 +1021,8 @@ def main(args):
         if not setCouncillorInfo(args.councillor_info, args.session):
             print_red(f"Failed to set up councillor info")
             return 1
+
+        setCouncillorColumns(getCouncillorNames())
 
     ## Open meetings file
     meetings = openMeetings(args.meetings_file)

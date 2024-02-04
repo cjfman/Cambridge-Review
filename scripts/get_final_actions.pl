@@ -20,7 +20,7 @@ foreach (<FILE>) {
     my $pdf = "meeting_data/cache/final_actions_meeting_$id.pdf";
     my $txt = "meeting_data/cache/final_actions_meeting_$id.txt";
     my $jsn = "meeting_data/cache/final_actions_meeting_$id.json";
-    next if -f $jsn;
+    #next if -f $jsn;
     if (! -f $pdf) {
         print "Saving '$actions' to $pdf\n";
         system "curl '$actions' > $pdf";
@@ -29,7 +29,7 @@ foreach (<FILE>) {
         system 'pdftotext', $pdf, $txt;
         system './scripts/prep_final_actions.pl', $txt;
     }
-    system "./scripts/tabulate_votes.py $txt > $jsn";
+    system "./scripts/tabulate_votes.py --councillor-info meeting_data/councilors.yml --session 2022 $txt > $jsn";
     if (! -s $jsn) {
         unlink $jsn;
     }

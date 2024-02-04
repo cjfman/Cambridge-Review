@@ -6,12 +6,19 @@ import json
 import re
 import sys
 
+from councillors import getCouncillorNames, setCouncillorInfo
+from utils import print_red
+
 columns = ('uid', 'action', 'vote', 'charter_right')
 
 
 def parseArgs():
     """Parse command line arguments"""
     parser = argparse.ArgumentParser()
+    parser.add_argument("--councillor-info",
+        help="File with councillor info")
+    parser.add_argument("--session", type=int,
+        help="The session year. Defaults to most recent one found in councillor info file")
     parser.add_argument("final_actions",
         help="The file containing the final actions")
 
@@ -46,13 +53,20 @@ def processResult(line, item):
     return 'result'
 
 
-def processCouncillors(line, item, key):
+def processCouncillors(line, item, key, *, valid_names=None):
+    ## Make sure this line contains some councilors
+    if valid_names is not None:
+        lline = line.lower()
+        if not any([x in lline for x in valid_names]):
+            return 'search'
+
+    ## Process names
     print(f"Found {key}: {line}", file=sys.stderr)
     councilors = line.replace(", ", ",")
     if key not in item:
         item[key] = councilors
     else:
-        item[key] += councilors
+        item[key] += ' ' + councilors
 
     return key
 
@@ -62,7 +76,7 @@ def processCouncillors(line, item, key):
 #    return 'search'
 
 
-def tabulateVotes(lines):
+def tabulateVotes(lines, *, valid_names=None):
     items = []
     item = None
     state = 'search'
@@ -149,11 +163,11 @@ def tabulateVotes(lines):
             if state == 'result':
                 state = processResult(line, item)
             elif state == 'yeas':
-                state = processCouncillors(line, item, 'yeas')
+                state = processCouncillors(line, item, 'yeas', valid_names=valid_names)
             elif state == 'nays':
-                state = processCouncillors(line, item, 'nays')
+                state = processCouncillors(line, item, 'nays', valid_names=valid_names)
             elif state == 'present':
-                state = processCouncillors(line, item, 'present')
+                state = processCouncillors(line, item, 'present', valid_names=valid_names)
 
         except Exception as e:
             print(f"Error when processing line: {line}", file=sys.stderr)
@@ -173,8 +187,17 @@ def tabulateVotes(lines):
 
 
 def main(args):
+    ## Set councillor info
+    if args.councillor_info is not None:
+        if not setCouncillorInfo(args.councillor_info, args.session):
+            print_red(f"Failed to set up councillor info", file=sys.stderr)
+            return 1
+
     with open(args.final_actions, 'r', encoding='utf8') as f:
-        tabulateVotes(f)
+        if args.councillor_info is not None:
+            tabulateVotes(f, valid_names=getCouncillorNames(include_aliases=True))
+        else:
+            tabulateVotes(f)
 
     return 0
 
