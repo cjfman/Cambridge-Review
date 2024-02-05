@@ -158,7 +158,7 @@ class Meeting:
         return f"{self.date} {self.type}"
 
     def __str__(self):
-        return f"{self.body} - {self.type} {self.date}"
+        return f"{self.body} - {self.type} {self.date} ({self.id})"
 
     def __repr__(self):
         return f"[Meeting {str(self)}]"
@@ -934,20 +934,21 @@ def processFinalActions(path):
         final_actions = json.load(f)
 
     regrouped = {}
-    required = ('action', 'charter_right', 'uid', 'vote', 'yeas', 'nays', 'present')
+    required = ('action', 'charter_right', 'uid', 'vote', 'yeas', 'nays', 'present', 'absent')
     all_councillors = set(getCouncillorNames())
     for uid, actions in final_actions.items():
         meeting = {}
         regrouped[uid] = meeting
         for action in actions:
+            meeting[action['uid']] = action
             ## Convert votes to lists of names and calculate absent
             action.update({key: "" for key in required if key not in action})
             action['yeas']    = [lookUpCouncillorName(x) for x in action['yeas'].split(",") if x]
             action['nays']    = [lookUpCouncillorName(x) for x in action['nays'].split(",") if x]
             action['present'] = [lookUpCouncillorName(x) for x in action['present'].split(",") if x]
             councillors = set(action['yeas'] + action['nays'] + action['present'])
-            action['absent'] = list(sorted(all_councillors.difference(councillors)))
-            meeting[action['uid']] = action
+            if action['vote']:
+                action['absent'] = list(sorted(all_councillors.difference(councillors)))
 
     return regrouped
 
@@ -963,7 +964,7 @@ def postProcessItems(writers, items, final_actions=None):
     for key, hdrs in sets:
         for item in items[key]:
             if final_actions is not None and item.uid in final_actions:
-                writers[key].writerow(buildRow(item, hdrs, final_actions))
+                writers[key].writerow(buildRow(item, hdrs, final_actions[item.uid]))
             else:
                 writers[key].writerow(buildRow(item, hdrs))
 
@@ -1052,10 +1053,11 @@ def main(args):
 
             print(f"Processing meeting '{meeting}'")
             items = processMeeting(args, meeting)
-            if final_actions is not None and meeting.uid in final_actions:
+            if final_actions is not None and meeting.id in final_actions:
                 print(f"Found final actions for meeting '{meeting}'")
-                postProcessItems(writers, items, final_actions[meeting.uid])
+                postProcessItems(writers, items, final_actions[meeting.id])
             else:
+                print_red(f"No final actions for meeting '{meeting}'")
                 postProcessItems(writers, items)
 
             ## Process awaiting reports
