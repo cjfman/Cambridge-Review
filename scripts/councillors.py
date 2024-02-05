@@ -7,7 +7,7 @@ from utils import print_red
 
 _councillor_info = {}
 _councillor_quick_lookup = {}
-def getCouncillorNames(*, include_aliases=True) -> Tuple[str]:
+def getCouncillorNames(*, include_aliases=False) -> Tuple[str]:
     if include_aliases:
         return tuple(_councillor_quick_lookup.keys())
 
@@ -22,7 +22,7 @@ def setCouncillorInfo(path, year=None) -> bool:
         with open(path, 'r', encoding='utf8') as f:
             all_info = yaml.load(f)
     except Exception as e:
-        print_red(f"Failed to councillor info file '{path}': {e}")
+        print_red(f"Failed to open councillor info file '{path}': {e}")
         return False
 
     ## Validation
@@ -111,5 +111,5 @@ def lookUpCouncillorName(name):
     if name in _councillor_quick_lookup:
         return _councillor_quick_lookup[name]
 
-    print_red(f"""Didn't find full name for councillor "{orig_name}". Using fallback""")
+    print_red(f"""Error: Didn't find full name for councillor "{orig_name}". Using fallback""")
     return name
