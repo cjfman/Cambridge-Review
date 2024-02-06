@@ -54,6 +54,8 @@ def parseArgs():
         help="Ratio used to calculate the width of a round. This will scale with the label length")
 #    parser.add_argument("--width", type=int,
 #        help="Width of the graph. Overrides --width-factor")
+    parser.add_argument("--force-fixed-size", action="store_true",
+        help="Force a fixed size, even for html files")
     parser.add_argument("--font-size-ratio", type=int, default=14,
         help="The font size to be used with 10k votes. Will scale with number of votes")
     parser.add_argument("--font-size-min", type=int, default=14,
@@ -374,18 +376,24 @@ def main(args):
             font_size = args.font_size
 
         if re.search(r"\.html$", chart_file, re.IGNORECASE):
-            #fig.update_layout(width=election.num_rounds*w_factor/3)
+            ## Write an html file
+            ## Don't fixed size unless unless forced
+            if args.force_fixed_size:
+                fig.update_layout(width=election.num_rounds*w_factor/3)
+
             print(f"Saving as '{chart_file}'")
             plotly.offline.plot(fig, filename=chart_file)
             if args.copyright and not args.no_copyright:
                 insertCopyright(chart_file, args.copyright)
         elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
+            ## Write an svg file
             height *= 3/4
             font_size = max(10, int(font_size*5/6))
             fig.update_layout(font_size=font_size, width=election.num_rounds*w_factor, height=height)
             print(f"Saving as '{chart_file}'")
             fig.write_image(chart_file)
         else:
+            ## Write something else, png if not specified
             fig.update_layout(font_size=font_size, width=election.num_rounds*w_factor, height=height)
             if '.' not in chart_file:
                 chart_file += ".png"
