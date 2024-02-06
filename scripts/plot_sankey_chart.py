@@ -1,6 +1,7 @@
 #! /usr/bin/python3
 
 import argparse
+import datetime as dt
 import re
 import sys
 
@@ -11,6 +12,7 @@ import plotly
 import plotly.graph_objects as go
 
 import elections
+from utils import insertLineInFile
 
 PLOT=True
 DEBUG=False
@@ -62,6 +64,10 @@ def parseArgs():
         help="The vote count at which a label should take two lines")
     parser.add_argument("--title", default="Election Results",
         help="Title of the graph")
+    parser.add_argument("--copyright", default="Charles Jessup Franklin",
+        help="The copyright holder")
+    parser.add_argument("--no-copyright", action="store_true",
+        help="Don't set a copyright holder. Overrides --copyright")
     parser.add_argument("vote_file",
         help="CSV of vote counts")
     parser.add_argument("chart_file", nargs="?",
@@ -135,6 +141,7 @@ def makeNodes(source_map, target_map, label_rounds, previous_labels):
 
 def calcXYPositions(election, round_labels, label_total, label_rounds, previous_labels):
     """Calcualte X/Y positions"""
+    ## pylint: disable=too-many-locals
     x_pos_map = {}
     y_pos_map = {}
     y_used    = {}
@@ -189,6 +196,17 @@ def calcXYPositions(election, round_labels, label_total, label_rounds, previous_
                 print(f"Label '{label}' votes:{votes} height:{height} y-pos:{y_pos} x-pos:{x_pos}")
 
     return x_pos_map, y_pos_map
+
+
+def insertCopyright(path, copyright_holder):
+    """Insert a copyright notice"""
+    print(f"Updating with copyright")
+    year = dt.date.today().year
+    style = 'style="position:absolute; right:1%; bottom: 1%;"'
+    notice = f"<p {style}>Copyright &#169; {year}, {copyright_holder}. All rights reserved.</p>\n"
+    inserted = insertLineInFile(path, "</body>", notice, after=False)
+    if not inserted:
+        print("Failed to insert copyright notice")
 
 
 #def main(vote_file, title="Untitled", chart_file=None):
@@ -359,6 +377,8 @@ def main(args):
             #fig.update_layout(width=election.num_rounds*w_factor/3)
             print(f"Saving as '{chart_file}'")
             plotly.offline.plot(fig, filename=chart_file)
+            if args.copyright and not args.no_copyright:
+                insertCopyright(chart_file, args.copyright)
         elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
             height *= 3/4
             font_size = max(10, int(font_size*5/6))
