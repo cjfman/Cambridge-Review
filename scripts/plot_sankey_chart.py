@@ -267,7 +267,7 @@ def main(args):
 
             label = f"{name}{nl}{n}"
             if election.electedInRound(name, n):
-                label += f"<br>ELECTED"
+                label = f"{name}<br>ELECTED - {n}"
 
             label += f": {e_round.total:,}"
 
