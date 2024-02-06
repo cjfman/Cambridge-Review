@@ -20,10 +20,10 @@ function file_check() {
     fi
 }
 
+
 ##########
 ## Sankey
 ##########
-
 
 # City Council HTML
 for Y in $ALL_CC_YEARS; do
@@ -132,4 +132,15 @@ for Y in $ALL_CC_YEARS; do
         -gravity SouthEast -pointsize 12 -annotate +10+10                \
         'Copyright © 2024, Charles Jessup Franklin. All rights reserved' \
         charts/city_council/line/cc_election_20${Y}_linechart.png
+done
+
+## School Committee
+for Y in $ALL_SC_YEARS; do
+    ./scripts/plot_line_chart.py elections/csvs_sc/sc_election_20$Y.csv \
+        "School Committee Election 20$Y"                                \
+        charts/school_committee/line/sc_election_20${Y}_linechart.png
+    convert charts/school_committee/line/sc_election_20${Y}_linechart.png \
+        -gravity SouthEast -pointsize 12 -annotate +10+10                 \
+        'Copyright © 2024, Charles Jessup Franklin. All rights reserved'  \
+        charts/school_committee/line/sc_election_20${Y}_linechart.png
 done
