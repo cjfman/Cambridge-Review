@@ -100,6 +100,12 @@ done
     charts/city_council/sankey/png/cc_election_sankey_2017.png
 
 file_check "$ALL_CC_YEARS" charts/city_council/sankey/png/cc_election_sankey_20 png
+for Y in 01 03 05 07 09 11 13 15 17 19 21 23; do
+    convert charts/city_council/sankey/png/cc_election_sankey_20$Y.png   \
+        -gravity SouthEast -pointsize 30 -annotate +40+40                \
+        'Copyright © 2024, Charles Jessup Franklin. All rights reserved' \
+        charts/city_council/sankey/png/cc_election_sankey_20$Y.png
+done
 
 
 ## School Committee HTML
