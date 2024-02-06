@@ -562,11 +562,18 @@ def buildRow(item, hdrs, final_action=None):
     """Make a csv row from an agenda item"""
     row = {}
     d = item.to_dict()
+    action_map = {
+        'yeas': 'yes',
+        'nays': 'no',
+        'present': 'present',
+        'absent': 'absent',
+        'recused': 'recused',
+    }
 
     ## Update with final actions
     if final_action is not None:
         d['vote'] = final_action['vote']
-        for key, val in {'yeas': 'yes', 'nays': 'no', 'present': 'present', 'absent': 'absent'}.items():
+        for key, val in action_map.items():
             for name in final_action[key]:
                 d[name] = val
 
@@ -934,7 +941,10 @@ def processFinalActions(path):
         final_actions = json.load(f)
 
     regrouped = {}
-    required = ('action', 'charter_right', 'uid', 'vote', 'yeas', 'nays', 'present', 'absent')
+    required = (
+        'action', 'charter_right', 'uid', 'vote', 'yeas', 'nays',
+        'present', 'absent', 'recused',
+    )
     all_councillors = set(getCouncillorNames())
     for uid, actions in final_actions.items():
         meeting = {}
@@ -946,6 +956,7 @@ def processFinalActions(path):
             action['yeas']    = [lookUpCouncillorName(x) for x in action['yeas'].split(",") if x]
             action['nays']    = [lookUpCouncillorName(x) for x in action['nays'].split(",") if x]
             action['present'] = [lookUpCouncillorName(x) for x in action['present'].split(",") if x]
+            action['recused'] = [lookUpCouncillorName(x) for x in action['recused'].split(",") if x]
             councillors = set(action['yeas'] + action['nays'] + action['present'])
             if action['vote']:
                 action['absent'] = list(sorted(all_councillors.difference(councillors)))

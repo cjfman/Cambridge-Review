@@ -142,7 +142,7 @@ def tabulateVotes(lines, *, valid_names=None):
                     continue
 
             ## Check for YEAS, NAYS, PRESENT
-            match = re.match(r"(YEAS|NAYS|PRESENT):\s*(.*)", line)
+            match = re.match(r"(YEAS|NAYS|PRESENT|RECUSED):\s*(.*)", line)
             if match:
                 key, msg = match.groups()
                 key = key.lower()
@@ -168,6 +168,8 @@ def tabulateVotes(lines, *, valid_names=None):
                 state = processCouncillors(line, item, 'nays', valid_names=valid_names)
             elif state == 'present':
                 state = processCouncillors(line, item, 'present', valid_names=valid_names)
+            elif state == 'recused':
+                state = processCouncillors(line, item, 'recused', valid_names=valid_names)
 
         except Exception as e:
             print(f"Error when processing line: {line}", file=sys.stderr)
