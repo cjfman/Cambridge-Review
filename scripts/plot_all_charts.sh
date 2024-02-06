@@ -99,8 +99,9 @@ done
     elections/csvs_cc/cc_election_2017.csv                          \
     charts/city_council/sankey/png/cc_election_sankey_2017.png
 
+## File check and add copyright
 file_check "$ALL_CC_YEARS" charts/city_council/sankey/png/cc_election_sankey_20 png
-for Y in 01 03 05 07 09 11 13 15 17 19 21 23; do
+for Y in $ALL_CC_YEARS; do
     convert charts/city_council/sankey/png/cc_election_sankey_20$Y.png   \
         -gravity SouthEast -pointsize 30 -annotate +40+40                \
         'Copyright © 2024, Charles Jessup Franklin. All rights reserved' \
@@ -109,9 +110,26 @@ done
 
 
 ## School Committee HTML
-for Y in 03 05 07 09 11 13 15 17 19 21 23; do
+for Y in $ALL_SC_YEARS; do
     ./scripts/plot_sankey_chart.py --title "School Committee Election 20$Y" \
         elections/csvs_sc/sc_election_20$Y.csv                              \
         charts/school_committee/sankey/html/sc_election_sankey_20$Y.html
 done
 file_check "$ALL_SC_YEARS" charts/school_committee/sankey/html/sc_election_sankey_20 html
+
+
+
+##########
+## Line
+##########
+
+## City Council
+for Y in $ALL_CC_YEARS; do
+    ./scripts/plot_line_chart.py elections/csvs_cc/cc_election_20$Y.csv \
+        "City Council Election 20$Y"                                    \
+        charts/city_council/line/cc_election_20${Y}_linechart.png
+    convert charts/city_council/line/cc_election_20${Y}_linechart.png    \
+        -gravity SouthEast -pointsize 12 -annotate +10+10                \
+        'Copyright © 2024, Charles Jessup Franklin. All rights reserved' \
+        charts/city_council/line/cc_election_20${Y}_linechart.png
+done
