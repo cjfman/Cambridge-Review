@@ -15,6 +15,7 @@ import elections
 from utils import insertLineInFile
 
 PLOT=True
+VERBOSE=False
 DEBUG=False
 SQUEEZE=True
 
@@ -68,8 +69,12 @@ def parseArgs():
         help="Title of the graph")
     parser.add_argument("--copyright", default="Charles Jessup Franklin",
         help="The copyright holder")
+    parser.add_argument("--copyright-tight", action="store_true",
+        help="Put the copyright notice in the bottom right corner")
     parser.add_argument("--no-copyright", action="store_true",
         help="Don't set a copyright holder. Overrides --copyright")
+    parser.add_argument("-v", "--verbose", action="store_true")
+    parser.add_argument("--debug", action="store_true")
     parser.add_argument("vote_file",
         help="CSV of vote counts")
     parser.add_argument("chart_file", nargs="?",
@@ -120,15 +125,18 @@ def makeNodes(source_map, target_map, label_rounds, previous_labels):
                 raise ValueError(f'Label "{source}" ran out of votes. Found {availabel}')
             elif needed >= availabel:
                 ## Source exhausted
-                print(f'Transfer {availabel} votes from "{prev_label}" to "{label}"')
-                print(f"'{source}' eliminated")
                 values.append(availabel)
                 needed -= availabel
+                if VERBOSE:
+                    print(f'Transfer {availabel} votes from "{prev_label}" to "{label}"')
+                    print(f"'{source}' eliminated")
             elif needed < availabel:
                 ## Source can provide all needed votes
-                print(f'Transfer {needed} votes from "{prev_label}" to "{label}"')
                 values.append(needed)
                 source_map[n][source] -= needed
+                if VERBOSE:
+                    print(f'Transfer {needed} votes from "{prev_label}" to "{label}"')
+
                 needed = 0
 
             ## Do we have enough
@@ -200,12 +208,15 @@ def calcXYPositions(election, round_labels, label_total, label_rounds, previous_
     return x_pos_map, y_pos_map
 
 
-def insertCopyright(path, copyright_holder):
+def insertCopyright(path, holder, *, tight=False):
     """Insert a copyright notice"""
     print(f"Updating with copyright")
     year = dt.date.today().year
     style = 'style="position:absolute; right:1%; bottom: 1%;"'
-    notice = f"<p {style}>Copyright &#169; {year}, {copyright_holder}. All rights reserved.</p>\n"
+    notice = f"<p {style}>Copyright &#169; {year}, {holder}. All rights reserved.</p>\n"
+    if tight:
+        style = 'style="position:absolute; left:1%; bottom: 0px;"'
+        notice = f"<p {style}>Copyright &#169; {year}<br>{holder}<br>All rights reserved.</p>\n"
     inserted = insertLineInFile(path, "</body>", notice, after=False)
     if not inserted:
         print("Failed to insert copyright notice")
@@ -215,6 +226,15 @@ def insertCopyright(path, copyright_holder):
 def main(args):
     """Plot sankey graph of election"""
     ## pylint: disable=too-many-nested-blocks,too-many-locals,too-many-branches,too-many-statements
+    global VERBOSE ## pylint: disable=global-statement
+    global DEBUG   ## pylint: disable=global-statement
+    if args.debug:
+        VERBOSE = True
+        DEBUG = True
+    elif args.verbose:
+        VERBOSE = True
+
+
     print(f"Reading '{args.vote_file}'")
     election = elections.loadElectionsFile(args.vote_file, include_exhausted=True)
     election.printStats()
@@ -255,6 +275,15 @@ def main(args):
 
     ## First pass of candidates
     for name, rounds in election.truncated2.items():
+        print(f"Candidate: {name}")
+        if elections.isNamedWritein(name):
+            ## Add new line after "write-in"
+            rr = re.compile(r"((?:write|written)[ \-]?in\b)\s*", re.IGNORECASE)
+            new_name = rr.sub("\\1<br>", name, re.IGNORECASE)
+            candidate_colors[new_name] = candidate_colors[name]
+            del candidate_colors[name]
+            name = new_name
+            print(f"Replacement name: {name}")
         ## Loop over every round for a candidate
         for i, e_round in enumerate(rounds):
             ## Exclude candidates that have no votes
@@ -307,13 +336,15 @@ def main(args):
         src, dst = key
         if not total:
             ## Don't add 0 vote transfers
-            print(f'Skip pass through from "{src}" to "{dst}"')
+            if VERBOSE:
+                print(f'Skip pass through from "{src}" to "{dst}"')
             continue
 
         sources.append(src)
         targets.append(dst)
         values.append(total)
-        print(f'Pass through {total} votes from "{src}" to "{dst}"')
+        if VERBOSE:
+            print(f'Pass through {total} votes from "{src}" to "{dst}"')
 
     ## Calcualte X/Y positions
     x_pos_map, y_pos_map = calcXYPositions(election, round_labels, label_total, label_rounds, previous_labels)
@@ -384,7 +415,7 @@ def main(args):
             print(f"Saving as '{chart_file}'")
             plotly.offline.plot(fig, filename=chart_file)
             if args.copyright and not args.no_copyright:
-                insertCopyright(chart_file, args.copyright)
+                insertCopyright(chart_file, args.copyright, tight=args.copyright_tight)
         elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
             ## Write an svg file
             height *= 3/4

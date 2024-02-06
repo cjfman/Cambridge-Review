@@ -39,9 +39,13 @@ class FormatError(Exception):
 
 def isWritein(name, *, unnamed=False):
     if not unnamed:
-        return bool(re.search(r"^write[ \-]in\b", name, re.IGNORECASE))
+        return bool(re.search(r"^(?:write|written)[ \-]?in\b", name, re.IGNORECASE))
 
-    return bool(re.search(r"^write[ \-]in\s+(?:P?\d+|other)", name, re.IGNORECASE))
+    return bool(re.search(r"^(?:write|written)[ \-]?in\s+(?:P?\d+|other)", name, re.IGNORECASE))
+
+
+def isNamedWritein(name, *, unnamed=False):
+    return (isWritein(name) and not isWritein(name, unnamed=True))
 
 
 def candidateSortKey(name):
