@@ -159,7 +159,6 @@ def write(f, elcn, title, year):
 
 def writeTable(f, elcn):
     f.write("\n".join(makeTable(elcn)))
-    f.write("\n")
 
 
 def writeFull(f, elcn, year):
@@ -339,12 +338,16 @@ def writeIFrame(f, title, year):
             <iframe id="chart_flexible" src="/election-charts/city-council/cc_election_sankey_{year}.html" allowfullscreen frameborder="0"></iframe>
             <iframe id="chart_fixed_size" src="/election-charts/city-council/cc_election_sankey_fixed_size_{year}.html" allowfullscreen frameborder="0"></iframe>
         </div>
-        <script>squeezeToWidth(document.getElementById("squeeze-switch").checked)</script>"""
-    ))
+        <script>squeezeToWidth(document.getElementById("squeeze-switch").checked)</script>"""))
 
 
 def runDecider(args, elcn, year, f):
-    title = args.title + " " + year
+    ## Make title
+    title = args.title
+    if year not in title:
+        title += " " + year
+
+    ## Pick generation type
     if args.table_only:
         writeTable(f, elcn)
     elif args.iframe_only:
@@ -360,13 +363,13 @@ def main(args):
     if not args.force \
         and not re.search(r"city[_\-\s]council|cc_election", args.election_file, re.IGNORECASE) \
         :
-        print(f"Are you sure this is the file you want? {args.election_file}", file=sys.stderr)
+        print(f"Are you sure this is the election file you want? {args.election_file}", file=sys.stderr)
         return 1
 
     if args.output_file is not None and not args.force \
         and not re.search(r"city[_\-\s]council|cc_election", args.output_file, re.IGNORECASE) \
         :
-        print(f"Are you sure this is the file you want? {args.election_file}", file=sys.stderr)
+        print(f"Are you sure this is the output file you want? {args.output_file}", file=sys.stderr)
         return 1
 
     ## Read elections file
@@ -384,6 +387,7 @@ def main(args):
     else:
         print("Writing to stdout", file=sys.stderr)
         runDecider(args, elcn, year, sys.stdout)
+        print("", file=sys.stdout) ## Extra newline
 
     return 0
 
