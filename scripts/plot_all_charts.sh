@@ -27,8 +27,8 @@ function file_check() {
 
 # City Council HTML
 for Y in $ALL_CC_YEARS; do
-    ./scripts/plot_sankey_chart.py --force-fixed-size --title "City Council Election 20$Y" \
-        elections/csvs_cc/cc_election_20$Y.csv                                             \
+    ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y" \
+        elections/csvs_cc/cc_election_20$Y.csv                          \
         charts/city_council/sankey/html/cc_election_sankey_20$Y.html
 done
 file_check "$ALL_CC_YEARS" charts/city_council/sankey/html/cc_election_sankey_20 html
