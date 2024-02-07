@@ -1,0 +1,27 @@
+<!-- City Council Election 2019 - Interactive -->
+<script>
+function squeezeToWidth(squeeze) {
+  var flexible_chart = document.getElementById("chart_flexible");
+  var fixed_chart = document.getElementById("chart_fixed_size");
+
+  // If the checkbox is checked, display the output text
+  if (squeeze){
+    fixed_chart.style.display = "none";
+    flexible_chart.style.display = "block";
+  }
+  else {
+    fixed_chart.style.display = "block";
+    flexible_chart.style.display = "none";
+  }
+  window.dispatchEvent(new Event('resize'));
+}
+</script>
+<div style="position: absolute; right: 5%; z-index: 99 !important;">
+    <label class="switch"><input type="checkbox" id="squeeze-switch" onclick="squeezeToWidth(this.checked)" /><span class="slider round"></span></label>
+    <b style="margin-left: 0px">Fit to width of screen</b>
+</div>
+<div class="responsiveWrapper" style="margin-top: -25px;">
+    <iframe id="chart_flexible" src="/election-charts/city-council/cc_election_sankey_2019.html" allowfullscreen frameborder="0"></iframe>
+    <iframe id="chart_fixed_size" src="/election-charts/city-council/cc_election_sankey_fixed_size_2019.html" allowfullscreen frameborder="0"></iframe>
+</div>
+<script>squeezeToWidth(document.getElementById("squeeze-switch").checked)</script>

@@ -21,6 +21,10 @@ def parseArgs():
         help="Generate full wordpress HTML")
     parser.add_argument("--table-only", action="store_true",
         help="Only generate the markdown table")
+    parser.add_argument("--iframe-only", action="store_true",
+        help="Only generate the interactive iframe page")
+    parser.add_argument("--force", action="store_true")
+
     parser.add_argument("election_file",
         help="Election file to be parsed")
 
@@ -39,6 +43,7 @@ def formatList(l):
 
 
 def summarizeElection(elcn):
+    ## pylint: disable=too-many-branches
     lines = []
     rounds = [dict() for i in range(elcn.num_rounds)]
     ## Organize rounds by round number
@@ -304,7 +309,67 @@ def writeFull(f, elcn, year):
         """))
 
 
+def writeIFrame(f, title, year):
+    f.write(f"<!-- {title} - Interactive -->\n")
+    f.write(dedent("""\
+        <script>
+        function squeezeToWidth(squeeze) {
+          var flexible_chart = document.getElementById("chart_flexible");
+          var fixed_chart = document.getElementById("chart_fixed_size");
+
+          // If the checkbox is checked, display the output text
+          if (squeeze){
+            fixed_chart.style.display = "none";
+            flexible_chart.style.display = "block";
+          }
+          else {
+            fixed_chart.style.display = "block";
+            flexible_chart.style.display = "none";
+          }
+          window.dispatchEvent(new Event('resize'));
+        }
+        </script>
+    """))
+    f.write(dedent(f"""\
+        <div style="position: absolute; right: 5%; z-index: 99 !important;">
+            <label class="switch"><input type="checkbox" id="squeeze-switch" onclick="squeezeToWidth(this.checked)" /><span class="slider round"></span></label>
+            <b style="margin-left: 0px">Fit to width of screen</b>
+        </div>
+        <div class="responsiveWrapper" style="margin-top: -25px;">
+            <iframe id="chart_flexible" src="/election-charts/city-council/cc_election_sankey_{year}.html" allowfullscreen frameborder="0"></iframe>
+            <iframe id="chart_fixed_size" src="/election-charts/city-council/cc_election_sankey_fixed_size_{year}.html" allowfullscreen frameborder="0"></iframe>
+        </div>
+        <script>squeezeToWidth(document.getElementById("squeeze-switch").checked)</script>"""
+    ))
+
+
+def runDecider(args, elcn, year, f):
+    title = args.title + " " + year
+    if args.table_only:
+        writeTable(f, elcn)
+    elif args.iframe_only:
+        writeIFrame(f, title, year)
+    elif args.full:
+        writeFull(f, elcn, year)
+    else:
+        write(f, elcn, title, year)
+
+
 def main(args):
+    ## Files should have city council in them
+    if not args.force \
+        and not re.search(r"city[_\-\s]council|cc_election", args.election_file, re.IGNORECASE) \
+        :
+        print(f"Are you sure this is the file you want? {args.election_file}", file=sys.stderr)
+        return 1
+
+    if args.output_file is not None and not args.force \
+        and not re.search(r"city[_\-\s]council|cc_election", args.output_file, re.IGNORECASE) \
+        :
+        print(f"Are you sure this is the file you want? {args.election_file}", file=sys.stderr)
+        return 1
+
+    ## Read elections file
     print(f"Opening '{args.election_file}'", file=sys.stderr)
     elcn = elections.loadElectionsFile(args.election_file)
     match = re.search(r"(\d{4})", elcn.date)
@@ -312,25 +377,15 @@ def main(args):
         raise Exception("Election date doesn't have a year in it")
 
     year = match.groups()[0]
-    title = args.title + " " + year
     if args.output_file is not None:
         print(f"Writing to '{args.output_file}'", file=sys.stderr)
         with open(args.output_file, 'w', encoding='utf8') as f:
-            if args.table_only:
-                writeTable(f, elcn)
-            elif args.full:
-                writeFull(f, elcn, year)
-            else:
-                write(f, elcn, title, year)
+            runDecider(args, elcn, year, f)
     else:
         print("Writing to stdout", file=sys.stderr)
-        if args.table_only:
-            writeTable(sys.stdout, elcn)
-        elif args.full:
-            writeFull(sys.stdout, elcn, year)
-        else:
-            write(sys.stdout, elcn, title, year)
+        runDecider(args, elcn, year, sys.stdout)
 
+    return 0
 
 if __name__ == '__main__':
     sys.exit(main(parseArgs()))
