@@ -42,6 +42,7 @@ COLOR_BLIND_FRIENDLY = [
     (170, 68, 153),  ## Purple
     (136, 34, 85),   ## Dark Pink
 ]
+COLOR_BLIND_FRIENDLY.reverse()
 GREY = (68, 68, 68)
 
 
@@ -256,8 +257,9 @@ def main(args):
 
     ## Candidate colors
     num_colors = len(COLOR_BLIND_FRIENDLY)
+    colored_names = sorted(election.candidates, key=lambda x: election.rounds[x][0].total, reverse=True)
     candidate_colors = {
-        name: COLOR_BLIND_FRIENDLY[i % num_colors] for i, name in enumerate(election.candidates)
+        name: COLOR_BLIND_FRIENDLY[i % num_colors] for i, name in enumerate(colored_names)
     }
     candidate_colors['Exhausted'] = GREY
     label_colors = {}
@@ -275,7 +277,9 @@ def main(args):
 
     ## First pass of candidates
     for name, rounds in election.truncated2.items():
-        print(f"Candidate: {name}")
+        if VERBOSE:
+            print(f"Candidate: {name}")
+
         if elections.isNamedWritein(name):
             ## Add new line after "write-in"
             rr = re.compile(r"((?:write|written)[ \-]?in\b)\s*", re.IGNORECASE)

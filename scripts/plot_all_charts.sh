@@ -221,6 +221,7 @@ if [ ! -z $SANKEY ]; then
             file_check "$ALL_CC_YEARS" $CC_SANKEY/png/cc_election_sankey_20 png
             for Y in $ALL_CC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
+                echo "Adding copyright to cc_election_sankey_20$Y.png"
                 convert $CC_SANKEY/png/cc_election_sankey_20$Y.png                   \
                     -gravity SouthEast -pointsize 30 -annotate +40+40                \
                     'Copyright © 2024, Charles Jessup Franklin. All rights reserved' \
@@ -262,7 +263,8 @@ if [ ! -z $LINE ]; then
             ./scripts/plot_line_chart.py $CC_CSVS/cc_election_20$Y.csv \
                 "City Council Election 20$Y"                           \
                 $CC_LINE/cc_election_20${Y}_linechart.png
-            convert $CC_LINE/cc_election_20${Y}_linechart.png    \
+            echo "Adding copyright to cc_election_linechart_20$Y.png"
+            convert $CC_LINE/cc_election_20${Y}_linechart.png                    \
                 -gravity SouthEast -pointsize 12 -annotate +10+10                \
                 'Copyright © 2024, Charles Jessup Franklin. All rights reserved' \
                 $CC_LINE/cc_election_20${Y}_linechart.png
@@ -282,6 +284,7 @@ if [ ! -z $LINE ]; then
             ./scripts/plot_line_chart.py $SC_CSVS/sc_election_20$Y.csv \
                 "School Committee Election 20$Y"                       \
                 $CS_LINE/sc_election_20${Y}_linechart.png
+            echo "Adding copyright to sc_election_linechart_20$Y.png"
             convert $CS_LINE/sc_election_20${Y}_linechart.png \
                 -gravity SouthEast -pointsize 12 -annotate +10+10                 \
                 'Copyright © 2024, Charles Jessup Franklin. All rights reserved'  \
