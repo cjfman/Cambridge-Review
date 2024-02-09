@@ -574,10 +574,11 @@ def buildRow(item, hdrs, final_action=None):
 
     ## Update with final actions
     if final_action is not None:
-        d['vote'] = final_action['vote']
-        for key in ('action', 'charter_right'):
-            if (key not in d or not d[key]) and (key in final_action and final_action[key]):
-                d[key] = final_action[key]
+        d['Vote'] = final_action['vote']
+        if 'Charter Right' in d and not d['Charter Right'] and final_action['charter_right']:
+            d['Charter Right'] = final_action['charter_right']
+        if 'Outcome' in d and not d['Outcome'] and final_action['action']:
+            d['Outcome'] = final_action['action']
         for key, val in action_map.items():
             for name in final_action[key]:
                 d[name] = val
@@ -969,7 +970,7 @@ def processFinalActions(path):
             action['present'] = [lookUpCouncillorName(x) for x in action['present'].split(",") if x]
             action['recused'] = [lookUpCouncillorName(x) for x in action['recused'].split(",") if x]
             councillors = set(action['yeas'] + action['nays'] + action['present'])
-            if action['vote']:
+            if action['vote'] and action['vote'].lower() != "voice vote":
                 action['absent'] = list(sorted(all_councillors.difference(councillors)))
 
     return regrouped
