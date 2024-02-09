@@ -45,7 +45,7 @@ def processResult(line, item):
         return 'search'
 
     ## Check for vote count
-    match = re.match(r"(.+?)\s(\[\d-\d-\d(?:-\d)?\])", line)
+    match = re.match(r"(.+?)\s\[(\d-\d-\d(?:-\d)?)\]", line)
     if match:
         action, vote = match.groups()
         item['action'] = toTitleCase(action)
