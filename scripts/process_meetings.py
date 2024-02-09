@@ -230,6 +230,7 @@ class Application:
     action:   str
     vote:     str
     charter_right: str = ""
+    address:       str = ""
     meeting_uid:   str = ""
     meeting_date:  str = ""
     notes:         str = ""
@@ -259,6 +260,7 @@ class Application:
             "Subject":           self.subject,
             "Outcome":           self.action,
             "Vote":              self.vote,
+            "Address":           self.address,
             "Charter Right":     self.charter_right,
             "Link":              self.url,
             "Meeting":           self.meeting_uid,
@@ -739,7 +741,13 @@ def processApp(args, uid, num, title, link, vote, action) -> Application:
     else:
         subject = title
 
-    return Application(uid, num, category, name, subject, link, action, vote, charter_right)
+    ## Attempt to get address
+    address = ""
+    match = re.search(r"at the premises numbered ([^;]+)(?:;|\. Approval)", subject)
+    if match:
+        address = match.groups()[0]
+
+    return Application(uid, num, category, name, subject, link, action, vote, charter_right, address)
 
 
 def processCom(args, uid, num, title, link, vote, action) -> Communication:
@@ -1071,7 +1079,9 @@ def main(args):
                 print(f"Found final actions for meeting '{meeting}'")
                 postProcessItems(writers, items, final_actions[meeting.id])
             else:
-                print_red(f"No final actions for meeting '{meeting}'")
+                if final_actions is not None:
+                    print_red(f"No final actions for meeting '{meeting}'")
+
                 postProcessItems(writers, items)
 
             ## Process awaiting reports

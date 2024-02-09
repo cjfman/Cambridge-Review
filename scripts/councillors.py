@@ -8,6 +8,8 @@ from utils import print_red
 _councillor_info = {}
 _councillor_quick_lookup = {}
 def getCouncillorNames(*, include_aliases=False) -> Tuple[str]:
+    if not _councillor_info:
+        return tuple()
     if include_aliases:
         return tuple(_councillor_quick_lookup.keys())
 
@@ -96,6 +98,9 @@ def setCouncillorInfo(path, year=None) -> bool:
 
 
 def lookUpCouncillorName(name):
+    if not _councillor_quick_lookup:
+        return name
+
     ## Quick look up
     if name in _councillor_quick_lookup:
         return _councillor_quick_lookup[name]
