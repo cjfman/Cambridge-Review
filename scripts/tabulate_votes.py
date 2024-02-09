@@ -25,11 +25,30 @@ def parseArgs():
     return parser.parse_args()
 
 
+def toTitleCase(txt) -> str:
+    if not txt:
+        return txt
+
+    words = [x.title() if len(x) > 3 else x.lower() for x in txt.split(' ')]
+    words[0]  = words[0].title()
+    words[-1] = words[-1].title()
+    return " ".join(words)
+
+
 def processResult(line, item):
+    ## Check for voice vote
+    match = re.match(r"(.+?)\s+by voice vote", line, re.IGNORECASE)
+    if match:
+        item['action'] = toTitleCase(match.groups()[0])
+        item['vote'] = "Voice Vote"
+        print(f"Found result: action:'{item['action']}' by voice vote", file=sys.stderr)
+        return 'search'
+
+    ## Check for vote count
     match = re.match(r"(.+?)\s(\[\d-\d-\d(?:-\d)?\])", line)
     if match:
         action, vote = match.groups()
-        item['action'] = action
+        item['action'] = toTitleCase(action)
         item['vote']   = vote
         print(f"Found result: action:{action} vote:{vote}", file=sys.stderr)
         return 'search'
@@ -46,9 +65,9 @@ def processResult(line, item):
 
     ## No match. Append line to action
     if 'action' not in item:
-        item['action'] = line
+        item['action'] = toTitleCase(line)
     else:
-        item['action'] += "\n" + line
+        item['action'] += "\n" + toTitleCase(line)
 
     return 'result'
 

@@ -563,16 +563,19 @@ def buildRow(item, hdrs, final_action=None):
     row = {}
     d = item.to_dict()
     action_map = {
-        'yeas': 'yes',
-        'nays': 'no',
+        'yeas':    'yes',
+        'nays':    'no',
         'present': 'present',
-        'absent': 'absent',
+        'absent':  'absent',
         'recused': 'recused',
     }
 
     ## Update with final actions
     if final_action is not None:
         d['vote'] = final_action['vote']
+        for key in ('action', 'charter_right'):
+            if (key not in d or not d[key]) and (key in final_action and final_action[key]):
+                d[key] = final_action[key]
         for key, val in action_map.items():
             for name in final_action[key]:
                 d[name] = val
