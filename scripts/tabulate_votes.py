@@ -9,7 +9,7 @@ import sys
 from councillors import getCouncillorNames, setCouncillorInfo
 from utils import print_red, toTitleCase
 
-columns = ('uid', 'action', 'vote', 'charter_right')
+columns = ('uid', 'action', 'vote', 'charter_right', 'amended')
 
 
 def parseArgs():
@@ -79,10 +79,16 @@ def processCouncillors(line, item, key, *, valid_names=None):
 
     return key
 
-#    if councilors[-1] == ',':
-#        return key
-#
-#    return 'search'
+
+def postProcess(items):
+    for item in items:
+        item['action'] = re.sub(r"^Order\s+", "", item['action'])
+        if 'as amended' in item['action'].lower():
+            rr = re.compile(r"\s+as amended(?:\s+.*)?", re.IGNORECASE)
+            item['action'] = rr.sub("", item['action'])
+            item['amended'] = 'Yes'
+
+    return items
 
 
 def tabulateVotes(lines, *, valid_names=None):
@@ -194,7 +200,7 @@ def tabulateVotes(lines, *, valid_names=None):
             if key not in item:
                 item[key] = ""
 
-    print(json.dumps(items, sort_keys=True, indent=4))
+    print(json.dumps(postProcess(items), sort_keys=True, indent=4))
 
 
 def main(args):

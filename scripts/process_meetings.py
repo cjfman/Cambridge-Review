@@ -575,13 +575,13 @@ def buildRow(item, hdrs, final_action=None):
     ## Update with final actions
     if final_action is not None:
         d['Vote'] = final_action['vote']
+        d['Amended'] = (('Amended' in d and d['Amended']) or final_action['amended'])
         ## Update the charter righing councilor
-        if 'Charter Right' in d and not d['Charter Right'] and final_action['charter_right']:
+        if ('Charter Right' not in d or not d['Charter Right']) and final_action['charter_right']:
             d['Charter Right'] = lookUpCouncillorName(final_action['charter_right'])
         ## Update the final action
-        if 'Outcome' in d and final_action['action'] and final_action['vote'] \
-            and (not d['Outcome'] or d['Outcome'].lower() == 'charter right') \
-            :
+        no_outcome = ('Outcome' not in d or not d['Outcome'] or d['Outcome'] == 'Charter Right')
+        if no_outcome and final_action['action'] and final_action['vote']:
             d['Outcome'] = final_action['action']
         for key, val in action_map.items():
             for name in final_action[key]:
