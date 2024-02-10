@@ -18,7 +18,7 @@ import html5lib ## pylint: disable=unused-import
 from bs4 import BeautifulSoup
 
 from councillors import getCouncillorNames, setCouncillorInfo, lookUpCouncillorName
-from utils import print_green, print_red
+from utils import print_green, print_red, overlayKeys, toTitleCase
 
 VERBOSE = False
 ALLOWED_TYPES = ('regular', 'special')
@@ -575,9 +575,13 @@ def buildRow(item, hdrs, final_action=None):
     ## Update with final actions
     if final_action is not None:
         d['Vote'] = final_action['vote']
+        ## Update the charter righing councilor
         if 'Charter Right' in d and not d['Charter Right'] and final_action['charter_right']:
-            d['Charter Right'] = final_action['charter_right']
-        if 'Outcome' in d and not d['Outcome'] and final_action['action']:
+            d['Charter Right'] = lookUpCouncillorName(final_action['charter_right'])
+        ## Update the final action
+        if 'Outcome' in d and final_action['action'] and final_action['vote'] \
+            and (not d['Outcome'] or d['Outcome'].lower() == 'charter right') \
+            :
             d['Outcome'] = final_action['action']
         for key, val in action_map.items():
             for name in final_action[key]:
@@ -673,12 +677,7 @@ def processItem(args, row, num):
         action, vote = match.groups()
 
     ## Action
-    if action == "ADOPTED":
-        action = "Adopted"
-    elif action == "PLACED ON FILE":
-        action = "Placed on File"
-    elif action == "REFERRED TO COMMITTEE":
-        action = "Referred to Committee"
+    action = toTitleCase(action)
 
     ## Init item type
     handlers = {
@@ -953,6 +952,7 @@ def processFinalActions(path):
         final_actions = json.load(f)
 
     regrouped = {}
+    items = {}
     required = (
         'action', 'charter_right', 'uid', 'vote', 'yeas', 'nays',
         'present', 'absent', 'recused',
@@ -962,7 +962,9 @@ def processFinalActions(path):
         meeting = {}
         regrouped[uid] = meeting
         for action in actions:
-            meeting[action['uid']] = action
+            action_uid = action['uid']
+            meeting[action_uid] = action
+            action['action'] = toTitleCase(action['action'])
             ## Convert votes to lists of names and calculate absent
             action.update({key: "" for key in required if key not in action})
             action['yeas']    = [lookUpCouncillorName(x) for x in action['yeas'].split(",") if x]
@@ -972,6 +974,13 @@ def processFinalActions(path):
             councillors = set(action['yeas'] + action['nays'] + action['present'])
             if action['vote'] and action['vote'].lower() != "voice vote":
                 action['absent'] = list(sorted(all_councillors.difference(councillors)))
+
+            ## Overlay on previous item if it was charter righted
+            if action_uid in items and items[action_uid]['charter_right']:
+                keys = ('yeas', 'nays', 'present', 'recused', 'absent', 'vote', 'action')
+                overlayKeys(items[action_uid], action, keys)
+            else:
+                items[action_uid] = action
 
     return regrouped
 
@@ -998,7 +1007,8 @@ def postProcessItems(writers, items, final_actions=None):
 
 
 def setupOutputFiles(output_dir):
-    ## Open output files
+    """Open output files"""
+    print("Opening output files")
     files   = {}
     writers = {}
     sets = (
@@ -1055,7 +1065,6 @@ def main(args):
         final_actions = processFinalActions(args.final_actions)
 
     print(f"Read {len(meetings)} meetings from '{args.meetings_file}'")
-    print("Opening output files")
     output_files, writers = setupOutputFiles(args.output_dir)
     if output_files is None:
         return 1

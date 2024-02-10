@@ -10,6 +10,21 @@ def print_green(msg, **kwargs):
     print(colored(msg, 'green'), **kwargs)
 
 
+def overlayKeys(original, other, keys):
+    for key in keys:
+        original[key] = other[key]
+
+
+def toTitleCase(txt) -> str:
+    if not txt:
+        return txt
+
+    words = [x.title() if len(x) > 3 else x.lower() for x in txt.split(' ')]
+    words[0]  = words[0].title()
+    words[-1] = words[-1].title()
+    return " ".join(words)
+
+
 def insertLineInFile(path, match, line, *, after=True, stop=True, regex=False, re_args=None) -> bool:
     """Insert a line into the file after a matching line"""
     check_match = lambda x: (not regex and match in x) or (regex and re.search(match, line, re_args))

@@ -7,7 +7,7 @@ import re
 import sys
 
 from councillors import getCouncillorNames, setCouncillorInfo
-from utils import print_red
+from utils import print_red, toTitleCase
 
 columns = ('uid', 'action', 'vote', 'charter_right')
 
@@ -23,16 +23,6 @@ def parseArgs():
         help="The file containing the final actions")
 
     return parser.parse_args()
-
-
-def toTitleCase(txt) -> str:
-    if not txt:
-        return txt
-
-    words = [x.title() if len(x) > 3 else x.lower() for x in txt.split(' ')]
-    words[0]  = words[0].title()
-    words[-1] = words[-1].title()
-    return " ".join(words)
 
 
 def processResult(line, item):
