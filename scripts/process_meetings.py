@@ -38,6 +38,11 @@ CMA_HDRS = (
     "Charter Right",
     "Outcome",
     "Vote",
+    "Yeas",
+    "Nays",
+    "Present",
+    "Absent",
+    "Recused",
     "Link",
     "Notes",
 )
@@ -53,6 +58,11 @@ APP_HDRS = (
     "Charter Right",
     "Outcome",
     "Vote",
+    "Yeas",
+    "Nays",
+    "Present",
+    "Absent",
+    "Recused",
     "Subject",
     "Link",
     "Notes",
@@ -78,6 +88,11 @@ RES_HDRS = (
     "Category",
     "Outcome",
     "Vote",
+    "Yeas",
+    "Nays",
+    "Present",
+    "Absent",
+    "Recused",
     "Link",
     "Description",
     "Notes",
@@ -93,6 +108,11 @@ POR_HDRS = (
     "Charter Right",
     "Outcome",
     "Vote",
+    "Yeas",
+    "Nays",
+    "Present",
+    "Absent",
+    "Recused",
     "Amended",
     "Link",
     "Description",
@@ -128,6 +148,8 @@ def parseArgs():
         help="The session year. Defaults to most recent one found in councillor info file")
     parser.add_argument("--final-actions",
         help="Json file with the final actions")
+    parser.add_argument("--aggrigate-votes", action="store_true",
+        help="Add aggrigate vote columns")
     parser.add_argument("-v", "--verbose", action="store_true",
         help="Be verbose")
     parser.add_argument("meetings_file",
@@ -560,9 +582,8 @@ def uidToFileSafe(uid) -> str:
     return uid.replace(' ', '_').replace('#', 'no')
 
 
-def buildRow(item, hdrs, final_action=None):
+def buildRow(item, hdrs, final_action=None, *, aggrigate_votes=False):
     """Make a csv row from an agenda item"""
-    row = {}
     d = item.to_dict()
     action_map = {
         'yeas':    'yes',
@@ -584,10 +605,14 @@ def buildRow(item, hdrs, final_action=None):
         if no_outcome and final_action['action'] and final_action['vote']:
             d['Outcome'] = final_action['action']
         for key, val in action_map.items():
+            column = key.title()
+            if aggrigate_votes:
+                d[column] = ",".join(final_action[key])
             for name in final_action[key]:
                 d[name] = val
 
     ## Every row dict must have exactly the keys in the header
+    row = {}
     for key in hdrs:
         if key in d and d[key] is not None:
             row[key] = str(d[key])
@@ -846,7 +871,7 @@ def processNewArs(args, ar_map, items, writer:csv.DictWriter):
             print(f"New awaiting report: {item}")
 
         ar_map[item.uid] = processAr(args, item)
-        writer.writerow(buildRow(item, AR_HDRS))
+        writer.writerow(buildRow(item, AR_HDRS, aggrigate_votes=args.aggrigate_votes))
         total += 1
 
     print_green(f"Wrote {total} awaiting reports")
