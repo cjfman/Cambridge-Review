@@ -870,12 +870,12 @@ def processMeeting(args, meeting) -> Dict[str, List[Any]]:
         if td is not None:
             ## Enable or disable processessing baesd upon section
             title = td.text.strip()
-            if not enabled and title in ("City Manager's Agenda", "Communications", "Resolutions", "Policy Order and Resolution List", "Applications and Petitions"):
+            if not enabled and title in ("City Manager's Agenda", "Communications", "Resolutions", "Policy Order and Resolution List", "Applications and Petitions", "Communications and Reports from Other City Officers"):
                 if VERBOSE:
                     print(f"""Found section "{title}". Enable agenda item processing""")
                 enabled = True
                 continue
-            elif enabled and title in ("Charter Right", "Calendar"):
+            elif enabled and title in ("Charter Right", "Calendar", "Committee Reports"):
                 if VERBOSE:
                     print(f"""Found section "{title}". Disable agenda item processing""")
 
