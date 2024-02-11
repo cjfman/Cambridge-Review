@@ -6,8 +6,16 @@ no warnings qw/uninitialized/;
 
 use Text::ParseWords;
 
+my $exit_on_error;
+
+if (@ARGV != 2) {
+    print "USAGE: $0 <session year> <meetings file>";
+    exit 1;
+}
+
 my $header = 0;
-my $path = $ARGV[0];
+my $year = shift @ARGV;
+my $path = shift @ARGV;
 open FILE, '<', $path or die "Failed to open '$path': $!";
 foreach (<FILE>) {
     if (!$header) {
@@ -29,7 +37,12 @@ foreach (<FILE>) {
         system 'pdftotext', $pdf, $txt;
         system './scripts/prep_final_actions.pl', $txt;
     }
-    system "./scripts/tabulate_votes.py --councillor-info meeting_data/councilors.yml --session 2022 $txt > $jsn";
+    my $cmd = "./scripts/tabulate_votes.py --councillor-info meeting_data/councilors.yml --session $year $txt > $jsn";
+    print "$cmd\n";
+    my $code = system $cmd;
+    if ($code != 0 && $exit_on_error) {
+        exit $code;
+    }
     if (! -s $jsn) {
         unlink $jsn;
     }

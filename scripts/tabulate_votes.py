@@ -34,24 +34,30 @@ def processResult(line, item):
         print(f"Found result: action:'{item['action']}' by voice vote", file=sys.stderr)
         return 'search'
 
+    ## Check for charter right
+    match = re.search(f"^charter right\s?(?:exercised|excersied) by (?:councillor|councollor||vice mayor|mayor) (?:(.+)(?: in council.*)?)", line, re.IGNORECASE)
+    if match:
+        name = match.groups()[0].replace(" IN COUNCIL", "").lower()
+        print(f"Charter righted by {name}", file=sys.stderr)
+        item['action'] = 'Charter Right'
+        item['charter_right'] = name
+        return 'search'
+
     ## Check for vote count
-    match = re.match(r"(.+?)\s\[(\d-\d-\d(?:-\d)?)\]", line)
+    match = re.match(r"(.+?)\s\[?((?:\d-\d-\d(?:-\d)?)|(?:\d+ to \d+)|Unanimous)\]?", line, re.IGNORECASE)
     if match:
         action, vote = match.groups()
         item['action'] = toTitleCase(action)
-        item['vote']   = vote
+        item['vote']   = vote.lower()
         print(f"Found result: action:{action} vote:{vote}", file=sys.stderr)
         return 'search'
 
-    ## Check for charter right
-    if 'action' not in item:
-        match = re.search(f"^CHARTER RIGHT EXERCISED BY (?:COUNCILLOR|VICE MAYOR|MAYOR) (?:(.+)(?: IN COUNCIL.*)?)", line)
-        if match:
-            name = match.groups()[0].replace(" IN COUNCIL", "").lower()
-            print(f"Charter righted by {name}", file=sys.stderr)
-            item['action'] = 'Charter Right'
-            item['charter_right'] = name
-            return 'search'
+    ## Check again
+    match = re.match(r"\[?((?:\d-\d-\d(?:-\d)?)|(?:\d+ to \d+)|Unanimous)\]?", line, re.IGNORECASE)
+    if match:
+        item['vote'] = match.groups()[0]
+        print(f"Found result: vote:{item['vote']}", file=sys.stderr)
+        return 'result'
 
     ## No match. Append line to action
     if 'action' not in item:
@@ -82,11 +88,25 @@ def processCouncillors(line, item, key, *, valid_names=None):
 
 def postProcess(items):
     for item in items:
-        item['action'] = re.sub(r"^Order\s+", "", item['action'])
-        if 'as amended' in item['action'].lower():
+        action = re.sub(r"^Order\s+", "", item['action'])
+
+        ## Check for voice vote
+        match = re.match(f"^(.*) (?:by|on) (?:an |am )?(?:Affirmative|Voice) Vote of (\w+) (?:Memebers|Members|Councillors)", action, re.IGNORECASE)
+        if match:
+            action = match.groups()[0]
+            item['vote'] = "Voice Vote"
+
+        ## Check for as amended
+        if 'as amended' in action.lower():
             rr = re.compile(r"\s+as amended(?:\s+.*)?", re.IGNORECASE)
-            item['action'] = rr.sub("", item['action'])
+            action = rr.sub("", action)
             item['amended'] = 'Yes'
+        elif action.lower() == "failed of adoption":
+            action = "Failed"
+        elif "no action taken" in action.lower():
+            action = "No Action Taken"
+
+        item['action'] = action
 
     return items
 

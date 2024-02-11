@@ -10,6 +10,8 @@ import sys
 import html5lib ## pylint: disable=unused-import
 from bs4 import BeautifulSoup
 
+## https://cambridgema.iqm2.com/Citizens/Calendar.aspx?From=1/1/2020&To=12/31/2021
+
 
 def parseArgs():
     parser = argparse.ArgumentParser()

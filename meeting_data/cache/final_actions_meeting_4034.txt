@@ -1,0 +1,4196 @@
+HEALTH & ENVIRONMENT COMMITTEE
+COMMITTEE MEETING
+~ MINUTES ~
+Wednesday, December 22, 2021
+
+1:00 PM
+
+Sullivan Chamber
+
+The Health & Environment Committee will meet to discuss the BEUDO amendments.
+Attendee Name
+Quinton Zondervan
+Dennis J. Carlone
+Marc C. McGovern
+Patricia Nolan
+Jivan Sobrinho-Wheeler
+
+Present
+
+
+
+
+
+
+
+Absent
+
+
+
+
+
+
+
+Late
+
+Arrived
+
+
+
+
+
+
+
+Ordinance #2021-26 A communication transmitted from Louis A. DePasquale, City Manager,
+relative to Awaiting Report Item Number 21-84 regarding BEUDO (Building Energy Use Disclosure
+Ordinance) proposed amendments.
+A communication was received from Assistant City Manager, Community Development, Iram
+Farooq, transmitting City of Cambridge Getting to Net Zero Action Plan BEUDO Amendment
+Proposal.
+A communication was received from Councillor Zondervan, transmitting a presentation regarding
+BEUD (ER) O Amendments.
+
+City of Cambridge
+
+Page 1
+
+December 22, 2021
+To the Honorable, the City Council:
+Please find attached a letter received from Assistant City Manager for Community Development Iram
+Farooq, along with proposed amendments (clean and redlined versions) to the Building Energy Use
+Disclosure Ordinance (BEUDO).
+
+Also attached is a response to Awaiting Report Item Number 21-84, (Policy Order adopted from
+Committee Report Item #2 of 11/1/21), received from City Solicitor Nancy E. Glowa.
+Very truly yours,
+
+Louis A. DePasquale
+City Manager
+LAD/mec
+Attachment(s)
+
+Packet Pg. 2
+
+C I T Y
+
+O F
+
+C A M B R I D G E
+
+Community Development Department
+
+IRAM FAROOQ
+Assistant City Manager for
+Community Development
+
+MEMORANDUM
+TO:
+
+Louis A. DePasquale, City Manager
+
+FROM:
+
+Iram Farooq, Assistant City Manager for Community Development
+
+Date:
+
+November 4, 2021
+
+RE:
+
+Building Energy Use Disclosure Ordinance – Proposed Amendments
+
+SANDRA CLARKE
+Deputy Director
+Chief of Administration
+
+KHALIL MOGASSABI
+Deputy Director
+Chief Planner
+
+Please find attached proposed amendments to the Building Energy Use Disclosure
+Ordinance. The Building Energy Use Disclosure Ordinance (BEUDO) was
+adopted in 2014 and requires energy and water reporting from commercial
+properties over 25,000 square feet and residential properties over 50 units. This
+regulates approximately 1,100 buildings in Cambridge which are responsible for
+approximately 75% of the building sector greenhouse gas (GHG) emissions.
+The ordinance has successfully increased transparency and awareness of energy
+and water consumption by the regulated buildings. BEUDO includes a provision
+requiring that the Community Development Department review the impact of the
+ordinance on energy performance of covered properties, and recommend
+amendments to improve building energy performance if it has not improved
+significantly. Analysis performed in 2018 concluded that energy performance of
+covered properties had not improved significantly and therefore CDD initiated a
+performance requirement policy development process with participation of over
+35 unique entities, representing private commercial and residential building
+owners, universities, affordable housing providers, and green building
+professionals. The attached proposal is the result of this collaborative process.
+These proposed BEUDO amendments are intended to introduce GHG
+performance requirements for BEUDO properties and achieve science-based
+GHG reductions consistent with other leading cities including Boston, New York,
+and Washington D.C. The performance requirements:
+•
+
+344 Broadway
+Cambridge, MA 02139
+Voice: 617 349-4600
+Fax: 617 349-4669
+TTY: 617 349-4621
+www.cambridgema.gov
+
+Eliminate GHG emissions from regulated properties by 2050, with the
+following intermediate targets compared to an individual 2018-2019
+baseline for most buildings:
+o 20% by 2025
+o 40% by 2030
+
+Packet Pg. 3
+
+Attachment: CDD BEUDO Amendment Cover Letter 11-8-21 (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+a
+
+o 60% by 2035
+o 80% by 2040
+o 90% by 2045
+•
+
+Provide multiple compliance pathways including energy efficiency
+improvements, electrification, on-site renewable energy, off-site
+renewable energy, electricity grid improvements, and alternative
+compliance payments.
+
+•
+
+Provide flexibility including an optional early baseline to account for early
+action, alternative compliance timeframes for laboratories and affordable
+housing, and portfolio level compliance for campus owners and affordable
+housing.
+
+•
+
+Leverage technical support and access to state and federal financial
+incentives through the existing Building Energy Retrofit Program.
+
+The attached proposal for amendments to BEUDO represents an essential step in
+Cambridge’s commitment to achieve carbon neutrality. The Net Zero Action Plan
+adopted in 2015 and updated in 2021 identifies BEUDO performance
+requirements as an integral part of a comprehensive suite of actions which
+together will phase out GHG emissions from new buildings, many existing
+buildings, and much of the energy supply system in Cambridge. This Plan has
+been created and updated by a Net Zero Task Force representing stakeholders
+throughout the community and is being overseen by the Climate Protection
+Advisory Committee. Both stakeholder groups have urged the prompt
+advancement of strong BEUDO performance requirements.
+We are pleased to present these amendments to move forward the discussion of
+emission reductions from the largest buildings in Cambridge based on a
+comprehensive and collaborative stakeholder engagement process.
+
+Page 2 of 2
+Packet Pg. 4
+
+Attachment: CDD BEUDO Amendment Cover Letter 11-8-21 (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+a
+
+ORDINANCE NUMBER 1360
+Final Publication Number 3341. XXXX. First Publication in the Chronicle on July 10,
+2014XXXX.
+City of Cambridge
+
+In the Year Two Thousand and Fourteen
+Twenty-One AN ORDINANCE
+
+In amendment to the Ordinance entitled “Building Energy Use,” Chapter 8.67 of the Municipal Code of
+the City of Cambridge
+Be it ordained by the City Council of the City of Cambridge that the Municipal Ordinances of
+the City of Cambridge in be amended as follows:
+City of Cambridge in be amended as follows:
+
+Building Energy Use Disclosure and Emission Reductions
+8.67.10 Section A. DEFINITIONS
+
+(1)
+
+(1) “Affordable Housing” shall mean Residential Covered Property in which all units
+are made permanently affordable to households earning up to 100% of area median
+income.
+
+(2)
+
+“Alternative Compliance Credit” shall mean a credit obtained by a Covered Property
+Owner to offset greenhouse gas emissions from the Covered Property. One Alternative
+Compliance Credit shall be equivalent to one metric ton of Greenhouse Gas Emissions.
+In the first Compliance Period, each Alternative Compliance Credit shall cost $234. The
+Department shall promulgate regulations pursuant to 8.67.130 prior to each
+Compliance Period to establish the price of the Alternative Compliance Credit for that
+Compliance Period, based on review of the average cost of reducing one metric ton of
+greenhouse gas emissions in Covered Properties. Monies from Alternative Compliance
+Credits shall be used by the City for City programs and projects to support greenhouse
+gas reduction, including but not limited to, greenhouse gas reduction projects in
+Affordable Housing properties, if approved by the Cambridge Affordable Housing Trust.
+
+(3)
+
+“Approved Verification Body” shall mean a firm accredited by the American National
+Standards Institute to conduct greenhouse gas inventory verification services.
+1
+Packet Pg. 5
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Redline (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+b
+
+(4)
+
+“Baseline” shall mean the average of Greenhouse Gas Emissions of Covered Properties
+for two consecutive calendar years comprising the default baseline, alternative baseline,
+or new construction baseline as set forth in section 8.67.100 for purposes of calculating
+emissions reductions in order to meet the requirements of this ordinance set forth in
+section 8.67.100.
+
+(1)(5) “Benchmarking informationInformation” shall mean information generated by the
+Benchmarking Tool, as
+herein defined including descriptive information about the
+physical property and its
+operational characteristics. The information shall include, but
+need not be limited to:
+(a)
+(b)
+(c)
+(d)
+(e)
+(f)
+(g)
+(h)
+(i)
+
+(a) Property address;
+(b) Primary use type;
+(c)
+Gross floor area
+(d) Site Energy Use Intensity (EUI) as defined in this section;
+(e) Weather normalized sourceSource EUI;
+(f)
+Annual greenhouse gas emissions;
+(g) Water use;
+(h) The energy performance score that compares the energy use of the building to
+that of
+similar buildings, where available; and
+(i)
+Compliance or noncompliance with this Ordinance.
+
+(2)(6) (2) “Benchmarking Tool” shall mean the ENERGY STAR Portfolio ManagerInternet-based
+tool developed and maintained by the
+U.S. Environmental Protection Agency to track
+and assess the relative energy performance of
+buildings nationwide., or other tools
+identified by the Department to collect and track Benchmarking Information necessary for
+compliance with this ordinance
+
+(3)
+
+(7)
+
+“Campus” shall mean a minimum of 5 (five) Covered Properties owned by the same
+organization that are owner-occupied properties or Affordable Housing.
+
+(3)(8) “Covered Property” shall mean a parcel, as described in public records or as determined by
+the Department, containing any of the following:
+(a)
+(b)
+
+(c)
+
+(a)
+One or more non-residential building(s) where such building(s)
+singly or together
+contain 25,000 to 49,999.99 square feet (“Small
+Non-Residential Covered
+Property”);
+(b) One or more non-residential building(s), where such building(s) singly or
+together
+contain 50,000 or more square feet (“Large NonResidential Covered Property”);
+and
+(c)
+One or more residential building(s) that singly or together contain 50 or
+more
+residential Dwelling Units whether they are rental Dwelling
+Units or Dwelling Units
+owned as condominiums, cooperatives or
+otherwise (“Residential Covered
+Property”).
+2
+Packet Pg. 6
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Redline (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+b
+
+(4)(9) (4) “Department” meansshall mean the City of Cambridge Community Development
+Department.
+(5)(10) (5) “Dwelling Unit” shall mean a single residential unit consisting of one or more habitable
+rooms,
+occupied or arranged to be occupied as a residential unit separate from all
+other residential
+units within a building, and used primarily for residential purposes and
+not primarily for
+professional or commercial purposes.
+
+(6)
+
+(11)
+
+“
+
+“Emission Factors” shall mean the multipliers used to determine the annual Greenhouse Gas
+Emissions produced by the production or consumption of Energy. The Department shall
+promulgate regulations pursuant to 8.67.130 no later than two years prior to each
+Compliance Period to establish the annual Emission Factors for that Compliance Period, and
+no later than two years prior to the first Compliance Period to establish the annual Emission
+Factors for 2010-2024.
+
+(a)
+(b)
+(c)
+
+For the combustion of fuels, such as oil and gas, the Emission Factors will be based on
+standard scientific values published by federal agencies.
+For the use of all electricity other than Renewable Electricity, the annual Emission
+Factor will be based on the Commonwealth of Massachusetts’s calculations and
+projections of emissions from electricity consumed in Massachusetts.
+For the generation or consumption of steam, hot water, and chilled water, the
+Emission Factors will be calculated based on the Emission Factor published by the
+Commonwealth of Massachusetts for that product, unless the Commonwealth has
+not published such a multiplier, in which case the Emission Factor will be calculated
+using the methodology of the Greenhouse Gas Protocol developed by the World
+Resources Institute and World Business Council for Sustainable Development.
+
+(6)(12) “Energy” shall mean purchased electricity, natural gas, steam, hot or chilled water, heating oil,
+or other
+product or electricity generated on site, for use in a building, or renewable onsite electricity generation, for purposes of providing heating, cooling, lighting, water heating,
+or for powering or fueling other end-uses in
+the building and related facilities.
+
+(7)
+
+(13)
+
+“Energy Audit” shall mean an energy assessment of a covered property that meets the
+standards of the ASHRAE Level 2 Audit as specified by the Procedures for Commercial Building
+Energy Audits published by the American Society of Heating, Refrigeration, and Air-Conditioning
+Engineers.
+
+(7)(14) “Energy Performance Score” shall mean the numeric rating generated by the ENERGY STAR
+Portfolio Manager tool or equivalent tool adopted by the department that compares the
+energy usage of the building to that of similar buildings.
+
+(8)
+
+(8)(15) “ENERGY STAR” shall mean the U.S. Environmental Protection Agency program related
+to
+improving energy efficiency in buildings and products.
+
+(9)
+
+3
+Packet Pg. 7
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Redline (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+b
+
+(9)(16) “ENERGY STAR Portfolio Manager” shall mean the tool developed and maintained by the
+U.S. Environmental Protection Agency to track and assess the relative energy performance of
+buildings nationwide.
+
+(10)
+
+(10)(17)
+“Energy Use Intensity (EUI)” shall mean thea building’s annual energy
+consumption measured in kBTUs (1,000 British Thermal Units) used per square foot of
+gross floor area.
+
+(11)
+
+(18)
+
+“Greenhouse Gas Emissions” (GHG) shall mean the carbon dioxide equivalent
+emissions produced from the operations of the Covered Property calculated by the
+Department according to the following calculation:
+Greenhouse Gas Emissions are the sum of annual Energy use by fuel type multiplied by the
+Emission Factor for that type of Energy, minus Alternative Compliance Credits; provided that
+Renewable Electricity shall be subtracted from the electricity consumption, up to a limit of
+the total electricity consumption.
+
+(19)
+
+“Greenhouse Gas Emissions Reduction Plan” shall mean a detailed strategy based
+on an Energy Audit or similar assessment which lists plans to invest in measures
+such as energy efficiency improvements, fuel switching, and Renewable Electricity
+purchases which will lead to reductions in annual Greenhouse Gas Emissions. The
+Plan should detail what measures are planned, when they are scheduled to occur,
+and how much Greenhouse Gas Emissions are projected to be reduced by each
+measure.
+
+(11)(20)
+“Gross Square Feet” shall mean the gross floor area of the property as per the
+City of
+Cambridge Assessors’ records.
+
+(12)
+
+(21)
+
+“Laboratory” shall mean a Covered Property with 15% or more of occupied building
+square footage with an air exchange rate of 0.5 cubic feet per minute per square foot
+(CFM/ft2) or greater.
+
+(12)(22)
+“Municipal Property” shall mean a property with one or more buildings that is
+10,000 gross square feet or more that is owned by the City of Cambridge.
+(13)(23)(13) “Owner” shall mean an owner of a Covered Property, including but not limited to:
+(a)
+(b)
+(c)
+(d)
+(e)
+
+(a)
+An individual or entity having title to a Covered Property;
+(b)
+An agent authorized to act on behalf of the owner of a Covered Property;
+(c)
+The net lessee in the case of a propertyCovered Property subject to a net
+lease with a term of at least forty-nine years, inclusive of all renewal options;
+(d)
+The board of managers or trustees in the case of a condominium at the
+Covered Property; and/or
+(e)
+The board of directors or trustees in the case of a cooperative apartment
+corporation at the Covered Property.
+4
+Packet Pg. 8
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Redline (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+b
+
+(24)
+
+(14)
+“Net Zero Emission Building” shall mean a Covered Property that has an annual
+balance of zero greenhouse gas emissions from building operations as defined by standards
+qualified by the Department.
+
+(14)(25)
+“Qualified Benchmarker” is an entity that meets the Department’s qualifications for
+inputting
+Benchmarking Information into the Benchmarking Tool.
+(26)
+
+(15) “Renewable Electricity” shall mean purchases from specific offsite renewable
+electricity programs approved by the Department, or the renewable energy attributes,
+measured in megawatt-hours, retired from renewable on-site electricity generation or from
+off-site zero greenhouse gas emission electricity sources qualified by the Department based
+on the following Cambridge Off-Site Renewable Electricity Standards:
+(a)
+The off-site renewable energy procurement shall support a renewable energy
+project that is new, meaning that the Covered Property Owner enters into a contract
+to purchase Renewable Electricity from a newly-built renewable energy generating
+source that is not operational at the time of contract execution. This includes
+contracts that lead to construction of a new project, as well as contracts that lead to
+expansion of existing projects with new renewable capacity.
+(b)
+Renewable Energy Certificates (RECs) and other environmental attributes associated
+with the procured off-site renewable energy shall be assigned to the building or
+aggregated portfolio of buildings in Cambridge for the duration of the contract and
+made available for inspection by the City of Cambridge upon request. The building
+owner shall maintain transparent accounting that clearly assigns renewable energy
+production in the form of RECs in megawatt-hours to the building or aggregated
+portfolio of buildings in Cambridge for the duration of the procured off-site
+renewable energy contract.
+(c)
+The renewable energy generating source shall be photovoltaic systems, solar
+thermal power plants, wind turbines, geothermal power plants, small hydropower,
+or other renewable energy generating sources that may be submitted to and
+certified by the Department.
+
+(15)(27)
+
+“Residential Property” shall mean a property containing one or more Dwelling Units.
+
+(16)(28)
+(16) “Site Energy” shall mean the amount of heat and electricity energy consumed
+by a Covered Property
+or Municipal Property as reflected in utility bills or other
+documentation of actual energy use.
+(17)(29)(17) “Source Energy” shall mean all the energy used in delivering energy to a Covered
+Property,
+including power generation and transmission and distribution losses, to
+perform a specific function, such as but not limited to space conditioning, lighting, or
+water heating. .
+(18)(30)
+(18) “Tenant” shall mean a person or entity leasing, occupying or holding
+possession of all or a portion of a Covered Property or Municipal Property.
+5
+Packet Pg. 9
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Redline (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+b
+
+(19)(31)
+(19) “Utility” shall mean an entity that distributes and sells Energy for
+Covered Properties or
+Municipal Properties.
+Section B.8.67.020 Purpose
+To encourage efficient use of energy and to reduce the emission of greenhouse gases, this Ordinance
+requires owners of Covered Properties and Municipal Properties to annually measure and disclose
+energy usage to the Department. and to achieve Greenhouse Gas Emissions reduction targets
+consistent with the commitments of the 2015 Cambridge Net Zero Action Plan as it may be amended
+from time to time. Furthermore, this Ordinance will authorize the Department to collect energy
+usage data to enable more effective energy and climate protection planning by the City and others
+and to provide information to the real estate marketplace to enable its members to make decisions
+that foster better energy performance.
+Section C.8.67.030 APPLICABILITY
+(1)
+
+(1)
+(a)
+(b)
+
+This Ordinance is applicable to the following:
+(a) All Municipal Properties as defined in Section A 8.67.010(12) of this Ordinance;
+and
+All Covered Properties as defined in Section A 8.67.010(3) of this Ordinance.
+
+Section D.8.67.040 BENCHMARKING REQUIRED FOR MUNICIPAL PROPERTIES
+No later than December 31, 2014, and no later than May 1 every year thereafter, the total Energy
+consumed by each Municipal Property, along with all other descriptive information required by the
+Benchmarking Tool, shall be entered into the Benchmarking Tool for the previous calendar year.
+Renewable Electricity purchases shall be annually reported to the Department on the same
+schedule.
+Section E.8.67.050 BENCHMARKING REQUIRED FOR COVERED PROPERTIES
+(1)
+
+(1) Owners shall annually input the total Energy consumed by each Covered Property,
+along with all other descriptive information required by the Benchmarking Tool, into the
+Benchmarking
+Tool for the previous calendar year. Renewable Electricity purchases
+shall be annually reported to the Department. The Owner shall input this information
+according to the
+following schedule:
+(a)
+(b)
+(c)
+(d)
+
+(a) A Large Non-residential Covered Property by May 1, 2015 and by every
+May 1
+thereafter;
+(b) A Residential Covered Property by May 1, 2015 and by every May 1 thereafter;
+(c)
+A Small Non-residential Covered Property by May 1, 2016 and by every
+May 1
+thereafter; and
+(d) A new Covered Property that has not accumulated 12 months of energy use
+
+6
+
+Packet Pg. 10
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Redline (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+b
+
+(2)
+
+data by
+May 1 of the first applicable dateyear following occupancy for
+inputtingthe first full calendar year following the issuance of the Certificate of
+Occupancy.
+Provided that the necessary mechanisms exist, Owners may authorize an Energy use into
+the
+Benchmarking Tool shallor water utility or other third party to report Covered
+Property-specific data on their behalf to the Department. Such authorization shall not
+create an obligation on the part of Energy or water utilities or remove the obligation of
+Owners to comply with this Ordinance in the following yearreporting requirements.
+
+Section F.8.67.060 NOTIFICATION OF COVERED PROPERTIES
+(1)
+
+Between September 1 andBy December 131 of each year, the City shall notify Owners of
+Covered Properties of their obligation to input Energy use into the Benchmarking Tool.
+By January February 15 of each year, the City shall post the list of the addresses of
+Covered Properties on a public website. Greenhouse Gas Emissions shall be calculated
+by the Department and reported annually to Owners along with the performance
+requirements of Section 8.67.100.
+
+Section G.
+
+8.67.070 QUALIFICATIONS OF BENCHMARKERS
+The Department may establish certification and/or licensing requirements for the users of
+Benchmarking Tools.
+
+Section H.
+
+8.67.080 DISCLOSURE AND PUBLICATION OF BENCHMARKING INFORMATION
+
+(1)
+
+(1)
+
+(2)
+
+(2)
+
+(3)
+
+(3)
+
+Owners shall annually provide Benchmarking informationInformation to the Department, in
+such form as established by the Department, by the date provided by the schedule in Section
+(E) 8.67.050(1).
+The Department shall make available to the public on the internet Benchmarking Information
+for the previous calendar year: a) no later than December 31, 2014 and by September
+1December 31 of
+each year thereafter for Municipal Properties; and b) no later than
+September 1, 2015 and by September 1December 31 of each year thereafter for Covered
+Properties. Benchmarking Information
+received by the Department for the first year a
+Covered Property is required to input the total
+Energy consumed, and other descriptive
+information as required by the Benchmarking Tool , into the Benchmarking Tool pursuant to
+Section (E)8.67.050 will be not be published except to disclose whether or not the Covered
+Property is in compliance with this Ordinance.
+The Department shall make available to the public and update at least annually, the following
+information:
+7
+Packet Pg. 11
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Redline (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+b
+
+(a)
+(b)
+(c)
+
+(a) Summary statistics on energy consumption and greenhouse gas emissions
+for Municipal Properties and Covered
+Properties derived from aggregation
+of Benchmarking information for both;
+(b) Summary statistics on overall compliance with this Ordinance including an
+assessment of accuracy;
+(c)
+For each Municipal Property and Covered Property:
+(i)
+(ii)
+
+(iii)
+
+(i)
+The status of compliance with the requirements of this Ordinance;
+(ii)
+Annual summary statistics for the Municipal Property or Covered
+Property,
+including EUI, annual greenhouse gas emissions Greenhouse Gas
+Emissions, water use per square foot, and an energy performance score
+where available; and
+(iii) A comparison of Benchmarking Information and Greenhouse Gas
+Emissions across calendar years for any years
+such Municipal Property or
+Covered Property has input the total Energy
+consumed and other
+descriptive information for such Properties as required by the Benchmarking
+Tool into the Benchmarking Tool.
+
+Section I.8.67.090 PROVISION OF BENCHMARKING INFORMATION BY TENANTS TO THE OWNER
+(1)
+
+(2)
+
+(2)
+
+(1) Each Tenant located in a Covered Property shall, within 30 days of a request by the
+Owner and in a form to be determined by the Department, provide all information that
+cannot otherwise
+be acquired by the Owner and that is needed to comply with the
+requirements of this Ordinance. Failure to provide information to an Owner may result in
+penalties as provided
+under Section (M). 8.67.130.
+Where the Owner is unable to input the total energyEnergy consumed by the Covered
+Property, as well as all other descriptive information for such Covered Property as required
+by the
+Benchmarking Tool, into the Benchmarking Tool due to the failure of any or all
+Tenants to report the information required by Section (I) 8.67.090(1), the Owner shall input
+alternate values as established by the Department prior to the implementation of this
+Ordinance, into the Benchmarking Tool.
+
+Section J. ASSESSING RESULTS
+8.67.100 EMISSION REDUCTION REQUIREMENTS
+Default Baseline: The default Baseline years
+(1)
+By December 31, 2018, the Department shall review the effect of this Ordinance on
+improving energy performance for Covered Buildings. If energy performance for Properties
+shall be calendar years 2018 and 2019.
+(2)
+Performance requirement: Each Covered Buildings has not improved significantly, the
+DepartmentProperty shall make recommendationscomply on an annual basis with
+Greenhouse Gas Emissions requirements according to the City Manager as following schedule:
+(a) Compliance Period 1: 2025 to whether amendments2029; annual Greenhouse Gas
+Emissions will not exceed 80% of the default Baseline
+8
+Packet Pg. 12
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Redline (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+b
+
+(b)
+(c)
+(d)
+(e)
+(f)
+(3)
+
+Compliance Period 2: 2030 to this Ordinance or other measures2034; annual
+Greenhouse Gas Emissions will not exceed 60% of the default Baseline
+Compliance Period 3: 2035 to 2039; annual Greenhouse Gas Emissions will not exceed
+40% of the default Baseline
+Compliance Period 4: 2040 to 2044; annual Greenhouse Gas Emissions will not exceed
+20% of the default Baseline
+Compliance Period 5: 2045 to 2049; annual Greenhouse Gas Emissions will not exceed
+10% of the default Baseline
+Compliance Period 6: 2050 onwards; annual Greenhouse Gas Emissions are necessary
+to improvenet zero.
+
+Alternative Baseline: An Owner may request an alternative Baseline for a Covered
+Property that is prior to the default Baseline years of 2018-2019. The alternative
+Baseline must be the average Greenhouse Gas Emissions of two consecutive years, from
+2010-2011 through 2018-2019. The request for an alternative Baseline must be
+submitted to the Department prior to the first compliance period and, if approved, shall
+remain the Baseline for all future compliance periods.
+(a) Owners shall ensure that the Energy use for the alternative Baseline years has
+been inputted into the Benchmarking Tool and that Benchmarking Information
+and any Renewable Electricity for the alternative Baseline years has been
+provided to the Department.
+(b) A Covered Property with an alternative Baseline shall comply on an annual basis
+with adjusted performance requirements according to the table below; annual
+Greenhouse Gas Emissions will not exceed the indicated percentage of the
+alternative Baseline:
+Alternative Baseline Performance Requirements
+2010-2011 2011-2012 2012-2013 2013-2014 2014-2015 2015-2016 2016-2017 2017-2018
+Compliance Period 1:
+66.7%
+68.1%
+69.6%
+71.1%
+72.7%
+74.4%
+76.2%
+78.0%
+2025 to 2029
+Compliance Period 2:
+50.0%
+51.1%
+52.2%
+53.3%
+54.5%
+55.8%
+57.1%
+58.5%
+2030 to 2034
+Compliance Period 3:
+33.3%
+34.0%
+34.8%
+35.6%
+36.4%
+37.2%
+38.1%
+39.0%
+2035 to 2039
+Compliance Period 4:
+16.7%
+17.0%
+17.4%
+17.8%
+18.2%
+18.6%
+19.0%
+19.5%
+2040 to 2044
+Compliance Period 5:
+8.3%
+8.5%
+8.7%
+8.9%
+9.1%
+9.3%
+9.5%
+9.8%
+2045 to 2049
+Compliance Period 6:
+0%
+0%
+0%
+0%
+0%
+0%
+0%
+0%
+2050 onwards
+
+(4)
+
+Exemptions: A Covered Property will be exempted by the Department from the
+requirements of 8.67.100 if it qualifies as one of the following:
+(a) New construction: For Covered Properties that receive an initial Certificate of
+9
+Packet Pg. 13
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Redline (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+b
+
+Occupancy after the start of the default Baseline years, the Baseline shall be the
+average Greenhouse Gas Emissions of the first two full calendar years following the
+issuance of the Certificate of Occupancy. Such Covered Properties shall be exempt
+from the requirements of 8.67.100 for the five years following the conclusion of this
+Baseline period. The performance requirements for each subsequent five-year
+period shall be determined by a linear reduction to net zero emissions by 2050.
+(b) A Net Zero Emissions Building;
+(c) Vacancy: The Covered Property is fully vacant for the full year;
+(d) The Covered Property is to be fully demolished within the forthcoming calendar
+year;
+(e) Financial Distress: Owners of a financially distressed Covered Property may apply for
+an extension until the end of the current compliance period. Owners must provide a
+form of third-party verification to substantiate an exemption request due to
+financial distress. A building energyis considered in financial distress if it meets one
+of the following criteria:
+(i) The Covered Property is qualified for sale at a public auction due to arrears of
+public taxes within two years of the start of the compliance period.
+(ii) The Covered Property is controlled by a court-appointed receiver due to financial
+distress.
+(iii) The Covered Property is owned by a financial institution through default by the
+borrower.
+(iv) The Covered Property has been acquired by deed in lieu of foreclosure.
+(v) The Covered Property has a senior mortgage which is subject to a notice of
+default.
+(5)
+
+The following building type-specific compliance pathways shall be permitted:
+(a) Campus:
+(i) A Campus may choose to comply with the requirements of Section 8.67.100 at
+the level of each Covered Property or at the level of the aggregate Campus
+greenhouse gas emissions. Campus Owners must determine their Baseline
+according to the method by which they intend to comply with the requirements.
+Owners may request to adjust their Baseline to include in the aggregate Campus
+any new buildings that receive their Certificate of Occupancy after the start of the
+Baseline years.
+(ii) If the Covered Property that is part of a Campus is included in an institutional
+comprehensive plan and a corresponding energy management plan, and these
+plans have reduced Greenhouse Gas Emissions from buildings at the institutional
+level by the required amount for that compliance period, then the Covered
+Property shall be considered to be in compliance. To show compliance with this
+pathway, the Owner must provide copies of the institutional comprehensive plan,
+institutional energy management plan, and the completed institution-wide
+greenhouse gas inventory for buildings for the compliance period.
+(b) Laboratories and Affordable Housing:
+(i) Laboratories and Affordable Housing shall have the option to comply with the
+following alternative compliance schedule:
+10
+Packet Pg. 14
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Redline (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+b
+
+1.
+
+Compliance Period 1: 2027 to 2033; annual Greenhouse Gas Emissions will
+not exceed 66.7% of the default Baseline
+2. Compliance Period 2: 2034 to 2040; annual Greenhouse Gas Emissions will
+not exceed 33.3% of the default Baseline
+3. Compliance Period 3: 2041 to 2049; annual Greenhouse Gas Emissions will
+not exceed 16.6% of the default Baseline
+4. Compliance Period 4: 2050 onwards; annual Greenhouse Gas Emissions are
+net zero.
+(ii) Laboratory and Affordable Housing owners choosing to follow the alternative
+compliance schedule shall submit documentation to the Department showing
+that the Covered Property qualifies as a Laboratory or Affordable Housing at the
+start of each 5-year compliance period.
+(iii) Laboratories and Affordable Housing choosing to follow the alternative
+compliance schedule shall submit a Greenhouse Gas Emissions Reduction Plan to
+the Department four years prior to the start of each alternative compliance
+period detailing how the greenhouse gas emissions reduction requirement for
+that compliance cycle will be met.
+(i)(iv)
+For newly constructed Laboratories and Affordable Housing that choose
+to follow the alternative compliance schedule and receive an initial Certificate of
+Occupancy after the start of the default Baseline years, the Baseline shall be the
+average Greenhouse Gas Emissions of the first two full calendar years following
+the issuance of the Certificate of Occupancy. Such Laboratories and Affordable
+Housing shall be exempt from the requirements of 8.67.100 for the seven years
+following the conclusion of this Baseline period. The performance for Covered
+Buildings.requirements for each subsequent seven-year period shall be
+determined by a linear reduction to net zero emissions by 2050.
+(v) Section K.For Laboratories and Affordable Housing that request an alternative
+Baseline pursuant to 8.67.100 (2), the adjusted performance requirements shall
+be as follows; annual Greenhouse Gas Emissions will not exceed the indicated
+percentage of the alternative Baseline:
+Alternative Baseline Performance Requirements
+2010-2011 2011-2012 2012-2013 2013-2014 2014-2015 2015-2016 2016-2017 2017-2018
+Compliance Period 1:
+55.6%
+56.8%
+58.0%
+59.3%
+60.6%
+62.0%
+63.5%
+65.1%
+2027 to 2033
+Compliance Period 2:
+27.8%
+28.3%
+29.0%
+29.6%
+30.3%
+31.0%
+31.7%
+32.5%
+2034 to 2040
+Compliance Period 3:
+13.9%
+14.2%
+14.5%
+14.8%
+15.2%
+15.5%
+15.9%
+16.3%
+2041 to 2049
+Compliance Period 4:
+0.0%
+0.0%
+0.0%
+0.0%
+0.0%
+0.0%
+0.0%
+0.0%
+2050 onwards
+
+11
+Packet Pg. 15
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Redline (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+b
+
+8.67.110 MAINTENANCE OF RECORDS AND DATA VERIFICATION
+(1)
+
+(1) Owners shall maintain records as the Department determines is necessary for carrying
+out the
+purposes of this Ordinance, including but not limited to energy and water bills
+and other documents received from Tenants and/or Utilities. Such records shall be
+preserved by Owners
+for a period of three (3seven (7) years. At the request of the
+Department, such records shall be made available for inspection and audit by the
+Department.
+
+(2)
+
+(2)
+
+(3)
+
+For the two Baseline years, Owners shall provide a third-party verification of their reporting
+data, submitted by the benchmarking deadline for the first year of the first compliance
+period. Verifications must be performed by an Approved Verification Body.
+
+(4)
+
+For the first year of each compliance period, Owners shall provide a third-party verification of
+their reporting data, submitted by the benchmarking deadline for that year per 8.67.050(1).
+Verifications must be performed by an Approved Verification Body.
+
+(5)
+
+In the event that there is a discrepancy between third-party verified data and an Owner’s
+self-certified reporting data, any resulting lack of compliance with the emissions reduction
+requirements in Section 8.67.100 shall be a violation.
+
+Owners shall self-certify their reporting data every year.
+
+(2)(6) At the time any occupied Covered Building is transferred, the buyer and seller shall arrange for
+the seller to provide to the buyer all information necessary for the buyer to report
+Benchmarking informationInformation for the entire year in a timely manner. It shall
+be a violation of this Ordinance for any seller to fail to so provide any such information.
+Section L.8.67.120 VIOLATIONS
+It shall be unlawful for any entity or person to fail to comply with the requirements of this Ordinance
+or misrepresent any material fact in a document required to be prepared or disclosed by this
+Ordinance.
+Section M.8.67.130 ENFORCEMENT AND ADMINISTRATION
+(1)
+
+The Assistant City Manager for Community Development andor his or her designee shall be
+the Chief Enforcement Officer of this Ordinance.
+
+(2)
+
+The Assistant City Manager for Community Development may promulgate regulations relative
+to the administration of the requirements of this Ordinance as necessary.
+
+(3)
+
+By December 31,
+2026, in consultation with Covered Property Owners, the Department
+shall review compliance with Section 8.67.100 of this Ordinance and report to the City
+
+12
+
+Packet Pg. 16
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Redline (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+b
+
+Council.
+(3)(4) If any person or entity violates any provision of this Ordinance, the fails to report the
+Benchmarking Information, such failure to report shall be deemed a violation and the
+following enforcement
+measures may be taken:
+(a)
+For the first violation, a written warning may be issued; and
+(b)
+For any subsequent violation, the Department may issue a fine of up to $300.00 per
+violation, per day, pursuant to the provisions of Chapter 1.24 herein. Each
+day of violation shall constitute a separate offence.
+(5)
+
+Section N.In the event that third-party verification of Benchmarking Information reported
+by an Owner identifies a discrepancy with an Owner’s self-certified reporting, such
+discrepancy shall be deemed a violation and the following enforcement measures may be
+taken:
+(a)
+For the first violation, a written warning may be issued; and
+(b)
+For any subsequent violation, the Department may issue a fine of up to $300.00 per
+violation, per day, pursuant to the provisions of Chapter 1.24 herein. Each day of
+violation shall constitute a separate offence.
+
+(6)
+
+If any person or entity fails to meet the emission reduction requirements, such failure shall
+be deemed a violation and the following enforcement measures may be taken:
+(a)
+For the first violation, a written warning may be issued; and
+(b)
+For any subsequent violation, the Department may issue a fine of up to $300.00 per
+violation, per day, pursuant to the provisions of Chapter 1.24 herein. Each day of
+violation shall constitute a separate offence.
+
+8.67.140 SEVERABILITY
+If any provision of this Ordinance shall be held to be invalid by a court of competent jurisdiction, then
+such provision shall be considered separately and apart from the remaining provisions, which shall
+remain in full force and effect.
+Section O.8.67.150 EFFECTIVE DATE
+The provisions of this Ordinance shall be effective immediately upon passage.
+
+13
+Packet Pg. 17
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Redline (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+b
+
+ORDINANCE NUMBER 1360
+Final Publication Number XXXX. First Publication in the Chronicle on XXXX.
+City of Cambridge
+In the Year Two Thousand and TwentyOne AN ORDINANCE
+In amendment to the Ordinance entitled “Building Energy Use,” Chapter 8.67 of the Municipal Code of
+the City of Cambridge
+Be it ordained by the City Council of the City of Cambridge that the Municipal Ordinances of
+the City of Cambridge in be amended as follows:
+
+Building Energy Use Disclosure and Emission Reductions
+8.67.10 DEFINITIONS
+
+(1)
+
+“Affordable Housing” shall mean Residential Covered Property in which all units are
+made permanently affordable to households earning up to 100% of area median
+income.
+
+(2)
+
+“Alternative Compliance Credit” shall mean a credit obtained by a Covered Property
+Owner to offset greenhouse gas emissions from the Covered Property. One Alternative
+Compliance Credit shall be equivalent to one metric ton of Greenhouse Gas Emissions.
+In the first Compliance Period, each Alternative Compliance Credit shall cost $234. The
+Department shall promulgate regulations pursuant to 8.67.130 prior to each
+Compliance Period to establish the price of the Alternative Compliance Credit for that
+Compliance Period, based on review of the average cost of reducing one metric ton of
+greenhouse gas emissions in Covered Properties. Monies from Alternative Compliance
+Credits shall be used by the City for City programs and projects to support greenhouse
+gas reduction, including but not limited to, greenhouse gas reduction projects in
+Affordable Housing properties, if approved by the Cambridge Affordable Housing Trust.
+
+(3)
+
+“Approved Verification Body” shall mean a firm accredited by the American National
+Standards Institute to conduct greenhouse gas inventory verification services.
+
+(4)
+
+“Baseline” shall mean the average of Greenhouse Gas Emissions of Covered Properties
+for two consecutive calendar years comprising the default baseline, alternative baseline,
+or new construction baseline as set forth in section 8.67.100 for purposes of calculating
+emissions reductions in order to meet the requirements of this ordinance set forth in
+section 8.67.100.
+
+(5)
+
+“Benchmarking Information” shall mean information generated by the Benchmarking Tool,
+1
+Packet Pg. 18
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Clean (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+c
+
+as herein defined including descriptive information about the physical property and its
+operational characteristics. The information shall include, but need not be limited to:
+(a)
+(b)
+(c)
+(d)
+(e)
+(f)
+(g)
+(h)
+(i)
+
+Property address;
+Primary use type;
+Gross floor area
+Site Energy Use Intensity (EUI) as defined in this section;
+Weather normalized Source EUI;
+Annual greenhouse gas emissions;
+Water use;
+The energy performance score that compares the energy use of the building to that
+of similar buildings, where available; and
+Compliance or noncompliance with this Ordinance.
+
+(6)
+
+“Benchmarking Tool” shall mean the ENERGY STAR Portfolio Manager tool developed and
+maintained by the U.S. Environmental Protection Agency to track and assess the relative
+energy performance of buildings nationwide, or other tools identified by the Department to
+collect and track Benchmarking Information necessary for compliance with this ordinance
+
+(7)
+
+“Campus” shall mean a minimum of 5 (five) Covered Properties owned by the same
+organization that are owner-occupied properties or Affordable Housing.
+
+(8)
+
+“Covered Property” shall mean a parcel, as described in public records or as determined by
+the Department, containing any of the following:
+(a)
+(b)
+
+(c)
+
+One or more non-residential building(s) where such building(s) singly or
+together contain 25,000 to 49,999.99 square feet (“Small Non-Residential
+Covered Property”);
+One or more non-residential building(s), where such building(s) singly or
+together contain 50,000 or more square feet (“Large Non-Residential Covered
+Property”); and
+One or more residential building(s) that singly or together contain 50 or more
+residential Dwelling Units whether they are rental Dwelling Units or Dwelling
+Units owned as condominiums, cooperatives or otherwise (“Residential Covered
+Property”).
+
+(9)
+
+“Department” shall mean the City of Cambridge Community Development Department.
+
+(10)
+
+“Dwelling Unit” shall mean a single residential unit consisting of one or more habitable
+rooms, occupied or arranged to be occupied as a residential unit separate from all other
+residential units within a building, and used primarily for residential purposes and not
+primarily for professional or commercial purposes.
+
+(11)
+
+“Emission Factors” shall mean the multipliers used to determine the annual Greenhouse Gas
+Emissions produced by the production or consumption of Energy. The Department shall
+2
+Packet Pg. 19
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Clean (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+c
+
+promulgate regulations pursuant to 8.67.130 no later than two years prior to each
+Compliance Period to establish the annual Emission Factors for that Compliance Period, and
+no later than two years prior to the first Compliance Period to establish the annual Emission
+Factors for 2010-2024.
+(a)
+(b)
+(c)
+
+(12)
+
+(13)
+
+For the combustion of fuels, such as oil and gas, the Emission Factors will be based on
+standard scientific values published by federal agencies.
+For the use of all electricity other than Renewable Electricity, the annual Emission
+Factor will be based on the Commonwealth of Massachusetts’s calculations and
+projections of emissions from electricity consumed in Massachusetts.
+For the generation or consumption of steam, hot water, and chilled water, the
+Emission Factors will be calculated based on the Emission Factor published by the
+Commonwealth of Massachusetts for that product, unless the Commonwealth has
+not published such a multiplier, in which case the Emission Factor will be calculated
+using the methodology of the Greenhouse Gas Protocol developed by the World
+Resources Institute and World Business Council for Sustainable Development.
+
+“Energy” shall mean purchased electricity, natural gas, steam, hot or chilled water, heating oil,
+or other product or electricity generated on site, for use in a building for purposes of
+providing heating, cooling, lighting, water heating, or for powering or fueling other end-uses in
+the building and related facilities.
+“Energy Audit” shall mean an energy assessment of a covered property that meets the
+standards of the ASHRAE Level 2 Audit as specified by the Procedures for Commercial Building
+Energy Audits published by the American Society of Heating, Refrigeration, and Air-Conditioning
+Engineers.
+
+(14)
+
+“Energy Performance Score” shall mean the numeric rating generated by the ENERGY STAR
+Portfolio Manager tool or equivalent tool adopted by the department that compares the
+energy usage of the building to that of similar buildings.
+
+(15)
+
+“ENERGY STAR” shall mean the U.S. Environmental Protection Agency program related
+to improving energy efficiency in buildings and products.
+
+(16)
+
+“ENERGY STAR Portfolio Manager” shall mean the tool developed and maintained by the
+U.S. Environmental Protection Agency to track and assess the relative energy performance of
+buildings nationwide.
+
+(17)
+
+“Energy Use Intensity (EUI)” shall mean a building’s annual energy consumption
+measured in kBTUs (1,000 British Thermal Units) used per square foot of gross floor
+area.
+
+(18)
+
+“Greenhouse Gas Emissions” (GHG) shall mean the carbon dioxide equivalent
+emissions produced from the operations of the Covered Property calculated by the
+Department according to the following calculation:
+3
+Packet Pg. 20
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Clean (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+c
+
+Greenhouse Gas Emissions are the sum of annual Energy use by fuel type multiplied by the
+Emission Factor for that type of Energy, minus Alternative Compliance Credits; provided that
+Renewable Electricity shall be subtracted from the electricity consumption, up to a limit of
+the total electricity consumption.
+(19)
+
+“Greenhouse Gas Emissions Reduction Plan” shall mean a detailed strategy based
+on an Energy Audit or similar assessment which lists plans to invest in measures
+such as energy efficiency improvements, fuel switching, and Renewable Electricity
+purchases which will lead to reductions in annual Greenhouse Gas Emissions. The
+Plan should detail what measures are planned, when they are scheduled to occur,
+and how much Greenhouse Gas Emissions are projected to be reduced by each
+measure.
+
+(20)
+
+“Gross Square Feet” shall mean the gross floor area of the property as per the City
+of Cambridge Assessors’ records.
+
+(21)
+
+“Laboratory” shall mean a Covered Property with 15% or more of occupied building
+square footage with an air exchange rate of 0.5 cubic feet per minute per square foot
+(CFM/ft2) or greater.
+
+(22)
+
+“Municipal Property” shall mean a property with one or more buildings that is 10,000
+gross square feet or more that is owned by the City of Cambridge.
+
+(23)
+
+“Owner” shall mean an owner of a Covered Property, including but not limited to:
+(a)
+(b)
+(c)
+(d)
+(e)
+
+An individual or entity having title to a Covered Property;
+An agent authorized to act on behalf of the owner of a Covered Property;
+The net lessee in the case of a Covered Property subject to a net lease with a term
+of at least forty-nine years, inclusive of all renewal options;
+The board of managers or trustees in the case of a condominium at the Covered
+Property; and/or
+The board of directors or trustees in the case of a cooperative apartment corporation at
+the Covered Property.
+
+(24)
+
+“Net Zero Emission Building” shall mean a Covered Property that has an annual balance of
+zero greenhouse gas emissions from building operations as defined by standards qualified
+by the Department.
+
+(25)
+
+“Qualified Benchmarker” is an entity that meets the Department’s qualifications for
+inputting Benchmarking Information into the Benchmarking Tool.
+
+(26)
+
+“Renewable Electricity” shall mean purchases from specific offsite renewable electricity
+programs approved by the Department, or the renewable energy attributes, measured in
+megawatt-hours, retired from renewable on-site electricity generation or from off-site zero
+4
+Packet Pg. 21
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Clean (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+c
+
+greenhouse gas emission electricity sources qualified by the Department based on the
+following Cambridge Off-Site Renewable Electricity Standards:
+(a)
+The off-site renewable energy procurement shall support a renewable energy
+project that is new, meaning that the Covered Property Owner enters into a contract
+to purchase Renewable Electricity from a newly-built renewable energy generating
+source that is not operational at the time of contract execution. This includes
+contracts that lead to construction of a new project, as well as contracts that lead to
+expansion of existing projects with new renewable capacity.
+(b)
+Renewable Energy Certificates (RECs) and other environmental attributes associated
+with the procured off-site renewable energy shall be assigned to the building or
+aggregated portfolio of buildings in Cambridge for the duration of the contract and
+made available for inspection by the City of Cambridge upon request. The building
+owner shall maintain transparent accounting that clearly assigns renewable energy
+production in the form of RECs in megawatt-hours to the building or aggregated
+portfolio of buildings in Cambridge for the duration of the procured off-site
+renewable energy contract.
+(c)
+The renewable energy generating source shall be photovoltaic systems, solar
+thermal power plants, wind turbines, geothermal power plants, small hydropower,
+or other renewable energy generating sources that may be submitted to and
+certified by the Department.
+(27)
+
+“Residential Property” shall mean a property containing one or more Dwelling Units.
+
+(28)
+
+“Site Energy” shall mean the amount of energy consumed by a Covered Property or
+Municipal Property as reflected in utility bills or other documentation of actual energy use.
+
+(29)
+
+“Source Energy” shall mean all the energy used in delivering energy to a Covered Property,
+including power generation and transmission and distribution losses.
+
+(30)
+
+“Tenant” shall mean a person or entity leasing, occupying or holding possession of all or a
+portion of a Covered Property or Municipal Property.
+
+(31)
+
+“Utility” shall mean an entity that distributes and sells Energy for Covered Properties or
+Municipal Properties.
+
+8.67.020 Purpose
+To encourage efficient use of energy and to reduce the emission of greenhouse gases, this Ordinance
+requires owners of Covered Properties and Municipal Properties to annually measure and disclose
+energy usage to the Department and to achieve Greenhouse Gas Emissions reduction targets
+consistent with the commitments of the 2015 Cambridge Net Zero Action Plan as it may be amended
+from time to time. Furthermore, this Ordinance will authorize the Department to collect energy
+usage data to enable more effective energy and climate protection planning by the City and others
+and to provide information to the real estate marketplace to enable its members to make decisions
+5
+Packet Pg. 22
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Clean (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+c
+
+that foster better energy performance.
+8.67.030 APPLICABILITY
+(1)
+
+This Ordinance is applicable to the following:
+(a)
+(b)
+
+All Municipal Properties as defined in Section 8.67.010(12) of this Ordinance; and
+All Covered Properties as defined in Section 8.67.010(3) of this Ordinance.
+
+8.67.040 BENCHMARKING REQUIRED FOR MUNICIPAL PROPERTIES
+No later than December 31, 2014, and no later than May 1 every year thereafter, the total Energy
+consumed by each Municipal Property, along with all other descriptive information required by the
+Benchmarking Tool, shall be entered into the Benchmarking Tool for the previous calendar year.
+Renewable Electricity purchases shall be annually reported to the Department on the same
+schedule.
+8.67.050 BENCHMARKING REQUIRED FOR COVERED PROPERTIES
+(1)
+
+(2)
+
+Owners shall annually input the total Energy consumed by each Covered Property, along with
+all other descriptive information required by the Benchmarking Tool, into the Benchmarking
+Tool for the previous calendar year. Renewable Electricity purchases shall be annually
+reported to the Department. The Owner shall input this information according to the
+following schedule:
+(a)
+A Large Non-residential Covered Property by May 1, 2015 and by every May 1
+thereafter;
+(b)
+A Residential Covered Property by May 1, 2015 and by every May 1 thereafter;
+(c)
+A Small Non-residential Covered Property by May 1, 2016 and by every May 1
+thereafter; and
+(d)
+A new Covered Property by May 1 of the year following the first full calendar year
+following the issuance of the Certificate of Occupancy.
+Provided that the necessary mechanisms exist, Owners may authorize an Energy or water
+utility or other third party to report Covered Property-specific data on their behalf to the
+Department. Such authorization shall not create an obligation on the part of Energy or
+water utilities or remove the obligation of Owners to comply with reporting requirements.
+
+8.67.060 NOTIFICATION OF COVERED PROPERTIES
+(1)
+
+By December 31 of each year, the City shall notify Owners of Covered Properties of their
+obligation to input Energy use into the Benchmarking Tool. By February 15 of each year,
+the City shall post the list of the addresses of Covered Properties on a public website.
+Greenhouse Gas Emissions shall be calculated by the Department and reported annually
+to Owners along with the performance requirements of Section 8.67.100.
+6
+Packet Pg. 23
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Clean (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+c
+
+8.67.070 QUALIFICATIONS OF BENCHMARKERS
+The Department may establish certification and/or licensing requirements for the users of
+Benchmarking Tools.
+8.67.080 DISCLOSURE AND PUBLICATION OF BENCHMARKING INFORMATION
+(1)
+
+Owners shall annually provide Benchmarking Information to the Department, in such form as
+established by the Department, by the date provided by the schedule in Section 8.67.050(1).
+
+(2)
+
+The Department shall make available to the public on the internet Benchmarking Information
+for the previous calendar year: a) no later than December 31, 2014 and by December 31 of
+each year thereafter for Municipal Properties; and b) no later than September 1, 2015 and by
+December 31 of each year thereafter for Covered Properties. Benchmarking Information
+received by the Department for the first year a Covered Property is required to input the total
+Energy consumed, and other descriptive information required by the Benchmarking Tool, into
+the Benchmarking Tool pursuant to Section 8.67.050 will be not be published except to
+disclose whether or not the Covered Property is in compliance with this Ordinance.
+
+(3)
+
+The Department shall make available to the public and update at least annually, the following
+information:
+(a)
+(b)
+(c)
+
+Summary statistics on energy consumption and greenhouse gas emissions for
+Municipal Properties and Covered Properties derived from aggregation of
+Benchmarking information for both;
+Summary statistics on overall compliance with this Ordinance
+For each Municipal Property and Covered Property:
+(i)
+(ii)
+(iii)
+
+The status of compliance with the requirements of this Ordinance;
+Annual summary statistics for the Municipal Property or Covered Property,
+including EUI, annual Greenhouse Gas Emissions, water use per square foot,
+an energy performance score where available; and
+A comparison of Benchmarking Information and Greenhouse Gas Emissions
+across calendar years for any years such Municipal Property or Covered
+Property has input the total Energy consumed and other descriptive
+information for such Properties as required by the Benchmarking Tool into the
+Benchmarking Tool.
+
+8.67.090 PROVISION OF BENCHMARKING INFORMATION BY TENANTS TO THE OWNER
+(1)
+
+Each Tenant located in a Covered Property shall, within 30 days of a request by the Owner
+and in a form to be determined by the Department, provide all information that cannot
+otherwise be acquired by the Owner and that is needed to comply with the requirements of
+this Ordinance. Failure to provide information to an Owner may result in penalties as
+7
+Packet Pg. 24
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Clean (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+c
+
+provided under Section 8.67.130.
+(2)
+
+Where the Owner is unable to input the total Energy consumed by the Covered Property, as
+well as all other descriptive information for such Covered Property as required by the
+Benchmarking Tool, into the Benchmarking Tool due to the failure of any or all Tenants to
+report the information required by Section 8.67.090(1), the Owner shall input alternate
+values as established by the Department prior to the implementation of this Ordinance, into
+the Benchmarking Tool.
+
+8.67.100 EMISSION REDUCTION REQUIREMENTS
+(1)
+(2)
+
+(3)
+
+Default Baseline: The default Baseline years for Covered Properties shall be calendar years
+2018 and 2019.
+Performance requirement: Each Covered Property shall comply on an annual basis with
+Greenhouse Gas Emissions requirements according to the following schedule:
+(a) Compliance Period 1: 2025 to 2029; annual Greenhouse Gas Emissions will not exceed
+80% of the default Baseline
+(b) Compliance Period 2: 2030 to 2034; annual Greenhouse Gas Emissions will not exceed
+60% of the default Baseline
+(c) Compliance Period 3: 2035 to 2039; annual Greenhouse Gas Emissions will not exceed
+40% of the default Baseline
+(d) Compliance Period 4: 2040 to 2044; annual Greenhouse Gas Emissions will not exceed
+20% of the default Baseline
+(e) Compliance Period 5: 2045 to 2049; annual Greenhouse Gas Emissions will not exceed
+10% of the default Baseline
+(f) Compliance Period 6: 2050 onwards; annual Greenhouse Gas Emissions are net zero.
+Alternative Baseline: An Owner may request an alternative Baseline for a Covered
+Property that is prior to the default Baseline years of 2018-2019. The alternative
+Baseline must be the average Greenhouse Gas Emissions of two consecutive years, from
+2010-2011 through 2018-2019. The request for an alternative Baseline must be
+submitted to the Department prior to the first compliance period and, if approved, shall
+remain the Baseline for all future compliance periods.
+(a) Owners shall ensure that the Energy use for the alternative Baseline years has
+been inputted into the Benchmarking Tool and that Benchmarking Information
+and any Renewable Electricity for the alternative Baseline years has been
+provided to the Department.
+(b) A Covered Property with an alternative Baseline shall comply on an annual basis
+with adjusted performance requirements according to the table below; annual
+Greenhouse Gas Emissions will not exceed the indicated percentage of the
+alternative Baseline:
+Alternative Baseline Performance Requirements
+Compliance Period 1:
+
+2010-2011 2011-2012 2012-2013 2013-2014 2014-2015 2015-2016 2016-2017 2017-2018
+66.7%
+68.1%
+69.6%
+71.1%
+72.7%
+74.4%
+76.2%
+78.0%
+
+8
+Packet Pg. 25
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Clean (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+c
+
+2025 to 2029
+Compliance Period 2:
+2030 to 2034
+Compliance Period 3:
+2035 to 2039
+Compliance Period 4:
+2040 to 2044
+Compliance Period 5:
+2045 to 2049
+Compliance Period 6:
+2050 onwards
+
+(4)
+
+(5)
+
+50.0%
+
+51.1%
+
+52.2%
+
+53.3%
+
+54.5%
+
+55.8%
+
+57.1%
+
+58.5%
+
+33.3%
+
+34.0%
+
+34.8%
+
+35.6%
+
+36.4%
+
+37.2%
+
+38.1%
+
+39.0%
+
+16.7%
+
+17.0%
+
+17.4%
+
+17.8%
+
+18.2%
+
+18.6%
+
+19.0%
+
+19.5%
+
+8.3%
+
+8.5%
+
+8.7%
+
+8.9%
+
+9.1%
+
+9.3%
+
+9.5%
+
+9.8%
+
+0%
+
+0%
+
+0%
+
+0%
+
+0%
+
+0%
+
+0%
+
+0%
+
+Exemptions: A Covered Property will be exempted by the Department from the
+requirements of 8.67.100 if it qualifies as one of the following:
+(a) New construction: For Covered Properties that receive an initial Certificate of
+Occupancy after the start of the default Baseline years, the Baseline shall be the
+average Greenhouse Gas Emissions of the first two full calendar years following the
+issuance of the Certificate of Occupancy. Such Covered Properties shall be exempt
+from the requirements of 8.67.100 for the five years following the conclusion of this
+Baseline period. The performance requirements for each subsequent five-year
+period shall be determined by a linear reduction to net zero emissions by 2050.
+(b) A Net Zero Emissions Building;
+(c) Vacancy: The Covered Property is fully vacant for the full year;
+(d) The Covered Property is to be fully demolished within the forthcoming calendar
+year;
+(e) Financial Distress: Owners of a financially distressed Covered Property may apply for
+an extension until the end of the current compliance period. Owners must provide a
+form of third-party verification to substantiate an exemption request due to
+financial distress. A building is considered in financial distress if it meets one of the
+following criteria:
+(i) The Covered Property is qualified for sale at a public auction due to arrears of
+public taxes within two years of the start of the compliance period.
+(ii) The Covered Property is controlled by a court-appointed receiver due to financial
+distress.
+(iii) The Covered Property is owned by a financial institution through default by the
+borrower.
+(iv) The Covered Property has been acquired by deed in lieu of foreclosure.
+(v) The Covered Property has a senior mortgage which is subject to a notice of
+default.
+The following building type-specific compliance pathways shall be permitted:
+(a) Campus:
+(i) A Campus may choose to comply with the requirements of Section 8.67.100 at
+the level of each Covered Property or at the level of the aggregate Campus
+9
+Packet Pg. 26
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Clean (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+c
+
+greenhouse gas emissions. Campus Owners must determine their Baseline
+according to the method by which they intend to comply with the requirements.
+Owners may request to adjust their Baseline to include in the aggregate Campus
+any new buildings that receive their Certificate of Occupancy after the start of the
+Baseline years.
+(ii) If the Covered Property that is part of a Campus is included in an institutional
+comprehensive plan and a corresponding energy management plan, and these
+plans have reduced Greenhouse Gas Emissions from buildings at the institutional
+level by the required amount for that compliance period, then the Covered
+Property shall be considered to be in compliance. To show compliance with this
+pathway, the Owner must provide copies of the institutional comprehensive plan,
+institutional energy management plan, and the completed institution-wide
+greenhouse gas inventory for buildings for the compliance period.
+(b) Laboratories and Affordable Housing:
+(i) Laboratories and Affordable Housing shall have the option to comply with the
+following alternative compliance schedule:
+1. Compliance Period 1: 2027 to 2033; annual Greenhouse Gas Emissions will
+not exceed 66.7% of the default Baseline
+2. Compliance Period 2: 2034 to 2040; annual Greenhouse Gas Emissions will
+not exceed 33.3% of the default Baseline
+3. Compliance Period 3: 2041 to 2049; annual Greenhouse Gas Emissions will
+not exceed 16.6% of the default Baseline
+4. Compliance Period 4: 2050 onwards; annual Greenhouse Gas Emissions are
+net zero.
+(ii) Laboratory and Affordable Housing owners choosing to follow the alternative
+compliance schedule shall submit documentation to the Department showing
+that the Covered Property qualifies as a Laboratory or Affordable Housing at the
+start of each 5-year compliance period.
+(iii) Laboratories and Affordable Housing choosing to follow the alternative
+compliance schedule shall submit a Greenhouse Gas Emissions Reduction Plan to
+the Department four years prior to the start of each alternative compliance
+period detailing how the greenhouse gas emissions reduction requirement for
+that compliance cycle will be met.
+(iv) For newly constructed Laboratories and Affordable Housing that choose to follow
+the alternative compliance schedule and receive an initial Certificate of
+Occupancy after the start of the default Baseline years, the Baseline shall be the
+average Greenhouse Gas Emissions of the first two full calendar years following
+the issuance of the Certificate of Occupancy. Such Laboratories and Affordable
+Housing shall be exempt from the requirements of 8.67.100 for the seven years
+following the conclusion of this Baseline period. The performance requirements
+for each subsequent seven-year period shall be determined by a linear reduction
+to net zero emissions by 2050.
+(v) For Laboratories and Affordable Housing that request an alternative Baseline
+pursuant to 8.67.100 (2), the adjusted performance requirements shall be as
+follows; annual Greenhouse Gas Emissions will not exceed the indicated
+10
+Packet Pg. 27
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Clean (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+c
+
+percentage of the alternative Baseline:
+Alternative Baseline Performance Requirements
+Compliance Period 1:
+2027 to 2033
+Compliance Period 2:
+2034 to 2040
+Compliance Period 3:
+2041 to 2049
+Compliance Period 4:
+2050 onwards
+
+2010-2011 2011-2012 2012-2013 2013-2014 2014-2015 2015-2016 2016-2017 2017-2018
+55.6%
+56.8%
+58.0%
+59.3%
+60.6%
+62.0%
+63.5%
+65.1%
+27.8%
+
+28.3%
+
+29.0%
+
+29.6%
+
+30.3%
+
+31.0%
+
+31.7%
+
+32.5%
+
+13.9%
+
+14.2%
+
+14.5%
+
+14.8%
+
+15.2%
+
+15.5%
+
+15.9%
+
+16.3%
+
+0.0%
+
+0.0%
+
+0.0%
+
+0.0%
+
+0.0%
+
+0.0%
+
+0.0%
+
+0.0%
+
+8.67.110 MAINTENANCE OF RECORDS AND DATA VERIFICATION
+(1)
+
+Owners shall maintain records as the Department determines is necessary for carrying out the
+purposes of this Ordinance, including but not limited to energy and water bills and other
+documents received from Tenants and/or Utilities. Such records shall be preserved by
+Owners for a period of seven (7) years. At the request of the Department, such records shall
+be made available for inspection and audit by the Department.
+
+(2)
+
+Owners shall self-certify their reporting data every year.
+
+(3)
+
+For the two Baseline years, Owners shall provide a third-party verification of their reporting
+data, submitted by the benchmarking deadline for the first year of the first compliance
+period. Verifications must be performed by an Approved Verification Body.
+
+(4)
+
+For the first year of each compliance period, Owners shall provide a third-party verification of
+their reporting data, submitted by the benchmarking deadline for that year per 8.67.050(1).
+Verifications must be performed by an Approved Verification Body.
+
+(5)
+
+In the event that there is a discrepancy between third-party verified data and an Owner’s
+self-certified reporting data, any resulting lack of compliance with the emissions reduction
+requirements in Section 8.67.100 shall be a violation.
+
+(6)
+
+At the time any occupied Covered Building is transferred, the buyer and seller shall arrange for
+the seller to provide to the buyer all information necessary for the buyer to report
+Benchmarking Information for the entire year in a timely manner. It shall be a violation of
+this Ordinance for any seller to fail to so provide any such information.
+
+8.67.120 VIOLATIONS
+It shall be unlawful for any entity or person to fail to comply with the requirements of this Ordinance
+11
+Packet Pg. 28
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Clean (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+c
+
+or misrepresent any material fact in a document required to be prepared or disclosed by this
+Ordinance.
+8.67.130 ENFORCEMENT AND ADMINISTRATION
+(1)
+
+The Assistant City Manager for Community Development or his or her designee shall be the
+Chief Enforcement Officer of this Ordinance.
+
+(2)
+
+The Assistant City Manager for Community Development may promulgate regulations relative
+to the administration of the requirements of this Ordinance as necessary.
+
+(3)
+
+By December 31, 2026, in consultation with Covered Property Owners, the Department shall
+review compliance with Section 8.67.100 of this Ordinance and report to the City Council.
+
+(4)
+
+If any person or entity fails to report the Benchmarking Information, such failure to report
+shall be deemed a violation and the following enforcement measures may be taken:
+(a)
+For the first violation, a written warning may be issued; and
+(b)
+For any subsequent violation, the Department may issue a fine of up to $300.00 per
+violation, per day, pursuant to the provisions of Chapter 1.24 herein. Each day of
+violation shall constitute a separate offence.
+
+(5)
+
+In the event that third-party verification of Benchmarking Information reported by an
+Owner identifies a discrepancy with an Owner’s self-certified reporting, such discrepancy
+shall be deemed a violation and the following enforcement measures may be taken:
+(a)
+For the first violation, a written warning may be issued; and
+(b)
+For any subsequent violation, the Department may issue a fine of up to $300.00 per
+violation, per day, pursuant to the provisions of Chapter 1.24 herein. Each day of
+violation shall constitute a separate offence.
+
+(6)
+
+If any person or entity fails to meet the emission reduction requirements, such failure shall
+be deemed a violation and the following enforcement measures may be taken:
+(a)
+For the first violation, a written warning may be issued; and
+(b)
+For any subsequent violation, the Department may issue a fine of up to $300.00 per
+violation, per day, pursuant to the provisions of Chapter 1.24 herein. Each day of
+violation shall constitute a separate offence.
+
+8.67.140 SEVERABILITY
+If any provision of this Ordinance shall be held to be invalid by a court of competent jurisdiction, then
+such provision shall be considered separately and apart from the remaining provisions, which shall
+remain in full force and effect.
+8.67.150 EFFECTIVE DATE
+12
+Packet Pg. 29
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Clean (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+c
+
+The provisions of this Ordinance shall be effective immediately upon passage.
+
+13
+
+Packet Pg. 30
+
+Attachment: BEUDO Amendment FINAL 11-4-21_Clean (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO proposed
+
+c
+
+Attachment: Law Council Ord Rsp BEUDO Amndmts 11-8-21 (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO
+
+d
+
+Packet Pg. 31
+
+Attachment: Law Council Ord Rsp BEUDO Amndmts 11-8-21 (CMA 2021 #238 : Ordinance #2021-26 Awaiting Report 21-84 RE: BEUDO
+
+d
+
+Packet Pg. 32
+
+City of Cambridge
+COF 2021 #118
+IN CITY COUNCIL
+December 22, 2021
+
+Packet Pg. 33
+
+a
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+City of Cambridge
+
+Getting to Net Zero Action Plan
+
+BEUDO Amendment Proposal
+Health and Environment Committee
+December 22, 2021
+
+Packet Pg. 34
+
+a
+
+•
+•
+•
+•
+•
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Agenda
+
+Background
+Overview of the amendment process
+Review of key components of the amendments
+Examples of building compliance pathways
+Q&A
+
+Packet Pg. 35
+
+a
+
+•
+•
+•
+•
+•
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Agenda
+
+Background
+Overview of the amendment process
+Review of key components of the amendments
+Examples of building compliance pathways
+Q&A
+
+Packet Pg. 36
+
+Cambridge Community GHG Inventory
+Waste
+6%
+Transportation
+11%
+Buildings
+
+Buildings
+83%
+
+Transportation
+Waste
+
+Packet Pg. 37
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+BEUDO Buildings vs. Cambridge
+Buildings GHG Inventory
+100.0%
+
+81 of 134 million
+square feet
+
+8 out of 12
+billion kbtu
+
+60.4%
+
+62.1%
+
+39.6%
+
+37.9%
+
+Floor Area
+
+Total utility supplied energy use
+
+703 of 1,026 thousand
+MTCO2e
+
+7.8%
+
+90.0%
+80.0%
+70.0%
+
+68.6%
+
+60.0%
+50.0%
+
+92.2%
+
+40.0%
+30.0%
+20.0%
+
+31.4%
+
+10.0%
+0.0%
+
+Number of buildings
+
+Other Buildings
+
+Total emissions
+
+BEUDO
+Packet Pg. 38
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+1,100 of 14,161
+Buildings
+
+a
+
+Existing
+Buildings
+Requirements
+
+Action 1.2.1:
+BEUDO
+Performance
+Requirements
+
+Action 1.3:
+Upgrades at
+Transaction
+Points
+
+Incentives
+/ Support
+
+Action 1.2.2:
+BEUDO
+Resource Hub
+
+Action 1.1:
+Custom
+Retrofit
+Program
+
+New
+Buildings
+Action 2.1: Net
+Zero New
+Construction
+
+Enabling
+Actions
+
+Action 2.2:
+Embodied
+Carbon
+
+Energy
+Supply
+Action 3.2.1: Rooftop Solar
+Requirement
+
+Action 3.2.2:
+Community
+Solar Access
+
+Action 3.1:
+Carbon Free
+Thermal
+Energy
+
+Action 3.3: Off-Site RE Access
+Action 4: Local Carbon Fund
+
+Net Zero Action Plan - Action Map
+
+Packet Pg. 39
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+a
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+2014 Building Energy Use
+Disclosure Ordinance
+
+By December 31, 2018, the Department shall review
+the effect of this Ordinance on improving energy
+performance for Covered Buildings. If energy
+performance for Covered Buildings has not
+improved significantly, the Department shall make
+recommendations to the City Manager as to
+whether amendments to this Ordinance or other
+measures are necessary to improve building energy
+performance for Covered Buildings.
+
+Packet Pg. 40
+
+Weather-normalized site
+EUI by property type
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Packet Pg. 41
+
+a
+
+•
+•
+•
+•
+•
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Agenda
+
+Background
+Overview of the amendment process
+Review of key components of the amendments
+Examples of building compliance pathways
+Q&A
+
+Packet Pg. 42
+
+Process
+Overview
+• 2017: Background policy research and analysis
+• 2018: Straw proposal development with BEUDO property
+owner consultation
+• 2019-2020: Proposal refinement
+• 2021: Update proposal in current context for City Council
+submission
+
+Packet Pg. 43
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+a
+
+•
+•
+•
+•
+•
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Agenda
+
+Background
+Overview of the amendment process
+Review of key components of the amendments
+Examples of building compliance pathways
+Q&A
+
+Packet Pg. 44
+
+Key Components
+• Performance requirement of reducing GHGs relative to individual baseline,
+in 5-year increments, on a path to net zero by 2050
+• Buildings can pick from onsite reductions (energy efficiency, solar,
+electrification); new offsite renewable energy; or Alternative Compliance
+Credits
+• Default baseline is 2018-2019 average, but option to pick an early baseline
+with adjusted reduction requirements
+• Specific pathway options for affordable housing, labs, and campuses
+• Exemptions for net zero buildings and financial distress
+• Periodic policy review and adjustment
+
+Packet Pg. 45
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Performance Requirements
+Policy Element
+Performance requirement (GHG)
+annual reduction targets vs.
+baseline:
+• 2025-2029: 20%
+• 2030-2034: 40%
+• 2035-2039: 60%
+• 2040-2044: 80%
+• 2045-2049: 90%
+• 2050 onwards: 100% (net zero)
+
+Principles & Considerations
+• BEUDO owner feedback indicated preference
+for GHG-based targets (vs. energy) to align
+with desired outcomes and increase
+compliance flexibility
+• Targets are based on scientific analysis by the
+IPCC
+• Targets are relative to each building’s
+baseline to recognize the unique situation of
+each building (vs. universal targets by
+building type)
+
+Packet Pg. 46
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Performance Requirements:
+Reduction Thresholds
+120%
+100%
+
+Default baseline of
+2018-2019 average
+
+2025-2029 threshold:
+
+20% reduction from
+baseline
+
+80%
+
+2030-34:
+
+40%
+
+60%
+
+2035-39:
+
+60%
+
+40%
+
+2040-44:
+
+80%
+
+20%
+
+2045-49:
+
+90%
+
+2050:
+
+100%
+
+(Net Zero)
+
+0%
+
+2015
+
+2020
+
+2025
+
+2030
+
+2035
+
+2040
+
+2045
+
+2050
+
+Packet Pg. 47
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Calculating GHG Emissions
+Policy Element
+GHG (MTCO2e) = Sum (energy x emission factor)
+- Alternative Compliance Credits
+Provided that any Renewable Electricity is subtracted
+from electricity use.
+
+Principles & Considerations
+• Greenhouse gas
+emission calculation
+should reflect regional
+conditions, provide
+predictability, and
+encompass off-site
+measures taken by the
+owner
+•
+
+The City will provide
+buildings with this
+annual calculation for
+reference.
+
+Packet Pg. 48
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Emission Factors
+
+• The City will publish emission factors in advance for each upcoming
+compliance period, through regulations
+• Onsite fuels (gas, oil, etc.): standard scientific values
+• Steam: use Massachusetts-published emission factor for purchased
+steam; use WRI-WBSCD methodology for owner-operated cogen plant
+• Electricity: emission factor based on Massachusetts’ calculations and
+projections of emissions from Massachusetts electricity use
+
+• Key principles: reflects that the Massachusetts grid is getting
+cleaner and lets owners use this as a reduction measure, while also
+providing owners certainty and predictability on emissions
+
+Packet Pg. 49
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+a
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Compliance Pathways
+
+• Reduction in onsite emissions
+ Energy efficiency
+ Electrification
+ On-site renewable electricity
+
+• Offsite renewable electricity
+ (applicable to electricity use)
+
+• Alternative Compliance Credits
+
+Packet Pg. 50
+
+Renewable Energy Criteria
+
+Specific criteria, as identified through Offsite RE stakeholder process:
+• Offsite Renewable Electricity (RE) procurement supports a new RE project
+•
+
+Includes contracts that lead to new project or expansion of existing facility
+
+• RECs must be assigned to the building for the duration of the contract
+• RE is solar PV, solar thermal power, wind, geothermal, hydro, or others as
+approved
+
+Packet Pg. 51
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Alternative Compliance Credits
+
+• Creates an additional option to comply with performance
+requirements
+• Price is aligned with Boston at $234/credit in first compliance
+period, adjusted thereafter
+• One credit = one ton of CO2
+• Based on average cost of abating one ton in large buildings
+
+• Supports City programs and projects to reduce carbon,
+including in affordable housing
+
+Packet Pg. 52
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Early Baseline Option
+
+• Goal is to provide an option for owners who have taken early
+action
+• Optional baseline is average of two consecutive years, as far
+back as 2010:
+• Reduction trajectory will align with IPCC path: 50% reduction from
+2010 to 2030, and net zero by 2050
+• Similar trajectory to average BEUDO building’s reductions to date
+• Parallels Boston’s approach for early baseline
+
+Packet Pg. 53
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+a
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Early Baseline Option
+140%
+
+IPCC trajectory of reaching 50%
+of 2010 emissions by 2030
+
+120%
+100%
+
+Average BEUDO building GHG
+reductions have been 2.5-3% per year
+
+80%
+60%
+40%
+20%
+0%
+
+2010
+
+2015
+
+2020
+
+2025
+
+2030
+
+2035
+
+2040
+
+2045
+
+2050
+
+Packet Pg. 54
+
+Early Baseline Option
+
+2010-11 baseline
+2025-29
+
+33% below
+baseline
+2030-34
+
+50%
+
+2035-39
+
+66%
+
+2040-44
+
+83%
+
+2045-2049
+
+92%
+
+2050
+
+100%
+
+2010
+
+2015
+
+2020
+
+2025
+
+2030
+
+2035
+
+2040
+
+2045
+
+2050
+
+Packet Pg. 55
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Early Baseline Example
+
+2010-11 baseline
+2025-29
+
+33% reduction from
+baseline
+2030-34
+
+50%
+
+Example: Project plus
+cleaner grid resulted in
+35% GHG reduction
+from 2010-11. In
+compliance through
+2029.
+
+2035-39
+
+66%
+
+2040-44
+
+83%
+
+2045-2049
+
+92%
+
+2050
+
+100%
+
+2010
+
+2015
+
+2020
+
+2025
+
+2030
+
+2035
+
+2040
+
+2045
+
+2050
+
+Packet Pg. 56
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Early Baseline Option
+Performance Requirement Prorated for Other Baseline Options
+
+2025-2029
+
+2030-2034
+
+2035-2039
+
+2040-2044
+
+2045-2049
+
+2050
+
+Baseline:
+2010-2011
+
+33%
+
+50%
+
+66%
+
+83%
+
+92%
+
+100%
+
+Default
+baseline:
+2018-2019
+
+20%
+
+40%
+
+60%
+
+80%
+
+90%
+
+100%
+
+Packet Pg. 57
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Early Baseline Option
+Performance Requirement Prorated for Other Baseline Options
+
+2025-2029
+
+2030-2034
+
+2035-2039
+
+2040-2044
+
+2045-2049
+
+2050
+
+Baseline:
+2010-2011
+
+33%
+
+50%
+
+66%
+
+83%
+
+92%
+
+100%
+
+Baseline:
+2014-2015
+
+27%
+
+45%
+
+64%
+
+82%
+
+91%
+
+100%
+
+Default
+baseline:
+2018-2019
+
+20%
+
+40%
+
+60%
+
+80%
+
+90%
+
+100%
+
+Packet Pg. 58
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Laboratory and Affordable Housing
+Pathway
+Key principles:
+• Labs and Affordable Housing may need more time for implementation, but should be held to same
+overall standards as other buildings
+• Lab tenants are able to play a role in meeting targets
+• Labs should be defined in a way that acknowledges the unique needs while avoiding system gaming
+Lab Definition: 15% or more of occupied building square footage with an air exchange rate of 0.5 cubic
+feet per minute per square foot (CFM/ft2) or greater
+Planning: Must submit a GHG reduction plan prior to each alternative compliance period
+100%
+90%
+80%
+70%
+60%
+50%
+40%
+30%
+20%
+10%
+0%
+
+33% reduction
+(2027-33)
+66% (2034-41)
+84% (2042-49)
+Net
+Zero
+2015
+
+2020
+
+2025
+
+2030
+
+2035
+
+2040
+
+2045
+
+2050
+Packet Pg. 59
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Laboratory and Affordable Housing
+Pathway
+Lab and affordable housing pathway is designed to achieve the same cumulative level of emission
+reductions by 2050 as the default pathway
+
+Packet Pg. 60
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Campus Pathway
+
+• “Campus” means 5 or more Covered Properties owned by
+same organization which are owner-occupied properties or
+affordable housing
+• Campuses have multiple compliance options:
+• As individual Covered Properties
+• At the aggregate Campus level
+• Through an institutional comprehensive plan that has cut building
+GHG emissions the required amount
+
+Packet Pg. 61
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Exemptions
+• Net Zero Emissions buildings (Living Building Challenge, LEED Zero,
+Cambridge net zero requirements)
+• Vacant buildings/planned demolitions
+• Financial distress
+• New buildings:
+• Compliance periods begin 5 years after baseline period
+• Performance requirements based on linear reduction to net zero by
+2050
+
+Packet Pg. 62
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+a
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Penalties
+
+• Approach of daily violation for noncompliance
+• Penalties may be assessed and are differentiated for:
+• non-reporting,
+• reporting false data,
+• non-compliance with performance standards
+
+• Penalties may be up to $300 per violation per day
+
+Packet Pg. 63
+
+Policy Review
+
+• After the first year of data is submitted for the first
+compliance period, the City will review compliance and
+outcomes of the BEUDO amendments in consultation with
+covered property owners and report to Council
+
+Packet Pg. 64
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+a
+
+•
+•
+•
+•
+•
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Agenda
+
+Background
+Overview of the amendment process
+Review of key components of the amendments
+Examples of building compliance pathways
+Q&A
+
+Packet Pg. 65
+
+Compliance
+Options
+
+Start
+
+Standard
+
+performance
+requirements
+
+Qualify as
+lab or
+affordable
+housing
+
+Qualify as
+campus
+
+Buildinglevel
+compliance
+with 5-year
+periods
+Buildinglevel
+compliance
+with 7-year
+periods
+
+Campus
+compliance
+with 5-year
+periods
+
+Select
+baseline
+year
+
+Default
+baseline
+
+Alternative
+baseline
+years
+
+Default
+performance
+requirements
+
+Prorated
+requirements
+(see table)
+
+Identify
+GHG
+reduction
+measures
+
+Energy
+efficiency
+(BEUDO
+Resource
+Hub)
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Onsite solar
+(with RECs
+retained)
+
+Offsite RE
+(meets RE
+criteria)
+
+Renewable
+thermal/
+
+electrification
+
+Alternative
+Compliance
+Credits
+Packet Pg. 66
+
+BEUDERO
+Timeline to 2030
+
+3rd party
+report and
+baseline
+verification
+
+Stakeholder
+process to
+establish
+emission
+factors for
+2010-2029
+
+Ordinance
+amendment
+passage?
+
+2018
+
+2019
+
+Default
+baseline
+years
+
+2020
+
+Optional
+deadline to
+request/
+provide
+alternative
+baseline
+
+2021
+Today
+
+2022
+
+Compliance
+review with
+stakeholders
+
+Emission
+factors
+published
+for 20302034
+
+(Lab/AH
+plan)
+
+2023
+
+2024
+
+Buildings
+implement
+measures for end
+of 2024
+
+2025
+
+2026
+
+2027
+
+2028
+
+20% below default baseline
+
+(Lab/AH
+plan)
+
+2029
+
+2030
+40%
+
+(Lab/affordable housing option: 33.3%)
+
+Packet Pg. 67
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Reports
+submitted
+for first
+compliance
+year
+
+a
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Example: Large Office Building
+330,000 sf office building
+2019 Emissions
+Total
+
+1,480 MT
+
+Electricity
+
+1,405 MT
+
+Gas
+
+75 MT
+
+2025-29 Performance Standard
+20% Reduction Level
+
+1,190 MT
+
+Emissions due to cleaner grid*
+
+1,250 MT (-16%)
+
+Options that would each get to target:
+- 5% energy efficiency project
+- 5.5% renewable electricity purchase
+- Electrification of gas use
+- Any combo of the above or ACCs
+*using emission factors based on current policy
+
+Packet Pg. 68
+
+a
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Example: Large Office Building
+330,000 sf office building
+2030-34 Performance Standard
+40% Reduction Level
+
+890 MT
+
+Emissions due to cleaner grid*
+
+1,073 MT (-28%)
+
+Options that would each get to target:
+- 17% energy efficiency project (from baseline)
+- 18% renewable electricity purchase
+- Any combo of above or ACCs
+
+*using emission factors based on current policy
+
+Packet Pg. 69
+
+a
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Example: Large Multifamily
+300-unit property
+2019 Emissions
+Total
+
+1,400 MT
+
+Electricity
+
+720 MT
+
+Gas
+
+680 MT
+
+2025-29 Performance Standard
+20% Reduction Level
+
+1,120 MT
+
+Emissions due to cleaner grid*
+
+1,280 MT (-9%)
+
+Options that would each get to target:
+- 13% energy efficiency project
+- 27% renewable electricity purchase
+- Electrification of 2/3 of heating and hot water
+- Any combo of the above or ACCs
+*using emission factors based on current policy
+
+Packet Pg. 70
+
+a
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Example: Large Multifamily
+300-unit property
+2030-34 Performance Standard
+40% Reduction Level
+
+840 MT
+
+Emissions due to cleaner grid*
+
+1,190 MT (-15%)
+
+Options that would each get to target:
+- 30% energy efficiency project (from baseline)
+- 70% renewable electricity purchase
+- Completion of heating and hot water electrification
+- Any combo of above or ACCs
+
+*using emission factors based on current policy
+
+Packet Pg. 71
+
+a
+
+•
+•
+•
+•
+•
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Agenda
+
+Background
+Overview of the amendment process
+Review of key components of the amendments
+Examples of building compliance pathways
+Q&A
+
+Packet Pg. 72
+
+Thank You!
+
+www.cambridgema.gov/netzero
+sfederspiel@cambridgema.gov
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Packet Pg. 73
+
+a
+
+•
+•
+•
+•
+•
+•
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+Agenda: BACKUP
+
+Background
+Overview of the amendment process
+Review of key components of the amendments
+Examples of building compliance pathways
+Q&A
+BEUDO alternatives analysis
+• Comparison to Boston BERDO 2.0
+
+Packet Pg. 74
+
+Overview of Boston Ordinance
+•
+•
+
+Boston’s “BERDO 2.0” Performance Standards were adopted in September
+The ordinance establishes emissions standards of GHG intensity for each of
+13 different sectors, declining every 5 years. Buildings may also choose an
+Individual Compliance Schedule.
+•
+•
+•
+
+•
+
+Building categories established through data review and advisory group input
+Portfolios have the option to comply in the aggregate
+Hardship compliance plans can also be requested
+
+The ordinance establishes a Review Board to review such individual cases,
+enforce the ordinance, recommend regulations, and allocate ACP funds
+
+Packet Pg. 75
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Baseline and Expected Reductions
+
+•
+
+•
+
+Boston BERDO 2.0
+Boston thresholds are designed to •
+achieve a 50% reduction in GHG
+emissions (for the covered
+buildings) by 2030 from 2005
+The Individual Compliance
+Schedule can use a baseline of
+2005 or later and must achieve a
+50% reduction by 2030
+•
+
+Cambridge BEUDERO Proposal
+BEUDERO proposal requires a
+default 40% reduction by 2030,
+but if a baseline of 2010-2011 is
+chosen, the reduction must be
+50% by 2030
+•
+
+Reductions are prorated
+accordingly for interim baseline
+years
+
+Given the trend of declining
+emissions (observed in available
+BEUDO data), Cambridge proposal
+is likely more stringent in requiring
+a 50% reduction from 2010 by
+2030
+Packet Pg. 76
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Offsite Renewables
+
+•
+
+Boston BERDO 2.0
+BERDO 2.0 allows the use of
+Community Choice Electricity or
+MA Class I RECs (unbundled) to
+offset electricity use
+
+•
+
+Cambridge BEUDERO Proposal
+BEUDERO proposal requires offsite
+RE to be new
+•
+•
+
+Contract leads to construction or
+expansion of a project
+Allows CDD to approve
+Cambridge Community Electricity
+as compliant if appropriate
+
+Packet Pg. 77
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Alternative Compliance Mechanism
+
+•
+
+Boston BERDO 2.0
+Boston establishes Alternative
+Compliance Payments
+•
+
+•
+
+•
+
+These are set at $234/MTCO2e
+and to be adjusted every five
+years
+The ordinance establishes a
+Equitable Emissions Investment
+Fund into which ACPs and
+penalties are deposited
+Funds to be used for carbon
+abatement projects benefitting
+Environmental Justice
+populations, subject to Review
+Board oversight
+
+•
+
+Cambridge BEUDERO Proposal
+Cambridge Alternative Compliance
+Credits (ACC) set to be aligned
+with Boston ACP at outset
+•
+
+•
+
+CDD will promulgate regulations
+before each compliance period,
+based on review of average cost
+of abatement
+ACC funds will be used for City
+programs and projects to support
+GHG reduction, including
+investments in affordable housing
+
+Packet Pg. 78
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Thresholds of Boston BERDO 2.0
+Boston BERDO 2.0
+
+• BERDO currently applies to:
+
+•
+
+Cambridge BEUDERO Proposal
+
+BEUDERO thresholds:
+• Non-residential over 25,000 sf
+• Non-residential over 35,000 sf
+• Residential of 50 units or
+• Residential of 35 units or
+more
+more
+• Current BEUDO thresholds cover
+In 2030, BERDO 2.0
+~2% net more emissions than
+emissions requirements will
+current BERDO thresholds
+expand to:
+• Applying 2030 BERDO 2.0
+• Non-res. over 20,000 sf
+thresholds to Cambridge would
+• Residential of 15 units or
+increase the amount of emissions
+more
+covered by an estimated 4.4%
+(35,000 additional MTCO2e
+subject to requirements)
+•
+
+Packet Pg. 79
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Boston Threshold: 35,000sf non-residential
+(Current BEUDO: 25,000 sf)
+Nonresidential area
+no longer covered
+Percentage decrease
+in area
+Number of parcels
+no longer covered
+
+1,911,766
+
+sf
+
+(61.2 million sf
+currently)
+
+parcels
+
+(354 non-residential
+parcels currently)
+
+MTCO2e
+
+(807,000 MT under
+BEUDO currently)
+
+- 3%
+65
+
+Estimated emissions
+no longer covered
+
+21,943
+
+Percentage decrease
+in emissions covered
+
+-2.7%
+
+(% of overall BEUDO
+building emissions)
+
+Packet Pg. 80
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Boston Threshold: 35 unit residential
+(Current BEUDO: 50 units)
+New residential area covered
+Percentage increase in area
+Number of additional
+residential units covered
+
+1,118,691
+
+1,252
+9%
+
+Number of additional parcels
+covered
+
+31
+
+Percentage increase in
+emissions covered
+
+(17.2 million sf
+currently)
+
+units
+
+(13,800 currently)
+
+parcels
+
+(184 residential
+parcels currently)
+
+MTCO2e
+
+(807,000 MT under
+BEUDO currently)
+
+6%
+
+Percentage increase in units
+
+Estimated additional emissions
+covered
+
+sf
+
+5,943
+
+0.7%
+
+(% of overall
+BEUDO building
+emissions) Packet Pg. 81
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Lower Thresholds: 20,000sf non-residential
+(Current BEUDO: 25,000 sf)
+New nonresidential
+area covered
+
+896,517
+
+Percentage increase
+in area
+
+1%
+
+Number of
+additional parcels
+covered
+
+40
+
+Estimated additional
+emissions covered
+
+10,290
+
+Percentage increase
+in emissions covered
+
+1.3%
+
+sf
+
+(61.2 million sf
+currently)
+
+parcels
+
+(354 non-residential
+parcels currently)
+
+MTCO2e
+
+(807,000 MT under
+BEUDO currently)
+(% of overall BEUDO
+building emissions)
+
+Packet Pg. 82
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Lower Thresholds: 15 unit residential
+(Current BEUDO: 50 units)
+New residential area covered
+Percentage increase in area
+Number of additional
+residential units covered
+
+4,669,283
+
+5,278
+38%
+
+Number of additional parcels
+covered
+
+221
+
+Percentage increase in
+emissions covered
+
+(17.2 million sf
+currently)
+
+units
+
+(13,800 currently)
+
+parcels
+
+(184 residential
+parcels currently)
+
+MTCO2e
+
+(807,000 MT under
+BEUDO currently)
+
+27%
+
+Percentage increase in units
+
+Estimated additional emissions
+covered
+
+sf
+
+24,810
+
+3.1%
+
+(% of overall
+BEUDO building
+emissions) Packet Pg. 83
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Test of Boston Thresholds Applied
+to Cambridge BEUDO Buildings
+
+Goals of preliminary analysis:
+• Examine at a very high level what a similar policy could look
+like for Cambridge BEUDO buildings
+• Does not create groups or set thresholds specific to
+Cambridge BEUDO building data
+•
+
+Uses the Individual Compliance benchmarks tested in Boston analysis
+(24% reduction by 2025, 48% reduction by 2030) and current policy
+for renewable portfolio standard
+
+• Developing this approach for Cambridge would require similar
+analysis as Boston
+
+Packet Pg. 84
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Overall Boston Threshold Impact for
+Cambridge Buildings
+• Chart show how many buildings in each sector would meet the thresholds (are
+already below the Boston thresholds or would be due to grid) or would need to
+take action
+• Assumes buildings take less stringent of threshold or percentage pathway
+• In short term, more than half of buildings do not need to take action
+100%
+90%
+80%
+70%
+60%
+50%
+
+226
+161
+
+20%
+
+313
+
+GHG reductions vs.
+2019
+
+2025
+17.8%
+
+Threshold
+Percentage
+
+227
+
+10%
+0%
+
+286
+
+41
+
+40%
+30%
+
+Expected Pathway:
+
+86
+
+229
+42
+106
+
+32
+54
+
+2030
+
+2035
+
+42.4%
+
+56.6%
+
+Will meet threshold
+due to grid
+Already met
+threshold
+
+Packet Pg. 85
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+Potential Approach to Thresholds
+•
+
+Process that Boston used:
+•
+•
+•
+•
+•
+
+•
+
+Worked with technical consultant and advisory group
+Identified 13 locally appropriate typologies, using Portfolio Manager and
+analysis of existing emissions intensity
+Analyzed other factors to see if building age, etc. should be a determinant of
+thresholds
+Developed thresholds with stakeholders to reach 2030 targets as a whole and
+affect different sectors equitably
+Developed individual pathway and recalibrated thresholds
+
+Potential approach for Cambridge:
+•
+•
+•
+•
+
+Would require procuring consultant support
+Stakeholder process to identify appropriate typologies (or need to justify
+same groupings as Boston)
+Develop reduction thresholds that are either Cambridge-specific or Bostonaligned
+Process could be 6-9 months (est.)
+Packet Pg. 86
+
+Attachment: CDD BEUDO Overview Presentation for Health and Envi 12-22-21 (COF 2021
+
+a
+
+City of Cambridge
+COF 2021 #119
+IN CITY COUNCIL
+December 22, 2021
+
+Packet Pg. 87
+
+Presentation on further amendments to the BEUDERO amendments by Councillor
+Zondervan and Councillor Nolan, in order to achieve our climate goals.
+Image shows construction of the new Alexandria biolab building which includes a
+geothermal field to reduce the energy requirements and emissions that will be
+produced.
+
+Packet Pg. 88
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+BEUD(ER)O is Critical to our success
+1.
+
+Mandates Emissions Reductions from existing (large) buildings
+
+2.
+
+Puts a price on emissions from buildings
+
+3.
+
+Requires emissions reductions to net zero
+
+BEUDO becomes BEUDERO by adding Emissions Reductions
+BEUDERO Highlights:
+Mandates Emissions Reductions from existing (large) buildings
+Puts a price on emissions from buildings: $234/ton
+Requires emissions reductions to net zero
+Picture is of the new MIT building on Main St. We tried to get MIT to make these
+buildings net zero back in 2011 when the council voted on the zoning. But MIT was
+not ready to build these buildings net zero at the time, and they sank the amendment
+that would have required them to. With BEUDERO, these buildings will have to
+become net zero over time.
+
+Packet Pg. 89
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+$0/ton
+
+$234/ton
+
+Under BEUDERO as proposed, buildings only have to pay for “excess” emissions.
+This graph shows what is meant by “excess” emissions, which the existing building
+will need to pay for, shown here in red. As long as their emissions are at or below the
+prescribed pathway to zero, they can continue to pollute at no cost. In fact, by buying
+renewable electricity they could potentially defer eliminating fossil fuel combustion for
+years while still complying with BEUDERO and avoiding Alternative Compliance
+Payments.
+It’s outrageous that we would allow existing buildings to pollute for free until 2050, but
+it it is even more unthinkably outrageous that we would allow NEW commercial
+buildings to pollute for free! We know better and we should legislate better!
+Spreadsheet with calculations and graphs:
+https://docs.google.com/spreadsheets/d/1eHCt2-rYV2prWN031riTEk-8IE82Dmta3itm
+_w__pag
+
+Packet Pg. 90
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+Making BEUDERO Stronger
+1.
+
+Mandate faster reductions than net zero by 2050
+
+2.
+
+Reduce emissions from the worst emitters, mainly laboratory buildings
+
+3.
+
+Charge new non-residential buildings for ALL their emissions
+
+What needs to be improved to respond to climate change in line with the science:
+Mandate faster reductions than net zero by 2050
+Reduce emissions from the largest emitters, mainly laboratory buildings (labs are 66%
+of BEUDO buildings!)
+Charge new non-residential buildings $234/ton for ALL their emissions
+Image of the new BioMed Realty building proposed for Third St. This will be an
+all-electric biolab building, which means it can quickly get to net zero through
+purchasing renewable electricity.
+
+Packet Pg. 91
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+Proposed Amendments to BEUDERO
+1.
+
+2.
+
+Net Zero by 2035, not 2050
+a.
+
+Simplify reductions to 8%/year
+
+b.
+
+Strike some of the exemptions
+
+c.
+
+Allow alternative schedule for 100% affordable housing, but not for laboratories
+
+More stringent baselines:
+a.
+
+Industry average or 2-year building average, whichever is LOWER emissions
+
+b.
+
+Baseline of ZERO for non-residential new construction, and for all buildings after 2025
+
+c.
+
+Strike the alternative baseline options
+
+High level summary of amendments to BEUDERO proposed by Councillors
+Zondervan and Nolan.
+
+Packet Pg. 92
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+Council goal of 100% renewable energy by 2035 was adopted in 2017, and
+reaffirmed on Dec 13, 2021
+We cannot possibly achieve that goal if BEUDO buildings are still burning fossil fuels
+after 2035
+At that point we’re still causing emissions indirectly (think shipping of goods to
+Cambridge), but no longer directly (by burning fossil fuels in Cambridge)
+
+Packet Pg. 93
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+Net Zero is not Actually Zero
+Buildings will reduce in 2 steps:
+1.
+2.
+
+Electrification (replacing on-site fossil fuel combustion)
+Purchasing 100% renewable electricity
+
+Neither step *completely* eliminates emissions however
+Only actual energy consumption reductions fully eliminate future emissions
+Net Zero
+
+Actual Zero
+
+Important to create economic pressure in favor of eliminating wasteful
+consumption
+
+This graph shows a hypothetical building’s emissions reductions.
+Under the current BEUDERO proposal, buildings can still pay to pollute while meeting
+the definition of NET ZERO. That may be changed by future councils, but since we
+cannot yet force fossil fuel burning to end, we have to create economic economic
+pressure against it, in favor of rapid near term decline in emissions. Otherwise,
+building operators may well choose to simply pay $234/ton instead of making
+changes to their building to actually eliminate emissions.
+
+Packet Pg. 94
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+We’ve failed to meet EVERY SINGLE emissions target so far and the longer that
+continues, the harder it becomes to achieve our goal of zero emissions by 2050. We
+can’t get to zero by continuing to do that!
+
+Packet Pg. 95
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+It’s important to have a target date for getting to net zero, currently 2050. But it’s also
+important how we get there!
+This graph shows 2 hypothetical pathways to zero, both achieving the 2050 goal. The
+green line represents a rapid reduction at first, and then a slower rate to net zero by
+2050. The red line represents a slow reduction at first, and then a rapid drop-off to net
+zero by 2050. But what really matters is the area under the curve, which represents
+the total amount of emissions during that 30 year period!
+In the rapid-slow scenario, far fewer emissions result over the 30 year period, which
+means less climate impact. This is why we need BEUDERO to require a more rapid
+reduction in emissions. Because the longer we wait, the more buildings will follow the
+slow-rapid trajectory, and the more emissions will result.
+
+Packet Pg. 96
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+Rapid, steep
+decline
+Slow stepwise
+decline
+
+This graph shows the proposed BEUDERO emissions reductions schedule in blue,
+and an alternative, more rapid decline schedule in green. In both cases the building is
+required to reduce their emissions from a baseline (100%), or pay a fee. The more
+rapid decline schedule on the other hand requires an 8% reduction every year starting
+in 2025. As you can see from the graph, the rapid decline would avoid a lot more
+future emissions compared to the slow, stepwise decline.
+Both schedules requires a 20% reduction starting in 2025, but nothing before then.
+This actually makes sense, because it gives the buildings a few years time to invest in
+eliminating emissions rather than paying the city to pollute. But it only works if there is
+significant economic pressure after 2025, i.e. if it costs them a lot to keep polluting
+after 2025. By making it clear that the cost of continuing to pollute will increase
+rapidly, the building operators have a clear incentive to avoid that future cost now.
+As mentioned earlier, rapid near-term emissions reductions are critically important to
+avoiding even worse climate change. The science is clear that we cannot afford to
+continue slow-walking our emissions reductions at this point.
+Cambridge is a leader on climate change action, which means we need to be ahead
+of others to show them how it’s done. Even if we achieve net zero by 2050 exactly,
+we’re still screwed if everybody else is catching up to us at that point! We need to lead
+by introducing a more aggressive emissions reduction schedule, so that others will
+follow suit, giving us a chance to collectively reach net zero by 2050.
+
+Packet Pg. 97
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+Electrification
+& Energy
+Reductions
+
+100% Renewable
+Electricity Purchases
+
+And realistically, buildings are going to eliminate their emissions in at most 2 steps
+anyway: 1) Electrify (remove fossil fuel combustion equipment) & reduce the energy
+load (e.g. by adding insulation, etc.). 2) Buy more and more 100% renewable
+electricity until emissions are net zero.
+Neither step *completely* eliminates emissions however. Only actual energy
+consumption reductions fully eliminate future emissions. So it is very important to
+create economic pressure in favor of eliminating wasteful consumption. As you can
+see in this graph, by requiring more rapid emissions reductions, we create an
+incentive for buildings to actually eliminate future emissions quickly to avoid the cost
+of having to pay for them later. Instead of deferring building modifications to the future
+and buying renewable electricity to comply with BEUDERO, we should see the
+opposite: making building modifications first to reduce energy consumption and fossil
+fuel combustion, and then buying renewable electricity to achieve net zero. Because
+we expect renewable electricity to become more widely available and to be cheaper
+than fossil fuel generated electricity, this approach would potentially allow buildings to
+actually achieve zero emissions much sooner than the mandated deadline.
+
+Packet Pg. 98
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+Industry Average building performance in Cambridge
+
+For an underperforming building, that is a building that emits more than the average
+for their industry during the baseline years, the baseline should be the industry
+average in Cambridge, NOT the building’s own performance.
+This graph shows a hypothetical building’s emissions reductions under the proposed
+amendments to BEUDERO. In blue we see the underperforming building’s emissions
+compared to the industry average in green. By requiring the building to reduce from
+the industry average, we avoid a lot more emissions.
+
+Packet Pg. 99
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+The current policy design is 50% by 2030
+Even if we achieve that goal on the nose among the BEUDO buildings, that doesn’t
+mean we’ve achieved it for Cambridge overall! So we have to overshoot in the
+BEUDO sector to leave room for challenges achieving it everywhere else.
+Unless the BEUDERO emissions were reduced to nothing, the 50% goal won't be
+reached without drastically lowering emissions in other sectors. And we don’t have a
+good track record on reducing emissions.
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+Packet Pg. 100
+
+Accelerator
+
+The Rocky Mountain Institute’s Building Electrification Accelerator has been working
+for the last year and a half with Boston area municipalities on building electrification.
+While they were not available to attend in person, they’ve sent us a letter, pasted
+below:
+December 22, 2021
+Councillor Quinton Zondervan
+Health & Environment Committee Chair
+Cambridge City Hall
+795 Massachusetts Ave
+Cambridge, MA 02139
+Dear Councillor Zondervan,
+I write today to applaud the City of Cambridge’s work to develop a leading building
+energy performance standard for large buildings, and to encourage the City to include
+near-term provisions that reduce greenhouse gas emissions this decade.
+RMI has seen growing momentum on local building decarbonization policy in
+Massachusetts towns and cities, via our work facilitating the Building Electrification
+Accelerator (BEA). BEA includes more than twenty municipalities, many of which are
+in Greater Boston. Building performance standards have emerged as a particular
+policy focus, even moreso given recently-passed policies in Boston and Denver.
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+Packet Pg. 101
+
+We encourage policy design that includes near-term signals to building owners and
+developers to catalyze decarbonization efforts this decade. First, the
+Commonwealth’s 2030 emissions reduction targets are unachievable without
+progress on buildings. Second, reducing emissions in buildings takes time. Each year,
+building owners are making capital investment decisions that will impact their
+emissions for the next 15-20 years. This is true to an even greater extent for new
+construction, where upfront design can cost-effectivelly reduce or eliminate emissions
+in ways that might be more complex down the road.
+We appreciate the opportunity to comment and look forward to supporting the City’s
+efforts in the coming year.
+Sincerely,
+Amar Shah
+Manager, Carbon-Free Buildings Program
+
+Attachment: BEUD(ER)O Amendments QZ Presentation (COF 2021 #119 : A communication was received from Councillor
+
+a
+
+Packet Pg. 102
+
+

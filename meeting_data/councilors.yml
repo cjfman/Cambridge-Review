@@ -25,15 +25,41 @@ councillors:
       - Denise Simmons
       - Simmons
       - SINMONS
+  - name: Jivan Sobrinho-Wheeler
+    aliases:
+      - Sobrinho-Wheeler
+      - Sobrinho Wheeler
+      - Wheeler
+      - Sobrinho
+      - Jivan Sobrinho Wheeler
   - name: Paul F. Toner
     aliases:
       - Toner
       - Paul Toner
+  - name: Timothy J. Toomey
+    aliases:
+      - Timothy Toomey
+      - Tim J. Toomey
+      - Tim Toomey
+      - Toomey
   - name: Quinton Zondervan
     aliases:
       - Zondervan
       - zonderan
 sessions:
+  2020:
+    mayor: Sumbul Siddiqui
+    vice_mayor: Alanna Mallon
+    councillors:
+      - Dennis J. Carlone
+      - Alanna Mallon
+      - Marc C. McGovern
+      - Patricia Nolan
+      - Sumbul Siddiqui
+      - E. Denise Simmons
+      - Jivan Sobrinho-Wheeler
+      - Timothy J. Toomey
+      - Quinton Zondervan
   2022:
     mayor: Sumbul Siddiqui
     vice_mayor: Alanna Mallon

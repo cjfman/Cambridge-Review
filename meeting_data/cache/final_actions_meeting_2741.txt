@@ -1,0 +1,368 @@
+PUBLIC SAFETY COMMITTEE
+COMMITTEE MEETING
+~ MINUTES ~
+
+Wednesday, October 7, 2020
+
+10:00 AM
+
+Sullivan Chamber
+
+Call to Order
+Attendee Name
+Quinton Zondervan
+Dennis J. Carlone
+Alanna Mallon
+Jivan Sobrinho-Wheeler
+Marc C. McGovern
+
+Present
+
+
+
+
+
+
+
+Absent
+
+
+
+
+
+
+
+Late
+
+
+
+
+
+
+
+Arrived
+
+10:08 AM
+
+Public Safety Committee will conduct a public hearing on the Surveillance Technology Impact
+Reports and annual reports on ShotSpotter, BRIC, and COPLINK, and other outstanding
+surveillance annual reports, time permitting
+attendance
+present
+absent
+yea
+nay
+Councillor Carlone
+x
+Vice Mayor Mallon
+x
+Councillor McGovern
+x
+Councillor Sobrinho-Wheeler
+x
+Chair - Councillor Zondervan
+x
+motion to close public comment by Councillor Zondervan
+Councillor Carlone
+Vice Mayor Mallon
+Councillor McGovern
+Councillor Sobrinho-Wheeler
+Chair - Councillor Zondervan
+
+x
+x
+x
+x
+x
+
+amend to proposed policy order to add: Data on difference in response times between shots
+reported by Shotspotter and shots reported by humans and data on location pinpoint accuracy. by
+councillor sobrinho-wheeler
+present
+absent
+yea
+nay
+Councillor Carlone
+x
+Vice Mayor Mallon
+x
+Councillor McGovern
+x
+Councillor Sobrinho-Wheeler
+x
+Chair - Councillor Zondervan
+x
+motion to send proposed amended policy order to the city council: The City Manager is hereby
+requested to work with the Police Department to provide data on Shotspotter, BRIC and Coplink to
+
+City of Cambridge
+
+Last Updated: 12/10/2020 11:26 AM
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+October 7, 2020
+
+the City Council including: Shotspotter (broken down by year): number of gunshots reported through
+shotspotter, average response time, resulting arrests, resulting gunshot victims treated, number of
+gunshots reported by people across the city, number of gunshots reported by people in the
+shotspotter area, gunshots reported by people but not by shotspotter in the shotspotter area, data
+retention policies, data on difference in response times between shots reported by Shotspotter and
+shots reported by humans and data on location pinpoint accuracy. . BRIC: Federal agencies that have
+access to BRIC information, data retention policies; COPLINK: Federal agencies that have access to
+BRIC information, data retention policies; and any other information that may be deemed helpful and
+informative to the Council in executing its duties with regard to the Surveillance Ordinance.
+present
+absent
+yea
+nay
+Councillor Carlone
+x
+Vice Mayor Mallon
+x
+Councillor McGovern
+x
+Councillor Sobrinho-Wheeler
+x
+Chair - Councillor Zondervan
+x
+motion to adjourn
+present
+Councillor Carlone
+Vice Mayor Mallon
+Councillor McGovern
+Councillor Sobrinho-Wheeler
+Chair - Councillor Zondervan
+1.
+
+absent
+
+yea
+x
+x
+x
+x
+x
+
+nay
+
+A communication transmitted from Louis A. DePasquale, City Manager, relative to second Annual
+Surveillance Report concerning City departments’ use of Surveillance Technology or Surveillance
+Data.
+
+Pursuant to Chapter 2.128, Section 2.128.060 of the Cambridge Municipal Code, I hereby submit the City of
+Cambridge Departments’ second Annual Surveillance Reports concerning City departments’ use of
+Surveillance Technology or Surveillance Data.
+
+The Annual Surveillance Reports and the Surveillance Technology referenced in those reports is as
+follows:
+
+No.
+1.
+
+Department
+Emergency Communications
+
+2.
+3.
+
+Emergency Communications
+- Police
+Executive/City Manager
+
+4.
+5.
+6.
+
+Finance - Assessing
+Finance - Revenue
+Information Technology
+
+City of Cambridge
+
+Page 2
+
+Technology
+Rapid SOS Emergency Data
+Integration System
+Trespass Tracking Database
+• Media Monitoring-Meltwater
+• Social Media MonitoringMeltwater Engage (Powered by
+Sprout Social)
+Atlas RMV Portal
+Atlas RMV Portal
+IP Address Collection Platforms
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+7.
+
+Law
+
+8.
+9.
+
+Mayor’s Office
+Police - Crime Analysis &
+CID
+
+10.
+
+Police - CID Days, DV/SA
+& Cyber
+
+11.
+
+Police - SIU
+
+12.
+
+Police - Crime Scene
+Services, Booking &
+Records
+
+13.
+
+Police - EOD
+
+14.
+
+Police - Fleet
+
+15.
+16.
+17.
+
+Police - SRT
+Police - CID
+Police - Professional
+Standards
+Police - PIO
+Public Health
+
+18.
+19.
+
+City of Cambridge
+
+October 7, 2020
+
+(Multiple)
+WestLaw Public Records Search
+function
+TweetDeck
+• Accurint Workstation • BRIC
+Omega Dashboard • Coplink
+• QED • Incident Database
+• CLEAR • LexisNexis • Focused
+Deterrence Database • LENS
+• GPS tracking devices • Digital
+Intelligence Workstation • Dell
+Laptop BCERT • Magnet
+Forensics-Axiom • Getdata
+Forensic Explorer • Shotspotter
+• Covert Cameras (Keltech Covert
+Streetlight Camera, CSA Pole
+Camera, IVC Covert Camera)
+• DTC Body Wire
+• Morpho Automated Fingerprint
+Identification System (AFIS) with
+camera (Massachusetts State
+Police (MSP) System) • Live
+Scan (3 devices)
+• Wireless Explosive Ordinance
+Disposal (EOD) robots with
+cameras: Robotex Avatar II 2 (3);
+Foster Miller Tallon 4; Foster
+Miller Dragon Runner 4;
+Remotetec F6A 4 with fiberoptic
+• Tactical Electronics VF52 Fiber
+Scope • ATF Bomb Arson
+Tracking System (BATS)
+Prisoner Transport Security
+Cameras (Transport Wagon 236 &
+240)
+Throwbot XT
+Case Cracker
+Infraware
+TweetDeck
+MAVEN (Massachusetts Virtual
+Epidemiologic Network)
+
+Page 3
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+20.
+
+21.
+
+22.
+
+23.
+
+Cambridge Public Schools Information,
+Communications &
+Technology Services
+Cambridge Public Schools Safety & Security,
+Transportation
+Traffic, Parking &
+Transportation
+
+Water
+
+October 7, 2020
+
+Securly for Chromebooks Web
+Filter
+
+• Bus Video Recorders • GPS
+Devices • Edulog Transportation
+System
+• ATLAS: Massachusetts RMV
+Website Portal • Traffic Signal
+Detection Cameras • MioVision
+Traffic Count Mobile Camera
+Units
+Automated Meter Reading (AMR)
+System
+
+The first Annual Surveillance Report was submitted on December 9, 2019 and referred to the
+Committee on Public Safety. That report is still before the Committee, see January 22, 2020 Committee
+Agenda <http://cambridgema.iqm2.com/Citizens/Detail_Meeting.aspx?ID=2605>, and is available here:
+Annual Surveillance Report 120919
+<http://cambridgema.iqm2.com/Citizens/FileOpen.aspx?Type=4&ID=7838&MeetingID=2605>.
+The second Annual Surveillance Reports include any updates regarding the use of Departments’
+Surveillance Technologies since the first report was filed. The second reports also incorporate additional details
+about the Surveillance Technologies. These additional details reflect information provided in the revised
+Surveillance Technology Impact Reports relating to each Surveillance Technology, which were before the
+Council on Monday, February 24, 2020. The revised Surveillance Technology Impact Reports are available
+here <http://cambridgema.iqm2.com/Citizens/FileOpen.aspx?Type=4&ID=8144&MeetingID=2590> and here
+<http://cambridgema.iqm2.com/Citizens/FileOpen.aspx?Type=4&ID=8130&MeetingID=2590>.
+
+I look forward to answering any questions you may have concerning the enclosed Annual Surveillance
+Reports.
+2.
+
+A communication was received from Saul Tannenbaum, 16 Cottage Street, for the Public safety
+meeting on October 7, 2020.
+
+City of Cambridge
+
+Page 4
+
+cambridgema.gov
+
+
