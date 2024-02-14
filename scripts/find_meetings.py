@@ -93,7 +93,7 @@ def parseMeeting(args, meeting_row):
         'Body':           body,
         'Type':           mtype,
         'Other':          other,
-        'Date':           date.strftime("%x"),
+        'Date':           date.strftime("%Y-%m-%d"),
         'Time':           date.strftime("%I:%M %p"),
         'Status':         status,
         'Id':             m_id,
