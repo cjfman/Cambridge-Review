@@ -150,6 +150,10 @@ def parseArgs():
         help="Json file with the final actions")
     parser.add_argument("--aggrigate-votes", action="store_true",
         help="Add aggrigate vote columns")
+    parser.add_argument("--set-attendance", action="store_true",
+        help="Update attendance in the meetings file. Has no affect without --final-actions")
+    parser.add_argument("--set-attendance-only", action="store_true",
+        help="Set attendance without processing the meetings")
     parser.add_argument("-v", "--verbose", action="store_true",
         help="Be verbose")
     parser.add_argument("meetings_file",
@@ -174,6 +178,7 @@ class Meeting:
     agenda_packet: str
     final_actions: str
     minutes: str
+    attendance: str=None
 
     @property
     def uid(self):
@@ -944,6 +949,45 @@ def processMeeting(args, meeting) -> Dict[str, List[Any]]:
     return items
 
 
+def processMeetings(args, meetings, writers, final_actions=None):
+    num = 0
+    ar_map = {}
+    for meeting in meetings:
+        try:
+            if args.meeting and meeting.id != args.meeting and args.meeting != meeting.date:
+                continue
+            if meeting.body.lower() != 'city council' or meeting.type.lower() not in ALLOWED_TYPES:
+                print(f"Skipping meeting '{meeting}'")
+                continue
+            if meeting.status == 'cancelled':
+                print(f"Meeting '{meeting}' was cancelled. Skipping")
+                continue
+
+            print(f"Processing meeting '{meeting}'")
+            items = processMeeting(args, meeting)
+            if final_actions is not None and meeting.id in final_actions:
+                print(f"Found final actions for meeting '{meeting}'")
+                postProcessItems(writers, items, final_actions[meeting.id])
+            else:
+                if final_actions is not None:
+                    print_red(f"No final actions for meeting '{meeting}'")
+
+                postProcessItems(writers, items)
+
+            ## Process awaiting reports
+            if 'AR' in items:
+                processNewArs(args, ar_map, items['AR'], writers['AR'])
+
+            ## Maybe end processing now
+            num += 1
+            if args.meeting or args.num_meetings and num >= args.num_meetings:
+                break
+        except Exception as e:
+            print_red(f"Error: Failed to process meeting '{meeting}': {e}")
+            if args.exit_on_error:
+                raise e
+
+
 def fetchUrl(url, cache_path=None, *, verbose=False) -> str:
     """Fetch the data from a URL. Optionally cache it locally to disk"""
     if cache_path is not None and os.path.isfile(cache_path):
@@ -1069,11 +1113,50 @@ def openMeetings(path):
     return meetings
 
 
+def setAttenance(args, final_actions):
+    ## Load meetings
+    meetings = None
+    with open(args.meetings_file, 'r', encoding='utf8') as f:
+        reader = csv.DictReader(f)
+        meetings = [x for x in reader]
+
+    if not meetings:
+        return
+
+    ## Add attendance to header if needed
+    headers = list(meetings[0].keys())
+    if 'Attendance' not in headers:
+        headers.insert(headers.index('url'), 'Attendance')
+
+    ## Update each meeting using the final actions
+    for meeting in meetings:
+        if meeting['Id'] not in final_actions:
+            continue
+
+        #votes = ('yeas', 'nays', 'present', 'recused')
+        attendance = set()
+        for action in final_actions[meeting['Id']].values():
+            attendance.update(action['yeas'] + action['nays'] + action['present'] + action['recused'])
+        meeting['Attendance'] = ",".join(sorted(attendance))
+
+    ## Write back to meetings file
+    with open(args.meetings_file, 'w', encoding='utf8') as f:
+        writer = csv.DictWriter(f, fieldnames=headers)
+        writer.writeheader()
+        for meeting in meetings:
+            writer.writerow(meeting)
+
+
 def main(args):
-    ## pylint: disable=too-many-branches
     if args.verbose:
         global VERBOSE ## pylint: disable=global-statement
         VERBOSE = args.verbose
+
+    ## Check args
+    skip_processing = False
+    if args.set_attendance_only:
+        args.set_attendance = True
+        skip_processing = True
 
     ## Set councillor info
     if args.councillor_info is not None:
@@ -1085,63 +1168,35 @@ def main(args):
 
     ## Open meetings file
     meetings = openMeetings(args.meetings_file)
+    output_files = None
     final_actions = None
     if args.final_actions:
         final_actions = processFinalActions(args.final_actions)
 
     print(f"Read {len(meetings)} meetings from '{args.meetings_file}'")
-    output_files, writers = setupOutputFiles(args.output_dir)
-    if output_files is None:
+    ## Do work
+    try:
+        ## Process meetings
+        if not skip_processing:
+            output_files, writers = setupOutputFiles(args.output_dir)
+            if output_files is None:
+                return 1
+
+            processMeetings(args, meetings, writers, final_actions)
+
+        ## Update attendance
+        if args.set_attendance and final_actions is not None:
+            print("Updating attendance")
+            setAttenance(args, final_actions)
+    except KeyboardInterrupt:
+        print(f"User requested exit")
         return 1
+    finally:
+        ## Close all files
+        if output_files is not None:
+            for f in output_files.values():
+                f.close()
 
-    ## Process each meeting
-    num = 0
-    ar_map = {}
-    for meeting in meetings:
-        try:
-            if args.meeting and meeting.id != args.meeting and args.meeting != meeting.date:
-                continue
-            if meeting.body.lower() != 'city council' or meeting.type.lower() not in ALLOWED_TYPES:
-                print(f"Skipping meeting '{meeting}'")
-                continue
-            if meeting.status == 'cancelled':
-                print(f"Meeting '{meeting}' was cancelled. Skipping")
-                continue
-
-            print(f"Processing meeting '{meeting}'")
-            items = processMeeting(args, meeting)
-            if final_actions is not None and meeting.id in final_actions:
-                print(f"Found final actions for meeting '{meeting}'")
-                postProcessItems(writers, items, final_actions[meeting.id])
-            else:
-                if final_actions is not None:
-                    print_red(f"No final actions for meeting '{meeting}'")
-
-                postProcessItems(writers, items)
-
-            ## Process awaiting reports
-            if 'AR' in items:
-                processNewArs(args, ar_map, items['AR'], writers['AR'])
-
-            ## Maybe end processing now
-            num += 1
-            if args.meeting or args.num_meetings and num >= args.num_meetings:
-                break
-        except KeyboardInterrupt:
-            print(f"User requested exit")
-            break
-        except Exception as e:
-            print_red(f"Error: Failed to process meeting '{meeting}': {e}")
-            if args.exit_on_error:
-                ## Close all files
-                for f in output_files.values():
-                    f.close()
-                raise e
-
-
-    ## Close files
-    for f in output_files.values():
-        f.close()
 
     return 0
 
