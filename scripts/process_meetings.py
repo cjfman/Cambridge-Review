@@ -45,6 +45,7 @@ CMA_HDRS = (
     "Recused",
     "Link",
     "Notes",
+    "Summary",
 )
 
 APP_HDRS = (
@@ -86,6 +87,7 @@ RES_HDRS = (
     "Meeting",
     "Meeting Date",
     "Category",
+    "Sponsor",
     "Outcome",
     "Vote",
     "Yeas",
@@ -94,7 +96,7 @@ RES_HDRS = (
     "Absent",
     "Recused",
     "Link",
-    "Description",
+    "Summary",
     "Notes",
 )
 
@@ -115,7 +117,7 @@ POR_HDRS = (
     "Recused",
     "Amended",
     "Link",
-    "Description",
+    "Summary",
     "Notes",
 )
 
@@ -229,7 +231,7 @@ class CMA:
             "Outcome":           self.action,
             "Vote":              self.vote,
             "Charter Right":     self.charter_right,
-            "Description":       self.description,
+            "Summary":           self.description,
             "Meeting":           self.meeting_uid,
             "Meeting Date":      self.meeting_date,
             "Notes":             self.notes,
@@ -395,9 +397,10 @@ class Resolution:
             "Agenda Number":     self.num,
             "Category":          self.category,
             "Link":              self.url,
+            "Sponsor":           self.sponsor,
             "Outcome":           self.action,
             "Vote":              self.vote,
-            "Description":       self.description,
+            "Summary":           self.description,
             "Meeting":           self.meeting_uid,
             "Meeting Date":      self.meeting_date,
             "Notes":             self.notes,
@@ -455,7 +458,7 @@ class PolicyOrder:
             "Vote":              self.vote,
             "Amended":           self.amended,
             "Charter Right":     self.charter_right,
-            "Description":       self.description,
+            "Summary":           self.description,
             "Meeting":           self.meeting_uid,
             "Meeting Date":      self.meeting_date,
             "Notes":             self.notes,

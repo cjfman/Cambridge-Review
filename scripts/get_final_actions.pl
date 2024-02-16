@@ -9,7 +9,7 @@ use Text::ParseWords;
 my $exit_on_error;
 
 if (@ARGV != 2) {
-    print "USAGE: $0 <session year> <meetings file>";
+    print "USAGE: $0 <session year> <meetings file>\n";
     exit 1;
 }
 
@@ -32,6 +32,9 @@ foreach (<FILE>) {
     if (! -f $pdf) {
         print "Saving '$actions' to $pdf\n";
         system "curl '$actions' > $pdf";
+    }
+    else {
+        print "Found $pdf cached";
     }
     if (! -f $txt) {
         system 'pdftotext', $pdf, $txt;
