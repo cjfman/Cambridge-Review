@@ -25,6 +25,15 @@ def toTitleCase(txt) -> str:
     return " ".join(words)
 
 
+def setDefaultValue(d, v, keys):
+    for key in keys:
+        if key not in d:
+            if callable(v):
+                d[key] = v()
+            else:
+                d[key] = v
+
+
 def insertLineInFile(path, match, line, *, after=True, stop=True, regex=False, re_args=None) -> bool:
     """Insert a line into the file after a matching line"""
     check_match = lambda x: (not regex and match in x) or (regex and re.search(match, line, re_args))

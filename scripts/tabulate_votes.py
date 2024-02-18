@@ -27,10 +27,11 @@ def parseArgs():
 
 def processResult(line, item):
     ## Check for voice vote
-    match = re.match(r"(.+?)\s+by voice vote", line, re.IGNORECASE)
+    match = re.match(r"(.+?)\s+(?:by|on) (?:an |am )?(affirmative vote|voice vote)", line, re.IGNORECASE)
     if match:
-        item['action'] = toTitleCase(match.groups()[0])
-        item['vote'] = "Voice Vote"
+        action, vote_type = match.groups()
+        item['action'] = toTitleCase(action)
+        item['vote'] = toTitleCase(vote_type)
         print(f"Found result: action:'{item['action']}' by voice vote", file=sys.stderr)
         return 'search'
 
@@ -89,6 +90,7 @@ def processCouncillors(line, item, key, *, valid_names=None):
 def postProcess(items):
     for item in items:
         action = re.sub(r"^Order\s+", "", item['action'])
+        action = re.sub(r"\n.*", "", item['action'])
 
         ## Check for voice vote
         match = re.match(f"^(.*) (?:by|on) (?:an |am )?(?:Affirmative|Voice) Vote of (\w+) (?:Memebers|Members|Councillors)", action, re.IGNORECASE)

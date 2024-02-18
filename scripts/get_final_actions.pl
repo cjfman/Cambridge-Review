@@ -34,7 +34,7 @@ foreach (<FILE>) {
         system "curl '$actions' > $pdf";
     }
     else {
-        print "Found $pdf cached";
+        print "Found $pdf cached\n";
     }
     if (! -f $txt) {
         system 'pdftotext', $pdf, $txt;

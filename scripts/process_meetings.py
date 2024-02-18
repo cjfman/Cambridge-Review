@@ -7,6 +7,7 @@ import json
 import os
 import re
 import sys
+import traceback
 
 from collections import defaultdict
 from typing import Any, Dict, List, Tuple
@@ -18,7 +19,7 @@ import html5lib ## pylint: disable=unused-import
 from bs4 import BeautifulSoup
 
 from councillors import getCouncillorNames, setCouncillorInfo, lookUpCouncillorName
-from utils import print_green, print_red, overlayKeys, toTitleCase
+from utils import print_green, print_red, overlayKeys, toTitleCase, setDefaultValue
 
 VERBOSE = False
 ALLOWED_TYPES = ('regular', 'special')
@@ -108,6 +109,7 @@ POR_HDRS = (
     "Sponsor",
     "Co-Sponsors",
     "Charter Right",
+    "Amended",
     "Outcome",
     "Vote",
     "Yeas",
@@ -115,7 +117,6 @@ POR_HDRS = (
     "Present",
     "Absent",
     "Recused",
-    "Amended",
     "Link",
     "Summary",
     "Notes",
@@ -203,11 +204,12 @@ class CMA:
     url:      str
     action:   str
     vote:     str
-    charter_right: str = ""
-    description:   str = ""
-    meeting_uid:   str = ""
-    meeting_date:  str = ""
-    notes:         str = ""
+    charter_right: str  = ""
+    description:   str  = ""
+    final_action:  dict = None
+    meeting_uid:   str  = ""
+    meeting_date:  str  = ""
+    notes:         str  = ""
 
     @property
     def type(self):
@@ -258,11 +260,12 @@ class Application:
     url:      str
     action:   str
     vote:     str
-    charter_right: str = ""
-    address:       str = ""
-    meeting_uid:   str = ""
-    meeting_date:  str = ""
-    notes:         str = ""
+    charter_right: str  = ""
+    address:       str  = ""
+    final_action:  dict = None
+    meeting_uid:   str  = ""
+    meeting_date:  str  = ""
+    notes:         str  = ""
 
     @property
     def type(self):
@@ -319,6 +322,7 @@ class Communication:
     meeting_uid:  str = ""
     meeting_date: str = ""
     notes:        str = ""
+    final_action: dict = None
 
     @property
     def type(self):
@@ -372,13 +376,14 @@ class Resolution:
     category: str
     url:      str
     sponsor:  str
-    cosponsors:   str = ""
-    action:       str = ""
-    vote:         str = ""
-    description:  str = ""
-    meeting_uid:  str = ""
-    meeting_date: str = ""
-    notes:        str = ""
+    cosponsors:   str  = ""
+    action:       str  = ""
+    vote:         str  = ""
+    description:  str  = ""
+    final_action: dict = None
+    meeting_uid:  str  = ""
+    meeting_date: str  = ""
+    notes:        str  = ""
 
     @property
     def type(self):
@@ -423,15 +428,16 @@ class PolicyOrder:
     num:      int
     url:      str
     sponsor:  str
-    cosponsors:    str = ""
-    action:        str = ""
-    vote:          str = ""
-    amended:       str = ""
-    charter_right: str = ""
-    description:   str = ""
-    meeting_uid:   str = ""
-    meeting_date:  str = ""
-    notes:         str = ""
+    cosponsors:    str  = ""
+    action:        str  = ""
+    vote:          str  = ""
+    amended:       str  = ""
+    charter_right: str  = ""
+    description:   str  = ""
+    final_action:  dict = None
+    meeting_uid:   str  = ""
+    meeting_date:  str  = ""
+    notes:         str  = ""
 
     @property
     def type(self):
@@ -488,6 +494,7 @@ class AwaitingReport:
     category:     str = ""
     policy_order: str = ""
     notes:        str = ""
+    final_action: dict = None
 
     @property
     def type(self):
@@ -570,9 +577,14 @@ def findATag(node, tag=None, cls=None) -> Tuple[str, str]:
     return (a_tag.text.strip(), a_tag['href'])
 
 
-def findText(node, tag, cls=None) -> str:
+def findText(node, tag=None, cls=None) -> str:
     """Find the text in a soup node"""
-    found = findTag(node, tag, cls)
+    found = None
+    if tag is None:
+        found = node
+    else:
+        found = findTag(node, tag, cls)
+
     if found is None:
         return ''
 
@@ -600,6 +612,17 @@ def buildRow(item, hdrs, final_action=None, *, aggrigate_votes=False):
         'absent':  'absent',
         'recused': 'recused',
     }
+
+    ## Replace with found final action from item if one wasn't provided
+    if not (final_action and final_action['action']) and item.final_action:
+        if d['Outcome'] == "Charter Right" and not item.final_action['charter_right']:
+            if d['Charter Right']:
+                item.final_action['charter_right'] = d['Charter Right']
+            elif final_action is not None and final_action['charter_right']:
+                item.final_action['charter_right'] = final_action['Charter Right']
+            else:
+                d['Charter Right'] = "!!!"
+        final_action = item.final_action
 
     ## Update with final actions
     if final_action is not None:
@@ -673,6 +696,95 @@ def processResLinks(node) -> Dict[str, List[Tuple[str, str]]]:
             pass
 
     return links
+
+
+def parseAction(line):
+    ## Check for voice vote
+    match = re.match(r"(?:Order )?(.+?)\s+(?:by|on) (?:an |am )?(affirmative vote|voice vote)", line, re.IGNORECASE)
+    if match:
+        action, vote_type = match.groups()
+        return (toTitleCase(action), toTitleCase(vote_type))
+
+    ## Check for vote count
+    match = re.match(r"(?:Order )?(.+?)\s\[?((?:\d-\d-\d(?:-\d)?)|(?:\d+ to \d+)|Unanimous)\]?", line, re.IGNORECASE)
+    if match:
+        action, vote = match.groups()
+        return (toTitleCase(action), toTitleCase(vote))
+
+    return (None, None)
+
+
+def processHistory(history_table):
+    history = {}
+    ## Look for a vote record
+    for results_table in findAllTags(history_table, 'table', 'VoteRecord'):
+        rows = findAllTags(results_table, 'tr')
+        if not rows:
+            print("No rows", results_table) ## XXX
+            continue
+        for row in rows:
+            role = findText(row, 'td', 'Role')
+            if not role:
+                print("No role", row) ## XXX
+                continue
+
+            ## Check for the type of vote
+            role = role.lower().replace(':', '')
+            if role == "result":
+                result = findText(row, 'td', 'Result').lower()
+                if result == "charter right":
+                    ## Found a charter right
+                    history['charter_right'] = True
+                else:
+                    ## Try and parse an action
+                    action, vote = parseAction(result)
+                    if action is not None:
+                        history['action'] = action
+                        history['vote'] = vote
+            elif role == 'yeas':
+                councillors = findText(findAllTags(row, 'td')[1]).split(',')
+                history['yeas'] = [lookUpCouncillorName(x.strip()) for x in councillors]
+            elif role == 'nays':
+                councillors = findText(findAllTags(row, 'td')[1]).split(',')
+                history['nays'] = [lookUpCouncillorName(x.strip()) for x in councillors]
+            elif 'present' in role:
+                councillors = findText(findAllTags(row, 'td')[1]).split(',')
+                history['present'] = [lookUpCouncillorName(x.strip()) for x in councillors]
+            elif 'absent' in role:
+                councillors = findText(findAllTags(row, 'td')[1]).split(',')
+                history['absent'] = [lookUpCouncillorName(x.strip()) for x in councillors]
+            elif 'recused' in role:
+                councillors = findText(findAllTags(row, 'td')[1]).split(',')
+                history['recused'] = [lookUpCouncillorName(x.strip()) for x in councillors]
+
+    if not history:
+        ## Look for affirmative vote
+        txt = findText(history_table, 'p').lower()
+        if 'affirmative' in txt:
+            history['vote'] = "Affirmative Vote"
+        elif 'voice' in txt:
+            history['vote'] = "Voice Vote"
+
+    if history:
+        ## Set default values
+        setDefaultValue(history, "", ('action', 'vote', 'charter_right', 'amended'))
+        setDefaultValue(history, list, ('yeas', 'nays', 'recused', 'present', 'absent'))
+
+        ## Check for amended
+        if history['action']:
+            match = re.match(r"(.+) as amended", history['action'], re.IGNORECASE)
+            if match:
+                history['action'] = match.groups()[0]
+                history['amended'] = 'yes'
+
+        ## Set absence
+        if history['yeas']:
+            all_councillors = set(getCouncillorNames())
+            councillors = set(history['yeas'] + history['nays'] + history['present'])
+            history['absent'] = list(sorted(all_councillors.difference(councillors)))
+
+    return history
+
 
 
 def findCharterRight(soup):
@@ -752,7 +864,16 @@ def processCma(args, uid, num, title, link, vote, action) -> CMA:
             if match:
                 order = match.groups()[0]
 
-    return CMA(uid, num, category, awaiting, order, link, action, vote, charter_right, title)
+    ## History
+    history_table = findTag(soup, 'table', 'MeetingHistory')
+    history = None
+    if history_table:
+        try:
+            history = processHistory(history_table)
+        except Exception as e:
+            print_red(f"Error: Failed to process history for {uid}: {e}")
+
+    return CMA(uid, num, category, awaiting, order, link, action, vote, charter_right, title, history)
 
 
 def processApp(args, uid, num, title, link, vote, action) -> Application:
@@ -780,7 +901,16 @@ def processApp(args, uid, num, title, link, vote, action) -> Application:
     if match:
         address = match.groups()[0]
 
-    return Application(uid, num, category, name, subject, link, action, vote, charter_right, address)
+    ## History
+    history_table = findTag(soup, 'table', 'MeetingHistory')
+    history = None
+    if history_table:
+        try:
+            history = processHistory(history_table)
+        except Exception as e:
+            print_red(f"Error: Failed to process history for {uid}: {e}")
+
+    return Application(uid, num, category, name, subject, link, action, vote, charter_right, address, history)
 
 
 def processCom(args, uid, num, title, link, vote, action) -> Communication:
@@ -818,7 +948,17 @@ def processRes(args, uid, num, title, link, vote, action) -> Resolution:
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
     category = table['Category']
     sponsors = [lookUpCouncillorName(x.strip()) for x in table['Sponsors'].split(',')]
-    return Resolution(uid, num, category, link, sponsors[0], sponsors[1:], action, vote, title)
+
+    ## History
+    history_table = findTag(soup, 'table', 'MeetingHistory')
+    history = None
+    if history_table:
+        try:
+            history = processHistory(history_table)
+        except Exception as e:
+            print_red(f"Error: Failed to process history for {uid}: {e}")
+
+    return Resolution(uid, num, category, link, sponsors[0], sponsors[1:], action, vote, title, history)
 
 
 def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
@@ -837,7 +977,16 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
         amended = "Yes"
         action = "Adopted"
 
-    return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, amended, charter_right, title)
+    ## History
+    history_table = findTag(soup, 'table', 'MeetingHistory')
+    history = None
+    if history_table:
+        try:
+            history = processHistory(history_table)
+        except Exception as e:
+            print_red(f"Error: Failed to process history for {uid}: {e}")
+
+    return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, amended, charter_right, title, history)
 
 
 def processAr(args, item):
@@ -987,6 +1136,8 @@ def processMeetings(args, meetings, writers, final_actions=None):
                 break
         except Exception as e:
             print_red(f"Error: Failed to process meeting '{meeting}': {e}")
+            if VERBOSE:
+                traceback.print_exc()
             if args.exit_on_error:
                 raise e
 
@@ -1044,7 +1195,7 @@ def processFinalActions(path):
             action['present'] = [lookUpCouncillorName(x) for x in action['present'].split(",") if x]
             action['recused'] = [lookUpCouncillorName(x) for x in action['recused'].split(",") if x]
             councillors = set(action['yeas'] + action['nays'] + action['present'])
-            if action['vote'] and action['vote'].lower() != "voice vote":
+            if action['vote'] and action['vote'].lower() not in ("affirmative vote", "voice vote"):
                 action['absent'] = list(sorted(all_councillors.difference(councillors)))
 
             ## Overlay on previous item if it was charter righted
