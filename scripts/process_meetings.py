@@ -615,13 +615,13 @@ def buildRow(item, hdrs, final_action=None, *, aggrigate_votes=False):
 
     ## Replace with found final action from item if one wasn't provided
     if not (final_action and final_action['action']) and item.final_action:
-        if d['Outcome'] == "Charter Right" and not item.final_action['charter_right']:
-            if d['Charter Right']:
+        if d['Outcome'] == "Charter Right":
+            if 'Charter Right' in d and d['Charter Right']:
                 item.final_action['charter_right'] = d['Charter Right']
             elif final_action is not None and final_action['charter_right']:
                 item.final_action['charter_right'] = final_action['Charter Right']
-            else:
-                d['Charter Right'] = "!!!"
+            elif item.final_action['charter_right']:
+                item.final_action['charter_right'] = "!!!"
         final_action = item.final_action
 
     ## Update with final actions
@@ -720,12 +720,10 @@ def processHistory(history_table):
     for results_table in findAllTags(history_table, 'table', 'VoteRecord'):
         rows = findAllTags(results_table, 'tr')
         if not rows:
-            print("No rows", results_table) ## XXX
             continue
         for row in rows:
             role = findText(row, 'td', 'Role')
             if not role:
-                print("No role", row) ## XXX
                 continue
 
             ## Check for the type of vote
@@ -872,6 +870,10 @@ def processCma(args, uid, num, title, link, vote, action) -> CMA:
             history = processHistory(history_table)
         except Exception as e:
             print_red(f"Error: Failed to process history for {uid}: {e}")
+            if VERBOSE or args.exit_on_error:
+                traceback.print_exc()
+            if args.exit_on_error:
+                raise e
 
     return CMA(uid, num, category, awaiting, order, link, action, vote, charter_right, title, history)
 
@@ -909,6 +911,10 @@ def processApp(args, uid, num, title, link, vote, action) -> Application:
             history = processHistory(history_table)
         except Exception as e:
             print_red(f"Error: Failed to process history for {uid}: {e}")
+            if VERBOSE or args.exit_on_error:
+                traceback.print_exc()
+            if args.exit_on_error:
+                raise e
 
     return Application(uid, num, category, name, subject, link, action, vote, charter_right, address, history)
 
@@ -957,6 +963,10 @@ def processRes(args, uid, num, title, link, vote, action) -> Resolution:
             history = processHistory(history_table)
         except Exception as e:
             print_red(f"Error: Failed to process history for {uid}: {e}")
+            if VERBOSE or args.exit_on_error:
+                traceback.print_exc()
+            if args.exit_on_error:
+                raise e
 
     return Resolution(uid, num, category, link, sponsors[0], sponsors[1:], action, vote, title, history)
 
@@ -985,6 +995,10 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
             history = processHistory(history_table)
         except Exception as e:
             print_red(f"Error: Failed to process history for {uid}: {e}")
+            if VERBOSE or args.exit_on_error:
+                traceback.print_exc()
+            if args.exit_on_error:
+                raise e
 
     return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, amended, charter_right, title, history)
 
@@ -1136,7 +1150,7 @@ def processMeetings(args, meetings, writers, final_actions=None):
                 break
         except Exception as e:
             print_red(f"Error: Failed to process meeting '{meeting}': {e}")
-            if VERBOSE:
+            if VERBOSE or args.exit_on_error:
                 traceback.print_exc()
             if args.exit_on_error:
                 raise e
