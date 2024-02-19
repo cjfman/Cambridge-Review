@@ -46,6 +46,16 @@ councillors:
     aliases:
       - Zondervan
       - zonderan
+  - name: Ayesha M. Wilson
+    aliases:
+      - Ayesha
+      - Wilson
+      - Ayesha Wilson
+
+  - name: Joan Pickett
+    aliases:
+      - Joan
+      - Pickett
 sessions:
   2020:
     mayor: Sumbul Siddiqui
@@ -73,3 +83,16 @@ sessions:
       - E. Denise Simmons
       - Paul F. Toner
       - Quinton Zondervan
+  2024:
+    mayor: E. Denise Simmons
+    vice_mayor: Marc C. McGovern
+    councillors:
+      - Burhan Azeem
+      - Marc C. McGovern
+      - Patricia Nolan
+      - Sumbul Siddiqui
+      - E. Denise Simmons
+      - Paul F. Toner
+      - Ayesha M. Wilson
+      - Jivan Sobrinho-Wheeler
+      - Joan Pickett

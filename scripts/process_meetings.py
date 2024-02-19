@@ -714,7 +714,7 @@ def parseAction(line):
 
     match = re.match(r"(?:Order )(.+)", line, re.IGNORECASE)
     if match:
-        action, match.groups()[0]
+        action = match.groups()[0]
         return (toTitleCase(action), "")
 
     return (line, "")
