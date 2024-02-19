@@ -614,12 +614,13 @@ def buildRow(item, hdrs, final_action=None, *, aggrigate_votes=False):
     }
 
     ## Replace with found final action from item if one wasn't provided
-    if not (final_action and final_action['action']) and item.final_action:
+    replaceable = (not final_action or not final_action['action'] or final_action['action'] == "Charter Right")
+    if replaceable and item.final_action and item.final_action['vote']:
         if d['Outcome'] == "Charter Right":
             if 'Charter Right' in d and d['Charter Right']:
                 item.final_action['charter_right'] = d['Charter Right']
             elif final_action is not None and final_action['charter_right']:
-                item.final_action['charter_right'] = final_action['Charter Right']
+                item.final_action['charter_right'] = final_action['charter_right']
             elif item.final_action['charter_right']:
                 item.final_action['charter_right'] = "!!!"
         final_action = item.final_action
@@ -711,7 +712,12 @@ def parseAction(line):
         action, vote = match.groups()
         return (toTitleCase(action), toTitleCase(vote))
 
-    return (None, None)
+    match = re.match(r"(?:Order )(.+)", line, re.IGNORECASE)
+    if match:
+        action, match.groups()[0]
+        return (toTitleCase(action), "")
+
+    return (line, "")
 
 
 def processHistory(history_table):
@@ -993,12 +999,16 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
     if history_table:
         try:
             history = processHistory(history_table)
+            if VERBOSE and args.meeting:
+                print(f"Meeting history for {uid}\n", history)
         except Exception as e:
             print_red(f"Error: Failed to process history for {uid}: {e}")
             if VERBOSE or args.exit_on_error:
                 traceback.print_exc()
             if args.exit_on_error:
                 raise e
+    elif VERBOSE:
+        print(f"No meeting history for {uid}")
 
     return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, amended, charter_right, title, history)
 
