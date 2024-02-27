@@ -88,12 +88,22 @@ def parseMeeting(args, meeting_row):
         elif links[name] and links[name][0] == '/':
             links[name] = os.path.join(args.base_url, 'Citizens', links[name])
 
+    ## Clean data
+    date_str = date.strftime("%Y-%m-%d")
+    if mtype == "Hearing ‚Äì Remote":
+        mtype = "Hearing - Remote"
+    if "Committee" in body and mtype == "Regular":
+        mtype = "Committee"
+    if date > dt.datetime.now():
+        status = "scheduled"
+
     ## Return all data
     data = {
+        'Unique Identifier': f"{date_str} {mtype}",
         'Body':           body,
         'Type':           mtype,
         'Other':          other,
-        'Date':           date.strftime("%Y-%m-%d"),
+        'Date':           date_str,
         'Time':           date.strftime("%I:%M %p"),
         'Status':         status,
         'Id':             m_id,
@@ -108,6 +118,7 @@ def parseMeeting(args, meeting_row):
 
 def writeCsv(f, rows):
     headers = (
+        'Unique Identifier',
         'Body', 'Type', 'Other', 'Date', 'Time', 'Status', 'Id', 'url',
         'Agenda Summary', 'Agenda Packet', 'Final Actions', 'Minutes',
     )
