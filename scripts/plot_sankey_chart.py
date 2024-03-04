@@ -152,10 +152,49 @@ def makeNodes(source_map, target_map, label_rounds, previous_labels):
     return sources, targets, values
 
 
-def calcXYPositions(election, round_labels, label_total, label_rounds, previous_labels):
+def calcXPositions(election, round_labels, label_total, len_first, len_n, len_last):
     """Calcualte X/Y positions"""
     ## pylint: disable=too-many-locals
-    x_pos_map = {}
+    ## Split chart into 4 sections
+    ## 1: The initial vote count
+    ## 2: The first round/vote transfer, which may have a longer label
+    ## 3: All rounds that aren't the first or last
+    ## 4: The last row
+    ## Section 2 should be wide enough to fit the longest label
+    ## Section 3 has multiple subsections, one for each contained round. Each subsection should be
+    ## wide enough to fit the longest short label
+    ## Section 4 should be wide enough to fist the lonest label from the last round
+    ## Secion 1 should be 2/3rds the width of subsection of section 3
+    ## All positions must fit in the range 0-1, so scale all positions based on the total width
+    pos_map = {}
+    total = len_n*2/3 + len_first + len_n*(election.num_rounds - 2) + len_last
+    start = len_n*2/3 / total
+    n_start = start + len_first/total
+    n_width = len_n / total
+    for n in sorted(round_labels):
+        ## Determine position for each label
+        for label in round_labels[n]:
+            votes = label_total[label]
+            if not votes:
+                continue
+
+            pos = None
+            if not n:
+                pos = 0
+            elif n == 1:
+                pos = start
+            elif n == election.num_rounds:
+                pos = 1
+            else:
+                pos = n_start + n_width*(n-2)
+            pos_map[label] = boundNumber(pos, 0.001, 0.999)
+
+    return pos_map
+
+
+def calcYPositions(election, round_labels, label_total, previous_labels):
+    """Calcualte Y positions"""
+    ## pylint: disable=too-many-locals
     y_pos_map = {}
     y_used    = {}
     round_order = {}
@@ -193,22 +232,7 @@ def calcXYPositions(election, round_labels, label_total, label_rounds, previous_
             y_pos_map[label] = boundNumber(y_used[n], 0.001, 0.999)
             y_used[n] += height
 
-            ## Calculate X position
-            denom = election.num_rounds
-            xtra = 0
-            if SQUEEZE and n < election.num_rounds:
-                ## Squeeze together all but the last round
-                xtra = 1/election.num_rounds/3
-                denom = election.num_rounds + 0.25
-
-            x_pos = (label_rounds[label] / denom) - xtra
-            x_pos_map[label] = boundNumber(x_pos, 0.001, 0.999)
-            if DEBUG:
-                x_pos = round(x_pos_map[label], 3)
-                y_pos = round(y_pos_map[label], 3)
-                print(f"Label '{label}' votes:{votes} height:{height} y-pos:{y_pos} x-pos:{x_pos}")
-
-    return x_pos_map, y_pos_map
+    return y_pos_map
 
 
 def insertCopyright(path, holder, *, tight=False):
@@ -333,7 +357,9 @@ def main(args):
     previous_labels[init_label] = init_label     ## This is needed so that the makeNodes(...)
                                                  ## function knows what source to use in round 1
 
+    first_label_lengths = []
     label_lengths = []
+    last_label_lengths = []
     ## First pass of candidates
     for name, rounds in election.truncated2.items():
         short_name = name.split(' ')[-1]
@@ -366,8 +392,13 @@ def main(args):
                 label = f"{label_name}<br>ELECTED - {n}"
 
             label += f": {e_round.total:,}"
-            if n > 1 and 'ELECTED' not in label or not args.short:
-                label_lengths.append(max(map(len, label.split("<br>"))))
+            label_length = max(map(len, label.split("<br>")))
+            if n == 1:
+                first_label_lengths.append(label_length)
+            elif n < election.num_rounds:
+                label_lengths.append(label_length)
+            else:
+                last_label_lengths.append(label_length)
 
             candidate_labels[name][n] = label
             labels.append(label)
@@ -414,7 +445,11 @@ def main(args):
             print(f'Pass through {total} votes from "{src}" to "{dst}"')
 
     ## Calcualte X/Y positions
-    x_pos_map, y_pos_map = calcXYPositions(election, round_labels, label_total, label_rounds, previous_labels)
+    y_pos_map = calcYPositions(election, round_labels, label_total, previous_labels)
+    x_pos_map = calcXPositions(
+        election, round_labels, label_total,
+        max(first_label_lengths), max(label_lengths), max(last_label_lengths),
+    )
 
     ## Convert labels to indices
     ## Plotly is sensitive to ordering. Nodes should be in the order from top to bottom, left to right
