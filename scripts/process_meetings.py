@@ -169,9 +169,11 @@ def parseArgs():
 
 @dataclass
 class Meeting:
+    uid: str
     body: str
     type: str
     other: str
+    session: str
     date: str
     time: str
     status: str
@@ -182,10 +184,6 @@ class Meeting:
     final_actions: str
     minutes: str
     attendance: str=None
-
-    @property
-    def uid(self):
-        return f"{self.date} {self.type}"
 
     def __str__(self):
         return f"{self.body} - {self.type} {self.date} ({self.id})"
@@ -1286,6 +1284,11 @@ def openMeetings(path):
     with open(path, 'r', encoding='utf8') as f:
         reader = csv.DictReader(f)
         for row in reader:
+            if "Unique Identifier" in row:
+                row['uid'] = row['Unique Identifier']
+                del row['Unique Identifier']
+            else:
+                row['uid'] = f"{row['Date']} {row['Type']}"
             meetings.append(Meeting(**{ k.lower().replace(' ', '_'): v for k, v in row.items() }))
 
     return meetings

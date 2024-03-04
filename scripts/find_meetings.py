@@ -68,6 +68,7 @@ def parseMeeting(args, meeting_row):
     ## Extract the date and main link
     date, url = findATag(meeting_row, 'RowLink')
     date = getDate(date)
+    session = date.year
     if args.base_url not in url and url[0] == '/':
         url = os.path.join(args.base_url, url[1:])
 
@@ -92,6 +93,8 @@ def parseMeeting(args, meeting_row):
     date_str = date.strftime("%Y-%m-%d")
     if mtype == "Hearing ‚Äì Remote":
         mtype = "Hearing - Remote"
+    if mtype == "Roundtable/Working":
+        mtype = "Roundtable"
     if "Committee" in body and mtype == "Regular":
         mtype = "Committee"
     if date > dt.datetime.now():
@@ -103,6 +106,7 @@ def parseMeeting(args, meeting_row):
         'Body':           body,
         'Type':           mtype,
         'Other':          other,
+        'Session':        session,
         'Date':           date_str,
         'Time':           date.strftime("%I:%M %p"),
         'Status':         status,
@@ -119,7 +123,7 @@ def parseMeeting(args, meeting_row):
 def writeCsv(f, rows):
     headers = (
         'Unique Identifier',
-        'Body', 'Type', 'Other', 'Date', 'Time', 'Status', 'Id', 'url',
+        'Body', 'Type', 'Other', 'Session', 'Date', 'Time', 'Status', 'Id', 'url',
         'Agenda Summary', 'Agenda Packet', 'Final Actions', 'Minutes',
     )
     writer = csv.DictWriter(f, fieldnames=headers)
