@@ -68,6 +68,8 @@ def parseArgs():
         help="The vote count at which a label should take two lines")
     parser.add_argument("--title", default="Election Results",
         help="Title of the graph")
+    parser.add_argument("--short", action="store_true",
+        help="Use short names when possible")
     parser.add_argument("--copyright", default="Charles Jessup Franklin",
         help="The copyright holder")
     parser.add_argument("--copyright-tight", action="store_true",
@@ -235,20 +237,19 @@ def legacyWidthFactorFontSize(args, election, labels):
     return (w_factor, font_size)
 
 
-def widthFactorFontSize(args, labels, px=10):
-    px = 10 * args.font_size // 20
+def widthFactorFontSize(args, max_len, px=10):
     font_size = args.font_size or args.font_size_min
-    max_len = max([len(x) for label in labels for x in label.split("<br>")]) + 1
+    px = px * font_size // 20
     w_factor = px * max_len
     return (w_factor, font_size)
 
 
-def finalPlot(args, fig, election, labels):
+def finalPlot(args, fig, election, max_length):
     chart_file = args.chart_file
-    height = election.total / args.height_ratio
+    height = election.total // args.height_ratio
     #w_factor, font_size = legacyWidthFactorFontSize(args, election, labels)
-    w_factor, font_size = widthFactorFontSize(args, labels)
-    width = max(election.num_rounds*w_factor, height*1.6)
+    w_factor, font_size = widthFactorFontSize(args, max_length)
+    width = int(max(election.num_rounds*w_factor, height*1.6))
     print(f"font_size={font_size} factor={w_factor} width={width} height={height}")
 
     if re.search(r"\.html$", chart_file, re.IGNORECASE):
@@ -264,7 +265,7 @@ def finalPlot(args, fig, election, labels):
     elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
         ## Write an svg file
         height *= 3/4
-        font_size = max(10, int(font_size*5/6))
+        font_size = max(10, font_size*5//6)
         fig.update_layout(font_size=font_size, width=width, height=height)
         print(f"Saving as '{chart_file}'")
         fig.write_image(chart_file)
@@ -332,8 +333,10 @@ def main(args):
     previous_labels[init_label] = init_label     ## This is needed so that the makeNodes(...)
                                                  ## function knows what source to use in round 1
 
+    label_lengths = []
     ## First pass of candidates
     for name, rounds in election.truncated2.items():
+        short_name = name.split(' ')[-1]
         if VERBOSE:
             print(f"Candidate: {name}")
 
@@ -357,11 +360,14 @@ def main(args):
             if e_round.total > args.two_line_count:
                 nl = '<br>'
 
-            label = f"{name}{nl}{n}"
+            label_name = name if n == 1 or not args.short else short_name
+            label = f"{label_name}{nl}{n}"
             if election.electedInRound(name, n):
-                label = f"{name}<br>ELECTED - {n}"
+                label = f"{label_name}<br>ELECTED - {n}"
 
             label += f": {e_round.total:,}"
+            if n > 1 and 'ELECTED' not in label or not args.short:
+                label_lengths.append(max(map(len, label.split("<br>"))))
 
             candidate_labels[name][n] = label
             labels.append(label)
@@ -459,7 +465,7 @@ def main(args):
 
     if args.chart_file:
         ## Save to file
-        finalPlot(args, fig, election, labels)
+        finalPlot(args, fig, election, max(label_lengths))
 
     elif PLOT:
         ## Plot now
