@@ -152,6 +152,10 @@ def makeNodes(source_map, target_map, label_rounds, previous_labels):
     return sources, targets, values
 
 
+def xWidth(num_rounds, len_first, len_n, len_last):
+    return round(len_n*2/3 + len_first + len_n*(num_rounds - 2) + len_last, 5)
+
+
 def calcXPositions(election, round_labels, label_total, len_first, len_n, len_last):
     """Calcualte X/Y positions"""
     ## pylint: disable=too-many-locals
@@ -261,7 +265,7 @@ def legacyWidthFactorFontSize(args, election, labels):
     return (w_factor, font_size)
 
 
-def widthFactorFontSize(args, max_len, px=10):
+def widthFontSize(args, max_len, px=10):
     font_size = args.font_size or args.font_size_min
     px = px * font_size // 20
     w_factor = px * max_len
@@ -272,15 +276,15 @@ def finalPlot(args, fig, election, max_length):
     chart_file = args.chart_file
     height = election.total // args.height_ratio
     #w_factor, font_size = legacyWidthFactorFontSize(args, election, labels)
-    w_factor, font_size = widthFactorFontSize(args, max_length)
-    width = int(max(election.num_rounds*w_factor, height*1.6))
-    print(f"font_size={font_size} factor={w_factor} width={width} height={height}")
+    width, font_size = widthFontSize(args, max_length)
+    width = int(max(width, height*1.6))
+    print(f"font_size={font_size} max_length={max_length} width={width} height={height}")
 
     if re.search(r"\.html$", chart_file, re.IGNORECASE):
         ## Write an html file
         ## Don't fixed size unless unless forced
         if args.force_fixed_size:
-            fig.update_layout(width=election.num_rounds*w_factor/3)
+            fig.update_layout(width=width)
 
         print(f"Saving as '{chart_file}'")
         plotly.offline.plot(fig, filename=chart_file)
@@ -445,10 +449,12 @@ def main(args):
             print(f'Pass through {total} votes from "{src}" to "{dst}"')
 
     ## Calcualte X/Y positions
+    first_label_max = max(first_label_lengths) + 1
+    label_max       = max(label_lengths) + 1
+    last_label_max  = max(last_label_lengths) + 1
     y_pos_map = calcYPositions(election, round_labels, label_total, previous_labels)
     x_pos_map = calcXPositions(
-        election, round_labels, label_total,
-        max(first_label_lengths), max(label_lengths), max(last_label_lengths),
+        election, round_labels, label_total, first_label_max, label_max, last_label_max,
     )
 
     ## Convert labels to indices
@@ -500,7 +506,8 @@ def main(args):
 
     if args.chart_file:
         ## Save to file
-        finalPlot(args, fig, election, max(label_lengths))
+        x_width = xWidth(election.num_rounds, first_label_max, label_max, last_label_max)
+        finalPlot(args, fig, election, x_width)
 
     elif PLOT:
         ## Plot now
