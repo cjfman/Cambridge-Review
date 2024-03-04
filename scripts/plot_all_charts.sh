@@ -180,42 +180,13 @@ if [ ! -z $SANKEY ]; then
             done
 
             ## Make charts
-            if [[ -z "$YEARS" || "$YEARS" = *07* ]]; then
-                ./scripts/plot_sankey_chart.py --title "City Council Election 2007" \
-                    --width-ratio 200 --two-line-count 800                          \
-                    $CC_CSVS/cc_election_2007.csv                                   \
-                    $CC_SANKEY/png/cc_election_sankey_2007.png
-            fi
-            for Y in 05 09 15; do
+            for Y in $ALL_CC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
                 ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y" \
                     --width-ratio 250 --two-line-count 800                          \
                     $CC_CSVS/cc_election_20$Y.csv                                   \
                     $CC_SANKEY/png/cc_election_sankey_20$Y.png
             done
-
-            for Y in 01 03 05 11 13; do
-                if [[ ! -z "$YEARS" && ! "$YEARS" == *$Y* ]]; then continue; fi
-                ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y" \
-                    --width-ratio 300 --two-line-count 800                          \
-                    $CC_CSVS/cc_election_20$Y.csv                                   \
-                    $CC_SANKEY/png/cc_election_sankey_20$Y.png
-            done
-
-            for Y in 19 21 23; do
-                if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
-                ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y" \
-                    --width-ratio 300 --two-line-count 800                          \
-                    $CC_CSVS/cc_election_20$Y.csv                                   \
-                    $CC_SANKEY/png/cc_election_sankey_20$Y.png
-            done
-
-            if [[ -z "$YEARS" || "$YEARS" = *17* ]]; then
-                ./scripts/plot_sankey_chart.py --title "City Council Election 2017" \
-                    --width-ratio 350 --two-line-count 800                          \
-                    $CC_CSVS/cc_election_2017.csv                                   \
-                    $CC_SANKEY/png/cc_election_sankey_2017.png
-            fi
 
             ## File check and add copyright
             file_check "$ALL_CC_YEARS" $CC_SANKEY/png/cc_election_sankey_20 png

@@ -52,8 +52,6 @@ def parseArgs():
         help="Ratio of votes to height")
 #    parser.add_argument("--height", type=int,
 #        help="Height of graph. Overrides --height-ratio")
-    parser.add_argument("--width-ratio", type=int, default=375,
-        help="Ratio used to calculate the width of a round. This will scale with the label length")
 #    parser.add_argument("--width", type=int,
 #        help="Width of the graph. Overrides --width-factor")
     parser.add_argument("--force-fixed-size", action="store_true",
@@ -253,18 +251,6 @@ def insertCopyright(path, holder, *, tight=False):
         print("Failed to insert copyright notice")
 
 
-def legacyWidthFactorFontSize(args, election, labels):
-    max_len = max([len(x) for label in labels for x in label.split("<br>")])
-    w_factor = int(args.width_ratio*max(30, max_len)/30)
-
-    ## Goal is for 14 when vote total is 10k
-    font_size = max(args.font_size_min, int(args.font_size_min*election.total / 10000))
-    if args.font_size is not None:
-        font_size = args.font_size
-
-    return (w_factor, font_size)
-
-
 def widthFontSize(args, max_len, px=10):
     font_size = args.font_size or args.font_size_min
     px = px * font_size // 20
@@ -275,7 +261,6 @@ def widthFontSize(args, max_len, px=10):
 def finalPlot(args, fig, election, max_length):
     chart_file = args.chart_file
     height = election.total // args.height_ratio
-    #w_factor, font_size = legacyWidthFactorFontSize(args, election, labels)
     width, font_size = widthFontSize(args, max_length)
     width = int(max(width, height*1.6))
     print(f"font_size={font_size} max_length={max_length} width={width} height={height}")
@@ -366,7 +351,8 @@ def main(args):
     last_label_lengths = []
     ## First pass of candidates
     for name, rounds in election.truncated2.items():
-        short_name = name.split(' ')[-1]
+        #short_name = name.split(' ')[-1]
+        short_name = name.split(',')[0]
         if VERBOSE:
             print(f"Candidate: {name}")
 
