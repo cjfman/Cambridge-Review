@@ -223,6 +223,63 @@ def insertCopyright(path, holder, *, tight=False):
         print("Failed to insert copyright notice")
 
 
+def legacyWidthFactorFontSize(args, election, labels):
+    max_len = max([len(x) for label in labels for x in label.split("<br>")])
+    w_factor = int(args.width_ratio*max(30, max_len)/30)
+
+    ## Goal is for 14 when vote total is 10k
+    font_size = max(args.font_size_min, int(args.font_size_min*election.total / 10000))
+    if args.font_size is not None:
+        font_size = args.font_size
+
+    return (w_factor, font_size)
+
+
+def widthFactorFontSize(args, labels, px=10):
+    px = 10 * args.font_size // 20
+    font_size = args.font_size or args.font_size_min
+    max_len = max([len(x) for label in labels for x in label.split("<br>")]) + 1
+    w_factor = px * max_len
+    return (w_factor, font_size)
+
+
+def finalPlot(args, fig, election, labels):
+    chart_file = args.chart_file
+    height = election.total / args.height_ratio
+    #w_factor, font_size = legacyWidthFactorFontSize(args, election, labels)
+    w_factor, font_size = widthFactorFontSize(args, labels)
+    width = max(election.num_rounds*w_factor, height*1.6)
+    print(f"font_size={font_size} factor={w_factor} width={width} height={height}")
+
+    if re.search(r"\.html$", chart_file, re.IGNORECASE):
+        ## Write an html file
+        ## Don't fixed size unless unless forced
+        if args.force_fixed_size:
+            fig.update_layout(width=election.num_rounds*w_factor/3)
+
+        print(f"Saving as '{chart_file}'")
+        plotly.offline.plot(fig, filename=chart_file)
+        if args.copyright and not args.no_copyright:
+            insertCopyright(chart_file, args.copyright, tight=args.copyright_tight)
+    elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
+        ## Write an svg file
+        height *= 3/4
+        font_size = max(10, int(font_size*5/6))
+        fig.update_layout(font_size=font_size, width=width, height=height)
+        print(f"Saving as '{chart_file}'")
+        fig.write_image(chart_file)
+    else:
+        ## Write something else, png if not specified
+        fig.update_layout(font_size=font_size, width=width, height=height)
+        if '.' not in chart_file:
+            chart_file += ".png"
+            print(f"Saving as png '{chart_file}'")
+        else:
+            print(f"Saving as '{chart_file}'")
+
+        fig.write_image(chart_file)
+
+
 #def main(vote_file, title="Untitled", chart_file=None):
 def main(args):
     """Plot sankey graph of election"""
@@ -400,43 +457,10 @@ def main(args):
     ## Title and text
     fig.update_layout(title_text=args.title, font_size=args.font_size)
 
-    ## Save to file
     if args.chart_file:
-        chart_file = args.chart_file
-        height = election.total / args.height_ratio
-        w_factor = int(args.width_ratio*max(30, max(map(len, labels)))/30)
-        ## Goal is for 14 when vote total is 10k
-        font_size = max(args.font_size_min, int(args.font_size_min*election.total / 10000))
-        if args.font_size is not None:
-            font_size = args.font_size
+        ## Save to file
+        finalPlot(args, fig, election, labels)
 
-        if re.search(r"\.html$", chart_file, re.IGNORECASE):
-            ## Write an html file
-            ## Don't fixed size unless unless forced
-            if args.force_fixed_size:
-                fig.update_layout(width=election.num_rounds*w_factor/3)
-
-            print(f"Saving as '{chart_file}'")
-            plotly.offline.plot(fig, filename=chart_file)
-            if args.copyright and not args.no_copyright:
-                insertCopyright(chart_file, args.copyright, tight=args.copyright_tight)
-        elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
-            ## Write an svg file
-            height *= 3/4
-            font_size = max(10, int(font_size*5/6))
-            fig.update_layout(font_size=font_size, width=election.num_rounds*w_factor, height=height)
-            print(f"Saving as '{chart_file}'")
-            fig.write_image(chart_file)
-        else:
-            ## Write something else, png if not specified
-            fig.update_layout(font_size=font_size, width=election.num_rounds*w_factor, height=height)
-            if '.' not in chart_file:
-                chart_file += ".png"
-                print(f"Saving as png '{chart_file}'")
-            else:
-                print(f"Saving as '{chart_file}'")
-
-            fig.write_image(chart_file)
     elif PLOT:
         ## Plot now
         fig.show()

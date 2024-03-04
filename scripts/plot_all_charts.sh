@@ -247,7 +247,7 @@ if [ ! -z $SANKEY ]; then
                     $SC_SANKEY/html/sc_election_sankey_20$Y.html
             done
             file_check "$ALL_SC_YEARS" $SC_SANKEY/html/sc_election_sankey_20 html
-        fi ## PNG
+        fi ## HTML
     fi ## School
 fi ## Sankey
 
