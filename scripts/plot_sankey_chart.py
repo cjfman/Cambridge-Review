@@ -68,6 +68,8 @@ def parseArgs():
         help="Title of the graph")
     parser.add_argument("--short", action="store_true",
         help="Use short names when possible")
+    parser.add_argument("--tight-height", action="store_true",
+        help="Tighten the height")
     parser.add_argument("--copyright", default="Charles Jessup Franklin",
         help="The copyright holder")
     parser.add_argument("--copyright-tight", action="store_true",
@@ -194,7 +196,7 @@ def calcXPositions(election, round_labels, label_total, len_first, len_n, len_la
     return pos_map
 
 
-def calcYPositions(election, round_labels, label_total, previous_labels):
+def calcYPositions(election, round_labels, label_total, previous_labels, *, tight=False):
     """Calcualte Y positions"""
     ## pylint: disable=too-many-locals
     y_pos_map = {}
@@ -202,9 +204,13 @@ def calcYPositions(election, round_labels, label_total, previous_labels):
     round_order = {}
     for n in sorted(round_labels):
         round_count = sum([label_total[x] for x in round_labels[n]])
-        y_used[n] = round((election.total - round_count) / election.total, 5)
-        if DEBUG:
-            print(f"Starting round {n} at {y_used[n]}")
+        used_votes = election.total - round_count
+        y_used[n] = round(used_votes / election.total, 5)
+        if tight:
+            y_used[n] *= 4/5 ## Horable magic number
+
+        if VERBOSE:
+            print(f"Starting round {n} at {used_votes} votes y={y_used[n]}")
         if n > 1:
             ## Consider position in previous round
             previous_round = round_order[n-1]
@@ -231,6 +237,8 @@ def calcYPositions(election, round_labels, label_total, previous_labels):
 
             ## Calculate Y position
             height = round(votes / election.total, 5)
+            if tight:
+                height /= 2
             y_pos_map[label] = boundNumber(y_used[n], 0.001, 0.999)
             y_used[n] += height
 
@@ -438,7 +446,9 @@ def main(args):
     first_label_max = max(first_label_lengths) + 1
     label_max       = max(label_lengths) + 1
     last_label_max  = max(last_label_lengths) + 1
-    y_pos_map = calcYPositions(election, round_labels, label_total, previous_labels)
+    y_pos_map = calcYPositions(election, round_labels, label_total, previous_labels,
+        tight=args.tight_height,
+    )
     x_pos_map = calcXPositions(
         election, round_labels, label_total, first_label_max, label_max, last_label_max,
     )

@@ -133,7 +133,7 @@ if [ ! -z $SANKEY ]; then
             for Y in $ALL_CC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
                 ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y" \
-                    --force-fixed-size --two-line-count 1000 --short                \
+                    --force-fixed-size --two-line-count 1000 --short --tight        \
                     $CC_CSVS/cc_election_20$Y.csv                                   \
                     $CC_SANKEY/html/cc_election_sankey_fixed_size_20$Y.html
             done
