@@ -42,6 +42,7 @@ while [[ $# -gt 0 ]]; do
             ;;
         --html)
             HTML=1
+            SANKEY=1
             shift
             ;;
         --years)
@@ -124,47 +125,18 @@ if [ ! -z $SANKEY ]; then
             for Y in $ALL_CC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
                 ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y" \
-                    $CC_CSVS/cc_election_20$Y.csv                                   \
+                    --short $CC_CSVS/cc_election_20$Y.csv                           \
                     $CC_SANKEY/html/cc_election_sankey_20$Y.html
             done
 
             # City Council HTML - Fixed Size
-            for Y in 01 03 05 07 13 15 19; do
+            for Y in $ALL_CC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
                 ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y" \
-                    --force-fixed-size $CC_CSVS/cc_election_20$Y.csv                \
-                    $CC_SANKEY/html/cc_election_sankey_fixed_size_20$Y.html
-            done
-
-            if [[ -z "$YEARS" || "$YEARS" = *09* ]]; then
-                ./scripts/plot_sankey_chart.py --title "City Council Election 2009"        \
-                    --force-fixed-size --copyright "Charles J. Franklin" --copyright-tight \
-                    $CC_CSVS/cc_election_2009.csv                                          \
-                    $CC_SANKEY/html/cc_election_sankey_fixed_size_2009.html
-            fi
-
-            for Y in 11 17 21 23; do
-                if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
-                ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y" \
-                    --force-fixed-size --width-ratio 500 --two-line-count 1000      \
+                    --force-fixed-size --two-line-count 1000 --short                \
                     $CC_CSVS/cc_election_20$Y.csv                                   \
                     $CC_SANKEY/html/cc_election_sankey_fixed_size_20$Y.html
             done
-
-            for Y in 17 21; do
-                if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
-                ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y"              \
-                    --force-fixed-size --width-ratio 450 --two-line-count 1200 --copyright-tight \
-                    $CC_CSVS/cc_election_20$Y.csv                                                \
-                    $CC_SANKEY/html/cc_election_sankey_fixed_size_20$Y.html
-            done
-
-            if [[ -z "$YEARS" || "$YEARS" = *23* ]]; then
-                ./scripts/plot_sankey_chart.py --title "City Council Election 2023"              \
-                    --force-fixed-size --width-ratio 450 --two-line-count 1500 --copyright-tight \
-                    $CC_CSVS/cc_election_2023.csv                                                \
-                    $CC_SANKEY/html/cc_election_sankey_fixed_size_2023.html
-            fi
 
             ## Do file check
             file_check "$ALL_CC_YEARS" $CC_SANKEY/html/cc_election_sankey_20 html
@@ -183,8 +155,7 @@ if [ ! -z $SANKEY ]; then
             for Y in $ALL_CC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
                 ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y" \
-                    --width-ratio 250 --two-line-count 800                          \
-                    $CC_CSVS/cc_election_20$Y.csv                                   \
+                    --two-line-count 750 --short $CC_CSVS/cc_election_20$Y.csv      \
                     $CC_SANKEY/png/cc_election_sankey_20$Y.png
             done
 
@@ -214,7 +185,7 @@ if [ ! -z $SANKEY ]; then
             for Y in $ALL_SC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
                 ./scripts/plot_sankey_chart.py --title "School Committee Election 20$Y" \
-                    $SC_CSVS/sc_election_20$Y.csv                                       \
+                    --short $SC_CSVS/sc_election_20$Y.csv                               \
                     $SC_SANKEY/html/sc_election_sankey_20$Y.html
             done
             file_check "$ALL_SC_YEARS" $SC_SANKEY/html/sc_election_sankey_20 html
