@@ -112,7 +112,11 @@ class Election:
                 self.last_names[fullname] = fullname.split(',')[0]
         else:
             for fullname in self.candidates:
-                self.last_names[fullname] = fullname.split(' ')[-1]
+                split = fullname.split(' ')
+                if split[-1].lower().replace('.', '') in ('jr', 'md', 'phd'):
+                    self.last_names[fullname] = " ".join(split[-2:])
+                else:
+                    self.last_names[fullname] = split[-1]
 
         return self.last_names[name]
 
