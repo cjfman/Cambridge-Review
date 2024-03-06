@@ -79,6 +79,7 @@ class Election:
         self.eliminated = {}
         self.max_votes  = 0
         self.last_round = {}
+        self.last_names = {}
 
         ## Preprocessing
         for name, rounds in self.rounds.items():
@@ -100,6 +101,20 @@ class Election:
 
     def getNamedCandidates(self):
         return [x for x in self.candidates if not isWritein(x, unnamed=True)]
+
+    def getLastName(self, name):
+        if self.last_names:
+            return self.last_names[name]
+
+        has_commas = all([',' in x or ' ' not in x or isWritein(x) for x in self.candidates])
+        if has_commas:
+            for fullname in self.candidates:
+                self.last_names[fullname] = fullname.split(',')[0]
+        else:
+            for fullname in self.candidates:
+                self.last_names[fullname] = fullname.split(' ')[-1]
+
+        return self.last_names[name]
 
     def electedInRound(self, candidate, n):
         return (candidate in self.elected and (n == len(self.truncated[candidate]) or self.truncated2[candidate][-1].transfer < 0))

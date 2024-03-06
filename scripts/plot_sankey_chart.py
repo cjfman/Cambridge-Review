@@ -262,21 +262,21 @@ def insertCopyright(path, holder, *, tight=False):
 def widthFontSize(args, max_len, px=10):
     font_size = args.font_size or args.font_size_min
     px = px * font_size // 20
-    w_factor = px * max_len
-    return (w_factor, font_size)
+    width = px * max_len
+    return (width, font_size)
 
 
 def finalPlot(args, fig, election, max_length):
     chart_file = args.chart_file
     height = election.total // args.height_ratio
     width, font_size = widthFontSize(args, max_length)
-    width = int(max(width, height*1.6))
     print(f"font_size={font_size} max_length={max_length} width={width} height={height}")
 
     if re.search(r"\.html$", chart_file, re.IGNORECASE):
         ## Write an html file
         ## Don't fixed size unless unless forced
         if args.force_fixed_size:
+            width *= 1.1
             fig.update_layout(width=width)
 
         print(f"Saving as '{chart_file}'")
@@ -286,12 +286,14 @@ def finalPlot(args, fig, election, max_length):
     elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
         ## Write an svg file
         height *= 3/4
+        width = int(max(width, height*1.6))
         font_size = max(10, font_size*5//6)
         fig.update_layout(font_size=font_size, width=width, height=height)
         print(f"Saving as '{chart_file}'")
         fig.write_image(chart_file)
     else:
         ## Write something else, png if not specified
+        width = int(max(width, height*1.6))
         fig.update_layout(font_size=font_size, width=width, height=height)
         if '.' not in chart_file:
             chart_file += ".png"
@@ -360,7 +362,7 @@ def main(args):
     ## First pass of candidates
     for name, rounds in election.truncated2.items():
         #short_name = name.split(' ')[-1]
-        short_name = name.split(',')[0]
+        short_name = election.getLastName(name)
         if VERBOSE:
             print(f"Candidate: {name}")
 

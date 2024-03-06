@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 ALL_CC_YEARS="01 03 05 07 09 11 13 15 17 19 21 23"
 ALL_SC_YEARS="03 05 07 09 11 13 15 17 19 21 23"
@@ -133,7 +133,7 @@ if [ ! -z $SANKEY ]; then
             for Y in $ALL_CC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
                 ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y" \
-                    --force-fixed-size --two-line-count 1000 --short --tight        \
+                    --force-fixed-size --two-line-count 1500 --short --tight        \
                     $CC_CSVS/cc_election_20$Y.csv                                   \
                     $CC_SANKEY/html/cc_election_sankey_fixed_size_20$Y.html
             done
@@ -155,7 +155,8 @@ if [ ! -z $SANKEY ]; then
             for Y in $ALL_CC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
                 ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y" \
-                    --two-line-count 750 --short $CC_CSVS/cc_election_20$Y.csv      \
+                    --two-line-count 750 --short --fonst-size 26                    \
+                    $CC_CSVS/cc_election_20$Y.csv                                   \
                     $CC_SANKEY/png/cc_election_sankey_20$Y.png
             done
 
