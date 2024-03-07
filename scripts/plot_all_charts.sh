@@ -155,7 +155,7 @@ if [ ! -z $SANKEY ]; then
             for Y in $ALL_CC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
                 ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y" \
-                    --two-line-count 750 --short --fonst-size 26                    \
+                    --two-line-count 750 --short --font-size 26 --tight             \
                     $CC_CSVS/cc_election_20$Y.csv                                   \
                     $CC_SANKEY/png/cc_election_sankey_20$Y.png
             done
@@ -191,6 +191,34 @@ if [ ! -z $SANKEY ]; then
             done
             file_check "$ALL_SC_YEARS" $SC_SANKEY/html/sc_election_sankey_20 html
         fi ## HTML
+        ## School Committee PNGs
+        if [ ! -z $PNG ]; then
+            ## Remove old files
+            for Y in $ALL_SC_YEARS; do
+                if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
+                rm -f $SC_SANKEY/png/sc_election_sankey_20$Y.png;
+            done
+
+            ## Make charts
+            for Y in $ALL_SC_YEARS; do
+                if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
+                ./scripts/plot_sankey_chart.py --title "School Committee Election 20$Y" \
+                    --two-line-count 750 --short --font-size 26 --tight                 \
+                    $SC_CSVS/sc_election_20$Y.csv                                       \
+                    $SC_SANKEY/png/sc_election_sankey_20$Y.png
+            done
+
+            ## File check and add copyright
+            file_check "$ALL_SC_YEARS" $SC_SANKEY/png/sc_election_sankey_20 png
+            for Y in $ALL_SC_YEARS; do
+                if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
+                echo "Adding copyright to sc_election_sankey_20$Y.png"
+                convert $SC_SANKEY/png/sc_election_sankey_20$Y.png                   \
+                    -gravity SouthEast -pointsize 30 -annotate +40+40                \
+                    'Copyright © 2024, Charles Jessup Franklin. All rights reserved' \
+                    $SC_SANKEY/png/sc_election_sankey_20$Y.png
+            done
+        fi ## PNG
     fi ## School
 fi ## Sankey
 

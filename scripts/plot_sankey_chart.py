@@ -56,12 +56,8 @@ def parseArgs():
 #        help="Width of the graph. Overrides --width-factor")
     parser.add_argument("--force-fixed-size", action="store_true",
         help="Force a fixed size, even for html files")
-    parser.add_argument("--font-size-ratio", type=int, default=14,
-        help="The font size to be used with 10k votes. Will scale with number of votes")
-    parser.add_argument("--font-size-min", type=int, default=14,
-        help="The minimum font size")
-    parser.add_argument("--font-size", type=int,
-        help="Font size. Overrides --font-size-ratio and --font-size-min")
+    parser.add_argument("--font-size", type=int, default=14,
+        help="Font size")
     parser.add_argument("--two-line-count", type=int, default=500,
         help="The vote count at which a label should take two lines")
     parser.add_argument("--title", default="Election Results",
@@ -202,12 +198,13 @@ def calcYPositions(election, round_labels, label_total, previous_labels, *, tigh
     y_pos_map = {}
     y_used    = {}
     round_order = {}
+    excess = 0
     for n in sorted(round_labels):
         round_count = sum([label_total[x] for x in round_labels[n]])
-        used_votes = election.total - round_count
+        used_votes = election.total - round_count + excess
         y_used[n] = round(used_votes / election.total, 5)
         if tight:
-            y_used[n] *= 4/5 ## Horable magic number
+            y_used[n] *= 6/7 ## Horrible magic number
 
         if VERBOSE:
             print(f"Starting round {n} at {used_votes} votes y={y_used[n]}")
@@ -234,11 +231,12 @@ def calcYPositions(election, round_labels, label_total, previous_labels, *, tigh
             votes = label_total[label]
             if not votes:
                 continue
+#            if n == 1 and votes > election.quota:
+#                excess += votes - election.quota
 
             ## Calculate Y position
             height = round(votes / election.total, 5)
-            if tight:
-                height /= 2
+            height /= 2 ## Ugly trick to get nodes near eachother
             y_pos_map[label] = boundNumber(y_used[n], 0.001, 0.999)
             y_used[n] += height
 
@@ -260,18 +258,17 @@ def insertCopyright(path, holder, *, tight=False):
 
 
 def widthFontSize(args, max_len, px=10):
-    font_size = args.font_size or args.font_size_min
-    px = px * font_size // 20
+    px = px * args.font_size // 20
     width = px * max_len
-    return (width, font_size)
+    return width
 
 
 def finalPlot(args, fig, election, max_length):
     chart_file = args.chart_file
     height = election.total // args.height_ratio
-    width, font_size = widthFontSize(args, max_length)
-    print(f"font_size={font_size} max_length={max_length} width={width} height={height}")
-
+    font_size = args.font_size
+    width = widthFontSize(args, max_length)
+    print(f"max_length={max_length} width={width} height={height}")
     if re.search(r"\.html$", chart_file, re.IGNORECASE):
         ## Write an html file
         ## Don't fixed size unless unless forced
