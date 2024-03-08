@@ -36,7 +36,7 @@ def processResult(line, item):
         return 'search'
 
     ## Check for charter right
-    match = re.search(f"^charter right\s?(?:exercised|excersied) by (?:councillor|councollor||vice mayor|mayor) (?:(.+)(?: in council.*)?)", line, re.IGNORECASE)
+    match = re.search(r"^charter right\s?(?:exercised|excersied) by (?:councill?or|councoll?or||vice mayor|mayor) (?:(.+)(?: in council.*)?)", line, re.IGNORECASE)
     if match:
         name = match.groups()[0].replace(" IN COUNCIL", "").lower()
         print(f"Charter righted by {name}", file=sys.stderr)
@@ -93,7 +93,7 @@ def postProcess(items):
         action = re.sub(r"\n.*", "", item['action'])
 
         ## Check for voice vote
-        match = re.match(f"^(.*) (?:by|on) (?:an |am )?(?:Affirmative|Voice) Vote of (\w+) (?:Memebers|Members|Councillors)", action, re.IGNORECASE)
+        match = re.match(r"^(.*) (?:by|on) (?:an |am )?(?:Affirmative|Voice) Vote of (\w+) (?:Memebers|Members|Councill?ors)", action, re.IGNORECASE)
         if match:
             action = match.groups()[0]
             item['vote'] = "Voice Vote"

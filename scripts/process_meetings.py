@@ -791,7 +791,7 @@ def processHistory(history_table):
 
 def findCharterRight(soup):
     header = findTag(soup, 'h1', 'LegiFileHeading').text
-    match = re.search(r"charter right exercised by (?:councillor|vice mayor|mayor) (\w+) in\b", header, re.IGNORECASE)
+    match = re.search(r"charter right exercised by (?:councill?or|vice mayor|mayor) (\w+) in\b", header, re.IGNORECASE)
     if match:
         return lookUpCouncillorName(match.groups()[0])
 
