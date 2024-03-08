@@ -73,7 +73,7 @@ done
 ## Arguments check
 ERROR=
 if [[ -z $COUNCIL && -z $SCHOOL ]]; then
-    echo "Must specify either --council or --line"
+    echo "Must specify either --council or --school"
     ERROR=1
 fi
 if [[ -z $SANKEY && -z $LINE ]]; then
@@ -125,8 +125,9 @@ if [ ! -z $SANKEY ]; then
             for Y in $ALL_CC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
                 ./scripts/plot_sankey_chart.py --title "City Council Election 20$Y" \
-                    --short $CC_CSVS/cc_election_20$Y.csv                           \
+                    --short --tight $CC_CSVS/cc_election_20$Y.csv                   \
                     $CC_SANKEY/html/cc_election_sankey_20$Y.html
+                ./scripts/add_no_cache.pl $CC_SANKEY/html/cc_election_sankey_20$Y.html
             done
 
             # City Council HTML - Fixed Size
@@ -136,6 +137,7 @@ if [ ! -z $SANKEY ]; then
                     --force-fixed-size --two-line-count 1500 --short --tight        \
                     $CC_CSVS/cc_election_20$Y.csv                                   \
                     $CC_SANKEY/html/cc_election_sankey_fixed_size_20$Y.html
+                ./scripts/add_no_cache.pl $CC_SANKEY/html/cc_election_sankey_fixed_size_20$Y.html
             done
 
             ## Do file check
@@ -186,8 +188,9 @@ if [ ! -z $SANKEY ]; then
             for Y in $ALL_SC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
                 ./scripts/plot_sankey_chart.py --title "School Committee Election 20$Y" \
-                    --short $SC_CSVS/sc_election_20$Y.csv                               \
+                    --short --tight $SC_CSVS/sc_election_20$Y.csv                       \
                     $SC_SANKEY/html/sc_election_sankey_20$Y.html
+                ./scripts/add_no_cache.pl $SC_SANKEY/html/sc_election_sankey_20$Y.html
             done
             file_check "$ALL_SC_YEARS" $SC_SANKEY/html/sc_election_sankey_20 html
         fi ## HTML

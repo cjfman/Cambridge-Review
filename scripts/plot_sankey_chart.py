@@ -204,7 +204,7 @@ def calcYPositions(election, round_labels, label_total, previous_labels, *, tigh
         used_votes = election.total - round_count + excess
         y_used[n] = round(used_votes / election.total, 5)
         if tight:
-            y_used[n] *= 6/7 ## Horrible magic number
+            y_used[n] *= 5/6 ## Horrible magic number
 
         if VERBOSE:
             print(f"Starting round {n} at {used_votes} votes y={y_used[n]}")
@@ -273,7 +273,7 @@ def finalPlot(args, fig, election, max_length):
         ## Write an html file
         ## Don't fixed size unless unless forced
         if args.force_fixed_size:
-            width *= 1.1
+            width *= 1.2
             fig.update_layout(width=width)
 
         print(f"Saving as '{chart_file}'")
