@@ -901,7 +901,7 @@ def processApp(args, uid, num, title, link, vote, action) -> Application:
     ## Attempt to get the name
     name    = ""
     subject = ""
-    regex = re.compile(r"An? (?:application|(?:zoning )?petition) (?:has been|was) received from (.+?),? ((?:requesting permission|regarding|to amend) .+)", re.IGNORECASE)
+    regex = re.compile(r"An? (?:application|(?:zoning )?petition|request) (?:has been|was) received from (.+?),? ((?:requesting (?:permission|that)|regarding|to amend) .+)", re.IGNORECASE)
     match = regex.search(title)
     if match:
         name, subject = match.groups()

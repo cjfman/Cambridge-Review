@@ -60,6 +60,11 @@ def processResult(line, item):
         print(f"Found result: vote:{item['vote']}", file=sys.stderr)
         return 'result'
 
+    ## Fallback to voice vote
+    if line.lower() in ("placed on file", "order adopted", "order adopted as amended"):
+        item['action'] = toTitleCase(line)
+        item['vote'] = "Voice Vote"
+
     ## No match. Append line to action
     if 'action' not in item:
         item['action'] = toTitleCase(line)
@@ -85,6 +90,18 @@ def processCouncillors(line, item, key, *, valid_names=None):
         item[key] += ' ' + councilors
 
     return key
+
+
+def recordNegative(line, item, *, valid_names=None):
+    print(f"Found: {line}", file=sys.stderr)
+    match = re.search(r"((?:councill?or|councoll?or||vice mayor|mayor) .+) recorded (?:in (?:the )?)?negative", line, re.IGNORECASE)
+    if match:
+        line = toTitleCase(match.groups()[0])
+
+    if 'nays' not in item:
+        item['nays'] = line
+    else:
+        item['nays'] += "," + line
 
 
 def postProcess(items):
@@ -195,6 +212,11 @@ def tabulateVotes(lines, *, valid_names=None):
                     line = msg
                 else:
                     continue
+
+            ## Check for RECORDED IN NEGATIVE
+            if 'RECORDED IN NEGATIVE' in line:
+                recordNegative(line, item, valid_names=valid_names)
+                continue
 
             ## Nothing matched. Must be a continuation of the previous state
             if state == 'result':

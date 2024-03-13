@@ -23,7 +23,7 @@ foreach (<FILE>) {
         next;
     }
     chomp;
-    my ($body, $type, $other, $date, $time, $status, $id, $url, $summary, $packet, $actions) = Text::ParseWords::parse_line(',', 0, $_);;
+    my ($uid, $body, $type, $other, $session, $date, $time, $status, $id, $url, $summary, $packet, $actions) = Text::ParseWords::parse_line(',', 0, $_);;
     next if $actions eq "";
     my $pdf = "meeting_data/cache/final_actions_meeting_$id.pdf";
     my $txt = "meeting_data/cache/final_actions_meeting_$id.txt";
