@@ -100,6 +100,9 @@ def setCouncillorInfo(path, year=None) -> bool:
 def lookUpCouncillorName(name):
     if not _councillor_quick_lookup:
         return name
+    if not isinstance(name, str):
+        print_red(f"Error: '{name}' is not a valid name. Blanking out")
+        return "!!!"
 
     ## Quick look up
     if name in _councillor_quick_lookup:

@@ -620,6 +620,7 @@ def buildRow(item, hdrs, final_action=None, *, aggrigate_votes=False):
             elif final_action is not None and final_action['charter_right']:
                 item.final_action['charter_right'] = final_action['charter_right']
             elif item.final_action['charter_right']:
+                ## This is probably a boolean, so replace it
                 item.final_action['charter_right'] = "!!!"
         final_action = item.final_action
 
@@ -778,6 +779,8 @@ def processHistory(history_table):
             if match:
                 history['action'] = match.groups()[0]
                 history['amended'] = 'yes'
+            elif history['action'] == "Failed of Adoption":
+                history['action'] = 'Failed'
 
         ## Set absence
         if history['yeas']:
@@ -824,7 +827,10 @@ def processItem(args, row, num):
         action, vote = match.groups()
 
     ## Action
-    action = toTitleCase(action)
+    if action.lower() == "failed of adoption":
+        action = 'Failed'
+    else:
+        action = toTitleCase(action)
 
     ## Init item type
     handlers = {
@@ -895,7 +901,8 @@ def processApp(args, uid, num, title, link, vote, action) -> Application:
     ## Attempt to get the name
     name    = ""
     subject = ""
-    match = re.search(r"An application was received from (.+?),? (requesting permission .+)", title)
+    regex = re.compile(r"An? (?:application|(?:zoning )?petition) (?:has been|was) received from (.+?),? ((?:requesting permission|regarding|to amend) .+)", re.IGNORECASE)
+    match = regex.search(title)
     if match:
         name, subject = match.groups()
     else:
@@ -931,16 +938,29 @@ def processCom(args, uid, num, title, link, vote, action) -> Communication:
     address = ""
 
     ## Attempt to match the name of a person
-    match = re.search(r"A communication was received from (.+?)(?:, (\d.+?))?,? regarding (.+)", title)
+    match = re.search(r"A (?:communication|written protest) (?:was|has been) received from (.+?)(?:, (\d.+?))?,? (?:regarding|expressing)[,:]? (.+)", title, re.IGNORECASE)
     if match:
         name, address, subject = match.groups()
         address = address or ""
 
     ## Attempt to match 'Sundry'
-    match = re.search(r"Sundry communications were received regarding(?:,)? (.+)", title)
-    if match:
-        name = 'Sundry'
-        subject = match.groups()[0]
+    if match is None:
+        match = re.search(r"Sundry communications (?:(?:was|were|have been)? ?received)? ?(?:regarding|expressing)[,:]? (.+)", title, re.IGNORECASE)
+        if match:
+            name = 'Sundry'
+            subject = match.groups()[0]
+
+    ## Attempt to match 'anonymous'
+    if match is None:
+        match = re.search(r"(?:A|An) anonymous communication (?:(?:was|were|have been)? ?received)? ?(?:regarding|expressing)[,:]? (.+)", title, re.IGNORECASE)
+        if match:
+            name = 'Anonymous'
+            subject = match.groups()[0]
+    if match is None:
+        match = re.search(r"A communication (?:(?:was|were|have been)? ?received)? ?(?:anonymously )?(?:regarding|expressing)[,:]? (.+)", title, re.IGNORECASE)
+        if match:
+            name = 'Anonymous'
+            subject = match.groups()[0]
 
     ## Backup
     if not subject:
@@ -1279,7 +1299,7 @@ def setupOutputFiles(output_dir):
     return (files, writers)
 
 
-def openMeetings(path):
+def openMeetings(path, *, session=None):
     meetings = []
     with open(path, 'r', encoding='utf8') as f:
         reader = csv.DictReader(f)
@@ -1289,6 +1309,8 @@ def openMeetings(path):
                 del row['Unique Identifier']
             else:
                 row['uid'] = f"{row['Date']} {row['Type']}"
+            if 'Session' not in row and session is not None:
+                row['Session'] = session
             meetings.append(Meeting(**{ k.lower().replace(' ', '_'): v for k, v in row.items() }))
 
     return meetings
@@ -1348,7 +1370,7 @@ def main(args):
         setCouncillorColumns(getCouncillorNames())
 
     ## Open meetings file
-    meetings = openMeetings(args.meetings_file)
+    meetings = openMeetings(args.meetings_file, session=args.session)
     output_files = None
     final_actions = None
     if args.final_actions:

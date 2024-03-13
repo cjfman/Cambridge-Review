@@ -11,3 +11,4 @@ maps/
 *.tgz
 sandbox/*
 meeting_data/cache/*.pdf
+meeting_data/processed/current/
