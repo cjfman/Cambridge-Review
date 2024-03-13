@@ -1,0 +1,1016 @@
+PUBLIC SAFETY COMMITTEE
+COMMITTEE MEETING
+~ MINUTES ~
+
+Tuesday, December 3, 2019
+
+12:00 PM
+
+Sullivan Chamber
+
+Call to Order
+Attendee Name
+Craig A. Kelley
+
+Present
+
+
+
+
+
+
+
+Jan Devereux
+Dennis J. Carlone
+Sumbul Siddiqui
+Timothy J. Toomey
+
+Absent
+
+
+
+
+
+
+
+Late
+
+Arrived
+
+
+
+
+
+
+
+The Public Safety Committee will meet to discuss the following policy order: An amendment to
+Chapter 2.128 Surveillance Ordinance.
+Councillor Kelley called the meeting to order at 12:05 PM.
+Councillor Craig Kelley 0:25
+Alright everyone, sorry for being late. My bicycle lock froze. So, we're adjusting. The call of the meeting: This is a
+Public Safety Committee meeting and we are meeting to discuss the following policy order an amendment to chapter
+2.128 Surveillance Ordinance and that the order asked for the Public Safety Committee to have a hearing. You
+should have a piece of paper titled Public Safety Committee on the front and then on the back there is a proposed
+new amendment. This is a meeting of the Public Safety Committee. Which is not at all the same thing as the
+Ordinance Committee. So, at some point, this goes, arguably to the Ordinance Committee, and then that committee
+will decide whether they want this to move forward and they do that with a five person vote or not. So if we could
+just go around the table and introduce ourselves. My name is Craig Kelly. I'm the chair of the committee.
+Mark Gutierrez 1:26
+Mark Gutierrez, council aid.
+Emiliano Falcon 1:30
+My name is Emiliano Falcon. I'm from the ACLU of Massachusetts.
+Councillor Dennis Carlone 1:34
+Dennis Carlone, City Council.
+Councillor Sumbul Siddiqui 1:36
+Sumbul Siddiqui, City Council.
+Branville Bard, Police Commissioner 1:40
+Branville Bard, Police Commissioner.
+Nancy Glowa, City Solicitor 1:42
+Nancy Glowa, City Solicitor.
+Joe Barr, Director of Traffic, Parking and Transportation 1:50
+Joe Barr, Director of Traffic, Parking and Transportation.
+
+City of Cambridge
+
+Last Updated: 12/5/2019 12:30 PM
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+Will Durbin, Chief of Staff to Mayor McGovern 1:53
+Will Durbin, Chief of Staff to Mayor McGovern.
+Vice Mayor Jan Devereux 1:56
+Jan Devereux, Vice Mayor.
+Anthony Wilson, City Clerk 2:00
+Anthony Wilson, City Clerk.
+Councillor Craig Kelley 2:05
+And this meeting is being recorded. There are members of the public, I think what we will do is we'll hear from the
+proponent which is sort of the ACLU. They don't specifically... Will wants to go first. So I guess we'll hear from
+Will first who's here on behalf of the mayor, as well as himself because he's interested in this issue. Then we'll hear
+from the ACLU. We will ask clarifying questions. We will open up for public comment. And then when public
+comment is over, we can have a discussion about whether we think this is what needs to go forward or if it should be
+modified or whatever. Okay. That being said, Will.
+Will Durbin, Chief of Staff to Mayor McGovern 2:43
+Thank you Mr. Chair, and thank you for allowing me to speak on behalf of Mayor McGovern who is unable to
+attend today’s hearing due to illness.
+When the Council passed the Surveillance Ordinance in December of 2018, it was with the goals of safeguarding
+the liberties and free exercise of the rights Cambridge residents have come to enjoy, and to create as transparent a
+lens as possible into the emerging technologies that we are coming to relay on in the modern age. We cannot foresee
+the evolutions of these technologies, or imagine all the ways in which a bad faith actor might use data collected for
+seemingly benign purposes to erode a person’s right to privacy, so the current Surveillance Ordinance in effect today
+requires that the public be made fully aware of municipal uses for surveillance technologies, and to give consent
+when the public’s eye is turned inward onto itself.
+Even with the current surveillance ordinance, the City would be required to submit an impact report and seek the
+Council’s permission before using or acquiring facial recognition technology, so you may well ask yourselves why
+the petitioners thought it necessary to amend the ordinance with the text under consideration today. In just a
+moment, I will turn things over to Emiliano Falco to explain the broader dangers which facial recognition
+technology pose to a free and independent people, and to underscore how a frequently inaccurate technology
+discriminates against those which it surveils, particularly women of color.
+I wish to only add here on behalf of the Mayor that the unregulated and intrusive use of facial recognition
+technology is so onerous to the idea of a free republic, so intrusive to our daily lives and expectations of due process,
+and has been shown by other governments to be so menacing and intimidating to our cherished notion of free
+assembly, free speech, and freedom of thought that the Council is right to erect the further barrier that we seek with
+the amendment before you today. Before some future Council wishes to authorize this most intrusive of surveillance
+technologies, they will have to go through the same process we are engaged with today, hear the public, and
+consider amendments through a lengthy amendment process.
+
+So at this point, I'll turn things over to Emilio.
+Emiliano Falcon 4:57
+Thank you, Mr. Chair. Good morning.
+My name is Emiliano Falcon. I am the Policy Counsel for the Technology for Liberty Program at the ACLU of
+Massachusetts. On behalf of the ACLU and our more than 15,000 members and supporters in Cambridge, I submit
+this testimony in strong support of the ordinance introduced by Mayor Marc McGovern and Councilors Craig Kelley
+and Sumbul Siddiqui to place a ban on the municipal government’s use of face surveillance technology.
+
+City of Cambridge
+
+Page 2
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+Face surveillance technology poses unprecedented threats to civil rights, civil liberties, and open, democratic
+society. Numerous studies have shown the technology is inherently racially biased. The technology poses
+particularly severe threats to the rights and liberties of immigrants and communities of color. Unchecked, this
+technology can be used by government agencies to conduct the mass tracking of people in public spaces. Instead of
+accepting that technologies like face surveillance will determine the boundaries of our rights, we must chart an
+intentional course into the 21st century, maintaining firm democratic control over our society and our lives. To
+protect residents now and into the future, the City of Cambridge should join San Francisco, Oakland, Berkeley, and
+Somerville in taking action to prohibit the use of face surveillance technology by the local government.
+
+What is face surveullance technology, and how can it be used? Face surveillance technology uses algorithms
+designed to analyze images of human faces. In one of its forms, a computer program analyzes an image of a
+person’s face, taking measurements of their facial features to create a unique “faceprint.” Face surveillance
+algorithms then use these faceprints, in combination with databases like the driver’s license system at the Registry of
+Motor Vehicles and surveillance camera networks, to identify and track people en masse, usually without their
+knowledge or consent.
+Some companies are also selling so-called “emotion detection”systems, which they claim can determine whether
+someone is happy, sad, honest, or deceitful. Research from experts at Northeastern University has demonstrated it is
+not possible to discern how someone is feeling by looking at their face. But companies are nonetheless selling these
+tools across the world.
+Face surveillance as currently used is unregulated, biased, and harmful to immigrants, people of color, and privacy.
+Face surveillance is entirely unregulated in Massachusetts. Nonetheless, the spread of this technology is occurring in
+the dark, absent public debate or democratic oversight. Government agencies are adopting it despite the absence of
+privacy regulations, the technology’s inaccuracy, and the threats it poses to free and open societies. Face
+surveillance is racially biased. Among other issues, facial recognition technology is not always accurate—despite
+what you may have seen on television shows like CSI. And these inaccuracies are more likely to unfairly harm
+people of color and other oppressed groups. For example, MIT researchers here in Cambridge found that face
+recognition software sold by prominent technology companies misclassified Black women up to 35 percent of the
+time. Another study found that so-called “emotion detection” software inaccurately classified Black men’s faces as
+more angry and contemptuous than white faces, even in pictures where all the men are smiling. No Cambridge
+municipal department should use technology that is inherently racially biased. Face surveillance technology harms
+immigrant families. The Trump administration’s vicious attacks on immigrant communities have made immigrants
+fearful of engagement with public institutions, including schools and local police. The use of face surveillance
+systems would further chill immigrant participation in public life because the technology can be used to track where
+people go, and when, in real-time and retroactively. A ban on the use of face surveillance will ensure immigrants in
+Cambridge are not tracked or catalogued as they move through public space or public institutions. Face surveillance
+is a threat to Cambridge residents’ civil rights and civil liberties. Especially concerning is how this technology
+affects First Amendment rights and freedoms. If the government can track everyone who goes to a place of worship,
+a political rally, or seeks reproductive medical care or substance use treatment, we lose our freedom to speak our
+minds, freely criticize the government, pray to the god we want, and access healthcare in private. The authoritarian
+government in China is deploying face surveillance in that country to control and oppress people; indeed, as
+academics have observed, face surveillance technology is the perfect tool for social control. Cambridge must chart
+the opposite course, to protect and defend privacy, civil rights, and open society today and for future generations.
+Today, Cambridge has a critical opportunity: Your City can pump the brakes on the spread of this dangerous
+technology, before it is adopted and used to track Cambridge residents and visitors. The Ordinance presented by
+Mayor Marc McGovern and Councilors Kelley and Siddiqui will protect the people of Cambridge and free and open
+society and, at the same time, protect City employees.
+First, the Ordinance before you amends the City’s surveillance ordinance to ban the City of Cambridge from
+obtaining, retaining, requesting, accessing, or using either face surveillance technology or information obtained from
+it. Second, it provides that the inadvertent or unintentional receipt, access of, or use of any information obtained
+from face surveillance technology will not be a violation of this ban if the receipt, access of, or use of such
+information was not requested or solicited; and such receipt, access, or use is logged into the Annual Surveillance
+
+City of Cambridge
+
+Page 3
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+Report. This language strikes the right balance between protecting Cambridge residents and allowing Cambridge
+City departments, including the Police Department, to conduct normal business without unnecessary interference.
+Ultimately, faced with the question of whether Cambridge should pass this ban, Councilors ought to consider what
+kind of community they want to foster into the 21st century.
+Constant surveillance doesn’t just harm our collective rights and freedoms— it also has adverse effects on health,
+well-being, and community trust. Surveillance increases not only our fears and uncertainty but also personal anxiety.
+Privacy advocates have long warned about the psychological consequences of being watched and observed by
+unaccountable, faceless entities.6 Face surveillance magnifies these concerns and extends them into a truly new and
+frightening territory by totalizing the surveillance of our movements in public space.
+Cambridge is the most innovative city in Massachusetts. Approving this ordinance will send a message to the rest of
+the state, country, and world that civil rights and civil liberties are a priority in the digital 21st century, and show
+that Cambridge is leading the way. We strongly urge you to support this critical and commonsense proposal. The
+ACLU looks forward to serving as a resource to the City and the Council throughout this process, so please don’t
+hesitate to contact me or Kade Crockford if you have any questions or seek further information. Thank you very
+much.
+Councillor Craig Kelley 13:48
+Thank you, Emiliano. Now, if you haven't noticed the text of the proposed legislation is on the backside of the
+document that says Public Safety Committee it is very, very short. Does anyone have any clarifying questions for
+Emiliano? Okay. Seeing Vice Mayor.
+Vice Mayor Jan Devereux 14:10
+Thank you for your statement. I also read an editorial that Carol Rose, who I guess is the director of the ACLU Mass
+wrote for the Commonwealth magazine that made many of the same points and I certainly agree with it. Is there any
+legislation being considered at the state level? Is this all being done city by city? Is this the wrong kind of time to
+ask that question. But that's a clarifying question, isn't it?
+Emiliano Falcon 14:34
+Yeah. Through the Chair. So we are working city by city banning this technology and we are also proposing a
+moratorium at the state level. We are working with legislators to introduce this moratorium of the use of this
+technology by the... statewide until there is a special authorization by Beacon Hill that has protections and
+safeguards for the use of this technology. But yes, we're working to pass a moratorium on the state level until it's
+regulated.
+Vice Mayor Jan Devereux 15:13
+And would that apply to the RMV? Because in Carroll Rose's editorial, she said that the RMV has been using this
+technology since 2006. And that they are actively matching driver's license photos and sending them to law
+enforcement.
+Emiliano Falcon 15:29
+Yes.
+Vice Mayor Jan Devereux 15:30
+So I mean..
+Emiliano Falcon 15:31
+Yes, the moratorium will impact the RMV use of the driver's license database. So if the moratorium passes, they will
+not be able to do that anymore.
+Vice Mayor Jan Devereux 15:42
+Do you have any sense of when that moratorium could pass or if it would pass?
+Emiliano Falcon 15:47
+
+City of Cambridge
+
+Page 4
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+So... the hearing was a month ago. So we are working to see if it can pass this session or if not the next one?
+Vice Mayor Jan Devereux 15:56
+Okay,
+Emiliano Falcon 15:57
+But we hope it passes. Thank you.
+Vice Mayor Jan Devereux 15:58
+Yeah. Thank you.
+Councillor Craig Kelley 16:01
+Other clarifying questions? Councillor Siddqui.
+Councillor Sumbul Siddiqui 16:04
+Just to add. Vice Mayor Devereux, one of the sponsors is Rep. Rogers... of that bill and it's a Senator Creem, but I
+can, if you want, I can forward you the the bill.
+Councillor Craig Kelley 16:21
+Other questions? Okay, I'm seeing none. Any comments from city staff on this?
+Branville Bard, Police Commissioner 16:32
+Through the Chair. So, from public safety standpoint, I just like to point out the Cambridge Police Department, we
+don't have facial recognition technology, have no desire to acquire that technology. Personally, I can support a ban
+of the technology. However, I would think that that ban should come with very limited exceptions. I think if you can
+think of a scenario where using the technology could be helpful, then you might want to guard against a complete
+and total ban of that technology. Obviously, constant surveillance is not something that I'm supportive of. But
+limited use in a very specific set of circumstances. I think that you can see a scenario where the technology could be
+useful. Other than that, yeah, I can support a band of facial recognition technology.
+Nancy Glowa 17:36
+Thank you, Mr. Chair through you. We don't have any concerns from a legal point of view as far as the way it's... the
+concept, but I would add that in keeping with what the Commissioner just said, because it is, in fact cumbersome to
+go through the amendment process, I would just offer the possibility for the committee and the council to consider
+having an exception process whereby if the police department for example, thought there was some unique use that
+would be appropriate in some particular circumstance, then that department or the city manager could bring it to the
+Council for consideration. So there might be some sort of an exception if it's brought to the Council's attention
+before such use and that my only other comments on the actual prohibition language are my concern about staff
+inadvertently or unintentionally receiving such information. So I would suggest in "A" where it talks about it would
+be unlawful for city staff to obtain, retain, request, access or use that we put in there the intentional language that is
+included further down. And in "B" where it says the inadvertent or unintentional receipt, access of or use would not
+be a violation so long as the city staff did not request or solicit etc. I again think that there, adding the word
+"unintentional" would be helpful to clarify that... you know, let's say you're on a computer and you go somewhere
+and something pops up. You didn't intend to do that but perhaps you clicked a button that requested that page to
+open maybe that's not a great example but... so just for consideration I wanted to put out those two possible changes
+as this process continues. Thank you.
+Councillor Craig Kelley 19:43
+Thank you Ms. Glowa. I think I got the first... the second change which would be to number one under Section B:
+the city staff did not request or solicit the. And then you're suggesting we insert "unintentional" receipt is that..
+Nancy Glowa, City Solicitor 19:59
+Sorry, Mr. Chair, are you talking about a or b right now?
+
+City of Cambridge
+
+Page 5
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+Councillor Craig Kelley 20:02
+I'm talking about being B.
+Nancy Glowa 20:03
+So yes, in B(1), I would suggest something like city staff did not intentionally request or solicit. And then I would...
+Councillor Craig Kelley 20:13
+Okay, and then what was the other suggestion?
+Nancy Glowa 20:16
+Well, there were two other ones. So the next one was in A, in the second line, it shall be unlawful for the city or any
+city staff to intentionally obtain etc. So I would suggest adding "intentionally" in those two places.
+Councillor Craig Kelley 20:36
+Okay.
+Nancy Glowa 20:37
+And then my other suggestion that I made first, in keeping with what the Commissioner said, was the for the
+committee to consider the possibility of having some sort of exception process since this is an ordinance and can
+only be deviated from by amending the ordinance and while I fully appreciate the concern that Mayor McGovern
+indicated through his Chief of Staff's comments that you want it to be a cumbersome process to allow such use. That
+if the committee and council did feel that it might ever be appropriate for, let's say the police commissioner, to feel
+the need to approach the council for a particular circumstance that wasn't previously anticipated, that putting in an
+exception clause that would allow that city department through the manager to approach the council to discuss that
+possibility might be worth considering.
+Councillor Craig Kelley 21:38
+Okay, so I would move that we amend this proposal to include the word intentionally in .075(A) after the section
+says "city staff to" insert the word "intentionally" and then say "obtain, retain and request". So on that motion to we
+have any discussion? No. Okay. In favor, aye. Okay.
+And then the second motion I would suggest was we moved to amend this on B(1) where it says "city staff did not
+request" to insert "intentionally" between the "did" and the "not" it would now read city staff "did not
+intentionally..." sorry, "did not intentionally request". I would put in intentionally between the "not" and the
+"request". So all in favor of that? Aye. Okay.
+So I think that the one I'm not ready yet to propose is the waiver. But we can talk about... Any clarifying questions
+for city staff before we go to public comment.
+Vice Mayor Jan Devereux 22:44
+I've already spoken but if Dennis...
+Councillor Craig Kelley 22:46
+Councillor Carlone
+Councillor Dennis Carlone 22:48
+Thank you, Mr. Chair and Vice Mayor. So the waiver would be for, for instance, a terrorist might be in the area or
+missing child, who hasn't been found, for two days? It's that kind of request?
+Branville Bard, Police Commissioner 23:05
+That exact kind of thing, not where you're, you know, constantly surveilling and tracking movements. But where
+you have a known suspect or individual, and you're trying to locate that... that identified individual already.
+Something of that scenario. I hate the jump to the ticking time bomb type scenario, but that os the easiest one.
+
+City of Cambridge
+
+Page 6
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+Councillor Dennis Carlone 23:25
+The question then is... that means we have the system. We're just turning it on. Is that correct?
+Branville Bard, Police Commissioner 23:37
+Not necessarily. It means that we could ask to borrow the technology at that time or use it. Obviously another
+agency could come in and use the technology and not be encumbered by the surveillance ordinance or the facial
+recognition ban. But the idea is that if you can envision a scenario scenario where you may benefit from using it
+then a complete and total ban might not be the remedy. I'm in favor of banning the general use of the technology.
+But like I said, if you can envision even a scenario where it could be helpful, then that might not be the... the total
+ban might not be the exact remedy, a ban with very limited exceptions, maybe a better remedy.
+Nancy Glowa 24:27
+Mr. Chair, if I could just add to that, I mean, the other possibility would be to have an exception for exigent
+circumstances that would could require subsequent reporting to the council if that were done. So these are just
+possibilities to allow for a little flexibility if circumstances ever warranted it, but again, just for the committee's
+consideration,
+Councillor Dennis Carlone 24:49
+So if I may, Mr. Chair in discussions, either you could be specific; if it's a lost child or indirect... if it's some
+occurrence that might be planned. But it would be clear, you would come back and say this has been solved. We're
+no longer doing this and no other information is kept.
+Branville Bard, Police Commissioner 25:13
+It should be very limited set of circumstances that would allow for an exception to take place. So limited, it should
+be so limited that it would only occur. And, you know, that once in a lifetime type of event, not something that could
+be routinely used over and over again as a way to get around the, the ban or the ordinance.
+Councillor Dennis Carlone 25:37
+All right. Thank you. Thank you, Mr. Chair.
+Vice Mayor Jan Devereux 25:41
+Yeah, yes through you. Well, doesn't the existing surveillance technology ordinance have an exception for exigent
+circumstances where you come to the council essentially, and, and can use a surveillance technology for exactly the
+kind of limited use scenarios you're describing,
+Nancy Glowa 26:05
+Through you, Mr. Chair. This proposed amendment says notwithstanding any other provision of the surveillance
+ordinance. That would knock out the exigent circumstance situation. So the answer is no, you couldn't do it under
+the rest of the provisions of the ordinance.
+Vice Mayor Jan Devereux 26:25
+So if we were to follow your suggestion, where we created an exception... would simply striking the notwithstanding
+any other provision clause in that sentence, be sufficient to allow for these exigent circumstance exceptions but also
+to have a ban in the ordinance so that it's clear that we really don't want face surveillance used, but the exigent
+circumstances apply.
+Nancy Glowa 27:00
+Through you Mr. Chair. I think that's an excellent suggestion. I would just want to be able to read it through
+carefully to make sure that that made sense, but it sounds like it makes sense.
+Vice Mayor Jan Devereux 27:10
+And may I ask this gentleman here, if that is something that...
+Emiliano Falcon 27:15
+
+City of Cambridge
+
+Page 7
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+I would have to study how that would work with the rest of the ordinance.
+Councillor Craig Kelley 27:24
+So if we were not to waive this... and I'm not saying I'm supporting,waving it, but if we were not to waive it, and
+there was a crime that happened, and the person is caught on videotape from the store or whatever, and Cambridge
+Police Department, as part of its investigation, says, well, we could figure out who this person is, if we were able to
+access some facial surveillance technology and you work to do that. Then you identify the person, then the fact that
+you did something that we had a law against doing, does that throw that evidence out and then kill the case?
+Branville Bard, Police Commissioner 28:17
+To you Mr. Chair. That's a legal determination that the court would have to decide in that case.
+Nancy Glowa 28:27
+Mr. Chair, through you I would add, that is a criminal question. And it would have to be something that people who
+practice criminal law could advise better on, but I think that's a possibility.
+Councillor Craig Kelley 28:42
+Okay, yeah. Madam Vice Mayor?
+Vice Mayor Jan Devereux 28:43
+Is there a difference between facial recognition technology and facial surveillance technology? Because to me, what
+you're describing is we have a picture, we weren't necessarily... we weren't surveilling because this is essentially...
+you're describing a private camera like in a store, right?
+Branville Bard, Police Commissioner 28:59
+Correct.
+Vice Mayor Jan Devereux 28:59
+So we have those cameras all over the place. Every convenience store has cameras, and they have pictures of people.
+And then we post those pictures on social media and say this guy just committed an armed robbery. Anybody know
+him right? That's it. I mean, I'm confused now,
+Councillor Craig Kelley 29:14
+So maybe Commissioner, you could explain how you might think, are using surveillance techniques such as the
+cameras at the 7-11, in conjunction with facial recognition software, could be a tool that would be utilized by
+government.
+Branville Bard, Police Commissioner 29:34
+So the more likely scenario that I envisioned is that you know that Branville Bard is intent on doing a large number
+of people harm, but you don't know where Branville Bard is. You have, you know, a photo image of me that you
+could apply to a database or two active cameras and perhaps pinpoint my location and therebyn, you know, stop me
+from bringing harm to a large number of folks. Or a mass casualty incident has occurred, you identify this guy's
+image is the perpetrator. And now you want to also apply that image of me to a database to look backwards to see
+who, who I am. If that makes sense,
+Councillor Craig Kelley 30:24
+That makes sense. I've got actually some really interesting, I think questions about how Facebook and whatnot fit
+into this. But if there are no more clarifying questions for staff, we can move to public comment. And we've got
+three people signed up. I think we have plenty of time. So you'll have five minutes, you do not need to use those five
+minutes. The first person up is Christopher Lucy, go up to the podium. Please make sure the light is on, introduce
+yourself and where you live, and then you get to speak and I'll do something dramatic to indicate when your time is
+up.
+Christopher Lucy, 107 South Street, Boston 31:04
+
+City of Cambridge
+
+Page 8
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+Okay, there we go. I appreciate the ability to speak to the assembled group today. And my name is Christopher
+Lucy. I'm not a Cambridge resident. I live in Boston. But I want to applaud the City of Cambridge for having taken a
+bold step to even consider the idea of surveillance oversight. And this, this is something that most of the
+development is done in cities like Cambridge. So you're making a strong grassroots statement. And I appreciate that.
+And I'm sure that we are all aware, we live in a stormy tempestuous world, and that there will be doubts and
+questions along the way, but I strongly support the initiative to pursue that goal. And I can say in principle, I support
+this amendment but if there are details that need to be worked out, I'm sure that the city and its representatives are
+sufficient to be able to handle those details in the best interest of the public and on balance I think this is the right
+direction for you to head. Thank you.
+Councillor Craig Kelley 32:07
+Thank you very much the next up is Susan Ringler followed by Saul Taunenbaum.
+Susan Ringler, 82 Kinnard Street 32:15
+Good afternoon, thank you for all of your time on this snowy day on this important matter. I am generally in favor of
+the ban on facial recognition technology. I draw to your attention and will leave for the public record a New York
+Times article just this morning on the front page of facial recognition being used against Uighurs in China and
+articles being... scientific money being given by institutes in Germany. This is really being... there's really bad stuff
+happening all over the world and I... we really need to come down on this quickly. Although I am in general in favor
+I am very concerned that we add the word retain to be as well as "a"... it is unbelievably important that we not retain
+this data. The way you make a database is by retaining information. No, no, no, do not, do not get Cambridge
+involved in the retention of facial recognition data absolutely not. I mean it is critical, critical critical. I also... These
+exceptions about using. What if somebody says, "Oh, I'm not using it, I'm just going to keep it in case it becomes
+important later." No, we do not want to go down that road at all. We have to be really, really careful. I'm also very
+much against any exceptions. We have lots of surveillance technology, which is not facial recognition. There's lots
+of ways of using it. We don't want to go down the facial recognition road. Also just for your information. I just
+returned from a trip to Europe. I go to Europe frequently and on arriving back in the US, guess what they do? They
+do facial recognition on every single person. So I am already in the national databases and what if the national
+database just became available to Cambridge without you requesting it? This is absolutely not where we want to go.
+The retention and the use have to be banned, it has absolutely got to be banned. Also it is really, really important to
+recognize that women of color are absolutely not treated properly by this technology. Men of color. It is absolutely
+not. This technology is... we've got to keep away from it. I'm sorry, but it's really, really important. So no exceptions
+for the police. Be very careful about adding the word retain everywhere where it is appropriate. We really need to
+protect ourselves and everybody and this red herring about a child. We shouldn't be doing facial recognition on any
+child. I'm sorry, but I'm absolutely opposed 1,000%. Leave children out of this. Let them be children. Thank you
+very much for your time.
+Councillor Craig Kelley 34:47
+Thank you very much. Next up is Saul Taunenbaum.
+Saul Taunenbaum, Cottage Street 34:55
+Thank you, Councillor . Thank you Councillors for being here and city staff. I'm against the use of facial recognition
+technology in virtually every circumstance. I came into this room with a theoretical belief that there could be exigent
+circumstances. But as I've listened to the discussion, every example that has been given has been bad. Just terrible.
+Lost children? Do even know if facial recognition technology works on children. You know, as the previous speaker
+said, there are demographic groups who are excluded. I mean, there's probably no database of children. So forget
+that as an example. Terrorists? That sounds like the exigent circumstances for torture. And they're the same sort of
+ticking time bomb things that generally rational people agree aren't a good excuse for torture. Why should that be a
+good excuse for using facial technology? We've had one example of that in the Tsarnaev brothers, people who were
+recognized by the community instantly and actually should have been recognized by FBI agents. That didn't work
+very well. Why would we, you know, why would we even think that we should make an exception there for facial
+recognition technology without any indication that it would work? And lastly, I really doubt the Commissioner
+meant it this way, but that example of Rambo Bard, who I'd like to meet by the way, that we have live cameras
+connected so that we could do real time facial recognition, you know, for some suspect.
+
+City of Cambridge
+
+Page 9
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+There is supposition after a supposition there. And I certainly don't want to be living in a city where we could flip a
+switch and start doing real time facial recognition, you know, on cameras because that is the dystopia of China. So I
+agree with the mayor's comments through his chief of staff. If there is an exception process, it should be really,
+really hard. And I would expect the council in those circumstances to be adversarial to the request and not simply
+get scared by, you know, Rambo Bard who I'm sure is a very dangerous person. But our rights are important too.
+Thank you.
+Councillor Craig Kelley 37:42
+Thank you very much. Is there anyone else who has not spoken who would like to speak? Seeing none, I would
+move to close public comment. Okay, I guess we're back. "Retain". One of the public commenters talked about the
+need to put retain in the legislation. It is in Section A. The public comment is closed, thank you very much.
+Notwithstanding any other [sic] will be unlawful for any or... for the city staff to obtain, request, access or use. And
+that's in A and then in B we have city staffs inadvertent or an unintentional access of or use of any information from
+facial recognition technology shall not be a violation of the section provided that... It goes on. So we can certainly
+put retain in to that if the body wants that. So I'll move to put...
+Vice Mayor Jan Devereux 38:47
+Excuse me, we should probably make it retention. Yeah, I mean, if you're putting it in that first sentence then
+access...
+Councillor Craig Kelley 38:56
+Okay? So in between the term or word "receipt" and "access" I'll move that we've put the word "retention", comma
+"access of"... "retention of" the word. And the solicitor has a comment.
+Nancy Glowa 39:15
+Thank you, Mr. Chair. I just wanted to note that the the city is still subject to the provisions of the public records
+laws. So, although we would certainly be able to not disclose any information that the city received or retained as we
+are required to under the public records law, because of the privacy exemption, if state law says we have to retain
+something once the city's in receipt of it, I think that that would trump the provisions of a local ordinance. So I am...
+I can certainly assure the council that the city would do everything I could to not release any such information. I just
+wanted to note for your information, that we are subject to the requirements of the public records law.
+Councillor Craig Kelley 39:59
+Thank you. But my understanding is we don't have to call that out. We can still include the word "retention of"
+realizing that state law trumps local anytime that there's a conflict. Okay, super.
+So, with that being said, I think we're on the waiver part, and honestly, I don't like it. I've been probably reading too
+much about artificial... Councillor Siddiqui?
+Councillor Sumbul Siddiqui 40:25
+I think... I agree with you. And I agree with the mayor's comments on this. And I respectively see the point of
+having those circumstances and at the same time, the harm of it is really compelling. And given that we don't... we
+don't own any technology in the first place. That's an important point, we don't have it and so since we don't have it.
+I think...
+Yeah, I think I'm having a hard time with the waiver. So I'm open to what other of my colleagues say and the ACLU
+as well, but yeah, I'm torn.
+Councillor Craig Kelley 41:15
+Councillor Carlone.
+Councillor Dennis Carlone 41:18
+Well, I've been to China and I was a little stunned by the passiveness of the people. And part of it isn't even the
+software. At every block and park in Beijing are three policemen, not one, not two, but three, at least in the
+
+City of Cambridge
+
+Page 10
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+downtown area. So that's.... Everybody behaved that I could see. I read... I heard about an event the week before, but
+it's very minor. So it's a completely different society. The only reason why I think a waiver makes sense as we don't
+know. We don't know the circumstances and I think that's what they're asking for. I don't want surveillance but in
+the event of a catastrophe, or something we don't even know, the possibilities there. And the council will vote on it.
+I... Excuse me, I assume would be a closed door event to talk about whatever the circumstance might be. If it's super
+important. So I think the option is fine.
+It depends on who is on the council and their beliefs. But I don't think anybody in this room is for surveillance
+beyond the unthinkable. That's my position.
+Vice Mayor Jan Devereux 42:40
+Councillor Kelley?
+Councillor Craig Kelley 42:42
+Vice Mayor.
+Vice Mayor Jan Devereux 42:47
+This is only Public Safety Committee, right. So this... Whatever we refer out of this goes to Ordinance next?
+Councillor Craig Kelley 42:54
+Now we could pass it at the Council without an Ordinance Committee meeting.
+Vice Mayor Jan Devereux 42:54
+Oh, we could?
+Yes, okay. The Clerk is nodding. Okay, I was thinking would have to go to... So, we could, I think I would be in
+favor of sending it as is to the Council with... If either the City Solicitor or the Police Commissioner wants to
+contribute something to accompany it, so that when the full Council discusses it, they have this context. But I feel
+like there's not really a compelling reason for us as a Public Safety Committee to take that out because it does sort of
+leave a big loophole that I understand is meant to be a small loophole, but nonetheless, it is a loophole. So I would, I
+would make a motion to just refer this to the Council with those comments and let whoever is on the council at that
+point. Make the call.
+Councillor Craig Kelley 43:53
+Okay, so before we do that, just to make sure that we've done it. I thought it called for a vote on the "retention of" in
+paragraph B section 1: "city staff did not request a solicit the receipt, access of". And put in between "receipt" and
+"access" the words "retention of" so on that... Councillor Carlone? Okay, so on that motion everyone in favor Aye?
+Opposed? Okay. So now that's been amended. Other comments on the exemptions? Emiliano?
+Emiliano Falcon 44:32
+Well, I would say that we believe that the technology is not ready for prime time. And maybe starting putting
+exceptions and carving things out local of laws, regulations... And regulations should happen at the state or federal
+level. That's why we believe that in the cities it has to be banned until at the state level and the federal level, maybe,
+this technology is regulated. So that's why we're thinking...
+Councillor Craig Kelley 45:00
+Okay, I have a question for you Emiliano. Which is how under this, how would someone, whether it's a police
+department or community development or whatever, looking through Facebook, which has a facial recognition
+aspect, how would that impact their ability to either do their work or inadvertently break the law?
+Emiliano Falcon 45:25
+Thank you for the chair. I cannot answer the question I would have to see how in that case Facebook is used because
+Facebook doesn't always use face recognition technology. So that depend on how the social network was used in the
+
+City of Cambridge
+
+Page 11
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+particular case. There are ways that I can think of the police department can still use Facebook without using facial
+recognition technology. For sure.
+Councillor Craig Kelley 45:59
+Madam Solicitor.
+Nancy Glowa 46:01
+Thank you, Mr. Chair, you are sort of touching on an issue that came to us as well, which is under the ordinance.
+Currently, cameras and buildings are exempt, for example. It's not really clear from this definition, what... Well, if
+it's an automated or semi automated processes, does that includes still camera photos, and what does it mean to
+capture information? So, to the extent that this may be different from some of the other provisions of the ordinance
+that we had understood, were agreeable to the ACLU. It might be helpful if we could talk a little bit offline before it
+comes to the council just to see if a little bit clearer definition would be helpful because I think that creates a little bit
+of a gray area and also, as you said about Facebook. You know, there could be some parameters around certain
+technologies that are in place, out there and used. Maybe that would be helpful for everyone to clarify.
+Councillor Craig Kelley 47:07
+Emiliano
+Emiliano Falcon 47:09
+Through the Chair, I would say that there's a difference between the software and the camera. So this is a software,
+this is the automated or semi automated process. It's the software that is... that can be... that's one of the highest
+threats of this technology. That is that these software can be embedded into any camera. So the ban is directed to the
+use of that software and information that can be derived from a software of the like. Right? So the cameras can still
+be there. The only thing is that we... the city will be prevented from using the footage of this cameras and run all
+those... all the footage through the technology, through the software. So that's what the definition is... is means,
+right? It's the software. That the use of the technology itself.
+Councillor Craig Kelley 48:11
+So let me interject. So Facebook has that software. So say I'm Community Development and I want to figure out
+how my last outreach went for some retail party or something. What I read this to clearly say is if I am the person at
+CDD, doing the social media stuff, and I see that Craig Kelly or some Councillor Devereaux or whoever was at that
+party, because the software that Facebook has is providing that information, then I'm breaking the law. I absolutely
+am with you on the surveillance part of things and I don't like that and I don't like the idea of waving it. But on the
+other hand, some of this stuff is so embedded in what we do in just a daily basis, we want to make sure we're not
+setting up a situation where the well meaning administrator says, "Oh, yeah, that's who was there. Let's send them a
+note about the next meeting" or something like that.
+Emiliano Falcon 49:17
+Thank you. And I think that in that case, it would depend if the facial recognition software of Facebook identified
+you or whoever was in the picture, because sometimes people just tag each other and doesn't use facial recognition
+technology. So how Facebook facial recognition technology works that one has to kind of... I don't know if... I'm not
+sure if it's like an opt in or an opt out if Facebook asks you if you want Facebook to use facial recognition
+technology over your face. So I would say that in that case, if Facebook use facial recognition technology, and then
+the City use Facebook. And in that case Facebook use facial recognition technology then yes, the city will be
+prevented from from using Facebook in that particular case. Of course then you have the unintentional and
+inadvertant received so that might provide a way out. It's hard to say, but we're happy to work. if you want to come
+up with some language that clarifies this.
+Councillor Craig Kelley 50:28
+I may be making a mountain out of a molehill here, but when I go on Facebook it identifies people for me without
+my asking. And I suspect that's the same case with a lot of people.
+Vice Mayor Jan Devereux 50:43
+
+City of Cambridge
+
+Page 12
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+Yeah, it will suggest you might want to tag somebody. It recognizes the face and says is this Craig? want to tag him?
+And then therefore everybody knows that Craig attended that party. Yeah.
+Emiliano Falcon 50:56
+Yes, but I think that you have to consent into that. If I'm... No?
+Vice Mayor Jan Devereux 51:02
+You can have settings.
+Emiliano Falcon 51:03
+I don't have Facebook, so...
+Vice Mayor Jan Devereux 51:06
+Yeah, I mean, we're allowing ourselves to be surveilled all the time by... Yeah, no, Facebook has settings that you
+can say anyone can tag you or they have to request permission first. It's a good thing to have. There is also... I
+wanted to also ask... There are all these doorbells that Amazon sends. The Amazon ring doorbell that takes an image
+of you and like sends a picture to Craig's cell phone that says, hey, look, Jan is ringing your doorbell you're not
+home. But now you know, Jan was on your door. And I think those pictures get like, kept by Amazon and probably
+used for all kinds of things we don't know about. But this ordinance only, like our other one, only protects people
+against the city using this technology. So all of us are being surveilled voluntarily and involuntarily. It seems like all
+the time.
+Councillor Craig Kelley 51:58
+But in your case Which I think is a really good one, when we think about package stuff, so someone walks up to a
+doorbell or sorry, walks up to a porch, grabs a handful of packages and then leaves. But they are recorded by the
+ring or some other type of surveillance device. What this ordinance is saying and what I support is, we can look at
+the... city staff or whoever can look at the pictures and say, do we recognize this person? Does anyone recognize this
+person? And the answer is no. But what we couldn't do is we couldn't post it on Facebook and see if Facebook
+suggests the tag for that person because that would be using some sort of facial recognition software, nor could we
+give it to whoever say the UAC people and have them run it through a database.
+Branville Bard, Police Commissioner 52:56
+Chair. I think you are conflating issues. We could put that picture on social media and say, does anybody recognize
+this guy? And that will be completely okay. We're not asking for...
+Councillor Craig Kelley 53:07
+That is not what I'm saying. I'm saying you put it on Facebook and Facebook says, this person might be such and
+such who's been tagged elsewhere. I understand you can ask other people if the person is known. But if you put it up
+on Facebook, and it provides a possible tag, then that's facial recognition software.
+Branville Bard, Police Commissioner 53:26
+I don't know what those algorithms are and how that comes into play. But I mean, I hate to even keep bringing up
+the point or the argument because then it makes it feel like that I'm against banning facial recognition software and
+technology. And I'm completely not against banning it. I think that public safety for police. We prevent crime and
+protect civil rights and when those two collide, then protecting the civil rights has to carry the day. All technology
+can be leveraged and abused. Rarely does. The answer exist in... You know, the polar opposites. It is always, mostly
+always, somewhere in the middle. Here, I think the remedy lies closer to the total ban. But if you can envision a
+scenario where the technology could be helpful, then I think it's unreasonable to hamstring yourself and to never
+being able to use that technology. And that's all.
+Nancy Glowa 54:28
+If I could just add on to that, I mean, this this conversation has raised two concerns. So could there be a way of
+refining the definition even more to somehow differentiate between using technologies that other entities are already
+using like Facebook, or software that the city staff is intentionally using? So I don't know if that's a possibility, but
+that's one thought I have but the other thing I wanted to say is that, as the council knows the council is very
+
+City of Cambridge
+
+Page 13
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+interested in having the city try to enforce the short term rental ordinance. And it's very difficult to enforce
+ordinances like that, where you're talking about how people are, you know, using their property and in order to
+enforce ordinances like that ordinance and many other ordinances or laws. The city often relies upon information
+provided by third parties. And in one of the few cases where the city was successfully able to go after violations of
+that ordinance. It was because of door bell camera recognition images that were provided to city staf. That city staff
+was able to use in dealing with the other owners or residents of the property in order to and to leverage that
+information. So that raises the question if a complainant, a person who's complaining about a violation of some law,
+brings such an image to the city, would this mean that we would not be able to use that? Because in that situation,
+for example, in that... doesn't... it that's not completely infrequent that that's how we would get word of things like
+that. Is that what's intended here because that would be helpful to know and to make sure that the city is doing that
+deliberately.
+Councillor Craig Kelley 56:30
+So since you brought up short term rentals, we are we are renting a place in Ripton, Vermont, which has about 1500
+people in it. And they require people to place their Airbnb registration number on the site. Cambridge for reasons I
+cannot explain, does not and that would be one way of addressing that concern. Your larger concern though, I think
+is if someone comes to the police department, and says, this person took the packages off my porch and I know who
+this person is because I have them photographed on my ring doorbell. And I ran it through Facebook or some other
+commercially available database that does facial recognition software, then what this would be saying is the police
+department cannot act on that information. We can't use it. We can't retain it. We can't share it. We can't do anything
+on it.
+Nancy Glowa 57:31
+Mr. Chair, through you. It suggests that to me, so if that's not what's intended, then it could benefit from some
+clarification and if it is what's intended, then that could have an impact on other enforcement activities of the city
+and various departments.
+Councillor Craig Kelley 57:48
+Right for from my point of view, it is what is intended and I would be willing to pay that cost as a society. Vice
+Mayor?
+Vice Mayor Jan Devereux 57:57
+Yeah, and given the relatively high false ID thing, I don't really want to enable a whole bunch of amateur detectives
+by saying, hey, great, I got this fancy doorbell and I got Facebook and I just solved the crime for you. You know, go
+find this guy and his house. I don't. You know, the other thing about Facebook tagging, though, I believe when you
+use like, as opposed to a personal account a page like Cambridge police or even some of the candidate pages, for
+instance, I don't think the tagging works the same way because you aren't friends with somebody you have simply
+like to page. So in the example that Craig gave about the police department being able to... you wouldn't have that
+unless, I think it was on a friend. Not that it really matters, but I think we're getting into the nuances of Facebook. A
+huge rabbit hole.
+Councillor Craig Kelley 58:55
+If we are talking about surveillance. Yes.
+Vice Mayor Jan Devereux 58:57
+Yeah. But it is different. There is a different level. For... of privacy, if you can even call it that on Facebook for
+pages accounts that are sort of the city versus you Craig as a person.
+Councillor Craig Kelley 59:13
+And we have your motion on the table, which at some point we have to vote on. But I think that illustrates the larger
+point of... there's a whole bunch of stuff out here that we don't know exists or don't understand how it exists, and it's
+going to become more stuff in the future rather than less stuff. And I, you know, I'd rather frankly, have the council
+come back at some point in life and amend the ordinance based on what happens rather than have an exemption now
+that the council would vote on. So if no one else has comments. The Vice Mayor has a motion on the floor to send
+
+City of Cambridge
+
+Page 14
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+this to the City Council. I guess with no recommendation, as we have amended it, and we have only amended it
+with, I think, five separate words. There's no waiver at this point in what's on the table.
+Vice Mayor Jan Devereux 1:00:07
+Why wouldn't we give it a recommendation?
+Councillor Craig Kelley 1:00:09
+We could. I'm begging that question.
+Vice Mayor Jan Devereux 1:00:12
+Seems like we are pretty favorable.
+Councillor Craig Kelley 1:00:14
+Okay. So to send this to the Council with a favorable recommendation. All in favor say aye. Aye. Opposed, nay.
+This can pass whenever the... Actually, it could be one of our last votes Vice Mayor. My understanding is this can
+come to the council and be ordained because it's not a zoning provision by a five vote majority on the night that it
+comes to the council, is that correct? Okay, so 10 days, so maybe we can't make that deadline, but we shall see.
+Okay, super. Yes, Madam Chair... Madam Solicitor. Whoever you are.
+Nancy Glowa, City Solicitor 1:00:58
+Thank you, Mr. Chari. I just... since this is going to the council, as amended. I just wanted to raise two other
+suggestions for consideration. Just while the committee is still here. Would it be helpful in the definition where it
+says facial recognition technology means an automated or semi automatic... semi automated process? Would it be
+helpful to say there electronic software or other process to indicate that these are electronic software type programs?
+That's just one thought. And certainly I can, you know, mention these if and when it comes to the council. But the
+other thing about the Facebook conversation, would it be helpful to consider at the end of the sentence where it says,
+you know: "identifying or capturing information about an individual based on the physical characteristics" to add
+"without that individuals consent". I don't use Facebook either but my understanding is that you agree to Facebook,
+making your image available for people to tag if you're friends with those people and. So that it's a consensual
+process by which that information is available. If that's not helpful, feel free to disregard. I just wanted to throw it
+out there. Thank you.
+Councillor Craig Kelley 1:02:18
+Comments? Emiliano?
+Emiliano Falcon 1:02:21
+Yes, I am not sure about the consent. Because most of these systems don't use the consent of the people's faces, like
+the RMV, for example, you never consent to a use by the RMV of the driver's licenses by law enforcement, for
+example. And Facebook, I'm not sure how that works either. And a lot of other programs don't require consent
+actually. That's one of the problems.
+And as to their software app, I think that it's automated or semi automated. It's clear that it's a software. I don't if you
+want to include the word "software", it might confuse? I don't know, I think that automated it, it's clear or semi
+automated that it involves computer programs and software. So...
+Councillor Craig Kelley 1:03:18
+Comments? No. Well,
+Will Durbin, Chief of Staff to Mayor McGovern 1:03:22
+Thank you, Mr. Chair. Just really quickly I wanted to talk about the timeline for the council because the Mayor will
+be submitting, for next week, a policy order asking that the 23rd be cancelled as a City Council meeting. Which will
+remove that date as a possible ordination date, but that I believe is the second day of Hanukkah. And we will be
+submitting a proposal or asking the council to cancel that date.
+
+City of Cambridge
+
+Page 15
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+December 3, 2019
+
+Keep the 30th, the 9th and the 16th.
+Councillor Craig Kelley 1:03:53
+The 30th might be a tough one. But I mean, there's no particularly rushed to ordain this. It doesn't have a calendar.
+Just be kind of fun from my perspective. It may be from Mark and Jan's as well. But I don't see any need to rush it if
+the calendar doesn't otherwise work for it.
+Vice Mayor Jan Devereux 1:04:10
+Does it just automatically get carried over? Because it was... I don't know. I mean, I don't see why we wouldn't try to
+ordain it if we could...
+Anthony Wilson, City Clerk 1:04:25
+Yeah, so there's so this is not a zoning ordinance. So it doesn't have the same deadlines that a zoning ordinance
+would have. My understanding is that if you move it out of committee today and it came before the council, ideally
+on the 9th, but more than likely, probably on the 16th. And then 10 days after whatever date it was before the
+council, it can be ordained whether it's in this session or the next.
+Councillor Craig Kelley 1:04:52
+Okay, any other questions or comments? Thank you all for your time. And I imagine we'll see some of you back
+here shortly.
+1.
+
+That the Amendment to Chapter 2.128 Surveillance Ordinance Technology be forwarded to the
+Public Safety Committee for a hearing.
+
+WHEREA
+S:
+
+The City Council passed Chapter 2.128 Surveillance Technology Ordinance on
+December 10, 2018, which imposed a requirement that the City Manager seek
+approval from the City Council prior to acquiring or using certain surveillance
+technology, including Biometric Surveillance Technology and facial recognition
+software and databases; and
+
+WHEREA
+S:
+
+Notwithstanding this existing check on the City’s authority to acquire and use face
+recognition technology or data derived thereof, the potential threats to residents’
+civil rights and civil liberties that are unique to face recognition technology
+warrant its outright ban; and
+
+WHEREA
+S:
+
+Facial recognition software can discriminate based on classes like race and gender;
+a 2018 report out of the MIT Media Lab and Microsoft “Gender Shades:
+Intersectional Accuracy Disparities in Commercial Gender Classification” found
+that while the “maximum error rate for lighter-skinned makes is 0.8%” in
+commercial gender classification systems, “darker skinned females are the most
+misclassified group (with error rates up to 34.7%);” and
+
+WHEREA
+S:
+
+The use of face recognition technology can have a chilling effect on the exercise of
+constitutionally protected free speech, with the technology being used in China to
+target ethnic minorities, and in the United States, it was used by police agencies in
+Baltimore, Maryland, to target activists in the aftermath of Freddie Gray’s death;
+and
+
+City of Cambridge
+
+Page 16
+
+cambridgema.gov
+
+Minutes
+
+Public Safety Committee
+
+WHEREA
+S:
+
+December 3, 2019
+
+State Representative Dave Rogers (whose district includes parts of Cambridge) has
+filed legislation that would impose a moratorium on face recognition technology,
+and as recently as Thursday, July 25, 2019, Representative Ayanna Pressley
+introduced a bill before Congress that would:
+1.
+2.
+
+Prohibit the use of biometric recognition technology in public and assisted housing
+units funded under HUD; and
+Require HUD to submit a report to Congress that provides analysis on any known
+use of facial recognition technologies in public housing units; the impact of
+emerging technologies on tenants; the purpose of installing the technologies in the
+units; demographic information of impacted tenants, and; the impact of emerging
+technologies on vulnerable communities in public housing, including tenant
+privacy, civil rights and fair housing includes HUD federally assisted rental
+dwelling units;
+
+WHEREA
+S:
+
+Three cities have already banned the use of facial recognition technology by
+municipal authorities, including San Francisco, Oakland (CA), and next door in
+Somerville; now therefore be it
+
+ORDERE
+D:
+
+That the attached amendment to Chapter 2.128 Surveillance Ordinance
+Technology be forwarded to the Public Safety Committee for a hearing as soon as
+possible.
+
+RESULT:
+2.
+
+REFERRED
+
+Next: 12/9/2019 5:30 PM
+
+A communication was received from Emilian Falcon of the American Civil Liberties Union of
+Massachusetts regarding the Face Surveillance Ban
+
+RESULT:
+City of Cambridge
+
+PLACED ON FILE
+
+Page 17
+
+cambridgema.gov
+
+
