@@ -51,21 +51,37 @@ councillors:
       - Ayesha
       - Wilson
       - Ayesha Wilson
-
+  - name: Jan Devereux
+    aliases:
+      - Devereux
   - name: Joan Pickett
     aliases:
       - Joan
       - Pickett
+  - name: Craig A. Kelley
+    aliases:
+      - Craig Kelley
+      - Craig
+      - Kelley
 sessions:
+  2018:
+    mayor: Marc C. McGovern
+    vice_mayor: Jan Devereux
+    councillors:
+      - Dennis J. Carlone
+      - Alanna Mallon
+      - Sumbul Siddiqui
+      - E. Denise Simmons
+      - Timothy J. Toomey
+      - Quinton Zondervan
+      - Craig A. Kelley
   2020:
     mayor: Sumbul Siddiqui
     vice_mayor: Alanna Mallon
     councillors:
       - Dennis J. Carlone
-      - Alanna Mallon
       - Marc C. McGovern
       - Patricia Nolan
-      - Sumbul Siddiqui
       - E. Denise Simmons
       - Jivan Sobrinho-Wheeler
       - Timothy J. Toomey
@@ -76,10 +92,8 @@ sessions:
     councillors:
       - Burhan Azeem
       - Dennis J. Carlone
-      - Alanna Mallon
       - Marc C. McGovern
       - Patricia Nolan
-      - Sumbul Siddiqui
       - E. Denise Simmons
       - Paul F. Toner
       - Quinton Zondervan
@@ -88,10 +102,8 @@ sessions:
     vice_mayor: Marc C. McGovern
     councillors:
       - Burhan Azeem
-      - Marc C. McGovern
       - Patricia Nolan
       - Sumbul Siddiqui
-      - E. Denise Simmons
       - Paul F. Toner
       - Ayesha M. Wilson
       - Jivan Sobrinho-Wheeler
