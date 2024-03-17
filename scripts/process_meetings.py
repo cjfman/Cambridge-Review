@@ -57,6 +57,7 @@ APP_HDRS = (
     "Category",
     "Name",
     "Address",
+    "Subject",
     "Charter Right",
     "Outcome",
     "Vote",
@@ -65,7 +66,6 @@ APP_HDRS = (
     "Present",
     "Absent",
     "Recused",
-    "Subject",
     "Link",
     "Notes",
 )
@@ -893,7 +893,8 @@ def processApp(args, uid, num, title, link, vote, action) -> Application:
     ## Attempt to get the name
     name    = ""
     subject = ""
-    regex = re.compile(r"An? (?:application|(?:zoning )?petition|request) (?:has been|was) received from (.+?),? ((?:requesting (?:permission|that)|regarding|to amend) .+)", re.IGNORECASE)
+    options = "|".join(("regarding", "to amend", "transmitting", "petitioning", "opposing", "urging"))
+    regex = re.compile(fr"An? (?:application|(?:zoning )?petition|request) (?:has been|was) (?:received? ?from|filed by) (.+?),? ((?:requesting ?(?:permission|that)?|{options}) .+)", re.IGNORECASE)
     match = regex.search(title)
     if match:
         name, subject = match.groups()
