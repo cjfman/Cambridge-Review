@@ -1,0 +1,1099 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en" lang="en">
+<head id="HeadMain"><title>
+	2018/02/26 05:30 PM City Council Regular Meeting - Web Outline - Cambridge City, MA
+</title><meta http-equiv="X-UA-Compatible" content="IE=9" /><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"2fdd6b8d1a","applicationID":"142416098","transactionName":"YwdbYEZTVxYHABALW1pNeGdkHVoMEgoeB1pHTV1RQFNQCTkOAQdAXQxeGlVBSR0=","queueTime":0,"applicationTime":1272,"agent":"","atts":"T0BYFg5JGwsUTRAQXUQrXRYOEH9SUCJXV3AAUA4CB3AIIVFBGR8="}</script><script type="text/javascript">(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:false},ajax:{deny_list:[]}};(window.NREUM||(NREUM={})).loader_config={xpid:"UQEHVFZACQcCUFBUBwgP",licenseKey:"2fdd6b8d1a",applicationID:"142416098"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var i,o=t("ee"),a=t(27),s={};try{i=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,i.indexOf("dev")!==-1&&(s.dev=!0),i.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&o.on("internal-error",function(t){r(t.stack)}),s.dev&&o.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{p?p-=1:i(s||new UncaughtException(t,e,n),!0)}catch(f){try{o("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function i(t,e){var n=e?null:c.now();o("err",[t,n])}var o=t("handle"),a=t(28),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError";if(!c.disabled){var p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(10),t(9),"addEventListener"in window&&t(6),c.xhrWrappable&&t(11),d=!0)}s.on("fn-start",function(t,e,n){d&&(p+=1)}),s.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,i(n))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){o("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(){var t=new PerformanceObserver(function(t,e){var n=t.getEntries();s(v,[n])});try{t.observe({entryTypes:["resource"]})}catch(e){}}function i(t){if(s(v,[window.performance.getEntriesByType(w)]),window.performance["c"+l])try{window.performance[h](m,i,!1)}catch(t){}else try{window.performance[h]("webkit"+m,i,!1)}catch(t){}}function o(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var a=t("ee"),s=t("handle"),c=t(10),f=t(9),u=t(5),d=t(19),l="learResourceTimings",p="addEventListener",h="removeEventListener",m="resourcetimingbufferfull",v="bstResource",w="resource",g="-start",y="-end",x="fn"+g,b="fn"+y,E="bstTimer",R="pushState",S=t("loader");if(!S.disabled){S.features.stn=!0,t(8),"addEventListener"in window&&t(6);var O=NREUM.o.EV;a.on(x,function(t,e){var n=t[0];n instanceof O&&(this.bstStart=S.now())}),a.on(b,function(t,e){var n=t[0];n instanceof O&&s("bst",[n,e,this.bstStart,S.now()])}),c.on(x,function(t,e,n){this.bstStart=S.now(),this.bstType=n}),c.on(b,function(t,e){s(E,[e,this.bstStart,S.now(),this.bstType])}),f.on(x,function(){this.bstStart=S.now()}),f.on(b,function(t,e){s(E,[e,this.bstStart,S.now(),"requestAnimationFrame"])}),a.on(R+g,function(t){this.time=S.now(),this.startPath=location.pathname+location.hash}),a.on(R+y,function(t){s("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),u()?(s(v,[window.performance.getEntriesByType("resource")]),r()):p in window.performance&&(window.performance["c"+l]?window.performance[p](m,i,d(!1)):window.performance[p]("webkit"+m,i,d(!1))),document[p]("scroll",o,d(!1)),document[p]("keypress",o,d(!1)),document[p]("click",o,d(!1))}}},{}],5:[function(t,e,n){e.exports=function(){return"PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&i(e)}function i(t){s.inPlace(t,[u,d],"-",o)}function o(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(i(window),i(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1];if(null!==n&&("function"==typeof n||"object"==typeof n)){var r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=o(arguments),e={};i.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return i.emit(n+"start",[t,a],s),s.then(function(t){return i.emit(n+"end",[null,t],s),t},function(t){throw i.emit(n+"end",[t],s),t})})}var i=t("ee").get("fetch"),o=t(28),a=t(27);e.exports=i;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(s,"fetch",c),i.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),i.emit(c+"done",[null,e],n)}else i.emit(c+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),i=t("wrap-function")(r);e.exports=r;var o=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;o&&o.pushState&&o.replaceState&&(a=o),i.inPlace(a,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){var r=t("ee").get("raf"),i=t("wrap-function")(r),o="equestAnimationFrame";e.exports=r,i.inPlace(window,["r"+o,"mozR"+o,"webkitR"+o,"msR"+o],"raf-"),r.on("raf-start",function(t){t[0]=i(t[0],"fn-")})},{}],10:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function i(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var o=t("ee").get("timer"),a=t("wrap-function")(o),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=o,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),o.on(c+u,r),o.on(s+u,i)},{}],11:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function i(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function o(t){x.push(t),m&&(E?E.then(a):w?w(a):(R=-R,S.data=R))}function a(){for(var t=0;t<x.length;t++)r([],x[t]);x.length&&(x=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=t(19),p=NREUM.o,h=p.XHR,m=p.MO,v=p.PR,w=p.SI,g="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],x=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new h(t);try{u.emit("new-xhr",[e],e),e.addEventListener(g,i,l(!1))}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(h,b),b.prototype=h.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),o(e)}),u.on("open-xhr-start",r),m){var E=v&&v.resolve();if(!w&&!v){var R=1,S=document.createTextNode(R);new m(a).observe(S,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===g||a()})},{}],12:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=p.generateSpanId(),m=p.generateTraceId(),v=Date.now(),w={spanId:h,traceId:m,timestamp:v};return(t.sameOrigin||c(t)&&l())&&(w.traceContextParentHeader=i(h,m),w.traceContextStateHeader=o(h,v,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(w.newrelicHeader=a(h,m,v,n,r,f)),w}function i(t,e){return"00-"+e+"-"+t+"-01"}function o(t,e,n,r,i){var o=0,a="",s=1,c="",f="";return i+"@nr="+o+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,i,o){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:i,id:t,tr:e,ti:n}};return o&&r!==o&&(s.d.tk=o),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var i=h(n.allowed_origins[r]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function l(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var p=t(24),h=t(14);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],13:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);return e.protocol&&"data"===e.protocol?void g("Ajax/DataUrl/Excluded"):void(e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):o(this,t),n.cbTime=this.cbTime,s("xhr",[e,n,this.startTime,this.endTime,"xhr"],this)))}}function i(t,e){var n=c(e),r=t.params;r.hostname=n.hostname,r.port=n.port,r.protocol=n.protocol,r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function o(t,e){t.params.status=e.status;var n=v(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(14),f=t(12).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(20),m=t(18),v=t(15),w=t(19),g=t(21).recordSupportability,y=NREUM.o.REQ,x=window.XMLHttpRequest;a.features.xhr=!0,t(11),t(7),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){o(e,t)},w(!1)),h&&(h>34||h<10)||t.addEventListener("progress",function(t){e.lastSize=t.loaded},w(!1))}),u.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],i=this;if(n&&r){var o=m(r);o&&(n.txSize=o)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||i.loadCaptureCalled||(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<l;s++)e.addEventListener(d[s],this.listener,w(!1))}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("xhr-resolved",function(){this.endTime=a.now()}),u.on("addEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof x&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var i=f(this.parsedOrigin);if(i&&(i.newrelicHeader||i.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var o={};for(var a in r)o[a]=r[a];o.headers=new Headers(r.headers||{}),e(o.headers,i)&&(this.dt=i),t.length>1?t[1]=o:t.push(o)}else t[0]&&t[0].headers&&e(t[0].headers,i)&&(this.dt=i)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),this.dt=e,t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},o=this.target;if("string"==typeof o?n=o:"object"==typeof o&&o instanceof y?n=o.url:window.URL&&"object"==typeof o&&o instanceof URL&&(n=o.href),i(this,n),"data"!==this.params.protocol){var s=(""+(o&&o instanceof y&&o.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}}),u.on("fetch-done",function(t,e){if(this.endTime=a.now(),this.params||(this.params={}),"data"===this.params.protocol)return void g("Ajax/DataUrl/Excluded");this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime,this.endTime,"fetch"],this)})}},{}],14:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];if(0===(t||"").indexOf("data:"))return{protocol:"data"};var e=document.createElement("a"),n=window.location,i={};e.href=t,i.port=e.port;var o=e.href.split("://");!i.port&&o[1]&&(i.port=o[1].split("/")[0].split("@").pop().split(":")[1]),i.port&&"0"!==i.port||(i.port="https"===o[0]?"443":"80"),i.hostname=e.hostname||n.hostname,i.pathname=e.pathname,i.protocol=o[0],"/"!==i.pathname.charAt(0)&&(i.pathname="/"+i.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return i.sameOrigin=a&&(!e.hostname||s),"/"===i.pathname&&(r[t]=i),i}},{}],15:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?i(t.response):"text"===n||""===n||void 0===n?i(t.responseText):void 0}var i=t(18);e.exports=r},{}],16:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return u.recordSupportability("API/"+e+"/called"),o(t+e,[f.now()].concat(s(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(27),s=t(28),c=t("ee").get("tracer"),f=t("loader"),u=t(21),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var l=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",h=p+"ixn-";a(l,function(t,e){d[e]=i(p,e,!0,"api")}),d.addPageAction=i(p,"addPageAction",!0),d.setCurrentRouteName=i(p,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(h+"tracer",[f.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[f.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(h,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),u.recordSupportability("API/noticeError/called"),o("err",[t,f.now(),!1,e])}},{}],17:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],20:[function(t,e,n){var r=0,i=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);i&&(r=+i[1]),e.exports=r},{}],21:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[s,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",s="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:s},recordSupportability:r,recordCustom:i}},{}],22:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,s=t(29);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],23:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?p("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&p("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(f&&f<r.startTime)return;var i=[r],o=a({});o&&i.push(o),p("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||p("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function s(t){if(t instanceof w&&!y){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=h.now()?n.fid=h.now()-e:e>h.offset&&e<=Date.now()?(e-=h.offset,n.fid=h.now()-e):e=h.now(),y=!0,p("timing",["fi",e,n])}}function c(t){"hidden"===t&&(f=h.now(),p("pageHide",[f]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,d,l,p=t("handle"),h=t("loader"),m=t(26),v=t(19),w=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){u=new PerformanceObserver(r);try{u.observe({entryTypes:["paint"]})}catch(g){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(g){}l=new PerformanceObserver(o);try{l.observe({type:"layout-shift",buffered:!0})}catch(g){}}if("addEventListener"in document){var y=!1,x=["click","keydown","mousedown","pointerdown","touchstart"];x.forEach(function(t){document.addEventListener(t,s,v(!1))})}m(c)}},{}],24:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var i,o="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<o.length;s++)i=o[s],"x"===i?a+=t().toString(16):"y"===i?(i=3&t()|8,a+=i.toString(16)):a+=i;return a}function i(){return a(16)}function o(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,i=window.crypto||window.msCrypto;i&&i.getRandomValues&&Uint8Array&&(n=i.getRandomValues(new Uint8Array(t)));for(var o=[],a=0;a<t;a++)o.push(e().toString(16));return o.join("")}e.exports={generateUuid:r,generateSpanId:i,generateTraceId:o}},{}],25:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],26:[function(t,e,n){function r(t){function e(){t(s&&document[s]?document[s]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(19);e.exports=r;var o,a,s;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",s="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",s="webkitVisibilityState")},{}],27:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],28:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],29:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!p.aborted||o){t&&a&&t(n,r,i);for(var s=e(i),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var l=d[y[n]];return l&&l.push([x,n,r,s]),s}}function o(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function v(t){return l[t]=l[t]||i(n)}function w(t,e){p.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:o,addEventListener:o,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:s,aborted:!1};return x}function o(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(p.aborted=!0,d=p.backlog={})}var c="nr@context",f=t("gos"),u=t(27),d={},l={},p=e.exports=i();e.exports.getOrSetContext=o,p.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!O++){var t=S.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+S.offset],null,"api"),s("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=p+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){s("mark",["domContent",a()+S.offset],null,"api")}var a=t(22),s=t("handle"),c=t(27),f=t("ee"),u=t(25),d=t(17),l=t(19),p=d.getConfiguration("ssl")===!1?"http":"https",h=window,m=h.document,v="addEventListener",w="attachEvent",g=h.XMLHttpRequest,y=g&&g.prototype,x=!1;NREUM.o={ST:setTimeout,SI:h.setImmediate,CT:clearTimeout,XHR:g,REQ:h.Request,EV:h.Event,PR:h.Promise,MO:h.MutationObserver};var b=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1216.min.js"},R=g&&y&&y[v]&&!/CriOS/.test(navigator.userAgent),S=e.exports={offset:a.getLastTimestamp(),now:a,origin:b,features:{},xhrWrappable:R,userAgent:u,disabled:x};if(!x){t(16),t(23),m[v]?(m[v]("DOMContentLoaded",o,l(!1)),h[v]("load",r,l(!1))):(m[w]("onreadystatechange",i),h[w]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var O=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var o,a,u,l;try{a=this,o=d(arguments),u="function"==typeof r?r(o,a):r||{}}catch(p){i([p,"",[o,a,c],u],t)}s(n+"start",[o,a,c],u,f);try{return l=e.apply(a,o)}catch(h){throw s(n+"err",[o,a,h],u,f),h}finally{s(n+"end",[o,a,l],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[l]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,i,c,o))}function s(n,r,o,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=l,n}function i(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)p.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[l])}function s(t,e){var n=e(t);return n[l]=t,o(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(28),l="nr@original",p=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,13,4,3]);</script>
+
+    <!-- this fixes a minor rendering issue with tables on the ipad -->
+    <meta content="width=device-width, initial-scale=1.0;" name="viewport" />
+
+    <!-- Agency specific meta tags -->
+    <meta name='google-site-verification' content='gk1uzLohfTCOHIcLpPfTMdkFQr1kAWFQpfsKsziX7T8' />
+<meta name='msvalidate.01' content='E8AC0C05C619B2FA426BD3B3D08FF440' />
+
+
+    <!-- open search discovery -->
+    <link rel="search" type="application/opensearchdescription+xml" href="/Services/GetFederatedSearch.aspx" title="IQM2 search" />
+
+    <!-- Icon -->
+    <link href="/favicon.ico?v=2018" rel="icon" />
+
+    <!-- CSS Links -->
+    <link type="text/css" href="/App_Themes/Main.css?v=86" rel="Stylesheet" /><link type="text/css" href="/lib/jquery-ui.css" rel="stylesheet" />
+ 
+  <script>
+      !function () { var a, b, c, d = window, e = document, f = arguments, g = "script", h = ["config", "track", "trackForm", "trackClick", "identify", "visit", "push", "call"], i = function () { var a, b = this, c = function (a) { b[a] = function () { return b._e.push([a].concat(Array.prototype.slice.call(arguments, 0))), b } }; for (b._e = [], a = 0; a < h.length; a++) c(h[a]) }; for (d.__woo = d.__woo || {}, a = 0; a < f.length; a++) d.__woo[f[a]] = d[f[a]] = d[f[a]] || new i; b = e.createElement(g), b.async = 1, b.src = "//static.woopra.com/js/w.js", c = e.getElementsByTagName(g)[0], c.parentNode.insertBefore(b, c) }("woopra");
+
+      woopra.config({
+          domain: "iqm2.com",
+          cookie_name:"accelaTracker"
+      });
+      woopra.track("mp_pv", {
+          domain: window.location.hostname,
+          title: document.title,
+          url: window.location.href,
+          uri: window.location.pathname,
+          hash: window.location.hash,
+          error: null
+      });
+  </script>
+    <!-- IQM2 Scripts -->
+    <script type="text/javascript" src="/lib/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="/App_Themes/Global.js?v=8_10_48"></script>
+    <script type="text/javascript" src="/lib/MinuteTraq.PopupWindow.js"></script>
+    <script type="text/javascript" src="/lib/jquery-ui.js"></script>
+    <link href="https://unpkg.com/video.js@7.21.1/dist/video-js.css" rel="stylesheet" /><link href="/Scripts/videojs-live-dvr/videojs-dvrseekbar.css" rel="stylesheet" />
+    <script src="https://unpkg.com/video.js@7.21.1/dist/video.js"></script>
+    <script src='https://unpkg.com/videojs-flash@2.1.0/dist/videojs-flash.min.js'></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+    <script src="/Scripts/videojs-live-dvr/videojs-dvrseekbar.min.js"></script>
+    <script type='text/javascript' src='/Scripts/player.js'></script>
+    <script type="text/javascript" src="/Scripts/js.cookie-2.0.3.min.js"></script>
+    <!-- RSS Feeds (Site) -->
+    
+
+    <!-- Generated CSS Link -->
+    
+  
+    <!-- External CSS / Script Links -->
+    <link type='text/css' href='/Lib/GetCustomCSS.ashx?timestamp=638441114260000000' rel='Stylesheet' /><link type='text/css' href='/Citizens/GetImage.aspx?ID=1012' rel='Stylesheet' /><script type='text/javascript' src='/Citizens/GetImage.aspx?ID=1013'></script>
+    
+   
+    <!--[if IE 7]>
+	   <style type="text/css">
+        .Section H2 { display:inline;}
+        .RowTop div { display:inline;}
+   </style>
+	
+	<![endif]-->
+    
+    <script type="text/javascript" src="/Lib/MinuteTraq.Search.js?v=8_10_66"></script>
+    
+    <script type="text/javascript">
+        
+        // configure tracker
+        
+        $(function () {
+            
+            
+            FixFooterPosition();
+            $(window).on('resize', FixFooterPosition);
+
+            var h = $("#Banner").height();
+            //  var w = $("body").width();
+
+            var sCoords = "0,0,5000," + h;
+
+            $("#lnkBanner").attr("coords", sCoords);
+            var hideTopBanner = Cookies.get('hideTopBanner');
+            var appStyles = {display:'block'};
+            if (hideTopBanner) {
+                appStyles.display = 'none';
+            }
+            $('#topbarAppBanner').css(appStyles);
+            $('.close-topbar-app-banner').bind('click', function () {
+                $('#topbarAppBanner').css('display', 'none');
+                Cookies.set('hideTopBanner', true);
+            });
+            $('.link-wrapper-banner').bind('click', function () {
+                woopra.track('portal-wegovern-banner', {
+                    agency: Cookies.get('AgencyName'),
+                    username: Cookies.get('WebUserName')
+                });
+                return true;
+            });
+        });
+
+        function FixFooterPosition() {
+            //hack for the footer, display at bottom of screen if page is short
+            if ($("form").height() < $(window).height() - 100) {
+                $("#Footer").css("position", "absolute");
+                $("#Footer").css("bottom", "0");
+            }
+            else {
+                $("#Footer").css("position", "");
+            }
+        }
+
+    </script>
+    <style type="text/css" media="screen">
+        #topbarAppBanner {
+            min-height: 40px;
+            z-index: 1000;
+        }
+        .top-banner-app-inner{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 40px;
+            border: 1px solid rgba(10,10,10,.5);
+            box-shadow: 0px 0px 16px 0px #303030;
+            background-color: #456ca7;
+        }
+        .close-topbar-app-banner {
+            position: absolute;
+            display: block;
+            top: 25px;
+            right: 5%;
+            font-size: 1em;
+            color: #e3e3e3
+        }
+        .app-link{
+            display: block;
+            margin: 0 auto;
+            width: 40%;
+        }
+        .wegovern-banner-logo {
+            left: 22px;
+            position: relative;
+            padding-top: 1px;
+        }
+
+        @media screen and (max-width: 981px ){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width: 1595px){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (max-width: 1594px){
+            .inside-banner-link {
+                position: relative;
+                top: -30px;
+                left: 75px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width:1100px){
+            .app-link{
+                display: block;
+                margin: 0 auto;
+                width: 40%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+        }
+        @media screen and (max-width:1099px){
+            .app-link {
+                display: block;
+                margin: 0 auto;
+                width: 65%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+    </style>
+    
+
+    <!-- Page Level Header Stuff -->
+    
+
+    <!-- JQuery & UI -->
+    <link type="text/css" href="/lib/jquery-ui.css" rel="stylesheet" />
+	<script type="text/javascript" src="/lib/jquery-ui.js"></script>
+	<script type="text/javascript" src="/lib/jquery.caret.js"></script>
+
+    <script type="text/javascript" src="/lib/MinuteTraq.UserComment.js"></script>
+    
+    <script type="text/javascript">
+        
+        function showSpeakerSignup(meetingid) 
+        {
+            PopupWindowShow("/Citizens/SpeakerSignup.aspx?ID=" + meetingid);
+        }
+        
+        $(function () {
+           
+            $('.tracked').bind('click', function () {
+                var $link = $(this);
+
+                if (woopra) {
+                    woopra.track("download", {
+                        url: window.location.href,
+                        type: $link.attr('data-type')
+                    });
+                }
+            });
+            $(".ShowMoreSpeakersButton").click(function ()
+            {
+                var link = $(this);
+                link.css("display", "none");
+                var hidden = link.parent().find(".HiddenSpeakers");
+                hidden.slideDown();
+                return false;
+            });
+
+            $(".ShowFewerSpeakersButton").click(function () {
+                var link = $(this);
+                var hidden = link.parent().parent().find(".HiddenSpeakers");
+                hidden.slideUp();
+
+                var showMoreLink = link.parent().parent().find(".ShowMoreSpeakersButton");
+                showMoreLink.css("display", "");
+                return false;
+            });
+        });
+
+      
+    </script>
+    <style>
+        a.lastClicked {
+            background-color: khaki;
+            color: #000;
+        }
+        #MeetingDetail * {
+            max-width:685px;
+        }
+    </style>
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <meta http-equiv="EXPIRES" content="0">
+</head>
+
+<body id="MainLayout">
+    
+    <form method="post" action="./Detail_Meeting.aspx?ID=2082" id="aspnetForm" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="ZMOKjwsPKguyL5mBkdbHasaEgBiNMPiYjJBql/eTMqDz091GPoUWfH5lielLK1csNb2PLIVKc/OPyfEGXQa5d4R+eXRiW24Rtp7yVRT53nPbaWJCcMnsCY58Y7/9oJIDPnzFDZBgfbopU6FHwl9FbqNhZne0ZZR/oEmdelAHNSLUaD+TRpjAM1NNDeNkf2GrQgNj/qdL6fZ55TTCoVs6vw==" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1BACF619" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="AbMMdYWKReFATh74fH5thQjvxHp/1goEwyguLkw0RkcQzryssWM1Yu2tSVQn470jJBH42xnH5hUlFZ0o0y/hfOh4mtYbhquy/3R+ZfGLKzHK7aTSo5KY4RVRSPjGTAGskFcVpJjxQ6dI/CALkq8W7lH81TG9DmvAlMbgeVW93FXnlQbCPwrOsW7lJIGqERAHPImEGDQv/D698JqzvqciS/8i0QjstNDGtUyim2mYrOe0dC0GYtS/KMnq+VY77jrmAD/pVCWi5aOqwNZMJMWwasOitwFC1DIEsUjUPigZjv+9jruyaGS2n9+GanJonc/R" />
+</div>
+        <div style="display: none">
+            <input type="submit" name="ctl00$btnRefreshPageAfterLogin" value="Button" id="btnRefreshPageAfterLogin" class="btnRefreshPage" />
+            <input name="ctl00$hfShowPopupOnLoad" type="hidden" id="hfShowPopupOnLoad" class="hfShowPopup" />
+        </div>
+        <span id="lblScript"></span>
+  
+    <div id="MainWindow">
+    
+            <div id="Banner" role="banner"  >
+                <img usemap="#bannerMap" src="/Citizens/GetImage.aspx?ID=1017&TimeStamp=638441114260000000" alt="IQM2 Meeting Portal" />
+                <map name="bannerMap">
+                    <area href="/Citizens/Default.aspx" id="lnkBanner" shape="rect" alt="Home" Target="_self" />
+                </map>
+
+                <div id="LogoHeaderTextHolder">
+                    
+                                                                       
+                </div>
+            </div>
+            
+            <div id="ToolStrip" role="navigation" aria-label="site">
+                <div id="Tabs">
+                    <div class="Shadow"></div>
+                    <a href="http://www.cambridgema.gov/" id="lnkMainSite" class="Tab LeftTab"><div><span>&laquo;Back to Main Site</span></div></a>
+                    <a href="/Citizens/default.aspx" class="Tab NormalTab"><div><span id="tabWelcome">Welcome</span></div></a>
+                    <a href="/Citizens/calendar.aspx" class="Tab NormalTab"><div><span id="tabMeetings">Meetings</span></div></a>                
+                    <a href="/Citizens/" style="display:none" class="Tab NormalTab"><div dropdown="Browse"><span>Browse</span></div></a>
+                                        
+                                        
+                    <a href="/Citizens/LegalNotice.aspx" id="lnkNotices" class="Tab NormalTab"><div id="tabNotices"><span>Notices</span></div></a>                                        
+                    <a href="/Citizens/Board" class="Tab NormalTab"><div><span id="tabContactUs">Boards+</span></div></a>                                                        
+                </div>
+                <div id="TopExtraBoxTransparentBG"></div>
+                <div id="TopExtraBox">  
+                    <div id="TopLine">
+                        
+                     <a href="../MasterPages/#" id="lnkLogin" onclick="javascript:return PopupWindowShow(&#39;/Citizens/Login.aspx&#39;);">Log in</a><span id="spnThatOneStupidBar"> | </span><a href="mailto:support@granicus.com" id="lnkHelp">Help</a> <span id="spnHelpBar">|</span> <a href="../MasterPages/#" id="lnkRegister" onclick="javascript:return PopupWindowShow(&#39;/Citizens/MyAccount.aspx&#39;);">Register</a>                                                
+                    </div> 
+                    <div id="BottomLine">                       
+                          
+                    </div>                            
+                   <input name="ctl00$txtQuickSearch" type="text" id="txtQuickSearch" value="Search" title="Search" />
+                   <input type="image" name="ctl00$btnQuickSearch" id="btnQuickSearch" alt="Search" src="/Lib/images/search.png" style="cursor:pointer" />                   
+                </div>     
+            </div>
+                     
+            <table class="LayoutTable" role="presentation">
+                <tr>
+                    <td id="tdLeftPanel" class="LeftPanel">
+                        
+                        <div role="navigation" aria-label="Meeting Group">
+                            
+                        </div>
+                        
+                        <div class="DetailBox">
+                            <img src="/Citizens/images/Print.gif" border="0" alt="Print" />
+                            <a href="/Citizens/Detail_Meeting.aspx?ID=2082&Print=Yes" id="lnkPrint" class="PrintButton" target="_blank">Print This Page</a>                           
+                        </div>
+                        
+                        
+                                                
+                       <!-- <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 1" />
+                            <a href="#">Quick Link #1</a>
+                        </div>
+                        <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 2"  />
+                            <a href="#">Quick Link #2</a>
+                        </div>     -->
+                                      
+                    </td>
+
+                    <td id="MainContentHolder">
+                        <div style="width:100%;height:100%;position:relative;margin:0;padding:0;border:0;">
+                            <div id="MainContentLeftShadow">                           
+                            </div>   
+                          
+                            <div class="MainContentPlaceholder" role="main">
+                                
+                                
+
+    <style>
+        a.lastClicked {
+            background-color: khaki;
+            color: #000;
+        }
+    </style>
+    <script>
+        $('#divOutlineScroller a').click(function (e) {
+            $('a.lastClicked').removeClass('lastClicked');
+            $(e.currentTarget).addClass('lastClicked');
+        });
+    </script>
+    
+
+    <div       
+        >        
+        <div id="CC" style="background: Black; color: White; display:none;"></div>
+           
+        <div id="ContentPlaceholder1_pnlStart" style="width:100%;">
+	
+            <table border="0" width="100%" id="table1" cellpadding="5" role="presentation">
+                <tr>
+                    <td colspan="2" align="center" class="MeetingHeading">
+                        <span id="ContentPlaceholder1_lblMeetingGroup">City Council</span><br />
+                        <span id="ContentPlaceholder1_lblMeetingType">Regular Meeting</span><br />
+                        <span id="ContentPlaceholder1_lblMeetingDate">2/26/2018 5:30 PM</span>
+                        <br /> Sullivan Chamber<div class='MeetingAddress'>Cambridge City Hall&nbsp;&nbsp;&nbsp;795 Massachusetts Ave&nbsp;&nbsp;&nbsp;Cambridge, MA  02139</div>
+                       
+                        <span id="ContentPlaceholder1_lblMeetingStatus"></span>
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtMeetingID" id="ContentPlaceholder1_txtMeetingID" value="2082" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtMinutesID" id="ContentPlaceholder1_txtMinutesID" value="1819" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtAgendaID" id="ContentPlaceholder1_txtAgendaID" value="1895" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtFileFormat" id="ContentPlaceholder1_txtFileFormat" value="pdf" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">
+                        
+                    </td>
+                </tr>
+                <tr id="ContentPlaceholder1_trMeetingDetail">
+		<td id="ContentPlaceholder1_tdMainContent" align="left" valign="top" colspan="2" role="main" class=""> 
+                        <div id="ContentPlaceholder1_pnlDownloads" class="MeetingDownloads" style="width:100%;">
+			
+                            <strong>Downloads:</strong><br />
+                            <img id="ContentPlaceholder1_imgPublicAgendaFile" src="images/PublicAgenda.jpg" />
+                            <a id="ContentPlaceholder1_hlPublicAgendaFile" class="tracked Link" data-type="agenda" href="FileOpen.aspx?Type=14&amp;ID=1895&amp;Inline=True" target="_blank">Agenda Summary</a>
+                            <img id="ContentPlaceholder1_imgFullAgendaFile" src="images/FullAgenda.jpg" />
+                            <a id="ContentPlaceholder1_hlFullAgendaFile" class="tracked Link" data-type="agenda_packet" href="FileOpen.aspx?Type=1&amp;ID=1895&amp;Inline=True" target="_blank">Agenda Packet</a>
+                            
+                            
+                            
+                            
+                            
+                            <br />
+                            <img id="ContentPlaceholder1_imgPublicMinutesFile" src="images/PublicMinutes.jpg" />
+                            <a id="ContentPlaceholder1_hlPublicMinutesFile" class="Link" data-type="minutes" href="FileOpen.aspx?Type=15&amp;ID=1819&amp;Inline=True" target="_blank">Final Actions</a>
+                            <img id="ContentPlaceholder1_imgFullMinutesFile" src="images/FullMinutes.jpg" />
+                            <a id="ContentPlaceholder1_hlFullMinutesFile" class="Link" data-type="minutes_package" href="FileOpen.aspx?Type=12&amp;ID=1819&amp;Inline=True" target="_blank">Minutes</a>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <a href='javascript:void(0);' style='cursor:hand' Class='Link' OnClick='javascript:OpenWindow("/Citizens/SplitView.aspx?Mode=Video&MeetingID=2082&MinutesID=1819&FileFormat=pdf&Format=Minutes&MediaFileFormat=mp4");' &MediaFileFormat=mp4')><img src='images/VideoIcon_Off.gif' border='0' alt='Video (Windows Media)' /></a> <a href='javascript:void(0);' style='cursor:hand' Class='Link' OnClick='javascript:OpenWindow("/Citizens/SplitView.aspx?Mode=Video&MeetingID=2082&MinutesID=1819&FileFormat=pdf&Format=Minutes&MediaFileFormat=mp4");' &MediaFileFormat=mp4')>Video</a>
+                            
+                            
+                        
+		</div>
+                        
+                        <span id="ContentPlaceholder1_lblOutline"><table id='MeetingDetail' class='MeetingDetail' cellpadding='0' cellspacing='0'>
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Hearing Schedule</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=4521&CssClass='>HS-2017-3 : Regular City Council Meeting</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Call to Order</strong></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'>Roll Call</td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Pledge of Allegiance</strong></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Submission of the Record</strong></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Public Comment</strong></td></tr>
+
+<tr><td class='Num'><strong>I. </strong></td><td class='Title' colspan='10'><strong>City Manager's Agenda</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6439&CssClass='>CMA 2018 #36 : A communication transmitted from Louis A. DePasquale, City Manager, relative to the City of Cambridge retaining its noteworthy distinction of being one of approximately 33 municipalities in the United States with AAA ratings from each of the nation’s three major credit rating agencies.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30870&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4519&MeetingID=2082'>02262018_Moody's credit opinion - Cambridge MA 2018</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4520&MeetingID=2082'>02262018_Fitch New Issue Report (Cambridge, MA)</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4522&MeetingID=2082'>02262018 SP Cambridge MA report 2018</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6398&CssClass='>CMA 2018 #37 : A communication transmitted from Louis A. DePasquale, City Manager, relative to the reappointment of the following person as a Constable With Power for a term of three years, effective the first day of January, 2018:  Albert Darling</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30871&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6399&CssClass='>CMA 2018 #38 : A communication transmitted from Louis A. DePasquale, City Manager, relative to the appointment of the following person as a new member of the Human Rights Commisisoner for a term of three years, effective February 26, 2018:  Kuong Le</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30872&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6434&CssClass='>CMA 2018 #39 : A communication transmitted from Louis A. DePasquale, City Manager, relative to the appointment of the following persons as a members of the Half Crown-Marsh Neighborhood Conservation District Commission for a term of three years, effective February 26, 2018: James Van Sickle, Jo Solet, Maximilian Frank and Rory A. O'Connor</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30873&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6433&CssClass='>CMA 2018 #40 : Transmitting Communication from Louis A. DePasquale, City Manager, relative to the appropriation of of $27,875.80 in additional municipal access fees to the General Fund Cable Television Other Ordinary Maintenance account to provide additional payments to Cambridge Community Television (CCTV).</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">9-0-0</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30874&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6413&CssClass='>CMA 2018 #41 : A communication transmitted from Louis A. DePasquale, City Manager, relative to the appointment of the following person as a new member of the Conservation Commission for a term of three years, effective February 26, 2018:  Elyss Magnotto-Cleary</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30875&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6424&CssClass='>CMA 2018 #42 : A communication transmitted from Louis A. DePasquale, City Manager, relative to a request for the City Council vote to approve the use of the new voting equipment and to discontinue the use of the existing voting equipment effective immediately.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">9-0-0</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30876&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4517&MeetingID=2082'>New Voting Equipment TF letter</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4518&MeetingID=2082'>New Voting Equipment Docs</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4516&MeetingID=2082'>voting equipment order 022618</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6408&CssClass='>CMA 2018 #43 : A communication transmitted from Louis A. DePasquale, City Manager, relative to Awaiting Report Item Number 18-16, regarding a report on Inman Square construction.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30877&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4512&MeetingID=2082'>Inman Square AR 18-16</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4499&MeetingID=2082'>Inman Square AR 18-16 Community Meeting #5 Notice</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6402&CssClass='>CMA 2018 #44 : A communication transmitted from Louis A. DePasquale, City Manager, relative to a request for an aerial license for a structural canopy to be constructed over a portion of the public sidewalk in front of property located at 21 Erie Street.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">9-0-0</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30878&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4496&MeetingID=2082'>21 Erie License Docs Plans 02-26-18</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4511&MeetingID=2082'>21 Erie Street Order</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6401&CssClass='>CMA 2018 #45 : A communication transmitted from Louis A. DePasquale, City Manager, relative to Awaiting Report Item Number 17-86, regarding a report on the enforcement of idling-trains.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30879&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4495&MeetingID=2082'>Idling Trains</a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6437&CssClass='>CMA 2018 #46 : A communication transmitted from Louis A. DePasquale, City Manager, relative to Awaiting Report Item Number 17-88, regarding a report on providing clarification for the benefit of residents, visitors, and business owners on how the City views its obligations and constraints regarding marijuana enforcement and regulations; and Awaiting Report Item Number 18-8, regarding a report on any work that is currently underway regarding regulating adult use marijuana and to suggest next steps to the Council no later than February 26, 2018.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30880&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4515&MeetingID=2082'>Marijuana response NEG with attachments</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4514&MeetingID=2082'>Marijuana Enforcement - 022618</a></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6411&CssClass='>CMA 2018 #47 : Transmitting Communication from Louis A. DePasquale, City Manager, relative to the appropriation of $241,830.00 from Free Cash to cover the cost of equipment and medical screening of 17 new firefighters.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">9-0-0</span><span style="font-family:'Times New Roman'; font-size:11pt">              </span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30881&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6418&CssClass='>CMA 2018 #48 : Transmitting Communication from Louis A. DePasquale, City Manager, relative to the appropriation of $164,000 from Free Cash to the General Fund Fire Department Extraordinary Expenditures to replace EMS Coats for all presently employed firefighters, and update 22 sets of bunker gear for present members.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">9-0-0</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30882&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>14. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6412&CssClass='>CMA 2018 #49 : Transmitting Communication from Louis A. DePasquale, City Manager, relative to the appropriation of a Homeland Security Grant from the City of Boston for $18,917.77 to the Grant Fund Fire Salary and Wages account. The City has received this grant, as reimbursement, for trainings performed in conjunction with the Urban Area Security Initiative (UASI).</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">9-0-0</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30883&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>15. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6420&CssClass='>CMA 2018 #50 : Transmitting Communication from Louis A. DePasquale, City Manager, relative to the appropriation of a grant from the Urban Areas Security Initiative (UASI) through the City of Boston’s Office of Emergency Management for $50,000.00 to the Fire Department Extraordinary Expenditures account which will be used for dive team and marine unit equipment.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">9-0-0</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30884&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>16. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6415&CssClass='>CMA 2018 #51 : Transmitting Communication from Louis A. DePasquale, City Manager, relative to the appropriation of the 2017 Emergency Management Performance Grant (EMPG) from the Federal Emergency Management Agency (FEMA) in the amount of $35,188 to the Grant Fund Fire Other Ordinary Maintenance account which will be used to purchase bicycles and related equipment (carry bags, lights/siren,) as well as uniforms for CFD personnel who will be deployed during planned and unplanned events to facilitate patient access during medical emergencies in our densely populated and congested City.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">9-0-0</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30885&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>17. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6419&CssClass='>CMA 2018 #52 : Transmitting Communication from Louis A. DePasquale, City Manager, relative to the appropriation of the Hazardous Materials Emergency Preparedness (HMEP) Grant from the Federal Emergency Management Agency (FEMA) in the amount of $5,050.00 to the Grant Fund Fire Travel & Training account which will provide funding to assist in sending Cambridge Fire Department members to a hazardous material conference in Baltimore, MD.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">9-0-0</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30886&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>18. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6417&CssClass='>CMA 2018 #53 : Transmitting Communication from Louis A. DePasquale, City Manager, relative to the appropriation in the amount of $2,500 donated from the Carl Barron Awards for Administrative Excellence to the Fire Department, Other Ordinary Maintenance Account which will be used for the Carl Barron Awards for Administrative Excellence, to be awarded to members of the Cambridge Fire Department.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">9-0-0</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30887&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>19. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6409&CssClass='>CMA 2018 #54 : Transmitting Communication from Louis A. DePasquale, City Manager, relative to the appropriation of a grant from the State Executive Office of Public Safety for $10,407.00 to the Grant Fund Fire Salaries and Wages account ($8,207.00), Other Ordinary Maintenance account ($1,800.00) and Travel and Training account ($400.00) to provide funds to continue the Student Awareness of Fire Education (SAFE) Program.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">9-0-0</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30888&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>20. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6410&CssClass='>CMA 2018 #55 : Transmitting Communication from Louis A. DePasquale, City Manager, relative to the appropriation of a grant from the State Executive Office of Public Safety for $3,207.00 to the Grant Fund Fire Salaries and Wages account ($2,500.00) and Other Ordinary Maintenance account ($707.00) to provide funds for the Senior SAFE Program that educates seniors on the dangers of fire and its effect on people, property, and the environment.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">9-0-0</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30889&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td class='Num'><strong>II. </strong></td><td class='Title' colspan='10'><strong>Calendar</strong></td></tr>
+
+<tr><td></td><td class='Num'><strong></strong></td><td class='Title' colspan='9'><strong>Charter Right</strong></td></tr>
+
+<tr><td></td><td></td><td class='Num'></td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6298&CssClass='>CMA 2018 #30 : A communication transmitted from Louis A. DePasquale, City Manager, relative to the Final Landmark Designation Report for the Hovey & Markham Cottages as follows:  Property located at 44 Cottage Street.  See renumbered Agenda item #2 and #8 on 2/12/2018, formerly Agenda item #1A and #1B on 2/12/2018.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=30890&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4431&MeetingID=2082'>40 and 44 Cottage St memo to mgr2</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4425&MeetingID=2082'>40 and 44 Cottage St FINAL designation report (002)</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'></td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6497&CssClass='>CMA 2018 #56 : A communication transmitted from Louis A. DePasquale, City Manager, relative to the Final Landmark Designation Report for the Hovey & Markham Cottages as follows:  Property located at 40 Cottage Street.  See renumbered Agenda item #2 and #8 on 2/12/2018, formerly Agenda item #1A and #1B on 2/12/2018.</a><span class = 'ItemVoteResult'> PLACED ON UNFINISHED BUSINESS </span></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=30938&MeetingID=2082'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4571&MeetingID=2082'>40 and 44 Cottage St memo to mgr2</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4573&MeetingID=2082'>40 and 44 Cottage St FINAL designation report (002)</a></td></tr>
+
+<tr><td class='Num'><strong>III. </strong></td><td class='Title' colspan='10'><strong>Applications and Petitions</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6445&CssClass='>APP 2018 #12 : A petition was received from Cambridge Science Festival requesting  a temporary banner to be hung across Massachusetts Avenue at Norfolk Street, thirty-eight banners on poles in Harvard Square, eighty-eight banners on poles along Massachusetts Avenue, from Memorial Drive to Harvard Square, ten banners on poles along Broadway, from Ellery Street to Felton Street and ten banners on poles along Cambridge Street, from Trowbridge Street to Hovey Street announcing the upcoming Cambridge Science Festival April 13-22, 2018.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">VV9</span></p></div></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4526&MeetingID=2082'>Science Fest Banners 2018</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4527&MeetingID=2082'>Cambridge Science Festival CNA light pole banners 2018</a></td></tr>
+
+<tr><td class='Num'><strong>IV. </strong></td><td class='Title' colspan='10'><strong>Communications</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6448&CssClass='>COM 128 #2018 : A communication was received from Peter Valentine, 37 Brookline Street, regarding not allowing money worshippers to overbuild.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4528&MeetingID=2082'>Peter Valentine_226</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6449&CssClass='>COM 129 #2018 : A communication was received from Roy Russell and Robin Chase, 40 Cottage Street, regarding Landmark designation.</a><span class = 'ItemVoteResult'> REFERRED TO CALENDAR </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">#1A</span></p></div></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4529&MeetingID=2082'>Roy Russell and Robin Chase</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6450&CssClass='>COM 130 #2018 : A communication was received from Martha Ondras,  regarding a forwarded communication from Patrick Herron, PHD on Alewife Pedestrian Bridge.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4530&MeetingID=2082'>6450 Mystic River Watershed Association comments on Alewife Pedestrian Bridge and Commuter Stop</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6451&CssClass='>COM 131 #2018 : A communication was received from Patrick Herron, Mystic River Watershed Association, 20 Academy St. Arlington, regarding Alewife Pedestrian Bridge.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4531&MeetingID=2082'>Patrick Herron Alewife Pedestrian Bridge and Commuter Stop</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4532&MeetingID=2082'>Patrick Herron MyRWA_Letter_Alewife</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6453&CssClass='>COM 132 #2018 : A communication was received from Rashid Hasson, regarding 2018 Fair Housing plus Civil Rights Conference.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4533&MeetingID=2082'>Civil Rights Conference</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6454&CssClass='>COM 133 #2018 : A communication was received from Jana Odette, 176 Larch Road, regarding bike pattern in front of Skenderian's.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4534&MeetingID=2082'>Jana Odette Cambridge Street bike pattern in front of Skenderian's</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6456&CssClass='>COM 134 #2018 : Sundry e-mails received on support of the protected bike lanes, relative to Policy Order #4 of February 12, 2018 Council Meeting.  Copies are on file for review in the City Clerks office.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4539&MeetingID=2082'>Sundry email in Support of Bike lanes</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6461&CssClass='>COM 135 #2018 : A communication was received from Tichaona Chinyelu, 812 Memorial Drive, regarding Beer and Wine License for Mobil gas station at Rive and Memorial Drive.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4535&MeetingID=2082'>Beer and Wine License for Mobil station at RiverMemorial Drive</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6463&CssClass='>COM 136 #2018 : A communication was received from Eric Grunebaum, Envision Alewife Working Group, 1 Broadway, regarding transit issues.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4536&MeetingID=2082'>Eric Grunebaum Envision Alewife Working Group - Policy Order regarding transit issues</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4537&MeetingID=2082'>Eric Grunebaum 2018_2_26 Alewife Transit Backgrounder v2</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6464&CssClass='>COM 137 #2018 : A communication was received from Ed Beucier, 37 Cottage Street, regarding Landmark Designation.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4538&MeetingID=2082'>Ed Beucler</a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6469&CssClass='>COM 138 #2018 : Communication received from Bill Kane, 101 Main Street, in support of Policy Order # 16 declaring February 28, 2018 as Henri A. Termeer Day in Cambridge.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4544&MeetingID=2082'>Bill Kane</a></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6470&CssClass='>COM 139 #2018 : Communication received from Edward Woll, Jr. 79 Dana Street, regarding Inman Square and the bike policy.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4545&MeetingID=2082'>Edward  Woll</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6471&CssClass='>COM 140 #2018 : Communication received from Doug Brown, 35 Standish Street, in support of Policy Order # 7 to enhance the connectivity at Alewife.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4546&MeetingID=2082'>Doug Brown (2)</a></td></tr>
+
+<tr><td></td><td class='Num'>14. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6472&CssClass='>COM 141 #2018 : Communication received from Valerie A. Bonds, 808 Memorial Drive, relative to Policy Order # 15 and her opposition to the petition of the Mobile Gas Station’s petition for a liquor license for the sale of low end beer and wine.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4547&MeetingID=2082'>Valerie A Bonds</a></td></tr>
+
+<tr><td></td><td class='Num'>15. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6473&CssClass='>COM 142 #2018 : Communication received from Carol O’Hare, 172 Magazine Street, regarding Policy Orders # 1, 11, 15 and 17.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4548&MeetingID=2082'>Carol Ohare</a></td></tr>
+
+<tr><td></td><td class='Num'>16. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6474&CssClass='>COM 143 #2018 : Communication received from Carolyn Shipley, 15 Laurel Street, regarding Policy orders #15, 17 and 18.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4549&MeetingID=2082'>Carolyn Shipley</a></td></tr>
+
+<tr><td></td><td class='Num'>17. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6475&CssClass='>COM 144 #2018 : Communication received from Cathie Zusy, 202 Hamilton Street, President of the Cambridgeport Neighborhood Association in opposition to the petition for a liquor license at 816 Memorial Drive and 271 Brookline Street.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4550&MeetingID=2082'>Cathie Zusy</a></td></tr>
+
+<tr><td></td><td class='Num'>18. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6476&CssClass='>COM 145 #2018 : Communication received from Lucinda Beard, Belmont, MA regarding Resolution # 5 on the second annual Children’s March and Love Rally held by the Fayerweather Street School.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4551&MeetingID=2082'>Lucinda Beard</a></td></tr>
+
+<tr><td></td><td class='Num'>19. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6477&CssClass='>COM 146 #2018 : Communication received from Eric Grunebaum, 98 Montgomery Street, regarding the City’s intention for the Envision Cambridge process and the Alewife Working Group’s purpose.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4552&MeetingID=2082'>Eric Grunebaum (2)</a></td></tr>
+
+<tr><td></td><td class='Num'>20. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6478&CssClass='>COM 147 #2018 : Communication received from Heli Meltsner, 74 Avon Hill Street, in support of landmarking 40 and 44 Cottage Street.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4553&MeetingID=2082'>Heli Meltsner</a></td></tr>
+
+<tr><td></td><td class='Num'>21. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6479&CssClass='>COM 148 #2018 : Communication received from Manny Rogers, 392 Cambridge Street, in opposition to Policy Order #17, the Right of First Refusal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4554&MeetingID=2082'>Manny Rogers</a></td></tr>
+
+<tr><td></td><td class='Num'>22. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6480&CssClass='>COM 149 #2018 : Communication received from D. Margaret Drury, 1 Dudley Court, regarding the Quadrangle part of Alewife which has the potential of being a good place to live and work if the transportation and connectivity issues are not addressed soon.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4555&MeetingID=2082'>D. Margaret Drury</a></td></tr>
+
+<tr><td></td><td class='Num'>23. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6481&CssClass='>COM 150 #2018 : Communication received from Charlie Allen, 44 Cottage Street, supporting the landmark designation for both the Hovey-Markham cottages on 40-44 Cottage Street.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4556&MeetingID=2082'>Charlie Allen</a></td></tr>
+
+<tr><td></td><td class='Num'>24. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6482&CssClass='>COM 151 #2018 : Communication received from Jin Ouyang, 20 Lambert Street, in opposition to Policy order #17, the Right of First Refusal legislation.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4557&MeetingID=2082'>Jin Ouyang</a></td></tr>
+
+<tr><td></td><td class='Num'>25. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6483&CssClass='>COM 152 #2018 : Communication received from Peter Nugent, 163 Magazine Street, regarding his concerns on Policy Order #17, the Right of First Refusal legislation.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4558&MeetingID=2082'>Peter Nugent</a></td></tr>
+
+<tr><td></td><td class='Num'>26. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6485&CssClass='>COM 153 #2018 : Communication received from Patrick Barrett, 41 Pleasant Street, urging the City Council to abandon Policy Order # 17 relating to home rule legislation on the Right of First Refusal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4559&MeetingID=2082'>Patrick Barrett</a></td></tr>
+
+<tr><td></td><td class='Num'>27. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6486&CssClass='>COM 154 #2018 : Communication received from Jesse Gordon, 52 West Street, Randolph, regarding Policy Order # 7 and proposing a 30-foot footbridge connecting Acorn Park Drive and CambridgePark Drive.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4560&MeetingID=2082'>Jesse Gordon</a></td></tr>
+
+<tr><td></td><td class='Num'>28. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6487&CssClass='>COM 155 #2018 : Communication received from Irma Bickerstaff, 6 Notre Dame Avenue, expressing concern that the Tenant Right of First Refusal proposed legislation will create a multitude of problems for Cambridge residents including high property taxes for all homeowners.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4561&MeetingID=2082'>Irma Bickerstaff</a></td></tr>
+
+<tr><td></td><td class='Num'>29. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6488&CssClass='>COM 168 #2018 : Communication received from Ron Axelrod, 26 Shepard Street, regarding Policy Order # 17 and stated that it is divisive, unfair and confiscatory.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4562&MeetingID=2082'>Ron Axelrod</a></td></tr>
+
+<tr><td></td><td class='Num'>30. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6489&CssClass='>COM 156 #2018 : Communication received from Ruth Ryals and James Cornie, 115 Upland Road, regarding Policy Order # 17 and disappointed that there has been no outreach to small property owners.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4563&MeetingID=2082'>Ruth Ryals adn James Cornie</a></td></tr>
+
+<tr><td></td><td class='Num'>31. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6490&CssClass='>COM 157 #2018 : Communication received from Heather Hoffman, 213 Hurley Street, transmitting an article entitled Hacking Elections is Easy from the Cybersecurity Think Tank.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4564&MeetingID=2082'>Heather Hoffman</a></td></tr>
+
+<tr><td></td><td class='Num'>32. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6491&CssClass='>COM 158 #2018 : Communication received from George Carrett, Norfolk Street, transmitting research links for references for the Tenant Right of First Refusal legislation.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4565&MeetingID=2082'>George Carrett</a></td></tr>
+
+<tr><td></td><td class='Num'>33. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6492&CssClass='>COM 159 #2018 : Communication received from Linda Levine, 26 Mt. Auburn Street, board member of the Small Property Owners Association, urging the City Council to drop Policy Order # 17 on the Right of First Refusal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4566&MeetingID=2082'>Linda Levine</a></td></tr>
+
+<tr><td></td><td class='Num'>34. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6493&CssClass='>COM 160 #2018 : Communication received from Melissa Zampitella, Executive Director, Alewife Transportation Management Association, regarding the connectivity of the Alewife area.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4567&MeetingID=2082'>Melissa Zampitella</a></td></tr>
+
+<tr><td></td><td class='Num'>35. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6494&CssClass='>COM 161 #2018 : Communication received from Jonathan Austin, 219 Brookline Street, in support of the landmark designation of 40-44 Cottage Street.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4568&MeetingID=2082'>Jonathan Austin</a></td></tr>
+
+<tr><td></td><td class='Num'>36. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6495&CssClass='>COM 162 #2018 : Two communications received from Kathy Watkins, 90 Fawcett Street, regarding Policy Order # 17 and 18 and transmitting the Cambridge Residents Alliance support for a bridge connecting the Quadrangle to the Triangle area of Alewife.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4569&MeetingID=2082'>Kathy Watkins</a></td></tr>
+
+<tr><td></td><td class='Num'>37. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6496&CssClass='>COM 163 #2018 : Communication received from Elizabeth Stern, 20 Cambridge Terrace, requesting answers to questions concerning Policy Order #17, the Right of First Refusal legislation.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4570&MeetingID=2082'>Elizabeth Stern</a></td></tr>
+
+<tr><td></td><td class='Num'>38. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6498&CssClass='>COM 164 #2018 : Communication received from Jane Ross, 8 Kilsyth Road, Brookline, regarding Policy Order #17, the Tenant Right of First Refusal legislation.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4572&MeetingID=2082'>Jane Ross</a></td></tr>
+
+<tr><td></td><td class='Num'>39. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6499&CssClass='>COM 165 #2018 : Communication received from Henry Vandermark, 33/31 Cambridge Terrace, requesting that in the body of Policy Order # 17 the words “at no cost to property owners” be stricken.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4575&MeetingID=2082'>Henry Vandermark</a></td></tr>
+
+<tr><td></td><td class='Num'>40. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6500&CssClass='>COM 166 #2018 : Communication received from Kenneth Eisenberg, 200 Hampshire Street, urging the City Council to support Policy Order #17.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4576&MeetingID=2082'>Kenneth Eisenberg</a></td></tr>
+
+<tr><td></td><td class='Num'>41. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6501&CssClass='>COM 167 #2018 : Sundry communications received from the students at the Fayerweather Street School, regarding violence in schools because of firearms.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4577&MeetingID=2082'>Sundry Students Fayerwether School</a></td></tr>
+
+<tr><td class='Num'><strong>V. </strong></td><td class='Title' colspan='10'><strong>Resolutions</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6350&CssClass='>RES 2018 #41 : Retirement of Mary E. "Marybeth" Cosgrove from the City Clerk's Office.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30891&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6353&CssClass='>RES 2018 #42 : Retirement of Elaine DeRosa from the Cambridge Economic Opportunity Committee.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30892&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6367&CssClass='>RES 2018 #43 : Resolution on the death of Esther Richards.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30893&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6391&CssClass='>RES 2018 #44 : Resolution on the death of Samuel Bixler.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30894&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6392&CssClass='>RES 2018 #45 : Congratulations to the Fayerweather Street School on the occasion of the second annual Children's March & Love Rally.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30895&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6393&CssClass='>RES 2018 #46 : That the City Council congratulates Omari Thom, the founder of Fair America, for his activism and engagement which supports progressive candidates, particularly on issues of immigration.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30896&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6395&CssClass='>RES 2018 #47 : Resolution on the death of former Cambridge Police Officer and President of the Policeman's Association Joseph Bellissimo.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30897&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6405&CssClass='>RES 2018 #48 : Happy 60th Birthday to Sandra Murrell.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30898&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6406&CssClass='>RES 2018 #49 : Happy 60th Birthday wishes to Cheryl Vass.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30899&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6407&CssClass='>RES 2018 #50 : Speedy Recovery wishes to Kathleen Walcott.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30900&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6416&CssClass='>RES 2018 #51 : Resolution on the death of Maria D. Cabral.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30901&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6421&CssClass='>RES 2018 #52 : Happy 20th Wedding Anniversary to Renee and Jamie Townes.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30902&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6422&CssClass='>RES 2018 #53 : Resolution on the Death of Evelyn Bynoe.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30903&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>14. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6425&CssClass='>RES 2018 #54 : Best wishes to Phyllis Newton on her retirement from the Fletcher Maynard Academy.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30904&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>15. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6426&CssClass='>RES 2018 #55 : Congratulations to Patrick Wardell on the birth of his first grandchild, Rowan Patrick Cook.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30905&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>16. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6428&CssClass='>RES 2018 #56 : Happy Birthday wishes to Alice Pedro.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30906&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>17. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6429&CssClass='>RES 2018 #57 : Resolution on the death of Leda Massie.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30907&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>18. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6430&CssClass='>RES 2018 #58 : Happy Birthday wishes to Nadine Simmons.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30908&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>19. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6432&CssClass='>RES 2018 #59 : Retirement of Frederick Powell from the Traffic, Parking and Transportation Department.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30909&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>20. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6400&CssClass='>RES 2018 #60 : Congratulations to Spare Change News on its 25th Anniversary.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30910&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>21. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6435&CssClass='>RES 2018 #61 : Resolution on the death of Vanu Bose.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30911&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>22. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6436&CssClass='>RES 2018 #62 : Congratulations to Noah Weinberg and Lila Berinsky on the occasion of receiving a Disney Summer of Service grant to combat climate change.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30912&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>23. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6446&CssClass='>RES 2018 #63 : Resolution on the death of Richard E. Brimley.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30913&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>24. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6459&CssClass='>RES 2018 #64 : Congratulations and thanks to William B. "Bill" King on the occasion of his retirement.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30914&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>25. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6423&CssClass='>RES 2018 #65 : Happy 100th Birthday wishes to Muriel Turk.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30936&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>26. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6465&CssClass='>RES 2018 #66 : Condolences to Retired Fire Chief Gerald Reardon and Director of Assessment Robert Reardon on the death of their mother Catherine "Kay" Reardon.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30937&MeetingID=2082'>Resolution Printout</a></td></tr>
+
+<tr><td class='Num'><strong>VI. </strong></td><td class='Title' colspan='10'><strong>Policy Order and Resolution List</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6382&CssClass='>POR 2018 #39 : That the City Manager is requested to consult with the appropriate City personnel to determine why there continues to be significant audio and video difficulties during live internet broadcasts of City Council meetings, how these difficulties can be resolved.</a><span class = 'ItemVoteResult'> Charter Right </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">CHARTER RIGHT EXERCISED BY COUNCILLOR SIMMONS</span><span style="font-family:'Times New Roman'; font-size:11pt"> AS AMENDED</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30915&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4542&MeetingID=2082'>Original Order</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4646&MeetingID=2082'>Amened 1 of PO #39</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6388&CssClass='>POR 2018 #40 : That the City Manager and the Mayor’s Office are requested to direct the new bicycle lane working group, once it has been convened, to hold a series of “listening sessions” at the senior buildings throughout Cambridge in order to ensure that our senior residents, who might otherwise be unable to attend the various hearings to weigh in on this issue, will have adequate opportunities to have their voices heard on an issue that could have an outsized impact upon them.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30916&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6389&CssClass='>POR 2018 #41 : Cancellation of the Regular City Council Meeting March 12, 2018.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30917&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6390&CssClass='>POR 2018 #42 : That the Regular City Council Meeting on Monday, April 9, 2018, be changed to a Roundtable/Working Meeting for the purpose of discussing the draft version of the Climate Change Preparedness & Resilience Plan for Alewife.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30918&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6396&CssClass='>POR 2018 #43 : That the City Manager be and hereby is requested to confer with relevant City departments to create additional Safety Zones for safer streets.</a><span class = 'ItemVoteResult'> Charter Right </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">CHARTER RIGHT EXERCISED BY COUNCILLOR SIMMONS</span><span style="font-family:'Times New Roman'; font-size:11pt"> AS AMENDED</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30919&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4543&MeetingID=2082'>Original Order</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6403&CssClass='>POR 2018 #44 : Proclaim March 1, 2018, as Cambridge White Ribbon Day, and the week of February 26 to March 2, 2018, a celebration of the work of Cambridge and its partners in a cohesive effort to end all gender-based violence in all its manifestations.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30920&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6414&CssClass='>POR 2018 #45 : That the City Manager is requested to consult with City staff on the feasibility of initiating a formal transit study and action plan of the Alewife area in response to unanimous concerns of the Envision Alewife Working Group regarding the need for a pedestrian/bicycle/shuttle bridge from the Quadrangle area along Concord Avenue across the railroad tracks to the Triangle area on Cambridgepark Drive and a commuter rail stop which would be critical to create neighborhoods that are safe and healthy for residents and businesses.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30921&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4500&MeetingID=2082'>Alewife Working Group-Bridge+Railstop ltr to City Council-Final-Unanimous 2017_11_29</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6427&CssClass='>POR 2018 #46 : Dedication Marker for Katherine "Kitty" Knox.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30922&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6431&CssClass='>POR 2018 #47 : Dedication Marker for Renae D. Gray.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30923&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6397&CssClass='>POR 2018 #48 : That the City Manager is requested to report back to the City Council with an explanation of the causes of the Cambridge Common drainage problems.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30924&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6438&CssClass='>POR 2018 #49 : That the City Manager is requested to work with the Traffic, Parking and Transportation Department and the Cambridge Police Department to increase enforcement of relevant parking laws around the Enterprise Rent-A-Car location at 25 River Street.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30925&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6404&CssClass='>POR 2018 #50 : City Council support to expedite the relocation of the Cambridge District Court from Malden back to its originally assigned jurisdiction within the City of Cambridge.</a><span class = 'ItemVoteResult'> Order Adopted as Amended </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30926&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4540&MeetingID=2082'>Original Order</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6440&CssClass='>POR 2018 #51 : That the City Manager is requested to report back to the City Council with an explanation of why it took so long to repair the public toilet in Harvard Square  and what proactive methods are being taken into consideration to prevent this interruption of service from happening again, at either the Harvard Square or the Central Square public toilet.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30927&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>14. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6443&CssClass='>POR 2018 #52 : That the City Manager is requested to consult with the Traffic, Parking, and Transportation Department regarding what further improvements can be made to improve safety for all users of the intersections of Walden Street with Concord Avenue, Garden Street and Sherman Street.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30928&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>15. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6447&CssClass='>POR 2018 #53 : That the City Manager ensure that appropriate measures have been taken to allow residents at 808/812 Memorial Drive to voice their concerns about a proposed Mobil Gas Station liquor license before any action is taken by the License Commission.</a><span class = 'ItemVoteResult'> Order Adopted as Amended </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30929&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4541&MeetingID=2082'>Original Order</a></td></tr>
+
+<tr><td></td><td class='Num'>16. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6452&CssClass='>POR 2018 #54 : Declare February 28, 2018, in conjunction with Rare Disease Day, be recognized as Henri A. Termeer Day in the City of Cambridge.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30930&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>17. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6455&CssClass='>POR 2018 #55 : That the City Manager is requested to direct the City Solicitor to draft language for a home rule petition for a Cambridge Right of First Refusal Legislation.</a><span class = 'ItemVoteResult'> Charter Right </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">CHARTER RIGHT EXERCISED BY COUNCILLOR SIMMONS</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30931&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>18. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6457&CssClass='>POR 2018 #56 : That the City Manager is requested to confer with the Community Development Department to develop a timeline for the next Incentive Zoning Nexus Study.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30932&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>19. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6458&CssClass='>POR 2018 #57 : That the City Manager is requested to work with City staff to provide easily accessible needle safety information, to include emergency needle or syringe removal and disposal contacts, on the City’s website</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30933&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>20. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6460&CssClass='>POR 2018 #58 : Proclaim February 28, 2018, to be Rare Disease Day in the City of Cambridge, in recognition of the research and education that remains in finding cures for patients the world over.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30934&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>21. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6462&CssClass='>POR 2018 #59 : City Council endorsement of H.3610, "An Act Temporarily Preventing Firearm Access for Extremely Dangerous or Suicidal Individuals."</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=30935&MeetingID=2082'>Policy Order Printout</a></td></tr>
+
+<tr><td class='Num'><strong>VII. </strong></td><td class='Title' colspan='10'><strong>Communications and Reports from Other City Officers</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6444&CssClass='>COF 2018 #12 : A communication was received from Deputy City Clerk, Paula Crane, transmitting a report for a City Council public hearing held on Tuesday February 20, 2018 for the purpose of the City Council and the public to view the new voting equipment purchased by the Election Commission.</a><span class = 'ItemVoteResult'> REFERRED TO ORDER </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">AGENDA #7 REPORT ACCEPTED AND PLACED ON FILE</span></p></div></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4524&MeetingID=2082'>ICP PRESENTATION Cambridge 2018</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=4525&MeetingID=2082'>180220 FINAL City Council on Election Machines</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>LATE RESOLUTIONS TO BE CONSIDERED BY THE CITY COUNCIL</strong></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>LATE AGENDA ITEMS REQUIRING SUSPENSION OF THE RULES PER RULE 36A</strong></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Appended Information</strong></td></tr>
+
+<tr><td></td><td class='Num'><strong></strong></td><td class='Title' colspan='9'><strong>Awaiting Report List</strong></td></tr>
+
+<tr><td></td><td></td><td class='Num'>1. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6387&CssClass='>AR-18-16 : Report on  the plan to redesign Inman Square and to provide input, including: walk-in clinics between now and the next community meeting and making more details available online.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>2. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6385&CssClass='>AR-18-17 : Report on the current status of zoning language and public health regulations for the keeping of hens and food cultivation and proposed next steps to advance the Urban Agriculture initiative.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>3. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6386&CssClass='>AR-18-18 : Report on the success of the Polystyrene Ordinance, including implementation, enforcement, and remaining concerns among the business community.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>4. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=2337&CssClass='>AR-16-26 : Report on the possibility of the City Council implementing a zoning change, on the permitting of all new restaurants where a wood-fired oven is used as a significant method of food preparation. On a communication from Councillor Kelley requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>5. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=2532&CssClass='>AR-16-42 : Report on plans for the former Riverside Community Health Center on Western Avenue, including transfer of ownership of the building to the City and the process for determining future usage. On a communication from Councillor Kelley requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>6. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=3622&CssClass='>AR-16-83 : Report on drafting possible legislation and other recommendations for interim actions to identify and address the public health impacts of any commercial wood-fired ovens. On a communication from Councillor Kelley requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>7. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=3815&CssClass='>AR-16-101 : Report on the potential of building below market rental housing on City-owned parking lots along Bishop Allen Drive. On a communication from Councillor McGovern requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>8. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=3890&CssClass='>AR-16-108 : Report on whether people displaced and qualify for Emergency Status who are using Section 8 in other cities or towns can retain their resident preference for the purpose of Inclusionary Housing. On a communication from Councillor Kelley requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>9. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=4270&CssClass='>AR-17-22 : Report on the potential growth of next-generation wireless technology in the City, to include: the expected footprint of citywide coverage from just one company and what market competition might produce; the integration of public and private infrastructure to support the network; what local standards the City might hope to maintain relative to aesthetics and safety; and how this new technology fits into our Broadband access plans. On a communication from Councillor Kelley requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>10. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=4698&CssClass='>AR-17-33 : Report on bringing Massachusetts closer to 100% renewable energy by 2035, and ensure that the benefits of renewable energy are realized by Massachusetts residents from all walks of life and supporting a goal of using 100% clean and renewable energy in Cambridge, including in building energy use and transportation, by 2035. On a communication from Councillor Devereux requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>11. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=5179&CssClass='>AR-17-53 : Report on determining if new facilities are needed by either DPW or CFD to best carry out their respective missions in the future and, if so, what type of facilities they would need and how much space that would require and where they might possibly be located. On a communication from Councillor Kelley requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>12. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=5325&CssClass='>AR-17-60 : Report on the feasibility of making the section of Kinnaird Street between River Street and Western Avenue into a one-way.  REFERRED BACK TO THE CITY MANAGER  TO ARRANGE COMMUNITY MEETING ON MOTION OF VICE MAYOR MCGOVERN ON NOVEMBER 13, 2017 . On a communication from Councillor McGovern requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>13. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=5335&CssClass='>AR-17-70 : Report on the status of the City’s plans to review and possibly implement a municipal Broadband system.  On a communication from Councillor Kelley requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>14. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=5336&CssClass='>AR-17-71 : Report on  a proposal to design, fund and implement a bike and electric personal vehicle transportation study to provide the City with a comprehensive explanation of who is going where, why and under what conditions via bike or personal electric vehicle.  On a communication from Councillor Kelley requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>15. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=5480&CssClass='>AR-17-77 : Report on the intersection of Cedar Street and Rindge Avenue with the goal of clarifying traffic patterns through the intersection.  On a communication from Councillor Kelley requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>16. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=5485&CssClass='>AR-17-82 : Report on possible solutions to regulatory or legislative gaps on the local or state level that would help clarify how emerging types of conveyances can most safely and effectively be incorporated into Cambridge’s Urban Mobility planning and infrastructure investments.  On a communication from Councillor Kelley requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>17. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=5536&CssClass='>AR-17-86 : Report on the necessary steps to enforce the anti-idling state law in residential areas by the September 25, 2017 City Council meeting.  On a communication from Councillor Kelley requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a><span class = 'ItemVoteResult'> REPORT RECEIVED AND ACCEPTED </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>18. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=5537&CssClass='>AR-17-87 : Report on a schedule for resubmitting a revised draft of the Outdoor Lighting Ordinance that incorporates clearer wording and/or more clearly explains each section in less technical jargon and is more coherent in its entirety, with the goal of seeing such an Ordinance adopted by the end of this City Council term.  On a communication from Councillor Kelley and Councillor Devereux requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>19. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=5538&CssClass='>AR-17-88 : Report on providing clarification for the benefit of residents, visitors, and business owners on how the City views its obligations and constraints regarding marijuana enforcement and regulation.  On a communication from Councillor Kelley requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a><span class = 'ItemVoteResult'> REPORT RECEIVED AND ACCEPTED </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>20. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=5595&CssClass='>AR-17-95 : Report on the status of the all-electric, leaf-blowing park pilot, the effectiveness of the battery-operated equipment, the potential for expanding the all-electric park program, and steps being taken on enforcement and training and to inquire the feasibility of requiring or advising landscape companies to provide or require safety masks for workers.  On a communication from Councillor Devereux requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>21. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=5762&CssClass='>AR-17-108 : Report on the feasibility of requiring developers to post a signboard at development sites requiring Large Project Review or a Special Permit with contact information for a site manager, a brief description of the project (including whether it is residential, commercial, or mixed-use, and, if residential, the total number of units and inclusionary units, an expected completion date, and a rendering of the street-facing elevation), and a web link where more information is available.  On a communication from Councillor Devereux requesting that this matter be forwarded to the 2018-2019 Legislative Session.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>22. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=5764&CssClass='>AR-17-110 : Report on the status of the implementation of the EnerGov software across various City departments to streamline the permitting process.  On a communication from Councillor Devereux requesting that this matter be forwarded to the 2018-2019 Legislative Sessions.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>23. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6167&CssClass='>AR-18-4 : Report on exploring mechanisms for achieving greater levels of snow clearing by the city and increase the public response during major snow events or heavy snow winters.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>24. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6168&CssClass='>AR-18-5 : Report on contacting Sira Naturals for the purpose of gathering information regarding sales figures, customer demographics, and other relevant operational information.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>25. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6169&CssClass='>AR-18-6 : Report on  information regarding electronic device usage by City-elected officials.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>26. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6245&CssClass='>AR-18-7 : Report on the possibility of changing the snow removal exemption to include two and three-family houses.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>27. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6246&CssClass='>AR-18-8 : Report on  any work that is currently underway regarding regulating adult use marijuana and to suggest next steps to the Council no later than February 26, 2018.</a><span class = 'ItemVoteResult'> REPORT RECEIVED AND ACCEPTED </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>28. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6247&CssClass='>AR-18-9 : Report on necessary repairs to the Gold Star Mothers Park and all play and water feature, including drainage issues, with an eye towards mitigating the impacts of local construction and the development of a plan with the community for improving this significant piece of open space.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>29. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6248&CssClass='>AR-18-10 : Report on creating a list of mitigated meeting and conference room private spaces that are available to the public, what the exact eligibility of using these spaces is, and making the list available to the public.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>30. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6249&CssClass='>AR-18-11 : Report on the potential of utilizing trenchless technology, micro tunneling and/or pipe jacking to lessen the time and impact on the residents of Gore Street.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>31. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6250&CssClass='>AR-18-12 : Report on maximizing the community benefits from and mitigating the impacts of the Cambridge Crossing sewer construction.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>32. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6274&CssClass='>AR-18-13 : Report on efforts to expand the number of electric vehicle charging stations, the feasibility of appropriately placing electric vehicle chargers on residential streets where there is need, the status of possible City fleet replacement to electric vehicles, expanded outreach and education on available rebates and incentive programs, and the feasibility of requiring developers to include a greater number of electric vehicle charging stations in new or substantially renovated multi-unit buildings.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>33. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6294&CssClass='>AR-18-14 : Report on whether the Community Development Department will apply for the Targeted Brownfields Assessment Grant regarding Jerry's Pond.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>34. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6295&CssClass='>AR-18-15 : Report on any other relevant City Department to gain a sense of who is purchasing buildings in Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>35. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6296&CssClass='>AR-18-19 : Report on the possibility of reconfiguring the traffic lights and pedestrian signals at the intersection of Massachusetts Avenue, Prospect Street, and River Street to stop all traffic and allow for an “ALL WALK” pedestrian signal and further to review improvements to the No Left Hand signage.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>36. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=2082&MediaPosition=&ID=6297&CssClass='>AR-18-20 : Report on repairing Rufo Road as soon as possible.</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Adjournment</strong></td></tr>
+
+</table>
+</span>
+                    </td>
+	</tr>
+	
+            </table>
+        
+</div>
+        
+        
+        <br />
+        <hr class="Dotted" />
+        <br />
+    </div>
+    
+    <!-- Dialog Definition (Do Not Display in Page) -->
+    <div style="display: none;">
+    
+        <div id="UserComment" class="UserComment">
+            <input type="hidden" id="ItemID" />
+            <input type="hidden" id="ItemType" />
+            <table><tr><td colspan="2" style="text-align: center;"><textarea rows="10" cols="10"></textarea></td></tr>
+            <tr>
+                <td class="Status"><img src='/Lib/Images/ui-anim_basic_16x16.gif' alt='Loading' />&nbsp;&nbsp;Loading - Please Wait...</td>
+                <td class="Help"><a href="#" onclick="javascript: ShowHelp(); return false;"><img src="images/Help.png" alt="Help" /></a></td>
+            </tr></table>            
+        </div>
+        
+        <div id="frmHelp">
+            <p><strong>Shortcut Keys:</strong></p>
+            <p><strong>Alt + S</strong> - Save</p>
+            <p><strong>Ctrl + S</strong> - Save (may not be compatible in all browsers)</p>
+            <p><strong>Alt + C</strong> - Save and Close</p>
+            <p><strong>Ctrl + Enter</strong> - Save and Close</p>
+            <p><strong>Escape</strong> - Closes the form (same as Cancel)</p>
+            <p><strong>Alt + Up Arrow</strong> - Previous Item (Saves if changed)</p>
+            <p><strong>Alt + Down Arrow</strong> - Next Item (Saves if changed)</p>
+        </div>
+    
+    </div>
+
+   
+    
+                            </div>
+                        </div>                                                           
+                    </td>
+                </tr>               
+            </table>                                
+        </div>
+        
+    <div id="Footer" role="contentinfo">
+        <br />
+        <span id="lblPoweredBy">
+            Powered by <a href="https://granicus.com/" target="_blank" >Granicus</a>
+        </span>
+    </div>
+
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-21761819-8'></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+  gtag('config', 'UA-21761819-8');</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-70364301-2'></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+  gtag('config', 'UA-70364301-2');</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    
+        <!-- Popup Menus -->
+        <div id="mnuBrowse" class="PopupMenu" dropdown="Browse">
+            <ul>
+                <li><a href="#">Legislative Files</a></li>
+                <li><a href="#">Legal Notices</a></li>
+                <li><a href="#">Some other Sort of Thing</a></li>
+            </ul>
+        </div>
+
+    
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){woopra.identify({ email:"", name:"Anonymous User", agency:"CambridgeMA", userlogin:"Anonymous"}).push(); })//]]>
+</script>
+</form>
+</body>
+</html>
+
+
