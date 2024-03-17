@@ -7,6 +7,7 @@ from utils import print_red
 
 _councillor_info = {}
 _councillor_quick_lookup = {}
+_councillor_all_lookup = {}
 def getCouncillorNames(*, include_aliases=False) -> Tuple[str]:
     if not _councillor_info:
         return tuple()
@@ -82,22 +83,39 @@ def setCouncillorInfo(path, year=None) -> bool:
 
     ## Create quick lookups for every name combination
     for name, info in _councillor_info.items():
-        position = info['position']
-        aliases = [name, f"{position} {name}"]
-        for alias in info['aliases']:
-            aliases.append(alias)
-            aliases.append(f"{position} {alias}")
+        for alias in expandName(name, info):
+            _councillor_quick_lookup[alias] = name
+            _councillor_all_lookup[alias] = name
 
-        for alias in aliases:
-            _councillor_quick_lookup[alias]         = name
-            _councillor_quick_lookup[alias.lower()] = name
-            _councillor_quick_lookup[alias.replace(' ', '')]         = name
-            _councillor_quick_lookup[alias.replace(' ', '').lower()] = name
+    for name, info in councillors.items():
+        if name not in _councillor_info:
+            info['position'] = 'non-sitting'
+            for alias in expandName(name, info):
+                _councillor_all_lookup[alias] = name
 
     return True
 
 
-def lookUpCouncillorName(name):
+def expandName(name, info):
+    position = info['position']
+    aliases = [name, f"{position} {name}"]
+    modified = []
+    for alias in info['aliases']:
+        aliases.append(alias)
+        aliases.append(f"{position} {alias}")
+
+    for alias in aliases:
+        modified.append(alias)
+        modified.append(alias.lower())
+        modified.append(alias.replace(' ', ''))
+        modified.append(alias.replace(' ', '').lower())
+        modified.append(alias.replace('.', ''))
+        modified.append(alias.replace('.', '').lower())
+
+    return aliases + modified
+
+
+def lookUpCouncillorName(name, *, include_all=True):
     if not _councillor_quick_lookup:
         return name
     if not isinstance(name, str):
@@ -105,10 +123,16 @@ def lookUpCouncillorName(name):
         return "!!!"
 
     ## Quick look up
-    if name in _councillor_quick_lookup:
-        return _councillor_quick_lookup[name]
-    if name.lower() in _councillor_quick_lookup:
-        return _councillor_quick_lookup[name.lower()]
+    lookup = _councillor_quick_lookup
+    if include_all:
+        lookup = _councillor_all_lookup
+    if not name[-1].isalpha():
+        name = name[:-1]
+
+    if name in lookup:
+        return lookup[name]
+    if name.lower() in lookup:
+        return lookup[name.lower()]
 
     ## Remove title
     orig_name = name
@@ -116,8 +140,9 @@ def lookUpCouncillorName(name):
     name = name.replace("vice mayor", "").strip()
     name = name.replace("mayor", "").strip()
     name = name.replace("councilor", "").strip()
-    if name in _councillor_quick_lookup:
-        return _councillor_quick_lookup[name]
+    name = name.replace("councillor", "").strip()
+    if name in lookup:
+        return lookup[name]
 
     print_red(f"""Error: Didn't find full name for councillor "{orig_name}". Using fallback""")
     return name

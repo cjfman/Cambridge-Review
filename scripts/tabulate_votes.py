@@ -84,6 +84,10 @@ def processCouncillors(line, item, key, *, valid_names=None):
     ## Process names
     print(f"Found {key}: {line}", file=sys.stderr)
     councilors = line.replace(", ", ",")
+    councilors = councilors.replace(" and ", ",")
+    if not councilors[-1].isalpha():
+        councilors = councilors[:-1]
+
     if key not in item:
         item[key] = councilors
     else:

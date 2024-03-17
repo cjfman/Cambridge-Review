@@ -719,6 +719,11 @@ def parseAction(line):
     return (line, "")
 
 
+def findCouncillorsInRow(row):
+    councillors = findText(findAllTags(row, 'td')[1]).split(',')
+    return [lookUpCouncillorName(x.strip()) for x in councillors]
+
+
 def processHistory(history_table):
     history = {}
     ## Look for a vote record
@@ -744,21 +749,8 @@ def processHistory(history_table):
                     if action is not None:
                         history['action'] = action
                         history['vote'] = vote
-            elif role == 'yeas':
-                councillors = findText(findAllTags(row, 'td')[1]).split(',')
-                history['yeas'] = [lookUpCouncillorName(x.strip()) for x in councillors]
-            elif role == 'nays':
-                councillors = findText(findAllTags(row, 'td')[1]).split(',')
-                history['nays'] = [lookUpCouncillorName(x.strip()) for x in councillors]
-            elif 'present' in role:
-                councillors = findText(findAllTags(row, 'td')[1]).split(',')
-                history['present'] = [lookUpCouncillorName(x.strip()) for x in councillors]
-            elif 'absent' in role:
-                councillors = findText(findAllTags(row, 'td')[1]).split(',')
-                history['absent'] = [lookUpCouncillorName(x.strip()) for x in councillors]
-            elif 'recused' in role:
-                councillors = findText(findAllTags(row, 'td')[1]).split(',')
-                history['recused'] = [lookUpCouncillorName(x.strip()) for x in councillors]
+            elif role in ('yeas', 'nays', 'present', 'absent', 'recused'):
+                history[role] = findCouncillorsInRow(row)
 
     if not history:
         ## Look for affirmative vote
@@ -1083,6 +1075,10 @@ def processMeeting(args, meeting) -> Dict[str, List[Any]]:
 
     ## Iterate through agenda table
     table = soup.find('table', {'class': 'MeetingDetail'})
+    if table is None:
+        print_red("Error: Failed to find meeting details")
+        return None
+
     item  = None
     items = defaultdict(list)
     rows = table.find_all('tr')
@@ -1159,18 +1155,19 @@ def processMeetings(args, meetings, writers, final_actions=None):
 
             print(f"Processing meeting '{meeting}'")
             items = processMeeting(args, meeting)
-            if final_actions is not None and meeting.id in final_actions:
-                print(f"Found final actions for meeting '{meeting}'")
-                postProcessItems(writers, items, final_actions[meeting.id])
-            else:
-                if final_actions is not None:
-                    print_red(f"No final actions for meeting '{meeting}'")
+            if items is not None:
+                if final_actions is not None and meeting.id in final_actions:
+                    print(f"Found final actions for meeting '{meeting}'")
+                    postProcessItems(writers, items, final_actions[meeting.id])
+                else:
+                    if final_actions is not None:
+                        print_red(f"No final actions for meeting '{meeting}'")
 
-                postProcessItems(writers, items)
+                    postProcessItems(writers, items)
 
-            ## Process awaiting reports
-            if 'AR' in items:
-                processNewArs(args, ar_map, items['AR'], writers['AR'])
+                ## Process awaiting reports
+                if 'AR' in items:
+                    processNewArs(args, ar_map, items['AR'], writers['AR'])
 
             ## Maybe end processing now
             num += 1
@@ -1238,7 +1235,10 @@ def processFinalActions(path):
             action['recused'] = [lookUpCouncillorName(x) for x in action['recused'].split(",") if x]
             councillors = set(action['yeas'] + action['nays'] + action['present'])
             if action['vote'] and action['vote'].lower() not in ("affirmative vote", "voice vote"):
-                action['absent'] = list(sorted(all_councillors.difference(councillors)))
+                if councillors:
+                    action['absent'] = list(sorted(all_councillors.difference(councillors)))
+                elif action['vote'].lower() in ("9-0-0", 'unanimous'):
+                    action['yeas'] = list(all_councillors)
 
             ## Overlay on previous item if it was charter righted
             if action_uid in items and items[action_uid]['charter_right']:
