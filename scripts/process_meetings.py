@@ -930,26 +930,38 @@ def processCom(args, uid, num, title, link, vote, action) -> Communication:
     address = ""
 
     ## Attempt to match the name of a person
-    match = re.search(r"A (?:communication|written protest) (?:was|has been) received from (.+?)(?:, (\d.+?))?,? (?:regarding|expressing)[,:]? (.+)", title, re.IGNORECASE)
+    types = "|".join(["communication", "email", "e-mail", "written protest", "zoning petition"])
+    options = "|".join((
+        "regarding", "expressing", "transmitting", "commenting", "stating", "re", "relating to", "relative to", "noting that", "concerning", "stated", "raising",
+        "announcing that", "outlining", "spoke about",
+    ))
+    opinions = (
+        "supporting", "in support", "on support", "supported", "endorsing", "in favor", "urging", "requesting", "thanking", "encouraging", "to amend",
+        "opposing", "in opposition",
+    )
+    options += "|" + "|".join(opinions)
+    match = re.search(fr"(?:\w+ )?(?:{types})s? (?:was|were|has been)? ?(?:received )?from ?(.+?)(?:, (\d.+?))?,? ({options})[,:]? (.+)", title, re.IGNORECASE)
     if match:
-        name, address, subject = match.groups()
+        name, address, option, subject = match.groups()
         address = address or ""
+        if option in opinions:
+            subject = f"{option} {subject}"
 
     ## Attempt to match 'Sundry'
     if match is None:
-        match = re.search(r"Sundry communications (?:(?:was|were|have been)? ?received)? ?(?:regarding|expressing)[,:]? (.+)", title, re.IGNORECASE)
+        match = re.search(fr"Sundry (communication|e-?mail)s? (?:(?:was|were|have been)? ?(?:received|regarding))?,? ?(?:{options})[,:]? (.+)", title, re.IGNORECASE)
         if match:
             name = 'Sundry'
             subject = match.groups()[0]
 
     ## Attempt to match 'anonymous'
     if match is None:
-        match = re.search(r"(?:A|An) anonymous communication (?:(?:was|were|have been)? ?received)? ?(?:regarding|expressing)[,:]? (.+)", title, re.IGNORECASE)
+        match = re.search(fr"(?:A|An)? ?(anonymous|unidentified) (?:{types})s? (?:(?:was|were|have been)? ?received)?,? ?(?:{options})[,:]? (.+)", title, re.IGNORECASE)
         if match:
             name = 'Anonymous'
             subject = match.groups()[0]
     if match is None:
-        match = re.search(r"A communication (?:(?:was|were|have been)? ?received)? ?(?:anonymously )?(?:regarding|expressing)[,:]? (.+)", title, re.IGNORECASE)
+        match = re.search(fr"A (?:{types}) (?:(?:was|were|have been)? ?received)?,? ?(?:anonymously )?(?:{options})[,:]? (.+)", title, re.IGNORECASE)
         if match:
             name = 'Anonymous'
             subject = match.groups()[0]
