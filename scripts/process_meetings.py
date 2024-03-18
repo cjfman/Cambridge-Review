@@ -167,6 +167,44 @@ def parseArgs():
     return parser.parse_args()
 
 
+class AgendaItem:
+    """Abstract class"""
+    ## pylint: disable=no-member,attribute-defined-outside-init,access-member-before-definition
+    def setMeeting(self, meeting):
+        self.meeting_uid  = meeting.uid
+        self.meeting_date = meeting.date
+        if hasattr(self, 'name'):
+            msg = " ".join([self.uid, self.name, self.meeting_uid])
+            if len(self.subject) > MAX_MSG_LEN:
+                return msg + self.subject[:MAX_MSG_LEN] + "..."
+
+            return msg + self.subject
+
+        return None
+
+    def setNotes(self, notes):
+        self.notes = notes
+        lower = notes.lower()
+
+        ## Check for affirmative vote
+        if hasattr(self, 'vote') and not self.vote:
+            match = re.match(r"(?:by )?(?:the|an?)? ?((?:Affirmative|Voice) Vote) of \w+ Members", self.notes, re.IGNORECASE)
+            if match:
+                self.vote = toTitleCase(match.groups()[0])
+
+        ## Check charter right
+        if hasattr(self, 'charter_right') and not self.charter_right          \
+            and ("charter right" in lower                                     \
+                or self.action == "Charter Right" and "exercised by" in lower \
+            ):
+            match = re.search(r"exercised by (?:councill?or|vice mayor|mayor) (\w+)", self.notes, re.IGNORECASE)
+            if match:
+                self.charter_right = lookUpCouncillorName(match.groups()[0])
+            else:
+                ## Some mistake has been made
+                self.charter_right = "!!!"
+
+
 @dataclass
 class Meeting:
     uid: str
@@ -193,7 +231,7 @@ class Meeting:
 
 
 @dataclass
-class CMA:
+class CMA(AgendaItem):
     uid:      str
     num:      int
     category: str
@@ -212,13 +250,6 @@ class CMA:
     @property
     def type(self):
         return "CMA"
-
-    def setMeeting(self, meeting):
-        self.meeting_uid  = meeting.uid
-        self.meeting_date = meeting.date
-
-    def setNotes(self, notes):
-        self.notes = notes
 
     def to_dict(self):
         return {
@@ -249,7 +280,7 @@ class CMA:
 
 
 @dataclass
-class Application:
+class Application(AgendaItem):
     uid:      str
     num:      int
     category: str
@@ -268,18 +299,6 @@ class Application:
     @property
     def type(self):
         return "APP"
-
-    def setMeeting(self, meeting):
-        self.meeting_uid  = meeting.uid
-        self.meeting_date = meeting.date
-        msg = " ".join([self.uid, self.name, self.meeting_uid])
-        if len(self.subject) > MAX_MSG_LEN:
-            return msg + self.subject[:MAX_MSG_LEN] + "..."
-
-        return msg + self.subject
-
-    def setNotes(self, notes):
-        self.notes = notes
 
     def to_dict(self):
         return {
@@ -310,7 +329,7 @@ class Application:
 
 
 @dataclass
-class Communication:
+class Communication(AgendaItem):
     uid:     str
     num:     int
     name:    str
@@ -325,18 +344,6 @@ class Communication:
     @property
     def type(self):
         return "COM"
-
-    def setMeeting(self, meeting):
-        self.meeting_uid  = meeting.uid
-        self.meeting_date = meeting.date
-        msg = " ".join([self.uid, self.name, self.meeting_uid])
-        if len(self.subject) > MAX_MSG_LEN:
-            return msg + self.subject[:MAX_MSG_LEN] + "..."
-
-        return msg + self.subject
-
-    def setNotes(self, notes):
-        self.notes = notes
 
     def to_dict(self):
         return {
@@ -368,7 +375,7 @@ class Communication:
 
 
 @dataclass
-class Resolution:
+class Resolution(AgendaItem):
     uid:      str
     num:      int
     category: str
@@ -386,13 +393,6 @@ class Resolution:
     @property
     def type(self):
         return "RES"
-
-    def setMeeting(self, meeting):
-        self.meeting_uid  = meeting.uid
-        self.meeting_date = meeting.date
-
-    def setNotes(self, notes):
-        self.notes = notes
 
     def to_dict(self):
         return {
@@ -421,7 +421,7 @@ class Resolution:
 
 
 @dataclass
-class PolicyOrder:
+class PolicyOrder(AgendaItem):
     uid:      str
     num:      int
     url:      str
@@ -440,16 +440,6 @@ class PolicyOrder:
     @property
     def type(self):
         return "POR"
-
-    def setMeeting(self, meeting):
-        self.meeting_uid  = meeting.uid
-        self.meeting_date = meeting.date
-
-    def setNotes(self, notes):
-        self.notes = notes
-        if "charter right" in self.notes.lower() and not self.charter_right:
-            ## Some mistake has been made
-            self.charter_right = "!!!"
 
     def to_dict(self):
         return {
@@ -484,7 +474,7 @@ class PolicyOrder:
 
 
 @dataclass
-class AwaitingReport:
+class AwaitingReport(AgendaItem):
     uid: str
     url: str
     description:  str = ""
@@ -500,9 +490,6 @@ class AwaitingReport:
 
     def setMeeting(self, meeting):
         pass
-
-    def setNotes(self, notes):
-        self.notes = notes
 
     def update(self, **kwargs):
         if 'description' in kwargs:
@@ -626,7 +613,7 @@ def buildRow(item, hdrs, final_action=None, *, aggrigate_votes=False):
 
     ## Update with final actions
     if final_action is not None:
-        d['Vote'] = final_action['vote']
+        d['Vote'] = final_action['vote'] or d['Vote']
         d['Amended'] = (('Amended' in d and d['Amended']) or final_action['amended'])
         ## Update the charter righing councilor
         if ('Charter Right' not in d or not d['Charter Right']) and final_action['charter_right']:
@@ -814,9 +801,15 @@ def processItem(args, row, num):
     result = findText(row, 'span', 'ItemVoteResult')
     action = result
     vote   = ""
-    match = re.match(r"(?:order\s+)?(\w+(?: \w+)*)\s?(?:\[([^\]]+)\])?", result, re.IGNORECASE)
+    match = re.match(r"(?:Order )?(.*) by (?:the|an?) ((?:Affirmative|Voice) Vote) of \w+ Members", result, re.IGNORECASE)
     if match:
         action, vote = match.groups()
+        action = toTitleCase(action)
+        vote = toTitleCase(vote)
+    else:
+        match = re.match(r"(?:order\s+)?(\w+(?: \w+)*)\s?(?:\[([^\]]+)\])?", result, re.IGNORECASE)
+        if match:
+            action, vote = match.groups()
 
     ## Action
     if action.lower() == "failed of adoption":
@@ -1239,7 +1232,21 @@ def processFinalActions(path):
         for action in actions:
             action_uid = action['uid']
             meeting[action_uid] = action
-            action['action'] = toTitleCase(action['action'])
+
+            ## Update action text
+            match = re.match(r"(?:Order )?(.*) by (?:the|an?) ((?:Affirmative|Voice) Vote) of \w+ Members", action['action'], re.IGNORECASE)
+            if match:
+                action_txt, vote = match.groups()
+                action['action'] = toTitleCase(action_txt)
+                action['vote'] = toTitleCase(vote)
+            if match is None:
+                match = re.match(r"(?:Order )?(.*) \w+ Members", action['action'], re.IGNORECASE)
+                if match:
+                    action['action'] = toTitleCase(match.groups()[0])
+                    action['vote'] = "Voice Vote"
+            if match is None:
+                action['action'] = toTitleCase(action['action'])
+
             ## Convert votes to lists of names and calculate absent
             action.update({key: "" for key in required if key not in action})
             action['yeas']    = [lookUpCouncillorName(x) for x in action['yeas'].split(",") if x]
