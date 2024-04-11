@@ -1,0 +1,1785 @@
+{
+"4463": [],
+"4464": [
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #1",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Approved and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #2",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #3",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Committee",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #4",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "nays": "Councillor Nolan,Councillor Pickett",
+        "uid": "APP 2023 #55",
+        "vote": "7-2-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #1",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #2",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #1",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #2",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #3",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #4",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #5",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #6",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "RES 2024 #7",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #8",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Failed",
+        "amended": "",
+        "charter_right": "",
+        "nays": "Councillor Azeem,Councillor Nolan,Councillor Pickett,Councillor Toner,Mayor Simmons",
+        "uid": "POR 2024 #1",
+        "vote": "4-5-0",
+        "yeas": "Vice Mayor McGovern,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Wilson"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #2",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    }
+],
+"4465": [
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #5",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #6",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #7",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #9",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #10",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #11",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "RES 2024 #12",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #3",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "POR 2024 #4",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #5",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #6",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Charter Right",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #7",
+        "vote": ""
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #8",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    }
+],
+"4466": [
+    {
+        "action": "Appropriation Adopted cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #8",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #9",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #10",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Utilities Committee",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #7",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #3",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #4",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #13",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #14",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #15",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and Referred",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #9",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "POR 2024 #10",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #11",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #12",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Charter Right Execised by Councillor Siddiqui",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #13",
+        "vote": ""
+    },
+    {
+        "action": "",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #8",
+        "vote": ""
+    },
+    {
+        "action": "",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #9",
+        "vote": ""
+    },
+    {
+        "action": "",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #10",
+        "vote": ""
+    },
+    {
+        "action": "",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #5",
+        "vote": ""
+    }
+],
+"4467": [],
+"4468": [
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #11",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Referred to the Housing Committee",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #12",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #13",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Appropriation Adopted cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #14",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Appropriation Adopted cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #15",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Appropriation Adopted cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #16",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Appropriation Adopted cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #17",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Appropriation Adopted cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #18",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Appropriation Adopted cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #19",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #20",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #21",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #22",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #13",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #5",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #16",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #17",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #18",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #19",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #20",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #21",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #22",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #23",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #24",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #25",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #26",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #27",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #14",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #15",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted and Referred to the Economic Development",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #16",
+        "vote": ""
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #17",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "POR 2024 #18",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Charter Right",
+        "amended": "",
+        "charter_right": "simmons",
+        "uid": "POR 2024 #19",
+        "vote": ""
+    }
+],
+"4469": [
+    {
+        "action": "Appropriation Adopted cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #23",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #24",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #25",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #26",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Referred to Ordinance Committee",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #27",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Operations, Rules and Claims Committee",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #19",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #6",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #28",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #29",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #30",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #31",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "RES 2024 #32",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #33",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #34",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #35",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #36",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Committee",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #20",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "nays": "Councillor Pickett,Councillor Toner",
+        "uid": "POR 2024 #21",
+        "vote": "6-2-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Siddiqui,Councillor SobrinhoWheeler,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #22",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #23",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Committee",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #24",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #25",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    }
+],
+"4470": [
+    {
+        "action": "Referred to the Public Safety Committee",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #28",
+        "vote": "8-0-1",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Accepted and Approved cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #29",
+        "vote": "8-0-1",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #30",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #31",
+        "vote": "8-0-1",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #32",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Accepted Report and Referred to the Neighborhood Long",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #33",
+        "vote": ""
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #34",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #35",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #36",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Application Approved and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #37",
+        "vote": "8-0-1",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #7",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #37",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #38",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #39",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #40",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #41",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted and Referred to the Dedication Committee",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #26",
+        "vote": ""
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #27",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #28",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #29",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "POR 2024 #30",
+        "vote": "Voice Vote"
+    }
+],
+"4472": [
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #38",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #39",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Approved Appointment and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #40",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #41",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #42",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #43",
+        "vote": ""
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #44",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #45",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #46",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #47",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #48",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #49",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #8",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #9",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #42",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #31",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #32",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #33",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #34",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Charter Right",
+        "amended": "",
+        "charter_right": "pickett",
+        "uid": "POR 2024 #35",
+        "vote": ""
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #36",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Charter Right",
+        "amended": "",
+        "charter_right": "pickett",
+        "uid": "POR 2024 #37",
+        "vote": ""
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #38",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #39",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #40",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Tabled",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #41",
+        "vote": ""
+    }
+],
+"4473": [
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #50",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #51",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #52",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #53",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #54",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #55",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #56",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #57",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Committee",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #58",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #59",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #60",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #61",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #62",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #63",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted and cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #64",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "nays": "Councillor Pickett,Councillor Toner",
+        "uid": "POR 2024 #35",
+        "vote": "7-2-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Committee",
+        "amended": "",
+        "charter_right": "",
+        "nays": "Councillor Toner",
+        "uid": "POR 2024 #37",
+        "vote": "8-1-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #41",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Hearing and Report",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #10",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #11",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Hearing and Report",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #12",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #43",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #44",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "RES 2024 #45",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #46",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #47",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "RES 2024 #48",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #49",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #50",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #51",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "POR 2024 #42",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #43",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #44",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "nays": "Councillor Pickett,Councillor Toner,Councillor Wilson",
+        "present": "Mayor Simmons",
+        "uid": "POR 2024 #45",
+        "vote": "5-3-1",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Siddiqui,Councillor Sobrinho-Wheeler"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #46",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    }
+],
+"4474": [
+    {
+        "action": "Appropriation Placed on File cma Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #65",
+        "vote": "9-0-0",
+        "yeas": "Councillor Azeem,Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #66",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #13",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #52",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #53",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #54",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #55",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #56",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #57",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #58",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #59",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #60",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #61",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #62",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #63",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "POR 2024 #47",
+        "vote": "Voice Vote"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "POR 2024 #48",
+        "vote": "Voice Vote"
+    }
+],
+"4475": [
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #67",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #68",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Appropriation Adopted cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #69",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Appropriation Adopted cma Placed on File Cma",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #70",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Appropriation Adopted cma Placed on File Cma",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #71",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Cma Placed on File",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #72",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "POR 2024 #49",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Charter Right",
+        "amended": "",
+        "charter_right": "sobrinho-wheeler",
+        "uid": "POR 2024 #50",
+        "vote": ""
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "POR 2024 #51",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Charter Right",
+        "amended": "",
+        "charter_right": "toner",
+        "uid": "POR 2024 #52",
+        "vote": ""
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "POR 2024 #53",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Charter Right",
+        "amended": "",
+        "charter_right": "toner",
+        "uid": "POR 2024 #54",
+        "vote": ""
+    },
+    {
+        "action": "For Hearing and Report",
+        "amended": "",
+        "charter_right": "",
+        "uid": "APP 2024 #14",
+        "vote": "6-0-3",
+        "yeas": "Vice Mayor McGovern,Councillor Pickett,Councillor Siddiqui,Councillor Toner Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #64",
+        "vote": "7-0-2",
+        "yeas": "Vice Mayor McGovern,Councillor Pickett,Councillor Siddiqui,Councillor SobrinhoWheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #65",
+        "vote": "7-0-2",
+        "yeas": "Vice Mayor McGovern,Councillor Pickett,Councillor Siddiqui,Councillor SobrinhoWheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #66",
+        "vote": "7-0-2",
+        "yeas": "Vice Mayor McGovern,Councillor Pickett,Councillor Siddiqui,Councillor SobrinhoWheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #67",
+        "vote": "7-0-2",
+        "yeas": "Vice Mayor McGovern,Councillor Pickett,Councillor Siddiqui,Councillor SobrinhoWheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #68",
+        "vote": "7-0-2",
+        "yeas": "Vice Mayor McGovern,Councillor Pickett,Councillor Siddiqui,Councillor SobrinhoWheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #69",
+        "vote": "7-0-2",
+        "yeas": "Vice Mayor McGovern,Councillor Pickett,Councillor Siddiqui,Councillor SobrinhoWheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #70",
+        "vote": "7-0-2",
+        "yeas": "Vice Mayor McGovern,Councillor Pickett,Councillor Siddiqui,Councillor SobrinhoWheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "Yes",
+        "charter_right": "",
+        "uid": "RES 2024 #71",
+        "vote": "8-0-1",
+        "yeas": "Vice Mayor McGovern,Councillor Nolan,Councillor Pickett,Councillor Siddiqui,Councillor Sobrinho-Wheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #72",
+        "vote": "7-0-2",
+        "yeas": "Vice Mayor McGovern,Councillor Pickett,Councillor Siddiqui,Councillor SobrinhoWheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    },
+    {
+        "action": "Order Adopted",
+        "amended": "",
+        "charter_right": "",
+        "uid": "RES 2024 #73",
+        "vote": "7-0-2",
+        "yeas": "Vice Mayor McGovern,Councillor Pickett,Councillor Siddiqui,Councillor SobrinhoWheeler,Councillor Toner,Councillor Wilson,Mayor Simmons"
+    }
+],
+"4489": [],
+"4491": [],
+"4493": [],
+"4496": [],
+"4498": [],
+"4499": [],
+"4500": [],
+"4502": [],
+"4505": [],
+"4506": [
+    {
+        "action": "",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #12",
+        "vote": ""
+    },
+    {
+        "action": "",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2023 #238",
+        "vote": ""
+    }
+],
+"4507": [
+    {
+        "action": "",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #21",
+        "vote": ""
+    }
+],
+"4512": [
+    {
+        "action": "",
+        "amended": "",
+        "charter_right": "",
+        "uid": "CMA 2024 #27",
+        "vote": ""
+    }
+]
+}
