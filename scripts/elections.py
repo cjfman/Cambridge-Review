@@ -3,7 +3,7 @@
 import csv
 import re
 
-from collections import namedtuple
+from collections import defaultdict, namedtuple
 from textwrap import dedent
 from typing import Dict, List, Sequence
 
@@ -44,7 +44,7 @@ def isWritein(name, *, unnamed=False):
     return bool(re.search(r"^(?:write|written)[ \-]?in\s+(?:P?\d+|other)", name, re.IGNORECASE))
 
 
-def isNamedWritein(name, *, unnamed=False):
+def isNamedWritein(name):
     return (isWritein(name) and not isWritein(name, unnamed=True))
 
 
@@ -266,3 +266,42 @@ def loadElectionsFile(path, include_exhausted=False) -> Election:
     return Election(
         round_count, candidates, elected, counted_on=counted_on, **stats,
     )
+
+class WardElection:
+    def __init__(self, precincts, candidates, totals, votes, writein, blank_inv):
+        self.precincts  = precincts
+        self.candidates = candidates
+        self.totals     = totals
+        self.c_votes    = votes
+        self.writein    = writein
+        self.blank_inv  = blank_inv
+        self.p_votes    = defaultdict(dict)
+
+        ## Organize votes by precinct
+        for name, c_votes in self.c_votes.items():
+            for precinct, count in c_votes.items():
+                self.p_votes[precinct][name] = count
+
+def loadWardElectionFile(path) -> WardElection:
+    ## pylint: disable=too-many-nested-blocks,too-many-locals,too-many-branches,too-many-statements
+    precincts = None
+    candidates = {}
+    ## Open file and do basic processing
+    with open(path, 'r', encoding='utf8') as f:
+        reader = csv.DictReader(f)
+        precincts = reader.fieldnames[2:]
+        for x in reader:
+            candidate = x.copy()
+            candidates[candidate['Candidate']] = candidate
+            del candidate['Candidate']
+            for p in precincts:
+                if p not in candidate or not candidate[p]:
+                    candidate[p] = 0
+
+    totals    = candidates['Total']
+    blank_inv = candidates['Blank / Invalid']
+    writein   = candidates['Write-In']
+    del candidates['Total']
+    del candidates['Blank / Invalid']
+    del candidates['Write-In']
+    return WardElection(precincts, list(candidates.keys()), totals, candidates, writein, blank_inv)
