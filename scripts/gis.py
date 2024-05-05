@@ -51,6 +51,9 @@ class GisGeoJson:
             for f in self.features.values():
                 f['properties'][key] = val
 
+    def getProperty(self, key, geo_id):
+        return self.features[geo_id]['properties'][key]
+
 
 class ZoningDistricts(GisGeoJson):
     def __init__(self, path):
