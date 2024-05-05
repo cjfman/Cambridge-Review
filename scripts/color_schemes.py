@@ -1,3 +1,27 @@
+## https://davidmathlogic.com/colorblind/#%23332288-%23117733-%2344AA99-%2388CCEE-%23DDCC77-%23CC6677-%23AA4499-%23882255
+COLOR_BLIND_FRIENDLY_HEX = [
+    "#332288", ## Dark Blue
+    "#117733", ## Green
+    "#44AA99", ## Turquoise
+    "#88CCEE", ## Light Blue
+    "#DDCC77", ## Yellow
+    "#CC6677", ## Salmon
+    "#AA4499", ## Purple
+    "#882255", ## Dark Pink
+]
+COLOR_BLIND_FRIENDLY = [
+    (51, 34, 136),   ## Dark Blue
+    (17, 119, 51),   ## Green
+    (68, 170, 153),  ## Turquoise
+    (136, 204, 238), ## Light Blue
+    (221, 204, 119), ## Yellow
+    (204, 102, 119), ## Salmon
+    (170, 68, 153),  ## Purple
+    (136, 34, 85),   ## Dark Pink
+]
+COLOR_BLIND_FRIENDLY.reverse()
+GREY = (68, 68, 68)
+
 class ColorGradient:
     def __init__(self, colors, max_val, min_val=0, *, scale_fn=None):
         self.colors   = colors

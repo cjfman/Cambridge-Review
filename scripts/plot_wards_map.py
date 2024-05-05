@@ -100,7 +100,7 @@ def main(args):
     if args.all:
         plotAllCandidatesGeoJson(args.title, args.geojson, args.out_file, election.c_votes, max_count=election.max_count, template=template)
     elif args.winners:
-        plotWinnerGeoJson(args.title, args.geojson, args.out_file, election.winners, max_count=election.max_count, template=template)
+        plotWinnerGeoJson(args.title, args.geojson, args.out_file, election.p_winners, max_count=election.max_count, template=template)
     else:
         plotGeoJson(args.title, args.geojson, args.out_file, election.p_votes, args.candidate, max_count=election.max_count, template=template)
 
@@ -173,6 +173,7 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
     geojson = gis.GisGeoJson(geo_path, secondary_id_key='WardPrecinct')
     gradient = cs.ColorGradient(cs.BlueRedYellow, max_count)
 
+    winners = set()
     values = {}
     geojson.setProperty('winner', "N/A")
     for precinct, results in precincts.items():
@@ -182,13 +183,25 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
             continue
 
         winner, count = results
+        winners.add(winner)
         values[geoid] = count
         geojson.setProperty('winner', winner, geoid)
         geojson.setProperty('vote_count', count, geoid)
 
     ## Make style function
-    style_function = lambda x: {
+    num_colors = len(cs.COLOR_BLIND_FRIENDLY_HEX)
+    candidate_colors = {
+        name: cs.COLOR_BLIND_FRIENDLY_HEX[i % num_colors] for i, name in enumerate(winners)
+    }
+    style_gradient = lambda x: {
         'fillColor': gradient.pick(float(noThrow(values, x['id']) or 0) or None),
+        'fillOpacity': 0.7,
+        'weight': 2,
+        'color': '#000000',
+        'opacity': 0.2,
+    }
+    style_solid = lambda x: {
+        'fillColor': candidate_colors[x['properties']['winner']],
         'fillOpacity': 0.7,
         'weight': 2,
         'color': '#000000',
@@ -197,16 +210,27 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
 
     ## Make map
     m = folium.Map(location=[42.378, -71.11], zoom_start=14)
+    base_map = folium.FeatureGroup(name='Basemap', overlay=True, control=False)
+    folium.TileLayer(tiles='OpenStreetMap').add_to(base_map)
+    base_map.add_to(m)
     city_boundary = makeLayer(**CITY_BOUNDARY)
-    city_boundary.add_to(m)
+    city_boundary.add_to(base_map)
 
     ## Plot labels
     makeLabelLayer(geojson, precincts).add_to(m)
 
     ## Plot wards
-    geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function, control=False)
-    folium.GeoJsonTooltip(fields=['WardPrecinct', 'winner', 'vote_count'], aliases=['Ward', 'Winner', 'Votes'], sticky=False).add_to(geo)
-    geo.add_to(m)
+    layer1 = folium.FeatureGroup(name="Vote Count", overlay=False)
+    geo1 = folium.GeoJson(geojson.geojson, name="Vote Count", style_function=style_gradient)
+    folium.GeoJsonTooltip(fields=['WardPrecinct', 'winner', 'vote_count'], aliases=['Ward', 'Winner', 'Votes'], sticky=False).add_to(geo1)
+    geo1.add_to(layer1)
+    layer1.add_to(m)
+
+    layer2 = folium.FeatureGroup(name="Winners", overlay=False)
+    geo2 = folium.GeoJson(geojson.geojson, name="Winners", style_function=style_solid)
+    folium.GeoJsonTooltip(fields=['WardPrecinct', 'winner', 'vote_count'], aliases=['Ward', 'Winner', 'Votes'], sticky=False).add_to(geo2)
+    geo2.add_to(layer2)
+    layer2.add_to(m)
 
     ## Plot extra layers
     makeLayer(**NEIGHBORHOOD_BOUNDARIES).add_to(m)

@@ -277,7 +277,8 @@ class WardElection:
         self.blank_inv  = blank_inv
         self.p_votes    = defaultdict(dict) ## Dict[precinct, Dict[candidate, count]]
         self.max_count  = 0
-        self.winners    = defaultdict(lambda: ('', 0))
+        self.winners    = set()
+        self.p_winners  = defaultdict(lambda: ('', 0))
 
         ## Organize votes by precinct
         for name, c_votes in self.c_votes.items():
@@ -286,8 +287,9 @@ class WardElection:
                 self.p_votes[precinct][name] = count
                 if precinct != "Total":
                     self.max_count = max(self.max_count, count)
-                    if self.winners[precinct][1] < count:
-                        self.winners[precinct] = (name, count)
+                    if self.p_winners[precinct][1] < count:
+                        self.winners.add(name)
+                        self.p_winners[precinct] = (name, count)
 
     def printStats(self):
         print(dedent(f"""\
