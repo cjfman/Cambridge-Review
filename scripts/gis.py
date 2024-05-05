@@ -63,8 +63,8 @@ class GisGeoJson:
             return self.centroids[geo_id]
 
         centroid = tuple(np.mean(self.features[geo_id]['geometry']['coordinates'][0], axis=0))
-        lat, lon = centroid
-        centroid = (lon, lat)
+        lon, lat = centroid
+        centroid = (lat, lon)
         self.centroids[geo_id] = centroid
         return centroid
 

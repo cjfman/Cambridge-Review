@@ -32,22 +32,22 @@ CITY_BOUNDARY = {
     'control': False,
 }
 
-ADDITIONAL_LAYERS = [
-#    {
-#        'name': "Wards",
-#        'geo_path': os.path.join(GEOJSON, "WardsPrecincts2020.geojson"),
-#        'weight': 5,
-#        'tooltip': "WardPrecinct",
-#        'show': True,
-#        'sticky': False,
-#    },
-    {
-        'name': "Neighborhoods",
-        'geo_path': os.path.join(GEOJSON, "BOUNDARY_CDDNeighborhoods.geojson"),
-        'weight': 5,
-        'tooltip': "NAME",
-    },
-]
+WARD_BOUNDARIES = {
+    'name': "Wards",
+    'geo_path': os.path.join(GEOJSON, "WardsPrecincts2020.geojson"),
+    'weight': 1,
+    'tooltip': "WardPrecinct",
+    'show': True,
+    'sticky': False,
+    'control': False,
+}
+
+NEIGHBORHOOD_BOUNDARIES = {
+    'name': "Neighborhoods",
+    'geo_path': os.path.join(GEOJSON, "BOUNDARY_CDDNeighborhoods.geojson"),
+    'weight': 5,
+    'tooltip': "NAME",
+}
 
 
 def parseArgs():
@@ -141,11 +141,16 @@ def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, templ
     geo.add_to(m)
 
     ## Plot extra layers
-    for layer_def in ADDITIONAL_LAYERS:
-        layer = makeLayer(**layer_def)
-        layer.add_to(m)
+    makeLayer(**WARD_BOUNDARIES).add_to(m)
+    makeLayer(**NEIGHBORHOOD_BOUNDARIES).add_to(m)
 
     folium.LayerControl(position='topleft', collapsed=False).add_to(m)
+
+    ## Plot labels
+    for precinct in precincts:
+        centroid = geojson.getCentroid(geojson.getGeoId(precinct))
+        label = makeLabel(precinct, centroid)
+        label.add_to(m)
 
     ## Load template
     if template is not None:
@@ -201,9 +206,8 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
     geo.add_to(m)
 
     ## Plot extra layers
-    for layer_def in ADDITIONAL_LAYERS:
-        layer = makeLayer(**layer_def)
-        layer.add_to(m)
+    makeLayer(**WARD_BOUNDARIES).add_to(m)
+    makeLayer(**NEIGHBORHOOD_BOUNDARIES).add_to(m)
 
     folium.LayerControl(position='topleft', collapsed=False).add_to(m)
 
@@ -232,6 +236,7 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
     geojson = gis.GisGeoJson(geo_path, secondary_id_key='WardPrecinct')
     gradient = cs.ColorGradient(cs.BlueRedYellow, max_count)
 
+    all_precincts = set()
     values = defaultdict(dict)
     for candidate, results in candidates.items():
         geojson.setProperty(candidate, "N/A")
@@ -239,6 +244,7 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
             geoid = geojson.getGeoId(precinct)
             if geoid is None:
                 continue
+            all_precincts.add(precinct)
             geojson.setProperty(candidate, count, geoid)
             values[candidate][geoid] = count
 
@@ -259,11 +265,16 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
         layer1.add_to(m)
 
     ## Plot extra layers
-    for layer_def in ADDITIONAL_LAYERS:
-        layer = makeLayer(**layer_def)
-        layer.add_to(m)
+    makeLayer(**WARD_BOUNDARIES).add_to(m)
+    makeLayer(**NEIGHBORHOOD_BOUNDARIES).add_to(m)
 
     folium.LayerControl(position='topleft', collapsed=False).add_to(m)
+
+    ## Plot labels
+    for precinct in all_precincts:
+        centroid = geojson.getCentroid(geojson.getGeoId(precinct))
+        label = makeLabel(precinct, centroid)
+        label.add_to(m)
 
     ## Load template
     if template is not None:
@@ -291,7 +302,7 @@ def htmlElemGen(tag, data='', **kwargs):
     return f'<{tag} {attrs}>{data}</{tag}>'
 
 
-def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=None, sticky=False, **kwargs):
+def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=None, sticky=False, control=True, **kwargs):
     geojson = gis.GisGeoJson(geo_path)
     style_function = lambda x: {
         'fillColor': '#000000',
@@ -301,7 +312,7 @@ def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=N
         'opacity': 1,
     }
 
-    geo = folium.GeoJson(geojson.geojson, name=name, show=show, control=True, style_function=style_function)
+    geo = folium.GeoJson(geojson.geojson, name=name, show=show, control=control, style_function=style_function)
     if tooltip is not None:
         tooltip_name = tooltip_name or tooltip
         folium.GeoJsonTooltip(fields=[tooltip], aliases=[tooltip], sticky=sticky).add_to(geo)
@@ -382,7 +393,7 @@ def makeLabel(text, coord, size='16pt', weight='bold'):
         coord,
         icon=folium.features.DivIcon(
             icon_size=(150,36),
-            icon_anchor=(0,0),
+            icon_anchor=(5,5),
             html=f'<div style="font-size: {size}; font-weight: {weight}">{text}</div>',
             )
         )
