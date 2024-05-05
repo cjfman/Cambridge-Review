@@ -23,7 +23,17 @@
             }
         });
   });
-
+  $(function() {
+    $("#candidatelegend").draggable({
+            start: function (event, ui) {
+                $(this).css({
+                    right: "auto",
+                    top: "auto",
+                    bottom: "auto"
+                });
+            }
+        });
+  });
   </script>
 </head>
 <body>
@@ -31,7 +41,12 @@
 <div id='maplegend' class='maplegend'
     style='position: absolute; z-index:9999; border:2px solid grey; background-color:rgba(255, 255, 255, 1);
      border-radius:6px; padding-bottom: 10px; font-size:14px; right: 20px; top: 20px;'>
-    <div>{{SVG}}</div>
+    <div>{{SVG1}}</div>
+</div>
+<div id='candidatelegend' class='maplegend'
+    style='position: absolute; z-index:9999; border:2px solid grey; background-color:rgba(255, 255, 255, 1);
+     border-radius:6px; padding-bottom: 10px; font-size:14px; left: 10px; top: 200px;'>
+    <div>{{SVG2}}</div>
 </div>
 
 </body>

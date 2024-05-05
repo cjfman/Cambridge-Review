@@ -241,7 +241,11 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
     if template is not None:
         key_values = list(range(0, gradient.max + 1, gradient.max//4))
         color_key = makeColorKey(name, gradient, values=key_values)
-        template = template.replace("{{SVG}}", color_key)
+        candidate_key = makeCandidateKey("Ward Winners", candidate_colors)
+        template = template.replace("{{SVG1}}", color_key)
+        template = template.replace("{{SVG2}}", candidate_key)
+
+
         macro = MacroElement()
         macro._template = Template(template) ## pylint: disable=protected-access
         m.get_root().add_child(macro)
@@ -411,6 +415,38 @@ def makeColorKey(title, gradient, cbox_h=20, cbox_w=400, tick_h=10, values=None)
 
     ## Create SVG
     width = cbox_w + 20
+    height = y_off
+    return Element('svg', els, width=width, height=height).to_html()
+
+
+def makeCandidateKey(title, candidates, box_size=8):
+    ## Add data
+    color_tag = "color-scheme-red"
+
+    ## Add elements
+    y_off = 20
+    x_off = 10
+    text_h = 15
+    els = []
+
+    ## Title
+    els.append(Text(title, x=x_off, y=y_off))
+    y_off += text_h / 2
+
+    ## Add candidates
+    for name, color in sorted(candidates.items()):
+        els.append(Element(
+            'rect', x=x_off, y=y_off, width=box_size, height=box_size,
+            stroke='black', stroke_width=1,
+            fill=color,
+        ))
+        els.append(Text(name, x=x_off+box_size*2, y=y_off+box_size))
+        y_off += box_size*2
+
+    y_off -= box_size
+
+    ## Create SVG
+    width = 15 * max([len(x) for x in candidates])
     height = y_off
     return Element('svg', els, width=width, height=height).to_html()
 
