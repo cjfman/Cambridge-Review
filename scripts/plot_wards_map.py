@@ -136,6 +136,10 @@ def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, templ
     m = folium.Map(location=[42.378, -71.11], zoom_start=14)
     city_boundary = makeLayer(**CITY_BOUNDARY)
     city_boundary.add_to(m)
+    ## Plot labels
+    makeLabelLayer(geojson, precincts).add_to(m)
+
+    ## Plot wards
     geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function)
     folium.GeoJsonTooltip(fields=['WardPrecinct', metric], aliases=['Ward', metric], sticky=False).add_to(geo)
     geo.add_to(m)
@@ -145,12 +149,6 @@ def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, templ
     makeLayer(**NEIGHBORHOOD_BOUNDARIES).add_to(m)
 
     folium.LayerControl(position='topleft', collapsed=False).add_to(m)
-
-    ## Plot labels
-    for precinct in precincts:
-        centroid = geojson.getCentroid(geojson.getGeoId(precinct))
-        label = makeLabel(precinct, centroid)
-        label.add_to(m)
 
     ## Load template
     if template is not None:
@@ -201,21 +199,19 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
     m = folium.Map(location=[42.378, -71.11], zoom_start=14)
     city_boundary = makeLayer(**CITY_BOUNDARY)
     city_boundary.add_to(m)
-    geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function)
+
+    ## Plot labels
+    makeLabelLayer(geojson, precincts).add_to(m)
+
+    ## Plot wards
+    geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function, control=False)
     folium.GeoJsonTooltip(fields=['WardPrecinct', 'winner', 'vote_count'], aliases=['Ward', 'Winner', 'Votes'], sticky=False).add_to(geo)
     geo.add_to(m)
 
     ## Plot extra layers
-    makeLayer(**WARD_BOUNDARIES).add_to(m)
     makeLayer(**NEIGHBORHOOD_BOUNDARIES).add_to(m)
 
     folium.LayerControl(position='topleft', collapsed=False).add_to(m)
-
-    ## Plot labels
-    for precinct in precincts:
-        centroid = geojson.getCentroid(geojson.getGeoId(precinct))
-        label = makeLabel(precinct, centroid)
-        label.add_to(m)
 
     ## Load template
     if template is not None:
@@ -256,6 +252,9 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
     city_boundary = makeLayer(**CITY_BOUNDARY)
     city_boundary.add_to(base_map)
 
+    ## Plot labels
+    makeLabelLayer(geojson, all_precincts).add_to(m)
+
     ## Add candidates
     for candidate, precincts in values.items():
         print(f"Plot {candidate}")
@@ -269,12 +268,6 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
     makeLayer(**NEIGHBORHOOD_BOUNDARIES).add_to(m)
 
     folium.LayerControl(position='topleft', collapsed=False).add_to(m)
-
-    ## Plot labels
-    for precinct in all_precincts:
-        centroid = geojson.getCentroid(geojson.getGeoId(precinct))
-        label = makeLabel(precinct, centroid)
-        label.add_to(m)
 
     ## Load template
     if template is not None:
@@ -318,6 +311,16 @@ def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=N
         folium.GeoJsonTooltip(fields=[tooltip], aliases=[tooltip], sticky=sticky).add_to(geo)
 
     return geo
+
+
+def makeLabelLayer(geojson, precincts):
+    layer = folium.FeatureGroup(name='Labels', overlay=True, control=True)
+    for precinct in precincts:
+        centroid = geojson.getCentroid(geojson.getGeoId(precinct))
+        label = makeLabel(precinct, centroid)
+        label.add_to(layer)
+
+    return layer
 
 
 def makeCandidateLayer(geojson, name, precincts, gradient, *, show=False):
@@ -392,8 +395,8 @@ def makeLabel(text, coord, size='16pt', weight='bold'):
     return folium.map.Marker(
         coord,
         icon=folium.features.DivIcon(
-            icon_size=(150,36),
-            icon_anchor=(5,5),
+            icon_size=(45/4*len(text), 0),
+            icon_anchor=(5, 5),
             html=f'<div style="font-size: {size}; font-weight: {weight}">{text}</div>',
             )
         )
