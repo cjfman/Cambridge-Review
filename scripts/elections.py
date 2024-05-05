@@ -271,16 +271,27 @@ class WardElection:
     def __init__(self, precincts, candidates, totals, votes, writein, blank_inv):
         self.precincts  = precincts
         self.candidates = candidates
-        self.totals     = totals
+        self.totals     = totals ## Dict[candidate, Dict[precinct, count]]
         self.c_votes    = votes
         self.writein    = writein
         self.blank_inv  = blank_inv
-        self.p_votes    = defaultdict(dict)
+        self.p_votes    = defaultdict(dict) ## Dict[precinct, Dict[candidate, count]]
+        self.max_count  = 0
 
         ## Organize votes by precinct
         for name, c_votes in self.c_votes.items():
             for precinct, count in c_votes.items():
                 self.p_votes[precinct][name] = count
+                if precinct != "Total":
+                    self.max_count = max(self.max_count, int(count))
+
+    def printStats(self):
+        print(dedent(f"""\
+            Election stats
+            Number of precincts: {len(self.precincts)}
+            Number of candidates: {len(self.candidates)}
+            Max Count: {self.max_count}
+        """))
 
 def loadWardElectionFile(path) -> WardElection:
     ## pylint: disable=too-many-nested-blocks,too-many-locals,too-many-branches,too-many-statements
