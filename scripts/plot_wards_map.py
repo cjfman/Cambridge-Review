@@ -33,14 +33,14 @@ CITY_BOUNDARY = {
 }
 
 ADDITIONAL_LAYERS = [
-    {
-        'name': "Wards",
-        'geo_path': os.path.join(GEOJSON, "WardsPrecincts2020.geojson"),
-        'weight': 5,
-        'tooltip': "WardPrecinct",
-        'show': True,
-        'sticky': False,
-    },
+#    {
+#        'name': "Wards",
+#        'geo_path': os.path.join(GEOJSON, "WardsPrecincts2020.geojson"),
+#        'weight': 5,
+#        'tooltip': "WardPrecinct",
+#        'show': True,
+#        'sticky': False,
+#    },
     {
         'name': "Neighborhoods",
         'geo_path': os.path.join(GEOJSON, "BOUNDARY_CDDNeighborhoods.geojson"),
@@ -59,8 +59,13 @@ def parseArgs():
         help="Ward geojson")
     parser.add_argument("--title", default="Precinct Election Map",
         help="Map title")
-    parser.add_argument("--all", action="store_true",
+    who_group = parser.add_mutually_exclusive_group(required=True)
+    who_group.add_argument("--all", action="store_true",
         help="Plot all candidates")
+    who_group.add_argument("--candidate",
+        help="Only plot this candidate")
+    who_group.add_argument("--winners", action="store_true",
+        help="Plot winners for each ward")
     parser.add_argument("vote_file",
         help="CSV of vote counts")
     parser.add_argument("out_file",
@@ -94,8 +99,10 @@ def main(args):
 
     if args.all:
         plotAllCandidatesGeoJson(args.title, args.geojson, args.out_file, election.c_votes, max_count=election.max_count, template=template)
+    elif args.winners:
+        plotWinnerGeoJson(args.title, args.geojson, args.out_file, election.winners, max_count=election.max_count, template=template)
     else:
-        plotGeoJson(args.title, args.geojson, args.out_file, election.p_votes, 'Siddiqui', max_count=election.max_count, template=template)
+        plotGeoJson(args.title, args.geojson, args.out_file, election.p_votes, args.candidate, max_count=election.max_count, template=template)
 
 
 def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, template=None):
@@ -130,7 +137,7 @@ def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, templ
     city_boundary = makeLayer(**CITY_BOUNDARY)
     city_boundary.add_to(m)
     geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function)
-    folium.GeoJsonTooltip(fields=[metric], aliases=[metric], sticky=False).add_to(geo)
+    folium.GeoJsonTooltip(fields=['WardPrecinct', metric], aliases=['Ward', metric], sticky=False).add_to(geo)
     geo.add_to(m)
 
     ## Plot extra layers
@@ -148,6 +155,62 @@ def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, templ
         key_values = list(range(0, gradient.max + 1, gradient.max//4))
         color_key = makeColorKey(name, gradient, values=key_values)
         #color_key = makeColorKey(name, gradient)
+        template = template.replace("{{SVG}}", color_key)
+        macro = MacroElement()
+        macro._template = Template(template) ## pylint: disable=protected-access
+        m.get_root().add_child(macro)
+
+    m.save(out_path)
+    print(f"Wrote to {out_path}")
+
+
+def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, template=None):
+    print(f"Generating {name}")
+    print(f"Reading {geo_path}")
+    geojson = gis.GisGeoJson(geo_path, secondary_id_key='WardPrecinct')
+    gradient = cs.ColorGradient(cs.BlueRedYellow, max_count)
+
+    values = {}
+    geojson.setProperty('winner', "N/A")
+    for precinct, results in precincts.items():
+        geoid = geojson.getGeoId(precinct)
+        if geoid is None:
+            print(f"Skipping {precinct}")
+            continue
+
+        winner, count = results
+        values[geoid] = count
+        geojson.setProperty('winner', winner, geoid)
+        geojson.setProperty('vote_count', count, geoid)
+
+    ## Make style function
+    style_function = lambda x: {
+        'fillColor': gradient.pick(float(noThrow(values, x['id']) or 0) or None),
+        'fillOpacity': 0.7,
+        'weight': 2,
+        'color': '#000000',
+        'opacity': 0.2,
+    }
+
+    ## Make map
+    m = folium.Map(location=[42.378, -71.11], zoom_start=14)
+    city_boundary = makeLayer(**CITY_BOUNDARY)
+    city_boundary.add_to(m)
+    geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function)
+    folium.GeoJsonTooltip(fields=['WardPrecinct', 'winner', 'vote_count'], aliases=['Ward', 'Winner', 'Votes'], sticky=False).add_to(geo)
+    geo.add_to(m)
+
+    ## Plot extra layers
+    for layer_def in ADDITIONAL_LAYERS:
+        layer = makeLayer(**layer_def)
+        layer.add_to(m)
+
+    folium.LayerControl(position='topleft', collapsed=False).add_to(m)
+
+    ## Load template
+    if template is not None:
+        key_values = list(range(0, gradient.max + 1, gradient.max//4))
+        color_key = makeColorKey(name, gradient, values=key_values)
         template = template.replace("{{SVG}}", color_key)
         macro = MacroElement()
         macro._template = Template(template) ## pylint: disable=protected-access
