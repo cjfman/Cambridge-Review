@@ -29,6 +29,7 @@ CITY_BOUNDARY = {
     'geo_path': os.path.join(GEOJSON, "BOUNDARY_CityBoundary.geojson"),
     'show': True,
     'weight': 5,
+    'control': False,
 }
 
 ADDITIONAL_LAYERS = [
@@ -38,6 +39,7 @@ ADDITIONAL_LAYERS = [
         'weight': 5,
         'tooltip': "WardPrecinct",
         'show': True,
+        'sticky': False,
     },
     {
         'name': "Neighborhoods",
@@ -173,12 +175,19 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
 
     ## Make map
     m = folium.Map(location=[42.378, -71.11], zoom_start=14)
+    base_map = folium.FeatureGroup(name='Basemap', overlay=True, control=False)
+    folium.TileLayer(tiles='OpenStreetMap').add_to(base_map)
+    base_map.add_to(m)
     city_boundary = makeLayer(**CITY_BOUNDARY)
-    city_boundary.add_to(m)
+    city_boundary.add_to(base_map)
+
+    ## Add candidates
     for candidate, precincts in values.items():
         print(f"Plot {candidate}")
+        layer1 = folium.FeatureGroup(name=candidate, overlay=False)
         geo = makeCandidateLayer(geojson, candidate, precincts, gradient)
-        geo.add_to(m)
+        geo.add_to(layer1)
+        layer1.add_to(m)
 
     ## Plot extra layers
     for layer_def in ADDITIONAL_LAYERS:
@@ -213,7 +222,7 @@ def htmlElemGen(tag, data='', **kwargs):
     return f'<{tag} {attrs}>{data}</{tag}>'
 
 
-def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=None, **kwargs):
+def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=None, sticky=False, **kwargs):
     geojson = gis.GisGeoJson(geo_path)
     style_function = lambda x: {
         'fillColor': '#000000',
@@ -226,7 +235,7 @@ def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=N
     geo = folium.GeoJson(geojson.geojson, name=name, show=show, control=True, style_function=style_function)
     if tooltip is not None:
         tooltip_name = tooltip_name or tooltip
-        folium.GeoJsonTooltip(fields=[tooltip], aliases=[tooltip], sticky=False).add_to(geo)
+        folium.GeoJsonTooltip(fields=[tooltip], aliases=[tooltip], sticky=sticky).add_to(geo)
 
     return geo
 
