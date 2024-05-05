@@ -209,7 +209,7 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
     }
 
     ## Make map
-    m = folium.Map(location=[42.378, -71.11], zoom_start=14)
+    m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles=None)
     base_map = folium.FeatureGroup(name='Basemap', overlay=True, control=False)
     folium.TileLayer(tiles='OpenStreetMap').add_to(base_map)
     base_map.add_to(m)
@@ -269,7 +269,7 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
             values[candidate][geoid] = count
 
     ## Make map
-    m = folium.Map(location=[42.378, -71.11], zoom_start=14)
+    m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles=None)
     base_map = folium.FeatureGroup(name='Basemap', overlay=True, control=False)
     folium.TileLayer(tiles='OpenStreetMap').add_to(base_map)
     base_map.add_to(m)
