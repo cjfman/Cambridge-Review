@@ -207,6 +207,12 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
 
     folium.LayerControl(position='topleft', collapsed=False).add_to(m)
 
+    ## Plot labels
+    for precinct in precincts:
+        centroid = geojson.getCentroid(geojson.getGeoId(precinct))
+        label = makeLabel(precinct, centroid)
+        label.add_to(m)
+
     ## Load template
     if template is not None:
         key_values = list(range(0, gradient.max + 1, gradient.max//4))
@@ -369,6 +375,17 @@ def makeColorKey(title, gradient, cbox_h=20, cbox_w=400, tick_h=10, values=None)
     width = cbox_w + 20
     height = y_off
     return Element('svg', els, width=width, height=height).to_html()
+
+
+def makeLabel(text, coord, size='16pt', weight='bold'):
+    return folium.map.Marker(
+        coord,
+        icon=folium.features.DivIcon(
+            icon_size=(150,36),
+            icon_anchor=(0,0),
+            html=f'<div style="font-size: {size}; font-weight: {weight}">{text}</div>',
+            )
+        )
 
 
 if __name__ == '__main__':

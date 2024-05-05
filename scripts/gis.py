@@ -1,4 +1,7 @@
 import json
+
+import numpy as np
+
 from shapely.geometry import shape, Point
 
 class GisGeoJson:
@@ -8,6 +11,7 @@ class GisGeoJson:
         self.id_to_secondary  = {}
         self.secondary_to_id  = {}
         self.features         = {}
+        self.centroids        = {}
         with open(path) as f:
             self.geojson = json.load(f)
 
@@ -53,6 +57,16 @@ class GisGeoJson:
 
     def getProperty(self, key, geo_id):
         return self.features[geo_id]['properties'][key]
+
+    def getCentroid(self, geo_id):
+        if geo_id in self.centroids:
+            return self.centroids[geo_id]
+
+        centroid = tuple(np.mean(self.features[geo_id]['geometry']['coordinates'][0], axis=0))
+        lat, lon = centroid
+        centroid = (lon, lat)
+        self.centroids[geo_id] = centroid
+        return centroid
 
 
 class ZoningDistricts(GisGeoJson):
