@@ -55,8 +55,10 @@ def parseArgs():
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--debug", action="store_true")
-    parser.add_argument("--geojson", default=os.path.join(GEOJSON, "WardsPrecincts2020.geojson"),
-        help="Ward geojson")
+#    parser.add_argument("--ward-geojson", default=os.path.join(GEOJSON, "WardsPrecincts2020.geojson"),
+#        help="Ward geojson")
+    parser.add_argument("--census-year", required=True,
+        help="Census year. Used to look up geojson")
     parser.add_argument("--title", default="Precinct Election Map",
         help="Map title")
     who_group = parser.add_mutually_exclusive_group(required=True)
@@ -71,7 +73,13 @@ def parseArgs():
     parser.add_argument("out_file",
         help="Output file")
 
-    return parser.parse_args()
+    args = parser.parse_args()
+
+    ## Update geojson path
+    WARD_BOUNDARIES['geo_path'] = os.path.join(GEOJSON, f"WardsPrecincts{args.census_year}.geojson")
+
+
+    return args
 
 
 def cleanTitle(title):
@@ -97,12 +105,13 @@ def main(args):
     with open(os.path.join(ROOT, "templates/map.html")) as f:
         template = f.read()
 
+    geo_path = WARD_BOUNDARIES['geo_path']
     if args.all:
-        plotAllCandidatesGeoJson(args.title, args.geojson, args.out_file, election.c_votes, max_count=election.max_count, template=template)
+        plotAllCandidatesGeoJson(args.title, geo_path, args.out_file, election.c_votes, max_count=election.max_count, template=template)
     elif args.winners:
-        plotWinnerGeoJson(args.title, args.geojson, args.out_file, election.p_winners, max_count=election.max_count, template=template)
+        plotWinnerGeoJson(args.title, geo_path, args.out_file, election.p_winners, max_count=election.max_count, template=template)
     else:
-        plotGeoJson(args.title, args.geojson, args.out_file, election.p_votes, args.candidate, max_count=election.max_count, template=template)
+        plotGeoJson(args.title, geo_path, args.out_file, election.p_votes, args.candidate, max_count=election.max_count, template=template)
 
 
 def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, template=None):
@@ -158,7 +167,7 @@ def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, templ
         key_values = list(range(0, gradient.max + 1, gradient.max//4))
         color_key = makeColorKey(name, gradient, values=key_values)
         #color_key = makeColorKey(name, gradient)
-        template = template.replace("{{SVG}}", color_key)
+        template = template.replace("{{SVG1}}", color_key)
         macro = MacroElement()
         macro._template = Template(template) ## pylint: disable=protected-access
         m.get_root().add_child(macro)
@@ -201,7 +210,7 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
         'opacity': 0.2,
     }
     style_solid = lambda x: {
-        'fillColor': candidate_colors[x['properties']['winner']],
+        'fillColor': noThrow(candidate_colors, x['properties']['winner']),
         'fillOpacity': 0.7,
         'weight': 2,
         'color': '#000000',
@@ -301,8 +310,7 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
     if template is not None:
         key_values = list(range(0, gradient.max + 1, gradient.max//4))
         color_key = makeColorKey(name, gradient, values=key_values)
-        #color_key = makeColorKey(name, gradient)
-        template = template.replace("{{SVG}}", color_key)
+        template = template.replace("{{SVG1}}", color_key)
         macro = MacroElement()
         macro._template = Template(template) ## pylint: disable=protected-access
         m.get_root().add_child(macro)
@@ -446,7 +454,7 @@ def makeCandidateKey(title, candidates, box_size=8):
     y_off -= box_size
 
     ## Create SVG
-    width = 15 * max([len(x) for x in candidates])
+    width = min(15 * max([len(x) for x in candidates]), 150)
     height = y_off
     return Element('svg', els, width=width, height=height).to_html()
 
