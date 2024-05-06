@@ -78,6 +78,13 @@ def parseArgs():
     ## Update geojson path
     WARD_BOUNDARIES['geo_path'] = os.path.join(GEOJSON, f"WardsPrecincts{args.census_year}.geojson")
 
+    global VERBOSE ## pylint: disable=global-statement
+    global DEBUG   ## pylint: disable=global-statement
+    if args.debug:
+        VERBOSE = True
+        DEBUG = True
+    elif args.verbose:
+        VERBOSE = True
 
     return args
 
@@ -161,12 +168,8 @@ def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, templ
 
     ## Load template
     if template is not None:
-        #key_values = list(np.arange(gradient.min, 3, 0.5))
-        #key_values += list(np.arange(3, gradient.max, 1))
-        #key_values = [int(x) for x in key_values] + [gradient.max]
         key_values = list(range(0, gradient.max + 1, gradient.max//4))
         color_key = makeColorKey(name, gradient, values=key_values)
-        #color_key = makeColorKey(name, gradient)
         template = template.replace("{{SVG1}}", color_key)
         macro = MacroElement()
         macro._template = Template(template) ## pylint: disable=protected-access
@@ -196,6 +199,8 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
         values[geoid] = count
         geojson.setProperty('winner', winner, geoid)
         geojson.setProperty('vote_count', count, geoid)
+        if DEBUG:
+            print(precinct, geoid, winner, count)
 
     ## Make style function
     num_colors = len(cs.COLOR_BLIND_FRIENDLY_HEX)
@@ -321,6 +326,9 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
 
 def noThrow(values, key):
     if key not in values:
+        if DEBUG:
+            print(f"Failed to find key: {key}")
+
         return None
 
     return values[key]
@@ -463,7 +471,7 @@ def makeLabel(text, coord, size='16pt', weight='bold'):
     return folium.map.Marker(
         coord,
         icon=folium.features.DivIcon(
-            icon_size=(45/4*len(text), 0),
+            icon_size=(50/4*len(text), 0),
             icon_anchor=(5, 5),
             html=f'<div style="font-size: {size}; font-weight: {weight}">{text}</div>',
             )
