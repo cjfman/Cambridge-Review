@@ -24,16 +24,16 @@ GREY = (68, 68, 68)
 
 class ColorGradient:
     def __init__(self, colors, max_val, min_val=0, *, scale_fn=None):
-        self.colors   = colors
-        self.max      = max_val
-        self.min      = min_val
-        self.range    = self.max - self.min
-        self.size     = len(self.colors)
-        self.factor = 1
-        self.scale_fn = scale_fn or (lambda x: x)
-        self.min_scaled = self.scale_fn(self.min) if self.min > 0 else 0
-        self.max_scaled = self.scale_fn(self.max*self.factor)
-        self.range_scaled    = self.max_scaled - self.min_scaled
+        self.colors       = colors
+        self.max          = max_val
+        self.min          = min_val
+        self.range        = self.max - self.min
+        self.size         = len(self.colors)
+        self.factor       = 1
+        self.scale_fn     = scale_fn or (lambda x: x)
+        self.min_scaled   = self.scale_fn(self.min) if self.min > 0 else 0
+        self.max_scaled   = self.scale_fn(self.max*self.factor)
+        self.range_scaled = self.max_scaled - self.min_scaled
 
     def scale(self, val):
         if val == 0:

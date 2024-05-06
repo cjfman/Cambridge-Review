@@ -3,6 +3,7 @@
 ## pylint: disable=too-many-locals
 
 import argparse
+import math
 import os
 import sys
 
@@ -126,7 +127,6 @@ def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, templ
     print(f"Reading {geo_path}")
     geojson = gis.GisGeoJson(geo_path, secondary_id_key='WardPrecinct')
     gradient = cs.ColorGradient(cs.BlueRedYellow, max_count)
-    #gradient = cs.ColorGradient(cs.BlueRedYellow, int(values.max()), scale_fn=lambda x: math.log(1 + x))
 
     values = {}
     geojson.setProperty(metric, "N/A")
@@ -272,7 +272,8 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
     print(f"Generating {name}")
     print(f"Reading {geo_path}")
     geojson = gis.GisGeoJson(geo_path, secondary_id_key='WardPrecinct')
-    gradient = cs.ColorGradient(cs.BlueRedYellow, max_count)
+    #gradient = cs.ColorGradient(cs.BlueRedYellow, max_count)
+    gradient = cs.ColorGradient(cs.BlueRedYellow, max_count, scale_fn=lambda x: math.log(1 + x/50))
 
     all_precincts = set()
     values = defaultdict(dict)
@@ -293,6 +294,7 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
     base_map.add_to(m)
     city_boundary = makeLayer(**CITY_BOUNDARY)
     city_boundary.add_to(base_map)
+    makeLayer(**WARD_BOUNDARIES).add_to(m)
 
     ## Plot labels
     makeLabelLayer(geojson, all_precincts).add_to(m)
@@ -306,14 +308,16 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
         layer1.add_to(m)
 
     ## Plot extra layers
-    makeLayer(**WARD_BOUNDARIES).add_to(m)
     makeLayer(**NEIGHBORHOOD_BOUNDARIES).add_to(m)
 
     folium.LayerControl(position='topleft', collapsed=False).add_to(m)
 
     ## Load template
     if template is not None:
-        key_values = list(range(0, gradient.max + 1, gradient.max//4))
+        half = gradient.max//2
+        key_values = list(range(0, half, gradient.max//10))
+        key_values += list(range(half, gradient.max - 1, gradient.max//5))[1:]
+        key_values[-1] = gradient.max
         color_key = makeColorKey(name, gradient, values=key_values)
         template = template.replace("{{SVG1}}", color_key)
         macro = MacroElement()
