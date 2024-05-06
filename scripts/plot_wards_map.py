@@ -234,14 +234,14 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
     makeLabelLayer(geojson, precincts).add_to(m)
 
     ## Plot wards
-    layer1 = folium.FeatureGroup(name="Vote Count", overlay=False)
-    geo1 = folium.GeoJson(geojson.geojson, name="Vote Count", style_function=style_gradient)
+    layer1 = folium.FeatureGroup(name="Winners", overlay=False)
+    geo1 = folium.GeoJson(geojson.geojson, name="Winners", style_function=style_solid)
     folium.GeoJsonTooltip(fields=['WardPrecinct', 'winner', 'vote_count'], aliases=['Ward', 'Winner', 'Votes'], sticky=False).add_to(geo1)
     geo1.add_to(layer1)
     layer1.add_to(m)
 
-    layer2 = folium.FeatureGroup(name="Winners", overlay=False)
-    geo2 = folium.GeoJson(geojson.geojson, name="Winners", style_function=style_solid)
+    layer2 = folium.FeatureGroup(name="Vote Count", overlay=False)
+    geo2 = folium.GeoJson(geojson.geojson, name="Vote Count", style_function=style_gradient)
     folium.GeoJsonTooltip(fields=['WardPrecinct', 'winner', 'vote_count'], aliases=['Ward', 'Winner', 'Votes'], sticky=False).add_to(geo2)
     geo2.add_to(layer2)
     layer2.add_to(m)
