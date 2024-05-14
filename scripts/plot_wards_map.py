@@ -208,7 +208,7 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, totals,
     ## Make style function
     num_colors = len(cs.COLOR_BLIND_FRIENDLY_HEX)
     candidate_colors = {
-        name: cs.COLOR_BLIND_FRIENDLY_HEX[i % num_colors] for i, name in enumerate(winners)
+        name: cs.COLOR_BLIND_FRIENDLY_HEX[i % num_colors] for i, name in enumerate(sorted(winners))
     }
     style_gradient = lambda x: {
         'fillColor': gradient.pick(float(noThrow(values, x['id']) or 0) or None),
