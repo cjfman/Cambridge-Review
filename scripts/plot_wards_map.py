@@ -304,7 +304,7 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
     makeLabelLayer(geojson, all_precincts).add_to(m)
 
     ## Add candidates
-    for candidate, precincts in values.items():
+    for candidate, precincts in sorted(values.items()):
         print(f"Plot {candidate}")
         layer1 = folium.FeatureGroup(name=candidate, overlay=False)
         geo = makeCandidateLayer(geojson, candidate, precincts, gradient)
