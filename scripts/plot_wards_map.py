@@ -115,14 +115,14 @@ def main(args):
 
     geo_path = WARD_BOUNDARIES['geo_path']
     if args.all:
-        plotAllCandidatesGeoJson(args.title, geo_path, args.out_file, election.c_votes, max_count=election.max_count, template=template)
+        plotAllCandidatesGeoJson(args.title, geo_path, args.out_file, election.c_votes, max_count=election.max_count, totals=election.p_totals, template=template)
     elif args.winners:
-        plotWinnerGeoJson(args.title, geo_path, args.out_file, election.p_winners, max_count=election.max_count, template=template)
+        plotWinnerGeoJson(args.title, geo_path, args.out_file, election.p_winners, max_count=election.max_count, totals=election.p_totals, template=template)
     else:
-        plotGeoJson(args.title, geo_path, args.out_file, election.p_votes, args.candidate, max_count=election.max_count, template=template)
+        plotGeoJson(args.title, geo_path, args.out_file, election.p_votes, args.candidate, max_count=election.max_count, totals=election.p_totals, template=template)
 
 
-def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, template=None):
+def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, totals, template=None):
     print(f"Generating {name}")
     print(f"Reading {geo_path}")
     geojson = gis.GisGeoJson(geo_path, secondary_id_key='WardPrecinct')
@@ -136,7 +136,9 @@ def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, templ
             print(f"Skipping {precinct}")
             continue
 
-        values[geoid] = results[metric]
+        count = int(results[metric])
+        values[geoid] = count
+        count = "%d (%.2f%%)" % (count, 100 * count / totals[precinct])
         geojson.setProperty(metric, results[metric], geoid)
 
     ## Make style function
@@ -179,7 +181,7 @@ def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, templ
     print(f"Wrote to {out_path}")
 
 
-def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, template=None):
+def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, totals, template=None):
     print(f"Generating {name}")
     print(f"Reading {geo_path}")
     geojson = gis.GisGeoJson(geo_path, secondary_id_key='WardPrecinct')
@@ -197,6 +199,7 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
         winner, count = results
         winners.add(winner)
         values[geoid] = count
+        count = "%d (%.2f%%)" % (count, 100 * count / totals[precinct])
         geojson.setProperty('winner', winner, geoid)
         geojson.setProperty('vote_count', count, geoid)
         if DEBUG:
@@ -234,17 +237,16 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
     makeLabelLayer(geojson, precincts).add_to(m)
 
     ## Plot wards
-    layer1 = folium.FeatureGroup(name="Winners", overlay=False)
-    geo1 = folium.GeoJson(geojson.geojson, name="Winners", style_function=style_solid)
-    folium.GeoJsonTooltip(fields=['WardPrecinct', 'winner', 'vote_count'], aliases=['Ward', 'Winner', 'Votes'], sticky=False).add_to(geo1)
-    geo1.add_to(layer1)
-    layer1.add_to(m)
-
-    layer2 = folium.FeatureGroup(name="Vote Count", overlay=False)
-    geo2 = folium.GeoJson(geojson.geojson, name="Vote Count", style_function=style_gradient)
-    folium.GeoJsonTooltip(fields=['WardPrecinct', 'winner', 'vote_count'], aliases=['Ward', 'Winner', 'Votes'], sticky=False).add_to(geo2)
-    geo2.add_to(layer2)
-    layer2.add_to(m)
+    styles = (
+        ('Winners', style_solid),
+        ("Vote Count", style_gradient),
+    )
+    for layer_name, style in styles:
+        layer = folium.FeatureGroup(name=layer_name, overlay=False)
+        geo = folium.GeoJson(geojson.geojson, name=layer_name, style_function=style)
+        folium.GeoJsonTooltip(fields=['WardPrecinct', 'winner', 'vote_count'], aliases=['Ward', 'Winner', 'Votes'], sticky=False).add_to(geo)
+        geo.add_to(layer)
+        layer.add_to(m)
 
     ## Plot extra layers
     makeLayer(**NEIGHBORHOOD_BOUNDARIES).add_to(m)
@@ -268,7 +270,7 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, templat
     print(f"Wrote to {out_path}")
 
 
-def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count, template=None):
+def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count, totals, template=None):
     print(f"Generating {name}")
     print(f"Reading {geo_path}")
     geojson = gis.GisGeoJson(geo_path, secondary_id_key='WardPrecinct')
@@ -284,8 +286,10 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
             if geoid is None:
                 continue
             all_precincts.add(precinct)
-            geojson.setProperty(candidate, count, geoid)
+            count = int(count)
             values[candidate][geoid] = count
+            count = "%d (%.2f%%)" % (count, 100 * count / totals[precinct])
+            geojson.setProperty(candidate, count, geoid)
 
     ## Make map
     m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles=None)
@@ -334,6 +338,8 @@ def noThrow(values, key):
             print(f"Failed to find key: {key}")
 
         return None
+    elif DEBUG:
+        print(f"Found '{key}' >> '{values[key]}'")
 
     return values[key]
 
@@ -440,9 +446,6 @@ def makeColorKey(title, gradient, cbox_h=20, cbox_w=400, tick_h=10, values=None)
 
 
 def makeCandidateKey(title, candidates, box_size=8):
-    ## Add data
-    color_tag = "color-scheme-red"
-
     ## Add elements
     y_off = 20
     x_off = 10

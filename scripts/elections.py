@@ -271,10 +271,11 @@ class WardElection:
     def __init__(self, precincts, candidates, totals, votes, writein, blank_inv):
         self.precincts  = precincts
         self.candidates = candidates
-        self.totals     = totals ## Dict[candidate, Dict[precinct, count]]
+        self.c_totals   = totals ## Dict[candidate, Dict[precinct, count]]
         self.c_votes    = votes
         self.writein    = writein
         self.blank_inv  = blank_inv
+        self.p_totals   = defaultdict(int)
         self.p_votes    = defaultdict(dict) ## Dict[precinct, Dict[candidate, count]]
         self.max_count  = 0
         self.winners    = set()
@@ -285,6 +286,7 @@ class WardElection:
             for precinct, count in c_votes.items():
                 count = int(count)
                 self.p_votes[precinct][name] = count
+                self.p_totals[precinct] += count
                 if precinct != "Total":
                     self.max_count = max(self.max_count, count)
                     if self.p_winners[precinct][1] < count:
