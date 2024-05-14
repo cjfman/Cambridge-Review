@@ -115,7 +115,7 @@ def main(args):
 
     geo_path = WARD_BOUNDARIES['geo_path']
     if args.all:
-        plotAllCandidatesGeoJson(args.title, geo_path, args.out_file, election.c_votes, max_count=election.max_count, totals=election.p_totals, template=template)
+        plotAllCandidatesGeoJson(args.title, geo_path, args.out_file, election, template=template)
     elif args.winners:
         plotWinnerGeoJson(args.title, geo_path, args.out_file, election.p_winners, max_count=election.max_count, totals=election.p_totals, template=template)
     else:
@@ -136,9 +136,7 @@ def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, total
             print(f"Skipping {precinct}")
             continue
 
-        count = int(results[metric])
-        values[geoid] = count
-        count = "%d (%.2f%%)" % (count, 100 * count / totals[precinct])
+        values[geoid] = results[metric]
         geojson.setProperty(metric, results[metric], geoid)
 
     ## Make style function
@@ -270,26 +268,31 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, totals,
     print(f"Wrote to {out_path}")
 
 
-def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count, totals, template=None):
+def plotAllCandidatesGeoJson(name, geo_path, out_path, election, template=None):
     print(f"Generating {name}")
     print(f"Reading {geo_path}")
     geojson = gis.GisGeoJson(geo_path, secondary_id_key='WardPrecinct')
-    #gradient = cs.ColorGradient(cs.BlueRedYellow, max_count)
-    gradient = cs.ColorGradient(cs.BlueRedYellow, max_count, scale_fn=lambda x: math.log(1 + x/50))
+    gradient = cs.ColorGradient(cs.BlueRedYellow, election.max_count, scale_fn=lambda x: math.log(1 + x/50))
 
     all_precincts = set()
+    precinct_totals = defaultdict(int)
+
+    ## Set property values for each candidate
     values = defaultdict(dict)
-    for candidate, results in candidates.items():
+    for candidate, results in election.c_votes.items():
         geojson.setProperty(candidate, "N/A")
         for precinct, count in results.items():
             geoid = geojson.getGeoId(precinct)
             if geoid is None:
                 continue
+
             all_precincts.add(precinct)
-            count = int(count)
+            precinct_totals[geoid] += count
             values[candidate][geoid] = count
-            count = "%d (%.2f%%)" % (count, 100 * count / totals[precinct])
-            geojson.setProperty(candidate, count, geoid)
+            count_txt = "%d (%.2f%%)" % (count, 100 * count / election.p_totals[precinct])
+            if election.p_winners[precinct][0] == candidate:
+                count_txt += "*"
+            geojson.setProperty(candidate, count_txt, geoid)
 
     ## Make map
     m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles=None)
@@ -303,13 +306,20 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, candidates, *, max_count,
     ## Plot labels
     makeLabelLayer(geojson, all_precincts).add_to(m)
 
+    ## Add total layer
+    print(f"Plot Totals")
+    layer = folium.FeatureGroup(name="Totals", overlay=False)
+    geo = makeTotalLayer(geojson, sorted(election.c_votes.keys()), precinct_totals, gradient, show=False)
+    geo.add_to(layer)
+    layer.add_to(m)
+
     ## Add candidates
     for candidate, precincts in sorted(values.items()):
         print(f"Plot {candidate}")
-        layer1 = folium.FeatureGroup(name=candidate, overlay=False)
+        layer = folium.FeatureGroup(name=candidate, overlay=False)
         geo = makeCandidateLayer(geojson, candidate, precincts, gradient)
-        geo.add_to(layer1)
-        layer1.add_to(m)
+        geo.add_to(layer)
+        layer.add_to(m)
 
     ## Plot extra layers
     makeLayer(**NEIGHBORHOOD_BOUNDARIES).add_to(m)
@@ -338,8 +348,6 @@ def noThrow(values, key):
             print(f"Failed to find key: {key}")
 
         return None
-    elif DEBUG:
-        print(f"Found '{key}' >> '{values[key]}'")
 
     return values[key]
 
@@ -375,6 +383,25 @@ def makeLabelLayer(geojson, precincts):
         label.add_to(layer)
 
     return layer
+
+
+def makeTotalLayer(geojson, candidates, precincts, gradient, *, show=False):
+    ## Make style function
+    style_function = lambda x: {
+        'fillColor': gradient.pick(float(noThrow(precincts, x['id']) or 0) or None),
+        'fillOpacity': 0.7,
+        'weight': 2,
+        'color': '#000000',
+        'opacity': 0.2,
+    }
+
+    fields = ['WardPrecinct']
+    fields.extend(candidates)
+    aliases = ['Ward']
+    aliases.extend(candidates)
+    geo = folium.GeoJson(geojson.geojson, name="Totals", style_function=style_function, show=show)
+    folium.GeoJsonTooltip(fields=fields, aliases=aliases, sticky=False).add_to(geo)
+    return geo
 
 
 def makeCandidateLayer(geojson, name, precincts, gradient, *, show=False):

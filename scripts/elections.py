@@ -309,13 +309,13 @@ def loadWardElectionFile(path) -> WardElection:
     with open(path, 'r', encoding='utf8') as f:
         reader = csv.DictReader(f)
         precincts = reader.fieldnames[2:]
-        for x in reader:
-            candidate = x.copy()
-            candidates[candidate['Candidate']] = candidate
-            del candidate['Candidate']
+        for row in reader:
+            candidate = row['Candidate']
+            votes = { x: int(y) for x, y in row.items() if y.isnumeric() }
+            candidates[candidate] = votes
             for p in precincts:
-                if p not in candidate or not candidate[p]:
-                    candidate[p] = 0
+                if p not in votes or not votes[p]:
+                    votes[p] = 0
 
     totals    = candidates['Total']
     blank_inv = candidates['Blank / Invalid']
