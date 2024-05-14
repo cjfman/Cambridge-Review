@@ -294,6 +294,9 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, election, template=None):
                 count_txt += "*"
             geojson.setProperty(candidate, count_txt, geoid)
 
+    for geoid, total in precinct_totals.items():
+        geojson.setProperty("Total", total, geoid)
+
     ## Make map
     m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles=None)
     base_map = folium.FeatureGroup(name='Basemap', overlay=True, control=False)
@@ -306,13 +309,6 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, election, template=None):
     ## Plot labels
     makeLabelLayer(geojson, all_precincts).add_to(m)
 
-    ## Add total layer
-    print(f"Plot Totals")
-    layer = folium.FeatureGroup(name="Totals", overlay=False)
-    geo = makeTotalLayer(geojson, sorted(election.c_votes.keys()), precinct_totals, gradient, show=False)
-    geo.add_to(layer)
-    layer.add_to(m)
-
     ## Add candidates
     for candidate, precincts in sorted(values.items()):
         print(f"Plot {candidate}")
@@ -320,6 +316,13 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, election, template=None):
         geo = makeCandidateLayer(geojson, candidate, precincts, gradient)
         geo.add_to(layer)
         layer.add_to(m)
+
+    ## Add total layer
+    print(f"Plot Totals")
+    layer = folium.FeatureGroup(name="Totals", overlay=False)
+    geo = makeTotalLayer(geojson, sorted(election.c_votes.keys()), precinct_totals, gradient, show=False)
+    geo.add_to(layer)
+    layer.add_to(m)
 
     ## Plot extra layers
     makeLayer(**NEIGHBORHOOD_BOUNDARIES).add_to(m)
@@ -387,17 +390,18 @@ def makeLabelLayer(geojson, precincts):
 
 def makeTotalLayer(geojson, candidates, precincts, gradient, *, show=False):
     ## Make style function
+    num_colors = len(cs.COLOR_BLIND_FRIENDLY_HEX)
     style_function = lambda x: {
-        'fillColor': gradient.pick(float(noThrow(precincts, x['id']) or 0) or None),
+        'fillColor': cs.COLOR_BLIND_FRIENDLY_HEX[x['id'] % num_colors],
         'fillOpacity': 0.7,
-        'weight': 2,
+        'weight': 4,
         'color': '#000000',
         'opacity': 0.2,
     }
 
-    fields = ['WardPrecinct']
+    fields = ['WardPrecinct', 'Total']
     fields.extend(candidates)
-    aliases = ['Ward']
+    aliases = ['Ward', 'Total']
     aliases.extend(candidates)
     geo = folium.GeoJson(geojson.geojson, name="Totals", style_function=style_function, show=show)
     folium.GeoJsonTooltip(fields=fields, aliases=aliases, sticky=False).add_to(geo)
