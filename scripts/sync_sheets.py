@@ -16,7 +16,9 @@ VERBOSE=False
 DEBUG=False
 
 ## If modifying these scopes, delete the file token.json.
-SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
+SCOPES = [
+    "https://www.googleapis.com/auth/spreadsheets",
+]
 TRACKER_SHEET_ID = "17qiYpxVFX8zwDrMJKpK_C-hZL9-Y8y5QU3GhVhi4xeg"
 
 item_sheet_keys = (
@@ -71,16 +73,28 @@ def parseArgs():
     """Parse command arguments"""
     ## pylint: disable=global-statement
     parser = argparse.ArgumentParser()
+    parser.set_defaults(func=None)
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--credentials", default="google_credentials/credentials.json",
         help="Google API JSON credentials")
     parser.add_argument("--token", default="google_credentials/token.json",
         help="Google API JSON token. Will be created if one doesn't exist")
+    parser.add_argument("--sheet-id", default=TRACKER_SHEET_ID,
+        help="The google sheets ID")
     parser.add_argument("--processed-dir", required=True,
         help="Directory that contains the processed agenda item csvs")
-    parser.add_argument("--force-add", action="store_true",
+
+    subparsers = parser.add_subparsers()
+
+    add_parser = subparsers.add_parser('add',
+        help="Add rows to the google sheets"
+    )
+    add_parser.set_defaults(func=add_hdlr)
+    add_parser.add_argument("--force-add", action="store_true",
         help="Add rows even if the unique ID already exists")
+
+    ## Final parse
     args = parser.parse_args()
     if args.verbose:
         global VERBOSE
@@ -114,6 +128,21 @@ def getCreds(credentials_path, token_path):
         token.write(creds.to_json())
 
     return creds
+
+
+def append(service, sheet_id, sheet_range, rows):
+    sheet = service.spreadsheets()
+    result = sheet.values().append(
+        spreadsheetId=sheet_id,
+        range=sheet_range,
+        body={
+            'values': rows,
+            'majorDimension': 'ROWS',
+        },
+        valueInputOption='USER_ENTERED',
+        insertDataOption='INSERT_ROWS',
+    ).execute()
+    return result
 
 
 def getAllUids(service, sheet_id):
@@ -166,13 +195,11 @@ def processRowsToAdd(item_type, dir_path, existing_uids=None):
     return rows
 
 
-def main(args):
-    creds = getCreds(args.credentials, args.token)
-    service = build("sheets", "v4", credentials=creds)
+def add_hdlr(args, service):
     uids = { x: None for x in item_sheet_keys }
     if not args.force_add:
         print("Getting existing UIDs")
-        uids = getAllUids(service, TRACKER_SHEET_ID)
+        uids = getAllUids(service, args.sheet_id)
     else:
         print("Force adding")
 
@@ -180,9 +207,31 @@ def main(args):
         rows = processRowsToAdd(item_type, args.processed_dir, uids[item_type])
         if not rows:
             print(f"No {item_type} rows to add")
-        else:
-            print(rows)
+            continue
+
+        ## Add rows
+        sheet_name = sheet_name_map[item_type]
+        print(f"Adding {len(rows)} to '{sheet_name}'")
+        results = append(service, args.sheet_id, sheet_name, rows)
+        if 'updatedRange' not in results:
+            print(f"Failed to add rows to '{sheet_name}'")
+            continue
+
+        ## Update formula rows
+        #sheet_range = results['updatedRange'].split('!')[1]
+
     return 0
+
+
+def main(args):
+    if args.func is None:
+        args.print_usage()
+        return 1
+
+    ## Run command
+    creds = getCreds(args.credentials, args.token)
+    service = build("sheets", "v4", credentials=creds)
+    return args.func(args, service)
 
 
 if __name__ == '__main__':
