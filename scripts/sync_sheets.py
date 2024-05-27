@@ -3,6 +3,7 @@
 import argparse
 import csv
 import os
+import re
 import sys
 
 from google.auth.transport.requests import Request
@@ -47,6 +48,10 @@ item_csv_map = {
     'com': 'communications.csv',
     'por': 'policy_orders.csv',
     'res': 'resolutions.csv'
+}
+
+item_vote_col = {
+    'por': 'L',
 }
 
 pos_col_map = {
@@ -130,7 +135,8 @@ def getCreds(credentials_path, token_path):
     return creds
 
 
-def append(service, sheet_id, sheet_range, rows):
+def append(service, sheet_id, sheet_range, rows, *, user_entered=False):
+    input_opt = 'USER_ENTERED' if user_entered else 'RAW'
     sheet = service.spreadsheets()
     result = sheet.values().append(
         spreadsheetId=sheet_id,
@@ -139,8 +145,23 @@ def append(service, sheet_id, sheet_range, rows):
             'values': rows,
             'majorDimension': 'ROWS',
         },
-        valueInputOption='USER_ENTERED',
+        valueInputOption=input_opt,
         insertDataOption='INSERT_ROWS',
+    ).execute()
+    return result.get('updates', None)
+
+
+def update(service, sheet_id, sheet_range, rows, *, user_entered=False):
+    input_opt = 'USER_ENTERED' if user_entered else 'RAW'
+    sheet = service.spreadsheets()
+    result = sheet.values().update(
+        spreadsheetId=sheet_id,
+        range=sheet_range,
+        body={
+            'values': rows,
+            'majorDimension': 'ROWS',
+        },
+        valueInputOption=input_opt,
     ).execute()
     return result
 
@@ -195,6 +216,43 @@ def processRowsToAdd(item_type, dir_path, existing_uids=None):
     return rows
 
 
+def add_item_type(service, sheet_id, item_type, rows):
+    if not rows:
+        print(f"No {item_type} rows to add")
+        return
+
+    ## Add rows
+    sheet_name = sheet_name_map[item_type]
+    print(f"Adding {len(rows)} to '{sheet_name}'")
+    results = append(service, sheet_id, sheet_name, rows, user_entered=True)
+    if results is None:
+        print(f"Failed to add rows to '{sheet_name}'")
+        return
+
+    ## Figure out vote columns
+    c_start = item_vote_col[item_type]
+    c_end   = chr(ord(c_start) + 8)
+    c_yeas  = chr(ord(c_start) + 9)
+    c_pres  = chr(ord(c_start) + 11)
+    c_absnt = chr(ord(c_start) + 12)
+
+    ## Update formula rows
+    r_start, r_end = tuple(int(re.search(r"\d+", x).group()) for x in results['updatedRange'].split('!')[1].split(':'))
+    rows = []
+    for i in range(r_start, r_end + 1):
+        rows.append([f'=ARRAY_CONSTRAIN(ARRAYFORMULA(TEXTJOIN(", ",TRUE,{x})), 1, 1)' for x in [
+            f'IF("yes"=LOWER(${c_start}{i}:${c_end}{i}),${c_start}$1:${c_end}$1,"")',
+            f'IF("no"=LOWER(${c_start}{i}:${c_end}{i}),${c_start}$1:${c_end}$1,"")',
+            f'IF(LOWER({c_pres}$1)=LOWER(${c_start}{i}:${c_end}{i}),${c_start}$1:${c_end}$1,"")',
+            f'IF(LOWER({c_absnt}$1)=LOWER(${c_start}{i}:${c_end}{i}),${c_start}$1:${c_end}$1,"")',
+        ]])
+
+    sheet_range = f'{sheet_name}!{c_yeas}{r_start}:{c_absnt}{r_end}'
+    print("Updating vote aggrigation formulas")
+    results = update(service, sheet_id, sheet_range, rows)
+    print(results)
+
+
 def add_hdlr(args, service):
     uids = { x: None for x in item_sheet_keys }
     if not args.force_add:
@@ -205,20 +263,7 @@ def add_hdlr(args, service):
 
     for item_type in ['por']:
         rows = processRowsToAdd(item_type, args.processed_dir, uids[item_type])
-        if not rows:
-            print(f"No {item_type} rows to add")
-            continue
-
-        ## Add rows
-        sheet_name = sheet_name_map[item_type]
-        print(f"Adding {len(rows)} to '{sheet_name}'")
-        results = append(service, args.sheet_id, sheet_name, rows)
-        if 'updatedRange' not in results:
-            print(f"Failed to add rows to '{sheet_name}'")
-            continue
-
-        ## Update formula rows
-        #sheet_range = results['updatedRange'].split('!')[1]
+        add_item_type(service, args.sheet_id, item_type, rows)
 
     return 0
 
