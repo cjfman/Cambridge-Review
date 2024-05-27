@@ -12,3 +12,4 @@ sandbox/*
 meeting_data/cache/*.pdf
 meeting_data/processed/current/
 tmp/
+google_credentials/
