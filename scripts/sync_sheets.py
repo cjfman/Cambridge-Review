@@ -135,7 +135,7 @@ def getCreds(credentials_path, token_path):
     return creds
 
 
-def append(service, sheet_id, sheet_range, rows, *, user_entered=False):
+def append(service, sheet_id, sheet_range, rows, *, user_entered=True):
     input_opt = 'USER_ENTERED' if user_entered else 'RAW'
     sheet = service.spreadsheets()
     result = sheet.values().append(
@@ -151,7 +151,7 @@ def append(service, sheet_id, sheet_range, rows, *, user_entered=False):
     return result.get('updates', None)
 
 
-def update(service, sheet_id, sheet_range, rows, *, user_entered=False):
+def update(service, sheet_id, sheet_range, rows, *, user_entered=True):
     input_opt = 'USER_ENTERED' if user_entered else 'RAW'
     sheet = service.spreadsheets()
     result = sheet.values().update(
@@ -224,7 +224,7 @@ def add_item_type(service, sheet_id, item_type, rows):
     ## Add rows
     sheet_name = sheet_name_map[item_type]
     print(f"Adding {len(rows)} to '{sheet_name}'")
-    results = append(service, sheet_id, sheet_name, rows, user_entered=True)
+    results = append(service, sheet_id, sheet_name, rows)
     if results is None:
         print(f"Failed to add rows to '{sheet_name}'")
         return
@@ -250,7 +250,6 @@ def add_item_type(service, sheet_id, item_type, rows):
     sheet_range = f'{sheet_name}!{c_yeas}{r_start}:{c_absnt}{r_end}'
     print("Updating vote aggrigation formulas")
     results = update(service, sheet_id, sheet_range, rows)
-    print(results)
 
 
 def add_hdlr(args, service):
