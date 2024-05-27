@@ -145,7 +145,7 @@ def parseArgs():
         help="The maximum number of meetings to process. Set 0 for no limit")
     parser.add_argument("--meeting",
         help="Process this specific meeting")
-    parser.add_argument("--councillor-info",
+    parser.add_argument("--councillor-info", required=True,
         help="File with councillor info")
     parser.add_argument("--session", type=int,
         help="The session year. Defaults to most recent one found in councillor info file")
@@ -843,6 +843,8 @@ def processCma(args, uid, num, title, link, vote, action) -> CMA:
     info_div = findTag(soup, 'div', 'LegiFileInfo')
     table = processKeyWordTable(findTag(info_div, 'table', 'LegiFileSectionContents'))
     category = table['Category']
+    if category.lower() == "transmitting communication":
+        category = "Communication"
 
     ## Origins if any
     awaiting = ""
