@@ -52,9 +52,12 @@ item_csv_map = {
 
 item_vote_col = {
     'por': 'L',
+    'cma': 'L',
+    'app': 'L',
+    'res': 'J',
 }
 
-pos_col_map = {
+por_col_map = {
     "Unique Identifier": 'A',
     "Agenda Number":     'B',
     "Meeting":           'C',
@@ -66,11 +69,85 @@ pos_col_map = {
     "Link":              'Y',
     "Summary":           'Z',
 }
-pos_idx_map = { x: ord(y.upper()) - ord('A') for x, y in pos_col_map.items() }
-pos_row_size = max(pos_idx_map.values()) + 1
+por_idx_map = { x: ord(y.upper()) - ord('A') for x, y in por_col_map.items() }
+por_row_size = max(por_idx_map.values()) + 1
+
+cma_col_map = {
+    "Unique Identifier": 'A',
+    "Agenda Number":     'B',
+    "Meeting":           'C',
+    "Meeting Date":      'D',
+    "Category":          'E',
+    "Awaiting Report":   'F',
+    "Policy Order":      'G',
+    "Charter Right":     'H',
+    "Link":              'Y',
+    "Summary":           'Z',
+}
+cma_idx_map = { x: ord(y.upper()) - ord('A') for x, y in cma_col_map.items() }
+cma_row_size = max(cma_idx_map.values()) + 1
+
+app_col_map = {
+    "Unique Identifier": 'A',
+    "Agenda Number":     'B',
+    "Meeting":           'C',
+    "Meeting Date":      'D',
+    "Category":          'E',
+    "Name":              'F',
+    "Address":           'G',
+    "Charter Right":     'H',
+    "Link":              'Y',
+    "Summary":           'Z',
+}
+app_idx_map = { x: ord(y.upper()) - ord('A') for x, y in app_col_map.items() }
+app_row_size = max(app_idx_map.values()) + 1
+
+com_col_map = {
+    "Unique Identifier": 'A',
+    "Agenda Number":     'B',
+    "Meeting":           'C',
+    "Meeting Date":      'D',
+    "Name":              'E',
+    "Address":           'F',
+    "Subject":           'G',
+    "Link":              'H',
+    "Notes":             'I',
+}
+com_idx_map = { x: ord(y.upper()) - ord('A') for x, y in com_col_map.items() }
+com_row_size = max(com_idx_map.values()) + 1
+
+res_col_map = {
+    "Unique Identifier": 'A',
+    "Agenda Number":     'B',
+    "Meeting":           'C',
+    "Meeting Date":      'D',
+    "Category":          'E',
+    "Sponsor":           'F',
+    "Link":              'W',
+    "Summary":           'X',
+    "Notes":             'Y',
+}
+res_idx_map = { x: ord(y.upper()) - ord('A') for x, y in res_col_map.items() }
+res_row_size = max(res_idx_map.values()) + 1
+
+ar_col_map = {
+    "Unique Identifier": "A",
+    "Department":        "B",
+    "Category":          "C",
+    "Policy Order":      "D",
+    "Link":              "E",
+    "Description":       "F",
+}
+ar_idx_map = { x: ord(y.upper()) - ord('A') for x, y in ar_col_map.items() }
+ar_row_size = max(ar_idx_map.values()) + 1
 
 item_mappings = {
-    'por': (pos_col_map, pos_idx_map, pos_row_size),
+    'por': (por_col_map, por_idx_map, por_row_size),
+    'cma': (cma_col_map, cma_idx_map, cma_row_size),
+    'app': (app_col_map, app_idx_map, app_row_size),
+    'com': (com_col_map, com_idx_map, com_row_size),
+    'res': (res_col_map, res_idx_map, res_row_size),
+    'ar':  (ar_col_map, ar_idx_map, ar_row_size),
 }
 
 
@@ -218,7 +295,7 @@ def processRowsToAdd(item_type, dir_path, existing_uids=None):
 
 def add_item_type(service, sheet_id, item_type, rows):
     if not rows:
-        print(f"No {item_type} rows to add")
+        print(f"No '{item_type}' rows to add")
         return
 
     ## Add rows
@@ -229,7 +306,12 @@ def add_item_type(service, sheet_id, item_type, rows):
         print(f"Failed to add rows to '{sheet_name}'")
         return
 
+    if item_type not in item_vote_col:
+        print("Not updating vote aggrigation formulas")
+        return
+
     ## Figure out vote columns
+    print("Updating vote aggrigation formulas")
     c_start = item_vote_col[item_type]
     c_end   = chr(ord(c_start) + 8)
     c_yeas  = chr(ord(c_start) + 9)
@@ -248,7 +330,6 @@ def add_item_type(service, sheet_id, item_type, rows):
         ]])
 
     sheet_range = f'{sheet_name}!{c_yeas}{r_start}:{c_absnt}{r_end}'
-    print("Updating vote aggrigation formulas")
     results = update(service, sheet_id, sheet_range, rows)
 
 
@@ -260,7 +341,7 @@ def add_hdlr(args, service):
     else:
         print("Force adding")
 
-    for item_type in ['por']:
+    for item_type in item_sheet_keys:
         rows = processRowsToAdd(item_type, args.processed_dir, uids[item_type])
         add_item_type(service, args.sheet_id, item_type, rows)
 
