@@ -168,15 +168,17 @@ def parseArgs():
 
     subparsers = parser.add_subparsers()
 
+    ## Add cmd
     add_parser = subparsers.add_parser('add',
         help="Add rows to the google sheets"
     )
     add_parser.set_defaults(func=add_hdlr)
     add_parser.add_argument("--force-add", action="store_true",
         help="Add rows even if the unique ID already exists")
-    parser.add_argument("--processed-dir", required=True,
+    add_parser.add_argument("--processed-dir", required=True,
         help="Directory that contains the processed agenda item csvs")
 
+    ## Check credentials cmd
     parser.set_defaults(check_creds=False)
     check_parser = subparsers.add_parser('check-credentials',
         help="Add rows to the google sheets"
@@ -184,6 +186,14 @@ def parseArgs():
     check_parser.add_argument("-d", "--delete-on-fail", action="store_true",
         help="Delete existing token if it fails to validate")
     check_parser.set_defaults(check_creds=True)
+
+    ## Download
+    down_parser = subparsers.add_parser('download',
+        help="Downloads all sheets",
+    )
+    down_parser.set_defaults(func=download_hdlr)
+    down_parser.add_argument("--dir", required=True,
+        help="Directory for the download")
 
     ## Final parse
     args = parser.parse_args()
@@ -342,6 +352,22 @@ def add_item_type(service, sheet_id, item_type, rows):
     results = update(service, sheet_id, sheet_range, rows)
 
 
+def downloadAllSheets(service, sheet_id):
+    """Get all rows from a sheet"""
+    sheet = service.spreadsheets()
+    result = sheet.values().batchGet(
+        spreadsheetId=sheet_id,
+        ranges=[f"{sheet_name_map[x]}!A:Z" for x in item_sheet_keys],
+        majorDimension='ROWS',
+        valueRenderOption='UNFORMATTED_VALUE',
+    ).execute()
+    values = result.get("valueRanges", [])
+    if not values:
+        return None
+
+    return dict(zip(item_sheet_keys, [x['values'] for x in values]))
+
+
 def add_hdlr(args, service):
     uids = { x: None for x in item_sheet_keys }
     if not args.force_add:
@@ -355,6 +381,16 @@ def add_hdlr(args, service):
         add_item_type(service, args.sheet_id, item_type, rows)
 
     return 0
+
+
+def download_hdlr(args, service):
+    sheets = downloadAllSheets(service, args.sheet_id)
+    for item_type, rows in sheets.items():
+        path = os.path.join(args.dir, item_csv_map[item_type])
+        with open(path, 'w', encoding='utf8', newline='') as f:
+            writer = csv.writer(f, dialect=csv.unix_dialect)
+            for row in rows:
+                writer.writerow(row)
 
 
 def check_credentials(args):
