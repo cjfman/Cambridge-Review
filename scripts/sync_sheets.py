@@ -6,6 +6,7 @@ import os
 import re
 import sys
 
+from google.auth.exceptions import RefreshError
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -164,8 +165,6 @@ def parseArgs():
         help="Google API JSON token. Will be created if one doesn't exist")
     parser.add_argument("--sheet-id", default=TRACKER_SHEET_ID,
         help="The google sheets ID")
-    parser.add_argument("--processed-dir", required=True,
-        help="Directory that contains the processed agenda item csvs")
 
     subparsers = parser.add_subparsers()
 
@@ -175,6 +174,16 @@ def parseArgs():
     add_parser.set_defaults(func=add_hdlr)
     add_parser.add_argument("--force-add", action="store_true",
         help="Add rows even if the unique ID already exists")
+    parser.add_argument("--processed-dir", required=True,
+        help="Directory that contains the processed agenda item csvs")
+
+    parser.set_defaults(check_creds=False)
+    check_parser = subparsers.add_parser('check-credentials',
+        help="Add rows to the google sheets"
+    )
+    check_parser.add_argument("-d", "--delete-on-fail", action="store_true",
+        help="Delete existing token if it fails to validate")
+    check_parser.set_defaults(check_creds=True)
 
     ## Final parse
     args = parser.parse_args()
@@ -348,7 +357,27 @@ def add_hdlr(args, service):
     return 0
 
 
+def check_credentials(args):
+    try:
+        getCreds(args.credentials, args.token)
+    except RefreshError as e:
+        print(f"Failed to validate credentials: {e}")
+        if not args.delete_on_fail:
+            return 1
+
+    try:
+        os.remove(args.token)
+    except OSError:
+        pass
+
+    getCreds(args.credentials, args.token)
+
+
 def main(args):
+    if args.check_creds:
+        ## Do this instead of anything else
+        return check_credentials(args)
+
     if args.func is None:
         args.print_usage()
         return 1
