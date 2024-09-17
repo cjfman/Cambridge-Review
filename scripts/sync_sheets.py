@@ -13,6 +13,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
+from councillors import getCouncillorNames, setCouncillorInfo
+
 
 VERBOSE=False
 DEBUG=False
@@ -67,6 +69,7 @@ por_col_map = {
     "Co-Sponsors":       'F',
     "Charter Right":     'G',
     "Amended":           'H',
+    "Outcome":           'I',
     "Link":              'Y',
     "Summary":           'Z',
 }
@@ -82,6 +85,7 @@ cma_col_map = {
     "Awaiting Report":   'F',
     "Policy Order":      'G',
     "Charter Right":     'H',
+    "Outcome":           'I',
     "Link":              'Y',
     "Summary":           'Z',
 }
@@ -97,6 +101,7 @@ app_col_map = {
     "Name":              'F',
     "Address":           'G',
     "Charter Right":     'H',
+    "Outcome":           'I',
     "Link":              'Y',
     "Summary":           'Z',
 }
@@ -124,6 +129,7 @@ res_col_map = {
     "Meeting Date":      'D',
     "Category":          'E',
     "Sponsor":           'F',
+    "Outcome":           'G',
     "Link":              'W',
     "Summary":           'X',
     "Notes":             'Y',
@@ -193,6 +199,10 @@ def parseArgs():
         help="Add rows to the google sheets"
     )
     add_parser.set_defaults(func=add_hdlr)
+    add_parser.add_argument("--councillor-info", required=True,
+        help="File with councillor info")
+    add_parser.add_argument("--session", type=int,
+        help="The session year. Defaults to most recent one found in councillor info file")
     add_parser.add_argument("--force-add", action="store_true",
         help="Add rows even if the unique ID already exists")
     add_parser.add_argument("--processed-dir", required=True,
@@ -260,6 +270,17 @@ def getCreds(credentials_path, token_path):
 
     return creds
 
+
+def setCouncillorColumns(names):
+    """Add councillor names to column maps"""
+    names = tuple(enumerate(names))
+    for item_key, col in item_vote_col.items():
+        col_map, idx_map, _ = item_mappings[item_key]
+        start = ord(col) - ord('A')
+        for i, name in names:
+            idx = start + i
+            col_map[name] = chr(idx + ord('A'))
+            idx_map[name] = idx
 
 def append(service, sheet_id, sheet_range, rows, *, user_entered=True):
     input_opt = 'USER_ENTERED' if user_entered else 'RAW'
@@ -403,6 +424,15 @@ def downloadAllSheets(service, sheet_id):
 
 
 def add_hdlr(args, service):
+    ## Set councillor info
+    if args.councillor_info is not None:
+        if not setCouncillorInfo(args.councillor_info, args.session):
+            print(f"Failed to set up councillor info")
+            return 1
+
+        setCouncillorColumns(getCouncillorNames())
+
+    ## Get UIDs
     uids = { x: None for x in item_sheet_keys }
     if not args.force_add:
         print("Getting existing UIDs")
@@ -410,6 +440,7 @@ def add_hdlr(args, service):
     else:
         print("Force adding")
 
+    ## Add rows
     for item_type in item_sheet_keys:
         rows = loadAndProcessItems(item_type, args.processed_dir, uids[item_type])
         add_item_type(service, args.sheet_id, item_type, rows)
@@ -418,6 +449,7 @@ def add_hdlr(args, service):
 
 
 def meetings_hdlr(args, service):
+    ## Get UIDs
     uids = None
     if not args.force_add:
         print("Getting existing UIDs")

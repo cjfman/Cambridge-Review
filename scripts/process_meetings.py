@@ -641,7 +641,7 @@ def buildRow(item, hdrs, final_action=None, *, aggrigate_votes=False):
 
 
 def setCouncillorColumns(names):
-    ## Add names to headers
+    """Add councillor names to headers"""
     ## pylint: disable=global-statement
     global CMA_HDRS, APP_HDRS, RES_HDRS, POR_HDRS
     ## CMA
