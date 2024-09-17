@@ -142,6 +142,25 @@ ar_col_map = {
 ar_idx_map = { x: ord(y.upper()) - ord('A') for x, y in ar_col_map.items() }
 ar_row_size = max(ar_idx_map.values()) + 1
 
+meetings_cols = (
+    "Unique Identifier",
+    "Body",
+    "Type",
+    "Other",
+    "Session",
+    "Date",
+    "Time",
+    "Status",
+    "Id",
+    "url Agenda Summary",
+    "Agenda Packet",
+    "Final Actions",
+    "Minutes",
+)
+meetings_idx_map = { name: i for i, name in enumerate(meetings_cols) }
+meetings_col_map = { name: chr(ord('A') + i) for name, i in meetings_idx_map.items() }
+meetings_row_size = max(meetings_idx_map.values()) + 1
+
 item_mappings = {
     'por': (por_col_map, por_idx_map, por_row_size),
     'cma': (cma_col_map, cma_idx_map, cma_row_size),
@@ -149,6 +168,7 @@ item_mappings = {
     'com': (com_col_map, com_idx_map, com_row_size),
     'res': (res_col_map, res_idx_map, res_row_size),
     'ar':  (ar_col_map, ar_idx_map, ar_row_size),
+    'meetings':  (meetings_col_map, meetings_idx_map, meetings_row_size),
 }
 
 
@@ -178,10 +198,20 @@ def parseArgs():
     add_parser.add_argument("--processed-dir", required=True,
         help="Directory that contains the processed agenda item csvs")
 
+    ## Meetings cmd
+    meetings_parser = subparsers.add_parser('meetings',
+        help="Update meeting rows to the google sheets"
+    )
+    meetings_parser.set_defaults(func=meetings_hdlr)
+    meetings_parser.add_argument("--force-add", action="store_true",
+        help="Add rows even if the unique ID already exists")
+    meetings_parser.add_argument("--file", required=True,
+        help="File that contains the meetings")
+
     ## Check credentials cmd
     parser.set_defaults(check_creds=False)
     check_parser = subparsers.add_parser('check-credentials',
-        help="Add rows to the google sheets"
+        help="Check google credentials"
     )
     check_parser.add_argument("-d", "--delete-on-fail", action="store_true",
         help="Delete existing token if it fails to validate")
@@ -223,7 +253,7 @@ def getCreds(credentials_path, token_path):
             flow = InstalledAppFlow.from_client_secrets_file(
                   credentials_path, SCOPES
                   )
-            creds = flow.run_local_server(port=0)
+            creds = flow.run_local_server(port=0, open_browser=False)
     ## Save the credentials for the next run
     with open(token_path, "w") as token:
         token.write(creds.to_json())
@@ -264,10 +294,11 @@ def update(service, sheet_id, sheet_range, rows, *, user_entered=True):
 
 def getAllUids(service, sheet_id):
     """Get all agenda item UIDs"""
+    sheet_keys = tuple(sheet_name_map.keys())
     sheet = service.spreadsheets()
     result = sheet.values().batchGet(
         spreadsheetId=sheet_id,
-        ranges=[f"{sheet_name_map[x]}!A2:A" for x in item_sheet_keys],
+        ranges=[f"{sheet_name_map[x]}!A2:A" for x in sheet_keys],
         majorDimension='COLUMNS',
         valueRenderOption='UNFORMATTED_VALUE',
     ).execute()
@@ -275,22 +306,25 @@ def getAllUids(service, sheet_id):
     if not values:
         return None
 
-    return dict(zip(item_sheet_keys, (x['values'][0] for x in values)))
+    return dict(zip(sheet_keys, (x['values'][0] for x in values)))
 
 
-def loadItems(item_type, dir_path):
-    """Load agenda items from a file"""
-    path = os.path.join(dir_path, item_csv_map[item_type])
-    print(f'Loading "{item_type}" agenda items from "{path}"')
+def loadCsvDict(path):
+    """Load CSV"""
     with open(path, 'r', encoding='utf8') as f:
         reader = csv.DictReader(f)
         return tuple(reader)
 
 
-def processRowsToAdd(item_type, dir_path, existing_uids=None):
+def loadAndProcessItems(item_type, dir_path, existing_uids=None):
     """Load agenda items from file and convert them to sheets rows"""
-    items = loadItems(item_type, dir_path)
+    path = os.path.join(dir_path, item_csv_map[item_type])
+    print(f'Loading "{item_type}" agenda items from "{path}"')
+    items = loadCsvDict(path)
+    return processItems(item_type, items, existing_uids)
 
+
+def processItems(item_type, items, existing_uids=None):
     ## Don't add rows if they already exist
     if existing_uids is not None:
         count = len(items)
@@ -377,9 +411,25 @@ def add_hdlr(args, service):
         print("Force adding")
 
     for item_type in item_sheet_keys:
-        rows = processRowsToAdd(item_type, args.processed_dir, uids[item_type])
+        rows = loadAndProcessItems(item_type, args.processed_dir, uids[item_type])
         add_item_type(service, args.sheet_id, item_type, rows)
 
+    return 0
+
+
+def meetings_hdlr(args, service):
+    uids = None
+    if not args.force_add:
+        print("Getting existing UIDs")
+        uids = getAllUids(service, args.sheet_id)['meetings']
+        print(f"Found {len(uids)} existing meetings")
+    else:
+        print("Force adding")
+
+    ## Load and process meetings
+    print(f'Loading meetings from "{args.file}"')
+    rows = processItems('meetings', loadCsvDict(args.file), uids)
+    add_item_type(service, args.sheet_id, 'meetings', rows)
     return 0
 
 
@@ -396,6 +446,7 @@ def download_hdlr(args, service):
 def check_credentials(args):
     try:
         getCreds(args.credentials, args.token)
+        return 0
     except RefreshError as e:
         print(f"Failed to validate credentials: {e}")
         if not args.delete_on_fail:
@@ -407,6 +458,7 @@ def check_credentials(args):
         pass
 
     getCreds(args.credentials, args.token)
+    return 0
 
 
 def main(args):
