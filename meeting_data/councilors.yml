@@ -2,6 +2,12 @@ councillors:
   - name: Burhan Azeem
     aliases:
       - Azeem
+  - name: Catherine Zusy
+    aliases:
+      - Catherine
+      - Cathie
+      - Cathy
+      - Zusy
   - name: Dennis J. Carlone
     aliases:
       - Carlone
@@ -109,3 +115,14 @@ sessions:
       - Ayesha M. Wilson
       - Jivan Sobrinho-Wheeler
       - Joan Pickett
+  2025:
+    mayor: E. Denise Simmons
+    vice_mayor: Marc C. McGovern
+    councillors:
+      - Burhan Azeem
+      - Patricia Nolan
+      - Sumbul Siddiqui
+      - Paul F. Toner
+      - Ayesha M. Wilson
+      - Jivan Sobrinho-Wheeler
+      - Catherine Zusy
