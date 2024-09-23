@@ -1,0 +1,1510 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en" lang="en">
+<head id="HeadMain"><title>
+	2024/09/23 05:30 PM City Council Regular Meeting - Web Outline - Cambridge City, MA
+</title><meta http-equiv="X-UA-Compatible" content="IE=9" />
+
+    <!-- this fixes a minor rendering issue with tables on the ipad -->
+    <meta content="width=device-width, initial-scale=1.0;" name="viewport" />
+
+    <!-- Agency specific meta tags -->
+    <meta name='google-site-verification' content='gk1uzLohfTCOHIcLpPfTMdkFQr1kAWFQpfsKsziX7T8' />
+<meta name='msvalidate.01' content='E8AC0C05C619B2FA426BD3B3D08FF440' />
+
+
+    <!-- open search discovery -->
+    <link rel="search" type="application/opensearchdescription+xml" href="/Services/GetFederatedSearch.aspx" title="IQM2 search" />
+
+    <!-- Icon -->
+    <link href="/favicon.ico?v=2018" rel="icon" />
+
+    <!-- CSS Links -->
+    <link type="text/css" href="/App_Themes/Main.css?v=86" rel="Stylesheet" /><link type="text/css" href="/lib/jquery-ui.css" rel="stylesheet" />
+ 
+  <script>
+      !function () { var a, b, c, d = window, e = document, f = arguments, g = "script", h = ["config", "track", "trackForm", "trackClick", "identify", "visit", "push", "call"], i = function () { var a, b = this, c = function (a) { b[a] = function () { return b._e.push([a].concat(Array.prototype.slice.call(arguments, 0))), b } }; for (b._e = [], a = 0; a < h.length; a++) c(h[a]) }; for (d.__woo = d.__woo || {}, a = 0; a < f.length; a++) d.__woo[f[a]] = d[f[a]] = d[f[a]] || new i; b = e.createElement(g), b.async = 1, b.src = "//static.woopra.com/js/w.js", c = e.getElementsByTagName(g)[0], c.parentNode.insertBefore(b, c) }("woopra");
+
+      woopra.config({
+          domain: "iqm2.com",
+          cookie_name:"accelaTracker"
+      });
+      woopra.track("mp_pv", {
+          domain: window.location.hostname,
+          title: document.title,
+          url: window.location.href,
+          uri: window.location.pathname,
+          hash: window.location.hash,
+          error: null
+      });
+  </script>
+    <!-- IQM2 Scripts -->
+    <script type="text/javascript" src="/lib/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="/App_Themes/Global.js?v=8_10_48"></script>
+    <script type="text/javascript" src="/lib/MinuteTraq.PopupWindow.js"></script>
+    <script type="text/javascript" src="/lib/jquery-ui.js"></script>
+    <link href="https://unpkg.com/video.js@7.21.1/dist/video-js.css" rel="stylesheet" /><link href="/Scripts/videojs-live-dvr/videojs-dvrseekbar.css" rel="stylesheet" />
+    <script src="https://unpkg.com/video.js@7.21.1/dist/video.js"></script>
+    <script src='https://unpkg.com/videojs-flash@2.1.0/dist/videojs-flash.min.js'></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+    <script src="/Scripts/videojs-live-dvr/videojs-dvrseekbar.min.js"></script>
+    <script type='text/javascript' src='/Scripts/player.js'></script>
+    <script type="text/javascript" src="/Scripts/js.cookie-2.0.3.min.js"></script>
+    <!-- RSS Feeds (Site) -->
+    
+
+    <!-- Generated CSS Link -->
+    
+  
+    <!-- External CSS / Script Links -->
+    <link type='text/css' href='/Lib/GetCustomCSS.ashx?timestamp=638580343990000000' rel='Stylesheet' /><link type='text/css' href='/Citizens/GetImage.aspx?ID=1012' rel='Stylesheet' /><script type='text/javascript' src='/Citizens/GetImage.aspx?ID=1013'></script>
+    
+   
+    <!--[if IE 7]>
+	   <style type="text/css">
+        .Section H2 { display:inline;}
+        .RowTop div { display:inline;}
+   </style>
+	
+	<![endif]-->
+    
+    <script type="text/javascript" src="/Lib/MinuteTraq.Search.js?v=8_10_66"></script>
+    
+    <script type="text/javascript">
+        
+        // configure tracker
+        
+        $(function () {
+            
+            
+            FixFooterPosition();
+            $(window).on('resize', FixFooterPosition);
+
+            var h = $("#Banner").height();
+            //  var w = $("body").width();
+
+            var sCoords = "0,0,5000," + h;
+
+            $("#lnkBanner").attr("coords", sCoords);
+            var hideTopBanner = Cookies.get('hideTopBanner');
+            var appStyles = {display:'block'};
+            if (hideTopBanner) {
+                appStyles.display = 'none';
+            }
+            $('#topbarAppBanner').css(appStyles);
+            $('.close-topbar-app-banner').bind('click', function () {
+                $('#topbarAppBanner').css('display', 'none');
+                Cookies.set('hideTopBanner', true);
+            });
+            $('.link-wrapper-banner').bind('click', function () {
+                woopra.track('portal-wegovern-banner', {
+                    agency: Cookies.get('AgencyName'),
+                    username: Cookies.get('WebUserName')
+                });
+                return true;
+            });
+        });
+
+        function FixFooterPosition() {
+            //hack for the footer, display at bottom of screen if page is short
+            if ($("form").height() < $(window).height() - 100) {
+                $("#Footer").css("position", "absolute");
+                $("#Footer").css("bottom", "0");
+            }
+            else {
+                $("#Footer").css("position", "");
+            }
+        }
+
+    </script>
+    <style type="text/css" media="screen">
+        #topbarAppBanner {
+            min-height: 40px;
+            z-index: 1000;
+        }
+        .top-banner-app-inner{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 40px;
+            border: 1px solid rgba(10,10,10,.5);
+            box-shadow: 0px 0px 16px 0px #303030;
+            background-color: #456ca7;
+        }
+        .close-topbar-app-banner {
+            position: absolute;
+            display: block;
+            top: 25px;
+            right: 5%;
+            font-size: 1em;
+            color: #e3e3e3
+        }
+        .app-link{
+            display: block;
+            margin: 0 auto;
+            width: 40%;
+        }
+        .wegovern-banner-logo {
+            left: 22px;
+            position: relative;
+            padding-top: 1px;
+        }
+
+        @media screen and (max-width: 981px ){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width: 1595px){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (max-width: 1594px){
+            .inside-banner-link {
+                position: relative;
+                top: -30px;
+                left: 75px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width:1100px){
+            .app-link{
+                display: block;
+                margin: 0 auto;
+                width: 40%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+        }
+        @media screen and (max-width:1099px){
+            .app-link {
+                display: block;
+                margin: 0 auto;
+                width: 65%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+    </style>
+    
+
+    <!-- Page Level Header Stuff -->
+    
+
+    <!-- JQuery & UI -->
+    <link type="text/css" href="/lib/jquery-ui.css" rel="stylesheet" />
+	<script type="text/javascript" src="/lib/jquery-ui.js"></script>
+	<script type="text/javascript" src="/lib/jquery.caret.js"></script>
+
+    <script type="text/javascript" src="/lib/MinuteTraq.UserComment.js"></script>
+    
+    <script type="text/javascript">
+        
+        function showSpeakerSignup(meetingid) 
+        {
+            PopupWindowShow("/Citizens/SpeakerSignup.aspx?ID=" + meetingid);
+        }
+        
+        $(function () {
+           
+            $('.tracked').bind('click', function () {
+                var $link = $(this);
+
+                if (woopra) {
+                    woopra.track("download", {
+                        url: window.location.href,
+                        type: $link.attr('data-type')
+                    });
+                }
+            });
+            $(".ShowMoreSpeakersButton").click(function ()
+            {
+                var link = $(this);
+                link.css("display", "none");
+                var hidden = link.parent().find(".HiddenSpeakers");
+                hidden.slideDown();
+                return false;
+            });
+
+            $(".ShowFewerSpeakersButton").click(function () {
+                var link = $(this);
+                var hidden = link.parent().parent().find(".HiddenSpeakers");
+                hidden.slideUp();
+
+                var showMoreLink = link.parent().parent().find(".ShowMoreSpeakersButton");
+                showMoreLink.css("display", "");
+                return false;
+            });
+        });
+
+      
+    </script>
+    <style>
+        a.lastClicked {
+            background-color: khaki;
+            color: #000;
+        }
+        #MeetingDetail * {
+            max-width:685px;
+        }
+    </style>
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <meta http-equiv="EXPIRES" content="0">
+</head>
+
+<body id="MainLayout">
+    
+    <form method="post" action="./Detail_Meeting.aspx?ID=4577" id="aspnetForm" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="je1+2UzJKQNCvc3MAehav2Oti40z6fO9FpAhgTPwywgYd/SnRn1VekYm52UkKEQFFE02ZzpwyqvPXs9ujruAtbjqQ889kDwCzKDRGygLqaSroRbmA6MojgraGALx9cSxAa8LTblSNJv2GY63/ZGfypIfYw0w8kF32ZuZjjsuZwKEVGmwXAmjtN1Wlkr8Ar7OPElMjoLer2JoRS0qcMScoA==" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1BACF619" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="JDqqd+sGOHnN05frx+rDMj9jGMireFTtkx8gywJQ777CbB59D4y6EhZ5kVAXZN3TSy8ifttI8Z9RggXKJk4U2up1GVykHCWo5yE5BQOZWdurFEPExEHKZo2XD83ucFQa+RUl3UnOikCD+x3678GQ5EATo1TF/2uYHGnjteUxU/DRVYjxGI7/4G0Waj1sYz5DjqrqGxKHwdtTLaCmiPp7iIqEuX8LAf1hsxuuAaSXDi/2nOYNwbQU40Gaw2qjSetFq2tjUeicR4ACqYkuLDMV4cxHFMHXFUwkRGGucmtx725YsHKzKF3uBTFs8COtUQAQ" />
+</div>
+        <div style="display: none">
+            <input type="submit" name="ctl00$btnRefreshPageAfterLogin" value="Button" id="btnRefreshPageAfterLogin" class="btnRefreshPage" />
+            <input name="ctl00$hfShowPopupOnLoad" type="hidden" id="hfShowPopupOnLoad" class="hfShowPopup" />
+        </div>
+        <span id="lblScript"></span>
+  
+    <div id="MainWindow">
+    
+            <div id="Banner" role="banner"  >
+                <img usemap="#bannerMap" src="/Citizens/GetImage.aspx?ID=1017&TimeStamp=638580343990000000" alt="IQM2 Meeting Portal" />
+                <map name="bannerMap">
+                    <area href="/Citizens/Default.aspx" id="lnkBanner" shape="rect" alt="Home" Target="_self" />
+                </map>
+
+                <div id="LogoHeaderTextHolder">
+                    
+                                                                       
+                </div>
+            </div>
+            
+            <div id="ToolStrip" role="navigation" aria-label="site">
+                <div id="Tabs">
+                    <div class="Shadow"></div>
+                    <a href="http://www.cambridgema.gov/" id="lnkMainSite" class="Tab LeftTab"><div><span>&laquo;Back to Main Site</span></div></a>
+                    <a href="/Citizens/default.aspx" class="Tab NormalTab"><div><span id="tabWelcome">Welcome</span></div></a>
+                    <a href="/Citizens/calendar.aspx" class="Tab NormalTab"><div><span id="tabMeetings">Meetings</span></div></a>                
+                    <a href="/Citizens/" style="display:none" class="Tab NormalTab"><div dropdown="Browse"><span>Browse</span></div></a>
+                                        
+                                        
+                    <a href="/Citizens/LegalNotice.aspx" id="lnkNotices" class="Tab NormalTab"><div id="tabNotices"><span>Notices</span></div></a>                                        
+                    <a href="/Citizens/Board" class="Tab NormalTab"><div><span id="tabContactUs">Boards+</span></div></a>                                                        
+                </div>
+                <div id="TopExtraBoxTransparentBG"></div>
+                <div id="TopExtraBox">  
+                    <div id="TopLine">
+                        
+                     <a href="../MasterPages/#" id="lnkLogin" onclick="javascript:return PopupWindowShow(&#39;/Citizens/Login.aspx&#39;);">Log in</a><span id="spnThatOneStupidBar"> | </span><a href="mailto:support@granicus.com" id="lnkHelp">Help</a> <span id="spnHelpBar">|</span> <a href="../MasterPages/#" id="lnkRegister" onclick="javascript:return PopupWindowShow(&#39;/Citizens/MyAccount.aspx&#39;);">Register</a>                                                
+                    </div> 
+                    <div id="BottomLine">                       
+                          
+                    </div>                            
+                   <input name="ctl00$txtQuickSearch" type="text" id="txtQuickSearch" value="Search" title="Search" />
+                   <input type="image" name="ctl00$btnQuickSearch" id="btnQuickSearch" alt="Search" src="/Lib/images/search.png" style="cursor:pointer" />                   
+                </div>     
+            </div>
+                     
+            <table class="LayoutTable" role="presentation">
+                <tr>
+                    <td id="tdLeftPanel" class="LeftPanel">
+                        
+                        <div role="navigation" aria-label="Meeting Group">
+                            
+                        </div>
+                        
+                        <div class="DetailBox">
+                            <img src="/Citizens/images/Print.gif" border="0" alt="Print" />
+                            <a href="/Citizens/Detail_Meeting.aspx?ID=4577&Print=Yes" id="lnkPrint" class="PrintButton" target="_blank">Print This Page</a>                           
+                        </div>
+                        
+                        
+                                                
+                       <!-- <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 1" />
+                            <a href="#">Quick Link #1</a>
+                        </div>
+                        <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 2"  />
+                            <a href="#">Quick Link #2</a>
+                        </div>     -->
+                                      
+                    </td>
+
+                    <td id="MainContentHolder">
+                        <div style="width:100%;height:100%;position:relative;margin:0;padding:0;border:0;">
+                            <div id="MainContentLeftShadow">                           
+                            </div>   
+                          
+                            <div class="MainContentPlaceholder" role="main">
+                                
+                                
+
+    <style>
+        a.lastClicked {
+            background-color: khaki;
+            color: #000;
+        }
+    </style>
+    <script>
+        $('#divOutlineScroller a').click(function (e) {
+            $('a.lastClicked').removeClass('lastClicked');
+            $(e.currentTarget).addClass('lastClicked');
+        });
+    </script>
+    
+
+    <div       
+        >        
+        <div id="CC" style="background: Black; color: White; display:none;"></div>
+           
+        <div id="ContentPlaceholder1_pnlStart" style="width:100%;">
+	
+            <table border="0" width="100%" id="table1" cellpadding="5" role="presentation">
+                <tr>
+                    <td colspan="2" align="center" class="MeetingHeading">
+                        <span id="ContentPlaceholder1_lblMeetingGroup">City Council</span><br />
+                        <span id="ContentPlaceholder1_lblMeetingType">Regular Meeting</span><br />
+                        <span id="ContentPlaceholder1_lblMeetingDate">9/23/2024 5:30 PM</span>
+                        <br /> Sullivan Chamber<div class='MeetingAddress'>Cambridge City Hall&nbsp;&nbsp;&nbsp;795 Massachusetts Ave&nbsp;&nbsp;&nbsp;Cambridge, MA  02139</div>
+                       
+                        <span id="ContentPlaceholder1_lblMeetingStatus"></span>
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtMeetingID" id="ContentPlaceholder1_txtMeetingID" value="4577" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtMinutesID" id="ContentPlaceholder1_txtMinutesID" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtAgendaID" id="ContentPlaceholder1_txtAgendaID" value="4116" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtFileFormat" id="ContentPlaceholder1_txtFileFormat" value="pdf" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">
+                        
+                    </td>
+                </tr>
+                <tr id="ContentPlaceholder1_trMeetingDetail">
+		<td id="ContentPlaceholder1_tdMainContent" align="left" valign="top" colspan="2" role="main" class=""> 
+                        <div id="ContentPlaceholder1_pnlDownloads" class="MeetingDownloads" style="width:100%;">
+			
+                            <strong>Downloads:</strong><br />
+                            <img id="ContentPlaceholder1_imgPublicAgendaFile" src="images/PublicAgenda.jpg" />
+                            <a id="ContentPlaceholder1_hlPublicAgendaFile" class="tracked Link" data-type="agenda" href="FileOpen.aspx?Type=14&amp;ID=4116&amp;Inline=True" target="_blank">Agenda Summary</a>
+                            <img id="ContentPlaceholder1_imgFullAgendaFile" src="images/FullAgenda.jpg" />
+                            <a id="ContentPlaceholder1_hlFullAgendaFile" class="tracked Link" data-type="agenda_packet" href="FileOpen.aspx?Type=1&amp;ID=4116&amp;Inline=True" target="_blank">Agenda Packet</a>
+                            
+                            
+                            
+                            
+                            
+                            <br />
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+		</div>
+                        
+                        <span id="ContentPlaceholder1_lblOutline"><table id='MeetingDetail' class='MeetingDetail' cellpadding='0' cellspacing='0'>
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Call to Order</strong></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'>Roll Call</td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Pledge of Allegiance</strong></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>SWEARING IN OF CATHERINE ZUSY TO FILL THE CITY COUNCIL VACANCY</strong></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Submission of the Record</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='FileOpen.aspx?Type=12&ID=2169 '>Minutes of Mar 16, 2020 5:30 PM</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='FileOpen.aspx?Type=12&ID=2173 '>Minutes of Mar 23, 2020 5:30 PM</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='FileOpen.aspx?Type=12&ID=2174 '>Minutes of Mar 30, 2020 5:30 PM</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='FileOpen.aspx?Type=12&ID=2175 '>Minutes of Apr 6, 2020 5:30 PM</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='FileOpen.aspx?Type=12&ID=2176 '>Minutes of Apr 13, 2020 5:30 PM</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='FileOpen.aspx?Type=12&ID=2177 '>Minutes of Apr 21, 2020 4:00 PM</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='FileOpen.aspx?Type=12&ID=2179 '>Minutes of May 4, 2020 5:30 PM</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='FileOpen.aspx?Type=12&ID=2181 '>Minutes of May 11, 2020 5:30 PM</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='FileOpen.aspx?Type=12&ID=2182 '>Minutes of May 18, 2020 5:30 PM</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Public Comment</strong></td></tr>
+
+<tr><td class='Num'><strong>I. </strong></td><td class='Title' colspan='10'><strong>City Manager's Agenda</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25384&CssClass='>CMA 2024 #203 : A communication transmitted from Yi-An Huang, City Manager, relative to recommendations of the Community Preservation Act Committee (CPAC) for FY2025.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96896&MeetingID=4577'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21001&MeetingID=4577'>FY25 CPA Vote_Chair Letter to CM</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21002&MeetingID=4577'>FY25 CPA Project Recommendation Book</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25585&CssClass='>CMA 2024 #204 : A communication transmitted from Yi-An Huang, City Manager, relative to an update on the Temporary Respite Center at the Registry of Deeds.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96906&MeetingID=4577'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25584&CssClass='>CMA 2024 #205 : A communication transmitted from Yi-An Huang, City Manager, relative to Awaiting Repor24-35, regarding an update on the Children Savings Accounts Program with the East Cambridge Savings Bank.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96898&MeetingID=4577'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25583&CssClass='>CMA 2024 #206 : A communication transmitted from Yi-An Huang, City Manager, relative to Awaiting Report Item Number 24-46, regarding regarding the water bubbler at Anderson Tennis Courts on Pemberton Street.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96897&MeetingID=4577'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25588&CssClass='>CMA 2024 #207 : A communication transmitted from Yi-An Huang, City Manager, relative to Awaiting Report Item Number 24-52, regarding draft zoning language based on the proposal discussed at the Housing Committee to eliminate exclusionary zoning and allow up to six stories of multifamily housing in all residential districts.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96907&MeetingID=4577'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21210&MeetingID=4577'>COVER_Multifamily_Petition</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21211&MeetingID=4577'>CLEAN_Multifamily_Petition_One</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21212&MeetingID=4577'>CLEAN_Multifamily_Petition_Two</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>d. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21213&MeetingID=4577'>MARKUP_Multifamily_Petition_One</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>e. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21214&MeetingID=4577'>MARKUP_Multifamily_Petition_Two</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>f. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21215&MeetingID=4577'>MAP_Multifamily_CurrentZoning11x17</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>g. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21216&MeetingID=4577'>MAP_Multifamily_ProposedZoning11x17</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25517&CssClass='>CMA 2024 #208 : A communication transmitted from Yi-An Huang, City Manager, relative to Awaiting Report 24-43 regarding conducting outreach to Cambridge colleges and universities and coordinating with the MBTA on promoting the MBTA’s new University Pass Program.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96905&MeetingID=4577'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21146&MeetingID=4577'>2024 MBTA University Pass</a></td></tr>
+
+<tr><td class='Num'><strong>II. </strong></td><td class='Title' colspan='10'><strong>Policy Order and Resolution List</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25544&CssClass='>POR 2024 #126 : That the City Manager is requested to work with the MBTA to prioritize addressing housing affordability in the redevelopment of the Alewife garage.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96909&MeetingID=4577'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25575&CssClass='>POR 2024 #127 : That the City Manager is requested to direct the appropriate City staff to schedule at least one hazardous waste day and one paper shredding event per year to be held on a Sunday.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96910&MeetingID=4577'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25576&CssClass='>POR 2024 #128 : That the City Manager is requested to direct the appropriate DPW officials to immediately address this issue so that foul substances no longer leak from the DPW garbage trucks.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96911&MeetingID=4577'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25578&CssClass='>POR 2024 #129 : City Council support for the construction of the North-South Rail Link.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96912&MeetingID=4577'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25586&CssClass='>POR 2024 #130 : That the City Manager is requested to publicize Dyslexia Awareness Month and dyslexia resources in its regular publications during October and in lieu of lighting up City Hall red, encourage residents and staff to wear red in October for Dyslexia awareness and acknowledge October as Dyslexia Awareness Month in the City of Cambridge.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96913&MeetingID=4577'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25589&CssClass='>POR 2024 #131 : That the City Manager is requested to confer with the Finance Department, Law Department, and other relevant departments to explore the feasibility of a successor program to Rise Up Cambridge.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96914&MeetingID=4577'>Policy Order Printout</a></td></tr>
+
+<tr><td class='Num'><strong>III. </strong></td><td class='Title' colspan='10'><strong>Calendar</strong></td></tr>
+
+<tr><td></td><td class='Num'><strong></strong></td><td class='Title' colspan='9'><strong>On the Table</strong></td></tr>
+
+<tr><td></td><td></td><td class='Num'>1. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=24372&CssClass='>POR 2024 #70 : That the City Manager is requested to explore the feasibility of delaying the Mass Avenue reconstruction project to minimize its impact upon the busy season for restaurants and other affected businesses, and, should this not be found feasible, a method of providing financial assistance to the impacted businesses to cover the costs of removing their outdoor dining structures, designed to mitigate some of the financial impacts upon them, should be established. CHARTER RIGHT EXERCISED BY MAYOR SIMMONS IN COUNCIL JUNE 3, 2024 TABLED AS AMENDED IN COUNCIL JUNE 10, 2024</a></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=96899&MeetingID=4577'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=20172&MeetingID=4577'>ORIGINAL ORDER_CR ORDER </a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>2. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=24893&CssClass='>POR 2024 #102 : Requiring a 2/3rds vote for approving changes to be forwarded to the legislature and the voters on a future ballot. RECONSIDERATION FILED IN COUNCIL AUGUST 5, 2024 BY COUNCILLOR TONER TABLED IN COUNCIL SEPTEMBER 9, 2024</a></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=96900&MeetingID=4577'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=20597&MeetingID=4577'>Toner Recon 2024_102</a></td></tr>
+
+<tr><td></td><td class='Num'><strong></strong></td><td class='Title' colspan='9'><strong>Unfinished Business</strong></td></tr>
+
+<tr><td></td><td></td><td class='Num'>3. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=21148&CssClass='>ORDD-2023-2 : An Ordinance 2023 #8B has been received from City Clerk, relative to Amend Chapter 14.04 – Fair Housing.  PASSED TO A SECOND READING IN COUNCIL OCTOBER 2, 2023.
+FURTHER AMENDED IN COUNCIL NOVEMBER 6, 2023.
+THIS ITEM WILL REMAIN ON UNFINISHED BUSINESS UNTIL THE STATE LEGISLATURE APPROVES THE SPECIAL ACT THAT IS NEEDED BEFORE THIS CAN BE ORDAINED</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=16764&MeetingID=4577'>Fair Housing Ordinance lanugage passed to a second reading on October 2 2023 and further amended on November 6  2023 8B</a></td></tr>
+
+<tr><td class='Num'><strong>IV. </strong></td><td class='Title' colspan='10'><strong>Applications and Petitions</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25577&CssClass='>APP 2024 #35 : An application was received from Sign Design representing Citizens Bank, requesting permission for a projecting blade sign at the premises numbered 265 Main Street approval has been received from Inspectional Services, Department of Public Works, Community Development Department and abutters proof of mailing has been provided.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96901&MeetingID=4577'>Application and Petitions Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21204&MeetingID=4577'>265 Main Street Citizens bank</a></td></tr>
+
+<tr><td class='Num'><strong>V. </strong></td><td class='Title' colspan='10'><strong>Communications</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25386&CssClass='>COM 2751 #2024 : A communication was received from Aaron Rosenthal, regarding Aaron Rosenthal Support of New Zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21008&MeetingID=4577'>Aaron RosenthalIn Support of New Zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25387&CssClass='>COM 2752 #2024 : A communication has been received from Aidan Kaminer, regarding Cambridge Zoning Proposals.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21009&MeetingID=4577'>Aidan Kaminer Cambridge Zoning Proposals</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25388&CssClass='>COM 2753 #2024 : A communication was received from Aileen O. Erickson Joseph Barbieri, regarding 2nd email re the Proposed Up-Zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21010&MeetingID=4577'>Aileen O. Erickson Joseph Barbieri 2nd email re the Proposed Up-Zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25389&CssClass='>COM 2754 #2024 : A communication was received from Ajay Sonalkar, regarding Affordable Housing.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21011&MeetingID=4577'>Ajay Sonalkar Affordable Housing</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25390&CssClass='>COM 2755 #2024 : A communication was received from Alejandro Paz, regarding Support for zoning changes and multifamily housing (policy orders 118 and 117).</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21012&MeetingID=4577'>Alejandro Paz Support for zoning changes and multifamily housing (policy orders 118 and 117)</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25391&CssClass='>COM 2756 #2024 : A communication was received from Alex Riina, regarding in support of charter right #1 (POR 2024-117).</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21013&MeetingID=4577'>Alex Riina in support of charter right #1 (POR 2024-117)</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25392&CssClass='>COM 2757 #2024 : A communication was received from Alicia von Rekowsky, regarding Vote against zoning change tonight .</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21014&MeetingID=4577'>Alicia von Rekowsky Vote against zoning change tonight </a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25393&CssClass='>COM 2758 #2024 : A communication was received from Alina Vrabioiu, regarding Oppose up-zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21015&MeetingID=4577'>Alina VrabioiuOppose up-zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25394&CssClass='>COM 2759 #2024 : A communication was received from Alisha Rajan, regarding Ending Exclusionary Zoning in Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21016&MeetingID=4577'>Alisha Rajan Ending Exclusionary Zoning in Cambridge</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25395&CssClass='>COM 2760 #2024 : A communication was received from Amira Valliani, regarding  Writing in support of ending exclusionary zoning .</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21017&MeetingID=4577'>Amira Valliani Writing in support of ending exclusionary zoning </a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25396&CssClass='>COM 2761 #2024 : A communication was received from Amy Salomon, regarding City Upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21018&MeetingID=4577'>Amy Salomon City Upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25397&CssClass='>COM 2762 #2024 : A communication was received from Amy Waltz, regarding Environmental study (most essentially climate impacts_mitigation plan) needs to happen Prior to major zoning changes_.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21019&MeetingID=4577'>Amy Waltz Environmental study (most essentially climate impacts_mitigation plan) needs to happen Prior to major zoning changes_</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21020&MeetingID=4577'>Amy Waltz Neighborhood housing needs to help meet climate goals_ Zoning for 6 story bldgs_ will do irreparable harm!</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25398&CssClass='>COM 2763 #2024 : A communication was received from Andrew Solomon, regarding supporting abundant housing.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21021&MeetingID=4577'>Andrew Solomon supporting abundant housing</a></td></tr>
+
+<tr><td></td><td class='Num'>14. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25399&CssClass='>COM 2764 #2024 : A communication was received from Andrew Strassman, regarding support to end exclusionary zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21022&MeetingID=4577'>Andrew Strassman support to end exclusionary zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>15. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25400&CssClass='>COM 2765 #2024 : A communication was received from Ann Stewart, regarding PO24#117 and PO24#118 stewart comment.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21023&MeetingID=4577'>Ann Stewart PO24#117 and PO24#118 stewart comment</a></td></tr>
+
+<tr><td></td><td class='Num'>16. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25401&CssClass='>COM 2766 #2024 : A communication was received from Anna Lashevskaya, regarding Prevent city wide upzoning .</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21024&MeetingID=4577'>Anna Lashevskaya Prevent city wide upzoning </a></td></tr>
+
+<tr><td></td><td class='Num'>17. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25402&CssClass='>COM 2767 #2024 : A communication was received from Annalisa Martinek, regarding Please do not support city-wide height increases for housing.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21025&MeetingID=4577'>Annalisa MartinekPlease do not support city-wide height increases for housing</a></td></tr>
+
+<tr><td></td><td class='Num'>18. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25403&CssClass='>COM 2768 #2024 : A communication was received from Anne Hawley, regarding Opposition to_ citywide upzoning proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21026&MeetingID=4577'>Anne Hawley Opposition to_ citywide upzoning proposal</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21027&MeetingID=4577'>Anne HawleyOpposition to_ citywide upzoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>19. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25404&CssClass='>COM 2769 #2024 : A communication was received from Anne Lowell, regarding  UPZONING.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21028&MeetingID=4577'>Anne Lowell UPZONING</a></td></tr>
+
+<tr><td></td><td class='Num'>20. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25405&CssClass='>COM 2770 #2024 : A communication was received from Anne, Anand and Rowan Sundaram, regarding  No Rules Zoning_.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21029&MeetingID=4577'>Anne,Anand and Rowan Sundaram No Rules Zoning_</a></td></tr>
+
+<tr><td></td><td class='Num'>21. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25406&CssClass='>COM 2771 #2024 : A communication was received from Annette LaMond & Joe Moore, regarding OPPOSED to Citywide Upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21030&MeetingID=4577'>Annette LaMond & Joe Moore OPPOSED to Citywide Upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>22. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25407&CssClass='>COM 2772 #2024 : A communication was received from Annmarie Flynn, regarding Rezoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21031&MeetingID=4577'>Annmarie Flynn Rezoning</a></td></tr>
+
+<tr><td></td><td class='Num'>23. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25408&CssClass='>COM 2773 #2024 : A communication was received from Ausra Kubilius, regarding new construction-height proposal--please vote NO.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21032&MeetingID=4577'>Ausra Kubilius new construction-height proposal--please vote NO</a></td></tr>
+
+<tr><td></td><td class='Num'>24. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25409&CssClass='>COM 2774 #2024 : A communication was received from Bernice Buresh, regarding PO 118 and PO 117.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21033&MeetingID=4577'>Bernice Buresh PO 118 and PO 117</a></td></tr>
+
+<tr><td></td><td class='Num'>25. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25410&CssClass='>COM 2775 #2024 : A communication was received from Beth Gamse & Judy Singer, regarding Vote no on upzoning proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21034&MeetingID=4577'>Beth Gamse & Judy Singer Vote no on upzoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>26. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25411&CssClass='>COM 2776 #2024 : A communication was received from Betty Lee Saccoccio, regarding Opposition to Proposed Language for Largest Zoning Change in the History of the City of Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21035&MeetingID=4577'>Betty Lee Saccoccio  Opposition to Proposed Language for Largest Zoning Change in the History of theCity of Cambridge</a></td></tr>
+
+<tr><td></td><td class='Num'>27. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25412&CssClass='>COM 2777 #2024 : A communication was received from Beverly Seidenberg, regarding up zoning proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21036&MeetingID=4577'>Beverly Seidenberg up zoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>28. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25413&CssClass='>COM 2778 #2024 : A communication was received from Bill McAvinney, regarding Please pass CR #1 (aka POR 2024 #117) Stop Displacement! Save our city!.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21037&MeetingID=4577'>Bill McAvinney Please pass CR #1 (aka POR 2024 #117) Stop Displacement! Save our city!</a></td></tr>
+
+<tr><td></td><td class='Num'>29. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25414&CssClass='>COM 2779 #2024 : A communication was received from Suzanne Blier, regarding No Rules Zoning - Sketches from a City Housing Architect on Impacts and More.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21038&MeetingID=4577'>Blier, Suzanne No Rules Zoning - Sketches from a City Housing Architect on Impacts and More____</a></td></tr>
+
+<tr><td></td><td class='Num'>30. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25415&CssClass='>COM 2780 #2024 : A communication was received from Camilla Brinkman, regarding Proposed citywide upzoning plan.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21039&MeetingID=4577'>Camilla Brinkman Proposed citywide upzoning plan</a></td></tr>
+
+<tr><td></td><td class='Num'>31. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25416&CssClass='>COM 2781 #2024 : A communication was received from Carol Weinhaus, regarding Strongly oppose the upzoning of Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21040&MeetingID=4577'>Carol Weinhaus Strongly oppose the upzoning of Cambridge</a></td></tr>
+
+<tr><td></td><td class='Num'>32. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25417&CssClass='>COM 2782 #2024 : A communication was received from Caroline Lowenthal, regarding Support for Housing Committee's proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21041&MeetingID=4577'>Caroline Lowenthal Support for Housing Committee's proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>33. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25418&CssClass='>COM 2783 #2024 : A communication was received from Carolyn, regarding Cambridgeport Question Enthusiastic Support for Ending Exclusionary Zoning and Prioritizing Inclusionary Housing.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21042&MeetingID=4577'>Carolyn  Cambridgeport Question Enthusiastic Support for Ending Exclusionary Zoning and Prioritizing Inclusionary Housing</a></td></tr>
+
+<tr><td></td><td class='Num'>34. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25419&CssClass='>COM 2784 #2024 : A communication was received from Carolyn Fuller, regarding Please pass CR #1 (aka POR 2024 #117) and end exclusionary zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21043&MeetingID=4577'>Carolyn Fuller Please pass CR #1 (aka POR 2024 #117) and end exclusionary zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>35. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25420&CssClass='>COM 2785 #2024 : A communication was received from Carolyn Shipley, regarding Charter Righted City Upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21044&MeetingID=4577'>Carolyn Shipley Charter Righted City Upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>36. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25421&CssClass='>COM 2786 #2024 : A communication was received from Carrie Jones, regarding AHO.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21045&MeetingID=4577'>Carrie Jones AHO</a></td></tr>
+
+<tr><td></td><td class='Num'>37. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25422&CssClass='>COM 2787 #2024 : A communication was received from Central Square Tenants, regarding Enthusiastic Support for Ending Exclusionary Zoning and Prioritizing Inclusionary Housing.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21046&MeetingID=4577'>Central Square Tenants Enthusiastic Support for Ending Exclusionary Zoning and Prioritizing Inclusionary Housing</a></td></tr>
+
+<tr><td></td><td class='Num'>38. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25423&CssClass='>COM 2788 #2024 : A communication was received from Charles Merrill & Sandra Spanier, regarding Please Vote'NO' on current upzoning proposals_ Current neighborhoods will be hurt_.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21047&MeetingID=4577'>Charles Merrill & Sandra Spanier Please Vote'NO' on current upzoning proposals_ Current neighborhoods will be hurt_</a></td></tr>
+
+<tr><td></td><td class='Num'>39. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25424&CssClass='>COM 2789 #2024 : A communication was received from Chris Cullen, regarding please allow multifamily housing throughout Cambridge - begin to ameliorate this housing crisis.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21048&MeetingID=4577'>Chris Cullen please allow multifamily housing throughout Cambridge - begin to ameliorate this housing crisis</a></td></tr>
+
+<tr><td></td><td class='Num'>40. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25425&CssClass='>COM 2790 #2024 : A communication was received from Claudia Majetich, regarding Opposed City-wide Upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21049&MeetingID=4577'>Claudia Majetich Opposed City-wide Upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>41. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25426&CssClass='>COM 2791 #2024 : A communication was received from Crystal Komm, regarding City Wide Upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21050&MeetingID=4577'>Crystal Komm City Wide Upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>42. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25427&CssClass='>COM 2792 #2024 : A communication was received from Crystal Leslie, regarding Upzoning .</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21051&MeetingID=4577'>Crystal Leslie Upzoning </a></td></tr>
+
+<tr><td></td><td class='Num'>43. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25428&CssClass='>COM 2793 #2024 : A communication was received from Dan Rose, regarding Opinion on proposed 6-story zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21052&MeetingID=4577'>Dan Rose Opinion on proposed 6-story zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>44. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25429&CssClass='>COM 2794 #2024 : A communication was received from Dan Sprague, regarding Support City Wide Upzoning POR#117 & #118.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21053&MeetingID=4577'>Dan Sprague Support City Wide Upzoning POR#117 & #118</a></td></tr>
+
+<tr><td></td><td class='Num'>45. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25430&CssClass='>COM 2795 #2024 : A communication was received from Darren Buck, regarding Writing in support of zoning freedom.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21054&MeetingID=4577'>Darren Buck Writing in support of zoning freedom</a></td></tr>
+
+<tr><td></td><td class='Num'>46. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25431&CssClass='>COM 2796 #2024 : A communication was received from David Levy, regarding Against the current citywide upzoning proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21055&MeetingID=4577'>David Levy Against the current citywide upzoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>47. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25432&CssClass='>COM 2797 #2024 : A communication was received from David Mankins, regarding proposed citywide upcoming.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21056&MeetingID=4577'>David Mankins proposed citywide upcoming</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21057&MeetingID=4577'>David Mankins proposed citywide upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>48. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25433&CssClass='>COM 2798 #2024 : A communication was received from Deborah Zucker, regarding Proposed changes to building zoning_ordinances for the city.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21058&MeetingID=4577'>Deborah Zucker Proposed changes to building zoning_ordinances for the city</a></td></tr>
+
+<tr><td></td><td class='Num'>49. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25434&CssClass='>COM 2799 #2024 : A communication was received from Diana Yousef, regarding Please do not support city-wide height increases for housing .</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21059&MeetingID=4577'>Diana Yousef Please do not support city-wide height increases for housing </a></td></tr>
+
+<tr><td></td><td class='Num'>50. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25435&CssClass='>COM 2800 #2024 : A communication was received from Dominick Jones, regarding Charter-righted City Upzoning today.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21060&MeetingID=4577'>Dominick Jones Charter-righted City Upzoning today</a></td></tr>
+
+<tr><td></td><td class='Num'>51. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25436&CssClass='>COM 2801 #2024 : A communication was received from Don Michaelis, regarding Housing.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21061&MeetingID=4577'>Don Michaelis Housing</a></td></tr>
+
+<tr><td></td><td class='Num'>52. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25437&CssClass='>COM 2802 #2024 : A communication was received from Eileen McCullough, regarding Please vote for equity and PARKING included in MultiFamily Housing Vote.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21062&MeetingID=4577'>Eileen McCullough Please vote for equity and PARKING included in MultiFamily Housing Vote</a></td></tr>
+
+<tr><td></td><td class='Num'>53. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25438&CssClass='>COM 2803 #2024 : A communication was received from Elisabeth Meurer, regarding City-wide up-zoning proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21063&MeetingID=4577'>Elisabeth Meurer City-wide up-zoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>54. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25439&CssClass='>COM 2804 #2024 : A communication was received from Elizabeth Klerman, regarding Proposed Zoning changes.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21064&MeetingID=4577'>Elizabeth Klerman Proposed Zoning changes</a></td></tr>
+
+<tr><td></td><td class='Num'>55. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25440&CssClass='>COM 2805 #2024 : A communication was received from Elizabeth Kon, regarding Elimination of historical sites and upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21065&MeetingID=4577'>Elizabeth Kon Elimination of historical sites and upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>56. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25441&CssClass='>COM 2806 #2024 : A communication was received from Elizabeth Van Ranst, regarding Up-zoning Proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21066&MeetingID=4577'>Elizabeth Van Ranst Up-zoning Proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>57. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25442&CssClass='>COM 2807 #2024 : A communication was received from Ember Sawady, regarding Support for legalizing 6-story buildings city-wide.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21067&MeetingID=4577'>Ember Sawady Support for legalizing 6-story buildings city-wide</a></td></tr>
+
+<tr><td></td><td class='Num'>58. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25443&CssClass='>COM 2808 #2024 : A communication was received from Emily Ma, regarding Proposed up-zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21068&MeetingID=4577'>Emily Ma Proposed up-zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>59. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25444&CssClass='>COM 2809 #2024 : A communication was received from Esme Martinek, regarding Please do not support city-wide height increases for housing .</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21069&MeetingID=4577'>Esme MartinekPlease do not support city-wide height increases for housing </a></td></tr>
+
+<tr><td></td><td class='Num'>60. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25445&CssClass='>COM 2810 #2024 : A communication was received from Ethan Frank, regarding Supporting legalizing housing.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21070&MeetingID=4577'>Ethan Frank Supporting legalizing housing</a></td></tr>
+
+<tr><td></td><td class='Num'>61. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25446&CssClass='>COM 2811 #2024 : A communication was received from Francesca Gordini, regarding Opposition to Zoning Proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21071&MeetingID=4577'>Francesca Gordini Opposition to Zoning Proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>62. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25447&CssClass='>COM 2812 #2024 : A communication was received from Friedrich von Gottberg, regarding Zoning Proposal - _Multi Family City Wide_.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21072&MeetingID=4577'>Friedrich von Gottberg  Zoning Proposal - _Multi Family City Wide_</a></td></tr>
+
+<tr><td></td><td class='Num'>63. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25448&CssClass='>COM 2813 #2024 : A communication was received from Gaylen Morgan, regarding Upcoming proposal on Walden Sq project at tonight’s meeting.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21073&MeetingID=4577'>Gaylen Morgan Upcoming proposal on Walden Sq project at tonight’s meeting</a></td></tr>
+
+<tr><td></td><td class='Num'>64. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25449&CssClass='>COM 2814 #2024 : A communication was received from Gleb Bahmutov, regarding End exclusionary zoning in Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21074&MeetingID=4577'>Gleb Bahmutov End exclusionary zoning in Cambridge</a></td></tr>
+
+<tr><td></td><td class='Num'>65. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25450&CssClass='>COM 2815 #2024 : A communication was received from Guillemette Simmers, regarding Up-zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21075&MeetingID=4577'>Guillemette Simmers Up-zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>66. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25451&CssClass='>COM 2816 #2024 : A communication was received from H. Fleishon, regarding Housing Committee's proposal to allow triple deckers_ fourplexes_ and homes up to 6-story buildings throughout Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21076&MeetingID=4577'>H. Fleishon Housing Committee's proposal to allow triple deckers_ fourplexes_ and homes up to 6-story buildings throughout Cambridge</a></td></tr>
+
+<tr><td></td><td class='Num'>67. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25452&CssClass='>COM 2817 #2024 : A communication was received from Hallie Trial, regarding In support of PO #118 and PO #117.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21077&MeetingID=4577'>Hallie Trial In support of PO #118 and PO #117</a></td></tr>
+
+<tr><td></td><td class='Num'>68. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25453&CssClass='>COM 2818 #2024 : A communication was received from Harold J. Bursztajn, regarding Fiduciary Care for Cambridge City residents.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21078&MeetingID=4577'>Harold J. Bursztajn Fiduciary Care for Cambridge City residents</a></td></tr>
+
+<tr><td></td><td class='Num'>69. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25454&CssClass='>COM 2819 #2024 : A communication was received from Helen Abraham, regarding Significant Housing Issues.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21079&MeetingID=4577'>Helen Abraham Significant Housing Issues</a></td></tr>
+
+<tr><td></td><td class='Num'>70. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25455&CssClass='>COM 2820 #2024 : A communication was received from Helen Snively, regarding I am sick of your giveaways to rich people!   NO to this upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21084&MeetingID=4577'>Helen Snively I am sick of your giveaways to rich people!   NO to this upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>71. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25456&CssClass='>COM 2821 #2024 : A communication was received from  Helen Walker, regarding Multifamily Housing Citywide Must Respond to Resident Concerns.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21080&MeetingID=4577'>Helen Walker Multifamily Housing Citywide Must Respond to Resident Concerns</a></td></tr>
+
+<tr><td></td><td class='Num'>72. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25457&CssClass='>COM 2822 #2024 : A communication was received from Helene Bank, regarding Citywide upzoning proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21081&MeetingID=4577'>Helene Bank Citywide upzoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>73. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25458&CssClass='>COM 2823 #2024 : A communication was received from Hugh Warren, regarding _ Up Zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21082&MeetingID=4577'>Hugh Warren _ Up Zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>74. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25459&CssClass='>COM 2824 #2024 : A communication was received from Ira Nichols-Barrer, regarding support for PO #117 & #118.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21083&MeetingID=4577'>Ira Nichols-Barrer support for PO #117 & #118</a></td></tr>
+
+<tr><td></td><td class='Num'>75. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25460&CssClass='>COM 2825 #2024 : A communication was received from Jacqueline Berthet, regarding Up-zoning citywide .</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21085&MeetingID=4577'>Jacqueline Berthet Up-zoning citywide </a></td></tr>
+
+<tr><td></td><td class='Num'>76. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25461&CssClass='>COM 2826 #2024 : A communication was received from Jacqueline Kung, regarding Please vote yes for housing Sept 16.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21086&MeetingID=4577'>Jacqueline Kung Please vote yes for housing Sept 16</a></td></tr>
+
+<tr><td></td><td class='Num'>77. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25462&CssClass='>COM 2827 #2024 : A communication was received from Jacquelyn Fahey Sandell, regarding Please oppose the upzoning proposal to 6 stories as a right and the 18 stories in Central.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21087&MeetingID=4577'>Jacquelyn Fahey Sandell Please oppose the upzoning proposal to 6 stories as a right and the 18 stories in Central</a></td></tr>
+
+<tr><td></td><td class='Num'>78. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25463&CssClass='>COM 2828 #2024 : A communication was received from James Stathis, regarding Zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21088&MeetingID=4577'>James Stathis Zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>79. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25464&CssClass='>COM 2829 #2024 : A communication was received from Jane Morse, regarding Please vote no on the city-wide upzoning proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21089&MeetingID=4577'>Jane Morse_ Please vote no on the city-wide upzoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>80. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25465&CssClass='>COM 2830 #2024 : A communication was received from Janet Stein, regarding Support for PO#118 and PO#117.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21090&MeetingID=4577'>Janet Stein Support for PO#118 and PO#117</a></td></tr>
+
+<tr><td></td><td class='Num'>81. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25466&CssClass='>COM 2831 #2024 : A communication was received from Janice Snow, regarding City-wide Up-zoning Proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21091&MeetingID=4577'>Janice SnowCity-wide Up-zoning Proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>82. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25467&CssClass='>COM 2832 #2024 : A communication was received from Jean G. Krulic, regarding oppose the proposed radical city up-zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21092&MeetingID=4577'>Jean G. Krulic oppose the proposed radical city up-zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>83. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25468&CssClass='>COM 2833 #2024 : A communication was received from Jennifer MIles, regarding UPZONING.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21093&MeetingID=4577'>Jennifer MIlesUPZONING</a></td></tr>
+
+<tr><td></td><td class='Num'>84. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25469&CssClass='>COM 2834 #2024 : A communication was received from Joan D. Krizack, regarding City Upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21094&MeetingID=4577'>Joan D. Krizack City Upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>85. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25470&CssClass='>COM 2835 #2024 : A communication was received from Joan Doolittle and Steve Barylick, regarding  City-wide Upzoning Proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21095&MeetingID=4577'>Joan Doolittle and Steve Barylick City-wide Upzoning Proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>86. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25471&CssClass='>COM 2836 #2024 : A communication was received from John MacDougall, regarding Waldern Sq_-2 proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21096&MeetingID=4577'>John MacDougall, Waldern Sq_-2 proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>87. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25472&CssClass='>COM 2837 #2024 : A communication was received from John Pena, regarding Proposed_continued up-zoning modifications.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21097&MeetingID=4577'>John Pena Proposed_continued up-zoning modifications</a></td></tr>
+
+<tr><td></td><td class='Num'>88. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25473&CssClass='>COM 2838 #2024 : A communication was received from John Trever, regarding Against up-zoning for 6-story buildings.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21098&MeetingID=4577'>John Trever Against up-zoning for 6-story buildings</a></td></tr>
+
+<tr><td></td><td class='Num'>89. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25474&CssClass='>COM 2839 #2024 : A communication was received from Joseph Antebi, regarding City Up zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21099&MeetingID=4577'>Joseph Antebi City Up zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>90. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25475&CssClass='>COM 2840 #2024 : A communication was received from Josh Talbot, regarding Support Multifamily Housing.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21100&MeetingID=4577'>Josh Talbot Support Multifamily Housing</a></td></tr>
+
+<tr><td></td><td class='Num'>91. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25476&CssClass='>COM 2841 #2024 : A communication was received from Josiah Bonsey, regarding Supporting zoning for 6+ stories citywide.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21101&MeetingID=4577'>Josiah Bonsey Supporting zoning for 6+ stories citywide</a></td></tr>
+
+<tr><td></td><td class='Num'>92. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25477&CssClass='>COM 2842 #2024 : A communication was received from Joyce Klein Mal Slavin, regarding Opposition to proposed zoning laws.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21102&MeetingID=4577'>Joyce Klein Mal Slavin Opposition to proposed zoning laws</a></td></tr>
+
+<tr><td></td><td class='Num'>93. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25478&CssClass='>COM 2843 #2024 : A communication was received from Justin Saif, regarding Strong Support for Ending Exclusionary Zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21103&MeetingID=4577'>Justin Saif_ Strong Support for Ending Exclusionary Zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>94. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25479&CssClass='>COM 2844 #2024 : A communication was received from Kadir Teoman Uysal, regarding Vote NO to the up-zoning of housing in Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21104&MeetingID=4577'>Kadir Teoman Uysal Vote NO to the up-zoning of housing in Cambridge</a></td></tr>
+
+<tr><td></td><td class='Num'>95. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25480&CssClass='>COM 2845 #2024 : A communication was received from Karan Arakotaram, regarding Ending exclusionary zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21105&MeetingID=4577'>Karan Arakotaram Ending exclusionary zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>96. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25481&CssClass='>COM 2846 #2024 : A communication was received from Karen Eton, regarding Up-Zoning of Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21106&MeetingID=4577'>Karen Eton_  Up-Zoning of Cambridge</a></td></tr>
+
+<tr><td></td><td class='Num'>97. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25482&CssClass='>COM 2847 #2024 : A communication was received from Karen Falb, regarding Tonight's proposed up-zoning - think city-wide_ think zoning stability.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21107&MeetingID=4577'>Karen Falb Tonight's proposed up-zoning - think city-wide_ think zoning stability</a></td></tr>
+
+<tr><td></td><td class='Num'>98. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25483&CssClass='>COM 2848 #2024 : A communication was received from Katiti Kironde, regarding Opposition to radical city upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21108&MeetingID=4577'>Katiti Kironde Opposition to radical city upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>99. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25484&CssClass='>COM 2849 #2024 : A communication was received from Kelsey Harris, regarding In support of Charter Right #1 (POR 2024 #117).</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21109&MeetingID=4577'>Kelsey Harris In support of Charter Right #1 (POR 2024 #117)</a></td></tr>
+
+<tr><td></td><td class='Num'>100. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25485&CssClass='>COM 2850 #2024 : A communication was received from Kesara Martinek, regarding Please do not support city-wide height increases for housing .</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21110&MeetingID=4577'>Kesara MartinekPlease do not support city-wide height increases for housing </a></td></tr>
+
+<tr><td></td><td class='Num'>101. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25486&CssClass='>COM 2851 #2024 : A communication was received from Kevin Grinberg, regarding PO 117_118.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21111&MeetingID=4577'>Kevin Grinberg PO 117_118</a></td></tr>
+
+<tr><td></td><td class='Num'>102. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25487&CssClass='>COM 2852 #2024 : A communication was received from Kevin Leiby, regarding Support for ending exclusionary zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21112&MeetingID=4577'>Kevin Leiby Support for ending exclusionary zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>103. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25488&CssClass='>COM 2853 #2024 : A communication was received from Laurie Beth Gaines, regarding Corcoran Park project.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21113&MeetingID=4577'>Laurie Beth Gaines Corcoran Park project</a></td></tr>
+
+<tr><td></td><td class='Num'>104. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25490&CssClass='>COM 2854 #2024 : A communication was received from Leyla Uysal, regarding A local voice.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21114&MeetingID=4577'>Leyla Uysal A local voice</a></td></tr>
+
+<tr><td></td><td class='Num'>105. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25491&CssClass='>COM 2855 #2024 : A communication was received from Lisa Coen, regarding Up-zoning vote.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21115&MeetingID=4577'>Lisa Coen Up-zoning vote</a></td></tr>
+
+<tr><td></td><td class='Num'>106. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25493&CssClass='>COM 2856 #2024 : A communication was received from Lisa Glover, regarding Citywide upzoning proposal_ please limit to major corridors.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21116&MeetingID=4577'>Lisa Glover Citywide upzoning proposal_ please limit to major corridors</a></td></tr>
+
+<tr><td></td><td class='Num'>107. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25496&CssClass='>COM 2857 #2024 : A communication was received from Maple Goh, regarding PO 117 & 118.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21117&MeetingID=4577'>MAPLE GOH PO 117 & 118</a></td></tr>
+
+<tr><td></td><td class='Num'>108. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25497&CssClass='>COM 2858 #2024 : A communication was received from Margaret Flanagan, regarding Opposition to upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21118&MeetingID=4577'>Margaret FlanaganOpposition to upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>109. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25498&CssClass='>COM 2859 #2024 : A communication was received from Marie Elena Saccoccio, regarding Proposed Language for Largest Zoning Change in the History of Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21119&MeetingID=4577'>Marie Elena SaccoccioProposed Language for Largest Zoning Change in the History of Cambridge</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21120&MeetingID=4577'>Marie Elena SaccoccioThirteen Neighborhoods One City 1953 Under Joe Deguglielmo</a></td></tr>
+
+<tr><td></td><td class='Num'>110. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25499&CssClass='>COM 2860 #2024 : A communication was received from Marilee Meyer, regarding  please vote down this reiteration of multi-family policy.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21121&MeetingID=4577'>Marilee Meyer  please vote down this reiteration of multi-family policy</a></td></tr>
+
+<tr><td></td><td class='Num'>111. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25500&CssClass='>COM 2861 #2024 : A communication was received from Marilee Meyer, regarding  misplaced letter.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21122&MeetingID=4577'>Marilee Meyer misplaced letter _</a></td></tr>
+
+<tr><td></td><td class='Num'>112. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25501&CssClass='>COM 2862 #2024 : A communication was received from Mark Goodman, regarding Zoning change.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21123&MeetingID=4577'>Mark Goodman Zoning change</a></td></tr>
+
+<tr><td></td><td class='Num'>113. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25502&CssClass='>COM 2863 #2024 : A communication was received from Mark Kon, regarding Elimination of historical sites and upzoning of Cambridge Residents.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21124&MeetingID=4577'>Mark Kon Elimination of historical sites and upzoning of Cambridge Residents</a></td></tr>
+
+<tr><td></td><td class='Num'>114. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25503&CssClass='>COM 2864 #2024 : A communication was received from Mark Steffen and Sharanya Iyer, regarding Support PO 117 and 118 at next meeting Monday.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21125&MeetingID=4577'>Mark Steffen and Sharanya Iyer Support PO 117 and 118 at next meeting Monday</a></td></tr>
+
+<tr><td></td><td class='Num'>115. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25504&CssClass='>COM 2865 #2024 : A communication was received from Martin Breu, regarding A note in support of PO #117 and #118.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21126&MeetingID=4577'>Martin Breu A note in support of PO #117 and #118</a></td></tr>
+
+<tr><td></td><td class='Num'>116. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25506&CssClass='>COM 2866 #2024 : A communication was received from Mary Jane Kornacki, regarding Citywide upzoning…_no_ no_ no_ no and no!.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21131&MeetingID=4577'>Mary Jane Kornacki Citywide upzoning…_no_ no_ no_ no and no!</a></td></tr>
+
+<tr><td></td><td class='Num'>117. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25507&CssClass='>COM 2867 #2024 : A communication was received from Mary Zieger and Donald Baltus, regarding Oppose city up-zoning proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21132&MeetingID=4577'>Mary Zieger and Donald Baltus Oppose city up-zoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>118. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25508&CssClass='>COM 2868 #2024 : A communication was received from Masato Kocberber, regarding Support for housing bill.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21133&MeetingID=4577'>Masato Kocberber Support for housing bill</a></td></tr>
+
+<tr><td></td><td class='Num'>119. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25509&CssClass='>COM 2869 #2024 : A communication was received from Maxwell Solet, regarding Proposed _Upzoning_.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21134&MeetingID=4577'>Maxwell Solet_ Proposed _Upzoning_</a></td></tr>
+
+<tr><td></td><td class='Num'>120. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25510&CssClass='>COM 2870 #2024 : A communication was received from Michael Weymouth, regarding Support for Policy Orders 117 and 118.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21135&MeetingID=4577'>Michael Weymouth Support for Policy Orders 117 and 118</a></td></tr>
+
+<tr><td></td><td class='Num'>121. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25512&CssClass='>COM 2871 #2024 : A communication was received from Mike Rowland, regarding In support of ending exclusionary zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21137&MeetingID=4577'>Mike Rowland In support of ending exclusionary zoning</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21138&MeetingID=4577'>Mike RowlandIn support of ending exclusionary zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>122. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25513&CssClass='>COM 2872 #2024 : A communication was received from Mike Volles, regarding Oppose up-zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21139&MeetingID=4577'>Mike Volles Oppose up-zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>123. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25514&CssClass='>COM 2873 #2024 : A communication was received from Molly Trowbridge, regarding Testimony_ I support multifamily housing Citywide.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21140&MeetingID=4577'>Molly Trowbridge Testimony_ I support multifamily housing Citywide</a></td></tr>
+
+<tr><td></td><td class='Num'>124. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25515&CssClass='>COM 2874 #2024 : A communication was received from Muireann Glenmullen, regarding Rezoning proposals.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21141&MeetingID=4577'>Muireann Glenmullen Rezoning proposals</a></td></tr>
+
+<tr><td></td><td class='Num'>125. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25516&CssClass='>COM 2875 #2024 : A communication was received from Nancy Berliner, regarding Upzoning Comment.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21142&MeetingID=4577'>Nancy Berliner  Upzoning Comment</a></td></tr>
+
+<tr><td></td><td class='Num'>126. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25518&CssClass='>COM 2876 #2024 : A communication was received from Nancy Johnson, regarding Upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21143&MeetingID=4577'>Nancy Johnson Upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>127. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25519&CssClass='>COM 2877 #2024 : A communication was received from Ned Codd, regarding Support for Multifamily Zoning Proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21144&MeetingID=4577'>Ned Codd Support for Multifamily Zoning Proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>128. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25520&CssClass='>COM 2878 #2024 : A communication was received from Noah Harper, regarding Letter In Support of Upzoning and a More Inclusive Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21145&MeetingID=4577'>Noah Harper Letter In Support of Upzoning and a More Inclusive Cambridge</a></td></tr>
+
+<tr><td></td><td class='Num'>129. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25521&CssClass='>COM 2879 #2024 : A communication was received from Nonie Valentine, regarding No to 75 ft_ heights around Cambridge once again.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21147&MeetingID=4577'>Nonie Valentine No to 75 ft_ heights around Cambridge once again</a></td></tr>
+
+<tr><td></td><td class='Num'>130. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25522&CssClass='>COM 2880 #2024 : A communication was received from Olga-Louiza Tague, regarding Opposition to Cambridge Upzoning Proposal Today.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21148&MeetingID=4577'>Olga-Louiza Tague Opposition to Cambridge Upzoning Proposal Today</a></td></tr>
+
+<tr><td></td><td class='Num'>131. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25523&CssClass='>COM 2881 #2024 : A communication was received from Pamela Lipson, regarding Opposition to upzoning proposal .</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21149&MeetingID=4577'>Pamela Lipson Opposition to upzoning proposal </a></td></tr>
+
+<tr><td></td><td class='Num'>132. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25524&CssClass='>COM 2882 #2024 : A communication was received from Patrick Ledwith, regarding Strong support to move forward with six stories city wide.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21150&MeetingID=4577'>Patrick Ledwith Strong support to move forward with six stories city wide</a></td></tr>
+
+<tr><td></td><td class='Num'>133. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25525&CssClass='>COM 2883 #2024 : A communication was received from Patrick TaylorIn, regarding Support of Bold Action on Housing.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21151&MeetingID=4577'>Patrick TaylorIn Support of Bold Action on Housing</a></td></tr>
+
+<tr><td></td><td class='Num'>134. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25526&CssClass='>COM 2884 #2024 : A communication was received from Paul E Fallon, regarding Vote YES!!! on Six-Story Residential Zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21152&MeetingID=4577'>Paul E Fallon Vote YES!!! on Six-Story Residential Zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>135. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25527&CssClass='>COM 2885 #2024 : A communication was received from Paul Maschhoff, regarding End exclusionary zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21153&MeetingID=4577'>Paul Maschhoff End exclusionary zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>136. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25528&CssClass='>COM 2886 #2024 : A communication was received from Pavan (“Tem”) Bendapudi, regarding Eliminating exclusionary zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21154&MeetingID=4577'>Pavan (“Tem”) Bendapudi Eliminating exclusionary zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>137. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25529&CssClass='>COM 2887 #2024 : A communication was received from Phillip Rothman, regarding opposition to upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21155&MeetingID=4577'>Phillip Rothman opposition to upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>138. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25530&CssClass='>COM 2888 #2024 : A communication was received from Phyllis Simpkins, regarding Upzoning proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21156&MeetingID=4577'>Phyllis Simpkins Upzoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>139. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25531&CssClass='>COM 2889 #2024 : A communication was received from Rabbi Yoni, regarding Six Stories Citywide across all Residential Neighborhoods + At Least 20% Inclusionary Units.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21157&MeetingID=4577'>Rabbi YoniSix Stories Citywide across all Residential Neighborhoods + At Least 20% Inclusionary Units</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21158&MeetingID=4577'>Rabbi YoniSupport for Councilor Wilson's Amendment</a></td></tr>
+
+<tr><td></td><td class='Num'>140. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25532&CssClass='>COM 2890 #2024 : A communication was received from Rachael Coleman, regarding Exclusionary zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21159&MeetingID=4577'>Rachael Coleman  Exclusionary zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>141. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25533&CssClass='>COM 2891 #2024 : A communication was received from Rebecca Pries, regarding Please oppose upzoning for luxury 6 story building!.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21160&MeetingID=4577'>Rebecca Pries Please oppose upzoning for luxury 6 story building!</a></td></tr>
+
+<tr><td></td><td class='Num'>142. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25534&CssClass='>COM 2892 #2024 : A communication was received from Richard Goldberg, regarding Rezoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21161&MeetingID=4577'>Richard Goldberg Rezoning_</a></td></tr>
+
+<tr><td></td><td class='Num'>143. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25535&CssClass='>COM 2893 #2024 : A communication was received from Richard Homonoff, regarding Cambridge City Council -My opposition to the Massive Cambridge Upzoning Proposal Today.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21162&MeetingID=4577'>Richard Homonoff  Cambridge City Council -My opposition to the Massive Cambridge Upzoning Proposal Today</a></td></tr>
+
+<tr><td></td><td class='Num'>144. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25536&CssClass='>COM 2894 #2024 : A communication was received from Richard Krushnic, regarding Multifamily zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21163&MeetingID=4577'>Richard Krushnic Multifamily zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>145. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25537&CssClass='>COM 2895 #2024 : A communication was received from Robert Camacho, regarding 9-15-2024 response to more buildings.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21164&MeetingID=4577'>Robert Camacho 9-15-2024 response to more buildings</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21165&MeetingID=4577'>Robert Camacho Charter-righted City Upzoning_ 09-16-2024</a></td></tr>
+
+<tr><td></td><td class='Num'>146. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25538&CssClass='>COM 2896 #2024 : A communication was received from Ronald Suleski, regarding Strongly Suggest AHO Issues as Below.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21166&MeetingID=4577'>Ronald Suleski Strongly Suggest AHO Issues as Below</a></td></tr>
+
+<tr><td></td><td class='Num'>147. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25539&CssClass='>COM 2897 #2024 : A communication was received from Rosalind Michahelles, regarding Up-zoning objection.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21167&MeetingID=4577'>Rosalind Michahelles Up-zoning objection</a></td></tr>
+
+<tr><td></td><td class='Num'>148. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25540&CssClass='>COM 2898 #2024 : A communication was received from Ruth Loetterle, regarding Vote NO on the proposed up-zoning proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21168&MeetingID=4577'>Ruth Loetterle Vote NO on the proposed up-zoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>149. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25541&CssClass='>COM 2899 #2024 : A communication was received from Rosalind Michahelles, regarding Up-zoning objection.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21169&MeetingID=4577'>Rosalind Michahelles Up-zoning objection</a></td></tr>
+
+<tr><td></td><td class='Num'>150. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25542&CssClass='>COM 2900 #2024 : A communication was received from  Ruth Loetterle, regarding Vote NO on the proposed up-zoning proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21170&MeetingID=4577'>Ruth Loetterle Vote NO on the proposed up-zoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>151. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25543&CssClass='>COM 2901 #2024 : A communication was received from Ruth Ryals, regarding I am very uncomfortable with the current upzoning proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21171&MeetingID=4577'>Ruth Ryals I am very uncomfortable with the current upzoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>152. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25545&CssClass='>COM 2902 #2024 : A communication was received from William Graham, regarding Zoning changes.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21172&MeetingID=4577'>William Graham Zoning changes</a></td></tr>
+
+<tr><td></td><td class='Num'>153. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25546&CssClass='>COM 2903 #2024 : A communication was received from Wayne Welke, regarding In Support of More Multifamily Housing in Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21173&MeetingID=4577'>Wayne Welke  In Support of More Multifamily Housing in Cambridge</a></td></tr>
+
+<tr><td></td><td class='Num'>154. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25547&CssClass='>COM 2904 #2024 : A communication was received from Vickey Bestor, regarding Over-board Upzoning</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21174&MeetingID=4577'>Vickey Bestor Over-board Upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>155. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25548&CssClass='>COM 2905 #2024 : A communication was received from Doina Contescu and Jesse Winder, regarding VEHEMENT OPPOSITION to radical and greedy city upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21175&MeetingID=4577'>Doina Contescu and Jesse Winder VEHEMENT OPPOSITION to radical and greedy city upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>156. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25549&CssClass='>COM 2906 #2024 : A communication was received from Vaughn Sills, regarding Upzoning for 6 story buildings.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21176&MeetingID=4577'>Vaughn Sills Upzoning for 6 story buildings</a></td></tr>
+
+<tr><td></td><td class='Num'>157. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25550&CssClass='>COM 2907 #2024 : A communication was received from Varun, regarding Cambridge Zoning and Cambridge Rezoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21177&MeetingID=4577'>Varun Cambridge Zoning</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21178&MeetingID=4577'>Varun Cambridge Rezoning</a></td></tr>
+
+<tr><td></td><td class='Num'>158. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25551&CssClass='>COM 2908 #2024 : A communication was received from Vanessa Azzone Dhanji, regarding Please reconsider Massive City Upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21179&MeetingID=4577'>Vanessa Azzone Dhanji Please reconsider Massive City Upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>159. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25552&CssClass='>COM 2909 #2024 : A communication was received from Ty Wilson, regarding Let's keep breaking down barriers to new housing construction.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21180&MeetingID=4577'>Ty Wilson Let's keep breaking down barriers to new housing construction</a></td></tr>
+
+<tr><td></td><td class='Num'>160. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25553&CssClass='>COM 2910 #2024 : A communication was received from Trevor Burnham, regarding Support for ending exclusionary zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21181&MeetingID=4577'>Trevor BurnhamSupport for ending exclusionary zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>161. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25554&CssClass='>COM 2911 #2024 : A communication was received from Tina LIeu, regarding support multi-family home zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21182&MeetingID=4577'>Tina LIeu Pls support multi-family home zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>162. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25555&CssClass='>COM 2912 #2024 : A communication was received from Timothy O’Donnell, regarding Opposition to current AHO Ordinance & Up zoning proposal for Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21183&MeetingID=4577'>Timothy O’Donnell Opposition to current AHO Ordinance & Up zoning proposal for Cambridge </a></td></tr>
+
+<tr><td></td><td class='Num'>163. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25556&CssClass='>COM 2913 #2024 : A communication was received from Tim and Sara Cabot, regarding Approve Upzoning</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21184&MeetingID=4577'>Tim and Sara Cabot Approve Upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>164. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25557&CssClass='>COM 2914 #2024 : A communication was received from Thomas Briggs, regarding Citiwide Upzoning Proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21185&MeetingID=4577'>Thomas Briggs  Citiwide Upzoning Proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>165. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25558&CssClass='>COM 2915 #2024 : A communication was received from Suzanne Watzman, regarding I am opposed to the proposed radical city up-zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21186&MeetingID=4577'>Suzanne Watzman I am opposed to the proposed radical city up-zoning </a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21187&MeetingID=4577'>Suzanne Watzman_ I am opposed to the proposed radical city up-zoning </a></td></tr>
+
+<tr><td></td><td class='Num'>166. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25559&CssClass='>COM 2916 #2024 : A communication was received from Suzanne Hopkins, regarding Charter-righted City Upzoning proposal up for discussion September 16, 2024.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21188&MeetingID=4577'>Suzanne Hopkins Charter-righted City Upzoning proposal up for discussion September 16_ 2024</a></td></tr>
+
+<tr><td></td><td class='Num'>167. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25560&CssClass='>COM 2917 #2024 : A communication was received from Susan Ringler, regarding Oppose moving forward with city-wide up-zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21189&MeetingID=4577'>Susan Ringler_ Oppose moving forward with city-wide up-zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>168. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25561&CssClass='>COM 2918 #2024 : A communication was received from Susan M. Carter, regarding Corrected blog link: Reminder - Charter-righted City Upzoning Monday Sept. 9.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21190&MeetingID=4577'>Susan M. Carter Corrected blog link_ Reminder - Charter-righted City Upzoning Monday Sept_ 9</a></td></tr>
+
+<tr><td></td><td class='Num'>169. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25562&CssClass='>COM 2919 #2024 : A communication was received from Susan Cory, regarding yet ANOTHER attempt at up zoning Monday Sept. 16.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21191&MeetingID=4577'>Susan Cory  yet ANOTHER attempt at up zoning  Monday Sept_ 16</a></td></tr>
+
+<tr><td></td><td class='Num'>170. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25563&CssClass='>COM 2920 #2024 : A communication was received from Central Square Tenants, regarding Strengthening Prioritization of Continued Cambridge Residency Against Retaliation.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21192&MeetingID=4577'>Central Square Tenants Strengthening Prioritization of Continued Cambridge Residency Against Retaliation</a></td></tr>
+
+<tr><td></td><td class='Num'>171. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25564&CssClass='>COM 2921 #2024 : A communication was received from Stephen Fitzsimmons and Orawan Saejao Fitzsimmons, regarding Please reject the up-zoning Cambridge housing proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21193&MeetingID=4577'>Stephen Fitzsimmons Orawan Saejao Fitzsimmons Please reject the up-zoning Cambridge housing proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>172. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25565&CssClass='>COM 2922 #2024 : A communication was received from Stephen Diamond, regarding In Support of Bold Action on Housing.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21194&MeetingID=4577'>Stephen Diamond In Support of Bold Action on Housing</a></td></tr>
+
+<tr><td></td><td class='Num'>173. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25566&CssClass='>COM 2923 #2024 : A communication was received from Sophie Fisher, regarding Support for policy orders #117 and #118/allowing 6-story buildings in Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21195&MeetingID=4577'>Sophie Fisher Support for policy orders #117 and #118 _ allowing 6-story buildings in Cambridge</a></td></tr>
+
+<tr><td></td><td class='Num'>174. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25567&CssClass='>COM 2924 #2024 : A communication was received from Shippen Page, regarding Proposed upzoning Proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21196&MeetingID=4577'>Shippen Page Proposed upzoning Proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>175. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25568&CssClass='>COM 2925 #2024 : A communication was received from Shellburne Thurber, regarding upzoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21197&MeetingID=4577'>Shellburne Thurberupzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>176. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25569&CssClass='>COM 2926 #2024 : A communication was received from Shannon Canavin, regarding In Support of Bold Action on Housing.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21198&MeetingID=4577'>Shannon Canavin In Support of Bold Action on Housing</a></td></tr>
+
+<tr><td></td><td class='Num'>177. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25570&CssClass='>COM 2927 #2024 : A communication was received from Sergio Coronado, regarding Support of PO 117 and 118.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21199&MeetingID=4577'>Sergio Coronado Support of PO 117 and 118</a></td></tr>
+
+<tr><td></td><td class='Num'>178. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25571&CssClass='>COM 2928 #2024 : A communication was received from Sean Hart, regarding Extreme Support for Upzoning Proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21200&MeetingID=4577'>Sean Hart Extreme Support for Upzoning Proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>179. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25572&CssClass='>COM 2929 #2024 : A communication was received from Sarah Stone, regarding In Support of Bold Action on Housing.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21201&MeetingID=4577'>Sarah Stone In Support of Bold Action on Housing</a></td></tr>
+
+<tr><td></td><td class='Num'>180. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25573&CssClass='>COM 2930 #2024 : A communication was received from Sam Polzin, regarding Support for Multifamily Housing Citywide.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21202&MeetingID=4577'>Sam Polzin Support for Multifamily Housing Citywide</a></td></tr>
+
+<tr><td></td><td class='Num'>181. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25574&CssClass='>COM 2931 #2024 : A communication was received from Sam Allon, regarding Unburdened by what has been - Up-zone all of Cambridge.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21203&MeetingID=4577'>Sam Allon Unburdened by what has been - Up-zone all of Cambridge</a></td></tr>
+
+<tr><td></td><td class='Num'>182. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25579&CssClass='>COM 2932 #2024 : A communication was received from Carol Greenwood, regarding Housing city -wide zoning.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21205&MeetingID=4577'>Carol Greenwood Fwd Housing city -wide zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>183. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25580&CssClass='>COM 2933 #2024 : A communication was received from Ann Elliott-Holmes, regarding Upzoning decision - meeting tonight.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21206&MeetingID=4577'>Ann Elliott-Holmes Upzoning decision - meeting tonight</a></td></tr>
+
+<tr><td></td><td class='Num'>184. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25581&CssClass='>COM 2934 #2024 : A communication was received from Ellen Crocker, regarding City wide zoning proposal.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21207&MeetingID=4577'>Ellen Crocker City wide zoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>185. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25582&CssClass='>COM 2935 #2024 : A communication was received from Rolf Erikson, regarding Tree removal in violation of City Municipal Code allowed.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21208&MeetingID=4577'>Rolf Erikson Tree removal in violation of City Municipal Code allowed</a></td></tr>
+
+<tr><td class='Num'><strong>VI. </strong></td><td class='Title' colspan='10'><strong>Resolutions</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25378&CssClass='>RES 2024 #222 : Congratulations to Bruce Irving on his Retirement from the Cambridge Historical Commission</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96902&MeetingID=4577'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25383&CssClass='>RES 2024 #223 : Wishing Marvin Gilmore a Happy 100th Birthday</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96903&MeetingID=4577'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=24854&CssClass='>RES 2024 #224 : Congratulations to Marie Jean-Michel Dubuisson on her retirement from the Cambridge Public Schools.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96908&MeetingID=4577'>Resolution Printout</a></td></tr>
+
+<tr><td class='Num'><strong>VII. </strong></td><td class='Title' colspan='10'><strong>Committee Reports</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='FileOpen.aspx?Type=12&ID=2908 '>Minutes of Sep 9, 2024 12:00 PM</a></td></tr>
+
+<tr><td class='Num'><strong>VIII. </strong></td><td class='Title' colspan='10'><strong>Communications and Reports from Other City Officers</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25505&CssClass='>COF 2024 #125 : A communication was received from Diane LeBlanc, City Clerk, transmitting an update regarding legislative activity.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96904&MeetingID=4577'>Communication and Report from Other City Officers Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21127&MeetingID=4577'>Updated Hearing Schedule 9.16.2024</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21128&MeetingID=4577'>PENDING HOME RULE PETITIONS SEPT 23, 2024</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21129&MeetingID=4577'>2024-2025 Committee Referral List</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>d. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21130&MeetingID=4577'>Pending Zoning Petitions and Municipal Ordinances Chart</a></td></tr>
+
+<tr><td class='Num'><strong>IX. </strong></td><td class='Title' colspan='10'><strong>LATE AGENDA ITEMS RESOLUTION EACH REQUIRES A MOTION TO SUSPEND THE RULES AND ACCEPT TO BE PLACED ON THE AGENDA</strong></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25590&CssClass='>RES 2024 #225 : Congratulations to Organizers of 17th annual Cambridge Science Festival</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96915&MeetingID=4577'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25591&CssClass='>RES 2024 #226 : Late Resolution Re 50th Anniversary of Emily Street/Simplex Community Garden</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96916&MeetingID=4577'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25592&CssClass='>RES 2024 #227 : Late Condolence Resolution for Family of Hermine Joyce McGregor</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=96917&MeetingID=4577'>Resolution Printout</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Appended Information</strong></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Awating Report Status Update</strong></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25587&CssClass='>ARS-24-20 : Awaiting Report Status Update 9.23.24</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21209&MeetingID=4577'>Awaiting Report Status Update 9.23.24</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Awaiting Report List</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=22513&CssClass='>AR-24-18 : Report on zoning language that effectively promotes multi-family housing, including income-restricted affordable housing with the goal of having viable housing for everyone especially lower-income residents.</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=24235&CssClass='>AR-24-23 : Report back to the Human Services and Veterans Committee on an issued RFP calling for an agency that will lead the City through a community process that will include, but not be limited to, community education, community feedback, location possibilities, potential legal issues and will include feedback from all neighborhoods, including but not limited to; seniors, businesses and places of worship, the Cambridge Police Department, the Cambridge Fire Department, Pro Ambulance, the Cambridge Health Alliance, shelters, nonprofits working with those experiences substance use disorder, and individuals experiencing substance use disorder themselves.</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=24320&CssClass='>AR-24-24 : Report on work done with relevant City departments and the Cambridge Arts Council to consider whether Cambridge could facilitate a porchfest event.</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=24487&CssClass='>AR-24-31 : Provide an update to the Municipal Facilities Improvement Plan (MFIP) including revised cost estimates to help inform the FY26 and ongoing capital budget priorities in a timely manner.</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=24697&CssClass='>AR-24-32 : Report back on exploring with the MBTA how to best ensure that the public art, Gift of the Wind, is preserved.</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=24920&CssClass='>AR-24-35 : Report back to the City Council with an update on the Children Savings Accounts Program with the East Cambridge Savings Bank.</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=24921&CssClass='>AR-24-36 : Provide a plan for keeping residents, businesses and public safety officials informed about the status of current and future inter-jurisdictional transportation projects.</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=24922&CssClass='>AR-24-37 : That the City Manager is requested to work with relevant City departments to consider a number of city application processes and find ways to reduce paper and printing waste.</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25018&CssClass='>AR-24-39 : The City Manager is requested to reach out to the Executive Director of the Cambridge Housing Authority to explore the feasibility of utilizing the large screen televisions in the community rooms of CHA buildings to enable seniors living in these buildings to participate in (via public comment) and view City Council meetings as they are held</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25019&CssClass='>AR-24-40 : The City Manager is requested to take the necessary actions to ensure the City’s Gold Star Pool remains open through the end of September 2024, and shall be ready to open at the start of June 2025, three weeks earlier than the pool opened this year.</a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25022&CssClass='>AR-24-43 : The City Manager is requested to work with relevant staff and departments to conduct outreach to Cambridge colleges and universities about the pilot University Pass Program and coordinate with the MBTA and report back to the City Council on these outreach efforts.</a></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25023&CssClass='>AR-24-44 : The City Manager is requested to work with the Law Department to provide a legal opinion on whether Cambridge can enact a local ordinance or regulation similar to H.3685, which would prohibit associations from unreasonably restricting the use of a solar energy system, or whether the City should submit a Home Rule Petition to ensure access to solar energy for residents.</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25024&CssClass='>AR-24-45 : The City Manager is requested to work with relevant departments to review climate leading heating and cooling regulations and direct the appropriate departments to develop and implement a policy that aligns with Cambridge’s climate leadership to ensure that City operated buildings have default temperatures that align with health and sustainability best practices , including differing guidelines for workplace occupancy hours and outside of business hours.</a></td></tr>
+
+<tr><td></td><td class='Num'>14. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25122&CssClass='>AR-24-46 : City Manager is requested to direct the appropriate City staff to prioritize the repair of the water bubbler at Anderson Tennis Courts on Pemberton Street.</a></td></tr>
+
+<tr><td></td><td class='Num'>15. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25124&CssClass='>AR-24-47 : The City Manager is requested to direct the appropriate City staff to provide a comprehensive report outlining the City's knowledge of the garbage chute issues at 1 Leighton Street.</a></td></tr>
+
+<tr><td></td><td class='Num'>16. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25128&CssClass='>AR-24-49 : The City Manager is requested to work with relevant departments to provide a status update on the implementation of the PACE program and provide resources and information for property owners; and provide any recommendations for expanding PACE adoption.</a></td></tr>
+
+<tr><td></td><td class='Num'>17. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25130&CssClass='>AR-24-50 : The City Manager is requested to provide an update on progress towards providing a recommendation for changes to the existing ordinance and a report on the impact of the Short-Term Rentals in Cambridge, including how enforcement happens and how many units are registered and available.</a></td></tr>
+
+<tr><td></td><td class='Num'>18. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25134&CssClass='>AR-24-51 : The City Manager is requested to provide a status Update on Automated Parking Enforcement.</a></td></tr>
+
+<tr><td></td><td class='Num'>19. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25489&CssClass='>AR-24-52 : The City Manager direct the Community Development Department (CDD) and the Law Department to draft zoning language based on the proposal discussed at the Housing Committee to eliminate exclusionary zoning and allow up to six stories of multifamily housing in all residential districts.</a></td></tr>
+
+<tr><td></td><td class='Num'>20. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25494&CssClass='>AR-24-53 : at the City of Cambridge assist companies, institutions, and other organizations in adopting truck safety requirements for their fleets and finding trucking vendors who are able to comply by providing an informational resource and publicizing those that comply.</a></td></tr>
+
+<tr><td></td><td class='Num'>21. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25495&CssClass='>AR-24-54 : t the City Manager is hereby requested to work with relevant departments to review Cambridge’s curb cut policies and report back on if they can be improved to help meet the City’s transportation and sustainability goals with some proposed updates and draft ordinance language designating City staff as the final approval authority for curb cuts.</a></td></tr>
+
+<tr><td></td><td class='Num'>22. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4577&MediaPosition=&ID=25492&CssClass='>AR-24-55 : That the City Manager directs CDD to hold public meetings to inform the Cambridge community about the proposed changes before any public hearings of the Ordinance Committee and the Planning Board on this topic.</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Adjournment</strong></td></tr>
+
+</table>
+</span>
+                    </td>
+	</tr>
+	
+            </table>
+        
+</div>
+        
+        
+        <br />
+        <hr class="Dotted" />
+        <br />
+    </div>
+    
+    <!-- Dialog Definition (Do Not Display in Page) -->
+    <div style="display: none;">
+    
+        <div id="UserComment" class="UserComment">
+            <input type="hidden" id="ItemID" />
+            <input type="hidden" id="ItemType" />
+            <table><tr><td colspan="2" style="text-align: center;"><textarea rows="10" cols="10"></textarea></td></tr>
+            <tr>
+                <td class="Status"><img src='/Lib/Images/ui-anim_basic_16x16.gif' alt='Loading' />&nbsp;&nbsp;Loading - Please Wait...</td>
+                <td class="Help"><a href="#" onclick="javascript: ShowHelp(); return false;"><img src="images/Help.png" alt="Help" /></a></td>
+            </tr></table>            
+        </div>
+        
+        <div id="frmHelp">
+            <p><strong>Shortcut Keys:</strong></p>
+            <p><strong>Alt + S</strong> - Save</p>
+            <p><strong>Ctrl + S</strong> - Save (may not be compatible in all browsers)</p>
+            <p><strong>Alt + C</strong> - Save and Close</p>
+            <p><strong>Ctrl + Enter</strong> - Save and Close</p>
+            <p><strong>Escape</strong> - Closes the form (same as Cancel)</p>
+            <p><strong>Alt + Up Arrow</strong> - Previous Item (Saves if changed)</p>
+            <p><strong>Alt + Down Arrow</strong> - Next Item (Saves if changed)</p>
+        </div>
+    
+    </div>
+
+   
+    
+                            </div>
+                        </div>                                                           
+                    </td>
+                </tr>               
+            </table>                                
+        </div>
+        
+    <div id="Footer" role="contentinfo">
+        <br />
+        <span id="lblPoweredBy">
+            Powered by <a href="https://granicus.com/" target="_blank" >Granicus</a>
+        </span>
+    </div>
+
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-21761819-8'></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+  gtag('config', 'UA-21761819-8');</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-70364301-2'></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+  gtag('config', 'UA-70364301-2');</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    
+        <!-- Popup Menus -->
+        <div id="mnuBrowse" class="PopupMenu" dropdown="Browse">
+            <ul>
+                <li><a href="#">Legislative Files</a></li>
+                <li><a href="#">Legal Notices</a></li>
+                <li><a href="#">Some other Sort of Thing</a></li>
+            </ul>
+        </div>
+
+    
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){woopra.identify({ email:"", name:"Anonymous User", agency:"CambridgeMA", userlogin:"Anonymous"}).push(); })//]]>
+</script>
+</form>
+</body>
+</html>
+
+
