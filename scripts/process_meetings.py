@@ -139,6 +139,8 @@ def parseArgs():
         help="The base URL")
     parser.add_argument("--cache-dir", required=True,
         help="Where to cache downloads from the city website")
+    parser.add_argument("--force-fetch", action="store_true",
+        help="Force fetching of the meeting html")
     parser.add_argument("--exit-on-error", action="store_true",
         help="Stop processing meetings if there is an error")
     parser.add_argument("--num-meetings", type=int, default=0,
@@ -526,7 +528,7 @@ def expandUrl(base, url) -> str:
     """Expand a URL found from HTML"""
     if url[0] == '/':
         return os.path.join(base, url[1:])
-    elif re.search(r"^\w+\.aspx", url):
+    if re.search(r"^\w+\.aspx", url):
         return os.path.join(base, 'Citizens', url)
 
     return url
@@ -669,7 +671,7 @@ def processKeyWordTable(table) -> Dict[str, str]:
         ths.extend([x.text.strip().replace(':', '') for x in row.find_all('th')])
         tds.extend([x.text.strip().replace(':', '') for x in row.find_all('td')])
 
-    return { x: y for x, y in zip(ths, tds) }
+    return dict(zip(ths, tds))
 
 
 def processResLinks(node) -> Dict[str, List[Tuple[str, str]]]:
@@ -835,7 +837,7 @@ def processCma(args, uid, num, title, link, vote, action) -> CMA:
     """Process a CMA agenda item"""
     ## Fetch CMA page from city website
     cma_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, cma_path)
+    fetched = fetchUrl(link, cma_path, force=args.force_fetch)
     soup = BeautifulSoup(fetched, 'html.parser')
     charter_right = findCharterRight(soup)
 
@@ -879,7 +881,7 @@ def processApp(args, uid, num, title, link, vote, action) -> Application:
     """Process an application agenda item"""
     ## pylint: disable=unused-argument
     app_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, app_path)
+    fetched = fetchUrl(link, app_path, force=args.force_fetch)
     soup = BeautifulSoup(fetched, 'html.parser')
     charter_right = findCharterRight(soup)
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
@@ -973,7 +975,7 @@ def processRes(args, uid, num, title, link, vote, action) -> Resolution:
     """Process a resolution agenda item"""
     ## Fetch Res page from city website
     res_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, res_path)
+    fetched = fetchUrl(link, res_path, force=args.force_fetch)
     soup = BeautifulSoup(fetched, 'html.parser')
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
     category = table['Category']
@@ -999,7 +1001,7 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
     """Process a policy order agenda item"""
     ## Fetch Res page from city website
     por_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, por_path)
+    fetched = fetchUrl(link, por_path, force=args.force_fetch)
     soup = BeautifulSoup(fetched, 'html.parser')
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
     sponsors = [lookUpCouncillorName(x.strip()) for x in table['Sponsors'].split(',')]
@@ -1034,7 +1036,7 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
 def processAr(args, item):
     ## Fetch AR page from the city website
     ar_path = os.path.join(args.cache_dir, f"{uidToFileSafe(item.uid)}.html")
-    fetched = fetchUrl(item.url, ar_path)
+    fetched = fetchUrl(item.url, ar_path, force=args.force_fetch)
     soup = BeautifulSoup(fetched, 'html.parser')
 
     ## Additional info
@@ -1079,7 +1081,8 @@ def processNewArs(args, ar_map, items, writer:csv.DictWriter):
 def processMeeting(args, meeting) -> Dict[str, List[Any]]:
     """Process a meeting"""
     meeting_path = os.path.join(args.cache_dir, f"meeting_{meeting.id}.html")
-    soup = BeautifulSoup(fetchUrl(meeting.url, meeting_path, verbose=True), 'html.parser')
+    meeting_html = fetchUrl(meeting.url, meeting_path, verbose=True, force=args.force_fetch)
+    soup = BeautifulSoup(meeting_html, 'html.parser')
 
     ## Iterate through agenda table
     table = soup.find('table', {'class': 'MeetingDetail'})
@@ -1103,7 +1106,7 @@ def processMeeting(args, meeting) -> Dict[str, List[Any]]:
                     print(f"""Found section "{title}". Enable agenda item processing""")
                 enabled = True
                 continue
-            elif enabled and title in ("Charter Right", "Calendar", "Committee Reports"):
+            if enabled and title in ("Charter Right", "Calendar", "Committee Reports"):
                 if VERBOSE:
                     print(f"""Found section "{title}". Disable agenda item processing""")
 
@@ -1189,9 +1192,9 @@ def processMeetings(args, meetings, writers, final_actions=None):
                 raise e
 
 
-def fetchUrl(url, cache_path=None, *, verbose=False) -> str:
+def fetchUrl(url, cache_path=None, *, verbose=False, force=False) -> str:
     """Fetch the data from a URL. Optionally cache it locally to disk"""
-    if cache_path is not None and os.path.isfile(cache_path):
+    if cache_path is not None and not force and os.path.isfile(cache_path):
         if VERBOSE or verbose:
             print(f"Reading '{url}' from cache '{cache_path}'")
 
@@ -1343,7 +1346,7 @@ def setAttenance(args, final_actions):
     meetings = None
     with open(args.meetings_file, 'r', encoding='utf8') as f:
         reader = csv.DictReader(f)
-        meetings = [x for x in reader]
+        meetings = list(reader)
 
     if not meetings:
         return

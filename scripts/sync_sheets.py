@@ -23,7 +23,9 @@ DEBUG=False
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
 ]
-TRACKER_SHEET_ID = "17qiYpxVFX8zwDrMJKpK_C-hZL9-Y8y5QU3GhVhi4xeg"
+#TRACKER_SHEET_ID = "17qiYpxVFX8zwDrMJKpK_C-hZL9-Y8y5QU3GhVhi4xeg" ## 2024
+TRACKER_SHEET_ID = "1BEBniAqsR0bb3gU7Cy9PJW4lTQO1x2TlekJsyS89vNA" ## 2025
+
 
 item_sheet_keys = (
     'cma',
@@ -327,7 +329,7 @@ def getAllUids(service, sheet_id):
     if not values:
         return None
 
-    return dict(zip(sheet_keys, (x['values'][0] for x in values)))
+    return dict(zip(sheet_keys, (x['values'][0] if 'values' in x else [] for x in values)))
 
 
 def loadCsvDict(path):
