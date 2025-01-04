@@ -11,7 +11,9 @@ foreach (<>) {
 		my ($name, $txt) = split /\|/, $1;
 		$txt = (defined $txt) ? $txt : $name;
 		$name =~ s/\s+/-/g;
-		$name = lc $name;
+        if ($name !~ /^[A-Z]+$/) {
+            $name = lc $name;
+        }
 		s/(\{\{[^\}]+\}\})/[$txt]($glossary_url#$name)/;
 	}
 	print;
