@@ -7,6 +7,7 @@ no warnings qw/uninitialized/;
 my $glossary_url = '/the-city/city-glossary';
 my $lines;
 my %glossary  = (
+    AHO  => "Affordable Housing Overlay",
     BZA  => "Board of Zoning Appeals",
     CDD  => "Community Development Department",
     CHA  => "Cambridge Housing Authority",
