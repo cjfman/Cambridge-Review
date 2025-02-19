@@ -1,0 +1,1423 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en" lang="en">
+<head id="HeadMain"><title>
+	2025/01/06 05:30 PM City Council Regular Meeting - Web Outline - Cambridge City, MA
+</title><meta http-equiv="X-UA-Compatible" content="IE=9" />
+
+    <!-- this fixes a minor rendering issue with tables on the ipad -->
+    <meta content="width=device-width, initial-scale=1.0;" name="viewport" />
+
+    <!-- Agency specific meta tags -->
+    <meta name='google-site-verification' content='gk1uzLohfTCOHIcLpPfTMdkFQr1kAWFQpfsKsziX7T8' />
+<meta name='msvalidate.01' content='E8AC0C05C619B2FA426BD3B3D08FF440' />
+
+
+    <!-- open search discovery -->
+    <link rel="search" type="application/opensearchdescription+xml" href="/Services/GetFederatedSearch.aspx" title="IQM2 search" />
+
+    <!-- Icon -->
+    <link href="/favicon.ico?v=2018" rel="icon" />
+
+    <!-- CSS Links -->
+    <link type="text/css" href="/App_Themes/Main.css?v=86" rel="Stylesheet" /><link type="text/css" href="/lib/jquery-ui.css" rel="stylesheet" />
+ 
+  <script>
+      !function () { var a, b, c, d = window, e = document, f = arguments, g = "script", h = ["config", "track", "trackForm", "trackClick", "identify", "visit", "push", "call"], i = function () { var a, b = this, c = function (a) { b[a] = function () { return b._e.push([a].concat(Array.prototype.slice.call(arguments, 0))), b } }; for (b._e = [], a = 0; a < h.length; a++) c(h[a]) }; for (d.__woo = d.__woo || {}, a = 0; a < f.length; a++) d.__woo[f[a]] = d[f[a]] = d[f[a]] || new i; b = e.createElement(g), b.async = 1, b.src = "//static.woopra.com/js/w.js", c = e.getElementsByTagName(g)[0], c.parentNode.insertBefore(b, c) }("woopra");
+
+      woopra.config({
+          domain: "iqm2.com",
+          cookie_name:"accelaTracker"
+      });
+      woopra.track("mp_pv", {
+          domain: window.location.hostname,
+          title: document.title,
+          url: window.location.href,
+          uri: window.location.pathname,
+          hash: window.location.hash,
+          error: null
+      });
+  </script>
+    <!-- IQM2 Scripts -->
+    <script type="text/javascript" src="/lib/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="/App_Themes/Global.js?v=8_10_48"></script>
+    <script type="text/javascript" src="/lib/MinuteTraq.PopupWindow.js"></script>
+    <script type="text/javascript" src="/lib/jquery-ui.js"></script>
+    <link href="https://unpkg.com/video.js@7.21.1/dist/video-js.css" rel="stylesheet" /><link href="/Scripts/videojs-live-dvr/videojs-dvrseekbar.css" rel="stylesheet" />
+    <script src="https://unpkg.com/video.js@7.21.1/dist/video.js"></script>
+    <script src='https://unpkg.com/videojs-flash@2.1.0/dist/videojs-flash.min.js'></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+    <script src="/Scripts/videojs-live-dvr/videojs-dvrseekbar.min.js"></script>
+    <script type='text/javascript' src='/Scripts/player.js'></script>
+    <script type="text/javascript" src="/Scripts/js.cookie-2.0.3.min.js"></script>
+    <!-- RSS Feeds (Site) -->
+    
+
+    <!-- Generated CSS Link -->
+    
+  
+    <!-- External CSS / Script Links -->
+    <link type='text/css' href='/Lib/GetCustomCSS.ashx?timestamp=638714128770000000' rel='Stylesheet' /><link type='text/css' href='/Citizens/GetImage.aspx?ID=1012' rel='Stylesheet' /><script type='text/javascript' src='/Citizens/GetImage.aspx?ID=1013'></script>
+    
+   
+    <!--[if IE 7]>
+	   <style type="text/css">
+        .Section H2 { display:inline;}
+        .RowTop div { display:inline;}
+   </style>
+	
+	<![endif]-->
+    
+    <script type="text/javascript" src="/Lib/MinuteTraq.Search.js?v=8_10_66"></script>
+    
+    <script type="text/javascript">
+        
+        // configure tracker
+        
+        $(function () {
+            
+            
+            FixFooterPosition();
+            $(window).on('resize', FixFooterPosition);
+
+            var h = $("#Banner").height();
+            //  var w = $("body").width();
+
+            var sCoords = "0,0,5000," + h;
+
+            $("#lnkBanner").attr("coords", sCoords);
+            var hideTopBanner = Cookies.get('hideTopBanner');
+            var appStyles = {display:'block'};
+            if (hideTopBanner) {
+                appStyles.display = 'none';
+            }
+            $('#topbarAppBanner').css(appStyles);
+            $('.close-topbar-app-banner').bind('click', function () {
+                $('#topbarAppBanner').css('display', 'none');
+                Cookies.set('hideTopBanner', true);
+            });
+            $('.link-wrapper-banner').bind('click', function () {
+                woopra.track('portal-wegovern-banner', {
+                    agency: Cookies.get('AgencyName'),
+                    username: Cookies.get('WebUserName')
+                });
+                return true;
+            });
+        });
+
+        function FixFooterPosition() {
+            //hack for the footer, display at bottom of screen if page is short
+            if ($("form").height() < $(window).height() - 100) {
+                $("#Footer").css("position", "absolute");
+                $("#Footer").css("bottom", "0");
+            }
+            else {
+                $("#Footer").css("position", "");
+            }
+        }
+
+    </script>
+    <style type="text/css" media="screen">
+        #topbarAppBanner {
+            min-height: 40px;
+            z-index: 1000;
+        }
+        .top-banner-app-inner{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 40px;
+            border: 1px solid rgba(10,10,10,.5);
+            box-shadow: 0px 0px 16px 0px #303030;
+            background-color: #456ca7;
+        }
+        .close-topbar-app-banner {
+            position: absolute;
+            display: block;
+            top: 25px;
+            right: 5%;
+            font-size: 1em;
+            color: #e3e3e3
+        }
+        .app-link{
+            display: block;
+            margin: 0 auto;
+            width: 40%;
+        }
+        .wegovern-banner-logo {
+            left: 22px;
+            position: relative;
+            padding-top: 1px;
+        }
+
+        @media screen and (max-width: 981px ){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width: 1595px){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (max-width: 1594px){
+            .inside-banner-link {
+                position: relative;
+                top: -30px;
+                left: 75px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width:1100px){
+            .app-link{
+                display: block;
+                margin: 0 auto;
+                width: 40%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+        }
+        @media screen and (max-width:1099px){
+            .app-link {
+                display: block;
+                margin: 0 auto;
+                width: 65%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+    </style>
+    
+
+    <!-- Page Level Header Stuff -->
+    
+
+    <!-- JQuery & UI -->
+    <link type="text/css" href="/lib/jquery-ui.css" rel="stylesheet" />
+	<script type="text/javascript" src="/lib/jquery-ui.js"></script>
+	<script type="text/javascript" src="/lib/jquery.caret.js"></script>
+
+    <script type="text/javascript" src="/lib/MinuteTraq.UserComment.js"></script>
+    
+    <script type="text/javascript">
+        
+        function showSpeakerSignup(meetingid) 
+        {
+            PopupWindowShow("/Citizens/SpeakerSignup.aspx?ID=" + meetingid);
+        }
+        
+        $(function () {
+           
+            $('.tracked').bind('click', function () {
+                var $link = $(this);
+
+                if (woopra) {
+                    woopra.track("download", {
+                        url: window.location.href,
+                        type: $link.attr('data-type')
+                    });
+                }
+            });
+            $(".ShowMoreSpeakersButton").click(function ()
+            {
+                var link = $(this);
+                link.css("display", "none");
+                var hidden = link.parent().find(".HiddenSpeakers");
+                hidden.slideDown();
+                return false;
+            });
+
+            $(".ShowFewerSpeakersButton").click(function () {
+                var link = $(this);
+                var hidden = link.parent().parent().find(".HiddenSpeakers");
+                hidden.slideUp();
+
+                var showMoreLink = link.parent().parent().find(".ShowMoreSpeakersButton");
+                showMoreLink.css("display", "");
+                return false;
+            });
+        });
+
+      
+    </script>
+    <style>
+        a.lastClicked {
+            background-color: khaki;
+            color: #000;
+        }
+        #MeetingDetail * {
+            max-width:685px;
+        }
+    </style>
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <meta http-equiv="EXPIRES" content="0">
+</head>
+
+<body id="MainLayout">
+    
+    <form method="post" action="./Detail_Meeting.aspx?ID=4630" id="aspnetForm" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="KxoKkjOlwtWj8VXIpmUUztSoUfG0Ih1x17oLFQKL7BVCQV9P8CuXPpI+ZtYdFXQt9Zjci10ET6rxBQrFjk6LjlML4RrEMh1HxxriB8/OYPYaNj9YsFvxbNgD7zLHEpkKLcZTsRl9tK73Dg/qUFh5cbtHNHEgWW7ZorY/2VQKhDtmGg9Dp9Yz4XqV81VMXChVDqmk3xkh+OMANwftF2KoVg==" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1BACF619" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="hvBAd+6STQmbgYqGitdArSasebejlBrSKZbPwX+8YK9q+S6WrnZS+gerMtvMaWQcUtHYiXXW33aDxs6qZrw13pg3NM5WHt2AeJDLOTM1Z85pD+X3pvTunL84YtyN1Z/sAOlB8VCR4FyhpBIJUbWVJybQfexBk3mAC7vHcPHohSLSOeGDY1XCVOsu1Woy+7XXw3UvLO7LNu87gbZpyieBu1ueIV3ZHZC5uYZpglcY7G/KCpMxXE19+MxO9DhXDNrWHBf8mRd31wZDpDOyI620vcEgJH5XiddTKE9UEzPtXKqHqYNuDSgEDtHzMWBaTyE0" />
+</div>
+        <div style="display: none">
+            <input type="submit" name="ctl00$btnRefreshPageAfterLogin" value="Button" id="btnRefreshPageAfterLogin" class="btnRefreshPage" />
+            <input name="ctl00$hfShowPopupOnLoad" type="hidden" id="hfShowPopupOnLoad" class="hfShowPopup" />
+        </div>
+        <span id="lblScript"></span>
+  
+    <div id="MainWindow">
+    
+            <div id="Banner" role="banner"  >
+                <img usemap="#bannerMap" src="/Citizens/GetImage.aspx?ID=1017&TimeStamp=638714128770000000" alt="IQM2 Meeting Portal" />
+                <map name="bannerMap">
+                    <area href="/Citizens/Default.aspx" id="lnkBanner" shape="rect" alt="Home" Target="_self" />
+                </map>
+
+                <div id="LogoHeaderTextHolder">
+                    
+                                                                       
+                </div>
+            </div>
+            
+            <div id="ToolStrip" role="navigation" aria-label="site">
+                <div id="Tabs">
+                    <div class="Shadow"></div>
+                    <a href="http://www.cambridgema.gov/" id="lnkMainSite" class="Tab LeftTab"><div><span>&laquo;Back to Main Site</span></div></a>
+                    <a href="/Citizens/default.aspx" class="Tab NormalTab"><div><span id="tabWelcome">Welcome</span></div></a>
+                    <a href="/Citizens/calendar.aspx" class="Tab NormalTab"><div><span id="tabMeetings">Meetings</span></div></a>                
+                    <a href="/Citizens/" style="display:none" class="Tab NormalTab"><div dropdown="Browse"><span>Browse</span></div></a>
+                                        
+                                        
+                    <a href="/Citizens/LegalNotice.aspx" id="lnkNotices" class="Tab NormalTab"><div id="tabNotices"><span>Notices</span></div></a>                                        
+                    <a href="/Citizens/Board" class="Tab NormalTab"><div><span id="tabContactUs">Boards+</span></div></a>                                                        
+                </div>
+                <div id="TopExtraBoxTransparentBG"></div>
+                <div id="TopExtraBox">  
+                    <div id="TopLine">
+                        
+                     <a href="../MasterPages/#" id="lnkLogin" onclick="javascript:return PopupWindowShow(&#39;/Citizens/Login.aspx&#39;);">Log in</a><span id="spnThatOneStupidBar"> | </span><a href="mailto:support@granicus.com" id="lnkHelp">Help</a> <span id="spnHelpBar">|</span> <a href="../MasterPages/#" id="lnkRegister" onclick="javascript:return PopupWindowShow(&#39;/Citizens/MyAccount.aspx&#39;);">Register</a>                                                
+                    </div> 
+                    <div id="BottomLine">                       
+                          
+                    </div>                            
+                   <input name="ctl00$txtQuickSearch" type="text" id="txtQuickSearch" value="Search" title="Search" />
+                   <input type="image" name="ctl00$btnQuickSearch" id="btnQuickSearch" alt="Search" src="/Lib/images/search.png" style="cursor:pointer" />                   
+                </div>     
+            </div>
+                     
+            <table class="LayoutTable" role="presentation">
+                <tr>
+                    <td id="tdLeftPanel" class="LeftPanel">
+                        
+                        <div role="navigation" aria-label="Meeting Group">
+                            
+                        </div>
+                        
+                        <div class="DetailBox">
+                            <img src="/Citizens/images/Print.gif" border="0" alt="Print" />
+                            <a href="/Citizens/Detail_Meeting.aspx?ID=4630&Print=Yes" id="lnkPrint" class="PrintButton" target="_blank">Print This Page</a>                           
+                        </div>
+                        
+                        
+                                                
+                       <!-- <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 1" />
+                            <a href="#">Quick Link #1</a>
+                        </div>
+                        <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 2"  />
+                            <a href="#">Quick Link #2</a>
+                        </div>     -->
+                                      
+                    </td>
+
+                    <td id="MainContentHolder">
+                        <div style="width:100%;height:100%;position:relative;margin:0;padding:0;border:0;">
+                            <div id="MainContentLeftShadow">                           
+                            </div>   
+                          
+                            <div class="MainContentPlaceholder" role="main">
+                                
+                                
+
+    <style>
+        a.lastClicked {
+            background-color: khaki;
+            color: #000;
+        }
+    </style>
+    <script>
+        $('#divOutlineScroller a').click(function (e) {
+            $('a.lastClicked').removeClass('lastClicked');
+            $(e.currentTarget).addClass('lastClicked');
+        });
+    </script>
+    
+
+    <div       
+        >        
+        <div id="CC" style="background: Black; color: White; display:none;"></div>
+           
+        <div id="ContentPlaceholder1_pnlStart" style="width:100%;">
+	
+            <table border="0" width="100%" id="table1" cellpadding="5" role="presentation">
+                <tr>
+                    <td colspan="2" align="center" class="MeetingHeading">
+                        <span id="ContentPlaceholder1_lblMeetingGroup">City Council</span><br />
+                        <span id="ContentPlaceholder1_lblMeetingType">Regular Meeting</span><br />
+                        <span id="ContentPlaceholder1_lblMeetingDate">1/6/2025 5:30 PM</span>
+                        <br /> Sullivan Chamber<div class='MeetingAddress'>Cambridge City Hall&nbsp;&nbsp;&nbsp;795 Massachusetts Ave&nbsp;&nbsp;&nbsp;Cambridge, MA  02139</div>
+                       
+                        <span id="ContentPlaceholder1_lblMeetingStatus"></span>
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtMeetingID" id="ContentPlaceholder1_txtMeetingID" value="4630" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtMinutesID" id="ContentPlaceholder1_txtMinutesID" value="2963" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtAgendaID" id="ContentPlaceholder1_txtAgendaID" value="4168" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtFileFormat" id="ContentPlaceholder1_txtFileFormat" value="pdf" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">
+                        
+                    </td>
+                </tr>
+                <tr id="ContentPlaceholder1_trMeetingDetail">
+		<td id="ContentPlaceholder1_tdMainContent" align="left" valign="top" colspan="2" role="main" class=""> 
+                        <div id="ContentPlaceholder1_pnlDownloads" class="MeetingDownloads" style="width:100%;">
+			
+                            <strong>Downloads:</strong><br />
+                            <img id="ContentPlaceholder1_imgPublicAgendaFile" src="images/PublicAgenda.jpg" />
+                            <a id="ContentPlaceholder1_hlPublicAgendaFile" class="tracked Link" data-type="agenda" href="FileOpen.aspx?Type=14&amp;ID=4168&amp;Inline=True" target="_blank">Agenda Summary</a>
+                            <img id="ContentPlaceholder1_imgFullAgendaFile" src="images/FullAgenda.jpg" />
+                            <a id="ContentPlaceholder1_hlFullAgendaFile" class="tracked Link" data-type="agenda_packet" href="FileOpen.aspx?Type=1&amp;ID=4168&amp;Inline=True" target="_blank">Agenda Packet</a>
+                            
+                            
+                            
+                            
+                            
+                            <br />
+                            <img id="ContentPlaceholder1_imgPublicMinutesFile" src="images/PublicMinutes.jpg" />
+                            <a id="ContentPlaceholder1_hlPublicMinutesFile" class="Link" data-type="minutes" href="FileOpen.aspx?Type=15&amp;ID=2963&amp;Inline=True" target="_blank">Final Actions</a>
+                            <img id="ContentPlaceholder1_imgFullMinutesFile" src="images/FullMinutes.jpg" />
+                            <a id="ContentPlaceholder1_hlFullMinutesFile" class="Link" data-type="minutes_package" href="FileOpen.aspx?Type=12&amp;ID=2963&amp;Inline=True" target="_blank">Minutes</a>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+		</div>
+                        
+                        <span id="ContentPlaceholder1_lblOutline"><table id='MeetingDetail' class='MeetingDetail' cellpadding='0' cellspacing='0'>
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Call to Order</strong></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'>Roll Call</td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Pledge of Allegiance</strong></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Submission of the Record</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4630&MinutesID=2963&MediaPosition=&ID=84452&Type=30&AcceptMinutesID=2945&CssClass= style='cursor: hand'>Minutes of Dec 9, 2024 5:30 PM</a><span class = 'ItemVoteResult'> Accepted </span></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4630&MinutesID=2963&MediaPosition=&ID=84453&Type=30&AcceptMinutesID=2956&CssClass= style='cursor: hand'>Minutes of Dec 16, 2024 5:30 PM</a><span class = 'ItemVoteResult'> Accepted </span></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4630&MinutesID=2963&MediaPosition=&ID=84454&Type=30&AcceptMinutesID=2958&CssClass= style='cursor: hand'>Minutes of Dec 23, 2024 5:30 PM</a><span class = 'ItemVoteResult'> Accepted </span></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Public Comment</strong></td></tr>
+
+<tr><td class='Num'><strong>I. </strong></td><td class='Title' colspan='10'><strong>City Manager's Agenda</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26954&CssClass='>CMA 2025 #1 : Transmitting Communication from Yi-An Huang, City Manager, relative to the appropriation of $29,388,181.96 from Free Cash to the Mitigation Revenue Stabilization Fund.  During FY24, the City received mitigation revenues from various developers as a result of commitments related to zoning ordinance amendments and special permit conditions.  By law, all mitigation revenues must be deposited into the General Fund and can only be appropriated after the Free Cash Certification is complete.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">AND CMA PLACED ON FILE</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100608&MeetingID=4630'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26953&CssClass='>CMA 2025 #2 : Transmitting Communication from Yi-An Huang, City Manager, relative to the appropriation of $2,500,000, from Free Cash, to the Finance Department Other Ordinary Maintenance account ($1,500,000), and to the Finance Department Extraordinary Expenditures account ($1,000,000), to support the continued operation and needed capital and equipment improvements to Neville Center, a 5-star skilled nursing facility with 112 beds, which is part of Neville Communities Inc.  CHARTER RIGHT EXERCISED BY COUNCILLOR NOLAN IN COUNCIL JANUARY 6, 2025</a><span class = 'ItemVoteResult'> Charter Right </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100609&MeetingID=4630'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26950&CssClass='>CMA 2025 #3 : Transmitting Communication from Yi-An Huang, City Manager, relative to the appropriation of $10,000, to the Grant Fund Library Other Ordinary Maintenance account. Funds will support digital learning classes through FY25, including though the procurement of translators and Chromebooks. Classes will cover 8 specific topics developed by PLA and implemented at Main with other branch locations to be determined.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">AND CMA PLACED ON FILE</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100610&MeetingID=4630'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26951&CssClass='>CMA 2025 #4 : Transmitting Communication from Yi-An Huang, City Manager, relative to the appropriation of $4,000 to the Grant Fund Library Other Ordinary Maintenance account. Funds will support digital navigator classes through FY25, including though the procurement of translators and Chromebooks. Digital Navigators will offer techhelp and will use content from 8 specifics topics developed by PLA.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">AND CMA PLACED ON FILE</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100611&MeetingID=4630'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26957&CssClass='>CMA 2025 #5 : A communication transmitted from Yi-An Huang, City Manager, relative to the appointments and reappointment's of members to the Citizens’ Committee on Civic Unity.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">CMA</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100612&MeetingID=4630'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26952&CssClass='>CMA 2025 #6 : Transmitting Communication from Yi-An Huang, City Manager, relative to the appropriation of $6,000.00 received from the Massachusetts Department of Environmental Protection (MassDEP) to the Grant Fund Public Works Other Ordinary Maintenance account to pilot initiatives to reduce move-out waste during the May/June 2025 moving season. The grant program is meant to provide municipalities, nonprofits, and other entities with seed funding for initiatives that may have potential for long-term waste reduction.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">AND CMA PLACED ON FILE</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100613&MeetingID=4630'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26958&CssClass='>CMA 2025 #7 : A communication transmitted from Yi-An Huang, City Manager, relative to Awaiting Report Item Number 24-65, regarding the creation of a jobs training trust through Home Rule Petition.</a><span class = 'ItemVoteResult'> ORDER ADOPTED [7 to 2] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">ON THE FLOOR AND CMA PLACED ON FILE</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100614&MeetingID=4630'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22612&MeetingID=4630'>Response to AR 24-65 - Home Rule Petition for Cambridge Jobs Training Trust</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22613&MeetingID=4630'>Home Rule Petition - An Act Establishing the Cambridge Employment and Job Training Trust</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22614&MeetingID=4630'>ORDER_Jobs Training Trust</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26959&CssClass='>CMA 2025 #8 : A communication transmitted from Yi-An Huang, City Manager, relative to the Planning Board Report regarding citywide Multifamily Housing Zoning Petitions.</a><span class = 'ItemVoteResult'> REFERRED [8 to 1] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">TO THE PETITIONS</span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100615&MeetingID=4630'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22611&MeetingID=4630'>SIGNED_MultifamilyZoning_PBReport</a></td></tr>
+
+<tr><td class='Num'><strong>II. </strong></td><td class='Title' colspan='10'><strong>Policy Order and Resolution List</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26960&CssClass='>POR 2025 #1 : That the City Manager is hereby requested to work with the relevant City departments to report back on additional multi-family zoning considerations, along with the other amendments put forward by the City Council on December 23, 2024.</a><span class = 'ItemVoteResult'> Order Adopted as Amended [7 to 2] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100616&MeetingID=4630'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26966&CssClass='>POR 2025 #2 : That the City Council petition the General Court of the Commonwealth of Massachusetts to enact the attached Home Rule Petition entitled: An Act Establishing the City of Cambridge Employment and Job Training Trust, and that it be forwarded by the City Clerk to Representative Steven Owens who will be filing the legislation.</a><span class = 'ItemVoteResult'> Order Adopted [7 to 2] </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100633&MeetingID=4630'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22626&MeetingID=4630'>Home Rule Petition - An Act Establishing the Cambridge Employment and Job Training Trust</a></td></tr>
+
+<tr><td class='Num'><strong>III. </strong></td><td class='Title' colspan='10'><strong>Calendar</strong></td></tr>
+
+<tr><td></td><td class='Num'><strong></strong></td><td class='Title' colspan='9'><strong>Unfinished Business</strong></td></tr>
+
+<tr><td></td><td></td><td class='Num'>1. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=21148&CssClass='>ORDD-2023-2 : An Ordinance 2023 #8B has been received from City Clerk, relative to Amend Chapter 14.04 – Fair Housing.  PASSED TO A SECOND READING IN COUNCIL OCTOBER 2, 2023.
+FURTHER AMENDED IN COUNCIL NOVEMBER 6, 2023.
+No action can be taken until the State Legislature approves the related Special Act.</a></td></tr>
+<tr><td></td><td></td><td></td><td class='Comments' colspan='8'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">ORDAINED</span></p></div></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=16764&MeetingID=4630'>Fair Housing Ordinance lanugage passed to a second reading on October 2 2023 and further amended on November 6  2023 8B</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>2. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26076&CssClass='>ORD 2024 # 8 : An Ordinance has been received from City Clerk, relative to proposed amendments to the Cycling Safety Ordinance to extend the deadline associated with the completion of those sections of the ordinance that are required to be completed by May 1, 2026.</a><span class = 'ItemVoteResult'> ORDAINED AS AMENDED [Unanimous] </span></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21705&MeetingID=4630'>CSO As amended in full Council 10.21.2024 Clean Version</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=21706&MeetingID=4630'>CSO Mark-up As Amended in Full Council 10.21.2024 to reflect new date of 11.30.2026</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22363&MeetingID=4630'>241216.CSO As amended in full Council 10.21.2024 Clean Version - Ordinance 2024-8 - First Publication</a></td></tr>
+
+<tr><td class='Num'><strong>IV. </strong></td><td class='Title' colspan='10'><strong>Applications and Petitions</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26961&CssClass='>APP 2025 #1 : An application was received from Carole Steele 8 Eliot Street, regarding a Flag on pole affixed to building facade.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100617&MeetingID=4630'>Application and Petitions Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22615&MeetingID=4630'>Flag on pole 8 Eliot street</a></td></tr>
+
+<tr><td class='Num'><strong>V. </strong></td><td class='Title' colspan='10'><strong>Communications</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26773&CssClass='>COM 1 #2025 : A communication was received from Michael Massagli, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (29).</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22422&MeetingID=4630'> Michael Massagli STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (29)</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26774&CssClass='>COM 2 #2025 : A communication was received from Adriane Bishko, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (24).</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22423&MeetingID=4630'>Adriane Bishko STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (24)</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26775&CssClass='>COM 3 #2025 : A communication was received from AJ Hodgson, regarding Housing.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22424&MeetingID=4630'>AJ Hodgson Housing </a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26776&CssClass='>COM 4 #2025 : A communication was received from AJ Hodgson, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (15).</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22425&MeetingID=4630'>AJ HodgsonSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (15)</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26777&CssClass='>COM 5 #2025 : A communication was received from Alexander von Hoffman, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22426&MeetingID=4630'>Alexander von HoffmanSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26778&CssClass='>COM 6 #2025 : A communication was received from Alfred DIsidoro, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (36).</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22427&MeetingID=4630'>Alfred DIsidoro STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (36)</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26779&CssClass='>COM 7 #2025 : A communication was received from Alida Castillo, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (21).</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22428&MeetingID=4630'>Alida Castillo STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (21)</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26780&CssClass='>COM 8 #2025 : A communication was received from Ann M Gantz, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (52).</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22429&MeetingID=4630'>Ann M GantzSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (52)</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26781&CssClass='>COM 9 #2025 : A communication was received from Anne and Anand Sundaram, regarding No to your proposed zoning.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22430&MeetingID=4630'>Anne and Anand Sundaram No to your proposed zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26782&CssClass='>COM 10 #2025 : A communication was received from Anne Sundaram, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (4).</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22431&MeetingID=4630'>Anne Sundaram STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (4)</a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26783&CssClass='>COM 11 #2025 : A communication was received from Annette LaMond, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (34).</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22432&MeetingID=4630'>Annette LaMond STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (34)</a></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26784&CssClass='>COM 12 #2025 : A communication was received from Arthur Strang, regarding [LarchList] in opposition to current radical up-zoning proposals</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22433&MeetingID=4630'>A communication was received from Arthur Strang[LarchList] in opposition to current radical up-zoning proposals</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26785&CssClass='>COM 13 #2025 : A communication was received from Arti Pandey, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (28).</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22434&MeetingID=4630'>Arti Pandey STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (28)</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22435&MeetingID=4630'>Arti Pandey STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (27)</a></td></tr>
+
+<tr><td></td><td class='Num'>14. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26786&CssClass='>COM 14 #2025 : A communication was received from Ausra Kubilius, regarding PLEASE PAUSE_ HOUSING PETITION AMENDMENTS DON'T ADDRESS ISSUES VOICED BY MANY IN THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22436&MeetingID=4630'>Ausra Kubilius PLEASE PAUSE_ HOUSING PETITION AMENDMENTS DON'T ADDRESS ISSUES VOICED BY MANY IN THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>15. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26787&CssClass='>COM 15 #2025 : A communication was received from Austin Smith, regarding Support for the Citywide Multifamily Housing Zoning Petition.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22437&MeetingID=4630'>Austin SmithSupport for the Citywide Multifamily Housing Zoning Petition</a></td></tr>
+
+<tr><td></td><td class='Num'>16. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26788&CssClass='>COM 16 #2025 : A communication was received from Banti Gheneti, regarding Cambridge Housing Justice Coalition: Support 3+3+3 version of Multifamily Zoning.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22438&MeetingID=4630'>Banti Gheneti Cambridge Housing Justice Coalition_ Support 3+3+3 version of Multifamily Zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>17. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26789&CssClass='>COM 17 #2025 : A communication was received from Barbara Rubel, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22439&MeetingID=4630'>Barbara RubelSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>18. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26790&CssClass='>COM 18 #2025 : A communication was received from Dan Totten regarding zoning.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22440&MeetingID=4630'>Dan Totten zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>19. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26791&CssClass='>COM 19 #2025 : A communication was received from Benjamin Flaim, regarding Upzoning.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22442&MeetingID=4630'>Benjamin FlaimUpzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>20. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26792&CssClass='>COM 20 #2025 : A communication was received from Dana Schaefer regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22441&MeetingID=4630'>Dana SchaeferSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (5)</a></td></tr>
+
+<tr><td></td><td class='Num'>21. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26793&CssClass='>COM 21 #2025 : A communication was received from Beth Gamse and Judy Singer, regarding Please take the necessary time to consider alternatives to the current MFH proposal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22443&MeetingID=4630'>Beth Gamse & Judy Singer Please take the necessary time to consider alternatives to the current MFH proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>22. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26795&CssClass='>COM 22 #2025 : A communication was received from Camilla Elvis, regarding Thank you!</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22444&MeetingID=4630'>Camilla ElvisThank you!</a></td></tr>
+
+<tr><td></td><td class='Num'>23. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26796&CssClass='>COM 23 #2025 : A communication was received from Dana Tighe, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22445&MeetingID=4630'>DANA TIGHESTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (3)</a></td></tr>
+
+<tr><td></td><td class='Num'>24. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26797&CssClass='>COM 24 #2025 : A communication was received from Candace Young, regarding Zoning.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22446&MeetingID=4630'>Candace Young Zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>25. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26798&CssClass='>COM 25 #2025 : A communication was received from Daniel Tenney regarding DO NOT RUSH THE MULTI-FAMILY PETITION AMENDMENTS_ DO NOT CIRCUMVENT COMMUNITY INPUT.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22448&MeetingID=4630'>Daniel TenneyDO NOT RUSH THE MULTI-FAMILY PETITION AMENDMENTS_ DO NOT CIRCUMVENT COMMUNITY INPUT _</a></td></tr>
+
+<tr><td></td><td class='Num'>26. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26799&CssClass='>COM 26 #2025 : A communication was received from Carol Anastasi, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22447&MeetingID=4630'>Carol Anastasi STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (5)</a></td></tr>
+
+<tr><td></td><td class='Num'>27. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26800&CssClass='>COM 27 #2025 : A communication was received from Carrie Jones, regarding Monday's hearing -- Dec 23.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22449&MeetingID=4630'>Carrie Jones Monday's hearing-- Dec 23</a></td></tr>
+
+<tr><td></td><td class='Num'>28. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26801&CssClass='>COM 28 #2025 : A communication was received from Daniel Vlock regarding West Cambridge Neighborhood Association and the Proposed Upzoning Plan.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22450&MeetingID=4630'>Daniel Vlock West Cambridge Neighborhood Association and the Proposed Upzoning Plan</a></td></tr>
+
+<tr><td></td><td class='Num'>29. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26802&CssClass='>COM 29 #2025 : A communication was received from Catalina Arboleda, regarding Pedestrian Safety when it snows.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22451&MeetingID=4630'>Catalina Arboleda Pedestrian Safety when it snows</a></td></tr>
+
+<tr><td></td><td class='Num'>30. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26803&CssClass='>COM 30 #2025 : A communication was received from Catherine Coleman, regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22452&MeetingID=4630'>Catherine Coleman STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (19)</a></td></tr>
+
+<tr><td></td><td class='Num'>31. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26804&CssClass='>COM 31 #2025 : A communication was received from Elizabeth Gilmore regarding West Cambridge Neighborhood Association and the Proposed Upzoning Plan.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22453&MeetingID=4630'>Elizabeth Gilmore West Cambridge Neighborhood Association and the Proposed Upzoning Plan</a></td></tr>
+
+<tr><td></td><td class='Num'>32. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26805&CssClass='>COM 32 #2025 : A communication was received from Cathy Hoffman, regarding Multifamily housing.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22454&MeetingID=4630'>Cathy Hoffman Multifamily housing</a></td></tr>
+
+<tr><td></td><td class='Num'>33. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26806&CssClass='>COM 33 #2025 : A communication was received from David E. Sullivan, regarding support for multifamily housing compromise.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22455&MeetingID=4630'>David E. Sullivan  Support for multifamily housing compromise</a></td></tr>
+
+<tr><td></td><td class='Num'>34. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26807&CssClass='>COM 34 #2025 : A communication was received from Charlotte McGuinness regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22456&MeetingID=4630'>Charlotte McGuinnessSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (40)</a></td></tr>
+
+<tr><td></td><td class='Num'>35. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26808&CssClass='>COM 35 #2025 : A communication was received from David Keeler regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22457&MeetingID=4630'>David KeelerSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (49)</a></td></tr>
+
+<tr><td></td><td class='Num'>36. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26809&CssClass='>COM 36 #2025 : A communication was received from Chris McElroy regarding It's the holidays--STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22458&MeetingID=4630'>Chris McElroy It's the holidays--STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_</a></td></tr>
+
+<tr><td></td><td class='Num'>37. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26810&CssClass='>COM 37 #2025 : A communication was received from Chris Willard regarding linear park - please don't add more asphault / remove more green!</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22459&MeetingID=4630'>Chris Willard linear park - please dont add more asphault _ remove more green!</a></td></tr>
+
+<tr><td></td><td class='Num'>38. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26811&CssClass='>COM 38 #2025 : A communication was received from David Myers regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22460&MeetingID=4630'>David MyersSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>39. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26812&CssClass='>COM 39 #2025 : A communication was received from Christine M. Cannava regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22461&MeetingID=4630'>Christine M. CannavaSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>40. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26813&CssClass='>COM 40 #2025 : A communication was received from David O'Connor regarding the Multi-family housing petition.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22463&MeetingID=4630'>David O'Connor Multi-family housing petition</a></td></tr>
+
+<tr><td></td><td class='Num'>41. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26814&CssClass='>COM 41 #2025 : A communication was received from Christopher Germer regarding NO NEED TO DO THIS RADICAL PROPOSAL!</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22462&MeetingID=4630'>Christopher Germer NO NEED TO DO THIS RADICAL PROPOSAL!</a></td></tr>
+
+<tr><td></td><td class='Num'>42. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26815&CssClass='>COM 42 #2025 : A communication was received from Deborah Belle regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22464&MeetingID=4630'>Deborah Belle STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (6)</a></td></tr>
+
+<tr><td></td><td class='Num'>43. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26816&CssClass='>COM 43 #2025 : A communication was received from Claire Moore regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22465&MeetingID=4630'>Claire MooreSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (1)</a></td></tr>
+
+<tr><td></td><td class='Num'>44. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26817&CssClass='>COM 44 #2025 : A communication was received from Diana Yousef-Martinek regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22466&MeetingID=4630'>Diana Yousef-Martinek STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>45. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26818&CssClass='>COM 45 #2025 : A communication was received from Gene Hull regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22467&MeetingID=4630'>Gene HullSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (10)</a></td></tr>
+
+<tr><td></td><td class='Num'>46. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26819&CssClass='>COM 46 #2025 : A communication was received from Gleb Bahmutov regarding In strong support for building more housing in Cambridge.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22468&MeetingID=4630'>Gleb Bahmutov In strong support for building more housing in Cambridge</a></td></tr>
+
+<tr><td></td><td class='Num'>47. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26820&CssClass='>COM 47 #2025 : A communication was received from Gordon Moore regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22469&MeetingID=4630'>Gordon MooreSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (43)</a></td></tr>
+
+<tr><td></td><td class='Num'>48. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26821&CssClass='>COM 48 #2025 : A communication was received from Harold J. Bursztajn regarding A very thoughtful analysis of the Cambridge City Council attempt at a quick fix via zoning deregulation.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22470&MeetingID=4630'>Harold J. Bursztajn A very thoughtful analysis of the Cambridge City Council attempt at a quick fix via zoning deregulation</a></td></tr>
+
+<tr><td></td><td class='Num'>49. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26822&CssClass='>COM 49 #2025 : A communication was received from Hayley Arnett regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22471&MeetingID=4630'>Hayley Arnett STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (2)</a></td></tr>
+
+<tr><td></td><td class='Num'>50. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26823&CssClass='>COM 50 #2025 : A communication was received from Heidi Legg regarding Request to speak at tomorrow's City Hall meeting on up-zoning.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22472&MeetingID=4630'>Heidi Legg Request to speak at tomorrow's City Hall meeting on up-zoning</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22473&MeetingID=4630'>Heidi Legg2Request to speak at tomorrow's City Hall meeting on up-zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>51. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26824&CssClass='>COM 51 #2025 : A communication was received from Helen Abraham regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22474&MeetingID=4630'>Helen Abraham STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (12)</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22475&MeetingID=4630'>Helen Abraham STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_</a></td></tr>
+
+<tr><td></td><td class='Num'>52. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26825&CssClass='>COM 52 #2025 : A communication was received from Helene O'Brien regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22476&MeetingID=4630'>Helene O'BrienSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (14)</a></td></tr>
+
+<tr><td></td><td class='Num'>53. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26826&CssClass='>COM 53 #2025 : A communication was received from Howard Bauchner regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22477&MeetingID=4630'>Howard BauchnerSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (42)</a></td></tr>
+
+<tr><td></td><td class='Num'>54. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26827&CssClass='>COM 54 #2025 : A communication was received from Diane Reposa regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22478&MeetingID=4630'>DianeSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (4)</a></td></tr>
+
+<tr><td></td><td class='Num'>55. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26828&CssClass='>COM 55 #2025 : A communication was received from Jacqueline Brown regarding NEW Upzoning Council Meeting Dec 23.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22479&MeetingID=4630'>Jacqueline Brown Fwd_ NEW Upzoning Council Meeting Dec 23</a></td></tr>
+
+<tr><td></td><td class='Num'>56. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26829&CssClass='>COM 56 #2025 : A communication was received from Jaine Darwin regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22480&MeetingID=4630'>Jaine DarwinSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>57. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26830&CssClass='>COM 57 #2025 : A communication was received from Jane Murphy regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22481&MeetingID=4630'>Jane Murphy STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>58. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26831&CssClass='>COM 58 #2025 : A communication was received from Jane Stoleroff regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22482&MeetingID=4630'>Jane Stoleroff  STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (4)</a></td></tr>
+
+<tr><td></td><td class='Num'>59. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26832&CssClass='>COM 59 #2025 : A communication was received from Janet Plotkin regarding My concern over the current Zoning Proposal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22483&MeetingID=4630'>Janet Plotkin My concern over the current Zoning Proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>60. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26833&CssClass='>COM 60 #2025 : A communication was received from Jean G. Krulic regarding support of Councillor Azeem, Councillor Siddiqui, and Councillor Toner's amendments to Housing Proposal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22484&MeetingID=4630'>Jean G. KrulicSUPPORT  of  Councillor Azeem  Councillor Siddiqui  Councillor Toner's amendments to Housing Proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>61. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26834&CssClass='>COM 61 #2025 : A communication was received from Dominick Jones regarding opposition of upzoning.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22485&MeetingID=4630'>Dominick Jones Oppose upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>62. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26835&CssClass='>COM 62 #2025 : A communication was received from Jeff Meese regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22486&MeetingID=4630'>Jeff MeeseSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (50)</a></td></tr>
+
+<tr><td></td><td class='Num'>63. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26836&CssClass='>COM 63 #2025 : A communication was received from Jeffrey Peterson regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22487&MeetingID=4630'>Jeffrey PetersonSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (48)</a></td></tr>
+
+<tr><td></td><td class='Num'>64. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26837&CssClass='>COM 64 #2025 : A communication was received from Doug Frank regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22488&MeetingID=4630'>Doug FrankSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (1)</a></td></tr>
+
+<tr><td></td><td class='Num'>65. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26838&CssClass='>COM 65 #2025 : A communication was received from Jess Sheehan regarding thanks for your thoughtful service and good example.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22489&MeetingID=4630'>Jess Sheehanthanks for your thoughtful service and good example</a></td></tr>
+
+<tr><td></td><td class='Num'>66. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26839&CssClass='>COM 66 #2025 : A communication was received from Jim Gray regarding “late order” comments: please be inclusive and cautious.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22490&MeetingID=4630'>Jim Gray “late order” comments_ please be inclusive and cautious</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22491&MeetingID=4630'>Jim Gray Multi-family Public Comment Jim Gray 12-23-2024</a></td></tr>
+
+<tr><td></td><td class='Num'>67. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26840&CssClass='>COM 67 #2025 : A communication was received from Jim regarding Multifamily discussion or vote today.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22492&MeetingID=4630'>Jim Multifamily discussion or vote today_</a></td></tr>
+
+<tr><td></td><td class='Num'>68. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26841&CssClass='>COM 68 #2025 : A communication was received from Joan and William Magretta regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22493&MeetingID=4630'>Joan and William Magretta STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (18)</a></td></tr>
+
+<tr><td></td><td class='Num'>69. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26843&CssClass='>COM 69 #2025 : A communication was received from Joan Krizack regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22494&MeetingID=4630'>Joan KrizackSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (11)</a></td></tr>
+
+<tr><td></td><td class='Num'>70. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26844&CssClass='>COM 70 #2025 : A communication was received from John Bright regarding Concerns with the Multi-Family Housing proposal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22495&MeetingID=4630'>John Bright Concerns with the Multi-Family Housing proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>71. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26845&CssClass='>COM 71 #2025 : A communication was received from John G. Wofford regarding Letter to City Council 12.23.24.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22496&MeetingID=4630'>John G. Wofford Letter to City Council 12_23_24</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22497&MeetingID=4630'>John G. Wofford 2letter to City Council 12.23.24</a></td></tr>
+
+<tr><td></td><td class='Num'>72. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26846&CssClass='>COM 72 #2025 : A communication was received from Ed Abrams regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22498&MeetingID=4630'>Ed Abrams STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (2)</a></td></tr>
+
+<tr><td></td><td class='Num'>73. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26847&CssClass='>COM 73 #2025 : A communication was received from John Hanratty regarding STOP - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22499&MeetingID=4630'>John HanrattySTOP - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_</a></td></tr>
+
+<tr><td></td><td class='Num'>74. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26848&CssClass='>COM 74 #2025 : A communication was received from Eileen Babbitt regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22500&MeetingID=4630'>Eileen BabbittSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (9)</a></td></tr>
+
+<tr><td></td><td class='Num'>75. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26849&CssClass='>COM 75 #2025 : A communication was received from John LaFreniere regarding 2 significant flaws to assumptions that design review and less than 6-stories of housing does not "pencil out".</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22501&MeetingID=4630'>John LaFreniere 2 significant flaws to assumptions that design review and less than 6-stories of housing does not _pencil out_</a></td></tr>
+
+<tr><td></td><td class='Num'>76. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26850&CssClass='>COM 76 #2025 : A communication was received from John McDonough regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22502&MeetingID=4630'>John McDonough STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>77. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26851&CssClass='>COM 77 #2025 : A communication was received from Jonathan Hodgson regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22503&MeetingID=4630'>Jonathan Hodgson STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>78. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26852&CssClass='>COM 78 #2025 : A communication was received from Jose Martins regarding J. Martins Investigation Closeout.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22504&MeetingID=4630'>Jose Martins J_ Martins Investigation Closeout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22608&MeetingID=4630'>Jose Martins J_ Martins</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22609&MeetingID=4630'>jose martin2</a></td></tr>
+
+<tr><td></td><td class='Num'>79. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26853&CssClass='>COM 79 #2025 : A communication was received from Joseph Moore regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22505&MeetingID=4630'>Joseph Moore STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (37)</a></td></tr>
+
+<tr><td></td><td class='Num'>80. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26854&CssClass='>COM 80 #2025 : A communication was received from Joyce E Myers regarding In support of Paul Toner' s amendment to Multifamily Ordinance.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22506&MeetingID=4630'>Joyce E Myers In support of Paul Toner' s amendment to Multifamily Ordinance</a></td></tr>
+
+<tr><td></td><td class='Num'>81. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26855&CssClass='>COM 81 #2025 : A communication was received from Judith Leff regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22507&MeetingID=4630'>Judith LeffSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (16)</a></td></tr>
+
+<tr><td></td><td class='Num'>82. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26856&CssClass='>COM 82 #2025 : A communication was received from Judith Taylor regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22509&MeetingID=4630'>Judith Taylor STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>83. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26857&CssClass='>COM 83 #2025 : A communication was received from Elise Moore regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22508&MeetingID=4630'>Elise Moore STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (1)</a></td></tr>
+
+<tr><td></td><td class='Num'>84. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26858&CssClass='>COM 84 #2025 : A communication was received from Judy Bright regarding Cambridge Upzoning proposal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22511&MeetingID=4630'>Judy Bright Cambridge Upzoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>85. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26860&CssClass='>COM 85 #2025 : A communication was received from Elizabeth Greywolf regarding Please Stop the rush - The issues voiced by the community have not been addressed by petition amendments.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22512&MeetingID=4630'>Elizabeth Greywolf Please Stop the rush - The issues voiced by the community have not been addressed by petition amendments</a></td></tr>
+
+<tr><td></td><td class='Num'>86. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26861&CssClass='>COM 86 #2025 : A communication was received from Julia Schlozman regarding Support Upzoning.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22513&MeetingID=4630'>Julia SchlozmanSupport Upzoning</a></td></tr>
+
+<tr><td></td><td class='Num'>87. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26862&CssClass='>COM 87 #2025 : A communication was received from Elizabeth Houghteling regarding opposition to rush on zoning.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22514&MeetingID=4630'>Elizabeth Houghteling Please Stop the rush - The issues voiced by the community have not been addressed by petition amendments</a></td></tr>
+
+<tr><td></td><td class='Num'>88. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26863&CssClass='>COM 88 #2025 : A communication was received from Elizabeth Ross regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22515&MeetingID=4630'>Elizabeth Ross STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_</a></td></tr>
+
+<tr><td></td><td class='Num'>89. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26864&CssClass='>COM 89 #2025 : A communication was received from Esther and Chris Pullman regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22516&MeetingID=4630'>Esther and Chris PullmanSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>90. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26865&CssClass='>COM 90 #2025 : A communication was received from Faye Halpern regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22517&MeetingID=4630'>Faye Halpern STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (1)</a></td></tr>
+
+<tr><td></td><td class='Num'>91. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26866&CssClass='>COM 91 #2025 : A communication was received from Francis Bane regarding rushing petition amendments.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22518&MeetingID=4630'>Francis BaneRushing petition ammendments</a></td></tr>
+
+<tr><td></td><td class='Num'>92. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26867&CssClass='>COM 92 #2025 : A communication was received from Frank LoGerfo regarding housing plans.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22519&MeetingID=4630'>Frank LoGerfo Housing plans</a></td></tr>
+
+<tr><td></td><td class='Num'>93. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26868&CssClass='>COM 93 #2025 : A communication was received from Frank Scibilia regarding no need to rush zoning changes.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22520&MeetingID=4630'>Frank Scibilia No need to rush zoning changes</a></td></tr>
+
+<tr><td></td><td class='Num'>94. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26869&CssClass='>COM 94 #2025 : A communication was received from Frederick Mueller regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22521&MeetingID=4630'>Frederick Mueller STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (1)</a></td></tr>
+
+<tr><td></td><td class='Num'>95. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26870&CssClass='>COM 95 #2025 : A communication was received from Karen and Peter Falb regarding opposition to rushed upzoning without regulation by right - absolutely will hurt your citizens' health.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22522&MeetingID=4630'>Karen and Peter Falb No to rushed Upzoning without regulation by right - absolutely will hurt your citizens' health</a></td></tr>
+
+<tr><td></td><td class='Num'>96. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26871&CssClass='>COM 96 #2025 : A communication was received from Karen Eton regarding upzoning.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22523&MeetingID=4630'>Karen EtonUP-ZONING</a></td></tr>
+
+<tr><td></td><td class='Num'>97. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26872&CssClass='>COM 97 #2025 : A communication was received from Kathryn Dahl regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22524&MeetingID=4630'>Kathryn Dahl STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>98. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26873&CssClass='>COM 98 #2025 : A communication was received from Kelsey Harris regarding support (Re-legalizing) Multi-family Homes.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22525&MeetingID=4630'>Kelsey HarrisSupport (Re-legalizing) Multi-family Homes</a></td></tr>
+
+<tr><td></td><td class='Num'>99. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26874&CssClass='>COM 99 #2025 : A communication was received from Mark Dibble regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22526&MeetingID=4630'>Mark Dibble STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (2)</a></td></tr>
+
+<tr><td></td><td class='Num'>100. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26875&CssClass='>COM 100 #2025 : A communication was received from Laura Roberts regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22527&MeetingID=4630'>Laura Roberts STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>101. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26876&CssClass='>COM 101 #2025 : A communication was received from Mary Jane Kornacki regarding Amendments to upzoning proposal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22528&MeetingID=4630'>Mary Jane Kornacki Amendments to upzoning proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>102. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26877&CssClass='>COM 102 #2025 : A communication was received from Lauree Mansour regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22529&MeetingID=4630'>Lauree MansourSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (51)</a></td></tr>
+
+<tr><td></td><td class='Num'>103. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26878&CssClass='>COM 103 #2025 : A communication was received from Lee Farris, Residents Alliance support for 3+3+3 Multifamily proposal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22530&MeetingID=4630'>Lee Farris Residents Alliance support for 3+3+3 Multifamily proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>104. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26879&CssClass='>COM 104 #2025 : A communication was received from Maureen Mueller regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22532&MeetingID=4630'>Maureen Mueller STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>105. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26880&CssClass='>COM 105 #2025 : A communication was received from Lesli Gordon regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22531&MeetingID=4630'>Lesli Gordon STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (8)</a></td></tr>
+
+<tr><td></td><td class='Num'>106. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26881&CssClass='>COM 106 #2025 : A communication was received from Linda Garmon regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22533&MeetingID=4630'>Linda Garmon  STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>107. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26882&CssClass='>COM 107 #2025 : A communication was received from Maureen Whitehouse regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22535&MeetingID=4630'>Maureen WhitehouseSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>108. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26883&CssClass='>COM 108 #2025 : A communication was received from Linda Moussouris regarding Ordinance Committee will file a late Policy Order at Tonight's City Council Meeting.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22534&MeetingID=4630'>Linda Moussouris Attention - Ordinance Committee will file a late Policy Order at Tonight's City Council Meeting</a></td></tr>
+
+<tr><td></td><td class='Num'>109. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26884&CssClass='>COM 109 #2025 : A communication was received from Michael and Ina Sipser regarding Please VOTE NO on the Multifamily Housing Ordinance Proposal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22536&MeetingID=4630'>Michael and Ina Sipser Please VOTE NO on the Multifamily Housing Ordinance Proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>110. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26885&CssClass='>COM 110 #2025 : A communication was received from Lindsay Greimann regarding new zoning law proposal and open space.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22537&MeetingID=4630'>Lindsay Greimann New zoning law proposal and open space</a></td></tr>
+
+<tr><td></td><td class='Num'>111. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26886&CssClass='>COM 111 #2025 : A communication was received from Lisa Blout regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22538&MeetingID=4630'>Lisa Blout STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>112. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26887&CssClass='>COM 112 #2025 : A communication was received from Mike Volles regarding Oppose all up-zoning.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22539&MeetingID=4630'>Mike Volles Oppose all up-zoning</a></td></tr>
+
+<tr><td></td><td class='Num'>113. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26888&CssClass='>COM 113 #2025 : A communication was received from Lisa Sebell-Nevins regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22540&MeetingID=4630'>Lisa Sebell-Nevins STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (38)</a></td></tr>
+
+<tr><td></td><td class='Num'>114. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26889&CssClass='>COM 114 #2025 : A communication was received from Molly O'Brien regarding Multi-family housing proposal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22541&MeetingID=4630'>Molly O'BrienMulti-family housing proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>115. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26890&CssClass='>COM 115 #2025 : A communication was received from Lisa Ziegler regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22542&MeetingID=4630'>Lisa Ziegler STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>116. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26891&CssClass='>COM 116 #2025 : A communication was received from Nancy Lange regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22543&MeetingID=4630'>Nancy LangeSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>117. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26892&CssClass='>COM 117 #2025 : A communication was received from Nancy Preis regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22545&MeetingID=4630'>Nancy PreisSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS TH</a></td></tr>
+
+<tr><td></td><td class='Num'>118. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26893&CssClass='>COM 118 #2025 : A communication was received from Liz Byron Loya regarding Multifamily Upzoning.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22544&MeetingID=4630'>Liz Byron Loya Multifamily Upzoning</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22546&MeetingID=4630'>Liz Byron Loya Public Comment for 12_23- unable to attend_ please read (53)</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22547&MeetingID=4630'>Liz Byron Loya Public Comment for 12_23- unable to attend_ please read</a></td></tr>
+
+<tr><td></td><td class='Num'>119. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26894&CssClass='>COM 119 #2025 : A communication was received from Neil and Margot Goodwin regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22548&MeetingID=4630'>Neil and Margot Goodwin STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>120. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26895&CssClass='>COM 120 #2025 : A communication was received from Liz Murphy regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22549&MeetingID=4630'>Liz MurphySTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (46)</a></td></tr>
+
+<tr><td></td><td class='Num'>121. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26896&CssClass='>COM 121 #2025 : A communication was received from Neil Miller regarding Thank you for action on #1 issue in Cambridge.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22551&MeetingID=4630'>Neil Miller Thank you for action on #1 issue in Cambridge</a></td></tr>
+
+<tr><td></td><td class='Num'>122. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26897&CssClass='>COM 122 #2025 : A communication was received from Lynne Reiss regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22550&MeetingID=4630'>Lynne Reiss STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (32)</a></td></tr>
+
+<tr><td></td><td class='Num'>123. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26898&CssClass='>COM 123 #2025 : A communication was received from Nicoleta Theodosiou regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22552&MeetingID=4630'>Nicoleta Theodosiou STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>124. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26899&CssClass='>COM 124 #2025 : A communication was received from Pamela M. Lingel regarding the current Zoning Proposal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22553&MeetingID=4630'>Pamela M. Lingel My concern over the current Zoning Proposal</a></td></tr>
+
+<tr><td></td><td class='Num'>125. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26900&CssClass='>COM 125 #2025 : A communication was received from Nina Herrera regarding Multifamily proposals, etc.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22555&MeetingID=4630'>Nina Herrera Multifamily proposals_ etc_</a></td></tr>
+
+<tr><td></td><td class='Num'>126. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26901&CssClass='>COM 126 #2025 : A communication was received from Peter Yeager regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22554&MeetingID=4630'>Peter Yeager STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (26)</a></td></tr>
+
+<tr><td></td><td class='Num'>127. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26902&CssClass='>COM 127 #2025 : A communication was received from Philippe Sauvage regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22557&MeetingID=4630'>Philippe SauvageSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>128. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26903&CssClass='>COM 128 #2025 : A communication was received from Omar Eton regarding Against blanket new zoning rules.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22556&MeetingID=4630'>Omar Eton Against blanket new zoning rules</a></td></tr>
+
+<tr><td></td><td class='Num'>129. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26904&CssClass='>COM 129 #2025 : A communication was received from Phyllis Pownall regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22558&MeetingID=4630'>Phyllis Pownall STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (2)</a></td></tr>
+
+<tr><td></td><td class='Num'>130. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26905&CssClass='>COM 130 #2025 : A communication was received from Piotr Mitros regarding Zoning Change and Open Meetings.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22559&MeetingID=4630'>Piotr Mitros Zoning Change and Open Meetings</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22560&MeetingID=4630'>Piotr Mitros oml</a></td></tr>
+
+<tr><td></td><td class='Num'>131. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26906&CssClass='>COM 131 #2025 : A communication was received from Carol Lynn Alpert regarding Please don't betray us.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22561&MeetingID=4630'>Carol Lynn Alpert Please don't betray us</a></td></tr>
+
+<tr><td></td><td class='Num'>132. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26907&CssClass='>COM 132 #2025 : A communication was received from Sally Edmonds regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22562&MeetingID=4630'>Sally Edmonds STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (23)</a></td></tr>
+
+<tr><td></td><td class='Num'>133. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26908&CssClass='>COM 133 #2025 : A communication was received from Rafael Jaramillo, West Cambridge Neighborhood Association, regarding proposed Upzoning Plan.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22563&MeetingID=4630'>Rafael Jaramillo West Cambridge Neighborhood Association and the Proposed Upzoning Plan (54)</a></td></tr>
+
+<tr><td></td><td class='Num'>134. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26909&CssClass='>COM 134 #2025 : A communication was received from Sandy Sweetnam regarding Stop the train.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22565&MeetingID=4630'>Sandy SweetnamStop the train</a></td></tr>
+
+<tr><td></td><td class='Num'>135. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26910&CssClass='>COM 135 #2025 : A communication was received from Rahel O'More regarding amendment of housing proposal.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22564&MeetingID=4630'>Rahel O'More cdd</a></td></tr>
+
+<tr><td></td><td class='Num'>136. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26911&CssClass='>COM 136 #2025 : A communication was received from Sara Levy regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22566&MeetingID=4630'>Sara Levy STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (39)</a></td></tr>
+
+<tr><td></td><td class='Num'>137. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26912&CssClass='>COM 137 #2025 : A communication was received from Rebecca Hall regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22567&MeetingID=4630'>Rebecca HallSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_</a></td></tr>
+
+<tr><td></td><td class='Num'>138. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26913&CssClass='>COM 138 #2025 : A communication was received from Sarah Stone regarding Continued support for (amended) multifamily zoning petition.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22568&MeetingID=4630'>Sarah Stone Continued support for (amended) multifamily zoning petition</a></td></tr>
+
+<tr><td></td><td class='Num'>139. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26915&CssClass='>COM 139 #2025 : A communication was received from Shelagh Hadley regarding Please delay tonight's decision.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22569&MeetingID=4630'>Shelagh Hadley Please delay tonight's decision</a></td></tr>
+
+<tr><td></td><td class='Num'>140. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26916&CssClass='>COM 140 #2025 : A communication was received from Rich Goode regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22570&MeetingID=4630'>Rich Goode STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>141. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26918&CssClass='>COM 141 #2025 : A communication was received from Rick Roth regarding opposition to housing ordinance amendments.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22572&MeetingID=4630'>Rick Roth PLEASE no rush!</a></td></tr>
+
+<tr><td></td><td class='Num'>142. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26919&CssClass='>COM 142 #2025 : A communication was received from Ann Stewart and Ann Tennis regarding multifamily petition comment Dec 23 2024.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22573&MeetingID=4630'>Ann Stewart and Ann Tennis multifamily petition comment Dec 23 2024</a></td></tr>
+
+<tr><td></td><td class='Num'>143. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26920&CssClass='>COM 143 #2025 : A communication was received from Robert Camacho regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22574&MeetingID=4630'>Robert CamachoSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_</a></td></tr>
+
+<tr><td></td><td class='Num'>144. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26921&CssClass='>COM 144 #2025 : A communication was received from Stuart Lipsky regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22575&MeetingID=4630'>Stuart LipskySTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (47)</a></td></tr>
+
+<tr><td></td><td class='Num'>145. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26923&CssClass='>COM 145 #2025 : A communication was received from Rochelle H. Zapol regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22576&MeetingID=4630'>Rochelle H. Zapol STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (7)</a></td></tr>
+
+<tr><td></td><td class='Num'>146. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26925&CssClass='>COM 146 #2025 : A communication was received from Russell Windman in opposition to current radical up-zoning proposals.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22578&MeetingID=4630'>Russell Windman in opposition to current radical up-zoning proposals</a></td></tr>
+
+<tr><td></td><td class='Num'>147. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26926&CssClass='>COM 147 #2025 : A communication was received from Susan Johansen regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22580&MeetingID=4630'>Susan JohansenSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>148. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26929&CssClass='>COM 148 #2025 : A communication was received from Susan McGlennon regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22582&MeetingID=4630'>Susan McGlennonSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (41)</a></td></tr>
+
+<tr><td></td><td class='Num'>149. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26930&CssClass='>COM 149 #2025 : A communication was received from Susan Smith regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22584&MeetingID=4630'>Susan SmithSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (44)</a></td></tr>
+
+<tr><td></td><td class='Num'>150. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26933&CssClass='>COM 150 #2025 : A communication was received from Suzanne Blier regarding City Council meeting  on the 23rd: request for amendments - and holiday greetings.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22587&MeetingID=4630'>Suzanne Blier</a></td></tr>
+
+<tr><td></td><td class='Num'>151. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26934&CssClass='>COM 151 #2025 : A communication was received from Sharon Stichter regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22586&MeetingID=4630'>Sharon StichterSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (5)</a></td></tr>
+
+<tr><td></td><td class='Num'>152. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26936&CssClass='>COM 152 #2025 : A communication was received from Stephen Mcauliffe regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22589&MeetingID=4630'>Stephen Mcauliffe STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>153. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26937&CssClass='>COM 153 #2025 : A communication was received from Tanya Cosway regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22590&MeetingID=4630'>Tanya Cosway STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>154. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26939&CssClass='>COM 154 #2025 : A communication was received from Theresa Gallagher regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22592&MeetingID=4630'>Theresa Gallagher STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (3)</a></td></tr>
+
+<tr><td></td><td class='Num'>155. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26940&CssClass='>COM 155 #2025 : A communication was received from Sue Stewart regarding opposition to current radical up-zoning proposals.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22593&MeetingID=4630'>Sue Stewart LarchList_ in opposition to current radical up-zoning proposals</a></td></tr>
+
+<tr><td></td><td class='Num'>156. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26941&CssClass='>COM 156 #2025 : A communication was received from Thomas Hentschel regarding Ordinance committee - zoning amendments.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22594&MeetingID=4630'>Thomas Hentschel Ordinance committee - zoning amendments</a></td></tr>
+
+<tr><td></td><td class='Num'>157. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26942&CssClass='>COM 157 #2025 : A communication was received from Vickey Bestor regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22596&MeetingID=4630'>Vickey Bestor STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>158. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26945&CssClass='>COM 158 #2025 : A communication was received from Virginia Pye regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22597&MeetingID=4630'>Virginia PyeSTOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_</a></td></tr>
+
+<tr><td></td><td class='Num'>159. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26946&CssClass='>COM 159 #2025 : A communication was received from William Graham regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22598&MeetingID=4630'>William Graham STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY</a></td></tr>
+
+<tr><td></td><td class='Num'>160. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26948&CssClass='>COM 160 #2025 : Multiple communications were received from Young Kim regarding My Oral Comment tonight, Amendments to the MFH Petitions #1 & #2, Ordinance Committee Policy Order re Multifamily Housing Petitions and  Time Sensitive Tree survivability Question.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22600&MeetingID=4630'>Young Kim My Oral Comment tonight</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22601&MeetingID=4630'>Young Kim Council Comment 12_23</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22616&MeetingID=4630'>Amendments to the MFH Petitions #1 & #2</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>d. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22617&MeetingID=4630'>Ordinance Committee Policy Order re Multifamily Housing Petitions</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>e. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22618&MeetingID=4630'>Time Sensitive Tree survivability Question</a></td></tr>
+
+<tr><td></td><td class='Num'>161. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26949&CssClass='>COM 161 #2025 : A communication was received from WM MGMT. regarding STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22602&MeetingID=4630'>WM MGMT. STOP THE RUSH - PETITION AMENDMENTS DO NOT ADDRESS THE ISSUES VOICED BY THE COMMUNITY_ (33)</a></td></tr>
+
+<tr><td class='Num'><strong>VI. </strong></td><td class='Title' colspan='10'><strong>Resolutions</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26732&CssClass='>RES 2025 #1 : Congratulations to Bishop Cristiano Barbosa for being awarded the 2025 MAPS Person of the Year.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100618&MeetingID=4630'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26736&CssClass='>RES 2025 #2 : Congratulations to Edilia Gomes as the Recipient of the 2025 MAPS Mary & Manuel Rogers Lifetime Community Service Award.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100619&MeetingID=4630'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26739&CssClass='>RES 2025 #3 : Congratulations to Michael Carreiro as the recipient of the 2025 MAPS Alvaro Lima Outstanding Business Award.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100620&MeetingID=4630'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26762&CssClass='>RES 2025 #4 : Condolences on the death of Vasco S. Caetano.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100621&MeetingID=4630'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26763&CssClass='>RES 2025 #5 : Congratulations to Rabbi Liza Stern on her retirement</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100622&MeetingID=4630'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26771&CssClass='>RES 2025 #6 : Resolution on the death of Maria Alexandria Forde.</a><span class = 'ItemVoteResult'> Order Adopted as Amended </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100623&MeetingID=4630'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26794&CssClass='>RES 2025 #7 : Condolences To The Family of Alfred A. Marazzo</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100624&MeetingID=4630'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26842&CssClass='>RES 2025 #8 : Condolence Resolution for Dr. Robert S. Peterkin</a><span class = 'ItemVoteResult'> Order Adopted as Amended </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100625&MeetingID=4630'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26922&CssClass='>RES 2025 #9 : Condolences on the death of Robert R. McCallum</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100626&MeetingID=4630'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26955&CssClass='>RES 2025 #10 : Congratulations to the Holy Trinity Armenian Apostolic Church on its 100th Anniversary.</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100627&MeetingID=4630'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26963&CssClass='>RES 2025 #11 : Congratulations to Michelle Borden On Her Retirement</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100630&MeetingID=4630'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26964&CssClass='>RES 2025 #12 : Congratulations to Juliet Turner On Her Retirement</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100631&MeetingID=4630'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26965&CssClass='>RES 2025 #13 : Congratulations to Faye McKinnon on Her Retirement</a><span class = 'ItemVoteResult'> Order Adopted </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100632&MeetingID=4630'>Resolution Printout</a></td></tr>
+
+<tr><td class='Num'><strong>VII. </strong></td><td class='Title' colspan='10'><strong>Committee Reports</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4630&MinutesID=2963&MediaPosition=&ID=84832&Type=30&AcceptMinutesID=2960&CssClass= style='cursor: hand'>Minutes of Nov 19, 2024 2:00 PM</a><span class = 'ItemVoteResult'> Accepted </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">VV9</span></p></div></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4630&MinutesID=2963&MediaPosition=&ID=84833&Type=30&AcceptMinutesID=2961&CssClass= style='cursor: hand'>Minutes of Dec 4, 2024 2:30 PM</a><span class = 'ItemVoteResult'> Accepted </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">VV9</span></p></div></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4630&MinutesID=2963&MediaPosition=&ID=84834&Type=30&AcceptMinutesID=2962&CssClass= style='cursor: hand'>Minutes of Dec 19, 2024 5:30 PM</a><span class = 'ItemVoteResult'> Accepted </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">VV9</span></p></div></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_Motion.aspx?Frame=&MeetingID=4630&MinutesID=2963&MediaPosition=&ID=84835&Type=30&AcceptMinutesID=2959&CssClass= style='cursor: hand'>Minutes of Dec 11, 2024 3:00 PM</a><span class = 'ItemVoteResult'> Accepted </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">REPORT ACCEPTED AND PLACED ON FILE VV9</span></p></div></td></tr>
+
+<tr><td class='Num'><strong>VIII. </strong></td><td class='Title' colspan='10'><strong>Communications and Reports from Other City Officers</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26772&CssClass='>COF 2025 #1 : A communication was received from Diane LeBlanc, City Clerk, transmitting an update regarding legislative activity.</a><span class = 'ItemVoteResult'> PLACED ON FILE </span></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100628&MeetingID=4630'>Communication and Report from Other City Officers Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22418&MeetingID=4630'>Updated Hearing Schedule 12.30.2024</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22419&MeetingID=4630'>PENDING HOME RULE PETITIONS JANUARY 6, 2025</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22420&MeetingID=4630'>2024-2025 Committee Referral List</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>d. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22421&MeetingID=4630'>Pending Zoning Petitions and Municipal Ordinances Chart</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26962&CssClass='>COF 2025 #2 : A communication was received from City Solicitor Megan B. Bayer, with attachments relative to the Open Meeting Law Complaint of Piotr Mitros (The "Complainant") dated December 26, 2024.</a><span class = 'ItemVoteResult'> PLACED ON FILE [Unanimous] </span></td></tr>
+<tr><td></td><td></td><td class='Comments' colspan='9'><div><p style="margin:0pt"><span style="font-family:'Times New Roman'; font-size:11pt">WITHDRAWAL FROM THE COMPLAINANT ATTACHED AND COF </span></p></div></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=100629&MeetingID=4630'>Communication and Report from Other City Officers Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22622&MeetingID=4630'>Ltr to CC requesting authorization for OML complaint response</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22623&MeetingID=4630'>Mitros 12.26.24 OML Complaint</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22624&MeetingID=4630'>CC Response to Mitros 12.26.24 OML Complaint</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>d. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22625&MeetingID=4630'>Order to Authorize City Solicitor to Respond to Mitros OML Complaint</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>e. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22627&MeetingID=4630'>withdrawing your December 26, 2024 Open Meeting Law Complaint Zoning Change and Open Meetings</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Appended Information</strong></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Awaiting Report Status Update</strong></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26956&CssClass='>ARS-25-1 : Awaiting Report Status Update 01.06.25</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=22610&MeetingID=4630'>Awaiting Report Status Update 01.06.25</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Awaiting Report List</strong></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=24487&CssClass='>AR-24-31 : Provide an update to the Municipal Facilities Improvement Plan (MFIP) including revised cost estimates to help inform the FY26 and ongoing capital budget priorities in a timely manner.</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=25494&CssClass='>AR-24-53 : at the City of Cambridge assist companies, institutions, and other organizations in adopting truck safety requirements for their fleets and finding trucking vendors who are able to comply by providing an informational resource and publicizing those that comply.</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=25495&CssClass='>AR-24-54 : t the City Manager is hereby requested to work with relevant departments to review Cambridge’s curb cut policies and report back on if they can be improved to help meet the City’s transportation and sustainability goals with some proposed updates and draft ordinance language designating City staff as the final approval authority for curb cuts.</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=25720&CssClass='>AR-24-58 : That the City Manager is requested to confer with the Finance Department, Law Department, and other relevant departments to explore the feasibility of a successor program to Rise Up Cambridge.</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=25802&CssClass='>AR-24-60 : That the City Manager be and is hereby requested to report back to the City Council on the Pathways to Removing Obstacles to Housing (PRO Housing) NOFO as soon as possible.</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26078&CssClass='>AR-24-62 : The City Manager is requested to work with the Community Development Department to provide an update on the status of the Resident Experiences of Inclusion and Bias in Inclusionary Housing in Cambridge report’s recommendations, including progress on implementation and planned next steps.</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26170&CssClass='>AR-24-63 : The City Manager is requested to direct the appropriate City staff to prominently incorporate recognition of the Massachusett Tribe during key official events, documents, websites, and communications, establish a living memorial in Cambridge that honors the Massachusett Tribe, with special recognition of Sqa Sachem for her leadership and enduring legacy and place a plaque with this language in a prominent location within City Hall, ensuring that this acknowledgment remains visible and lasting and report back.</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26200&CssClass='>AR-24-64 : The City Manager is requested to work with relevant City departments to prepare a Home Rule Petition to enact legislation which would allow the City of Cambridge to prohibit associations from unreasonably restricting the use of a solar energy system.</a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26201&CssClass='>AR-24-65 : The City Manager is requested to work with the Law Department to draft a home rule petition for the creation of a Cambridge Jobs Training Trust, and report back to the City Council in a timely manner.</a><span class = 'ItemVoteResult'> REPORT RECEIVED AND ACCEPTED </span></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26202&CssClass='>AR-24-66 : The City Manager is requested to work with relevant City departments to prepare a draft home rule petition to authorize the City of Cambridge to implement automated parking enforcement technology; and to continue to work with the City of Boston to collaborate on the home rule process.</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26296&CssClass='>AR-24-67 : The City Manager is requested to work with relevant City departments to review with a robust and inclusive community process the Cambridge Bicycle Plan, most recently updated in 2020, and identify potential improvements and consider next steps for a network of Separated Bicycle Facilities, and Separated Bicycle Facilities on streets across the city in order to facilitate safer travel and ways to coordinate routes with neighboring communities including Arlington, Somerville, Watertown, Belmont, Boston, and others.</a></td></tr>
+
+<tr><td></td><td class='Num'>14. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26497&CssClass='>AR-24-68 : The City Manager is requested to work with the Traffic, Parking and Transportation Department and Harvard University to restore Garden Street to two-way automobile traffic while preserving two-way protected bike lanes, preserving as much parking on and/or near Garden Street as possible and identifying potential areas for resident parking on neighboring streets and communicating the changes to the affected neighborhood.</a></td></tr>
+
+<tr><td></td><td class='Num'>15. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4630&MediaPosition=&ID=26498&CssClass='>AR-24-69 : The City Manager is requested to work with relevant City departments and encourage the state Massachusetts Department of Environmental Protection and the MBTA to adhere to Cambridge local ordinances, including the Cambridge Asbestos Protection Ordinance, during Alewife Construction.</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Adjournment</strong></td></tr>
+
+</table>
+</span>
+                    </td>
+	</tr>
+	
+            </table>
+        
+</div>
+        
+        
+        <br />
+        <hr class="Dotted" />
+        <br />
+    </div>
+    
+    <!-- Dialog Definition (Do Not Display in Page) -->
+    <div style="display: none;">
+    
+        <div id="UserComment" class="UserComment">
+            <input type="hidden" id="ItemID" />
+            <input type="hidden" id="ItemType" />
+            <table><tr><td colspan="2" style="text-align: center;"><textarea rows="10" cols="10"></textarea></td></tr>
+            <tr>
+                <td class="Status"><img src='/Lib/Images/ui-anim_basic_16x16.gif' alt='Loading' />&nbsp;&nbsp;Loading - Please Wait...</td>
+                <td class="Help"><a href="#" onclick="javascript: ShowHelp(); return false;"><img src="images/Help.png" alt="Help" /></a></td>
+            </tr></table>            
+        </div>
+        
+        <div id="frmHelp">
+            <p><strong>Shortcut Keys:</strong></p>
+            <p><strong>Alt + S</strong> - Save</p>
+            <p><strong>Ctrl + S</strong> - Save (may not be compatible in all browsers)</p>
+            <p><strong>Alt + C</strong> - Save and Close</p>
+            <p><strong>Ctrl + Enter</strong> - Save and Close</p>
+            <p><strong>Escape</strong> - Closes the form (same as Cancel)</p>
+            <p><strong>Alt + Up Arrow</strong> - Previous Item (Saves if changed)</p>
+            <p><strong>Alt + Down Arrow</strong> - Next Item (Saves if changed)</p>
+        </div>
+    
+    </div>
+
+   
+    
+                            </div>
+                        </div>                                                           
+                    </td>
+                </tr>               
+            </table>                                
+        </div>
+        
+    <div id="Footer" role="contentinfo">
+        <br />
+        <span id="lblPoweredBy">
+            Powered by <a href="https://granicus.com/" target="_blank" >Granicus</a>
+        </span>
+    </div>
+
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-21761819-8'></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+  gtag('config', 'UA-21761819-8');</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-70364301-2'></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+  gtag('config', 'UA-70364301-2');</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    
+        <!-- Popup Menus -->
+        <div id="mnuBrowse" class="PopupMenu" dropdown="Browse">
+            <ul>
+                <li><a href="#">Legislative Files</a></li>
+                <li><a href="#">Legal Notices</a></li>
+                <li><a href="#">Some other Sort of Thing</a></li>
+            </ul>
+        </div>
+
+    
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){woopra.identify({ email:"", name:"Anonymous User", agency:"CambridgeMA", userlogin:"Anonymous"}).push(); })//]]>
+</script>
+</form>
+</body>
+</html>
+
+
