@@ -6,7 +6,7 @@ no warnings qw/uninitialized/;
 
 my $glossary_url = '/the-city/city-glossary';
 my $lines;
-my %glossary  = (
+my %glossary = (
     AHO  => "Affordable Housing Overlay",
     BZA  => "Board of Zoning Appeals",
     CDD  => "Community Development Department",
@@ -19,16 +19,23 @@ my %glossary  = (
     STO  => "Surveillance Technology Ordinance",
 );
 
+my %tooltip = (
+	DCR  => "Department of Conservation and Recreation",
+);
+
 foreach (<>) {
     while (/\{\{([^\}]+)\}\}/) {
         my ($name, $txt) = split /\|/, $1;
-        $txt = (defined $txt) ? $txt : $name;
+        $txt = $name unless defined $txt;
         $name =~ s/\s+/-/g;
         if ($name !~ /^[A-Z]+$/) {
             $name = lc $name;
         }
         if (defined $glossary{$name}) {
             s/(\{\{[^\}]+\}\})/[tooltips keyword='[$txt]($glossary_url#$name)' content='$glossary{$name}']/;
+        }
+        elsif (defined $tooltip{$name}) {
+            s/(\{\{[^\}]+\}\})/[tooltips keyword='$txt' content='$tooltip{$name}']/;
         }
         else {
             s/(\{\{[^\}]+\}\})/[$txt]($glossary_url#$name)/;
