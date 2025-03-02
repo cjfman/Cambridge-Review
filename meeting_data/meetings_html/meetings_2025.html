@@ -1,0 +1,1027 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en" lang="en">
+<head id="HeadMain"><title>
+	Meeting Calendar - Cambridge City, MA
+</title><meta http-equiv="X-UA-Compatible" content="IE=9" />
+
+    <!-- this fixes a minor rendering issue with tables on the ipad -->
+    <meta content="width=device-width, initial-scale=1.0;" name="viewport" />
+
+    <!-- Agency specific meta tags -->
+    <meta name='google-site-verification' content='gk1uzLohfTCOHIcLpPfTMdkFQr1kAWFQpfsKsziX7T8' />
+<meta name='msvalidate.01' content='E8AC0C05C619B2FA426BD3B3D08FF440' />
+
+
+    <!-- open search discovery -->
+    <link rel="search" type="application/opensearchdescription+xml" href="/Services/GetFederatedSearch.aspx" title="IQM2 search" />
+
+    <!-- Icon -->
+    <link href="/favicon.ico?v=2018" rel="icon" />
+
+    <!-- CSS Links -->
+    <link type="text/css" href="/App_Themes/Main.css?v=86" rel="Stylesheet" /><link type="text/css" href="/lib/jquery-ui.css" rel="stylesheet" />
+ 
+  <script>
+      !function () { var a, b, c, d = window, e = document, f = arguments, g = "script", h = ["config", "track", "trackForm", "trackClick", "identify", "visit", "push", "call"], i = function () { var a, b = this, c = function (a) { b[a] = function () { return b._e.push([a].concat(Array.prototype.slice.call(arguments, 0))), b } }; for (b._e = [], a = 0; a < h.length; a++) c(h[a]) }; for (d.__woo = d.__woo || {}, a = 0; a < f.length; a++) d.__woo[f[a]] = d[f[a]] = d[f[a]] || new i; b = e.createElement(g), b.async = 1, b.src = "//static.woopra.com/js/w.js", c = e.getElementsByTagName(g)[0], c.parentNode.insertBefore(b, c) }("woopra");
+
+      woopra.config({
+          domain: "iqm2.com",
+          cookie_name:"accelaTracker"
+      });
+      woopra.track("mp_pv", {
+          domain: window.location.hostname,
+          title: document.title,
+          url: window.location.href,
+          uri: window.location.pathname,
+          hash: window.location.hash,
+          error: null
+      });
+  </script>
+    <!-- IQM2 Scripts -->
+    <script type="text/javascript" src="/lib/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="/App_Themes/Global.js?v=8_10_48"></script>
+    <script type="text/javascript" src="/lib/MinuteTraq.PopupWindow.js"></script>
+    <script type="text/javascript" src="/lib/jquery-ui.js"></script>
+    <link href="https://unpkg.com/video.js@7.21.1/dist/video-js.css" rel="stylesheet" /><link href="/Scripts/videojs-live-dvr/videojs-dvrseekbar.css" rel="stylesheet" />
+    <script src="https://unpkg.com/video.js@7.21.1/dist/video.js"></script>
+    <script src='https://unpkg.com/videojs-flash@2.1.0/dist/videojs-flash.min.js'></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+    <script src="/Scripts/videojs-live-dvr/videojs-dvrseekbar.min.js"></script>
+    <script type='text/javascript' src='/Scripts/player.js'></script>
+    <script type="text/javascript" src="/Scripts/js.cookie-2.0.3.min.js"></script>
+    <!-- RSS Feeds (Site) -->
+    
+
+    <!-- Generated CSS Link -->
+    
+  
+    <!-- External CSS / Script Links -->
+    <link type='text/css' href='/Lib/GetCustomCSS.ashx?timestamp=638714128770000000' rel='Stylesheet' /><link type='text/css' href='/Citizens/GetImage.aspx?ID=1012' rel='Stylesheet' /><script type='text/javascript' src='/Citizens/GetImage.aspx?ID=1013'></script>
+    
+   
+    <!--[if IE 7]>
+	   <style type="text/css">
+        .Section H2 { display:inline;}
+        .RowTop div { display:inline;}
+   </style>
+	
+	<![endif]-->
+    
+    <script type="text/javascript" src="/Lib/MinuteTraq.Search.js?v=8_10_66"></script>
+    
+    <script type="text/javascript">
+        
+        // configure tracker
+        
+        $(function () {
+            
+            
+            FixFooterPosition();
+            $(window).on('resize', FixFooterPosition);
+
+            var h = $("#Banner").height();
+            //  var w = $("body").width();
+
+            var sCoords = "0,0,5000," + h;
+
+            $("#lnkBanner").attr("coords", sCoords);
+            var hideTopBanner = Cookies.get('hideTopBanner');
+            var appStyles = {display:'block'};
+            if (hideTopBanner) {
+                appStyles.display = 'none';
+            }
+            $('#topbarAppBanner').css(appStyles);
+            $('.close-topbar-app-banner').bind('click', function () {
+                $('#topbarAppBanner').css('display', 'none');
+                Cookies.set('hideTopBanner', true);
+            });
+            $('.link-wrapper-banner').bind('click', function () {
+                woopra.track('portal-wegovern-banner', {
+                    agency: Cookies.get('AgencyName'),
+                    username: Cookies.get('WebUserName')
+                });
+                return true;
+            });
+        });
+
+        function FixFooterPosition() {
+            //hack for the footer, display at bottom of screen if page is short
+            if ($("form").height() < $(window).height() - 100) {
+                $("#Footer").css("position", "absolute");
+                $("#Footer").css("bottom", "0");
+            }
+            else {
+                $("#Footer").css("position", "");
+            }
+        }
+
+    </script>
+    <style type="text/css" media="screen">
+        #topbarAppBanner {
+            min-height: 40px;
+            z-index: 1000;
+        }
+        .top-banner-app-inner{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 40px;
+            border: 1px solid rgba(10,10,10,.5);
+            box-shadow: 0px 0px 16px 0px #303030;
+            background-color: #456ca7;
+        }
+        .close-topbar-app-banner {
+            position: absolute;
+            display: block;
+            top: 25px;
+            right: 5%;
+            font-size: 1em;
+            color: #e3e3e3
+        }
+        .app-link{
+            display: block;
+            margin: 0 auto;
+            width: 40%;
+        }
+        .wegovern-banner-logo {
+            left: 22px;
+            position: relative;
+            padding-top: 1px;
+        }
+
+        @media screen and (max-width: 981px ){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width: 1595px){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (max-width: 1594px){
+            .inside-banner-link {
+                position: relative;
+                top: -30px;
+                left: 75px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width:1100px){
+            .app-link{
+                display: block;
+                margin: 0 auto;
+                width: 40%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+        }
+        @media screen and (max-width:1099px){
+            .app-link {
+                display: block;
+                margin: 0 auto;
+                width: 65%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+    </style>
+    
+
+    <!-- Page Level Header Stuff -->
+    
+
+    <link rel='stylesheet' type='text/css' href='/Lib/fullcalendar/fullcalendar.css' />
+    
+    
+    
+    <script type='text/javascript' src='/Lib/fullcalendar/moment.min.js'></script>
+    <script type='text/javascript' src='/Lib/fullcalendar/fullcalendar.min.js'></script>
+
+    <script type="text/javascript">
+        $(function() {
+            if ($("#calendar").length == 0)
+                return;
+                
+            InitCalendar();
+        });
+
+        function GetFromDate() {
+
+            var sQueryDate = getParameterByName("From");
+
+            if (sQueryDate != undefined && sQueryDate.length > 0)
+                return new Date(sQueryDate);
+            else 
+                return new Date(new Date().getFullYear(), 0, 1);
+        }
+
+        function GetToDate() {
+
+            var sQueryDate = getParameterByName("To");
+
+            if (sQueryDate != undefined && sQueryDate.length > 0)
+                return new Date(sQueryDate);
+            else
+                return new Date(new Date().getFullYear(), 11, 31);                          
+        }
+        
+        function InitCalendar() {
+
+            var events = eval($("#ContentPlaceholder1_hfEventJSON").val());
+
+            var fIncludesWeekends = false;
+
+            for (var i = 0; i < events.length; i++) {
+                //safari does not support dashes in the date
+
+                var sDate = events[i].start.replace("-", "/").replace("-", "/").substring(0, events[i].start.indexOf(" "));
+                var eventDay = new Date(sDate).getDay();
+                if (eventDay == 6 || eventDay == 0)
+                    fIncludesWeekends = true;
+            }
+
+            var dSelectedDate = new Date();
+
+            //if a different year was chosen, start with the date specified in the FROM
+            //otherwise default to the current date
+
+            var dFromDate = GetFromDate();
+            var dToDate = GetToDate();
+
+            //if today's date does not fall between the From and To, then default to the From date
+            if (dSelectedDate < dFromDate || dSelectedDate > dToDate)
+                dSelectedDate = dFromDate;
+
+            var sMonth = getParameterByName("Month");
+            if (sMonth != undefined && sMonth.length > 0)
+                dSelectedDate.setMonth(parseInt(sMonth) - 1, 1);
+
+            $('#calendar').fullCalendar(
+                {
+                    header:
+                    {
+                        left: 'title',
+                        center: '',
+                        right: 'prev,next today'
+                    },
+                    editable: false,
+                    weekends: fIncludesWeekends,
+                    events: events,
+                    year: dSelectedDate.getFullYear(),
+                    month: dSelectedDate.getMonth(),
+                    eventRender: RenderEvent,
+                    viewDisplay: UpdateCalendarNavButtons,
+                    weekMode: "variable"
+                });
+
+
+            if (typeof FixFooterPosition == 'function')
+                FixFooterPosition();
+
+            // Trying to fix printing 
+            $(".fc-widget-header").each(function () {
+
+            });
+            $("#calendar").fullCalendar("gotoDate", dFromDate);
+        }
+
+        function UpdateCalendarNavButtons(view) {
+
+            var dDisplayedDate = view.calendar.getDate();
+
+            var dFromDate = GetFromDate();
+            var dToDate = GetToDate();
+            var dToday = new Date();
+
+            var fIsBeginning = (dDisplayedDate.getMonth() == dFromDate.getMonth() && dDisplayedDate.getFullYear() == dFromDate.getFullYear());
+            var fIsEnd = (dDisplayedDate.getMonth() == dToDate.getMonth() && dDisplayedDate.getFullYear() == dToDate.getFullYear());
+            var fIsCurrentYear = (dToday >= dFromDate && dToday <= dToDate);
+
+            if (fIsBeginning)
+                $(".fc-button-prev").click(GotoPrevYear);
+            else
+                $(".fc-button-prev").unbind("click", GotoPrevYear);
+
+            if (fIsEnd)
+                $(".fc-button-next").click(GotoNextYear);
+            else
+                $(".fc-button-next").unbind("click", GotoNextYear);
+
+
+            if (fIsCurrentYear)
+                $(".fc-button-today").css("display", "");
+            else
+                $(".fc-button-today").css("display", "none");
+
+        }
+
+        function GotoNextYear() { GotoNextPrevYear(true); }
+        function GotoPrevYear() { GotoNextPrevYear(false); }
+
+        function GotoNextPrevYear(fNext) {
+
+            if (fNext) {
+                var dFrom = new Date(GetFromDate().getFullYear() + 1, GetFromDate().getMonth(), GetFromDate().getDate());
+                var dTo = new Date(GetToDate().getFullYear() + 1, GetToDate().getMonth(), GetToDate().getDate());
+                var iStartMonth = 1;
+            }
+            else {
+                var dFrom = new Date(GetFromDate().getFullYear() - 1, GetFromDate().getMonth(), GetFromDate().getDate());
+                var dTo = new Date(GetToDate().getFullYear() - 1, GetToDate().getMonth(), GetToDate().getDate());
+                var iStartMonth = 12;
+            }
+
+            var sFrom = (dFrom.getMonth() + 1) + "/" + dFrom.getDate() + "/" + dFrom.getFullYear();
+            var sTo = (dTo.getMonth() + 1) + "/" + dTo.getDate() + "/" + dTo.getFullYear();
+
+            $('#calendar').html("<img src='/Lib/images/Loading_Snake_32x32.gif' alt='Please wait...'/>");
+            window.location = "Calendar.aspx?View=Calendar&From=" + sFrom + "&To=" + sTo + "&Month=" + iStartMonth;
+
+        }
+
+        var miNextID = 1
+
+        //thought we had this function somewhere else but i can't find it
+        //http://stackoverflow.com/questions/901115/get-query-string-values-in-javascript
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regexS = "[\\?&]" + name + "=([^&#]*)";
+            var regex = new RegExp(regexS);
+            var results = regex.exec(window.location.search);
+            if (results == null)
+                return "";
+            else
+                return decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function RenderEvent(event, element) {
+
+
+            var iHour = moment(event.start).format('h');
+            var sAMorPM = 'am';
+            if (iHour >= 12) sAMorPM = 'pm';
+
+            if (iHour > 12) {
+                iHour -= 12;
+            }
+            else if (iHour == 0) {
+                iHour = 12;
+            }
+
+            //var sTime = iHour + ":" + pad(moment(event.start).format('mm'), 2) + sAMorPM;
+            var sTime = moment(event.start).format("hh:mm a");
+
+            var sDownloads = DecodeFromServer(unescape(event.downloads));
+            var sDownloadsBtn = "";
+
+            if (sDownloads.length > 0)
+                sDownloadsBtn = "<br/><a id='lnkShowDownloads" + miNextID + "' href='javascript:ShowDownloads(" + miNextID + ");'>Show Downloads</a><div class='CalendarDownloads' id='divDownloads" + miNextID + "' style='display:none'>" + sDownloads + "</div>";
+
+            miNextID++;
+
+            //bit of a hack, title looks better with each part on a new line
+
+            //Code added to set the event alignment  on Calendar
+            var sTitle = DecodeFromServer(event.title).replace(" - ", "<br/>");
+            var sTitlefull = DecodeFromServer(event.title);
+            var part1 = DecodeFromServer(event.title).split(" - ")[0];
+            var part2 = DecodeFromServer(event.title).split(" - ")[1];
+            if (part1.length > 15) {
+                part1 = part1.substr(0, 15) + '...';
+            }
+            if (part2.length > 15) {
+                part2 = part2.substr(0, 12) + '...';
+            }
+            sTitle = part1 + '<br/>' + part2;
+
+            var sVideo = "";
+
+            if (event.video != undefined)
+                sVideo = "<br/>" + DecodeFromServer(unescape(event.video));
+
+            var sCancelled = "";
+
+            if (event.cancelled == 'True')
+                sCancelled = '<div class="MeetingCancelled">Cancelled</div>';
+
+            return "<div class='MeetingCalendarCell MainScreenText' title='" + sTitlefull + "'>" + sCancelled + "<a href='" + event.url + "'>" + sTime + "</a><br/>" + sTitle + sVideo + sDownloadsBtn + "</div>"
+        }
+
+        function ShowDownloads(id) {
+
+            //in case there are other boxes in the same cell, we need to make sure their z-index is lowered so the new box
+            //will always be in front
+            for (var i = 0; i < miNextID; i++)
+                $("#divDownloads" + i).parent().css("z-index", 999);
+
+            if ($("#divDownloads" + id).css("display") == "none") {
+                $("#lnkShowDownloads" + id).html("Hide Downloads");
+                $("#divDownloads" + id).slideDown("fast");
+                $("#divDownloads" + id).parent().css("z-index", 1000);
+            }
+            else {
+                $("#lnkShowDownloads" + id).html("Show Downloads");
+                $("#divDownloads" + id).slideUp("fast");
+            }
+        }
+
+        function pad(num, size) {
+            var s = num + "";
+            while (s.length < size) s = "0" + s;
+            return s;
+        }
+
+
+    </script>
+    
+    <style type="text/css">
+        .CalendarSettingsTable td
+        {
+        	padding-top:8px;
+        }
+    </style>
+    
+</head>
+
+<body id="MainLayout">
+    
+    <form method="post" action="./calendar.aspx" id="aspnetForm" enctype="multipart/form-data">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="1N7V4FaTRPsXQAWgQisV9/uo16XaiBzbZ6OVzQYJ+GxN3OxWElgejzsVMm00eOgepKz3siDxJfz4CoXui20YF2w/3CsnZ3O+c2fjKyUoCJTLD9cEcX/ltrOqS6vDFZ00v0yzSdiCzT8dsLaZm3CNen+QiUsD1qKpH9NmG3lKvrvO72FBH+erjYoi95G+RpKQdI/31tLBjQanZtbrr8qO3w==" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6C54D0EC" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="Bk33HnSph1InW6O7mAF5NWamI3oC7uXxpFiZBzNNOrK6fv3yytbyKVcS+9syMf21tfvJj2WRAS4PnEmZZREVTMiC0qWxSnKgL/5iENpJxCZxNuE7978agy4of1rEHZdr20+6naypzey72SzbKmtsq/KMgWK562cA4TU2sOzPXwAp+E2EJOeA4F2YsQcjH29HMCqKUw7iIEJhTwfsefPw+1mewzEFmhB9YzWkyg96SQ3diDdtHLXzmPLrpN4TQAnX6ue7n1Q+Y5UQfxETOI9hUlAuJy4aLl40cd+zn2RB+QWliQedaTDyLd3i8dNqWqaYY8zZQtErKhsThyRktFj+l+Si8u/ElfjVosoK3uHeHf6WJmoTvpNbwdTrW6TbYJ3ScqivC5Z+0OgsdL+tsBhTHzFEZO7cmH11wAATH6wEaGW3pIlnPtJmrRvn/fBkIL6mujgUme7AWE2BOZgR4n010WE7kWexkZ7kULgeEwyTBVvF8ypk4ufbum9lw3t9Pa6vsVjoglWUa4uMkQnOXyUZCDndip3hs0iqQcCQ2pua0oTUOrmI9u/qDuVGzcZhHLywWURCr9vOsdNwKn0iGxczhn3jcM/XW5Y2yOorZSOYj2SelovGL+zKZLmISwxnb3mXFxqWgjjl9eeBSCIcfGB8R3lrHkZ5NxCYQsGNmKWxbcK7BJ4SX/HlQTjFa21L8ex258PaGo4W8KHAU0dRJ/ZbPbJQ3di4QbkrsoT14YAya3MXqe1qao1fZPI83I2OfuKL7wzFGrbGpyLXZywhqMK/ksQcm15Vok2wc9N2WRfnRSBgxqWQsUVRBu2Zbd9RwHYpL7A2xJzve8/OPDLZrjuoE2M4qWHB1Sobwz800xFBIHPkJhNImCePh4XmrixxDWWNg9eqK5PjlK9wNj/wtktEZgJTJ3mBOHoR5NrKeLZmwZSAYZ5tSaLGoLo2D18OefhtDtH9sujUJcjUdq8KPr1Vk7g5btAMsnMnkjZeDyCMljfG/XfOrAZOgzCgzQ5ZLulB98RgEQLEXOLyY9E6eRpZveIB6mu/GLj6cGtaERlfVvkBkyZXk1+8ImqSwmQjVNJKgc6YMSMgGOyzX1RhuM20hrLw6RZZ37WbSImucivDDecMxrTq+VaXK/GlPRDIe66DGpEHmo54KelgZbtVdFhpTjtlGz3igKALLvhKyZZG7+/srd8NOCO2AxUejF+GnRdzdRALrHdLUFK6Zdp96PQxGG42TJeG6zrTDFsvJBK12nZiFZWBgH+85rMeAvjlLF9pq7S+Yq9xUrkc4YU6cSwSQfxUgnjf42vufvo/ZHEYs0EZI2tQTuwO5wPsGV/2rQxC5BUL/CagNv8AP43G75vloCmQ04UNdbIT8uqu4R20RK39sYZnt9DRHY1RR4OZi++yT6gMPBcUdmn8REp9OllLz92kzJC0/2x/4H5qn4O7Fhdt4ilpIUNp3vkj/CCxtfJfCCAAyT7Am05RdMRxS4Qv50PQxvVk6GJe8nXhyvfCETU5CKLnNIpGJO+eWbNfI+8Xqa4b9u6aNJOJtzFOj3ep+/EaWJSHD6dKuwceH1Qyh41Kr3+9eM7DMWYefO8aVY8Wx7xbXo5TqhTj4uFksPsvjOntJFTzTEOoAds9LSFhbGN7y3cMi2ZO6VHY7yTvxXEtTXQPNlZnJ5WDNJU/rL0t7n8s5YArlpqbtm2okmN20f9s3KD8LdXI3U6bZqu96XctOCKWUngIPKT5ucfzV0ptAyg5T02fxhL6Jw7IXRww2G/umsWA7j3VQHuvLi8JHJQuiDO/Rr9QMqOgXmh/D2Gr2kedYyk+8dpqIenskIZ4ke9p7waE5lg9PR0AzBxBQ5LLR0dHX6e2gj4avSyQNdyNdMksFZbE4AwU+BDoPwDrO0ngzYWv5DMoMBBIy7YIulQZs97DLJG8Mj0vB8JY7memukXDrjjgDzBNiQHxCV1o8czcE4kWKcItAKSArFAALNaQhfLhJfLibsrrGiI0XfAXCJ/agHGh6jtaqSoJNzHYkuPRG+5XWMzNudF1srdH9Upea12KtKvXxPJGnRluJrFkj9gjGBIt8ZrA+TmP8m4XDdKy7SsdLQkzAjTVV1C7MFvoTNIQe4naYyoy1PfaWe2m7GnzLV3GOuuGDen+ZefKmDzF28couUbGfRYSJHK359IieMqx6obS/+ojQSYVMu3ZfBYDl/LhQAp253ArVNNPwbbSIaeNzJ+HYiKBfq1dW8JLbgs8vRoTuvE8/gUJGS1NMdDamZMVMen3W4/HH4z+QJLEOW7M5GAT8c4EeULSTYF1U8s5DdGGdm0ZB9VwBMHkZs5k7pOX/a8FzctwxdjKqM4=" />
+        <div style="display: none">
+            <input type="submit" name="ctl00$btnRefreshPageAfterLogin" value="Button" id="btnRefreshPageAfterLogin" class="btnRefreshPage" />
+            <input name="ctl00$hfShowPopupOnLoad" type="hidden" id="hfShowPopupOnLoad" class="hfShowPopup" />
+        </div>
+        <span id="lblScript"></span>
+  
+    <div id="MainWindow">
+    
+            <div id="Banner" role="banner"  >
+                <img usemap="#bannerMap" src="/Citizens/GetImage.aspx?ID=1017&TimeStamp=638714128770000000" alt="IQM2 Meeting Portal" />
+                <map name="bannerMap">
+                    <area href="/Citizens/Default.aspx" id="lnkBanner" shape="rect" alt="Home" Target="_self" />
+                </map>
+
+                <div id="LogoHeaderTextHolder">
+                    
+                                                                       
+                </div>
+            </div>
+            
+            <div id="ToolStrip" role="navigation" aria-label="site">
+                <div id="Tabs">
+                    <div class="Shadow"></div>
+                    <a href="http://www.cambridgema.gov/" id="lnkMainSite" class="Tab LeftTab"><div><span>&laquo;Back to Main Site</span></div></a>
+                    <a href="/Citizens/default.aspx" class="Tab NormalTab"><div><span id="tabWelcome">Welcome</span></div></a>
+                    <a href="/Citizens/calendar.aspx" class="Tab NormalTab"><div><span id="tabMeetings">Meetings</span></div></a>                
+                    <a href="/Citizens/" style="display:none" class="Tab NormalTab"><div dropdown="Browse"><span>Browse</span></div></a>
+                                        
+                                        
+                    <a href="/Citizens/LegalNotice.aspx" id="lnkNotices" class="Tab NormalTab"><div id="tabNotices"><span>Notices</span></div></a>                                        
+                    <a href="/Citizens/Board" class="Tab NormalTab"><div><span id="tabContactUs">Boards+</span></div></a>                                                        
+                </div>
+                <div id="TopExtraBoxTransparentBG"></div>
+                <div id="TopExtraBox">  
+                    <div id="TopLine">
+                        
+                     <a href="../MasterPages/#" id="lnkLogin" onclick="javascript:return PopupWindowShow(&#39;/Citizens/Login.aspx&#39;);">Log in</a><span id="spnThatOneStupidBar"> | </span><a href="mailto:support@granicus.com" id="lnkHelp">Help</a> <span id="spnHelpBar">|</span> <a href="../MasterPages/#" id="lnkRegister" onclick="javascript:return PopupWindowShow(&#39;/Citizens/MyAccount.aspx&#39;);">Register</a>                                                
+                    </div> 
+                    <div id="BottomLine">                       
+                          
+                    </div>                            
+                   <input name="ctl00$txtQuickSearch" type="text" id="txtQuickSearch" value="Search" title="Search" />
+                   <input type="image" name="ctl00$btnQuickSearch" id="btnQuickSearch" alt="Search" src="/Lib/images/search.png" style="cursor:pointer" />                   
+                </div>     
+            </div>
+                     
+            <table class="LayoutTable" role="presentation">
+                <tr>
+                    <td id="tdLeftPanel" class="LeftPanel">
+                        
+                        <div role="navigation" aria-label="Meeting Group">
+                            
+                        </div>
+                        
+                        <div class="DetailBox">
+                            <img src="/Citizens/images/Print.gif" border="0" alt="Print" />
+                            <a href="/Citizens/calendar.aspx?Print=Yes" id="lnkPrint" class="PrintButton" target="_blank">Print This Page</a>                           
+                        </div>
+                        
+                        
+                                                
+                       <!-- <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 1" />
+                            <a href="#">Quick Link #1</a>
+                        </div>
+                        <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 2"  />
+                            <a href="#">Quick Link #2</a>
+                        </div>     -->
+                                      
+                    </td>
+
+                    <td id="MainContentHolder">
+                        <div style="width:100%;height:100%;position:relative;margin:0;padding:0;border:0;">
+                            <div id="MainContentLeftShadow">                           
+                            </div>   
+                          
+                            <div class="MainContentPlaceholder" role="main">
+                                
+                                
+    
+    <div id="ContentPlaceholder1_NativeView">
+	
+    <div style="display:none">
+        <img src='/Lib/images/Loading_Snake_32x32.gif' alt='Please wait...'/>    
+    </div>
+        
+    <div id="ContentPlaceholder1_pnlStart">
+		
+        <table border="0" width="100%" id="table1" cellpadding="5" role="presentation">
+            <tr>
+		        <td class="PageHeading">Meeting Calendar</td>
+		        <td align="right"><a class="RSSInline" href="/Services/RSS.aspx?Feed=Calendar" title="RSS Calendar"><img src="images/RSS_60x20.png" alt="RSS Calendar" /></a></td>
+            </tr>
+            <tr>
+		        <td colspan="2" align="left" valign="top" width="100%" role="presentation">
+                    <table cellspacing="3" class="CalendarSettingsTable">
+                        <tr><td colspan="2" style="color:#777777; font-style:italic; padding-bottom: 6px;"><span id="ContentPlaceholder1_lblFilterSummary">Displaying 16 meetings from 1/1/2025 to 12/31/2025 for All Meeting Groups</span></td></tr>
+                        <tr><td valign="top" ><strong>Date:</strong></td><td><span id="ContentPlaceholder1_lblCalendarRange"><a href='/Citizens/calendar.aspx?From=1/1/2025&To=12/31/2025'><strong>2025</strong><span class='hidden-date'>Selected</span></a>, <a href='/Citizens/calendar.aspx?From=1/1/2024&To=12/31/2024'>2024</a>, <a href='/Citizens/calendar.aspx?From=1/1/2023&To=12/31/2023'>2023</a>, <a href='/Citizens/calendar.aspx?From=1/1/2022&To=12/31/2022'>2022</a>, <a href='/Citizens/calendar.aspx?From=1/1/2021&To=12/31/2021'>2021</a>, <a href='/Citizens/calendar.aspx?From=1/1/2020&To=12/31/2020'>2020</a>, <a href='/Citizens/calendar.aspx?From=1/1/2019&To=12/31/2019'>2019</a>, <a href='/Citizens/calendar.aspx?From=1/1/2018&To=12/31/2018'>2018</a>, <a href='/Citizens/calendar.aspx?From=1/1/2017&To=12/31/2017'>2017</a>, <a href='/Citizens/calendar.aspx?From=1/1/2016&To=12/31/2016'>2016</a>, <a href='/Citizens/calendar.aspx?From=1/1/2015&To=12/31/2015'>2015</a>, <a href='/Citizens/calendar.aspx?From=1/1/2014&To=12/31/2014'>2014</a>, <a href='/Citizens/calendar.aspx?From=1/1/2013&To=12/31/2013'>2013</a>, <a href='#' id='lnkSeeMoreYears' onclick='javascript:$("#divHiddenMeetings").show(); $("#lnkSeeMoreYears").css("display","none")'>See More...</a> <span style='display:none' id='divHiddenMeetings'><a href='/Citizens/calendar.aspx?From=1/1/2012&To=12/31/2012'>2012</a>, <a href='/Citizens/calendar.aspx?From=1/1/2011&To=12/31/2011'>2011</a>, <a href='/Citizens/calendar.aspx?From=1/1/2010&To=12/31/2010'>2010</a>, <a href='/Citizens/calendar.aspx?From=1/1/2009&To=12/31/2009'>2009</a>, <a href='/Citizens/calendar.aspx?From=1/1/2008&To=12/31/2008'>2008</a>, <a href='/Citizens/calendar.aspx?From=1/1/2007&To=12/31/2007'>2007</a>, <a href='/Citizens/calendar.aspx?From=1/1/2006&To=12/31/2006'>2006</a>, <a href='/Citizens/calendar.aspx?From=1/1/2005&To=12/31/2005'>2005</a>, <a href='/Citizens/calendar.aspx?From=1/1/2004&To=12/31/2004'>2004</a>, <a href='/Citizens/calendar.aspx?From=1/1/2003&To=12/31/2003'>2003</a>, <a href='/Citizens/calendar.aspx?From=1/1/2002&To=12/31/2002'>2002</a>, <a href='/Citizens/calendar.aspx?From=1/1/1900&To=12/31/9999'>All</a></span></td></tr>
+                        <tr><td valign="top" ><label for="ContentPlaceholder1_DepartmentID" style="font-weight: bold;">Group:</label></td><td><select name="ctl00$ContentPlaceholder1$DepartmentID" id="ContentPlaceholder1_DepartmentID" class="MeetingGroupDropdown">
+			<option selected="selected" value="0">All Meeting Groups</option>
+			<option value="1109">Affirmative Action Committee</option>
+			<option value="1110">Affordable Housing Trust Board</option>
+			<option value="1146">Arts Council Advisory Board</option>
+			<option value="1111">Avon Hill Neighborhood Conservation District Commission</option>
+			<option value="1101">Bicycle Committee</option>
+			<option value="1136">Biosafety Committee</option>
+			<option value="1185">BIPOC Business Advisory Committee</option>
+			<option value="1112">Board of Assessors</option>
+			<option value="1147">Board of Survey</option>
+			<option value="1113">Board of Zoning Appeal</option>
+			<option value="1205">Broadway Safety Improvement Project Working Group</option>
+			<option value="1184">Cambridge Advisory Committee on Public Art, Memorials and Markers</option>
+			<option value="1102">Cambridge Affordable Housing Trust</option>
+			<option value="1151">Cambridge Animal Commission</option>
+			<option value="1182">Cambridge Cemetery Master Plan Review Group</option>
+			<option value="1119">Cambridge Climate Committee</option>
+			<option value="1153">Cambridge Election Commission</option>
+			<option value="1115">Cambridge Health Policy Board</option>
+			<option value="1116">Cambridge Housing Authority</option>
+			<option value="1204">Cambridge Kiosk Advisory Committee</option>
+			<option value="1157">Cambridge Public Planting Committee</option>
+			<option value="1137">Cambridge Redevelopment Authority</option>
+			<option value="1158">Cambridge Retirement Board</option>
+			<option value="1198">Cambridge Veterans Advisory Committee</option>
+			<option value="1117">Central Square Advisory Committee</option>
+			<option value="1189">Charter Review Committee</option>
+			<option value="1096">Citizens&#39; Committee on Civic Unity</option>
+			<option value="1000">City Council</option>
+			<option value="1192">City Manager Evaluation Sub-Committee</option>
+			<option value="1163">City Manager&#39;s Advisory Committee</option>
+			<option value="1176">City Manager&#39;s Digital Equity Working Group</option>
+			<option value="1155">City Manager&#39;s Office</option>
+			<option value="1069">Civic Unity Committee</option>
+			<option value="1120">Commercial Parking Control Committee</option>
+			<option value="1149">Commission for Persons with Disabilities Advisory Board</option>
+			<option value="1121">Commission on Immigrant Rights and Citizenship</option>
+			<option value="1122">Commission on the Status of Women</option>
+			<option value="1123">Community Advisory Board on the Living Wage</option>
+			<option value="1162">Community Benefits Advisory Committee</option>
+			<option value="1138">Community Preservation Act Committee</option>
+			<option value="1152">Conservation Commission</option>
+			<option value="1124">Consumer Advisory Committee</option>
+			<option value="1139">Council on Aging</option>
+			<option value="1199">Danehy Park Improvement Plan Working Group</option>
+			<option value="1200">Dedication Committee</option>
+			<option value="1060">Economic Development &amp; University Relations Committee</option>
+			<option value="1140">Family Policy Council</option>
+			<option value="1057">Finance Committee</option>
+			<option value="1125">Food and Fitness Policy Council</option>
+			<option value="1166">Foundry Advisory Committee</option>
+			<option value="1150">Fresh Pond Master Plan Advisory Board</option>
+			<option value="1175">Future of Mobility Advisory Group</option>
+			<option value="1058">Government Operations, Rules &amp; Claims Committee</option>
+			<option value="1174">Grand Junction Design Working Group</option>
+			<option value="1126">Half Crown-Marsh Neighborhood Conservation District Commission</option>
+			<option value="1127">Harvard Square Advisory Committee</option>
+			<option value="1165">Harvard Square Conservation District Study Committee</option>
+			<option value="1160">Harvard Square Kiosk Working Group</option>
+			<option value="1066">Health &amp; Environment Committee</option>
+			<option value="1128">Historical Commission</option>
+			<option value="1201">Housing Committe and Finance Committee</option>
+			<option value="1059">Housing Committee</option>
+			<option value="1030">Human Rights Commission</option>
+			<option value="1065">Human Services &amp; Veterans Committee</option>
+			<option value="1142">Human Services Commission</option>
+			<option value="1181">Leaf Blower Use Review Group</option>
+			<option value="1141">Lesbian, Gay, Bisexual, Transgender, Queer, Plus (LGBTQ+) Commission</option>
+			<option value="1191">LGBTQ+ Housing TF</option>
+			<option value="1129">Library Board of Trustees</option>
+			<option value="1038">License Commission</option>
+			<option value="1190">Mass Ave Partial Construction Working Group</option>
+			<option value="1194">Mass Ave Planning Study Working Group (Cambridge Common to Alewife Brook Parkway)</option>
+			<option value="1130">Mid Cambridge Neighborhood Conservation District</option>
+			<option value="1067">Neighborhood &amp; Long Term Planning, Public Facilities, Arts &amp; Celebration Committee</option>
+			<option value="1177">Net Zero Action Plan Task Force</option>
+			<option value="1143">Open Data Review Board</option>
+			<option value="1056">Ordinance Committee</option>
+			<option value="1100">Ordinance Committee and the Health and Environment Committee</option>
+			<option value="1040">Peace Commission</option>
+			<option value="1131">Pedestrian Committee</option>
+			<option value="1071">Planning Board</option>
+			<option value="1132">Pole &amp; Conduit Commission</option>
+			<option value="1043">Police Review &amp; Advisory Board</option>
+			<option value="1156">Public Arts Commission</option>
+			<option value="1145">Public Planting Committee</option>
+			<option value="1070">Public Safety Committee</option>
+			<option value="1098">Public Safety Committee and Housing Committee</option>
+			<option value="1108">Recycling Advisory Committee (RAC)</option>
+			<option value="1173">River Street Advisory Committee</option>
+			<option value="1202">Safety Improvement Project on Cambridge Street Working Group</option>
+			<option value="1206">Special Committee of the Whole</option>
+			<option value="1183">The Port Infrastructure Project Working Group</option>
+			<option value="1134">Traffic Board</option>
+			<option value="1159">Transit Advisory Committee</option>
+			<option value="1068">Transportation &amp; Public Utilities Committee</option>
+			<option value="1167">Urban Forest Master Plan Task Force</option>
+			<option value="1161">Vision Zero Advisory Committee</option>
+			<option value="1135">Water Board</option>
+
+		</select></td></tr>
+                        <tr><td valign="top" ><strong>View:</strong></td><td><a href="/Citizens/calendar.aspx?View=List" id="ContentPlaceholder1_lnkListView" style="font-weight:bold;">List<span class="hidden-date">Selected</span></a>&nbsp;|&nbsp;<a href="/Citizens/calendar.aspx?View=Calendar" id="ContentPlaceholder1_lnkCalendarView" style="font-weight:;">Calendar</a></td></tr>
+                    </table>
+                    
+                    <br />
+                
+                    <div id="ContentPlaceholder1_pnlMeetings" class="Section">
+                                                
+                         
+
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_0" class="Row MonthHeader">January, 2025</div>
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="MONDAY, JANUARY 6, 2025  5:30 PM&#13;&#13;Board:&#09;City Council&#13;Type:&#09;Regular Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4630" title="MONDAY, JANUARY 6, 2025  5:30 PM&#13;&#13;Board:&#09;City Council&#13;Type:&#09;Regular Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" >Jan 6, 2025 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_0" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=4168&Inline=True' class='' target='_blank'>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=4168&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_0" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_0" class="MainScreenText RowDetails">City Council - Regular Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingCancelled.png' style='cursor:help;' title="TUESDAY, JANUARY 7, 2025  2:30 PM&#13;&#13;Board:&#09;Ordinance Committee&#13;Type:&#09;Committee Meeting&#13;Status:&#09;Cancelled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4628" title="TUESDAY, JANUARY 7, 2025  2:30 PM&#13;&#13;Board:&#09;Ordinance Committee&#13;Type:&#09;Committee Meeting&#13;Status:&#09;Cancelled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" >Jan 7, 2025 2:30 PM </a></div>                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_CancelledMessage_1" class="RowRight"><span class='MeetingCancelled'>Cancelled</span></div>                
+                
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_1" class="MainScreenText RowDetails">Ordinance Committee - Committee Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JANUARY 7, 2025  6:30 PM&#13;&#13;Board:&#09;Planning Board&#13;Type:&#09;Planning Board Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Remote Meeting&#13;&#09;Remote Meeting, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4623" title="TUESDAY, JANUARY 7, 2025  6:30 PM&#13;&#13;Board:&#09;Planning Board&#13;Type:&#09;Planning Board Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Remote Meeting&#13;&#09;Remote Meeting, Cambridge, MA  02139" >Jan 7, 2025 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_2" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=4169&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_2" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_2" class="MainScreenText RowDetails">Planning Board - Planning Board Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingChangedIcon.gif' style='cursor:help;' title="WEDNESDAY, JANUARY 8, 2025  1:00 PM&#13;&#13;MEETING UPDATED - Please open for details&#13;&#13;Board:&#09;Neighborhood & Long Term Planning, Public Facilities, Arts & Celebration Committee&#13;Type:&#09;Committee Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4640" title="WEDNESDAY, JANUARY 8, 2025  1:00 PM&#13;&#13;MEETING UPDATED - Please open for details&#13;&#13;Board:&#09;Neighborhood & Long Term Planning, Public Facilities, Arts & Celebration Committee&#13;Type:&#09;Committee Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" >Jan 8, 2025 1:00 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_3" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=4170&Inline=True' class='' target='_blank'>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=4170&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_3" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_3" class="MainScreenText RowDetails">Neighborhood & Long Term Planning, Public Facilities, Arts & Celebration Committee - Committee Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingChangedIcon.gif' style='cursor:help;' title="WEDNESDAY, JANUARY 8, 2025  5:00 PM&#13;&#13;MEETING UPDATED - Please open for details&#13;&#13;Board:&#09;Ordinance Committee&#13;Type:&#09;Committee Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4637" title="WEDNESDAY, JANUARY 8, 2025  5:00 PM&#13;&#13;MEETING UPDATED - Please open for details&#13;&#13;Board:&#09;Ordinance Committee&#13;Type:&#09;Committee Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" >Jan 8, 2025 5:00 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_4" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=4163&Inline=True' class='' target='_blank'>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=4163&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_4" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_4" class="MainScreenText RowDetails">Ordinance Committee - Committee Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="THURSDAY, JANUARY 9, 2025  6:00 PM&#13;&#13;Board:&#09;Board of Zoning Appeal&#13;Type:&#09;Hearing – Remote Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Remote Meeting&#13;&#09;Remote Meeting, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4638" title="THURSDAY, JANUARY 9, 2025  6:00 PM&#13;&#13;Board:&#09;Board of Zoning Appeal&#13;Type:&#09;Hearing – Remote Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Remote Meeting&#13;&#09;Remote Meeting, Cambridge, MA  02139" >Jan 9, 2025 6:00 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_5" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=4165&Inline=True' class='' target='_blank'>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=4165&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_5" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_5" class="MainScreenText RowDetails">Board of Zoning Appeal - Hearing – Remote Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="MONDAY, JANUARY 13, 2025  5:30 PM&#13;&#13;Board:&#09;City Council&#13;Type:&#09;Roundtable/Working Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4631" title="MONDAY, JANUARY 13, 2025  5:30 PM&#13;&#13;Board:&#09;City Council&#13;Type:&#09;Roundtable/Working Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" >Jan 13, 2025 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_6" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=4167&Inline=True' class='' target='_blank'>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=4167&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_6" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_6" class="MainScreenText RowDetails">City Council - Roundtable/Working Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingChangedIcon.gif' style='cursor:help;' title="THURSDAY, JANUARY 16, 2025  3:00 PM&#13;&#13;MEETING UPDATED - Please open for details&#13;&#13;Board:&#09;Ordinance Committee&#13;Type:&#09;Committee Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4629" title="THURSDAY, JANUARY 16, 2025  3:00 PM&#13;&#13;MEETING UPDATED - Please open for details&#13;&#13;Board:&#09;Ordinance Committee&#13;Type:&#09;Committee Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" >Jan 16, 2025 3:00 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_7" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=4157&Inline=True' class='' target='_blank'>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=4157&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_7" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_7" class="MainScreenText RowDetails">Ordinance Committee - Committee Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="MONDAY, JANUARY 27, 2025  11:00 AM&#13;&#13;Board:&#09;Special Committee of the Whole&#13;Type:&#09;Special Committee of the Whole&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4636" title="MONDAY, JANUARY 27, 2025  11:00 AM&#13;&#13;Board:&#09;Special Committee of the Whole&#13;Type:&#09;Special Committee of the Whole&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" >Jan 27, 2025 11:00 AM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_8" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=4162&Inline=True' class='' target='_blank'>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=4162&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_8" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_8" class="MainScreenText RowDetails">Special Committee of the Whole - Special Committee of the Whole</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="MONDAY, JANUARY 27, 2025  5:30 PM&#13;&#13;Board:&#09;City Council&#13;Type:&#09;Regular Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4632" title="MONDAY, JANUARY 27, 2025  5:30 PM&#13;&#13;Board:&#09;City Council&#13;Type:&#09;Regular Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" >Jan 27, 2025 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_9" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_9" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_9" class="MainScreenText RowDetails">City Council - Regular Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow" style='border-bottom:0;'  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JANUARY 28, 2025  3:00 PM&#13;&#13;Board:&#09;Transportation & Public Utilities Committee&#13;Type:&#09;Committee Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4639" title="TUESDAY, JANUARY 28, 2025  3:00 PM&#13;&#13;Board:&#09;Transportation & Public Utilities Committee&#13;Type:&#09;Committee Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" >Jan 28, 2025 3:00 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_10" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=4166&Inline=True' class='' target='_blank'>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=4166&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_10" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_10" class="MainScreenText RowDetails">Transportation & Public Utilities Committee - Committee Meeting</div></div>            
+        </div>
+    
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_11" class="Row MonthHeader">February, 2025</div>
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="MONDAY, FEBRUARY 3, 2025  5:30 PM&#13;&#13;Board:&#09;City Council&#13;Type:&#09;Regular Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4633" title="MONDAY, FEBRUARY 3, 2025  5:30 PM&#13;&#13;Board:&#09;City Council&#13;Type:&#09;Regular Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" >Feb 3, 2025 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_11" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_11" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_11" class="MainScreenText RowDetails">City Council - Regular Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, FEBRUARY 4, 2025  6:30 PM&#13;&#13;Board:&#09;Planning Board&#13;Type:&#09;Planning Board Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Remote Meeting&#13;&#09;Remote Meeting, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4641" title="TUESDAY, FEBRUARY 4, 2025  6:30 PM&#13;&#13;Board:&#09;Planning Board&#13;Type:&#09;Planning Board Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Remote Meeting&#13;&#09;Remote Meeting, Cambridge, MA  02139" >Feb 4, 2025 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_12" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_12" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_12" class="MainScreenText RowDetails">Planning Board - Planning Board Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="MONDAY, FEBRUARY 10, 2025  5:30 PM&#13;&#13;Board:&#09;City Council&#13;Type:&#09;Regular Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4634" title="MONDAY, FEBRUARY 10, 2025  5:30 PM&#13;&#13;Board:&#09;City Council&#13;Type:&#09;Regular Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" >Feb 10, 2025 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_13" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_13" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_13" class="MainScreenText RowDetails">City Council - Regular Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, FEBRUARY 11, 2025  6:30 PM&#13;&#13;Board:&#09;Planning Board&#13;Type:&#09;Planning Board Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Remote Meeting&#13;&#09;Remote Meeting, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4642" title="TUESDAY, FEBRUARY 11, 2025  6:30 PM&#13;&#13;Board:&#09;Planning Board&#13;Type:&#09;Planning Board Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Remote Meeting&#13;&#09;Remote Meeting, Cambridge, MA  02139" >Feb 11, 2025 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_14" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_14" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_14" class="MainScreenText RowDetails">Planning Board - Planning Board Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="MONDAY, FEBRUARY 24, 2025  5:30 PM&#13;&#13;Board:&#09;City Council&#13;Type:&#09;Regular Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=4635" title="MONDAY, FEBRUARY 24, 2025  5:30 PM&#13;&#13;Board:&#09;City Council&#13;Type:&#09;Regular Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Sullivan Chamber&#13;&#09;Cambridge City Hall, 795 Massachusetts Ave, Cambridge, MA  02139" >Feb 24, 2025 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_15" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Final Actions</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_15" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_15" class="MainScreenText RowDetails">City Council - Regular Meeting</div></div> 
+        </div>
+    
+
+                    
+                    </div>     
+                    
+                                                    
+                </td>
+            </tr>
+        </table>
+    
+	</div>
+    
+    <br />
+
+    
+ 
+</div>
+    
+                            </div>
+                        </div>                                                           
+                    </td>
+                </tr>               
+            </table>                                
+        </div>
+        
+    <div id="Footer" role="contentinfo">
+        <br />
+        <span id="lblPoweredBy">
+            Powered by <a href="https://granicus.com/" target="_blank" >Granicus</a>
+        </span>
+    </div>
+
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-21761819-8'></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+  gtag('config', 'UA-21761819-8');</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-70364301-2'></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+  gtag('config', 'UA-70364301-2');</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    
+        <!-- Popup Menus -->
+        <div id="mnuBrowse" class="PopupMenu" dropdown="Browse">
+            <ul>
+                <li><a href="#">Legislative Files</a></li>
+                <li><a href="#">Legal Notices</a></li>
+                <li><a href="#">Some other Sort of Thing</a></li>
+            </ul>
+        </div>
+
+    
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){woopra.identify({ email:"", name:"Anonymous User", agency:"CambridgeMA", userlogin:"Anonymous"}).push(); })//]]>
+</script>
+</form>
+</body>
+</html>
+
+
