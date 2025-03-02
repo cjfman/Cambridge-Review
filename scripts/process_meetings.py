@@ -1088,6 +1088,10 @@ def processMeeting(args, meeting) -> Dict[str, List[Any]]:
     table = soup.find('table', {'class': 'MeetingDetail'})
     if table is None:
         print_red("Error: Failed to find meeting details")
+        try:
+            os.remove(meeting_path)
+        except:
+            pass
         return None
 
     item  = None
