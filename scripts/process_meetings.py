@@ -139,22 +139,7 @@ POR_HDRS = (
     "Notes",
 )
 
-ORD_HDRS = (
-    "Unique Identifier",
-    "Meeting",
-    "Meeting Date",
-    "Amended",
-    "Outcome",
-    "Vote",
-    "Yeas",
-    "Nays",
-    "Present",
-    "Absent",
-    "Recused",
-    "Link",
-    "Summary",
-    "Notes",
-)
+ORD_HDRS = POR_HDRS
 
 AR_HDRS = (
     "Unique Identifier",
@@ -510,44 +495,10 @@ class PolicyOrder(AgendaItem):
 
 
 @dataclass
-class Ordinance(AgendaItem):
-    uid:      str
-    num:      int
-    url:      str
-    action:        str  = ""
-    vote:          str  = ""
-    amended:       str  = ""
-    description:   str  = ""
-    final_action:  dict = None
-    meeting_uid:   str  = ""
-    meeting_date:  str  = ""
-    notes:         str  = ""
-
+class Ordinance(PolicyOrder):
     @property
     def type(self):
         return "ORD"
-
-    def to_dict(self):
-        return {
-            "Unique Identifier": self.uid,
-            "Link":              self.url,
-            "Outcome":           self.action,
-            "Vote":              self.vote,
-            "Amended":           self.amended,
-            "Summary":           self.description,
-            "Meeting":           self.meeting_uid,
-            "Meeting Date":      self.meeting_date,
-            "Notes":             self.notes,
-        }
-
-    def __str__(self):
-        msg = " ".join([self.uid, self.meeting_uid])
-        if self.notes:
-            msg += " - " + self.notes
-        if len(self.description) > MAX_MSG_LEN:
-            return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
-
-        return msg + " - " + self.description
 
     def __repr__(self):
         return f"[Ordinance: {str(self)}]"
@@ -1085,21 +1036,24 @@ def processRes(args, uid, num, title, link, vote, action) -> Resolution:
     return Resolution(uid, num, category, link, sponsors[0], sponsors[1:], action, vote, title, history)
 
 
-def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
+def processPorOrdHlpr(args, uid, num, title, link, vote, action) -> Tuple:
     """Process a policy order agenda item"""
     ## Fetch Res page from city website
-    por_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, por_path, force=args.force_fetch)
+    path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
+    fetched = fetchUrl(link, path, force=args.force_fetch)
     soup = BeautifulSoup(fetched, 'html.parser')
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
+    sponsors = []
+    charter_right = ''
     sponsors = [lookUpCouncillorName(x.strip()) for x in table['Sponsors'].split(',')]
     charter_right = findCharterRight(soup)
 
     ## Amended
     amended = ""
-    if action == "Adopted as Amended":
+    match = re.match(r"(\w+) as Amended", action)
+    if match:
         amended = "Yes"
-        action = "Adopted"
+        action = match.groups()[0]
 
     ## History
     history_table = findTag(soup, 'table', 'MeetingHistory')
@@ -1118,38 +1072,15 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
     elif VERBOSE:
         print(f"No meeting history for {uid}")
 
-    return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, amended, charter_right, title, history)
+    return (uid, num, link, sponsors[0], sponsors[1:], action, vote, amended, charter_right, title, history)
 
 
-def processOrd(args, uid, num, title, link, vote, action) -> Ordinance:
-    por_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, por_path, force=args.force_fetch)
-    soup = BeautifulSoup(fetched, 'html.parser')
-    #table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
-    ## Amended
-    amended = ""
-    if action == "Ordained as Amended":
-        amended = "Yes"
-        action = "Ordained"
+def processPor(*args) -> PolicyOrder:
+    return PolicyOrder(*processPorOrdHlpr(*args))
 
-    ## History
-    history_table = findTag(soup, 'table', 'MeetingHistory')
-    history = None
-    if history_table:
-        try:
-            history = processHistory(history_table)
-            if VERBOSE and args.meeting:
-                print(f"Meeting history for {uid}\n", history)
-        except Exception as e:
-            print_red(f"Error: Failed to process history for {uid}: {e}")
-            if VERBOSE or args.exit_on_error:
-                traceback.print_exc()
-            if args.exit_on_error:
-                raise e
-    elif VERBOSE:
-        print(f"No meeting history for {uid}")
 
-    return Ordinance(uid, num, link, action, vote, amended, title, history)
+def processOrd(*args) -> Ordinance:
+    return Ordinance(*processPorOrdHlpr(*args))
 
 
 def processAr(args, item):
@@ -1433,7 +1364,7 @@ def setupOutputFiles(output_dir):
         ('COM', COM_HDRS, "communications.csv"),
         ('RES', RES_HDRS, "resolutions.csv"),
         ('POR', POR_HDRS, "policy_orders.csv"),
-        ('ORD', POR_HDRS, "ordinances.csv"),
+        ('ORD', ORD_HDRS, "ordinances.csv"),
         ('AR',  AR_HDRS,  "awaiting_reports.csv"),
     )
     for key, hdrs, name in sets:
