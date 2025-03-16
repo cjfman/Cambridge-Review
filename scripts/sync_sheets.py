@@ -33,6 +33,7 @@ item_sheet_keys = (
     'com',
     'res',
     'por',
+    'ord',
     'ar',
 )
 
@@ -43,6 +44,7 @@ sheet_name_map = {
     'com':      'Communications',
     'res':      'Resolutions',
     'por':      "Policy Orders",
+    'ord':      "Ordinances",
     'ar':       "Awaiting Reports",
 }
 
@@ -52,7 +54,8 @@ item_csv_map = {
     'cma': 'cma.csv',
     'com': 'communications.csv',
     'por': 'policy_orders.csv',
-    'res': 'resolutions.csv'
+    'ord': 'ordinances.csv',
+    'res': 'resolutions.csv',
 }
 
 item_vote_col = {
@@ -60,6 +63,7 @@ item_vote_col = {
     'cma': 'L',
     'app': 'L',
     'res': 'J',
+    'ord': 'L',
 }
 
 por_col_map = {
@@ -139,6 +143,10 @@ res_col_map = {
 res_idx_map = { x: ord(y.upper()) - ord('A') for x, y in res_col_map.items() }
 res_row_size = max(res_idx_map.values()) + 1
 
+ord_col_map  = por_col_map.copy()
+ord_idx_map  = por_idx_map.copy()
+ord_row_size = por_row_size
+
 ar_col_map = {
     "Unique Identifier": "A",
     "Department":        "B",
@@ -176,6 +184,7 @@ item_mappings = {
     'app': (app_col_map, app_idx_map, app_row_size),
     'com': (com_col_map, com_idx_map, com_row_size),
     'res': (res_col_map, res_idx_map, res_row_size),
+    'ord': (ord_col_map, ord_idx_map, ord_row_size),
     'ar':  (ar_col_map, ar_idx_map, ar_row_size),
     'meetings':  (meetings_col_map, meetings_idx_map, meetings_row_size),
 }
