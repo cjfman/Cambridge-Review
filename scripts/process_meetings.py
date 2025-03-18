@@ -139,7 +139,26 @@ POR_HDRS = (
     "Notes",
 )
 
-ORD_HDRS = POR_HDRS
+ORD_HDRS = (
+    "Unique Identifier",
+    "Meeting",
+    "Meeting Date",
+    "Sponsor",
+    "Co-Sponsors",
+    "CMA",
+    "Policy Order",
+    "Amended",
+    "Outcome",
+    "Vote",
+    "Yeas",
+    "Nays",
+    "Present",
+    "Absent",
+    "Recused",
+    "Link",
+    "Summary",
+    "Notes",
+)
 
 AR_HDRS = (
     "Unique Identifier",
@@ -496,9 +515,50 @@ class PolicyOrder(AgendaItem):
 
 @dataclass
 class Ordinance(PolicyOrder):
+    uid: str
+    url: str
+    cma:           str  = ""
+    order:         str  = ""
+    sponsor:       str  = ""
+    cosponsors:    str  = ""
+    action:        str  = ""
+    vote:          str  = ""
+    amended:       str  = ""
+    description:   str  = ""
+    final_action:  dict = None
+    meeting_uid:   str  = ""
+    meeting_date:  str  = ""
+    notes:         str  = ""
+
     @property
     def type(self):
         return "ORD"
+
+    def to_dict(self):
+        return {
+            "Unique Identifier": self.uid,
+            "Link":              self.url,
+            "CMA":               self.cma,
+            "Policy Order":      self.order,
+            "Sponsor":           self.sponsor,
+            "Co-Sponsors":       ",".join(self.cosponsors),
+            "Outcome":           self.action,
+            "Vote":              self.vote,
+            "Amended":           self.amended,
+            "Summary":           self.description,
+            "Meeting":           self.meeting_uid,
+            "Meeting Date":      self.meeting_date,
+            "Notes":             self.notes,
+        }
+
+    def __str__(self):
+        msg = " ".join([self.uid, self.sponsor, self.meeting_uid])
+        if self.notes:
+            msg += " - " + self.notes
+        if len(self.description) > MAX_MSG_LEN:
+            return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
+
+        return msg + " - " + self.description
 
     def __repr__(self):
         return f"[Ordinance: {str(self)}]"
@@ -551,6 +611,19 @@ class AwaitingReport(AgendaItem):
 
     def __repr__(self):
         return f"[AwaitingReport: {str(self)}]"
+
+@dataclass
+class ItemInfo:
+    category:      str  = ""
+    charter_right: str  = ""
+    cma:           str  = ""
+    order:         str  = ""
+    awaiting:      str  = ""
+    action:        str  = ""
+    amended:       str  = ""
+    history:       dict = None
+    sponsor:       list = None
+    cosponsors:    list = None
 
 
 def expandUrl(base, url) -> str:
@@ -872,33 +945,44 @@ def processItem(args, row, num):
     return None
 
 
-def processCma(args, uid, num, title, link, vote, action) -> CMA:
-    """Process a CMA agenda item"""
+def processItemInfo(args, uid, link, action) -> ItemInfo:
     ## Fetch CMA page from city website
-    cma_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, cma_path, force=args.force_fetch)
+    path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
+    fetched = fetchUrl(link, path, force=args.force_fetch)
     soup = BeautifulSoup(fetched, 'html.parser')
     charter_right = findCharterRight(soup)
 
     ## Category
     info_div = findTag(soup, 'div', 'LegiFileInfo')
     table = processKeyWordTable(findTag(info_div, 'table', 'LegiFileSectionContents'))
+    sponsors = [lookUpCouncillorName(x.strip()) for x in table['Sponsors'].split(',')]
     category = table['Category']
     if category.lower() == "transmitting communication":
         category = "Communication"
 
+    ## Amended
+    amended = ""
+    match = re.match(r"(\w+) as Amended", action)
+    if match:
+        amended = "Yes"
+        action = match.groups()[0]
+
     ## Origins if any
+    cma      = ""
+    order    = ""
     awaiting = ""
-    order = ""
     links = processResLinks(soup)
     if 'origin' in links:
         for o_name, _ in links['origin']:
+            match = re.search(r"^(CMA \d+ # ?\d+)\s+:", o_name)
+            if match:
+                order = match.groups()[0]
+            match = re.search(r"^(POR \d+ # ?\d+)\s+:", o_name)
+            if match:
+                order = match.groups()[0]
             match = re.search(r"^(AR\S+)\s+:", o_name)
             if match:
                 awaiting = match.groups()[0]
-            match = re.search(r"^(POR \d+ #\d+)\s+:", o_name)
-            if match:
-                order = match.groups()[0]
 
     ## History
     history_table = findTag(soup, 'table', 'MeetingHistory')
@@ -913,18 +997,19 @@ def processCma(args, uid, num, title, link, vote, action) -> CMA:
             if args.exit_on_error:
                 raise e
 
-    return CMA(uid, num, category, awaiting, order, link, action, vote, charter_right, title, history)
+    return ItemInfo(category, charter_right, cma, order, awaiting, action, amended, history, sponsors[0], sponsors[1:])
+
+
+def processCma(args, uid, num, title, link, vote, action) -> CMA:
+    """Process a CMA agenda item"""
+    info = processItemInfo(args, uid, link, action)
+    return CMA(uid, num, info.category, info.awaiting, info.order, link, action, vote, info.charter_right, title, info.history)
 
 
 def processApp(args, uid, num, title, link, vote, action) -> Application:
     """Process an application agenda item"""
     ## pylint: disable=unused-argument
-    app_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, app_path, force=args.force_fetch)
-    soup = BeautifulSoup(fetched, 'html.parser')
-    charter_right = findCharterRight(soup)
-    table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
-    category = table['Category']
+    info = processItemInfo(args, uid, link, action)
 
     ## Attempt to get the name
     name    = ""
@@ -943,20 +1028,7 @@ def processApp(args, uid, num, title, link, vote, action) -> Application:
     if match:
         address = match.groups()[0]
 
-    ## History
-    history_table = findTag(soup, 'table', 'MeetingHistory')
-    history = None
-    if history_table:
-        try:
-            history = processHistory(history_table)
-        except Exception as e:
-            print_red(f"Error: Failed to process history for {uid}: {e}")
-            if VERBOSE or args.exit_on_error:
-                traceback.print_exc()
-            if args.exit_on_error:
-                raise e
-
-    return Application(uid, num, category, name, subject, link, action, vote, charter_right, address, history)
+    return Application(uid, num, info.category, name, subject, link, action, vote, info.charter_right, address, info.history)
 
 
 def processCom(args, uid, num, title, link, vote, action) -> Communication:
@@ -1012,75 +1084,21 @@ def processCom(args, uid, num, title, link, vote, action) -> Communication:
 
 def processRes(args, uid, num, title, link, vote, action) -> Resolution:
     """Process a resolution agenda item"""
-    ## Fetch Res page from city website
-    res_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, res_path, force=args.force_fetch)
-    soup = BeautifulSoup(fetched, 'html.parser')
-    table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
-    category = table['Category']
-    sponsors = [lookUpCouncillorName(x.strip()) for x in table['Sponsors'].split(',')]
-
-    ## History
-    history_table = findTag(soup, 'table', 'MeetingHistory')
-    history = None
-    if history_table:
-        try:
-            history = processHistory(history_table)
-        except Exception as e:
-            print_red(f"Error: Failed to process history for {uid}: {e}")
-            if VERBOSE or args.exit_on_error:
-                traceback.print_exc()
-            if args.exit_on_error:
-                raise e
-
-    return Resolution(uid, num, category, link, sponsors[0], sponsors[1:], action, vote, title, history)
+    info = processItemInfo(args, uid, link, action)
+    return Resolution(uid, num, info.category, link, info.sponsor, info.cosponsors, info.action, vote, title, info.history)
 
 
-def processPorOrdHlpr(args, uid, num, title, link, vote, action) -> Tuple:
+def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
     """Process a policy order agenda item"""
-    ## Fetch Res page from city website
-    path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, path, force=args.force_fetch)
-    soup = BeautifulSoup(fetched, 'html.parser')
-    table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
-    sponsors = []
-    charter_right = ''
-    sponsors = [lookUpCouncillorName(x.strip()) for x in table['Sponsors'].split(',')]
-    charter_right = findCharterRight(soup)
-
-    ## Amended
-    amended = ""
-    match = re.match(r"(\w+) as Amended", action)
-    if match:
-        amended = "Yes"
-        action = match.groups()[0]
-
-    ## History
-    history_table = findTag(soup, 'table', 'MeetingHistory')
-    history = None
-    if history_table:
-        try:
-            history = processHistory(history_table)
-            if VERBOSE and args.meeting:
-                print(f"Meeting history for {uid}\n", history)
-        except Exception as e:
-            print_red(f"Error: Failed to process history for {uid}: {e}")
-            if VERBOSE or args.exit_on_error:
-                traceback.print_exc()
-            if args.exit_on_error:
-                raise e
-    elif VERBOSE:
-        print(f"No meeting history for {uid}")
-
-    return (uid, num, link, sponsors[0], sponsors[1:], action, vote, amended, charter_right, title, history)
+    info = processItemInfo(args, uid, link, action)
+    return PolicyOrder(uid, num, link, info.sponsor, info.cosponsors, info.action, vote, info.amended, info.charter_right, title, info.history)
 
 
-def processPor(*args) -> PolicyOrder:
-    return PolicyOrder(*processPorOrdHlpr(*args))
-
-
-def processOrd(*args) -> Ordinance:
-    return Ordinance(*processPorOrdHlpr(*args))
+def processOrd(args, uid, num, title, link, vote, action) -> Ordinance:
+    """Process an ordinance agenda item"""
+    ## pylint: disable=unused-argument
+    info = processItemInfo(args, uid, link, action)
+    return Ordinance(uid, link, info.cma, info.order, info.sponsor, info.cosponsors, info.action, vote, info.amended, title, info.history)
 
 
 def processAr(args, item):
