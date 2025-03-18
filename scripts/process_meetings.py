@@ -145,6 +145,7 @@ ORD_HDRS = (
     "Meeting Date",
     "CMA",
     "Policy Order",
+    "Application",
     "Sponsor",
     "Co-Sponsors",
     "Amended",
@@ -519,6 +520,7 @@ class Ordinance(AgendaItem):
     url: str
     cma:           str  = ""
     order:         str  = ""
+    application:   str  = ""
     sponsor:       str  = ""
     cosponsors:    str  = ""
     action:        str  = ""
@@ -540,6 +542,7 @@ class Ordinance(AgendaItem):
             "Link":              self.url,
             "CMA":               self.cma,
             "Policy Order":      self.order,
+            "Application":       self.application,
             "Sponsor":           self.sponsor,
             "Co-Sponsors":       ",".join(self.cosponsors),
             "Outcome":           self.action,
@@ -618,6 +621,7 @@ class ItemInfo:
     charter_right: str  = ""
     cma:           str  = ""
     order:         str  = ""
+    app:           str  = ""
     awaiting:      str  = ""
     action:        str  = ""
     amended:       str  = ""
@@ -808,6 +812,11 @@ def processResLinkNames(node) -> Dict[str, Dict[str, str]]:
             if match:
                 names[link_type]['por'] = match.group()
 
+            ## Look for APP
+            match = re.search(r"APP \d+ # ?\d+", o_name)
+            if match:
+                names[link_type]['app'] = match.group()
+
             ## Look for AR
             match = re.search(r"^(AR\S+)\s+:", o_name)
             if match:
@@ -992,16 +1001,19 @@ def processItemInfo(args, uid, link, action) -> ItemInfo:
     ## Origins if any
     cma      = ""
     order    = ""
+    app      = ""
     awaiting = ""
     link_names = processResLinkNames(soup)
     if 'origin' in link_names:
         cma      = link_names['origin']['cma']
         order    = link_names['origin']['por']
+        app      = link_names['origin']['app']
         awaiting = link_names['origin']['ar']
 
     for names in link_names.values():
         cma      = cma      or names['cma']
         order    = order    or names['por']
+        app      = order    or names['app']
         awaiting = awaiting or names['ar']
 
     ## History
@@ -1017,7 +1029,7 @@ def processItemInfo(args, uid, link, action) -> ItemInfo:
             if args.exit_on_error:
                 raise e
 
-    return ItemInfo(category, charter_right, cma, order, awaiting, action, amended, history, sponsors[0], sponsors[1:])
+    return ItemInfo(category, charter_right, cma, order, app, awaiting, action, amended, history, sponsors[0], sponsors[1:])
 
 
 def processCma(args, uid, num, title, link, vote, action) -> CMA:
@@ -1121,7 +1133,7 @@ def processOrd(args, uid, num, title, link, vote, action) -> Ordinance:
     if 'action' in info.history:
         action = info.history['action']
 
-    return Ordinance(uid, link, info.cma, info.order, info.sponsor, info.cosponsors, action, vote, info.amended, title, info.history)
+    return Ordinance(uid, link, info.cma, info.order, info.app, info.sponsor, info.cosponsors, action, vote, info.amended, title, info.history)
 
 
 def processAr(args, item):
