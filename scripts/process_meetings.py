@@ -799,14 +799,14 @@ def processResLinkNames(node) -> Dict[str, Dict[str, str]]:
     for link_type in links.keys():
         for o_name, _ in links[link_type]:
             ## Look for CMA
-            match = re.search(r"(CMA \d+ # ?\d+)", o_name)
+            match = re.search(r"CMA \d+ # ?\d+", o_name)
             if match:
-                names[link_type]['cma'] = match.groups()[0]
+                names[link_type]['cma'] = match.group()
 
             ## Look for POR
-            match = re.search(r"(POR \d+ # ?\d+)", o_name)
+            match = re.search(r"POR \d+ # ?\d+", o_name)
             if match:
-                names[link_type]['por'] = match.groups()[0]
+                names[link_type]['por'] = match.group()
 
             ## Look for AR
             match = re.search(r"^(AR\S+)\s+:", o_name)
