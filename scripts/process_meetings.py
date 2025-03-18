@@ -143,10 +143,10 @@ ORD_HDRS = (
     "Unique Identifier",
     "Meeting",
     "Meeting Date",
-    "Sponsor",
-    "Co-Sponsors",
     "CMA",
     "Policy Order",
+    "Sponsor",
+    "Co-Sponsors",
     "Amended",
     "Outcome",
     "Vote",
@@ -514,7 +514,7 @@ class PolicyOrder(AgendaItem):
 
 
 @dataclass
-class Ordinance(PolicyOrder):
+class Ordinance(AgendaItem):
     uid: str
     url: str
     cma:           str  = ""
@@ -793,6 +793,28 @@ def processResLinks(node) -> Dict[str, List[Tuple[str, str]]]:
     return links
 
 
+def processResLinkNames(node) -> Dict[str, Dict[str, str]]:
+    links = processResLinks(node)
+    names = defaultdict(lambda: defaultdict(str))
+    for link_type in links.keys():
+        for o_name, _ in links[link_type]:
+            ## Look for CMA
+            match = re.search(r"(CMA \d+ # ?\d+)", o_name)
+            if match:
+                names[link_type]['cma'] = match.groups()[0]
+
+            ## Look for POR
+            match = re.search(r"(POR \d+ # ?\d+)", o_name)
+            if match:
+                names[link_type]['por'] = match.groups()[0]
+
+            ## Look for AR
+            match = re.search(r"^(AR\S+)\s+:", o_name)
+            if match:
+                names[link_type]['ar'] = match.groups()[0]
+
+    return names
+
 def parseAction(line):
     ## Check for voice vote
     match = re.match(r"(?:Order )?(.+?)\s+(?:by|on) (?:an |am )?(affirmative vote|voice vote)", line, re.IGNORECASE)
@@ -971,18 +993,16 @@ def processItemInfo(args, uid, link, action) -> ItemInfo:
     cma      = ""
     order    = ""
     awaiting = ""
-    links = processResLinks(soup)
-    if 'origin' in links:
-        for o_name, _ in links['origin']:
-            match = re.search(r"^(CMA \d+ # ?\d+)\s+:", o_name)
-            if match:
-                order = match.groups()[0]
-            match = re.search(r"^(POR \d+ # ?\d+)\s+:", o_name)
-            if match:
-                order = match.groups()[0]
-            match = re.search(r"^(AR\S+)\s+:", o_name)
-            if match:
-                awaiting = match.groups()[0]
+    link_names = processResLinkNames(soup)
+    if 'origin' in link_names:
+        cma      = link_names['origin']['cma']
+        order    = link_names['origin']['por']
+        awaiting = link_names['origin']['ar']
+
+    for names in link_names.values():
+        cma      = cma      or names['cma']
+        order    = order    or names['por']
+        awaiting = awaiting or names['ar']
 
     ## History
     history_table = findTag(soup, 'table', 'MeetingHistory')
@@ -1116,12 +1136,9 @@ def processAr(args, item):
     ## Origin if any
     order = ""
     links = processResLinks(soup)
-    if 'origin' in links:
-        for o_name, _ in links['origin']:
-            match = re.search(r"^(POR \d+ #\d+)\s+:", o_name)
-            if match:
-                order = match.groups()[0]
-                break
+    link_names = processResLinkNames(soup)
+    if 'origin' in link_names:
+        order = link_names['origin']['por']
 
     item.update(department=department, category=category, policy_order=order)
     return item
