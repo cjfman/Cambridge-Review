@@ -14,6 +14,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 from councillors import getCouncillorNames, setCouncillorInfo
+from prompts import query_yes_no
 
 
 VERBOSE=False
@@ -143,9 +144,21 @@ res_col_map = {
 res_idx_map = { x: ord(y.upper()) - ord('A') for x, y in res_col_map.items() }
 res_row_size = max(res_idx_map.values()) + 1
 
-ord_col_map  = por_col_map.copy()
-ord_idx_map  = por_idx_map.copy()
-ord_row_size = por_row_size
+ord_col_map  = {
+    "Unique Identifier": 'A',
+    "Meeting":           'B',
+    "Meeting Date":      'C',
+    "Sponsor":           'D',
+    "Co-Sponsors":       'E',
+    "CMA":               'F',
+    "Policy Order":      'G',
+    "Amended":           'H',
+    "Outcome":           'I',
+    "Link":              'Y',
+    "Summary":           'Z',
+}
+ord_idx_map  = { x: ord(y.upper()) - ord('A') for x, y in ord_col_map.items() }
+ord_row_size = max(ord_idx_map.values()) + 1
 
 ar_col_map = {
     "Unique Identifier": "A",
@@ -344,6 +357,12 @@ def getAllUids(service, sheet_id):
 
 def loadCsvDict(path):
     """Load CSV"""
+    if not os.path.exists(path):
+        if query_yes_no(f"File '{path}' doesn't exist. Continue?"):
+            return tuple()
+        else:
+            sys.exit(1)
+
     with open(path, 'r', encoding='utf8') as f:
         reader = csv.DictReader(f)
         return tuple(reader)
