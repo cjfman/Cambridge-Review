@@ -28,6 +28,23 @@ REQUEST_HDR = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
 }
 
+SUPPORTED_TITLES = (
+    "City Manager's Agenda",
+    "Communications",
+    "Resolutions",
+    "Policy Order and Resolution List",
+    "Applications and Petitions",
+    "Communications and Reports from Other City Officers",
+    "Unfinished Business",
+)
+
+UNSUPPORTED_TITLES = (
+    "Charter Right",
+    "Calendar",
+    "Committee Reports",
+    "Communications and Reports from Other City Officers",
+)
+
 CMA_HDRS = (
     "Unique Identifier",
     "Meeting",
@@ -121,6 +138,8 @@ POR_HDRS = (
     "Summary",
     "Notes",
 )
+
+ORD_HDRS = POR_HDRS
 
 AR_HDRS = (
     "Unique Identifier",
@@ -476,6 +495,16 @@ class PolicyOrder(AgendaItem):
 
 
 @dataclass
+class Ordinance(PolicyOrder):
+    @property
+    def type(self):
+        return "ORD"
+
+    def __repr__(self):
+        return f"[Ordinance: {str(self)}]"
+
+
+@dataclass
 class AwaitingReport(AgendaItem):
     uid: str
     url: str
@@ -645,7 +674,7 @@ def buildRow(item, hdrs, final_action=None, *, aggrigate_votes=False):
 def setCouncillorColumns(names):
     """Add councillor names to headers"""
     ## pylint: disable=global-statement
-    global CMA_HDRS, APP_HDRS, RES_HDRS, POR_HDRS
+    global CMA_HDRS, APP_HDRS, RES_HDRS, POR_HDRS, ORD_HDRS
     ## CMA
     idx = CMA_HDRS.index("Vote") + 1
     CMA_HDRS = CMA_HDRS[:idx] + names + CMA_HDRS[idx:]
@@ -661,6 +690,10 @@ def setCouncillorColumns(names):
     ## POR
     idx = POR_HDRS.index("Vote") + 1
     POR_HDRS = POR_HDRS[:idx] + names + POR_HDRS[idx:]
+
+    ## ORD
+    idx = ORD_HDRS.index("Vote") + 1
+    ORD_HDRS = ORD_HDRS[:idx] + names + ORD_HDRS[idx:]
 
 
 def processKeyWordTable(table) -> Dict[str, str]:
@@ -787,13 +820,16 @@ def processItem(args, row, num):
     ## Process the title and link
     title, link = findATag(row, 'td', 'Title')
     link = expandUrl(args.base_url, link)
-    match = re.match(r"((CMA|APP|COM|RES|POR|COF) \d+ #\d+)\s(?:: )(.*)", title)
+    match = re.match(r"((CMA|APP|COM|RES|POR|COF|ORD) \d+ # ?\d+)\s(?:: )(.*)", title)
     if not match:
         ## Maybe it's an awaiting report
         match = re.match(r"(AR-\d+-\d+)\s(?:: )(.*)", title)
         if match:
             uid, description = match.groups()
             return AwaitingReport(uid, link, description)
+
+        if VERBOSE:
+            print_red(f"Failed to process item type '{title}'")
 
         return None
 
@@ -808,7 +844,9 @@ def processItem(args, row, num):
         action, vote = match.groups()
         action = toTitleCase(action)
         vote = toTitleCase(vote)
-    else:
+
+    ## Try something else
+    if match is None:
         match = re.match(r"(?:order\s+)?(\w+(?: \w+)*)\s?(?:\[([^\]]+)\])?", result, re.IGNORECASE)
         if match:
             action, vote = match.groups()
@@ -826,6 +864,7 @@ def processItem(args, row, num):
         'COM': processCom,
         'RES': processRes,
         'POR': processPor,
+        'ORD': processOrd,
     }
     if itype in handlers:
         return handlers[itype](args, uid, num, title, link, vote, action)
@@ -997,21 +1036,24 @@ def processRes(args, uid, num, title, link, vote, action) -> Resolution:
     return Resolution(uid, num, category, link, sponsors[0], sponsors[1:], action, vote, title, history)
 
 
-def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
+def processPorOrdHlpr(args, uid, num, title, link, vote, action) -> Tuple:
     """Process a policy order agenda item"""
     ## Fetch Res page from city website
-    por_path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, por_path, force=args.force_fetch)
+    path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
+    fetched = fetchUrl(link, path, force=args.force_fetch)
     soup = BeautifulSoup(fetched, 'html.parser')
     table = processKeyWordTable(findTag(soup, 'table', 'LegiFileSectionContents'))
+    sponsors = []
+    charter_right = ''
     sponsors = [lookUpCouncillorName(x.strip()) for x in table['Sponsors'].split(',')]
     charter_right = findCharterRight(soup)
 
     ## Amended
     amended = ""
-    if action == "Adopted as Amended":
+    match = re.match(r"(\w+) as Amended", action)
+    if match:
         amended = "Yes"
-        action = "Adopted"
+        action = match.groups()[0]
 
     ## History
     history_table = findTag(soup, 'table', 'MeetingHistory')
@@ -1030,7 +1072,15 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
     elif VERBOSE:
         print(f"No meeting history for {uid}")
 
-    return PolicyOrder(uid, num, link, sponsors[0], sponsors[1:], action, vote, amended, charter_right, title, history)
+    return (uid, num, link, sponsors[0], sponsors[1:], action, vote, amended, charter_right, title, history)
+
+
+def processPor(*args) -> PolicyOrder:
+    return PolicyOrder(*processPorOrdHlpr(*args))
+
+
+def processOrd(*args) -> Ordinance:
+    return Ordinance(*processPorOrdHlpr(*args))
 
 
 def processAr(args, item):
@@ -1105,12 +1155,12 @@ def processMeeting(args, meeting) -> Dict[str, List[Any]]:
         if td is not None:
             ## Enable or disable processessing baesd upon section
             title = td.text.strip()
-            if not enabled and title in ("City Manager's Agenda", "Communications", "Resolutions", "Policy Order and Resolution List", "Applications and Petitions", "Communications and Reports from Other City Officers"):
+            if not enabled and title in SUPPORTED_TITLES:
                 if VERBOSE:
                     print(f"""Found section "{title}". Enable agenda item processing""")
                 enabled = True
                 continue
-            if enabled and title in ("Charter Right", "Calendar", "Committee Reports"):
+            if enabled and title in UNSUPPORTED_TITLES:
                 if VERBOSE:
                     print(f"""Found section "{title}". Disable agenda item processing""")
 
@@ -1123,6 +1173,8 @@ def processMeeting(args, meeting) -> Dict[str, List[Any]]:
         ## Look for agenda item number
         td = findTag(row, 'td', 'Num')
         if td is not None and re.match(r"\d+\.?", td.text.strip()):
+            if VERBOSE:
+                print(f"Processing row: {row.text}")
             num = td.text.strip().replace('.', '')
             try:
                 item = processItem(args, row, num)
@@ -1186,7 +1238,7 @@ def processMeetings(args, meetings, writers, final_actions=None):
 
             ## Maybe end processing now
             num += 1
-            if args.meeting or args.num_meetings and num >= args.num_meetings:
+            if args.num_meetings and num >= args.num_meetings:
                 break
         except Exception as e:
             print_red(f"Error: Failed to process meeting '{meeting}': {e}")
@@ -1286,6 +1338,7 @@ def postProcessItems(writers, items, final_actions=None):
         ('COM', COM_HDRS),
         ('RES', RES_HDRS),
         ('POR', POR_HDRS),
+        ('ORD', ORD_HDRS),
     )
     for key, hdrs in sets:
         for item in items[key]:
@@ -1311,6 +1364,7 @@ def setupOutputFiles(output_dir):
         ('COM', COM_HDRS, "communications.csv"),
         ('RES', RES_HDRS, "resolutions.csv"),
         ('POR', POR_HDRS, "policy_orders.csv"),
+        ('ORD', ORD_HDRS, "ordinances.csv"),
         ('AR',  AR_HDRS,  "awaiting_reports.csv"),
     )
     for key, hdrs, name in sets:

@@ -116,6 +116,8 @@ def expandName(name, info):
 
 
 def lookUpCouncillorName(name, *, include_all=True):
+    if not name:
+        return ""
     if not _councillor_quick_lookup:
         return name
     if not isinstance(name, str):
