@@ -864,8 +864,8 @@ def processHistory(history_table):
                     ## Try and parse an action
                     action, vote = parseAction(result)
                     if action is not None:
-                        history['action'] = action
-                        history['vote'] = vote
+                        history['action'] = action.strip()
+                        history['vote']   = vote.strip()
             elif role in ('yeas', 'nays', 'present', 'absent', 'recused'):
                 history[role] = findCouncillorsInRow(row)
 
@@ -1118,7 +1118,10 @@ def processOrd(args, uid, num, title, link, vote, action) -> Ordinance:
     """Process an ordinance agenda item"""
     ## pylint: disable=unused-argument
     info = processItemInfo(args, uid, link, action)
-    return Ordinance(uid, link, info.cma, info.order, info.sponsor, info.cosponsors, info.action, vote, info.amended, title, info.history)
+    if 'action' in info.history:
+        action = info.history['action']
+
+    return Ordinance(uid, link, info.cma, info.order, info.sponsor, info.cosponsors, action, vote, info.amended, title, info.history)
 
 
 def processAr(args, item):
