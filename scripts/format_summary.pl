@@ -8,6 +8,7 @@ use File::Basename;
 use File::Spec::Functions 'catfile';
 use Text::ParseWords;
 
+my $max_replacements = 1000;
 my $agenda_dir = catfile(dirname(__FILE__), "../meeting_data/processed/current");
 my $glossary_url = '/the-city/city-glossary';
 my $lines;
@@ -24,8 +25,12 @@ my %glossary = (
     STO  => "Surveillance Technology Ordinance",
 );
 
-my %tooltip = (
-    DCR  => "Department of Conservation and Recreation",
+my %tooltip  = (
+    ADA     => "American Disabilities Act",
+    DCR     => "Department of Conservation and Recreation",
+    EOPSS   => "Executive Office of Public Safety",
+    MassDEP => "Massachusetts Department of Environmental Protection",
+    MEMA    => "Massachusetts Emergency Management Agency",
 );
 
 ## Get agenda item links
@@ -42,9 +47,19 @@ if (-d $agenda_dir) {
 }
 
 ## Process summary
+my $replacements;
+my $skip_replacements;
+my $line_no;
 foreach (<>) {
+    $line_no++;
     ## Replace keyword fields
     while (/\{\{([^\}]+)\}\}/) {
+        last if $skip_replacements;
+        if ($replacements >= $max_replacements) {
+            print STDERR "Reached maximum number of replacements $max_replacements on line $line_no\n";
+            $skip_replacements = 1;
+            last;
+        }
         my ($name, $txt) = split /\|/, $1;
         $txt = $name unless defined $txt;
         $name =~ s/\s+/-/g;
@@ -52,20 +67,31 @@ foreach (<>) {
             $name = lc $name;
         }
         if (defined $glossary{$name}) {
+            print STDERR "Found glossary term with tooltip $name / $txt\n";
             s/(\{\{[^\}]+\}\})/[tooltips keyword='[$txt]($glossary_url#$name)' content='$glossary{$name}']/;
         }
-        elsif (defined $tooltip{$name}) {
-            s/(\{\{[^\}]+\}\})/[tooltips keyword='$txt' content='$tooltip{$name}']/;
+        elsif (defined $tooltip{$txt}) {
+            print STDERR "Found tooltip $name / $tooltip{$name}\n";
+            s/(\{\{[^\}]+\}\})/[tooltips keyword='$txt' content='$tooltip{$txt}']/;
         }
         else {
+            print STDERR "Found glossary term $name / $txt\n";
             s/(\{\{[^\}]+\}\})/[$txt]($glossary_url#$name)/;
         }
+        $replacements++;
     }
 
     ## Insert agenda item links
-    while (/\((\w+ \d+ #\d+)\)/) {
+    if (/\((\w+ \d+ #\d+)\)/) {
+        last if $skip_replacements;
+        if ($replacements >= $max_replacements) {
+            print STDERR "Reached maximum number of replacements $max_replacements on line $line_no\n";
+            $skip_replacements = 1;
+            last;
+        }
         my $uid = $1;
         s/$uid/[$uid]($item_links{$uid})/ if (defined $item_links{$uid});
+        $replacements++;
     }
     print;
 }
