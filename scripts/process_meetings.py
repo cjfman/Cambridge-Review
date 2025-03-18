@@ -1013,7 +1013,7 @@ def processItemInfo(args, uid, link, action) -> ItemInfo:
     for names in link_names.values():
         cma      = cma      or names['cma']
         order    = order    or names['por']
-        app      = order    or names['app']
+        app      = app      or names['app']
         awaiting = awaiting or names['ar']
 
     ## History
