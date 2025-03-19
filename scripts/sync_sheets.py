@@ -13,7 +13,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-from councillors import getCouncillorNames, setCouncillorInfo
+from councillors import getCouncillorNames, getSessionYear, setCouncillorInfo
 from prompts import query_yes_no
 
 
@@ -24,9 +24,12 @@ DEBUG=False
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
 ]
-#TRACKER_SHEET_ID = "17qiYpxVFX8zwDrMJKpK_C-hZL9-Y8y5QU3GhVhi4xeg" ## 2024
-TRACKER_SHEET_ID = "1BEBniAqsR0bb3gU7Cy9PJW4lTQO1x2TlekJsyS89vNA" ## 2025
 
+SHEETS = {
+    2022: "1BBS7C-TwU9kBNJo48EQnz1sDTVOhAHlvjQbKjVvWZ4A",
+    2024: "17qiYpxVFX8zwDrMJKpK_C-hZL9-Y8y5QU3GhVhi4xeg",
+    2025: "1BEBniAqsR0bb3gU7Cy9PJW4lTQO1x2TlekJsyS89vNA",
+}
 
 item_sheet_keys = (
     'cma',
@@ -64,7 +67,7 @@ item_vote_col = {
     'cma': 'L',
     'app': 'L',
     'res': 'J',
-    'ord': 'L',
+    'ord': 'K',
 }
 
 por_col_map = {
@@ -154,7 +157,7 @@ ord_col_map  = {
     "Sponsor":           'G',
     "Co-Sponsors":       'H',
     "Amended":           'I',
-    "Outcome":           'I',
+    "Outcome":           'J',
     "Link":              'Y',
     "Summary":           'Z',
 }
@@ -215,7 +218,7 @@ def parseArgs():
         help="Google API JSON credentials")
     parser.add_argument("--token", default="google_credentials/token.json",
         help="Google API JSON token. Will be created if one doesn't exist")
-    parser.add_argument("--sheet-id", default=TRACKER_SHEET_ID,
+    parser.add_argument("--sheet-id",
         help="The google sheets ID")
 
     subparsers = parser.add_subparsers()
@@ -463,6 +466,16 @@ def add_hdlr(args, service):
             return 1
 
         setCouncillorColumns(getCouncillorNames())
+    if not args.session:
+        print(f"Using session year {args.session}")
+        args.session = getSessionYear()
+
+    ## Sheet ID
+    if args.sheet_id is None:
+        if args.session not in SHEETS:
+            print(f"Cannot find sheet ID for session {args.session}")
+
+        args.sheet_id = SHEETS[args.session]
 
     ## Get UIDs
     uids = { x: None for x in item_sheet_keys }

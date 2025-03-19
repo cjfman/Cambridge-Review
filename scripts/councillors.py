@@ -5,6 +5,7 @@ import yaml
 from utils import print_red
 
 
+_session_year = None
 _councillor_info = {}
 _councillor_quick_lookup = {}
 _councillor_all_lookup = {}
@@ -93,6 +94,7 @@ def setCouncillorInfo(path, year=None) -> bool:
             for alias in expandName(name, info):
                 _councillor_all_lookup[alias] = name
 
+    _session_year = year
     return True
 
 
@@ -123,6 +125,9 @@ def lookUpCouncillorName(name, *, include_all=True):
     if not isinstance(name, str):
         print_red(f"Error: '{name}' is not a valid name. Blanking out")
         return "!!!"
+    if name.lower().startswith("city clerk"):
+        print_red(f"Error: '{name}' is not a city councillor. Blanking out")
+        return "!!!"
 
     ## Quick look up
     lookup = _councillor_quick_lookup
@@ -146,5 +151,8 @@ def lookUpCouncillorName(name, *, include_all=True):
     if name in lookup:
         return lookup[name]
 
-    print_red(f"""Error: Didn't find full name for councillor "{orig_name}". Using fallback""")
+    print_red(f"""Error: Didn't find full name for councillor "{orig_name}". Using fallback "{name}".""")
     return name
+
+def getSessionYear():
+    return _session_year

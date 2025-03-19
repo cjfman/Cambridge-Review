@@ -850,6 +850,25 @@ def findCouncillorsInRow(row):
     return [lookUpCouncillorName(x.strip()) for x in councillors]
 
 
+def extractAction(action) -> str:
+    """Find the simple action from an action string"""
+    if action == "Failed of Adoption":
+        action = 'Failed'
+    else:
+        match = re.match(r"(Fail(?:s|ed) to )?Pass(?:ed)? to be (\w+)", action, re.IGNORECASE)
+        if match:
+            if match.groups()[0]:
+                action = 'Failed'
+            else:
+                action = match.groups()[1]
+
+    ## Cleanup
+    if action == "Ordainded":
+        action = "Ordained"
+
+    return action
+
+
 def processHistory(history_table):
     history = {}
     ## Look for a vote record
@@ -891,14 +910,16 @@ def processHistory(history_table):
         setDefaultValue(history, "", ('action', 'vote', 'charter_right', 'amended'))
         setDefaultValue(history, list, ('yeas', 'nays', 'recused', 'present', 'absent'))
 
-        ## Check for amended
+        ## Check action
         if history['action']:
+            ## Check for amended
             match = re.match(r"(.+) as amended", history['action'], re.IGNORECASE)
             if match:
                 history['action'] = match.groups()[0]
                 history['amended'] = 'yes'
-            elif history['action'] == "Failed of Adoption":
-                history['action'] = 'Failed'
+
+            ## Other actions
+            history['action'] = extractAction(history['action'])
 
         ## Set absence
         if history['yeas']:
@@ -993,10 +1014,17 @@ def processItemInfo(args, uid, link, action) -> ItemInfo:
 
     ## Amended
     amended = ""
-    match = re.match(r"(\w+) as Amended", action)
+    match = re.match(r"(.*) as Amended", action, re.IGNORECASE)
     if match:
-        amended = "Yes"
+        amended = "yes"
         action = match.groups()[0]
+
+    ## Other actions
+    action = extractAction(action)
+
+    ## Cleanup
+    if action == "Ordainded":
+        action = "Ordained"
 
     ## Origins if any
     cma      = ""
