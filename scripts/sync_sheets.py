@@ -264,6 +264,8 @@ def parseArgs():
     down_parser.set_defaults(func=download_hdlr)
     down_parser.add_argument("--dir", required=True,
         help="Directory for the download")
+    down_parser.add_argument("--session", type=int, default=2025,
+        help="The session year. Defaults to most recent one found in councillor info file")
 
     ## Final parse
     args = parser.parse_args()
@@ -512,6 +514,9 @@ def meetings_hdlr(args, service):
 
 
 def download_hdlr(args, service):
+    if args.sheet_id is None:
+        args.sheet_id = SHEETS[args.session]
+
     sheets = downloadAllSheets(service, args.sheet_id)
     for item_type, rows in sheets.items():
         path = os.path.join(args.dir, item_csv_map[item_type])
