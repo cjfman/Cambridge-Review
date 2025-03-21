@@ -13,7 +13,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-from councillors import getCouncillorNames, setCouncillorInfo
+from councillors import getCouncillorNames, getSessionYear, setCouncillorInfo
+from prompts import query_yes_no
 
 
 VERBOSE=False
@@ -23,9 +24,13 @@ DEBUG=False
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
 ]
-#TRACKER_SHEET_ID = "17qiYpxVFX8zwDrMJKpK_C-hZL9-Y8y5QU3GhVhi4xeg" ## 2024
-TRACKER_SHEET_ID = "1BEBniAqsR0bb3gU7Cy9PJW4lTQO1x2TlekJsyS89vNA" ## 2025
 
+SHEETS = {
+    2020: "17T1GYly0AZo55iFpjiq9tD-oNRDG4-x0HRvhZ_nJ3j8",
+    2022: "1BBS7C-TwU9kBNJo48EQnz1sDTVOhAHlvjQbKjVvWZ4A",
+    2024: "17qiYpxVFX8zwDrMJKpK_C-hZL9-Y8y5QU3GhVhi4xeg",
+    2025: "1BEBniAqsR0bb3gU7Cy9PJW4lTQO1x2TlekJsyS89vNA",
+}
 
 item_sheet_keys = (
     'cma',
@@ -63,7 +68,7 @@ item_vote_col = {
     'cma': 'L',
     'app': 'L',
     'res': 'J',
-    'ord': 'L',
+    'ord': 'K',
 }
 
 por_col_map = {
@@ -143,9 +148,22 @@ res_col_map = {
 res_idx_map = { x: ord(y.upper()) - ord('A') for x, y in res_col_map.items() }
 res_row_size = max(res_idx_map.values()) + 1
 
-ord_col_map  = por_col_map.copy()
-ord_idx_map  = por_idx_map.copy()
-ord_row_size = por_row_size
+ord_col_map  = {
+    "Unique Identifier": 'A',
+    "Meeting":           'B',
+    "Meeting Date":      'C',
+    "CMA":               'D',
+    "Policy Order":      'E',
+    "Application":       'F',
+    "Sponsor":           'G',
+    "Co-Sponsors":       'H',
+    "Amended":           'I',
+    "Outcome":           'J',
+    "Link":              'Y',
+    "Summary":           'Z',
+}
+ord_idx_map  = { x: ord(y.upper()) - ord('A') for x, y in ord_col_map.items() }
+ord_row_size = max(ord_idx_map.values()) + 1
 
 ar_col_map = {
     "Unique Identifier": "A",
@@ -201,7 +219,7 @@ def parseArgs():
         help="Google API JSON credentials")
     parser.add_argument("--token", default="google_credentials/token.json",
         help="Google API JSON token. Will be created if one doesn't exist")
-    parser.add_argument("--sheet-id", default=TRACKER_SHEET_ID,
+    parser.add_argument("--sheet-id",
         help="The google sheets ID")
 
     subparsers = parser.add_subparsers()
@@ -246,6 +264,8 @@ def parseArgs():
     down_parser.set_defaults(func=download_hdlr)
     down_parser.add_argument("--dir", required=True,
         help="Directory for the download")
+    down_parser.add_argument("--session", type=int, default=2025,
+        help="The session year. Defaults to most recent one found in councillor info file")
 
     ## Final parse
     args = parser.parse_args()
@@ -344,6 +364,12 @@ def getAllUids(service, sheet_id):
 
 def loadCsvDict(path):
     """Load CSV"""
+    if not os.path.exists(path):
+        if query_yes_no(f"File '{path}' doesn't exist. Continue?"):
+            return tuple()
+        else:
+            sys.exit(1)
+
     with open(path, 'r', encoding='utf8') as f:
         reader = csv.DictReader(f)
         return tuple(reader)
@@ -443,6 +469,16 @@ def add_hdlr(args, service):
             return 1
 
         setCouncillorColumns(getCouncillorNames())
+    if not args.session:
+        print(f"Using session year {args.session}")
+        args.session = getSessionYear()
+
+    ## Sheet ID
+    if args.sheet_id is None:
+        if args.session not in SHEETS:
+            print(f"Cannot find sheet ID for session {args.session}")
+
+        args.sheet_id = SHEETS[args.session]
 
     ## Get UIDs
     uids = { x: None for x in item_sheet_keys }
@@ -478,6 +514,9 @@ def meetings_hdlr(args, service):
 
 
 def download_hdlr(args, service):
+    if args.sheet_id is None:
+        args.sheet_id = SHEETS[args.session]
+
     sheets = downloadAllSheets(service, args.sheet_id)
     for item_type, rows in sheets.items():
         path = os.path.join(args.dir, item_csv_map[item_type])
