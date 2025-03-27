@@ -9,7 +9,10 @@ use File::Spec::Functions 'catfile';
 use Text::ParseWords;
 
 my $max_replacements = 1000;
-my $agenda_dir = catfile(dirname(__FILE__), "../meeting_data/processed/current");
+my @agenda_dirs = (
+    catfile(dirname(__FILE__), "../meeting_data/processed/current"),
+    catfile(dirname(__FILE__), "../processed"),
+);
 my $glossary_url = '/the-city/city-glossary';
 my $lines;
 my %glossary = (
@@ -35,14 +38,16 @@ my %tooltip  = (
 
 ## Get agenda item links
 my %item_links;
-if (-d $agenda_dir) {
-    print STDERR "Opening directory '$agenda_dir'\n";
-    opendir DIR, $agenda_dir;
-    foreach my $name (readdir(DIR)) {
-        my $agenda_item_path = "$agenda_dir/$name";
-        next unless -f $agenda_item_path;
-        print STDERR "Opening '$agenda_item_path'\n";
-        %item_links = (%item_links, read_agenda_items($agenda_item_path));
+foreach my $agenda_dir (@agenda_dirs) {
+    if (-d $agenda_dir) {
+        print STDERR "Opening directory '$agenda_dir'\n";
+        opendir DIR, $agenda_dir;
+        foreach my $name (readdir(DIR)) {
+            my $agenda_item_path = "$agenda_dir/$name";
+            next unless -f $agenda_item_path;
+            print STDERR "Opening '$agenda_item_path'\n";
+            %item_links = (%item_links, read_agenda_items($agenda_item_path));
+        }
     }
 }
 
