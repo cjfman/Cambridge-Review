@@ -727,15 +727,25 @@ def buildRow(item, hdrs, final_action=None, *, aggrigate_votes=False):
         if ('Charter Right' not in d or not d['Charter Right']) and final_action['charter_right']:
             d['Charter Right'] = lookUpCouncillorName(final_action['charter_right'])
         ## Update the final action
-        no_outcome = ('Outcome' not in d or not d['Outcome'] or d['Outcome'] == 'Charter Right')
-        if no_outcome and final_action['action'] and final_action['vote']:
+        #no_outcome = ('Outcome' not in d or not d['Outcome'] or d['Outcome'] == 'Charter Right')
+        if final_action['action'] and final_action['vote']:
             d['Outcome'] = final_action['action']
+        if d['Vote'] is None:
+            if action_map:
+                d['Vote'] = "Roll Call"
+            elif d['Outcome']:
+                d['Vote'] = "Voice Vote"
+
         for key, val in action_map.items():
             column = key.title()
             if aggrigate_votes:
                 d[column] = ",".join(final_action[key])
             for name in final_action[key]:
                 d[name] = val
+
+    ## Check vote type
+    if ('Vote' not in d or d['Vote'] is None) and ('Outcome' in d and d['Outcome'] and d['Outcome'] != "Charter Right"):
+        d['Vote'] = "Voice Vote"
 
     ## Every row dict must have exactly the keys in the header
     row = {}
