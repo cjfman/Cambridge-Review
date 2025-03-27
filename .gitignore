@@ -11,5 +11,6 @@ graphs/
 sandbox/*
 meeting_data/cache/*.pdf
 meeting_data/processed/current/
+processed/*
 tmp/
 google_credentials/
