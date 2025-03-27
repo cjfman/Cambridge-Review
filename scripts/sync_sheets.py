@@ -26,6 +26,7 @@ SCOPES = [
 ]
 
 SHEETS = {
+    2018: "1Fm2qnK6BCkWJvB-iUsDshZa_o0qfHHfjOEnVXhWYj7E",
     2020: "17T1GYly0AZo55iFpjiq9tD-oNRDG4-x0HRvhZ_nJ3j8",
     2022: "1BBS7C-TwU9kBNJo48EQnz1sDTVOhAHlvjQbKjVvWZ4A",
     2024: "17qiYpxVFX8zwDrMJKpK_C-hZL9-Y8y5QU3GhVhi4xeg",
