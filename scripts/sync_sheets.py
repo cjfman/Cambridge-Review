@@ -160,8 +160,9 @@ ord_col_map  = {
     "Co-Sponsors":       'H',
     "Amended":           'I',
     "Outcome":           'J',
-    "Link":              'Y',
-    "Summary":           'Z',
+    "Link":              'X',
+    "Summary":           'Y',
+    "Notes":             'Z',
 }
 ord_idx_map  = { x: ord(y.upper()) - ord('A') for x, y in ord_col_map.items() }
 ord_row_size = max(ord_idx_map.values()) + 1
