@@ -15,6 +15,7 @@ my @agenda_dirs = (
     catfile(dirname(__FILE__), "../processed"),
 );
 my $glossary_url = '/the-city/city-glossary';
+my $malegislature_url = 'https://malegislature.gov/Bills/194';
 my $lines;
 my %glossary = (
     AHO  => "Affordable Housing Overlay",
@@ -99,20 +100,17 @@ foreach (<>) {
 		}
     }
 
+	next if $skip_replacements;
+
     ## Insert agenda item links
-    if (/\((\w+ \d+\s#\s?\d+)\)/) {
-        last if $skip_replacements;
-        if ($replacements >= $max_replacements) {
-            print STDERR "Reached maximum number of replacements $max_replacements on line $line_no\n";
-            $skip_replacements = 1;
-            last;
-        }
+    while (/(?<!\[)\((\w+ \d+\s#\s?\d+)\)/) {
         my $uid = $1;
 		$uid =~ s/(\w+ \d+)\s#\s?(\d+)/$1 #$2/;
 		print STDERR "Found agenda item '$uid'\n";
 		if (defined $item_links{$uid}) {
-			if (s/$uid/[$uid]($item_links{$uid})/) {
-				print STDERR "Replacement '$uid' >> [$uid]($item_links{$uid})\n";
+			my $replacement = "[$uid]($item_links{$uid})";
+			if (s/$uid/$replacement/) {
+				print STDERR "Replacement '$uid' >> $replacement\n";
 				$replacements++;
 			}
 			else {
@@ -123,6 +121,22 @@ foreach (<>) {
 			print STDERR "No details found for '$uid'\n";
 		}
     }
+
+	## Insert MA legislature bill links
+	while (/(?<!\[).\b([SH]\.\d+)/) {
+		my $uid = $1;
+		print STDERR "Found MA legislature bill $uid\n";
+		my $url = validate_bill_url($uid);
+		if (defined $url) {
+			my $replacement = "[$uid]($url)";
+			if (s/\b\Q$uid\E\b/$replacement/) {
+				print STDERR "Replacement $uid >> $replacement\n";
+			}
+			else {
+				print STDERR "Replacement of $uid failed\n";
+			}
+		}
+	}
     print;
 }
 
@@ -165,4 +179,17 @@ sub read_agenda_file {
         $item_links{$uid} = $fields[$headers{Link}];
     }
     return %item_links;
+}
+
+sub validate_bill_url {
+	my $bill = shift;
+	$bill =~ s/\.//g;
+	my $url = "$malegislature_url/$bill";
+	print STDERR "Validating $url\n";
+	my $resp = `curl "$url" 2>/dev/null`;
+	if ($resp =~ /404 - Page Not Found/i) {
+		print STDERR "No such bill found\n";
+		$url = undef;
+	}
+	return $url;
 }
