@@ -87,7 +87,7 @@ foreach (<>) {
 
 		## Do replacement
 		if (defined $replacement) {
-			if (s/(\{\{[^\}]+\}\})//) {
+			if (s/(\{\{[^\}]+\}\})/$replacement/) {
 				print STDERR "Replacement '$found' >> '$replacement'\n";
 				$replacements++;
 			}
