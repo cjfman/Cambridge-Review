@@ -1459,7 +1459,7 @@ def setupOutputFiles(output_dir):
         path = os.path.join(output_dir, name)
         try:
             f = open(path, 'w', encoding='utf8')
-            w = csv.DictWriter(f, fieldnames=hdrs)
+            w = csv.DictWriter(f, fieldnames=hdrs, lineterminator='\n')
             w.writeheader()
             files[key]   = f
             writers[key] = w
@@ -1515,7 +1515,7 @@ def setAttenance(args, final_actions):
 
     ## Write back to meetings file
     with open(args.meetings_file, 'w', encoding='utf8') as f:
-        writer = csv.DictWriter(f, fieldnames=headers)
+        writer = csv.DictWriter(f, fieldnames=headers, lineterminator='\n')
         writer.writeheader()
         for meeting in meetings:
             writer.writerow(meeting)
