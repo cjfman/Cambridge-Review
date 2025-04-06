@@ -123,7 +123,7 @@ foreach (<>) {
     }
 
 	## Insert MA legislature bill links
-	while (/(?<!\[).\b([SH]\.\d+)/) {
+	while (/(?<!\[)\b([SH]\.\d+)/) {
 		my $uid = $1;
 		print STDERR "Found MA legislature bill $uid\n";
 		my $url = validate_bill_url($uid);
