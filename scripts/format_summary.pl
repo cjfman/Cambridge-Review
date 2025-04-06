@@ -108,6 +108,7 @@ foreach (<>) {
             last;
         }
         my $uid = $1;
+		$uid =~ s/(\w+ \d+)\s#\s?(\d+)/$1 #$2/;
 		print STDERR "Found agenda item '$uid'\n";
 		if (defined $item_links{$uid}) {
 			if (s/$uid/[$uid]($item_links{$uid})/) {
@@ -159,7 +160,9 @@ sub read_agenda_file {
             $first = 0;
             next;
         }
-        $item_links{$fields[$headers{'Unique Identifier'}]} = $fields[$headers{Link}];
+		my $uid = $fields[$headers{'Unique Identifier'}];
+		$uid =~ s/(\w+ \d+\s#)\s?(\d+)/$1$2/;
+        $item_links{$uid} = $fields[$headers{Link}];
     }
     return %item_links;
 }
