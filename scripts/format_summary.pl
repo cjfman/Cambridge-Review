@@ -10,7 +10,7 @@ use Text::ParseWords;
 
 my $max_replacements = 1000;
 my @agenda_dirs = (
-    catfile(dirname(__FILE__), "../meeting_data/processed/current"),
+    catfile(dirname(__FILE__), "../meeting_data/processed"),
     catfile(dirname(__FILE__), "../processed"),
 );
 my $glossary_url = '/the-city/city-glossary';
@@ -30,6 +30,7 @@ my %glossary = (
 
 my %tooltip  = (
     ADA     => "American Disabilities Act",
+    CPD     => "Cambridge Police Department",
     DCR     => "Department of Conservation and Recreation",
     EOPSS   => "Executive Office of Public Safety",
     MassDEP => "Massachusetts Department of Environmental Protection",
@@ -39,16 +40,7 @@ my %tooltip  = (
 ## Get agenda item links
 my %item_links;
 foreach my $agenda_dir (@agenda_dirs) {
-    if (-d $agenda_dir) {
-        print STDERR "Opening directory '$agenda_dir'\n";
-        opendir DIR, $agenda_dir;
-        foreach my $name (readdir(DIR)) {
-            my $agenda_item_path = "$agenda_dir/$name";
-            next unless -f $agenda_item_path;
-            print STDERR "Opening '$agenda_item_path'\n";
-            %item_links = (%item_links, read_agenda_items($agenda_item_path));
-        }
-    }
+    %item_links = (%item_links, read_agenda_dir($agenda_dir));
 }
 
 ## Process summary
@@ -101,8 +93,29 @@ foreach (<>) {
     print;
 }
 
-sub read_agenda_items {
+sub read_agenda_dir {
+    my %item_links;
+    my $agenda_dir = shift;
+    if (-d $agenda_dir) {
+        print STDERR "Opening directory '$agenda_dir'\n";
+        opendir DIR, $agenda_dir;
+        foreach my $name (readdir(DIR)) {
+            next if $name =~ /^\./;
+            my $agenda_path = "$agenda_dir/$name";
+            if (-f $agenda_path) {
+                %item_links = (%item_links, read_agenda_file($agenda_path));
+            }
+            elsif (-d $agenda_path) {
+                %item_links = (%item_links, read_agenda_dir($agenda_path));
+            }
+        }
+    }
+    return %item_links;
+}
+
+sub read_agenda_file {
     my $path = shift;
+    print STDERR "Opening '$path'\n";
     my %item_links;
     open FILE, '<', $path or return ();
     my $first = 1;
