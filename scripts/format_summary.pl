@@ -33,6 +33,7 @@ my %glossary = (
 my %tooltip  = (
     ADA     => "American Disabilities Act",
     CPD     => "Cambridge Police Department",
+	CPS     => "Cambirdge Public Schools",
     DCR     => "Department of Conservation and Recreation",
     EOPSS   => "Executive Office of Public Safety",
     MassDEP => "Massachusetts Department of Environmental Protection",
