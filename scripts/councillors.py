@@ -39,6 +39,7 @@ def setCouncillorInfo(path, year=None) -> bool:
 
     if year is None:
         year = max(all_info['sessions'])
+        print(f"No year specified. Using year {year}")
 
     if year not in all_info['sessions']:
         print_red(f"Couldn't find year {year} in councillor info file {path}")
@@ -94,6 +95,7 @@ def setCouncillorInfo(path, year=None) -> bool:
             for alias in expandName(name, info):
                 _councillor_all_lookup[alias] = name
 
+    global _session_year
     _session_year = year
     return True
 

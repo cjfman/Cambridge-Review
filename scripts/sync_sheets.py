@@ -471,9 +471,14 @@ def add_hdlr(args, service):
             return 1
 
         setCouncillorColumns(getCouncillorNames())
+
     if not args.session:
-        print(f"Using session year {args.session}")
         args.session = getSessionYear()
+        if args.session:
+            print(f"Using session year {args.session}")
+        else:
+            print("Failed to determine a session year")
+            return 1
 
     ## Sheet ID
     if args.sheet_id is None:
