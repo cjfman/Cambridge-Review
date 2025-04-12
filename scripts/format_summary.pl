@@ -8,12 +8,14 @@ use File::Basename;
 use File::Spec::Functions 'catfile';
 use Text::ParseWords;
 
+my $print_files;
 my $max_replacements = 1000;
 my @agenda_dirs = (
     catfile(dirname(__FILE__), "../meeting_data/processed"),
     catfile(dirname(__FILE__), "../processed"),
 );
 my $glossary_url = '/the-city/city-glossary';
+my $malegislature_url = 'https://malegislature.gov/Bills/194';
 my $lines;
 my %glossary = (
     AHO  => "Affordable Housing Overlay",
@@ -31,6 +33,7 @@ my %glossary = (
 my %tooltip  = (
     ADA     => "American Disabilities Act",
     CPD     => "Cambridge Police Department",
+	CPS     => "Cambirdge Public Schools",
     DCR     => "Department of Conservation and Recreation",
     EOPSS   => "Executive Office of Public Safety",
     MassDEP => "Massachusetts Department of Environmental Protection",
@@ -57,39 +60,84 @@ foreach (<>) {
             $skip_replacements = 1;
             last;
         }
-        my ($name, $txt) = split /\|/, $1;
+		my $found = $1;
+		my $replacement;
+        my ($name, $txt) = split /\|/, $found;
         $txt = $name unless defined $txt;
         $name =~ s/\s+/-/g;
+
+		## Determine replacement
         if ($name !~ /^[A-Z]+$/) {
             $name = lc $name;
         }
         if (defined $glossary{$name}) {
+			## Glossary term with tooltip
             print STDERR "Found glossary term with tooltip $name / $txt\n";
-            s/(\{\{[^\}]+\}\})/[tooltips keyword='[$txt]($glossary_url#$name)' content='$glossary{$name}']/;
+			$replacement = "[tooltips keyword='[$txt]($glossary_url#$name)' content='$glossary{$name}']";
         }
         elsif (defined $tooltip{$txt}) {
+			## Tooltip only
             print STDERR "Found tooltip $name / $tooltip{$name}\n";
-            s/(\{\{[^\}]+\}\})/[tooltips keyword='$txt' content='$tooltip{$txt}']/;
+			$replacement = "[tooltips keyword='$txt' content='$tooltip{$txt}']";
         }
         else {
+			## Glossary only
             print STDERR "Found glossary term $name / $txt\n";
-            s/(\{\{[^\}]+\}\})/[$txt]($glossary_url#$name)/;
+			$replacement = "[$txt]($glossary_url#$name";
         }
-        $replacements++;
+
+		## Do replacement
+		if (defined $replacement) {
+			if (s/(\{\{[^\}]+\}\})/$replacement/) {
+				print STDERR "Replacement '$found' >> '$replacement'\n";
+				$replacements++;
+			}
+			else {
+				print STDERR "Replacement failed\n";
+			}
+		}
+		else {
+			print STDERR "No replacement found\n";
+		}
     }
 
+	next if $skip_replacements;
+
     ## Insert agenda item links
-    if (/\((\w+ \d+ #\d+)\)/) {
-        last if $skip_replacements;
-        if ($replacements >= $max_replacements) {
-            print STDERR "Reached maximum number of replacements $max_replacements on line $line_no\n";
-            $skip_replacements = 1;
-            last;
-        }
+    while (/(?<!\[)\((\w+ \d+\s#\s?\d+)\)/) {
         my $uid = $1;
-        s/$uid/[$uid]($item_links{$uid})/ if (defined $item_links{$uid});
-        $replacements++;
+		$uid =~ s/(\w+ \d+)\s#\s?(\d+)/$1 #$2/;
+		print STDERR "Found agenda item '$uid'\n";
+		if (defined $item_links{$uid}) {
+			my $replacement = "[$uid]($item_links{$uid})";
+			if (s/$uid/$replacement/) {
+				print STDERR "Replacement '$uid' >> $replacement\n";
+				$replacements++;
+			}
+			else {
+				print STDERR "Replacement failed\n";
+			}
+		}
+		else {
+			print STDERR "No details found for '$uid'\n";
+		}
     }
+
+	## Insert MA legislature bill links
+	while (/(?<!\[)\b([SH]\.\d+)/) {
+		my $uid = $1;
+		print STDERR "Found MA legislature bill $uid\n";
+		my $url = validate_bill_url($uid);
+		if (defined $url) {
+			my $replacement = "[$uid]($url)";
+			if (s/\b\Q$uid\E\b/$replacement/) {
+				print STDERR "Replacement $uid >> $replacement\n";
+			}
+			else {
+				print STDERR "Replacement of $uid failed\n";
+			}
+		}
+	}
     print;
 }
 
@@ -115,7 +163,7 @@ sub read_agenda_dir {
 
 sub read_agenda_file {
     my $path = shift;
-    print STDERR "Opening '$path'\n";
+    print STDERR "Opening '$path'\n" if $print_files;
     my %item_links;
     open FILE, '<', $path or return ();
     my $first = 1;
@@ -127,7 +175,22 @@ sub read_agenda_file {
             $first = 0;
             next;
         }
-        $item_links{$fields[$headers{'Unique Identifier'}]} = $fields[$headers{Link}];
+		my $uid = $fields[$headers{'Unique Identifier'}];
+		$uid =~ s/(\w+ \d+\s#)\s?(\d+)/$1$2/;
+        $item_links{$uid} = $fields[$headers{Link}];
     }
     return %item_links;
+}
+
+sub validate_bill_url {
+	my $bill = shift;
+	$bill =~ s/\.//g;
+	my $url = "$malegislature_url/$bill";
+	print STDERR "Validating $url\n";
+	my $resp = `curl "$url" 2>/dev/null`;
+	if ($resp =~ /404 - Page Not Found/i) {
+		print STDERR "No such bill found\n";
+		$url = undef;
+	}
+	return $url;
 }
