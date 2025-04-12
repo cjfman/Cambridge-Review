@@ -1072,6 +1072,11 @@ def processItemInfo(args, uid, link, action) -> ItemInfo:
 
 def processCma(args, uid, num, title, link, vote, action) -> CMA:
     """Process a CMA agenda item"""
+    ## Clean up title
+    title = re.sub(r"(?:A|Transmitting) ?communication (?:transmitted )?from (?:.+), City Manager, relative to ", "", title, flags=re.IGNORECASE)
+    title = re.sub(r"^the (?=appropriation|(?:re-?)?appointment|transfer)", "", title, flags=re.IGNORECASE).capitalize()
+
+    ## Process info
     info = processItemInfo(args, uid, link, action)
     return CMA(uid, num, info.category, info.awaiting, info.order, link, action, vote, info.charter_right, title, info.history)
 
