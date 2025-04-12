@@ -11,33 +11,34 @@ use Text::ParseWords;
 my $print_files;
 my $max_replacements = 1000;
 my @agenda_dirs = (
-    catfile(dirname(__FILE__), "../meeting_data/processed"),
-    catfile(dirname(__FILE__), "../processed"),
+    catfile(dirname(__FILE__), '../meeting_data/processed'),
+    catfile(dirname(__FILE__), '../processed'),
 );
 my $glossary_url = '/the-city/city-glossary';
 my $malegislature_url = 'https://malegislature.gov/Bills/194';
 my $lines;
 my %glossary = (
-    AHO  => "Affordable Housing Overlay",
-    BZA  => "Board of Zoning Appeals",
-    CDD  => "Community Development Department",
-    CHA  => "Cambridge Housing Authority",
-    CSO  => "Cycling Safety Ordinance",
-    DPW  => "Department of Public Works",
-    PACE => "Property Assessment Clean Energy Massachusetts",
-    RFP  => "Request for Proposal",
-    STIR => "Surveillance Technology Impact Report",
-    STO  => "Surveillance Technology Ordinance",
+    AHO  => 'Affordable Housing Overlay',
+    BZA  => 'Board of Zoning Appeals',
+	CAMP => 'Cambridge Access and Mobility Plan',
+    CDD  => 'Community Development Department',
+    CHA  => 'Cambridge Housing Authority',
+    CSO  => 'Cycling Safety Ordinance',
+    DPW  => 'Department of Public Works',
+    PACE => 'Property Assessment Clean Energy Massachusetts',
+    RFP  => 'Request for Proposal',
+    STIR => 'Surveillance Technology Impact Report',
+    STO  => 'Surveillance Technology Ordinance',
 );
 
 my %tooltip  = (
-    ADA     => "American Disabilities Act",
-    CPD     => "Cambridge Police Department",
-	CPS     => "Cambirdge Public Schools",
-    DCR     => "Department of Conservation and Recreation",
-    EOPSS   => "Executive Office of Public Safety",
-    MassDEP => "Massachusetts Department of Environmental Protection",
-    MEMA    => "Massachusetts Emergency Management Agency",
+    ADA     => 'American Disabilities Act',
+    CPD     => 'Cambridge Police Department',
+	CPS     => 'Cambirdge Public Schools',
+    DCR     => 'Department of Conservation and Recreation',
+    EOPSS   => 'Executive Office of Public Safety',
+    MassDEP => 'Massachusetts Department of Environmental Protection',
+    MEMA    => 'Massachusetts Emergency Management Agency',
 );
 
 ## Get agenda item links
