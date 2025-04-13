@@ -6,8 +6,12 @@ import json
 import re
 import sys
 
-from councillors import getCouncillorNames, setCouncillorInfo
-from utils import print_red, toTitleCase
+from pathlib import Path
+
+## pylint: disable=wrong-import-position
+sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
+from citylib.councillors import getCouncillorNames, setCouncillorInfo
+from citylib.utils import print_red, toTitleCase
 
 columns = ('uid', 'action', 'vote', 'charter_right', 'amended')
 

@@ -8,16 +8,18 @@ import os
 import sys
 
 from collections import defaultdict
+from pathlib import Path
 
 import folium
 
 from branca.element import Template, MacroElement
 
-import color_schemes as cs
-import gis
-from simplehtml import Element, LinearGradient, Text, TickMark
-
-import elections
+## pylint: disable=wrong-import-position
+sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
+from citylib import elections
+from citylib.utils import color_schemes as cs
+from citylib.utils import gis
+from citylib.utils.simplehtml import Element, LinearGradient, Text, TickMark
 
 ROOT      = "/home/charles/Projects/cambridge_review/"
 GEOJSON   = os.path.join(ROOT, "geojson")

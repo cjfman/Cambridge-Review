@@ -2,7 +2,7 @@ from typing import Tuple
 
 import yaml
 
-from utils import print_red
+from .utils import print_red
 
 
 _session_year = None

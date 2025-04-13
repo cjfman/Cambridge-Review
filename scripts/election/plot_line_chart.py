@@ -3,6 +3,7 @@
 import re
 import sys
 
+from pathlib import Path
 from typing import List, Sequence
 
 import matplotlib
@@ -10,7 +11,10 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import numpy as np
 
-import elections
+## pylint: disable=wrong-import-position
+sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
+
+from citylib import elections
 
 
 def nextOpenVPostition(

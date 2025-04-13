@@ -5,9 +5,13 @@ import csv
 import re
 import sys
 
+from pathlib import Path
+
 import glob
 
-import elections
+## pylint: disable=wrong-import-position
+sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
+from citylib import elections
 
 
 def parseArgs():

@@ -6,13 +6,16 @@ import re
 import sys
 
 from collections import defaultdict
+from pathlib import Path
 from typing import Dict, List
 
 import plotly
 import plotly.graph_objects as go
 
-import elections
-from utils import insertLineInFile
+## pylint: disable=wrong-import-position
+sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
+from citylib import elections
+from citylib.utils import insertLineInFile
 
 PLOT=True
 VERBOSE=False

@@ -4,11 +4,14 @@ import argparse
 import re
 import sys
 
+from pathlib import Path
 from textwrap import dedent
 
 from markdown_table_generator import generate_markdown, table_from_string_list, Alignment
 
-import elections
+## pylint: disable=wrong-import-position
+sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
+from citylib import elections
 
 
 def parseArgs():
@@ -21,10 +24,6 @@ def parseArgs():
         help="Generate full wordpress HTML")
     parser.add_argument("--table-only", action="store_true",
         help="Only generate the markdown table")
-    parser.add_argument("--iframe-only", action="store_true",
-        help="Only generate the interactive iframe page")
-    parser.add_argument("--force", action="store_true")
-
     parser.add_argument("election_file",
         help="Election file to be parsed")
 
@@ -43,7 +42,6 @@ def formatList(l):
 
 
 def summarizeElection(elcn):
-    ## pylint: disable=too-many-branches
     lines = []
     rounds = [dict() for i in range(elcn.num_rounds)]
     ## Organize rounds by round number
@@ -125,7 +123,7 @@ def write(f, elcn, title, year):
 
     ## Image URL
     f.write("\n------\n\nSankey URL\n\n")
-    f.write(f"wp-content/uploads/election_charts/city_council/line/cc_election_{year}_linechart.png\n")
+    f.write(f"wp-content/uploads/election_charts/school_committee/line/sc_election_{year}_linechart.png\n")
 
     ## Candidates
     f.write("\n------\n\nCandidates\n\n")
@@ -149,7 +147,7 @@ def write(f, elcn, title, year):
 
     ## Image URL
     f.write("\n------\n\nSankey URL\n\n")
-    f.write(f"/wp-content/uploads/election_charts/city_council/sankey/cc_election_sankey_{year}.png\n")
+    f.write(f"/wp-content/uploads/election_charts/school_committee/sankey/sc_election_sankey_{year}.png\n")
 
     ## Table
     f.write("\n------\n\nVote Table\n\n")
@@ -159,6 +157,7 @@ def write(f, elcn, title, year):
 
 def writeTable(f, elcn):
     f.write("\n".join(makeTable(elcn)))
+    f.write("\n")
 
 
 def writeFull(f, elcn, year):
@@ -179,7 +178,7 @@ def writeFull(f, elcn, year):
         <!-- wp:image {"align":"center","lightbox":{"enabled":true},"width":"722px","height":"auto","sizeSlug":"full","linkDestination":"none"} -->
     """))
     f.write(dedent(f"""\
-        <figure class="wp-block-image aligncenter size-full is-resized"><img src="/wp-content/uploads/election_charts/city_council/line/cc_election_{year}_linechart.png" alt="" style="width:722px;height:auto"/></figure>
+        <figure class="wp-block-image aligncenter size-full is-resized"><img src="/wp-content/uploads/election_charts/school_committee/line/sc_election_{year}_linechart.png" alt="" style="width:722px;height:auto"/></figure>
     """))
     f.write(dedent("""\
         <!-- /wp:image -->
@@ -273,10 +272,10 @@ def writeFull(f, elcn, year):
         <!-- wp:image {"align":"center","lightbox":{"enabled":true},"width":"1330px","height":"auto","sizeSlug":"full","linkDestination":"none"} -->
     """))
     f.write(dedent(f"""\
-        <figure class="wp-block-image aligncenter size-full is-resized"><img src="/wp-content/uploads/election_charts/city_council/sankey/cc_election_sankey_{year}.png" alt="" style="width:1330px;height:auto"/></figure>
+        <figure class="wp-block-image aligncenter size-full is-resized"><img src="/wp-content/uploads/election_charts/school_committee/sankey/sc_election_sankey_{year}.png" alt="" style="width:1330px;height:auto"/></figure>
         <!-- /wp:image -->
         <!-- wp:paragraph -->
-        <p><a href="/wp-content/uploads/election_charts/city_council/sankey/cc_election_sankey_{year}.png" target="_blank" rel="noreferrer noopener">Full Image</a><br><a href="/election/city-council-election-{year}-interactive/" target="_blank" rel="noreferrer noopener">Interactive</a></p>
+        <p><a href="/wp-content/uploads/election_charts/school_committee/sankey/sc_election_sankey_{year}.png" target="_blank" rel="noreferrer noopener">Full Image</a><br><a href="/election/school-committee-election-{year}-interactive/" target="_blank" rel="noreferrer noopener">Interactive</a></p>
         <!-- /wp:paragraph -->
 
     """))
@@ -294,7 +293,7 @@ def writeFull(f, elcn, year):
         <!-- /wp:jetpack/markdown -->
 
         <!-- wp:paragraph -->
-        <p><a href="/election/city-council-election-{year}-table/" target="_blank" rel="noreferrer noopener">View Full Table</a></p>
+        <p><a href="/election/school-committee-election-{year}-table/" target="_blank" rel="noreferrer noopener">View Full Table</a></p>
         <!-- /wp:paragraph -->
 
     """))
@@ -308,71 +307,7 @@ def writeFull(f, elcn, year):
         """))
 
 
-def writeIFrame(f, title, year):
-    f.write(f"<!-- {title} - Interactive -->\n")
-    f.write(dedent("""\
-        <script>
-        function squeezeToWidth(squeeze) {
-          var flexible_chart = document.getElementById("chart_flexible");
-          var fixed_chart = document.getElementById("chart_fixed_size");
-
-          // If the checkbox is checked, display the output text
-          if (squeeze){
-            fixed_chart.style.display = "none";
-            flexible_chart.style.display = "block";
-          }
-          else {
-            fixed_chart.style.display = "block";
-            flexible_chart.style.display = "none";
-          }
-          window.dispatchEvent(new Event('resize'));
-        }
-        </script>
-    """))
-    f.write(dedent(f"""\
-        <div style="position: absolute; right: 5%; z-index: 99 !important;">
-            <label class="switch"><input type="checkbox" id="squeeze-switch" onclick="squeezeToWidth(this.checked)" /><span class="slider round"></span></label>
-            <b style="margin-left: 0px">Fit to width of screen</b>
-        </div>
-        <div class="responsiveWrapper" style="margin-top: -25px;">
-            <iframe id="chart_flexible" src="/election-charts/city-council/cc_election_sankey_{year}.html" allowfullscreen frameborder="0"></iframe>
-            <iframe id="chart_fixed_size" src="/election-charts/city-council/cc_election_sankey_fixed_size_{year}.html" allowfullscreen frameborder="0"></iframe>
-        </div>
-        <script>squeezeToWidth(document.getElementById("squeeze-switch").checked)</script>"""))
-
-
-def runDecider(args, elcn, year, f):
-    ## Make title
-    title = args.title
-    if year not in title:
-        title += " " + year
-
-    ## Pick generation type
-    if args.table_only:
-        writeTable(f, elcn)
-    elif args.iframe_only:
-        writeIFrame(f, title, year)
-    elif args.full:
-        writeFull(f, elcn, year)
-    else:
-        write(f, elcn, title, year)
-
-
 def main(args):
-    ## Files should have city council in them
-    if not args.force \
-        and not re.search(r"city[_\-\s]council|cc_election", args.election_file, re.IGNORECASE) \
-        :
-        print(f"Are you sure this is the election file you want? {args.election_file}", file=sys.stderr)
-        return 1
-
-    if args.output_file is not None and not args.force \
-        and not re.search(r"city[_\-\s]council|cc_election", args.output_file, re.IGNORECASE) \
-        :
-        print(f"Are you sure this is the output file you want? {args.output_file}", file=sys.stderr)
-        return 1
-
-    ## Read elections file
     print(f"Opening '{args.election_file}'", file=sys.stderr)
     elcn = elections.loadElectionsFile(args.election_file)
     match = re.search(r"(\d{4})", elcn.date)
@@ -380,16 +315,25 @@ def main(args):
         raise Exception("Election date doesn't have a year in it")
 
     year = match.groups()[0]
+    title = args.title + " " + year
     if args.output_file is not None:
         print(f"Writing to '{args.output_file}'", file=sys.stderr)
         with open(args.output_file, 'w', encoding='utf8') as f:
-            runDecider(args, elcn, year, f)
+            if args.table_only:
+                writeTable(f, elcn)
+            elif args.full:
+                writeFull(f, elcn, year)
+            else:
+                write(f, elcn, title, year)
     else:
         print("Writing to stdout", file=sys.stderr)
-        runDecider(args, elcn, year, sys.stdout)
-        print("", file=sys.stdout) ## Extra newline
+        if args.table_only:
+            writeTable(sys.stdout, elcn)
+        elif args.full:
+            writeFull(sys.stdout, elcn, year)
+        else:
+            write(sys.stdout, elcn, title, year)
 
-    return 0
 
 if __name__ == '__main__':
     sys.exit(main(parseArgs()))
