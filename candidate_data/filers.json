@@ -1,0 +1,242 @@
+[
+    {
+        "cpfId": 18454,
+        "isClosed": false,
+        "display": "18454 Al-Zubi, Ayah",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 17206,
+        "isClosed": false,
+        "display": "17206 Azeem, Burhan",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 5049,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 19095,
+        "isClosed": false,
+        "display": "19095 Bisio, Elizabeth",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 18567,
+        "isClosed": false,
+        "display": "18567 Brown, Douglas",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 17586,
+        "isClosed": false,
+        "display": "17586 Bullister, Dana",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 16531,
+        "isClosed": false,
+        "display": "16531 Gebru, Samuel M.",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 18561,
+        "isClosed": false,
+        "display": "18561 Hanratty, John",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 18437,
+        "isClosed": false,
+        "display": "18437 Hsu, Peter",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 18485,
+        "isClosed": false,
+        "display": "18485 Klein, Adrienne",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 17261,
+        "isClosed": false,
+        "display": "17261 Kopon, Derek Andrew",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 16174,
+        "isClosed": false,
+        "display": "16174 Mahoney, Paul F.",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 16530,
+        "isClosed": false,
+        "display": "16530 Mallon, Alanna Marie",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 15589,
+        "isClosed": false,
+        "display": "15589 McGovern, Marc C.",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 5049,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 17593,
+        "isClosed": false,
+        "display": "17593 McGuirk, Joe",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 17259,
+        "isClosed": false,
+        "display": "17259 Nolan, Patricia M.",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 5049,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 17580,
+        "isClosed": false,
+        "display": "17580 Pierre, Frantz",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 17709,
+        "isClosed": false,
+        "display": "17709 Ribitzky, Roy",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 16686,
+        "isClosed": false,
+        "display": "16686 Santos, Jeffrey Michael",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 10772,
+        "isClosed": false,
+        "display": "10772 Schmidt, William",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 16556,
+        "isClosed": false,
+        "display": "16556 Siddiqui, Sumbul",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 5049,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 13783,
+        "isClosed": false,
+        "display": "13783 Simmons, E. Denise",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 4049,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 15628,
+        "isClosed": false,
+        "display": "15628 Smith, Jefferson R.",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 17146,
+        "isClosed": false,
+        "display": "17146 Sobrinho-Wheeler, Jivan G.",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 16559,
+        "isClosed": false,
+        "display": "16559 Tierney, Sean P.",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 16576,
+        "isClosed": false,
+        "display": "16576 Toner, Paul F.",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 5049,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 18505,
+        "isClosed": false,
+        "display": "18505 Totten, Dan",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 18461,
+        "isClosed": false,
+        "display": "18461 Walker, Vernon",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 17288,
+        "isClosed": false,
+        "display": "17288 Wilson, Ayesha M.",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 5049,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 18548,
+        "isClosed": false,
+        "display": "18548 Winters, Robert",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    },
+    {
+        "cpfId": 18510,
+        "isClosed": false,
+        "display": "18510 Zusy, Catherine",
+        "DistrictCodeSought": 5049,
+        "DistrictCodeHeld": 0,
+        "officeDistrictSought": "City Councilor, Cambridge"
+    }
+]
