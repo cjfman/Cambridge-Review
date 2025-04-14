@@ -16,8 +16,10 @@ REQUEST_HDR = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
 }
 
+
 def print_stderr(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
+
 
 def parseArgs():
     ## pylint: disable=global-statement
@@ -50,9 +52,10 @@ def parseArgs():
         help="The maximum number of filers to fetch. Set to 0 to fetch all of trhem")
     parser_fetch_filer.add_argument('--no-refetch', action='store_true',
         help="Don't fetch a filer that is already saved. Requires --out")
+    parser_fetch_filer.add_argument('--keys',
+        help="Dump these comma seperated keys to stdout")
     parser_fetch_filer.add_argument('filers', nargs='*', type=int,
         help="OCPF IDs to fetch specific filers. Overrides --all")
-
 
     ## Final parse
     args = parser.parse_args()
@@ -125,6 +128,31 @@ def fetch_filer_args_ok(args):
 
     return True
 
+
+def format_filer_keys(filer, keys):
+    return "\n".join(f"{x}: {filer[x]}" for x in keys)
+
+
+def fetch_and_store_filer(cpfid, *, out=None, keys=None, fetched=None):
+    filer = fetch_filer(cpfid, BASE_URL)
+    msg = None
+    if keys:
+        msg = format_filer_keys(filer, keys)
+    if out:
+        with open(os.path.join(out, f"{cpfid}.json"), 'w', encoding='utf8') as f:
+            json.dump(filer, f, indent=4)
+    elif not keys:
+        msg = json.dumps(filer, indent=4)
+
+    if msg:
+        if fetched:
+            print("---")
+
+        print(msg)
+
+    return filer
+
+
 def fetch_filer_hdlr(args):
     if not fetch_filer_args_ok(args):
         return 1
@@ -134,6 +162,10 @@ def fetch_filer_hdlr(args):
     if not cpfids and args.all:
         ## Fetch them from OCPF
         cpfids = [x['cpfId'] for x in fetch_filers(BASE_URL)]
+
+    keys = []
+    if args.keys is not None:
+        keys = args.keys.split(',')
 
     ignore = []
     if args.no_refetch:
@@ -151,15 +183,7 @@ def fetch_filer_hdlr(args):
             print_stderr(f"Skipping {cpfid}")
             continue
 
-        filer = fetch_filer(cpfid, BASE_URL)
-        if args.out:
-            with open(os.path.join(args.out, f"{cpfid}.json"), 'w', encoding='utf8') as f:
-                json.dump(filer, f, indent=4)
-        else:
-            if fetched:
-                print("---")
-
-            print(json.dumps(filer, indent=4))
+        fetch_and_store_filer(cpfid, out=args.out, keys=keys, fetched=fetched)
 
         ## Rate limit
         if args.ratelimit:
