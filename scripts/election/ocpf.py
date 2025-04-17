@@ -30,9 +30,9 @@ RECORD_TYPE = {
     "IndividualInkindContribution": 401,
     "CommitteeInkindContribution":  402,
     "UnionInKindContribution":      403,
-    "Candidate Loan Forgiveness":   404,
-    "Unitemized Inkind Total":      420,
-    "Voluntary Payroll Deduction":  210,
+    "CandidateLoanForgiveness":     404,
+    "UnitemizedInkindTotal":        420,
+    "VoluntaryPayrollDeduction":    210,
 }
 
 
@@ -108,7 +108,11 @@ def fetch_filers(url):
 def fetch_filer(cpfid, url):
     url = os.path.join(url, f"filer/payload/{cpfid}")
     print_stderr(f"Fetching '{url}'")
-    return fetch_json(url)
+    filer = fetch_json(url)
+    if 'raceActivityReports' in filer:
+        del filer['raceActivityReports']
+
+    return filer
 
 
 def fetch_list_hdlr(args):
