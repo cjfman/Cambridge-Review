@@ -11,9 +11,28 @@ import requests
 
 VERBOSE=False
 DEBUG=False
-BASE_URL="https://www.ocpf.us/FilerData/"
+API_URL="https://api.ocpf.us/"
 REQUEST_HDR = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
+}
+
+## https://www.ocpf.us/ReportData/GetItemsAndSummary?pageSize=50&currentIndex=1&sortField=&sortDirection=DESC&filerCpfId=17206&searchTypeCategory=A&recordTypeId=201&withSummary=true
+RECORD_TYPE = {
+    "IndividualContribution":       201,
+    "CommitteeContribution":        202,
+    "UnionAssociationContribution": 203,
+    "NonContributionReceipt":       204,
+    "BankInterest":                 205,
+    "CandidateLoan":                206,
+    "TransferFromSavings":          207,
+    "RegisteredPACs":               299,
+    "AggregatedUnItemizedReceipts": 220,
+    "IndividualInkindContribution": 401,
+    "CommitteeInkindContribution":  402,
+    "UnionInKindContribution":      403,
+    "Candidate Loan Forgiveness":   404,
+    "Unitemized Inkind Total":      420,
+    "Voluntary Payroll Deduction":  210,
 }
 
 
@@ -80,21 +99,21 @@ def fetch_json(url):
 
 
 def fetch_filers(url):
-    url = os.path.join(url, "GetFilerListings?category=CC&filter=&showClosed=false")
+    url = os.path.join(url, "filers/listings/CC?first200=false&excludeClosed=true")
     print_stderr(f"Fetching '{url}'")
     filers = fetch_json(url)
-    return [x for x in filers if x['officeDistrictSought'] == "City Councilor, Cambridge"]
+    return [x for x in filers if x['officeSought'] == "City Councilor, Cambridge"]
 
 
 def fetch_filer(cpfid, url):
-    url = os.path.join(url, f"GetFiler?cpfId={cpfid}")
+    url = os.path.join(url, f"filer/payload/{cpfid}")
     print_stderr(f"Fetching '{url}'")
     return fetch_json(url)
 
 
 def fetch_list_hdlr(args):
     ## Get the list of filers
-    filers = fetch_filers(BASE_URL)
+    filers = fetch_filers(API_URL)
     if args.out is not None:
         with open(args.out, 'w', encoding='utf8') as f:
             json.dump(filers, f, indent=4)
@@ -134,7 +153,7 @@ def format_filer_keys(filer, keys):
 
 
 def fetch_and_store_filer(cpfid, *, out=None, keys=None, fetched=None):
-    filer = fetch_filer(cpfid, BASE_URL)
+    filer = fetch_filer(cpfid, API_URL)
     msg = None
     if keys:
         msg = format_filer_keys(filer, keys)
@@ -161,7 +180,7 @@ def fetch_filer_hdlr(args):
     cpfids = args.filers
     if not cpfids and args.all:
         ## Fetch them from OCPF
-        cpfids = [x['cpfId'] for x in fetch_filers(BASE_URL)]
+        cpfids = [x['cpfId'] for x in fetch_filers(API_URL)]
 
     keys = []
     if args.keys is not None:
