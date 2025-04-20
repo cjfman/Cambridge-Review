@@ -15,7 +15,7 @@ import plotly.graph_objects as go
 ## pylint: disable=wrong-import-position
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 from citylib import elections
-from citylib.utils import insertLineInFile
+from citylib.utils import insertCopyright
 
 PLOT=True
 VERBOSE=False
@@ -246,20 +246,6 @@ def calcYPositions(election, round_labels, label_total, previous_labels, *, tigh
     return y_pos_map
 
 
-def insertCopyright(path, holder, *, tight=False):
-    """Insert a copyright notice"""
-    print(f"Updating with copyright")
-    year = dt.date.today().year
-    style = 'style="position:absolute; right:1%; bottom: 1%;"'
-    notice = f"<p {style}>Copyright &#169; {year}, {holder}. All rights reserved.</p>\n"
-    if tight:
-        style = 'style="position:absolute; left:1%; bottom: 0px;"'
-        notice = f"<p {style}>Copyright &#169; {year}<br>{holder}<br>All rights reserved.</p>\n"
-    inserted = insertLineInFile(path, "</body>", notice, after=False)
-    if not inserted:
-        print("Failed to insert copyright notice")
-
-
 def widthFontSize(args, max_len, px=10):
     px = px * args.font_size // 20
     width = px * max_len
@@ -274,7 +260,7 @@ def finalPlot(args, fig, election, max_length):
     print(f"max_length={max_length} width={width} height={height}")
     if re.search(r"\.html$", chart_file, re.IGNORECASE):
         ## Write an html file
-        ## Don't fixed size unless unless forced
+        ## Don't fix size unless unless forced
         if args.force_fixed_size:
             width *= 1.2
             fig.update_layout(width=width)
@@ -282,7 +268,10 @@ def finalPlot(args, fig, election, max_length):
         print(f"Saving as '{chart_file}'")
         plotly.offline.plot(fig, filename=chart_file)
         if args.copyright and not args.no_copyright:
-            insertCopyright(chart_file, args.copyright, tight=args.copyright_tight)
+            print(f"Updating with copyright")
+            if not insertCopyright(chart_file, args.copyright, tight=args.copyright_tight):
+                print("Failed to insert copyright notice")
+
     elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
         ## Write an svg file
         height *= 3/4

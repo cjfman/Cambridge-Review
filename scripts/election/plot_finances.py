@@ -4,12 +4,19 @@ import argparse
 import calendar
 import datetime as dt
 import random
+import re
 import sys
+
+from pathlib import Path
 
 import plotly
 import plotly.graph_objects as go
 
 from plotly.subplots import make_subplots
+
+## pylint: disable=wrong-import-position
+sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
+from citylib.utils import insertCopyright
 
 VERBOSE=False
 DEBUG=False
@@ -66,26 +73,26 @@ def parseArgs():
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--debug", action="store_true")
-    parser.add_argument("--out", required=True)
-    parser.add_argument("--months", type=int, default=3)
-    parser.add_argument("--dual", action="store_true")
-    parser.add_argument("--coh", action="store_true")
-
-#    subparsers = parser.add_subparsers()
-#
-#    ## Add cmd
-#    add_parser = subparsers.add_parser('add',
-#        help="Add rows to the google sheets"
-#    )
-#    add_parser.set_defaults(func=add_hdlr)
+    parser.add_argument("--title", default='Finances')
+    parser.add_argument("--out", required=True,
+        help="Write to this file",
+    )
+    parser.add_argument("--months", type=int, default=3,
+        help="How many months to include",
+    )
+    parser.add_argument("--dual", action="store_true",
+        help="Use dual axes. Ignored unless --coh is set",
+    )
+    parser.add_argument("--coh", action="store_true",
+        help="Show cash on hand line",
+    )
+    parser.add_argument("--copyright", default="Charles Jessup Franklin",
+        help="The copyright holder")
+    parser.add_argument("--no-copyright", action="store_true",
+        help="Don't set a copyright holder. Overrides --copyright")
 
     ## Final parse
     args = parser.parse_args()
-#    if args.subcmd is None:
-#        print("Must specify a subcmd")
-#        parser.print_help()
-#        sys.exit(1)
-
     if args.verbose:
         global VERBOSE
         VERBOSE = args.verbose
@@ -96,16 +103,12 @@ def parseArgs():
     return args
 
 
-#def add_hdlr(args):
-#    return 0
-
-
-def plot_jivan(args):
+def plot_expenses(args, reports):
     months = []
     recpts = []
     expncs = []
     cashes = []
-    for report in EXAMPLE_DATA:
+    for report in reports:
         months.append(calendar.month_abbr[report['month']])
         recpts.append(report['receipts'])
         expncs.append(report['expenditures']*-1)
@@ -167,25 +170,30 @@ def plot_months(args):
         fig.show()
 
 
-def plot_exp(args):
-    x = [1, 2, 3, 4]
-
-    fig = go.Figure()
-    fig.add_trace(go.Bar(x=x, y=[1, 4, 9, 16]))
-    fig.add_trace(go.Bar(x=x, y=[6, -8, -4.5, 8]))
-    fig.add_trace(go.Bar(x=x, y=[-15, -3, 4.5, -8]))
-    fig.add_trace(go.Bar(x=x, y=[-1, 3, -3, -4]))
-
-    fig.update_layout(barmode='relative', title_text='Relative Barmode')
-    if args.out is not None:
-        plotly.offline.plot(fig, filename=args.out)
+def finalPlot(args, fig):
+    chart_file = args.lout
+    if re.search(r"\.html$", chart_file, re.IGNORECASE):
+        print(f"Saving as '{chart_file}'")
+        plotly.offline.plot(fig, filename=chart_file)
+        if args.copyright and not args.no_copyright:
+            insertCopyright(chart_file, args.copyright, tight=args.copyright_tight)
+    elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
+        ## Write an svg file
+        print(f"Saving as '{chart_file}'")
+        fig.write_image(chart_file)
     else:
-        fig.show()
+        ## Write something else, png if not specified
+        if '.' not in chart_file:
+            chart_file += ".png"
+            print(f"Saving as png '{chart_file}'")
+        else:
+            print(f"Saving as '{chart_file}'")
+
+        fig.write_image(chart_file)
 
 
 def main(args):
-    #return args.subcmd(args)
-    plot_jivan(args)
+    plot_expenses(args, EXAMPLE_DATA)
     return 0
 
 if __name__ == '__main__':

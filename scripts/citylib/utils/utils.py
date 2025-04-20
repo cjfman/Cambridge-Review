@@ -68,3 +68,14 @@ def insertLineInFile(path, match, line, *, after=True, stop=True, regex=False, r
             f.writelines(contents)
 
     return update
+
+
+def insertCopyright(path, holder, *, tight=False) -> bool:
+    """Insert a copyright notice"""
+    year = dt.date.today().year
+    style = 'style="position:absolute; right:1%; bottom: 1%;"'
+    notice = f"<p {style}>Copyright &#169; {year}, {holder}. All rights reserved.</p>\n"
+    if tight:
+        style = 'style="position:absolute; left:1%; bottom: 0px;"'
+        notice = f"<p {style}>Copyright &#169; {year}<br>{holder}<br>All rights reserved.</p>\n"
+    return insertLineInFile(path, "</body>", notice, after=False)
