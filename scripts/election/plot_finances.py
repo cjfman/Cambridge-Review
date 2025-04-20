@@ -19,7 +19,6 @@ from citylib.utils import insertCopyright
 
 VERBOSE=False
 DEBUG=False
-
 CURRENCY_KEYS = (
     'startBalance',
     'creditTotal',
@@ -52,6 +51,10 @@ def parseArgs():
         help="Put the copyright notice in the bottom right corner")
     parser.add_argument("--no-copyright", action="store_true",
         help="Don't set a copyright holder. Overrides --copyright")
+    parser.add_argument("--font-size", type=int, default=14,
+        help="Font size")
+    parser.add_argument("--h-legend", action="store_true",
+        help="Make the legend horizontal")
 
     ## Final parse
     args = parser.parse_args()
@@ -102,7 +105,7 @@ def plot_expenses(args, reports):
     recpts_txts = ['${:,.2f}'.format(x) for x in recpts]
     expncs_txts = ['${:,.2f}'.format(x) for x in expncs]
     cashes_txts = ['${:,.2f}'.format(x) for x in cashes]
-    fig = make_subplots(specs=[[{"secondary_y": args.dual}]])
+    fig = make_subplots(specs=[[dict(secondary_y=args.dual)]])
     fig.add_trace(go.Bar(x=stacks, y=recpts, name="Receipts",    text=recpts_txts, textposition='auto'))
     fig.add_trace(go.Bar(x=stacks, y=expncs, name="Expenditure", text=expncs_txts, textposition='auto'))
     if args.coh:
@@ -121,14 +124,24 @@ def plot_expenses(args, reports):
     if args.dual and args.coh:
         fig.update_yaxes(title_text="Receipts/Expenditures", secondary_y=False)
         fig.update_yaxes(title_text="Cash on Hand",          secondary_y=True)
-        y_fmt   = {'tickformat': "$,", 'range': [min_val, max(recpts)*1.2]}
-        y_fmt_2 = {'tickformat': "$,", 'range': [min_val, max(cashes)*1.2]}
+        y_fmt   = dict(tickformat="$,", range=[min_val, max(recpts)*1.2])
+        y_fmt_2 = dict(tickformat="$,", range=[min_val, max(cashes)*1.2])
         fig.update_layout(yaxis=y_fmt, yaxis2=y_fmt_2)
     else:
         fig.update_yaxes(title_text="Amount (dollars)")
         fig.update_layout(yaxis_tickformat="$,")
 
-    fig.update_layout(barmode='relative', title_text=title)
+    title_info = dict(text=title, subtitle=dict(text=f"Cash on Hand: ${cashes[0]:,.2f}"))
+    if not args.h_legend:
+        fig.update_layout(barmode='relative', title=title_info, legend_title_text="Legend")
+    else:
+        fig.update_layout(barmode='relative', title=title_info, legend=dict(
+            yanchor="bottom",
+            xanchor="right",
+            x=1,
+            y=1,
+            orientation="h",
+        ))
     if args.out is not None:
         finalPlot(args, fig)
     else:
@@ -137,11 +150,13 @@ def plot_expenses(args, reports):
 
 def finalPlot(args, fig):
     chart_file = args.out
+    font_size  = args.font_size
+    fig.update_layout(font_size=font_size)
     if re.search(r"\.html$", chart_file, re.IGNORECASE):
         print(f"Saving as '{chart_file}'")
         plotly.offline.plot(fig, filename=chart_file)
         if args.copyright and not args.no_copyright:
-            insertCopyright(chart_file, args.copyright, tight=args.copyright_tight)
+            insertCopyright(chart_file, args.copyright, tight=args.copyright_tight, blocking=True)
     elif re.search(r"\.svg$", chart_file, re.IGNORECASE):
         ## Write an svg file
         print(f"Saving as '{chart_file}'")
