@@ -20,52 +20,6 @@ from citylib.utils import insertCopyright
 VERBOSE=False
 DEBUG=False
 
-EXAMPLE_DATA = [
-    {
-        'reportingPeriod':  "10/1/2024 - 10/31/2024",
-        'startBalance':     2713.18,
-        'endBalance':       350.57,
-        'creditTotal':      350.57,
-        'expenditureTotal': 211.88,
-    },
-    {
-        'reportingPeriod':  "11/1/2024 - 11/30/2024",
-        'startBalance':     2851.87,
-        'endBalance':       2851.39,
-        'creditTotal':      14.40,
-        'expenditureTotal': 14.88,
-    },
-    {
-        'reportingPeriod':  "12/1/2024 - 12/31/2024",
-        'startBalance':     2851.39,
-        'creditTotal':      4402.92,
-        'expenditureTotal': 14.88,
-        'endBalance':       7239.43,
-    },
-    {
-        'reportingPeriod':  "1/1/2025 - 1/31/2025",
-        'startBalance':     7239.43,
-        'creditTotal':      110.44,
-        'expenditureTotal': 164.81,
-        'endBalance':       7185.06,
-
-    },
-    {
-        'reportingPeriod':  "2/1/2025 - 2/28/2025",
-        'startBalance':     7185.06,
-        'creditTotal':      110.45,
-        'expenditureTotal': 34.58,
-        'endBalance':       7260.93,
-    },
-    {
-        'reportingPeriod':  "3/1/2025 - 3/31/2025",
-        'startBalance':     7260.93,
-        'creditTotal':      974.90,
-        'expenditureTotal': 14.88,
-        'endBalance':       8220.95,
-    },
-]
-
 CURRENCY_KEYS = (
     'startBalance',
     'creditTotal',
