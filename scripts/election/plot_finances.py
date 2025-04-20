@@ -2,7 +2,7 @@
 
 import argparse
 import datetime as dt
-import random
+import json
 import re
 import sys
 
@@ -66,6 +66,14 @@ EXAMPLE_DATA = [
     },
 ]
 
+CURRENCY_KEYS = (
+    'startBalance',
+    'creditTotal',
+    'expenditureTotal',
+    'endBalance',
+    'cashOnHand',
+)
+
 
 def parseArgs():
     ## pylint: disable=global-statement
@@ -74,22 +82,19 @@ def parseArgs():
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--title", default='Finances')
     parser.add_argument("--out", required=True,
-        help="Write to this file",
-    )
-    parser.add_argument("--in",
-        help="JSON file of reports"
-    )
+        help="Write to this file")
+    parser.add_argument("--in-file", required=True,
+        help="JSON file of reports")
     parser.add_argument("--months", type=int, default=3,
-        help="How many months to include",
-    )
+        help="How many months to include")
     parser.add_argument("--dual", action="store_true",
-        help="Use dual axes. Ignored unless --coh is set",
-    )
+        help="Use dual axes. Ignored unless --coh is set")
     parser.add_argument("--coh", action="store_true",
-        help="Show cash on hand line",
-    )
+        help="Show cash on hand line")
     parser.add_argument("--copyright", default="Charles Jessup Franklin",
         help="The copyright holder")
+    parser.add_argument("--copyright-tight", action="store_true",
+        help="Put the copyright notice in the bottom right corner")
     parser.add_argument("--no-copyright", action="store_true",
         help="Don't set a copyright holder. Overrides --copyright")
 
@@ -105,6 +110,27 @@ def parseArgs():
     return args
 
 
+def read_reports(path):
+    print(f"Opening reports file '{path}'")
+    data = None
+    try:
+        with open(path, encoding='utf8') as f:
+            data = json.load(f)
+    except OSError as e:
+        print(f"Failed to open reports file '{path}': {e}")
+        return None
+
+    try:
+        reports = data['items']
+        for report in reports:
+            for key in CURRENCY_KEYS:
+                report[key] = float(report[key][1:].replace(',', ''))
+        return reports
+    except KeyError as e:
+        print(f"Reports file wasn't properly formatted: {e}")
+        return None
+
+
 def plot_expenses(args, reports):
     stacks = []
     recpts = []
@@ -114,7 +140,7 @@ def plot_expenses(args, reports):
         stacks.append(report['reportingPeriod'])
         recpts.append(report['creditTotal'])
         expncs.append(report['expenditureTotal']*-1)
-        cashes.append(report['endBalance'])
+        cashes.append(report['cashOnHand'])
 
     #fig = go.Figure()
     recpts_txts = ['${:,.2f}'.format(x) for x in recpts]
@@ -146,15 +172,15 @@ def plot_expenses(args, reports):
         fig.update_yaxes(title_text="Amount (dollars)")
         fig.update_layout(yaxis_tickformat="$,")
 
-    fig.update_layout(barmode='relative', title_text='Jivan Finances')
+    fig.update_layout(barmode='relative', title_text=args.title)
     if args.out is not None:
-        plotly.offline.plot(fig, filename=args.out)
+        finalPlot(args, fig)
     else:
         fig.show()
 
 
 def finalPlot(args, fig):
-    chart_file = args.lout
+    chart_file = args.out
     if re.search(r"\.html$", chart_file, re.IGNORECASE):
         print(f"Saving as '{chart_file}'")
         plotly.offline.plot(fig, filename=chart_file)
@@ -176,7 +202,7 @@ def finalPlot(args, fig):
 
 
 def main(args):
-    plot_expenses(args, EXAMPLE_DATA)
+    plot_expenses(args, read_reports(args.in_file))
     return 0
 
 if __name__ == '__main__':
