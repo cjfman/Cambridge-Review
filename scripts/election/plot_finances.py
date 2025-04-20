@@ -69,6 +69,7 @@ def parseArgs():
     parser.add_argument("--out", required=True)
     parser.add_argument("--months", type=int, default=3)
     parser.add_argument("--dual", action="store_true")
+    parser.add_argument("--coh", action="store_true")
 
 #    subparsers = parser.add_subparsers()
 #
@@ -102,23 +103,35 @@ def parseArgs():
 def plot_jivan(args):
     months = []
     recpts = []
-    expnds = []
+    expncs = []
     cashes = []
     for report in EXAMPLE_DATA:
         months.append(calendar.month_abbr[report['month']])
         recpts.append(report['receipts'])
-        expnds.append(report['expenditures']*-1)
+        expncs.append(report['expenditures']*-1)
         cashes.append(report['end'])
 
     #fig = go.Figure()
+    recpts_txts = ['${:,.2f}'.format(x) for x in recpts]
+    expncs_txts = ['${:,.2f}'.format(x) for x in expncs]
+    cashes_txts = ['${:,.2f}'.format(x) for x in cashes]
     fig = make_subplots(specs=[[{"secondary_y": args.dual}]])
-    fig.add_trace(go.Bar(x=months,     y=recpts, name="Receipts"))
-    fig.add_trace(go.Bar(x=months,     y=expnds, name="Expenditure"))
-    fig.add_trace(go.Scatter(x=months, y=cashes, name="Cash on Hand"), secondary_y=args.dual)
-    min_val = min(expnds)
+    fig.add_trace(go.Bar(x=months, y=recpts, name="Receipts",    text=recpts_txts, textposition='auto'))
+    fig.add_trace(go.Bar(x=months, y=expncs, name="Expenditure", text=expncs_txts, textposition='auto'))
+    if args.coh:
+        fig.add_trace(go.Scatter(
+            x=months,
+            y=cashes,
+            name="Cash on Hand",
+            text=cashes_txts,
+            textposition="bottom center",
+            mode="lines+markers+text",
+        ), secondary_y=args.dual)
+        #fig.add_trace(go.Scatter(x=months, y=cashes, name="Cash on Hand"), secondary_y=args.dual)
 
+    min_val = min(expncs)
     fig.update_xaxes(title_text="Month")
-    if args.dual:
+    if args.dual and args.coh:
         fig.update_yaxes(title_text="Receipts/Expenditures", secondary_y=False)
         fig.update_yaxes(title_text="Cash on Hand",          secondary_y=True)
         y_fmt   = {'tickformat': "$,", 'range': [min_val, max(recpts)*1.2]}
