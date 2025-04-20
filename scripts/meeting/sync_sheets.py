@@ -6,6 +6,8 @@ import os
 import re
 import sys
 
+from pathlib import Path
+
 from google.auth.exceptions import RefreshError
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -13,8 +15,10 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-from councillors import getCouncillorNames, getSessionYear, setCouncillorInfo
-from prompts import query_yes_no
+## pylint: disable=import-error,wrong-import-order
+sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
+from citylib.councillors import getCouncillorNames, getSessionYear, setCouncillorInfo
+from citylib.utils.prompts import query_yes_no
 
 
 VERBOSE=False

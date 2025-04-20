@@ -7,7 +7,7 @@ by_address/
 by_id/
 gis_property_info/
 graphs/
-*/__pycache__
+**/__pycache__/
 *.tgz
 sandbox/*
 meeting_data/cache/*.pdf

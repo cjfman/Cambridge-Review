@@ -10,6 +10,7 @@ import sys
 import traceback
 
 from collections import defaultdict
+from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 import requests
@@ -18,8 +19,10 @@ from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-o
 import html5lib ## pylint: disable=unused-import
 from bs4 import BeautifulSoup
 
-from councillors import getCouncillorNames, setCouncillorInfo, lookUpCouncillorName
-from utils import print_green, print_red, overlayKeys, toTitleCase, setDefaultValue
+## pylint: disable=import-error,wrong-import-order
+sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
+from citylib.councillors import getCouncillorNames, setCouncillorInfo, lookUpCouncillorName
+from citylib.utils import print_green, print_red, overlayKeys, toTitleCase, setDefaultValue
 
 VERBOSE = False
 ALLOWED_TYPES = ('regular', 'special')
