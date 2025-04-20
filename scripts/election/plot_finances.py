@@ -106,8 +106,8 @@ def plot_expenses(args, reports):
     expncs_txts = ['${:,.2f}'.format(x) for x in expncs]
     cashes_txts = ['${:,.2f}'.format(x) for x in cashes]
     fig = make_subplots(specs=[[dict(secondary_y=args.dual)]])
-    fig.add_trace(go.Bar(x=stacks, y=recpts, name="Receipts",    text=recpts_txts, textposition='auto'))
-    fig.add_trace(go.Bar(x=stacks, y=expncs, name="Expenditure", text=expncs_txts, textposition='auto'))
+    fig.add_trace(go.Bar(x=stacks, y=recpts, name="Receipts",     text=recpts_txts, textposition='auto'))
+    fig.add_trace(go.Bar(x=stacks, y=expncs, name="Expenditures", text=expncs_txts, textposition='auto'))
     if args.coh:
         fig.add_trace(go.Scatter(
             x=stacks,
