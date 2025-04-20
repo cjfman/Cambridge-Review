@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import argparse
-import calendar
 import datetime as dt
 import random
 import re
@@ -23,47 +22,47 @@ DEBUG=False
 
 EXAMPLE_DATA = [
     {
-        'month':        10,
-        'start':        2713.18,
-        'end':          350.57,
-        'receipts':     350.57,
-        'expenditures': 211.88,
+        'reportingPeriod':  "10/1/2024 - 10/31/2024",
+        'startBalance':     2713.18,
+        'endBalance':       350.57,
+        'creditTotal':      350.57,
+        'expenditureTotal': 211.88,
     },
     {
-        'month':        11,
-        'start':        2851.87,
-        'end':          2851.39,
-        'receipts':     14.40,
-        'expenditures': 14.88,
+        'reportingPeriod':  "11/1/2024 - 11/30/2024",
+        'startBalance':     2851.87,
+        'endBalance':       2851.39,
+        'creditTotal':      14.40,
+        'expenditureTotal': 14.88,
     },
     {
-        'month':        12,
-        'start':        2851.39,
-        'receipts':     4402.92,
-        'expenditures': 14.88,
-        'end':          7239.43,
+        'reportingPeriod':  "12/1/2024 - 12/31/2024",
+        'startBalance':     2851.39,
+        'creditTotal':      4402.92,
+        'expenditureTotal': 14.88,
+        'endBalance':       7239.43,
     },
     {
-        'month':        1,
-        'start':        7239.43,
-        'receipts':     110.44,
-        'expenditures': 164.81,
-        'end':          7185.06,
+        'reportingPeriod':  "1/1/2025 - 1/31/2025",
+        'startBalance':     7239.43,
+        'creditTotal':      110.44,
+        'expenditureTotal': 164.81,
+        'endBalance':       7185.06,
 
     },
     {
-        'month':        2,
-        'start':        7185.06,
-        'receipts':     110.45,
-        'expenditures': 34.58,
-        'end':          7260.93,
+        'reportingPeriod':  "2/1/2025 - 2/28/2025",
+        'startBalance':     7185.06,
+        'creditTotal':      110.45,
+        'expenditureTotal': 34.58,
+        'endBalance':       7260.93,
     },
     {
-        'month':        3,
-        'start':        7260.93,
-        'receipts':     974.90,
-        'expenditures': 14.88,
-        'end':          8220.95,
+        'reportingPeriod':  "3/1/2025 - 3/31/2025",
+        'startBalance':     7260.93,
+        'creditTotal':      974.90,
+        'expenditureTotal': 14.88,
+        'endBalance':       8220.95,
     },
 ]
 
@@ -76,6 +75,9 @@ def parseArgs():
     parser.add_argument("--title", default='Finances')
     parser.add_argument("--out", required=True,
         help="Write to this file",
+    )
+    parser.add_argument("--in",
+        help="JSON file of reports"
     )
     parser.add_argument("--months", type=int, default=3,
         help="How many months to include",
@@ -104,36 +106,36 @@ def parseArgs():
 
 
 def plot_expenses(args, reports):
-    months = []
+    stacks = []
     recpts = []
     expncs = []
     cashes = []
     for report in reports:
-        months.append(calendar.month_abbr[report['month']])
-        recpts.append(report['receipts'])
-        expncs.append(report['expenditures']*-1)
-        cashes.append(report['end'])
+        stacks.append(report['reportingPeriod'])
+        recpts.append(report['creditTotal'])
+        expncs.append(report['expenditureTotal']*-1)
+        cashes.append(report['endBalance'])
 
     #fig = go.Figure()
     recpts_txts = ['${:,.2f}'.format(x) for x in recpts]
     expncs_txts = ['${:,.2f}'.format(x) for x in expncs]
     cashes_txts = ['${:,.2f}'.format(x) for x in cashes]
     fig = make_subplots(specs=[[{"secondary_y": args.dual}]])
-    fig.add_trace(go.Bar(x=months, y=recpts, name="Receipts",    text=recpts_txts, textposition='auto'))
-    fig.add_trace(go.Bar(x=months, y=expncs, name="Expenditure", text=expncs_txts, textposition='auto'))
+    fig.add_trace(go.Bar(x=stacks, y=recpts, name="Receipts",    text=recpts_txts, textposition='auto'))
+    fig.add_trace(go.Bar(x=stacks, y=expncs, name="Expenditure", text=expncs_txts, textposition='auto'))
     if args.coh:
         fig.add_trace(go.Scatter(
-            x=months,
+            x=stacks,
             y=cashes,
             name="Cash on Hand",
             text=cashes_txts,
             textposition="bottom center",
             mode="lines+markers+text",
         ), secondary_y=args.dual)
-        #fig.add_trace(go.Scatter(x=months, y=cashes, name="Cash on Hand"), secondary_y=args.dual)
+        #fig.add_trace(go.Scatter(x=stacks, y=cashes, name="Cash on Hand"), secondary_y=args.dual)
 
     min_val = min(expncs)
-    fig.update_xaxes(title_text="Month")
+    fig.update_xaxes(title_text="Report Period")
     if args.dual and args.coh:
         fig.update_yaxes(title_text="Receipts/Expenditures", secondary_y=False)
         fig.update_yaxes(title_text="Cash on Hand",          secondary_y=True)
@@ -145,25 +147,6 @@ def plot_expenses(args, reports):
         fig.update_layout(yaxis_tickformat="$,")
 
     fig.update_layout(barmode='relative', title_text='Jivan Finances')
-    if args.out is not None:
-        plotly.offline.plot(fig, filename=args.out)
-    else:
-        fig.show()
-
-
-def plot_months(args):
-    now = dt.datetime.now()
-    last_month_idx = (now.month - 1) % 12
-    months = [calendar.month_abbr[(x % 12) + 1] for x in range(last_month_idx - args.months, last_month_idx)]
-    gen_nums = lambda x, y, z: [random.randint(y, z) for _ in range(x)]
-    x = months
-
-    fig = go.Figure()
-    fig.add_trace(go.Bar(x=x, y=gen_nums(args.months, 0, 10), name="Receipts"))
-    fig.add_trace(go.Bar(x=x, y=gen_nums(args.months, -10, 0), name="Expenditure"))
-    fig.add_trace(go.Scatter(x=x, y=gen_nums(args.months, -10, 10), name="Cash on Hand"))
-
-    fig.update_layout(barmode='relative', title_text='Relative Barmode')
     if args.out is not None:
         plotly.offline.plot(fig, filename=args.out)
     else:
