@@ -80,13 +80,14 @@ def parseArgs():
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--debug", action="store_true")
-    parser.add_argument("--title", default='Finances')
+    parser.add_argument("--title",
+        help="Title of the chart. Default: 'Finances - <committeeName>'")
     parser.add_argument("--out", required=True,
         help="Write to this file")
     parser.add_argument("--in-file", required=True,
         help="JSON file of reports")
-    parser.add_argument("--months", type=int, default=3,
-        help="How many months to include")
+    parser.add_argument("--max-reports", type=int, default=6,
+        help="Maximum number of reports to include")
     parser.add_argument("--dual", action="store_true",
         help="Use dual axes. Ignored unless --coh is set")
     parser.add_argument("--coh", action="store_true",
@@ -132,6 +133,7 @@ def read_reports(path):
 
 
 def plot_expenses(args, reports):
+    title = args.title or f"Finances - {reports[0]['committeeName']}"
     stacks = []
     recpts = []
     expncs = []
@@ -172,7 +174,7 @@ def plot_expenses(args, reports):
         fig.update_yaxes(title_text="Amount (dollars)")
         fig.update_layout(yaxis_tickformat="$,")
 
-    fig.update_layout(barmode='relative', title_text=args.title)
+    fig.update_layout(barmode='relative', title_text=title)
     if args.out is not None:
         finalPlot(args, fig)
     else:
@@ -202,7 +204,7 @@ def finalPlot(args, fig):
 
 
 def main(args):
-    plot_expenses(args, read_reports(args.in_file))
+    plot_expenses(args, read_reports(args.in_file)[:args.max_reports])
     return 0
 
 if __name__ == '__main__':
