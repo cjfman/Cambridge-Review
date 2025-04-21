@@ -16,7 +16,7 @@ REQUEST_HDR = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
 }
 
-## https://www.ocpf.us/ReportData/GetItemsAndSummary?pageSize=50&currentIndex=1&sortField=&sortDirection=DESC&filerCpfId=17206&searchTypeCategory=A&recordTypeId=201&withSummary=true
+#https://api.ocpf.us/reports/reportList/17146?reportYear=0&baseReportTypeId=1&reportStartDate=10%2F1%2F2024&reportEndDate=4%2F1%2F2025&pagesize=50&startIndex=1&sortField=&sortDirection=DESC&withSummary=true
 RECORD_TYPE = {
     "IndividualContribution":       201,
     "CommitteeContribution":        202,

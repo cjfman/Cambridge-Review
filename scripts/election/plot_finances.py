@@ -83,6 +83,7 @@ def read_reports(path):
         for report in reports:
             for key in CURRENCY_KEYS:
                 report[key] = float(report[key][1:].replace(',', ''))
+        reports.reverse()
         return reports
     except KeyError as e:
         print(f"Reports file wasn't properly formatted: {e}")
