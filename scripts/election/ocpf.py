@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import argparse
+import datetime as dt
+import dateutil.relativedelta
 import json
 import re
 import os
@@ -8,6 +10,12 @@ import sys
 import time
 
 import requests
+
+from pathlib import Path
+
+## pylint: disable=wrong-import-position
+sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
+from citylib.utils import url_format_dt
 
 VERBOSE=False
 DEBUG=False
@@ -75,6 +83,16 @@ def parseArgs():
         help="Dump these comma seperated keys to stdout")
     parser_fetch_filer.add_argument('filers', nargs='*', type=int,
         help="OCPF IDs to fetch specific filers. Overrides --all")
+
+    ## Get reports
+    parser_query_reports = subparsers.add_parser('query-reports',
+        help="Query finalcial reports"
+    )
+    parser_query_reports.set_defaults(subcmd=query_reports_hdlr)
+    parser_query_reports.add_argument('filer', type=int,
+        help="OCPF ID to fetch reports of")
+    parser_query_reports.add_argument('path',
+        help="Save path")
 
     ## Final parse
     args = parser.parse_args()
@@ -215,6 +233,27 @@ def fetch_filer_hdlr(args):
         fetched += 1
         if args.max and fetched >= args.max:
             break
+
+    return 0
+
+
+def format_report_query_url(cpfid, start:dt.datetime, end:dt.datetime):
+
+    return "https://api.ocpf.us/reports/reportList/{cpfid}?reportYear=0&baseReportTypeId=1&reportStartDate={start}&reportEndDate={end}&pagesize=50&startIndex=1&sortField=&sortDirection=DESC&withSummary=true".format(
+        cpfid=cpfid,
+        start=url_format_dt(start),
+        end=url_format_dt(end),
+    )
+
+def query_reports_hdlr(args):
+    now = dt.datetime.now()
+    then = now - dateutil.relativedelta.relativedelta(months=6)
+    url = format_report_query_url(args.filer, then, now)
+    print_stderr(f"Fetching {url}")
+    reports = fetch_json(url)
+    with open(args.path, 'w', encoding='utf8') as f:
+        print_stderr(f"Writting to {args.path}")
+        json.dump(reports, f)
 
     return 0
 

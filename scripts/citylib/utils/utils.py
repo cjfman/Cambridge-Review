@@ -82,3 +82,7 @@ def insertCopyright(path, holder, *, tight=False, blocking=False) -> bool:
     if blocking:
         notice = f"<div>{notice}</div>"
     return insertLineInFile(path, "</body>", notice, after=False)
+
+
+def url_format_dt(stamp:dt.datetime):
+    return "%2F".join([str(x) for x in [stamp.month, stamp.day, stamp.year]])
