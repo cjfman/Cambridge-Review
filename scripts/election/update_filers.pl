@@ -30,6 +30,10 @@ foreach my $cpfid (@cpfids) {
     my $tmp = "/tmp/${cpfid}_reports.json";
     my $report_file = "$reports_path/${cpfid}_reports.json";
     my $chart_file = "$charts_path/${cpfid}_report_chart.html";
+    if (-M $report_file < 1) {
+        print STDERR "Report file '$report_file' was written today. Don't check for update\n";
+        next;
+    }
     print STDERR "Getting reports for filer $cpfid and saving them to $report_file\n";
     system "$scripts_dir/election/ocpf.py query-reports $cpfid $tmp 1>&2";
     if ($?) {
