@@ -1,0 +1,90 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+no warnings qw/uninitialized/;
+
+use File::Compare;
+use File::Copy;
+
+my $base_dir = ".";
+$base_dir = shift @ARGV if @ARGV;
+$base_dir =~ s{/$}{};
+
+my $scripts_dir = "./scripts";
+my $filers_file = "$base_dir/candidate_data/filers.json";
+my $reports_path = "$base_dir/candidate_data/reports";
+my $charts_path  = "$base_dir/charts/filers/reports";
+
+$reports_path =~ s{/$}{};
+$charts_path  =~ s{/$}{};
+
+print STDERR "Checking '$filers_file' for filers\n";
+my @cpfids = get_cpfids($filers_file);
+my $num = @cpfids;
+my @charts;
+my $errors;
+print STDERR "Found $num filers\n";
+foreach my $cpfid (@cpfids) {
+    ## Get report
+    my $tmp = "/tmp/${cpfid}_reports.json";
+    my $report_file = "$reports_path/${cpfid}_reports.json";
+    my $chart_file = "$charts_path/${cpfid}_report_chart.html";
+    print STDERR "Getting reports for filer $cpfid and saving them to $report_file\n";
+    system "$scripts_dir/election/ocpf.py query-reports $cpfid $tmp 1>&2";
+    if ($?) {
+        print STDERR "Failed to query report for filer $cpfid: $?";
+        $errors++;
+    }
+    elsif (-f $report_file and compare($tmp, $report_file) != 1) {
+        print STDERR "No report update for filer $cpfid\n";
+    }
+    else {
+        ## Make a chart from the report
+        if (!move($tmp, $report_file)) {
+            print STDERR "Failed to save file to '$report_file'\n";
+            $errors++;
+        }
+        else {
+            print "Report update for filer $cpfid saved in $report_file. Making chart and saving to '$chart_file'\n";
+            system "$scripts_dir/election/plot_finances.py --out '$chart_file' --in-file '$report_file' --copyright-tight --h-legend 1>&2";
+            if ($?) {
+                $errors++;
+                print STDERR "Failed to make chart file '$chart_file': $?\n";
+            }
+            else {
+                push @charts, $chart_file;
+            }
+        }
+    }
+    if (! -f $chart_file) {
+        print "Making empty report chart for filer $cpfid\n";
+        copy("$charts_path/empty_report_chart.html", $chart_file);
+        push @charts, $chart_file;
+    }
+    unlink $tmp if -f $tmp;
+}
+
+$num = @charts;
+print STDERR "Made $num new chart(s)\n";
+if (@charts) {
+    print "Moving $num charts to server\n";
+    system '/bin/bash', '-c', "sftp -P19199 -i $ENV{HOME}/.ssh/charles_server_cx franklin\@franklin.cx:public_html/candidate-data/report-charts <<< \$'put $_'" foreach @charts;
+    if ($?) {
+        print STDERR "Failed to upload charts to server: $?\n";
+        $errors++;
+    }
+}
+
+exit ($errors) ? 1 : 0;
+
+sub get_cpfids {
+    my $path = shift @_;
+    my @cpfids;
+    open FILE, '<', $path or die "Failed to open '$path': $!";
+    foreach (<FILE>) {
+        push @cpfids, $1 if /"cpfId": (\d+)/;
+    }
+    return @cpfids;
+    close FILE;
+}

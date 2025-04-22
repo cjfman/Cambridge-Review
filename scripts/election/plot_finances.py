@@ -174,7 +174,11 @@ def finalPlot(args, fig):
 
 
 def main(args):
-    plot_expenses(args, read_reports(args.in_file)[:args.max_reports])
+    reports = read_reports(args.in_file)
+    if reports is None:
+        return 1
+
+    plot_expenses(args, reports[:args.max_reports])
     return 0
 
 if __name__ == '__main__':
