@@ -11,8 +11,8 @@ my $base_dir = ".";
 $base_dir = shift @ARGV if @ARGV;
 $base_dir =~ s{/$}{};
 
-my $scripts_dir = "./scripts";
-my $filers_file = "$base_dir/candidate_data/filers.json";
+my $scripts_dir  = "$base_dir/scripts";
+my $filers_file  = "$base_dir/candidate_data/filers.json";
 my $reports_path = "$base_dir/candidate_data/reports";
 my $charts_path  = "$base_dir/charts/filers/reports";
 
@@ -30,7 +30,7 @@ foreach my $cpfid (@cpfids) {
     my $tmp = "/tmp/${cpfid}_reports.json";
     my $report_file = "$reports_path/${cpfid}_reports.json";
     my $chart_file = "$charts_path/${cpfid}_report_chart.html";
-    if (-M $report_file < 1) {
+    if (-f $report_file and -M $report_file < 1) {
         print STDERR "Report file '$report_file' was written today. Don't check for update\n";
         next;
     }
