@@ -100,8 +100,7 @@ def read_reports(path):
         return None
 
     try:
-        reports = [Report.fromJson(x) for x in data['items']]
-        reports.reverse()
+        reports = sorted([Report.fromJson(x) for x in data['items']], key=lambda x: x.end_date, reverse=True)
         return reports
     except (KeyError, ValueError) as e:
         print(f"Reports file wasn't properly formatted: {e}")
