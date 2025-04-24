@@ -5,6 +5,7 @@ import json
 import re
 import sys
 
+from collections import defaultdict
 from pathlib import Path
 
 import plotly
@@ -71,8 +72,8 @@ def parseArgs():
     many_parser = subparsers.add_parser('many-filers', parents=[shared_parser], add_help=False,
         help="Create a chart for a many filer")
     many_parser.set_defaults(func=many_filer_hdlr)
-    many_parser.add_argument("--title", default="Finances",
-        help="Title of the chart")
+    many_parser.add_argument("--title",
+        help="Title of the chart. Default: Finances <REPORT PERIOD>")
     many_parser.add_argument("reports", nargs='+',
         help="Filer report files")
 
@@ -198,6 +199,7 @@ def plot_filer_expenses(args, reports):
 
 
 def plot_filers_last_report(args, filers):
+    title = args.title or f"Finances for period {filers[0].reports[0].reporting_period}"
     stacks = []
     recpts = []
     expncs = []
@@ -206,7 +208,7 @@ def plot_filers_last_report(args, filers):
         recpts.append(filer.reports[0].credit_total)
         expncs.append(filer.reports[0].expenditure_total*-1)
 
-    plot_expenses(args, args.title, stacks, recpts, expncs, x_title="Committe")
+    plot_expenses(args, title, stacks, recpts, expncs, x_title="Committe")
 
 
 def single_filer_hdlr(args):
@@ -233,6 +235,17 @@ def many_filer_hdlr(args):
     filers = [x for x in map(read_report_and_filer, args.reports) if x is not None and x.active()]
     if not filers:
         return 1
+
+    ## Group filers by most recent report period
+    grouped = defaultdict(list)
+    for filer in filers:
+        key = (filer.reports[0].end_date, filer.reports[0].start_date)
+        grouped[key].append(filer)
+
+    if len(grouped.keys()) > 1:
+        key = sorted(grouped.keys())[-1]
+        print("Most recent report for all filers isn't the same. Choosing the most recent one: {key}")
+        filers = grouped[key]
 
     plot_filers_last_report(args, filers)
     return 0

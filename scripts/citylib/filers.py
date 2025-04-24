@@ -184,8 +184,8 @@ class Report:
         report.committee_name    = obj['committeeName']
         report.filer_name        = obj['filerFullName']
         report.reporting_period  = obj['reportingPeriod']
-        report.start_date        = dt.datetime.strptime(obj['startDate'], "%m/%d/%Y").date
-        report.end_date          = dt.datetime.strptime(obj['endDate'],   "%m/%d/%Y").date
+        report.start_date        = dt.datetime.strptime(obj['startDate'], "%m/%d/%Y").date()
+        report.end_date          = dt.datetime.strptime(obj['endDate'],   "%m/%d/%Y").date()
         report.startBalance      = utils.strip_currency(obj['startBalance'])
         report.endBalance        = utils.strip_currency(obj['endBalance'])
         report.cash_on_hand      = utils.strip_currency(obj['cashOnHand'])
