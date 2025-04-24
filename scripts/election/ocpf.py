@@ -8,6 +8,7 @@ import re
 import os
 import sys
 import time
+import traceback
 
 import requests
 
@@ -178,7 +179,7 @@ def fetch_and_store_filer(cpfid, *, out=None, keys=None, fetched=None):
     filer = fetch_filer(cpfid, API_URL)
     msg = None
     if keys:
-        msg = format_filer_keys(filer, keys)
+        msg = format_filer_keys(filer['filer'], keys)
     if out:
         with open(os.path.join(out, f"{cpfid}.json"), 'w', encoding='utf8') as f:
             json.dump(filer, f, indent=4)
@@ -224,7 +225,11 @@ def fetch_filer_hdlr(args):
             print_stderr(f"Skipping {cpfid}")
             continue
 
-        fetch_and_store_filer(cpfid, out=args.out, keys=keys, fetched=fetched)
+        try:
+            fetch_and_store_filer(cpfid, out=args.out, keys=keys, fetched=fetched)
+        except Exception as e:
+            print(f"Got error while fetching cpfid {cpfid}: {e}")
+            traceback.print_exc()
 
         ## Rate limit
         if args.ratelimit:
