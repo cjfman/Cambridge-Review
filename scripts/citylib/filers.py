@@ -12,6 +12,8 @@ from . import utils
 VERBOSE=False
 DEBUG=False
 
+FORCE_ACTIVE = [17259]
+
 def parseArgs():
     ## pylint: disable=global-statement
     parser = argparse.ArgumentParser()
@@ -139,6 +141,9 @@ class Filer:
             return cls.fromJson(json.load(f))
 
     def active(self):
+        if self.cpfid in FORCE_ACTIVE:
+            return True
+
         ## Was the account opened in the past year?
         if self.organization_date and (dt.datetime.now() - self.organization_date) < 365:
             print(f"{self.committee_name} found active due to organization date {self.organization_date}")

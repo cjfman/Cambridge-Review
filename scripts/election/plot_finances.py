@@ -158,6 +158,36 @@ def plot_expenses(args, title, stacks, recpts, expncs, *, cashes=None, subtitle=
         fig.show()
 
 
+def plot_coh(args, title, names, cashes, *, subtitle=None, x_title="Category"):
+    #fig = go.Figure()
+    fig = make_subplots(specs=[[dict(secondary_y=args.dual)]])
+    fig.add_trace(go.Bar(x=names, y=cashes, name="Cash on Hand", text=[format_dollar(x) for x in cashes], textposition='auto'))
+
+    fig.update_xaxes(title_text=x_title)
+    fig.update_yaxes(title_text="Amount (dollars)")
+    fig.update_layout(yaxis_tickformat="$,")
+
+    ## Title info
+    title_info = { 'text': title }
+    if subtitle is not None:
+        title_info['subtitle'] = { 'text': subtitle }
+
+    if not args.h_legend:
+        fig.update_layout(barmode='relative', title=title_info, legend_title_text="Legend")
+    else:
+        fig.update_layout(barmode='relative', title=title_info, legend=dict(
+            yanchor="bottom",
+            xanchor="right",
+            x=1,
+            y=1,
+            orientation="h",
+        ))
+    if args.out is not None:
+        finalPlot(args, fig)
+    else:
+        fig.show()
+
+
 def finalPlot(args, fig):
     chart_file = args.out
     font_size  = args.font_size
@@ -198,16 +228,22 @@ def plot_filer_expenses(args, reports):
 
 
 def plot_filers_last_report(args, filers):
-    title = args.title or f"Finances for period {filers[0].reports[0].reporting_period}"
     stacks = []
     recpts = []
     expncs = []
+    cashes = []
     for filer in filers:
         stacks.append(filer.committee_name)
         recpts.append(filer.reports[0].credit_total)
         expncs.append(filer.reports[0].expenditure_total*-1)
+        cashes.append(filer.reports[0].cash_on_hand)
 
-    plot_expenses(args, title, stacks, recpts, expncs, x_title="Committe")
+    if args.coh:
+        title = args.title or f"Cash on Hand as of {filers[0].reports[0].end_date.strftime('%-m/%-d/%Y')}"
+        plot_coh(args, title, stacks, cashes, x_title="Committe")
+    else:
+        title = args.title or f"Finances for period {filers[0].reports[0].reporting_period}"
+        plot_expenses(args, title, stacks, recpts, expncs, x_title="Committe")
 
 
 def single_filer_hdlr(args):
