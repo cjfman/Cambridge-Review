@@ -216,6 +216,10 @@ def single_filer_hdlr(args):
     if reports is None:
         return 1
 
+    if not reports:
+        print("No reports were found")
+        return 0
+
     plot_filer_expenses(args, reports[:args.max_reports])
     return 0
 
