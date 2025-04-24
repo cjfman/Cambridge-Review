@@ -51,7 +51,7 @@ foreach my $cpfid (@cpfids) {
         }
         else {
             print "Report update for filer $cpfid saved in $report_file. Making chart and saving to '$chart_file'\n";
-            system "$scripts_dir/election/plot_finances.py --out '$chart_file' --in-file '$report_file' --copyright-tight --h-legend 1>&2";
+            system "$scripts_dir/election/plot_finances.py single-filer --out '$chart_file' --in-file '$report_file' --copyright-tight --h-legend 1>&2";
             if ($?) {
                 $errors++;
                 print STDERR "Failed to make chart file '$chart_file': $?\n";

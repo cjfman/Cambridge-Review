@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import argparse
-import datetime as dt
 import json
 import re
 import sys
@@ -15,7 +14,8 @@ from plotly.subplots import make_subplots
 
 ## pylint: disable=wrong-import-position
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
-from citylib.utils import insertCopyright
+from citylib.filers import Report
+from citylib.utils import insertCopyright, format_dollar
 
 VERBOSE=False
 DEBUG=False
@@ -33,27 +33,34 @@ def parseArgs():
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--debug", action="store_true")
-    parser.add_argument("--title",
+
+    subparsers = parser.add_subparsers()
+
+    ## Single filer CMD
+    single_parser = subparsers.add_parser('single-filer',
+        help="Create a chart for a single filer")
+    single_parser.set_defaults(func=single_filer_hdlr)
+    single_parser.add_argument("--title",
         help="Title of the chart. Default: 'Finances - <committeeName>'")
-    parser.add_argument("--out", required=True,
+    single_parser.add_argument("--out", required=True,
         help="Write to this file")
-    parser.add_argument("--in-file", required=True,
+    single_parser.add_argument("--in-file", required=True,
         help="JSON file of reports")
-    parser.add_argument("--max-reports", type=int, default=6,
+    single_parser.add_argument("--max-reports", type=int, default=6,
         help="Maximum number of reports to include")
-    parser.add_argument("--dual", action="store_true",
+    single_parser.add_argument("--dual", action="store_true",
         help="Use dual axes. Ignored unless --coh is set")
-    parser.add_argument("--coh", action="store_true",
+    single_parser.add_argument("--coh", action="store_true",
         help="Show cash on hand line")
-    parser.add_argument("--copyright", default="Charles Jessup Franklin",
+    single_parser.add_argument("--copyright", default="Charles Jessup Franklin",
         help="The copyright holder")
-    parser.add_argument("--copyright-tight", action="store_true",
+    single_parser.add_argument("--copyright-tight", action="store_true",
         help="Put the copyright notice in the bottom right corner")
-    parser.add_argument("--no-copyright", action="store_true",
+    single_parser.add_argument("--no-copyright", action="store_true",
         help="Don't set a copyright holder. Overrides --copyright")
-    parser.add_argument("--font-size", type=int, default=14,
+    single_parser.add_argument("--font-size", type=int, default=14,
         help="Font size")
-    parser.add_argument("--h-legend", action="store_true",
+    single_parser.add_argument("--h-legend", action="store_true",
         help="Make the legend horizontal")
 
     ## Final parse
@@ -79,42 +86,38 @@ def read_reports(path):
         return None
 
     try:
-        reports = data['items']
-        for report in reports:
-            for key in CURRENCY_KEYS:
-                report[key] = float(report[key][1:].replace(',', ''))
+        reports = [Report.fromJson(x) for x in data['items']]
         reports.reverse()
         return reports
-    except KeyError as e:
+    except (KeyError, ValueError) as e:
         print(f"Reports file wasn't properly formatted: {e}")
         return None
 
+    return reports
+
 
 def plot_expenses(args, reports):
-    title = args.title or f"Finances - {reports[0]['committeeName']}"
+    title = args.title or f"Finances - {reports[0].committee_name}"
     stacks = []
     recpts = []
     expncs = []
     cashes = []
     for report in reports:
-        stacks.append(report['reportingPeriod'])
-        recpts.append(report['creditTotal'])
-        expncs.append(report['expenditureTotal']*-1)
-        cashes.append(report['cashOnHand'])
+        stacks.append(report.reporting_period)
+        recpts.append(report.credit_total)
+        expncs.append(report.expenditure_total*-1)
+        cashes.append(report.cash_on_hand)
 
     #fig = go.Figure()
-    recpts_txts = ['${:,.2f}'.format(x) for x in recpts]
-    expncs_txts = ['${:,.2f}'.format(x) for x in expncs]
-    cashes_txts = ['${:,.2f}'.format(x) for x in cashes]
     fig = make_subplots(specs=[[dict(secondary_y=args.dual)]])
-    fig.add_trace(go.Bar(x=stacks, y=recpts, name="Receipts",     text=recpts_txts, textposition='auto'))
-    fig.add_trace(go.Bar(x=stacks, y=expncs, name="Expenditures", text=expncs_txts, textposition='auto'))
+    fig.add_trace(go.Bar(x=stacks, y=recpts, name="Credits",      text=[format_dollar(x) for x in recpts], textposition='auto'))
+    fig.add_trace(go.Bar(x=stacks, y=expncs, name="Expenditures", text=[format_dollar(x) for x in expncs], textposition='auto'))
     if args.coh:
         fig.add_trace(go.Scatter(
             x=stacks,
             y=cashes,
             name="Cash on Hand",
-            text=cashes_txts,
+            text=[format_dollar(x) for x in cashes],
             textposition="bottom center",
             mode="lines+markers+text",
         ), secondary_y=args.dual)
@@ -123,7 +126,7 @@ def plot_expenses(args, reports):
     min_val = min(expncs)
     fig.update_xaxes(title_text="Report Period")
     if args.dual and args.coh:
-        fig.update_yaxes(title_text="Receipts/Expenditures", secondary_y=False)
+        fig.update_yaxes(title_text="Credits/Expenditures", secondary_y=False)
         fig.update_yaxes(title_text="Cash on Hand",          secondary_y=True)
         y_fmt   = dict(tickformat="$,", range=[min_val, max(recpts)*1.2])
         y_fmt_2 = dict(tickformat="$,", range=[min_val, max(cashes)*1.2])
@@ -173,13 +176,19 @@ def finalPlot(args, fig):
         fig.write_image(chart_file)
 
 
-def main(args):
+
+def single_filer_hdlr(args):
     reports = read_reports(args.in_file)
     if reports is None:
         return 1
 
     plot_expenses(args, reports[:args.max_reports])
     return 0
+
+
+def main(args):
+    return args.func(args)
+
 
 if __name__ == '__main__':
     try:

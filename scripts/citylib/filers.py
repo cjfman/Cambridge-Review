@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 
 import argparse
+import datetime as dt
 import json
 import sys
 
 from textwrap import dedent
+
+from . import utils
 
 VERBOSE=False
 DEBUG=False
@@ -133,6 +136,45 @@ class Filer:
     def fromFile(cls, path):
         with open(path, encoding='utf8') as f:
             return cls.fromJson(json.load(f))
+
+
+class Report:
+    def __init__(self):
+        self.cpfid             = 0
+        self.report_id         = 0
+        self.committee_name    = ""
+        self.filer_name        = ""
+        self.reporting_period  = None
+        self.start_date        = None
+        self.end_date          = None
+        self.startBalance      = 0
+        self.endBalance        = 0
+        self.cash_on_hand      = 0
+        self.expenditure_total = 0
+        self.credit_total      = 0
+        self.other             = {}
+
+    @classmethod
+    def fromJson(cls, obj):
+        if isinstance(obj, str):
+            obj = json.loads(obj)
+
+        report = cls()
+        report.cpfid             = obj['cpfId']
+        report.report_id         = obj['reportId']
+        report.committee_name    = obj['committeeName']
+        report.filer_name        = obj['filerFullName']
+        report.reporting_period  = obj['reportingPeriod']
+        report.start_date        = dt.datetime.strptime(obj['startDate'], "%m/%d/%Y").date
+        report.end_date          = dt.datetime.strptime(obj['endDate'],   "%m/%d/%Y").date
+        report.startBalance      = utils.strip_currency(obj['startBalance'])
+        report.endBalance        = utils.strip_currency(obj['endBalance'])
+        report.cash_on_hand      = utils.strip_currency(obj['cashOnHand'])
+        report.expenditure_total = utils.strip_currency(obj['expenditureTotal'])
+        report.credit_total      = utils.strip_currency(obj['creditTotal'])
+        report.other             = obj
+
+        return report
 
 
 def generate_candidate_page(filer:Filer, *, status="", website=""):

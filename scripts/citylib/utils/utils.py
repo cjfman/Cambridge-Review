@@ -84,5 +84,16 @@ def insertCopyright(path, holder, *, tight=False, blocking=False) -> bool:
     return insertLineInFile(path, "</body>", notice, after=False)
 
 
-def url_format_dt(stamp:dt.datetime):
+def url_format_dt(stamp:dt.datetime) -> str:
     return "%2F".join([str(x) for x in [stamp.month, stamp.day, stamp.year]])
+
+
+def strip_currency(cash) -> float:
+    if cash[0] == '$':
+        return float(cash[1:].replace(',', ''))
+
+    raise ValueError(f"Cannot convert '{cash}' currency to float")
+
+
+def format_dollar(val:float) -> str:
+    return '${:,.2f}'.format(val)

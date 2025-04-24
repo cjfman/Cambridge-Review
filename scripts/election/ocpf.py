@@ -253,7 +253,7 @@ def query_reports_hdlr(args):
     reports = fetch_json(url)
     with open(args.path, 'w', encoding='utf8') as f:
         print_stderr(f"Writting to {args.path}")
-        json.dump(reports, f)
+        json.dump(reports, f, indent=4)
 
     return 0
 
