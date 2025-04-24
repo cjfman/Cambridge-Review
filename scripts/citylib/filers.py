@@ -105,27 +105,28 @@ CANDIDATE_PAGE_TEMPLATE = dedent("""\
 """)
 
 class Filer:
-    def __init__(self):
-        self.cpfid = 0
-        self.treasurer = ""
-        self.committee_name = ""
+    def __init__(self, cpfid:int, committee_name, *, reports=None, cash_on_hand:float=0):
+        self.cpfid               = cpfid
+        self.committee_name      = committee_name
+        self.cash_on_hand        = cash_on_hand
+        self.reports             = reports or []
+        self.treasurer           = ""
         self.comm_address_line_1 = ""
-        self.comm_address_city = ""
-        self.comm_address_state = ""
-        self.comm_address_zip = ""
-        self.website = ""
-        self.position = ""
+        self.comm_address_city   = ""
+        self.comm_address_state  = ""
+        self.comm_address_zip    = ""
+        self.website             = ""
+        self.position            = ""
+        self.organization_date   = None
 
     @classmethod
     def fromJson(cls, obj):
         if isinstance(obj, str):
             obj = json.loads(obj)
 
+        filer = Filer(obj['filer']['cpfId'], obj['filer']['committeeName'])
         treas = obj['filer']['treasurer']
-        filer = Filer()
-        filer.cpfid               = obj['filer']['cpfId']
         filer.treasurer           = treas['fullName']
-        filer.committee_name      = obj['filer']['committeeName']
         filer.comm_address_line_1 = treas['streetAddress']
         filer.comm_address_city   = treas['city']
         filer.comm_address_state  = treas['state']
@@ -136,6 +137,23 @@ class Filer:
     def fromFile(cls, path):
         with open(path, encoding='utf8') as f:
             return cls.fromJson(json.load(f))
+
+    def active(self):
+        ## Was the account opened in the past year?
+        if self.organization_date and (dt.datetime.now() - self.organization_date) < 365:
+            return True
+
+        ## Check for absolute amount of money
+        if self.cash_on_hand > 1000:
+            return True
+
+        ## Check recent transactions
+        for report in self.reports[:3]:
+            if report.expenditure_total or report.credit_total:
+                return True
+
+        return False
+
 
 
 class Report:
