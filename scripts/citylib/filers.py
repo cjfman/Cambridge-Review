@@ -141,17 +141,18 @@ class Filer:
     def active(self):
         ## Was the account opened in the past year?
         if self.organization_date and (dt.datetime.now() - self.organization_date) < 365:
-            return True
-
-        ## Check for absolute amount of money
-        if self.cash_on_hand > 1000:
+            print(f"{self.committee_name} found active due to organization date {self.organization_date}")
             return True
 
         ## Check recent transactions
         for report in self.reports[:3]:
-            if report.expenditure_total or report.credit_total:
+            if report.credit_total and report.expenditure_total - report.credit_total:
+                exp = utils.format_dollar(report.expenditure_total)
+                crd = utils.format_dollar(report.credit_total)
+                print(f"{self.committee_name} found active due to report {report.reporting_period}: Exp {exp} Credits {crd}")
                 return True
 
+        print(f"{self.committee_name} is inactive")
         return False
 
 

@@ -109,7 +109,7 @@ def read_reports(path):
     return reports
 
 
-def plot_expenses(args, title, stacks, recpts, expncs, *, cashes=None, subtitle=None):
+def plot_expenses(args, title, stacks, recpts, expncs, *, cashes=None, subtitle=None, x_title="Category"):
     #fig = go.Figure()
     fig = make_subplots(specs=[[dict(secondary_y=args.dual)]])
     fig.add_trace(go.Bar(x=stacks, y=recpts, name="Credits",      text=[format_dollar(x) for x in recpts], textposition='auto'))
@@ -126,7 +126,7 @@ def plot_expenses(args, title, stacks, recpts, expncs, *, cashes=None, subtitle=
         #fig.add_trace(go.Scatter(x=stacks, y=cashes, name="Cash on Hand"), secondary_y=args.dual)
 
     min_val = min(expncs)
-    fig.update_xaxes(title_text="Report Period")
+    fig.update_xaxes(title_text=x_title)
     if args.dual and args.coh and cashes:
         fig.update_yaxes(title_text="Credits/Expenditures", secondary_y=False)
         fig.update_yaxes(title_text="Cash on Hand",          secondary_y=True)
@@ -181,6 +181,7 @@ def finalPlot(args, fig):
 
         fig.write_image(chart_file)
 
+
 def plot_filer_expenses(args, reports):
     title = args.title or f"Finances - {reports[0].committee_name}"
     stacks = []
@@ -193,7 +194,7 @@ def plot_filer_expenses(args, reports):
         expncs.append(report.expenditure_total*-1)
         cashes.append(report.cash_on_hand)
 
-    plot_expenses(args, title, stacks, recpts, expncs, subtitle=f"Cash on Hand: ${cashes[0]:,.2f}", cashes=cashes)
+    plot_expenses(args, title, stacks, recpts, expncs, subtitle=f"Cash on Hand: ${cashes[0]:,.2f}", cashes=cashes, x_title="Report Period")
 
 
 def plot_filers_last_report(args, filers):
@@ -205,7 +206,7 @@ def plot_filers_last_report(args, filers):
         recpts.append(filer.reports[0].credit_total)
         expncs.append(filer.reports[0].expenditure_total*-1)
 
-    plot_expenses(args, args.title, stacks, recpts, expncs)
+    plot_expenses(args, args.title, stacks, recpts, expncs, x_title="Committe")
 
 
 def single_filer_hdlr(args):
