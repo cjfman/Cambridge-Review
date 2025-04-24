@@ -294,6 +294,27 @@
         "category": "filers"
     },
     {
+        "cpfId": 19132,
+        "filerName": "Ned Melanson",
+        "filerNameReverse": "Melanson, Ned",
+        "filerCity": "Cambridge",
+        "isActive": true,
+        "districtHeldDescription": "No office",
+        "officeSought": "City Councilor, Cambridge",
+        "officeHeld": "N/A, No office",
+        "officeDescription": "Office Sought: City Councilor, Cambridge",
+        "isIncumbent": false,
+        "accountTypeCode": "D",
+        "accountTypeDescription": "Depository Candidate",
+        "isCandidate": true,
+        "firstName": "Ned",
+        "lastName": "Melanson",
+        "committeeName": "Melanson Committee",
+        "filerThumbnailPhotoUrl": "",
+        "score": 0,
+        "category": "filers"
+    },
+    {
         "cpfId": 17259,
         "filerName": "Patricia M. Nolan",
         "filerNameReverse": "Nolan, Patricia M.",
