@@ -60,14 +60,14 @@ def parseArgs():
 
     ## Fetch list subparser
     parser_fetch_list = subparsers.add_parser('fetch-list',
-        help="Add rows to the google sheets"
+        help="Fetch the list of active filrs"
     )
     parser_fetch_list.set_defaults(subcmd=fetch_list_hdlr)
     parser_fetch_list.add_argument('-o', '--out', type=str)
 
     ## Fetch filer subparser
     parser_fetch_filer = subparsers.add_parser('fetch-filer',
-        help="Add rows to the google sheets"
+        help="Fetch the specifics for a filer"
     )
     parser_fetch_filer.set_defaults(subcmd=fetch_filer_hdlr)
     parser_fetch_filer.add_argument('-a', '--all', action='store_true',
