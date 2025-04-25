@@ -27,7 +27,7 @@ chomp @cpfids;
 my $num = @cpfids;
 my @charts;
 my $errors;
-print STDERR "Found $num filers\n";
+print STDERR "Found $num filer(s)\n";
 foreach my $cpfid (@cpfids) {
     ## Get report
     my $tmp = "/tmp/${cpfid}_reports.json";
@@ -69,7 +69,6 @@ foreach my $cpfid (@cpfids) {
             print STDERR "Failed to make chart file '$chart_file': $?\n";
         }
         else {
-            system "$scripts_dir/add_no_cache.pl $chart_file";
             push @charts, $chart_file;
         }
 
@@ -88,8 +87,37 @@ foreach my $cpfid (@cpfids) {
     unlink $tmp if -f $tmp;
 }
 
+## Make shared charts
+if (@charts) {
+    ## Combined report
+    my $chart_file = "$charts_path/combined_report_chart.html";
+    print STDERR "Making combined report in '$chart_file'\n";
+    system "$scripts_dir/election/plot_finances.py many-filers", '--out', $chart_file, '--copyright', '--h-legend', "$reports_path/*";
+    if ($?) {
+        print STDERR "Couldn't make '$chart_file'\n";
+    }
+    else {
+        push @charts, $chart_file;
+    }
+
+    ## Cash on hand report
+    $chart_file = "$charts_path/cash_on_hand_report_chart.html";
+    print STDERR "Making cash on hand report in '$chart_file'\n";
+    system "$scripts_dir/election/plot_finances.py many-filers", '--coh', '--out', $chart_file, '--copyright', '--h-legend', "$reports_path/*";
+    if ($?) {
+        print STDERR "Couldn't make '$chart_file'\n";
+    }
+    else {
+        push @charts, $chart_file;
+    }
+}
+
+## Finish up
+system "$scripts_dir/add_no_cache.pl $_" foreach @charts;
 $num = @charts;
 print STDERR "Made $num new chart(s)\n";
+
+## Upload charts
 if (@charts) {
     print "Moving $num charts to server\n";
     system '/bin/bash', '-c', "sftp -P19199 -i $ENV{HOME}/.ssh/charles_server_cx franklin\@franklin.cx:public_html/candidate-data/report-charts <<< \$'put $_'" foreach @charts;
