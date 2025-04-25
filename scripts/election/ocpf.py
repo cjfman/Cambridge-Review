@@ -2,7 +2,6 @@
 
 import argparse
 import datetime as dt
-import dateutil.relativedelta
 import json
 import re
 import os
@@ -10,13 +9,17 @@ import sys
 import time
 import traceback
 
+from pathlib import Path
+from typing import List
+
+import dateutil.relativedelta
 import requests
 
-from pathlib import Path
 
 ## pylint: disable=wrong-import-position
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
-from citylib.utils import url_format_dt
+from citylib.filers import Filer, read_report_and_filer
+from citylib.utils import url_format_dt, eprint
 
 VERBOSE=False
 DEBUG=False
@@ -95,6 +98,19 @@ def parseArgs():
     parser_query_reports.add_argument('path',
         help="Save path")
 
+    ## Filer filer subparser
+    parser_list_filers = subparsers.add_parser('list-filers',
+        help="Get a list of filer OCPF ids"
+    )
+    parser_list_filers.set_defaults(subcmd=list_filers_hdlr)
+    parser_list_filers.add_argument("--join", default="\n",
+        help="Join the cpfids with this string")
+    list_ex_group = parser_list_filers.add_mutually_exclusive_group(required=True)
+    list_ex_group.add_argument("--filers",
+        help="List of filer summaries or directory of filer details")
+    list_ex_group.add_argument("--reports",
+        help="Directory of reports")
+
     ## Final parse
     args = parser.parse_args()
     if args.subcmd is None:
@@ -112,19 +128,22 @@ def parseArgs():
     return args
 
 
-def fetch_json(url):
+def fetch_json(url) -> str:
+    """Fetch json from a remote server"""
     content = requests.get(url, headers=REQUEST_HDR).content.decode('utf8')
     return json.loads(content)
 
 
-def fetch_filers(url):
+def fetch_filers(url) -> List[str]:
+    """Fetch list of filer summaries from OCPF"""
     url = os.path.join(url, "filers/listings/CC?first200=false&excludeClosed=true")
     print_stderr(f"Fetching '{url}'")
     filers = fetch_json(url)
     return [x for x in filers if x['officeSought'] == "City Councilor, Cambridge"]
 
 
-def fetch_filer(cpfid, url):
+def fetch_filer(cpfid, url) -> str:
+    """Fetch details about a filer from OCPF"""
     url = os.path.join(url, f"filer/payload/{cpfid}")
     print_stderr(f"Fetching '{url}'")
     filer = fetch_json(url)
@@ -134,19 +153,64 @@ def fetch_filer(cpfid, url):
     return filer
 
 
-def fetch_list_hdlr(args):
-    ## Get the list of filers
-    filers = fetch_filers(API_URL)
-    if args.out is not None:
-        with open(args.out, 'w', encoding='utf8') as f:
-            json.dump(filers, f, indent=4)
-    else:
-        print(json.dumps(filers, indent=4))
+def load_filer(path) -> Filer:
+    """Load a filer from a filer detail file"""
+    try:
+        with open(path, encoding='utf8') as f:
+            return Filer.fromJson(json.load(f))
+    except (KeyError, ValueError):
+        eprint(f"File '{path}' was improperly formatted: {e}")
+    except Exception as e:
+        eprint(f"Failed to load file '{path}': {e}")
 
-    return 0
+    return None
 
 
-def known_cfids(path):
+def load_filers(path) -> List[Filer]:
+    """Load filers from either a list file or directory of filer detail files"""
+    filers = []
+    try:
+        if os.path.isfile(path):
+            ## Load basic filer info from the list file
+            with open(path, encoding='utf8') as f:
+                filers = [Filer.fromJson(x, simple=True) for x in json.load(f)]
+        elif os.path.isdir(path):
+            ## Load filer details from individual files
+            for name in os.listdir(path):
+                if re.match(r"(\d+).json", name):
+                    filer = load_filer(os.path.join(path, name))
+                    if filer is not None:
+                        filers.append(filer)
+        else:
+            eprint(f"Cannot load filers from '{path}'")
+            return None
+    except (KeyError, ValueError):
+        eprint(f"File '{path}' was improperly formatted: {e}")
+        filers = None
+    except Exception as e:
+        eprint(f"Failed to load file '{path}': {e}")
+        filers = None
+
+    return filers
+
+
+def load_filers_from_reports(path) -> List[Filer]:
+    """Load filers from a report directory"""
+    if not os.path.isdir(path):
+        eprint(f"Cannot load filers from '{path}'")
+        return None
+
+    filers = []
+    for name in os.listdir(path):
+        filer = read_report_and_filer(os.path.join(path, name))
+        if filer is not None:
+            filers.append(filer)
+
+    return filers
+
+
+def known_cfids(path) -> List[int]:
+    """Get list of cpfids from a directory of filer details"""
     cfids = []
     for name in os.listdir(path):
         match = re.match(r"(\d+).json", name)
@@ -155,27 +219,12 @@ def known_cfids(path):
 
     return cfids
 
-def fetch_filer_args_ok(args):
-    if args.all and (args.out is None or not os.path.isdir(args.out)):
-        print_stderr("--all requires a directory to be specificed by --out")
-        return False
 
-    if not args.all and not args.filers:
-        print_stderr("Must either pass --all or specify cpf IDs")
-        return False
-
-    if args.no_refetch and not args.out:
-        print_stderr("--no-refetch requires --out")
-        return False
-
-    return True
-
-
-def format_filer_keys(filer, keys):
+def format_filer_keys(filer, keys) -> str:
     return "\n".join(f"{x}: {filer[x]}" for x in keys)
 
 
-def fetch_and_store_filer(cpfid, *, out=None, keys=None, fetched=None):
+def fetch_and_store_filer(cpfid, *, out=None, keys=None, fetched=None) -> str:
     filer = fetch_filer(cpfid, API_URL)
     msg = None
     if keys:
@@ -193,6 +242,34 @@ def fetch_and_store_filer(cpfid, *, out=None, keys=None, fetched=None):
         print(msg)
 
     return filer
+
+
+def fetch_list_hdlr(args):
+    """Get the list of filers"""
+    filers = fetch_filers(API_URL)
+    if args.out is not None:
+        with open(args.out, 'w', encoding='utf8') as f:
+            json.dump(filers, f, indent=4)
+    else:
+        print(json.dumps(filers, indent=4))
+
+    return 0
+
+
+def fetch_filer_args_ok(args):
+    if args.all and (args.out is None or not os.path.isdir(args.out)):
+        print_stderr("--all requires a directory to be specificed by --out")
+        return False
+
+    if not args.all and not args.filers:
+        print_stderr("Must either pass --all or specify cpf IDs")
+        return False
+
+    if args.no_refetch and not args.out:
+        print_stderr("--no-refetch requires --out")
+        return False
+
+    return True
 
 
 def fetch_filer_hdlr(args):
@@ -250,6 +327,7 @@ def format_report_query_url(cpfid, start:dt.datetime, end:dt.datetime):
         end=url_format_dt(end),
     )
 
+
 def query_reports_hdlr(args):
     now = dt.datetime.now()
     then = now - dateutil.relativedelta.relativedelta(months=6)
@@ -260,6 +338,21 @@ def query_reports_hdlr(args):
         print_stderr(f"Writting to {args.path}")
         json.dump(reports, f, indent=4)
 
+    return 0
+
+
+def list_filers_hdlr(args):
+    filers = None
+    if args.filers:
+        filers = load_filers(args.filers)
+    elif args.reports:
+        filers = load_filers_from_reports(args.reports)
+
+    if filers is None:
+        eprint("No filers found")
+        return 1
+
+    print(args.join.join(map(str, sorted([x.cpfid for x in filers]))))
     return 0
 
 

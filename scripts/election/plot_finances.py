@@ -15,7 +15,7 @@ from plotly.subplots import make_subplots
 
 ## pylint: disable=wrong-import-position
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
-from citylib.filers import Filer, Report
+from citylib.filers import Filer, Report, read_reports, read_report_and_filer
 from citylib.utils import insertCopyright, format_dollar
 
 VERBOSE=False
@@ -87,26 +87,6 @@ def parseArgs():
         DEBUG = args.debug
 
     return args
-
-
-def read_reports(path):
-    print(f"Opening reports file '{path}'")
-    data = None
-    try:
-        with open(path, encoding='utf8') as f:
-            data = json.load(f)
-    except OSError as e:
-        print(f"Failed to open reports file '{path}': {e}")
-        return None
-
-    try:
-        reports = sorted([Report.fromJson(x) for x in data['items']], key=lambda x: x.end_date, reverse=True)
-        return reports
-    except (KeyError, ValueError) as e:
-        print(f"Reports file wasn't properly formatted: {e}")
-        return None
-
-    return reports
 
 
 def plot_expenses(args, title, stacks, recpts, expncs, *, cashes=None, subtitle=None, x_title="Category"):
@@ -257,16 +237,6 @@ def single_filer_hdlr(args):
 
     plot_filer_expenses(args, reports[:args.max_reports])
     return 0
-
-
-def read_report_and_filer(path) -> Filer:
-    """Read a report and infer the filer"""
-    reports = read_reports(path)
-    if not reports:
-        return None
-
-    recent = reports[0]
-    return Filer(recent.cpfid, recent.committee_name, cash_on_hand=recent.cash_on_hand, reports=reports)
 
 
 def many_filer_hdlr(args):
