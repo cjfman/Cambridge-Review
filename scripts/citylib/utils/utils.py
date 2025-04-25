@@ -1,14 +1,30 @@
 import datetime as dt
 import re
+import sys
 
-from termcolor import colored
+USE_TERMCOLOR = True
+try:
+    from termcolor import colored
+except:
+    print("Cannot import termcolor. Disabling terminal coloring", file=sys.stderr)
+    USE_TERMCOLOR=False
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
 
 def print_red(msg, **kwargs):
-    print(colored(msg, 'red'), **kwargs)
+    if USE_TERMCOLOR:
+        print(colored(msg, 'red'), **kwargs)
+    else:
+        print(msg, **kwargs)
 
 
 def print_green(msg, **kwargs):
-    print(colored(msg, 'green'), **kwargs)
+    if USE_TERMCOLOR:
+        print(colored(msg, 'green'), **kwargs)
+    else:
+        print(msg, **kwargs)
 
 
 def overlayKeys(original, other, keys):
