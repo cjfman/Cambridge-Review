@@ -20,7 +20,8 @@ $reports_path =~ s{/$}{};
 $charts_path  =~ s{/$}{};
 
 print STDERR "Checking '$filers_file' for filers\n";
-my @cpfids = get_cpfids($filers_file);
+my @cpfids = `$scripts_dir/election/ocpf.py list-filers --filers $filers_file`;
+chomp @cpfids;
 my $num = @cpfids;
 my @charts;
 my $errors;
@@ -32,7 +33,7 @@ foreach my $cpfid (@cpfids) {
     my $chart_file = "$charts_path/${cpfid}_report_chart.html";
     my $updated;
     if (-f $report_file and -M $report_file < 1) {
-        print STDERR "Report file '$report_file' was written today. Don't check for update\n";
+        print STDERR "Report file '$report_file' was written or checked today. Don't check for update\n";
     }
     else {
         print STDERR "Getting reports for filer $cpfid and saving them to $report_file\n";
@@ -43,6 +44,7 @@ foreach my $cpfid (@cpfids) {
         }
         elsif (-f $report_file and compare($tmp, $report_file) != 1) {
             print STDERR "No report update for filer $cpfid\n";
+            system 'touch', $report_file;
         }
         else {
             ## Put report in place
@@ -96,14 +98,3 @@ if (@charts) {
 }
 
 exit ($errors) ? 1 : 0;
-
-sub get_cpfids {
-    my $path = shift @_;
-    my @cpfids;
-    open FILE, '<', $path or die "Failed to open '$path': $!";
-    foreach (<FILE>) {
-        push @cpfids, $1 if /"cpfId": (\d+)/;
-    }
-    return @cpfids;
-    close FILE;
-}
