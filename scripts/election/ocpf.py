@@ -90,7 +90,7 @@ def parseArgs():
 
     ## Get reports
     parser_query_reports = subparsers.add_parser('query-reports',
-        help="Query finalcial reports"
+        help="Query finacial reports"
     )
     parser_query_reports.set_defaults(subcmd=query_reports_hdlr)
     parser_query_reports.add_argument('filer', type=int,
@@ -105,6 +105,8 @@ def parseArgs():
     parser_list_filers.set_defaults(subcmd=list_filers_hdlr)
     parser_list_filers.add_argument("--join", default="\n",
         help="Join the cpfids with this string")
+    parser_list_filers.add_argument("--missing-recent-report", action="store_true",
+        help="Filter out filers that have a report from last month or more recent")
     list_ex_group = parser_list_filers.add_mutually_exclusive_group(required=True)
     list_ex_group.add_argument("--filers",
         help="List of filer summaries or directory of filer details")
@@ -343,6 +345,8 @@ def query_reports_hdlr(args):
 
 def list_filers_hdlr(args):
     filers = None
+
+    ## Load filers
     if args.filers:
         filers = load_filers(args.filers)
     elif args.reports:
@@ -352,6 +356,11 @@ def list_filers_hdlr(args):
         eprint("No filers found")
         return 1
 
+    ## Filer filers
+    if args.missing_recent_report:
+        filers = [x for x in filers if x.missing_recent_report()]
+
+    ## Print filers
     print(args.join.join(map(str, sorted([x.cpfid for x in filers]))))
     return 0
 

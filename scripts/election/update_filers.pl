@@ -19,9 +19,11 @@ my $charts_path  = "$base_dir/charts/filers/reports";
 $reports_path =~ s{/$}{};
 $charts_path  =~ s{/$}{};
 
-print STDERR "Checking '$filers_file' for filers\n";
-my @cpfids = `$scripts_dir/election/ocpf.py list-filers --filers $filers_file`;
+print STDERR "Checking for filers\n";
+my @cpfids = `$scripts_dir/election/ocpf.py list-filers --reports $reports_path --missing-recent-report`;
 chomp @cpfids;
+@cpfids = grep $_, @cpfids;
+
 my $num = @cpfids;
 my @charts;
 my $errors;

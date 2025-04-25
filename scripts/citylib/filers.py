@@ -3,6 +3,8 @@
 import datetime as dt
 import json
 
+import dateutil
+
 from .utils import format_dollar, strip_currency, eprint
 
 FORCE_ACTIVE = [17259]
@@ -65,6 +67,10 @@ class Filer:
 
         eprint(f"{self.committee_name} is inactive")
         return False
+
+    def missing_recent_report(self, *, months=1) -> bool:
+        then = dt.datetime.now().date() - dateutil.relativedelta.relativedelta(months=months)
+        return (self.reports and self.reports[0].end_date < then)
 
 
 class Report:
