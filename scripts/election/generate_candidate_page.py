@@ -94,6 +94,10 @@ CANDIDATE_PAGE_TEMPLATE = dedent("""\
 
     <!-- wp:paragraph -->
     <p><em>Committee Address</em><br>{address_street}<br>{address_city_state_zip}</p>
+    <!-- /wp:paragraph -->
+
+    <!-- wp:paragraph -->
+    <p><a href="https://www.ocpf.us/Filers?q={cpfid}" data-type="link" data-id="https://www.ocpf.us/Filers?q={cpfid}" target="_blank" rel="noreferrer noopener">further details</a></p>
     <!-- /wp:paragraph --></div>
     <!-- /wp:column -->
 
