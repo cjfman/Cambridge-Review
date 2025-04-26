@@ -24,15 +24,17 @@ my @cpfids = `$scripts_dir/election/ocpf.py list-filers --reports $reports_path 
 chomp @cpfids;
 @cpfids = grep $_, @cpfids;
 
-my $num = @cpfids;
 my @charts;
+my @images;
+my @tmps;
 my $errors;
-print STDERR "Found $num filer(s)\n";
+print STDERR "Found ${\(scalar @cpfids)} filer(s)\n";
 foreach my $cpfid (@cpfids) {
     ## Get report
-    my $tmp = "/tmp/${cpfid}_reports.json";
+    my $tmp         = "/tmp/${cpfid}_reports.json";
     my $report_file = "$reports_path/${cpfid}_reports.json";
-    my $chart_file = "$charts_path/${cpfid}_report_chart.html";
+    my $chart_file  = "$charts_path/${cpfid}_report_chart.html";
+    my $img_file    = "$charts_path/${cpfid}_report_chart.png";
     my $updated;
     if (-f $report_file and -M $report_file < 1) {
         print STDERR "Report file '$report_file' was written or checked today. Don't check for update\n";
@@ -55,6 +57,7 @@ foreach my $cpfid (@cpfids) {
                 $errors++;
             }
             else {
+                print STDERR "Report update for filer $cpfid saved in $report_file\n";
                 $updated = 1;
             }
         }
@@ -62,7 +65,7 @@ foreach my $cpfid (@cpfids) {
 
     ## Make a chart from the report
     if (-f $report_file and (not -f $chart_file or $updated)) {
-        print "Report update for filer $cpfid saved in $report_file. Making chart and saving to '$chart_file'\n";
+        print STDERR "Making chart and saving to '$chart_file'\n";
         system "$scripts_dir/election/plot_finances.py single-filer --out '$chart_file' --in-file '$report_file' --copyright-tight --h-legend 1>&2";
         if ($?) {
             $errors++;
@@ -83,6 +86,25 @@ foreach my $cpfid (@cpfids) {
     }
     elsif (not -f $report_file) {
         print STDERR "Cannot make a chart file '$chart_file' as the report file '$report_file' is missing\n";
+        $errors++;
+    }
+
+    ## Make an image file
+    if (-f $report_file and (not -f $img_file or $updated)) {
+        print "Making img and saving to '$img_file'\n";
+        system "$scripts_dir/election/plot_finances.py single-filer --out '$img_file' --in-file '$report_file' --copyright-tight --h-legend --scale 2 1>&2";
+        if ($?) {
+            $errors++;
+            print STDERR "Failed to make image file '$img_file': $?\n";
+        }
+        else {
+            push @images, $img_file;
+        }
+    }
+    elsif (not -f $img_file) {
+        print "Making empty report image for filer $cpfid\n";
+        system "convert -background white -fill black -pointsize 18 'label:No report data' $img_file";
+        push @images, $img_file;
     }
     unlink $tmp if -f $tmp;
 }
@@ -94,6 +116,7 @@ if (@charts) {
     print STDERR "Making combined report in '$chart_file'\n";
     system "$scripts_dir/election/plot_finances.py many-filers", '--out', $chart_file, '--copyright', '--h-legend', "$reports_path/*";
     if ($?) {
+        $errors += 1;
         print STDERR "Couldn't make '$chart_file'\n";
     }
     else {
@@ -106,6 +129,7 @@ if (@charts) {
     system "$scripts_dir/election/plot_finances.py many-filers", '--coh', '--out', $chart_file, '--copyright', '--h-legend', "$reports_path/*";
     if ($?) {
         print STDERR "Couldn't make '$chart_file'\n";
+        $errors += 1;
     }
     else {
         push @charts, $chart_file;
@@ -114,17 +138,19 @@ if (@charts) {
 
 ## Finish up
 system "$scripts_dir/add_no_cache.pl $_" foreach @charts;
-$num = @charts;
-print STDERR "Made $num new chart(s)\n";
+my @files = (@charts, @images);
+print STDERR "Made ${\(scalar @charts)} new chart(s) and ${\(scalar @images)} image(s) for a total of ${\(scalar @files)} file(s)\n";
 
 ## Upload charts
-if (@charts) {
-    print "Moving $num charts to server\n";
-    system '/bin/bash', '-c', "sftp -P19199 -i $ENV{HOME}/.ssh/charles_server_cx franklin\@franklin.cx:public_html/candidate-data/report-charts <<< \$'put $_'" foreach @charts;
+if (@files) {
+    print "Moving ${\(scalar @files)} files to server\n";
+    system '/bin/bash', '-c', "sftp -P19199 -i $ENV{HOME}/.ssh/charles_server_cx franklin\@franklin.cx:public_html/candidate-data/report-charts <<< \$'put $_'" foreach @files;
     if ($?) {
         print STDERR "Failed to upload charts to server: $?\n";
         $errors++;
     }
 }
+
+unlink $_ foreach @tmps;
 
 exit ($errors) ? 1 : 0;

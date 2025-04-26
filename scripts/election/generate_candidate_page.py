@@ -103,7 +103,12 @@ CANDIDATE_PAGE_TEMPLATE = dedent("""\
 
     <!-- wp:column {{"width":"80%","layout":{{"type":"constrained"}}}} -->
     <div class="wp-block-column" style="flex-basis:80%"><!-- wp:html -->
+    <div class="gbvc-hide-on-mobile gbvc-hide-on-tablet">
     <iframe src="/candidate-data/report-charts/{cpfid}_report_chart.html" width="100%" height="600"></iframe>
+    </div>
+    <div class="gbvc-hide-on-desktop">
+    <img src="/candidate-data/report-charts/{cpfid}_report_chart.png"></img>
+    </div>
     <!-- /wp:html --></div>
     <!-- /wp:column --></div>
     <!-- /wp:columns -->
