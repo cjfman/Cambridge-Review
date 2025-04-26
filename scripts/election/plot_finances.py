@@ -51,6 +51,8 @@ def parseArgs():
         help="Don't set a copyright holder. Overrides --copyright")
     shared_parser.add_argument("--font-size", type=int, default=14,
         help="Font size")
+    shared_parser.add_argument("--scale", type=int, default=1,
+        help="Scale used when saving images")
     shared_parser.add_argument("--h-legend", action="store_true",
         help="Make the legend horizontal")
 
@@ -189,7 +191,7 @@ def finalPlot(args, fig):
         else:
             print(f"Saving as '{chart_file}'")
 
-        fig.write_image(chart_file)
+        fig.write_image(chart_file, scale=args.scale)
 
 
 def plot_filer_expenses(args, reports):

@@ -1,6 +1,7 @@
 bs4
 glob
 html5lib
+kaleido
 markdown_table_generator
 matplotlib
 numpy
