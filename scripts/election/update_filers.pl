@@ -114,7 +114,7 @@ if (@charts) {
     ## Combined report
     my $chart_file = "$charts_path/combined_report_chart.html";
     print STDERR "Making combined report in '$chart_file'\n";
-    system "$scripts_dir/election/plot_finances.py many-filers", '--out', $chart_file, '--copyright', '--h-legend', "$reports_path/*";
+    system "$scripts_dir/election/plot_finances.py many-filers --out $chart_file --h-legend --copyright-tight $reports_path/*";
     if ($?) {
         $errors += 1;
         print STDERR "Couldn't make '$chart_file'\n";
@@ -126,7 +126,7 @@ if (@charts) {
     ## Cash on hand report
     $chart_file = "$charts_path/cash_on_hand_report_chart.html";
     print STDERR "Making cash on hand report in '$chart_file'\n";
-    system "$scripts_dir/election/plot_finances.py many-filers", '--coh', '--out', $chart_file, '--copyright', '--h-legend', "$reports_path/*";
+    system "$scripts_dir/election/plot_finances.py many-filers --coh --out $chart_file --h-legend --copyright-tight $reports_path/*";
     if ($?) {
         print STDERR "Couldn't make '$chart_file'\n";
         $errors += 1;

@@ -7,7 +7,8 @@ import dateutil
 
 from .utils import format_dollar, strip_currency, eprint
 
-FORCE_ACTIVE = [17259]
+VERBOSE=False
+FORCE_ACTIVE = [17259, 18437]
 
 class Filer:
     def __init__(self, cpfid:int, committee_name, *, reports=None, cash_on_hand:float=0):
@@ -50,11 +51,14 @@ class Filer:
 
     def active(self):
         if self.cpfid in FORCE_ACTIVE:
+            if VERBOSE:
+                eprint(f"{self.committee_name} forced to be active")
             return True
 
         ## Was the account opened in the past year?
         if self.organization_date and (dt.datetime.now() - self.organization_date) < 365:
-            eprint(f"{self.committee_name} found active due to organization date {self.organization_date}")
+            if VERBOSE:
+                eprint(f"{self.committee_name} found active due to organization date {self.organization_date}")
             return True
 
         ## Check recent transactions
@@ -62,10 +66,12 @@ class Filer:
             if report.credit_total and report.expenditure_total - report.credit_total:
                 exp = format_dollar(report.expenditure_total)
                 crd = format_dollar(report.credit_total)
-                eprint(f"{self.committee_name} found active due to report {report.reporting_period}: Exp {exp} Credits {crd}")
+                if VERBOSE:
+                    eprint(f"{self.committee_name} found active due to report {report.reporting_period}: Exp {exp} Credits {crd}")
                 return True
 
-        eprint(f"{self.committee_name} is inactive")
+        if VERBOSE:
+            eprint(f"{self.committee_name} is inactive")
         return False
 
     def missing_recent_report(self, *, months=1) -> bool:
