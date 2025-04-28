@@ -192,13 +192,13 @@ def plot_filer_expenses(args, reports):
     recpts = []
     expncs = []
     cashes = []
-    for report in reports:
+    for report in reversed(reports):
         stacks.append(report.reporting_period)
         recpts.append(report.credit_total)
         expncs.append(report.expenditure_total*-1)
         cashes.append(report.cash_on_hand)
 
-    plot_expenses(args, title, stacks, recpts, expncs, subtitle=f"Cash on Hand: ${cashes[0]:,.2f}", cashes=cashes, x_title="Report Period")
+    plot_expenses(args, title, stacks, recpts, expncs, subtitle=f"Cash on Hand: ${cashes[-1]:,.2f}", cashes=cashes, x_title="Report Period")
 
 
 def plot_filers_last_report(args, filers):

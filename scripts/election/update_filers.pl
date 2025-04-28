@@ -7,6 +7,7 @@ no warnings qw/uninitialized/;
 use File::Compare;
 use File::Copy;
 
+my $REGEN = 0;
 my $base_dir = ".";
 $base_dir = shift @ARGV if @ARGV;
 $base_dir =~ s{/$}{};
@@ -20,7 +21,7 @@ $reports_path =~ s{/$}{};
 $charts_path  =~ s{/$}{};
 
 print STDERR "Checking for filers\n";
-my @cpfids = `$scripts_dir/election/ocpf.py list-filers --reports $reports_path --missing-recent-report`;
+my @cpfids = `$scripts_dir/election/ocpf.py list-filers --reports $reports_path`; # --missing-recent-report`;
 chomp @cpfids;
 @cpfids = grep $_, @cpfids;
 
@@ -63,6 +64,7 @@ foreach my $cpfid (@cpfids) {
         }
     }
 
+    $updated = $updated or $REGEN;
     ## Make a chart from the report
     if (-f $report_file and (not -f $chart_file or $updated)) {
         print STDERR "Making chart and saving to '$chart_file'\n";
