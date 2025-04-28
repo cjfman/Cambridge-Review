@@ -20,14 +20,6 @@ from citylib.utils import insertCopyright, format_dollar
 
 VERBOSE=False
 DEBUG=False
-CURRENCY_KEYS = (
-    'startBalance',
-    'creditTotal',
-    'expenditureTotal',
-    'endBalance',
-    'cashOnHand',
-)
-
 
 def parseArgs():
     ## pylint: disable=global-statement
