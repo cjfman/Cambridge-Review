@@ -7,8 +7,11 @@ no warnings qw/uninitialized/;
 use File::Compare;
 use File::Copy;
 
-my $REGEN = 0;
-my $base_dir = ".";
+my $REGEN     = 0;
+my $MOBILE    = 0;
+my $NO_UPLOAD = 0;
+my $FLAGS     = '--missing-recent-report';
+my $base_dir  = ".";
 $base_dir = shift @ARGV if @ARGV;
 $base_dir =~ s{/$}{};
 
@@ -16,17 +19,20 @@ my $scripts_dir  = "$base_dir/scripts";
 my $filers_file  = "$base_dir/candidate_data/filers.json";
 my $reports_path = "$base_dir/candidate_data/reports";
 my $charts_path  = "$base_dir/charts/filers/reports";
+my $reports_url  = "candidate-data/report-charts";
+my $images_url   = (not $MOBILE) ? $reports_url : "images/candidate-data/reports";
 
 $reports_path =~ s{/$}{};
 $charts_path  =~ s{/$}{};
 
 print STDERR "Checking for filers\n";
-my @cpfids = `$scripts_dir/election/ocpf.py list-filers --reports $reports_path`; # --missing-recent-report`;
+my @cpfids = `$scripts_dir/election/ocpf.py list-filers --reports $reports_path $FLAGS`;
 chomp @cpfids;
 @cpfids = grep $_, @cpfids;
 
 my @charts;
 my @images;
+my @mobile_files;
 my @tmps;
 my $errors;
 print STDERR "Found ${\(scalar @cpfids)} filer(s)\n";
@@ -35,7 +41,9 @@ foreach my $cpfid (@cpfids) {
     my $tmp         = "/tmp/${cpfid}_reports.json";
     my $report_file = "$reports_path/${cpfid}_reports.json";
     my $chart_file  = "$charts_path/${cpfid}_report_chart.html";
-    my $img_file    = "$charts_path/${cpfid}_report_chart.png";
+    my $img_name    = "${cpfid}_report_chart.png";
+    my $img_file    = "$charts_path/$img_name";
+    my $mobile_file = "/tmp/${cpfid}_report_chart_mobile.html";
     my $updated;
     if (-f $report_file and -M $report_file < 1) {
         print STDERR "Report file '$report_file' was written or checked today. Don't check for update\n";
@@ -64,7 +72,7 @@ foreach my $cpfid (@cpfids) {
         }
     }
 
-    $updated = $updated or $REGEN;
+    $updated = ($updated || $REGEN);
     ## Make a chart from the report
     if (-f $report_file and (not -f $chart_file or $updated)) {
         print STDERR "Making chart and saving to '$chart_file'\n";
@@ -101,6 +109,13 @@ foreach my $cpfid (@cpfids) {
         }
         else {
             push @images, $img_file;
+            if ($MOBILE) {
+                if (write_mobile_file("/$images_url/$img_name", $mobile_file)) {
+                    print STDERR "Wrote mobile file $mobile_file\n";
+                    push @mobile_files, $mobile_file;
+                    push @tmps, $mobile_file;
+                }
+            }
         }
     }
     elsif (not -f $img_file) {
@@ -140,13 +155,26 @@ if (@charts) {
 
 ## Finish up
 system "$scripts_dir/add_no_cache.pl $_" foreach @charts;
-my @files = (@charts, @images);
-print STDERR "Made ${\(scalar @charts)} new chart(s) and ${\(scalar @images)} image(s) for a total of ${\(scalar @files)} file(s)\n";
+print STDERR "Made ${\(scalar @charts)} chart(s), ${\(scalar @images)} image(s), and ${\(scalar @mobile_files)} mobile file(s)\n";
+if ($NO_UPLOAD) {
+    unlink $_ foreach @tmps;
+    exit ($errors) ? 1 : 0;
+}
 
 ## Upload charts
+my @files = (@charts, @mobile_files);
 if (@files) {
     print "Moving ${\(scalar @files)} files to server\n";
-    system '/bin/bash', '-c', "sftp -P19199 -i $ENV{HOME}/.ssh/charles_server_cx franklin\@franklin.cx:public_html/candidate-data/report-charts <<< \$'put $_'" foreach @files;
+    system '/bin/bash', '-c', "sftp -P19199 -i $ENV{HOME}/.ssh/charles_server_cx franklin\@franklin.cx:public_html/$reports_url <<< \$'put $_'" foreach @files;
+    if ($?) {
+        print STDERR "Failed to upload files to server: $?\n";
+        $errors++;
+    }
+}
+
+if (@images) {
+    print "Moving ${\(scalar @images)} images to server\n";
+    system '/bin/bash', '-c', "sftp -P19199 -i $ENV{HOME}/.ssh/charles_server_cx franklin\@franklin.cx:public_html/$images_url <<< \$'put $_'" foreach @images;
     if ($?) {
         print STDERR "Failed to upload charts to server: $?\n";
         $errors++;
@@ -154,5 +182,30 @@ if (@files) {
 }
 
 unlink $_ foreach @tmps;
-
 exit ($errors) ? 1 : 0;
+
+sub write_mobile_file {
+    my $url = shift;
+    my $file = shift;
+    my $html = qq{
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+    <img src="$url"></img>
+</body>
+</html>
+    };
+    my $opened = open FILE, '>', $file;
+    if (not $opened) {
+        print STDERR "Failed to write to $file: $!";
+        return 0;
+    }
+    print FILE $html;
+    close FILE;
+    return 1;
+}

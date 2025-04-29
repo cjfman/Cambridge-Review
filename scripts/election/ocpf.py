@@ -107,6 +107,8 @@ def parseArgs():
         help="Join the cpfids with this string")
     parser_list_filers.add_argument("--missing-recent-report", action="store_true",
         help="Filter out filers that have a report from last month or more recent")
+    parser_list_filers.add_argument("--details", action="store_true",
+        help="Show more details than just the OCPF id. Ignores --join")
     list_ex_group = parser_list_filers.add_mutually_exclusive_group(required=True)
     list_ex_group.add_argument("--filers",
         help="List of filer summaries or directory of filer details")
@@ -186,7 +188,7 @@ def load_filers(path) -> List[Filer]:
         else:
             eprint(f"Cannot load filers from '{path}'")
             return None
-    except (KeyError, ValueError):
+    except (KeyError, ValueError) as e:
         eprint(f"File '{path}' was improperly formatted: {e}")
         filers = None
     except Exception as e:
@@ -361,7 +363,12 @@ def list_filers_hdlr(args):
         filers = [x for x in filers if x.missing_recent_report()]
 
     ## Print filers
-    print(args.join.join(map(str, sorted([x.cpfid for x in filers]))))
+    if not args.details:
+        print(args.join.join(map(str, sorted([x.cpfid for x in filers]))))
+    else:
+        for f in filers:
+            print("\t".join([str(f.cpfid), f.committee_name, f.candidate_name]))
+
     return 0
 
 

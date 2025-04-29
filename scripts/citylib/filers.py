@@ -11,9 +11,10 @@ VERBOSE=False
 FORCE_ACTIVE = [17259, 18437]
 
 class Filer:
-    def __init__(self, cpfid:int, committee_name, *, reports=None, cash_on_hand:float=0):
+    def __init__(self, cpfid:int, committee_name, candidate_name="", *, reports=None, cash_on_hand:float=0):
         self.cpfid               = cpfid
         self.committee_name      = committee_name
+        self.candidate_name      = candidate_name
         self.cash_on_hand        = cash_on_hand
         self.reports             = reports or []
         self.treasurer           = ""
@@ -30,11 +31,12 @@ class Filer:
         if isinstance(obj, str):
             obj = json.loads(obj)
 
+        print(obj)
         filer = None
         if simple:
-            filer = Filer(obj['cpfId'], obj['committeeName'])
+            filer = Filer(obj['cpfId'], obj['committeeName'], obj['filerName'])
         else:
-            filer = Filer(obj['filer']['cpfId'], obj['filer']['committeeName'])
+            filer = Filer(obj['filer']['cpfId'], obj['filer']['committeeName'], obj['filer']['fullName'])
             treas = obj['filer']['treasurer']
             filer.treasurer           = treas['fullName']
             filer.comm_address_line_1 = treas['streetAddress']
