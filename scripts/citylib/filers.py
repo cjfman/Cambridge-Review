@@ -79,6 +79,9 @@ class Filer:
         then = dt.datetime.now().date() - dateutil.relativedelta.relativedelta(months=months)
         return (self.reports and self.reports[0].end_date < then)
 
+    def __str__(self):
+        return f"{self.committee_name}({self.cpfid}) {self.candidate_name}"
+
 
 class Report:
     def __init__(self):

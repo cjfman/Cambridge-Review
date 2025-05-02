@@ -7,7 +7,9 @@ no warnings qw/uninitialized/;
 use File::Compare;
 use File::Copy;
 
+my $UPDATE    = 0;
 my $REGEN     = 0;
+my $SHARED    = 0;
 my $MOBILE    = 0;
 my $NO_UPLOAD = 0;
 my $FLAGS     = '--missing-recent-report';
@@ -45,7 +47,7 @@ foreach my $cpfid (@cpfids) {
     my $img_file    = "$charts_path/$img_name";
     my $mobile_file = "/tmp/${cpfid}_report_chart_mobile.html";
     my $updated;
-    if (-f $report_file and -M $report_file < 1) {
+    if (-f $report_file and -M $report_file < 1 and not $UPDATE) {
         print STDERR "Report file '$report_file' was written or checked today. Don't check for update\n";
     }
     else {
@@ -127,7 +129,7 @@ foreach my $cpfid (@cpfids) {
 }
 
 ## Make shared charts
-if (@charts) {
+if (@charts or $SHARED) {
     ## Combined report
     my $chart_file = "$charts_path/combined_report_chart.html";
     print "Making combined report in '$chart_file'\n";
@@ -155,7 +157,7 @@ if (@charts) {
 
 ## Finish up
 system "$scripts_dir/add_no_cache.pl $_" foreach @charts;
-my $total = (@charts, @images, @mobile_files);
+my $total = @charts + @images + @mobile_files;
 if ($total) {
     print "Made ${\(scalar @charts)} chart(s), ${\(scalar @images)} image(s), and ${\(scalar @mobile_files)} mobile file(s)\n";
 }
@@ -179,9 +181,6 @@ if (@files) {
         print STDERR "Failed to upload files to server: $?\n";
         $errors++;
     }
-    else {
-        $uploaded++;
-    }
 }
 
 if (@images) {
@@ -191,12 +190,8 @@ if (@images) {
         print STDERR "Failed to upload charts to server: $?\n";
         $errors++;
     }
-    else {
-        $uploaded++;
-    }
 }
 
-print "Uploaded $uploaded charts and files\n";
 unlink $_ foreach @tmps;
 exit ($errors) ? 1 : 0;
 

@@ -215,9 +215,11 @@ def plot_filers_last_report(args, filers):
     if args.coh:
         title = args.title or f"Cash on Hand as of {filers[0].reports[0].end_date.strftime('%-m/%-d/%Y')}"
         plot_coh(args, title, stacks, cashes, x_title="Committe")
-    else:
-        title = args.title or f"Finances for period {filers[0].reports[0].reporting_period}"
-        plot_expenses(args, title, stacks, recpts, expncs, x_title="Committe")
+        return
+
+    title = args.title or f"Finances for period {filers[0].reports[0].reporting_period}"
+    print(title)
+    plot_expenses(args, title, stacks, recpts, expncs, x_title="Committe")
 
 
 def single_filer_hdlr(args):
@@ -244,11 +246,12 @@ def many_filer_hdlr(args):
     for filer in filers:
         key = (filer.reports[0].end_date, filer.reports[0].start_date)
         grouped[key].append(filer)
-
     if len(grouped.keys()) > 1:
         key = sorted(grouped.keys())[-1]
-        print("Most recent report for all filers isn't the same. Choosing the most recent one: {key}")
+        date_txt = " ".join([x.strftime('%-m/%-d/%Y') for x in key])
+        print(f"Most recent report for all filers isn't the same. Choosing the most recent one: {date_txt}")
         filers = grouped[key]
+        print("\n".join(map(str, filers)))
 
     plot_filers_last_report(args, filers)
     return 0
