@@ -52,7 +52,7 @@ foreach my $cpfid (@cpfids) {
         print STDERR "Getting reports for filer $cpfid and saving them to $report_file\n";
         system "$scripts_dir/election/ocpf.py query-reports $cpfid $tmp 1>&2";
         if ($?) {
-            print STDERR "Failed to query report for filer $cpfid: $?";
+            print "Failed to query report for filer $cpfid: $?";
             $errors++;
         }
         elsif (-f $report_file and compare($tmp, $report_file) != 1) {
@@ -62,11 +62,11 @@ foreach my $cpfid (@cpfids) {
         else {
             ## Put report in place
             if (!move($tmp, $report_file)) {
-                print STDERR "Failed to save file to '$report_file'\n";
+                print "Failed to save file to '$report_file'\n";
                 $errors++;
             }
             else {
-                print STDERR "Report update for filer $cpfid saved in $report_file\n";
+                print "Report update for filer $cpfid saved in $report_file\n";
                 $updated = 1;
             }
         }
@@ -75,11 +75,11 @@ foreach my $cpfid (@cpfids) {
     $updated = ($updated || $REGEN);
     ## Make a chart from the report
     if (-f $report_file and (not -f $chart_file or $updated)) {
-        print STDERR "Making chart and saving to '$chart_file'\n";
+        print "Making chart and saving to '$chart_file'\n";
         system "$scripts_dir/election/plot_finances.py single-filer --out '$chart_file' --in-file '$report_file' --copyright-tight --h-legend 1>&2";
         if ($?) {
             $errors++;
-            print STDERR "Failed to make chart file '$chart_file': $?\n";
+            print "Failed to make chart file '$chart_file': $?\n";
         }
         else {
             push @charts, $chart_file;
@@ -95,7 +95,7 @@ foreach my $cpfid (@cpfids) {
         print STDERR "Not updating chart file $chart_file\n";
     }
     elsif (not -f $report_file) {
-        print STDERR "Cannot make a chart file '$chart_file' as the report file '$report_file' is missing\n";
+        print "Cannot make a chart file '$chart_file' as the report file '$report_file' is missing\n";
         $errors++;
     }
 
@@ -105,13 +105,13 @@ foreach my $cpfid (@cpfids) {
         system "$scripts_dir/election/plot_finances.py single-filer --out '$img_file' --in-file '$report_file' --copyright-tight --h-legend --scale 2 1>&2";
         if ($?) {
             $errors++;
-            print STDERR "Failed to make image file '$img_file': $?\n";
+            print "Failed to make image file '$img_file': $?\n";
         }
         else {
             push @images, $img_file;
             if ($MOBILE) {
                 if (write_mobile_file("/$images_url/$img_name", $mobile_file)) {
-                    print STDERR "Wrote mobile file $mobile_file\n";
+                    print "Wrote mobile file $mobile_file\n";
                     push @mobile_files, $mobile_file;
                     push @tmps, $mobile_file;
                 }
@@ -130,11 +130,11 @@ foreach my $cpfid (@cpfids) {
 if (@charts) {
     ## Combined report
     my $chart_file = "$charts_path/combined_report_chart.html";
-    print STDERR "Making combined report in '$chart_file'\n";
+    print "Making combined report in '$chart_file'\n";
     system "$scripts_dir/election/plot_finances.py many-filers --out $chart_file --h-legend --copyright-tight $reports_path/*";
     if ($?) {
         $errors += 1;
-        print STDERR "Couldn't make '$chart_file'\n";
+        print "Couldn't make '$chart_file'\n";
     }
     else {
         push @charts, $chart_file;
@@ -142,10 +142,10 @@ if (@charts) {
 
     ## Cash on hand report
     $chart_file = "$charts_path/cash_on_hand_report_chart.html";
-    print STDERR "Making cash on hand report in '$chart_file'\n";
+    print "Making cash on hand report in '$chart_file'\n";
     system "$scripts_dir/election/plot_finances.py many-filers --coh --out $chart_file --h-legend --copyright-tight $reports_path/*";
     if ($?) {
-        print STDERR "Couldn't make '$chart_file'\n";
+        print "Couldn't make '$chart_file'\n";
         $errors += 1;
     }
     else {
@@ -155,20 +155,32 @@ if (@charts) {
 
 ## Finish up
 system "$scripts_dir/add_no_cache.pl $_" foreach @charts;
-print STDERR "Made ${\(scalar @charts)} chart(s), ${\(scalar @images)} image(s), and ${\(scalar @mobile_files)} mobile file(s)\n";
-if ($NO_UPLOAD) {
+my $total = (@charts, @images, @mobile_files);
+if ($total) {
+    print "Made ${\(scalar @charts)} chart(s), ${\(scalar @images)} image(s), and ${\(scalar @mobile_files)} mobile file(s)\n";
+}
+else {
+    print STDERR "No charts, images, or files made\n";
+}
+
+if ($NO_UPLOAD or not $total) {
+    print STDERR "Skipping upload\n";
     unlink $_ foreach @tmps;
     exit ($errors) ? 1 : 0;
 }
 
 ## Upload charts
 my @files = (@charts, @mobile_files);
+my $uploaded;
 if (@files) {
     print "Moving ${\(scalar @files)} files to server\n";
     system '/bin/bash', '-c', "sftp -P19199 -i $ENV{HOME}/.ssh/charles_server_cx franklin\@franklin.cx:public_html/$reports_url <<< \$'put $_'" foreach @files;
     if ($?) {
         print STDERR "Failed to upload files to server: $?\n";
         $errors++;
+    }
+    else {
+        $uploaded++;
     }
 }
 
@@ -179,8 +191,12 @@ if (@images) {
         print STDERR "Failed to upload charts to server: $?\n";
         $errors++;
     }
+    else {
+        $uploaded++;
+    }
 }
 
+print "Uploaded $uploaded charts and files\n";
 unlink $_ foreach @tmps;
 exit ($errors) ? 1 : 0;
 

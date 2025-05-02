@@ -66,7 +66,10 @@ def parseArgs():
         help="Fetch the list of active filrs"
     )
     parser_fetch_list.set_defaults(subcmd=fetch_list_hdlr)
-    parser_fetch_list.add_argument('-o', '--out', type=str)
+    parser_fetch_list.add_argument('-o', '--out', type=str,
+        help="Out file. Otherwise prints to STDOUT")
+    parser_fetch_list.add_argument('--include-closed', action='store_true',
+        help="Include closed committees")
 
     ## Fetch filer subparser
     parser_fetch_filer = subparsers.add_parser('fetch-filer',
@@ -138,9 +141,13 @@ def fetch_json(url) -> str:
     return json.loads(content)
 
 
-def fetch_filers(url) -> List[str]:
+def fetch_filers(url, *, include_closed=False) -> List[str]:
     """Fetch list of filer summaries from OCPF"""
-    url = os.path.join(url, "filers/listings/CC?first200=false&excludeClosed=true")
+    exclude = "true"
+    if include_closed:
+        exclude = "false"
+
+    url = os.path.join(url, f"filers/listings/CC?first200=false&excludeClosed={exclude}")
     print_stderr(f"Fetching '{url}'")
     filers = fetch_json(url)
     return [x for x in filers if x['officeSought'] == "City Councilor, Cambridge"]
@@ -250,7 +257,7 @@ def fetch_and_store_filer(cpfid, *, out=None, keys=None, fetched=None) -> str:
 
 def fetch_list_hdlr(args):
     """Get the list of filers"""
-    filers = fetch_filers(API_URL)
+    filers = fetch_filers(API_URL, include_closed=args.include_closed)
     if args.out is not None:
         with open(args.out, 'w', encoding='utf8') as f:
             json.dump(filers, f, indent=4)

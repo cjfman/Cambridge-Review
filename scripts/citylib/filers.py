@@ -31,7 +31,6 @@ class Filer:
         if isinstance(obj, str):
             obj = json.loads(obj)
 
-        print(obj)
         filer = None
         if simple:
             filer = Filer(obj['cpfId'], obj['committeeName'], obj['filerName'])
