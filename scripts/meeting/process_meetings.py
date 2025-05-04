@@ -1175,6 +1175,10 @@ def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
 def processOrd(args, uid, num, title, link, vote, action) -> Ordinance:
     """Process an ordinance agenda item"""
     ## pylint: disable=unused-argument
+    ## Clean up title
+    title = re.sub(r"(?:An? )Ordinance (?:.+ )?has been received (?:from City Clerk(?: .+)?)?,?.*?relative to ", "", title, flags=re.IGNORECASE)
+
+    ## Process info
     info = processItemInfo(args, uid, link, action)
     if 'action' in info.history:
         action = info.history['action']
