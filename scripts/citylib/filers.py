@@ -25,6 +25,7 @@ class Filer:
         self.website             = ""
         self.position            = ""
         self.organization_date   = None
+        self.data                = None
 
     @classmethod
     def fromJson(cls, obj, *, simple=False):
@@ -43,6 +44,7 @@ class Filer:
             filer.comm_address_state  = treas['state']
             filer.comm_address_zip    = treas['zipCode']
 
+        filer.data = obj
         return filer
 
     @classmethod
@@ -148,4 +150,4 @@ def read_report_and_filer(path) -> Filer:
         return None
 
     recent = reports[0]
-    return Filer(recent.cpfid, recent.committee_name, cash_on_hand=recent.cash_on_hand, reports=reports)
+    return Filer(recent.cpfid, recent.committee_name, recent.filer_name, cash_on_hand=recent.cash_on_hand, reports=reports)

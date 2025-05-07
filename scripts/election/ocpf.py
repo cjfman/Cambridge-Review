@@ -110,12 +110,15 @@ def parseArgs():
         help="Join the cpfids with this string")
     parser_list_filers.add_argument("--missing-recent-report", action="store_true",
         help="Filter out filers that have a report from last month or more recent")
-    parser_list_filers.add_argument("--details", action="store_true",
+    list_ex_group_1 = parser_list_filers.add_mutually_exclusive_group(required=False)
+    list_ex_group_1.add_argument("--details", action="store_true",
         help="Show more details than just the OCPF id. Ignores --join")
-    list_ex_group = parser_list_filers.add_mutually_exclusive_group(required=True)
-    list_ex_group.add_argument("--filers",
+    list_ex_group_1.add_argument("--keys",
+        help="Show these comma seperarted keys from the OCPF reports")
+    list_ex_group_2 = parser_list_filers.add_mutually_exclusive_group(required=True)
+    list_ex_group_2.add_argument("--filers",
         help="List of filer summaries or directory of filer details")
-    list_ex_group.add_argument("--reports",
+    list_ex_group_2.add_argument("--reports",
         help="Directory of reports")
 
     ## Final parse
@@ -352,6 +355,23 @@ def query_reports_hdlr(args):
     return 0
 
 
+def list_filers_keys(filers, keys, join):
+    getters = []
+    for key in keys:
+        if key in ('id', 'cpfid', 'ocpfid'):
+            getters.append(lambda x: x.cpfid)
+        elif key == 'committee':
+            getters.append(lambda x: x.committee_name)
+        elif key == 'candidate':
+            getters.append(lambda x: x.candidate_name)
+        else:
+            raise KeyError(f"'{key}' is not a valid filer key")
+
+    for filer in filers:
+        vals = [x(filer) for x in getters]
+        print(join.join(map(str, vals)))
+
+
 def list_filers_hdlr(args):
     filers = None
 
@@ -369,12 +389,19 @@ def list_filers_hdlr(args):
     if args.missing_recent_report:
         filers = [x for x in filers if x.missing_recent_report()]
 
+    ## Adjust join
+    args.join = args.join.replace("\\n", "\n")
+    args.join = args.join.replace("\\r", "\r")
+    args.join = args.join.replace("\\t", "\t")
+
     ## Print filers
-    if not args.details:
-        print(args.join.join(map(str, sorted([x.cpfid for x in filers]))))
-    else:
+    if args.details:
         for f in filers:
             print("\t".join([str(f.cpfid), f.committee_name, f.candidate_name]))
+    elif args.keys is not None:
+        list_filers_keys(filers, args.keys.split(","), args.join)
+    else:
+        print(args.join.join(map(str, sorted([x.cpfid for x in filers]))))
 
     return 0
 

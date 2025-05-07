@@ -11,7 +11,7 @@ my $UPDATE    = 0;
 my $REGEN     = 0;
 my $SHARED    = 0;
 my $MOBILE    = 0;
-my $NO_UPLOAD = 0;
+my $NO_UPLOAD = 1;
 my $FLAGS     = '--missing-recent-report';
 my $base_dir  = ".";
 $base_dir = shift @ARGV if @ARGV;
@@ -28,9 +28,11 @@ $reports_path =~ s{/$}{};
 $charts_path  =~ s{/$}{};
 
 print STDERR "Checking for filers\n";
-my @cpfids = `$scripts_dir/election/ocpf.py list-filers --reports $reports_path $FLAGS`;
-chomp @cpfids;
-@cpfids = grep $_, @cpfids;
+#my @cpfids = `$scripts_dir/election/ocpf.py list-filers --reports $reports_path $FLAGS`;
+#chomp @cpfids;
+#@cpfids = grep $_, @cpfids;
+my %filers = get_filers();
+my @cpfids = keys %filers;
 
 my @charts;
 my @images;
@@ -39,6 +41,8 @@ my @tmps;
 my $errors;
 print STDERR "Found ${\(scalar @cpfids)} filer(s)\n";
 foreach my $cpfid (@cpfids) {
+    my $name = "$cpfid $filers{$cpfid}";
+    print STDERR "--- $name ---\n";
     ## Get report
     my $tmp         = "/tmp/${cpfid}_reports.json";
     my $report_file = "$reports_path/${cpfid}_reports.json";
@@ -54,7 +58,7 @@ foreach my $cpfid (@cpfids) {
         print STDERR "Getting reports for filer $cpfid and saving them to $report_file\n";
         system "$scripts_dir/election/ocpf.py query-reports $cpfid $tmp 1>&2";
         if ($?) {
-            print "Failed to query report for filer $cpfid: $?";
+            print "Failed to query report for filer $name: $?\n";
             $errors++;
         }
         elsif (-f $report_file and compare($tmp, $report_file) != 1) {
@@ -64,11 +68,11 @@ foreach my $cpfid (@cpfids) {
         else {
             ## Put report in place
             if (!move($tmp, $report_file)) {
-                print "Failed to save file to '$report_file'\n";
+                print "Failed to save file to '$report_file' for filer $name\n";
                 $errors++;
             }
             else {
-                print "Report update for filer $cpfid saved in $report_file\n";
+                print "Report update for filer $name saved in $report_file\n";
                 $updated = 1;
             }
         }
@@ -77,18 +81,18 @@ foreach my $cpfid (@cpfids) {
     $updated = ($updated || $REGEN);
     ## Make a chart from the report
     if (-f $report_file and (not -f $chart_file or $updated)) {
-        print "Making chart and saving to '$chart_file'\n";
+        print "Making chart for filer $name and saving to '$chart_file'\n";
         system "$scripts_dir/election/plot_finances.py single-filer --out '$chart_file' --in-file '$report_file' --copyright-tight --h-legend 1>&2";
         if ($?) {
             $errors++;
-            print "Failed to make chart file '$chart_file': $?\n";
+            print "Failed to make chart file '$chart_file' for filer $name: $?\n";
         }
         else {
             push @charts, $chart_file;
         }
 
         if (! -f $chart_file) {
-            print "Making empty report chart for filer $cpfid\n";
+            print "Making empty report chart for filer $name\n";
             copy("$charts_path/empty_report_chart.html", $chart_file);
             push @charts, $chart_file;
         }
@@ -97,17 +101,17 @@ foreach my $cpfid (@cpfids) {
         print STDERR "Not updating chart file $chart_file\n";
     }
     elsif (not -f $report_file) {
-        print "Cannot make a chart file '$chart_file' as the report file '$report_file' is missing\n";
+        print "Cannot make a chart file '$chart_file' as the report file '$report_file' is missing for filer $name\n";
         $errors++;
     }
 
     ## Make an image file
     if (-f $report_file and (not -f $img_file or $updated)) {
-        print "Making img and saving to '$img_file'\n";
+        print "Making img for filer $name and saving to '$img_file'\n";
         system "$scripts_dir/election/plot_finances.py single-filer --out '$img_file' --in-file '$report_file' --copyright-tight --h-legend --scale 2 1>&2";
         if ($?) {
             $errors++;
-            print "Failed to make image file '$img_file': $?\n";
+            print "Failed to make image file '$img_file' for filer $name: $?\n";
         }
         else {
             push @images, $img_file;
@@ -121,7 +125,7 @@ foreach my $cpfid (@cpfids) {
         }
     }
     elsif (not -f $img_file) {
-        print "Making empty report image for filer $cpfid\n";
+        print "Making empty report image for filer $name\n";
         system "convert -background white -fill black -pointsize 18 'label:No report data' $img_file";
         push @images, $img_file;
     }
@@ -219,4 +223,20 @@ sub write_mobile_file {
     print FILE $html;
     close FILE;
     return 1;
+}
+
+sub get_filers {
+    my %filers;
+    my @filers = `$scripts_dir/election/ocpf.py list-filers --reports $reports_path $FLAGS --keys id,candidate --join '\t'`;
+    chomp @filers;
+    foreach (@filers) {
+        my ($cpfid, $name) = split /\t/;
+        next unless $cpfid;
+        $filers{$cpfid} = $name;
+    }
+    if ($?) {
+        print "Failed to get filers: $?\n";
+        exit 1;
+    }
+    return %filers;
 }
