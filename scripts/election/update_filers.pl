@@ -11,7 +11,7 @@ my $UPDATE    = 0;
 my $REGEN     = 0;
 my $SHARED    = 0;
 my $MOBILE    = 0;
-my $NO_UPLOAD = 1;
+my $NO_UPLOAD = 0;
 my $FLAGS     = '--missing-recent-report';
 my $base_dir  = ".";
 $base_dir = shift @ARGV if @ARGV;
@@ -22,7 +22,7 @@ my $filers_file  = "$base_dir/candidate_data/filers.json";
 my $reports_path = "$base_dir/candidate_data/reports";
 my $charts_path  = "$base_dir/charts/filers/reports";
 my $reports_url  = "candidate-data/report-charts";
-my $images_url   = (not $MOBILE) ? $reports_url : "images/candidate-data/reports";
+my $images_url   = "images/candidate-data/reports";
 
 $reports_path =~ s{/$}{};
 $charts_path  =~ s{/$}{};
@@ -176,28 +176,30 @@ if ($NO_UPLOAD or not $total) {
 }
 
 ## Upload charts
-my @files = (@charts, @mobile_files);
 my $uploaded;
-if (@files) {
-    print "Moving ${\(scalar @files)} files to server\n";
-    system '/bin/bash', '-c', "sftp -P19199 -i $ENV{HOME}/.ssh/charles_server_cx franklin\@franklin.cx:public_html/$reports_url <<< \$'put $_'" foreach @files;
-    if ($?) {
-        print STDERR "Failed to upload files to server: $?\n";
-        $errors++;
-    }
+if (@charts, @mobile_files) {
+    print "Uploading http files\n";
+    upload_file($reports_url, @charts, @mobile_files);
 }
 
 if (@images) {
-    print "Moving ${\(scalar @images)} images to server\n";
-    system '/bin/bash', '-c', "sftp -P19199 -i $ENV{HOME}/.ssh/charles_server_cx franklin\@franklin.cx:public_html/$images_url <<< \$'put $_'" foreach @images;
+    print "Upload images\n";
+    upload_files($images_url,  @images);
+    upload_files($reports_url, @images);
+}
+
+unlink $_ foreach @tmps;
+exit ($errors) ? 1 : 0;
+
+sub upload_files {
+    my ($path, @files) = @_;
+    print "Moving ${\(scalar @files)} files to server\n";
+    system '/bin/bash', '-c', "sftp -P19199 -i $ENV{HOME}/.ssh/charles_server_cx franklin\@franklin.cx:public_html/$path <<< \$'put $_'" foreach @files;
     if ($?) {
         print STDERR "Failed to upload charts to server: $?\n";
         $errors++;
     }
 }
-
-unlink $_ foreach @tmps;
-exit ($errors) ? 1 : 0;
 
 sub write_mobile_file {
     my $url = shift;
