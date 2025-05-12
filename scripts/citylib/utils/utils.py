@@ -51,6 +51,10 @@ def setDefaultValue(d, v, keys):
                 d[key] = v
 
 
+def simpleFormatDateTime(stamp:dt.datetime) -> str:
+    return stamp.strftime('%-m/%-d/%y %-I:%-M %p')
+
+
 def insertLineInFile(path, match, line, *, after=True, stop=True, regex=False, re_args=None) -> bool:
     """Insert a line into the file after a matching line"""
     check_match = lambda x: (not regex and match in x) or (regex and re.search(match, line, re_args))
@@ -97,6 +101,12 @@ def insertCopyright(path, holder, *, tight=False, blocking=False) -> bool:
         notice = f"<p {style}>Copyright &#169; {year}<br>{holder}<br>All rights reserved.</p>\n"
     if blocking:
         notice = f"<div>{notice}</div>"
+    return insertLineInFile(path, "</body>", notice, after=False)
+
+
+def insertDate(path, prefix, *, blocking=False) -> bool:
+    txt = prefix + ": " + simpleFormatDateTime(dt.datetime.now())
+    style = 'style="position:absolute; right:1%; bottom: 1%;"'
     return insertLineInFile(path, "</body>", notice, after=False)
 
 

@@ -28,7 +28,6 @@ $reports_path =~ s{/$}{};
 $charts_path  =~ s{/$}{};
 
 print STDERR "Checking for filers\n";
-#my @cpfids = `$scripts_dir/election/ocpf.py list-filers --reports $reports_path $FLAGS`;
 #chomp @cpfids;
 #@cpfids = grep $_, @cpfids;
 my %filers = get_filers();
@@ -177,9 +176,9 @@ if ($NO_UPLOAD or not $total) {
 
 ## Upload charts
 my $uploaded;
-if (@charts, @mobile_files) {
+if (@charts + @mobile_files) {
     print "Uploading http files\n";
-    upload_file($reports_url, @charts, @mobile_files);
+    upload_files($reports_url, @charts, @mobile_files);
 }
 
 if (@images) {
@@ -229,7 +228,8 @@ sub write_mobile_file {
 
 sub get_filers {
     my %filers;
-    my @filers = `$scripts_dir/election/ocpf.py list-filers --reports $reports_path $FLAGS --keys id,candidate --join '\t'`;
+    #my @filers = `$scripts_dir/election/ocpf.py list-filers --reports $reports_path $FLAGS --keys id,candidate --join '\t'`;
+    my @filers = `$scripts_dir/election/ocpf.py list-filers --filers $filers_file --keys id,candidate --join '\t'`;
     chomp @filers;
     foreach (@filers) {
         my ($cpfid, $name) = split /\t/;
