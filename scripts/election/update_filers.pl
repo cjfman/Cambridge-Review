@@ -111,6 +111,9 @@ foreach my $cpfid (@cpfids) {
         if ($?) {
             $errors++;
             print "Failed to make image file '$img_file' for filer $name: $?\n";
+            print "Making error report image for filer $name\n";
+            system "convert -background white -fill black -pointsize 18 'label: Report error' $img_file";
+            push @images, $img_file;
         }
         else {
             push @images, $img_file;
