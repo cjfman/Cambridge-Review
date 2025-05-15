@@ -221,9 +221,9 @@ def parseArgs():
     parser.set_defaults(func=None)
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--debug", action="store_true")
-    parser.add_argument("--credentials", default="google_credentials/credentials.json",
+    parser.add_argument("--credentials", default="credentials/google_credentials.json",
         help="Google API JSON credentials")
-    parser.add_argument("--token", default="google_credentials/token.json",
+    parser.add_argument("--token", default="credentials/google_token.json",
         help="Google API JSON token. Will be created if one doesn't exist")
     parser.add_argument("--sheet-id",
         help="The google sheets ID")
