@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 
 import argparse
+import copy
 import csv
+import json
 import os
 import re
 import sys
 
 from pathlib import Path
+
+import requests
 
 from google.auth.exceptions import RefreshError
 from google.auth.transport.requests import Request
@@ -19,10 +23,13 @@ from googleapiclient.errors import HttpError
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 from citylib.councillors import getCouncillorNames, getSessionYear, setCouncillorInfo
 from citylib.utils.prompts import query_yes_no
+from citylib.utils import load_file
 
 
 VERBOSE=False
 DEBUG=False
+
+AIRTABLE_API_URL="https://api.airtable.com/v0/"
 
 ## If modifying these scopes, delete the file token.json.
 SCOPES = [
@@ -37,7 +44,7 @@ SHEETS = {
     2025: "1BEBniAqsR0bb3gU7Cy9PJW4lTQO1x2TlekJsyS89vNA",
 }
 
-item_sheet_keys = (
+item_keys = (
     'cma',
     'app',
     'com',
@@ -66,6 +73,18 @@ item_csv_map = {
     'por': 'policy_orders.csv',
     'ord': 'ordinances.csv',
     'res': 'resolutions.csv',
+}
+
+item_airtable_endpoint = {
+    #'meetings': "appjFqJX13Yyp4013/tblHFN5M0oZTTjgJf/sync/pY9IjVGC",
+    'meetings': "app94ZUZhEB9ASRMp/tblzHGtN9Q6xtWzdK/sync/xn7f71iC",
+    'ar':       "app94ZUZhEB9ASRMp/tbl04XZFV55ALtd1A/sync/owAx3BwM",
+    'app':      "app94ZUZhEB9ASRMp/tblNRf9mLC1Rly8Ap/sync/LYyCF7gU",
+    'com':      "appjFqJX13Yyp4013/tbl149hDFBuDhhnoE/sync/UOt1CN4i",
+    'cma':      "app94ZUZhEB9ASRMp/tblusZTZo8e5WhdP8/sync/8cwLGPan",
+    'res':      "app94ZUZhEB9ASRMp/tblLFARSHg4Rz8OM5/sync/L19QDfSn",
+    'ord':      "app94ZUZhEB9ASRMp/tbl5feJYURVEYbflM/sync/vvwOnKY2",
+    'por':      "app94ZUZhEB9ASRMp/tblydzCdJjt4M6s8X/sync/vTwOlP30",
 }
 
 item_vote_col = {
@@ -218,7 +237,7 @@ def parseArgs():
     """Parse command arguments"""
     ## pylint: disable=global-statement
     parser = argparse.ArgumentParser()
-    parser.set_defaults(func=None)
+    parser.set_defaults(func=None, is_google=False, check_creds=False, councillor_info=None)
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--credentials", default="credentials/google_credentials.json",
@@ -234,7 +253,7 @@ def parseArgs():
     add_parser = subparsers.add_parser('add',
         help="Add rows to the google sheets"
     )
-    add_parser.set_defaults(func=add_hdlr)
+    add_parser.set_defaults(func=add_hdlr, is_google=True)
     add_parser.add_argument("--councillor-info", required=True,
         help="File with councillor info")
     add_parser.add_argument("--session", type=int,
@@ -248,14 +267,15 @@ def parseArgs():
     meetings_parser = subparsers.add_parser('meetings',
         help="Update meeting rows to the google sheets"
     )
-    meetings_parser.set_defaults(func=meetings_hdlr)
+    meetings_parser.set_defaults(func=meetings_hdlr, is_google=True)
     meetings_parser.add_argument("--force-add", action="store_true",
         help="Add rows even if the unique ID already exists")
-    meetings_parser.add_argument("--file", required=True,
+    meetings_parser.add_argument("--session", type=int,
+        help="The session year. Defaults to most recent one found in councillor info file")
+    meetings_parser.add_argument("file",
         help="File that contains the meetings")
 
     ## Check credentials cmd
-    parser.set_defaults(check_creds=False)
     check_parser = subparsers.add_parser('check-credentials',
         help="Check google credentials"
     )
@@ -267,11 +287,26 @@ def parseArgs():
     down_parser = subparsers.add_parser('download',
         help="Downloads all sheets",
     )
-    down_parser.set_defaults(func=download_hdlr)
+    down_parser.set_defaults(func=download_hdlr, is_google=True)
     down_parser.add_argument("--dir", required=True,
         help="Directory for the download")
     down_parser.add_argument("--session", type=int, default=2025,
         help="The session year. Defaults to most recent one found in councillor info file")
+
+    ## AirTable
+    airtable_parser = subparsers.add_parser('airtable',
+        help="Sync with AirTable",
+    )
+    airtable_parser.set_defaults(func=airtable_hdlr)
+    airtable_group = airtable_parser.add_mutually_exclusive_group(required=True)
+    airtable_group.add_argument("--dir",
+        help="Directory for the sync")
+    airtable_group.add_argument("--meetings",
+        help="Path to the meetings file")
+    airtable_parser.add_argument("--token", default="credentials/airtable.token",
+        help="Personal access token. May be a file")
+    airtable_parser.add_argument("--types",
+        help="Type of items comma seperated. Allowed values: " + ",".join(item_keys))
 
     ## Final parse
     args = parser.parse_args()
@@ -319,6 +354,7 @@ def setCouncillorColumns(names):
             idx = start + i
             col_map[name] = chr(idx + ord('A'))
             idx_map[name] = idx
+
 
 def append(service, sheet_id, sheet_range, rows, *, user_entered=True):
     input_opt = 'USER_ENTERED' if user_entered else 'RAW'
@@ -373,8 +409,8 @@ def loadCsvDict(path):
     if not os.path.exists(path):
         if query_yes_no(f"File '{path}' doesn't exist. Continue?"):
             return tuple()
-        else:
-            sys.exit(1)
+
+        sys.exit(1)
 
     with open(path, 'r', encoding='utf8') as f:
         reader = csv.DictReader(f)
@@ -456,7 +492,7 @@ def downloadAllSheets(service, sheet_id):
     sheet = service.spreadsheets()
     result = sheet.values().batchGet(
         spreadsheetId=sheet_id,
-        ranges=[f"{sheet_name_map[x]}!A:Z" for x in item_sheet_keys],
+        ranges=[f"{sheet_name_map[x]}!A:Z" for x in item_keys],
         majorDimension='ROWS',
         valueRenderOption='UNFORMATTED_VALUE',
     ).execute()
@@ -464,15 +500,50 @@ def downloadAllSheets(service, sheet_id):
     if not values:
         return None
 
-    return dict(zip(item_sheet_keys, [x['values'] for x in values]))
+    return dict(zip(item_keys, [x['values'] for x in values]))
 
 
-def add_hdlr(args, service):
+def syncAirTable(path, endpoint, token) -> bool:
+    """Attempt to sync an airtable table"""
+    ## Update endpoint
+    if not endpoint.startswith("http"):
+        endpoint = os.path.join(AIRTABLE_API_URL, endpoint)
+    print(f"Syncing file '{path}' to endpoint {endpoint}")
+    resp = None
+    obj = {}
+    headers = {'Authorization': f"Bearer {token}", "Content-Type": "text/csv"}
+    data = load_file(path).encode('utf8')
+    if not data:
+        print(f"File '{path}' was empty")
+        return False
+
+    try:
+        resp = requests.post(endpoint, data=data, headers=headers)
+        obj = json.loads(resp.text)
+    except Exception as e:
+        print(f"Exception when trying to sync file '{path}' to endpoint {endpoint}: {e}")
+        return False
+
+    ## Check the response
+    if 'success' in obj and obj['success']:
+        return True
+
+    ## There has been a failure of sorts
+    if 'error' in obj:
+        print(f"Got error of type {obj['error']} from the server: {obj['error']}")
+    else:
+        print("Cannot parse message from serever: " + json.dumps(obj, indent=4))
+
+    return False
+
+
+def prepGoogleArgs(args):
+    args = copy.copy(args)
     ## Set councillor info
     if args.councillor_info is not None:
         if not setCouncillorInfo(args.councillor_info, args.session):
             print(f"Failed to set up councillor info")
-            return 1
+            return None
 
         setCouncillorColumns(getCouncillorNames())
 
@@ -482,17 +553,22 @@ def add_hdlr(args, service):
             print(f"Using session year {args.session}")
         else:
             print("Failed to determine a session year")
-            return 1
+            return None
 
     ## Sheet ID
-    if args.sheet_id is None:
+    if args.sheet_id is None and args.session is not None:
         if args.session not in SHEETS:
             print(f"Cannot find sheet ID for session {args.session}")
+            return None
 
-        args.sheet_id = SHEETS[args.session]
+            args.sheet_id = SHEETS[args.session]
 
+    return args
+
+
+def add_hdlr(args, service):
     ## Get UIDs
-    uids = { x: None for x in item_sheet_keys }
+    uids = { x: None for x in item_keys }
     if not args.force_add:
         print("Getting existing UIDs")
         uids = getAllUids(service, args.sheet_id)
@@ -500,7 +576,7 @@ def add_hdlr(args, service):
         print("Force adding")
 
     ## Add rows
-    for item_type in item_sheet_keys:
+    for item_type in item_keys:
         rows = loadAndProcessItems(item_type, args.processed_dir, uids[item_type])
         add_item_type(service, args.sheet_id, item_type, rows)
 
@@ -555,6 +631,43 @@ def check_credentials(args):
     return 0
 
 
+def airtable_hdlr(args):
+    ## Check token
+    if os.path.isfile(args.token):
+        args.token = load_file(args.token).strip()
+        if args.token is None:
+            print(f"Failed to load token from file {args.token}")
+            return 1
+
+    ## Types
+    item_types = item_keys
+    if args.types:
+        item_types = args.types.split(',')
+
+    ## Do update
+    if args.dir:
+        for item_type in item_types:
+            name = item_csv_map[item_type]
+            if item_type not in item_airtable_endpoint:
+                print(f"Skipping {name}")
+                continue
+
+            print(f"Preparing to sync {name}")
+            path = os.path.join(args.dir, name)
+            if syncAirTable(path, item_airtable_endpoint[item_type], args.token):
+                print(f"Successfully synced {name}")
+    elif args.meetings:
+            print(f"Preparing to sync meetings")
+            endpoint = os.path.join(AIRTABLE_API_URL, item_airtable_endpoint['meetings'])
+            if syncAirTable(args.meetings, endpoint, args.token):
+                print(f"Successfully synced meetings")
+    else:
+        print("Nothing to do")
+        return 1
+
+    return 0
+
+
 def main(args):
     if args.check_creds:
         ## Do this instead of anything else
@@ -565,9 +678,16 @@ def main(args):
         return 1
 
     ## Run command
-    creds = getCreds(args.credentials, args.token)
-    service = build("sheets", "v4", credentials=creds)
-    return args.func(args, service)
+    if args.is_google:
+        args = prepGoogleArgs(args)
+        if args is None:
+            print("Failed to prep google args")
+            return 1
+        creds = getCreds(args.credentials, args.token)
+        service = build("sheets", "v4", credentials=creds)
+        return args.func(args, service)
+    else:
+        return args.func(args)
 
 
 if __name__ == '__main__':

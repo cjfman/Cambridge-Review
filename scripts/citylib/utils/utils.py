@@ -123,3 +123,14 @@ def strip_currency(cash) -> float:
 
 def format_dollar(val:float) -> str:
     return '${:,.2f}'.format(val)
+
+
+def load_file(path, *, encoding='utf8', quiet=True):
+    try:
+        with open(path, encoding=encoding) as f:
+            return f.read()
+    except Exception as e:
+        if not quiet:
+            print(f"Failed to read file '{path}': {e}")
+
+        return None

@@ -17,6 +17,8 @@ def parseArgs():
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-url", default="https://cambridgema.iqm2.com",
         help="The base URL")
+    parser.add_argument("--council-only", action="store_true",
+        help="Only get council meetings")
     parser.add_argument("meetings_file",
         help="The html file containing meeting info")
     parser.add_argument("output_file", nargs='?',
@@ -53,7 +55,7 @@ def findAllATags(div, cls=None):
     return [(a_tag.text.strip(), a_tag['href']) for a_tag in a_tags]
 
 
-def parseMeeting(args, meeting_row):
+def parseMeeting(args, meeting_row) -> dict:
     ## Get meeting type
     details_txt = meeting_row.find('div', {'class': 'RowDetails'}).text.strip()
     details     = details_txt.split(' - ')
@@ -64,6 +66,10 @@ def parseMeeting(args, meeting_row):
     m_id        = ''
     if len(details) > 2:
         other = " - ".join(details[2:])
+
+    ## Filter
+    if (args.council_only and body != "City Council") or mtype == "TEST MEETING":
+        return None
 
     ## Extract the date and main link
     date, url = findATag(meeting_row, 'RowLink')
@@ -140,7 +146,9 @@ def main(args):
     meetings = soup.find_all('div', {'class': 'MeetingRow'})
     data = []
     for meeting_row in meetings:
-        data.append(parseMeeting(args, meeting_row))
+        meeting = parseMeeting(args, meeting_row)
+        if meeting is not None:
+            data.append(meeting)
 
     if args.output_file:
         with open(args.output_file, 'w', encoding='utf8') as f:
