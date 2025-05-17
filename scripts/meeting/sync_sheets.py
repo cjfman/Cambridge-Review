@@ -138,7 +138,7 @@ app_col_map = {
     "Charter Right":     'H',
     "Outcome":           'I',
     "Link":              'Y',
-    "Summary":           'Z',
+    "Subject":           'Z',
 }
 app_idx_map = { x: ord(y.upper()) - ord('A') for x, y in app_col_map.items() }
 app_row_size = max(app_idx_map.values()) + 1
@@ -654,6 +654,10 @@ def airtable_hdlr(args):
 
             print(f"Preparing to sync {name}")
             path = os.path.join(args.dir, name)
+            if not os.path.isfile(path):
+                print(f"Couldn't find file '{path}'. Skipping")
+                continue
+
             if syncAirTable(path, item_airtable_endpoint[item_type], args.token):
                 print(f"Successfully synced {name}")
     elif args.meetings:
