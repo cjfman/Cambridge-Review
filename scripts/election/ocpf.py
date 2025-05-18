@@ -115,10 +115,9 @@ def parseArgs():
         help="Show more details than just the OCPF id. Ignores --join")
     list_ex_group_1.add_argument("--keys",
         help="Show these comma seperarted keys from the OCPF reports")
-    list_ex_group_2 = parser_list_filers.add_mutually_exclusive_group(required=True)
-    list_ex_group_2.add_argument("--filers",
+    parser_list_filers.add_argument("--filers",
         help="List of filer summaries or directory of filer details")
-    list_ex_group_2.add_argument("--reports",
+    parser_list_filers.add_argument("--reports",
         help="Directory of reports")
 
     ## Final parse
@@ -180,7 +179,7 @@ def load_filer(path) -> Filer:
     return None
 
 
-def load_filers(path) -> List[Filer]:
+def load_filers(path, *, reports_path=None) -> List[Filer]:
     """Load filers from either a list file or directory of filer detail files"""
     filers = []
     try:
@@ -204,6 +203,11 @@ def load_filers(path) -> List[Filer]:
     except Exception as e:
         eprint(f"Failed to load file '{path}': {e}")
         filers = None
+
+    ## Add reports
+    if filers is not None and reports_path:
+        for filer in filers:
+            filer.load_reports(reports_path)
 
     return filers
 
@@ -377,9 +381,12 @@ def list_filers_hdlr(args):
 
     ## Load filers
     if args.filers:
-        filers = load_filers(args.filers)
+        filers = load_filers(args.filers, reports_path=args.reports)
     elif args.reports:
         filers = load_filers_from_reports(args.reports)
+    else:
+        eprint("Either --filers or --reports must be passed")
+        return 1
 
     if filers is None:
         eprint("No filers found")

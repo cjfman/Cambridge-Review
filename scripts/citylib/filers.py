@@ -2,6 +2,7 @@
 
 import datetime as dt
 import json
+import os
 
 import dateutil
 
@@ -78,8 +79,23 @@ class Filer:
         return False
 
     def missing_recent_report(self, *, months=1) -> bool:
+        if not self.reports:
+            return True
+
         then = dt.datetime.now().date() - dateutil.relativedelta.relativedelta(months=months)
         return (self.reports and self.reports[0].end_date < then)
+
+    def load_reports(self, path):
+        reports = None
+        if os.path.isfile(path):
+            reports = read_reports(path)
+        elif os.path.isdir(path):
+            reports = read_reports(os.path.join(path, f"{self.cpfid}_reports.json"))
+
+        if reports is not None:
+            self.reports = reports
+
+        return reports
 
     def __str__(self):
         return f"{self.committee_name}({self.cpfid}) {self.candidate_name}"

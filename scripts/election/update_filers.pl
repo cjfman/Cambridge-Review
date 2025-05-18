@@ -231,8 +231,7 @@ sub write_mobile_file {
 
 sub get_filers {
     my %filers;
-    #my @filers = `$scripts_dir/election/ocpf.py list-filers --reports $reports_path $FLAGS --keys id,candidate --join '\t'`;
-    my @filers = `$scripts_dir/election/ocpf.py list-filers --filers $filers_file --keys id,candidate --join '\t'`;
+    my @filers = `$scripts_dir/election/ocpf.py list-filers --filers $filers_file --reports $reports_path $FLAGS --keys id,candidate --join '\t'`;
     chomp @filers;
     foreach (@filers) {
         my ($cpfid, $name) = split /\t/;
