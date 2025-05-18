@@ -76,15 +76,18 @@ item_csv_map = {
 }
 
 item_airtable_endpoint = {
-    #'meetings': "appjFqJX13Yyp4013/tblHFN5M0oZTTjgJf/sync/pY9IjVGC",
     'meetings': "app94ZUZhEB9ASRMp/tblzHGtN9Q6xtWzdK/sync/xn7f71iC",
     'ar':       "app94ZUZhEB9ASRMp/tbl04XZFV55ALtd1A/sync/owAx3BwM",
     'app':      "app94ZUZhEB9ASRMp/tblNRf9mLC1Rly8Ap/sync/LYyCF7gU",
-    'com':      "appjFqJX13Yyp4013/tbl149hDFBuDhhnoE/sync/UOt1CN4i",
     'cma':      "app94ZUZhEB9ASRMp/tblusZTZo8e5WhdP8/sync/8cwLGPan",
     'res':      "app94ZUZhEB9ASRMp/tblLFARSHg4Rz8OM5/sync/L19QDfSn",
     'ord':      "app94ZUZhEB9ASRMp/tbl5feJYURVEYbflM/sync/vvwOnKY2",
     'por':      "app94ZUZhEB9ASRMp/tblydzCdJjt4M6s8X/sync/vTwOlP30",
+}
+
+item_airtable_comm_endpoint = {
+    'meetings': "appjFqJX13Yyp4013/tblHFN5M0oZTTjgJf/sync/pY9IjVGC",
+    'com':      "appjFqJX13Yyp4013/tbl149hDFBuDhhnoE/sync/UOt1CN4i",
 }
 
 item_vote_col = {
@@ -307,6 +310,8 @@ def parseArgs():
         help="Personal access token. May be a file")
     airtable_parser.add_argument("--types",
         help="Type of items comma seperated. Allowed values: " + ",".join(item_keys))
+    airtable_parser.add_argument("--communications", action="store_true",
+        help="Personal access token. May be a file")
 
     ## Final parse
     args = parser.parse_args()
@@ -561,7 +566,7 @@ def prepGoogleArgs(args):
             print(f"Cannot find sheet ID for session {args.session}")
             return None
 
-            args.sheet_id = SHEETS[args.session]
+        args.sheet_id = SHEETS[args.session]
 
     return args
 
@@ -644,11 +649,16 @@ def airtable_hdlr(args):
     if args.types:
         item_types = args.types.split(',')
 
+    ## Endpoints
+    endpoints = item_airtable_endpoint
+    if args.communications:
+        endpoints = item_airtable_comm_endpoint
+
     ## Do update
     if args.dir:
         for item_type in item_types:
             name = item_csv_map[item_type]
-            if item_type not in item_airtable_endpoint:
+            if item_type not in endpoints:
                 print(f"Skipping {name}")
                 continue
 
@@ -658,13 +668,13 @@ def airtable_hdlr(args):
                 print(f"Couldn't find file '{path}'. Skipping")
                 continue
 
-            if syncAirTable(path, item_airtable_endpoint[item_type], args.token):
+            if syncAirTable(path, endpoints[item_type], args.token):
                 print(f"Successfully synced {name}")
     elif args.meetings:
-            print(f"Preparing to sync meetings")
-            endpoint = os.path.join(AIRTABLE_API_URL, item_airtable_endpoint['meetings'])
-            if syncAirTable(args.meetings, endpoint, args.token):
-                print(f"Successfully synced meetings")
+        print(f"Preparing to sync meetings")
+        endpoint = os.path.join(AIRTABLE_API_URL, endpoints['meetings'])
+        if syncAirTable(args.meetings, endpoint, args.token):
+            print(f"Successfully synced meetings")
     else:
         print("Nothing to do")
         return 1
@@ -690,8 +700,8 @@ def main(args):
         creds = getCreds(args.credentials, args.token)
         service = build("sheets", "v4", credentials=creds)
         return args.func(args, service)
-    else:
-        return args.func(args)
+
+    return args.func(args)
 
 
 if __name__ == '__main__':
