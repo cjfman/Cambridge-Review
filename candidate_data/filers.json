@@ -378,6 +378,27 @@
         "category": "filers"
     },
     {
+        "cpfId": 19189,
+        "filerName": "Stanislav Rivkin",
+        "filerNameReverse": "Rivkin, Stanislav",
+        "filerCity": "Cambridge",
+        "isActive": true,
+        "districtHeldDescription": "No office",
+        "officeSought": "City Councilor, Cambridge",
+        "officeHeld": "N/A, No office",
+        "officeDescription": "Office Sought: City Councilor, Cambridge",
+        "isIncumbent": false,
+        "accountTypeCode": "D",
+        "accountTypeDescription": "Depository Candidate",
+        "isCandidate": true,
+        "firstName": "Stanislav",
+        "lastName": "Rivkin",
+        "committeeName": "Rivkin Committee",
+        "filerThumbnailPhotoUrl": "",
+        "score": 0,
+        "category": "filers"
+    },
+    {
         "cpfId": 16686,
         "filerName": "Jeffrey Michael Santos",
         "filerNameReverse": "Santos, Jeffrey Michael",
