@@ -2,7 +2,9 @@
 ## pylint: disable=too-many-locals,too-many-branches
 
 import argparse
+import copy
 import csv
+import datetime as dt
 import json
 import os
 import re
@@ -177,6 +179,7 @@ AR_HDRS = (
 def parseArgs():
     """Parse command line arguments"""
     parser = argparse.ArgumentParser()
+    parser.set_defaults(skip_processing=False)
     parser.add_argument("--base-url", default="https://cambridgema.iqm2.com",
         help="The base URL")
     parser.add_argument("--cache-dir", required=True,
@@ -187,8 +190,11 @@ def parseArgs():
         help="Stop processing meetings if there is an error")
     parser.add_argument("--num-meetings", type=int, default=0,
         help="The maximum number of meetings to process. Set 0 for no limit")
-    parser.add_argument("--meeting",
+    ex_group_1 = parser.add_mutually_exclusive_group()
+    ex_group_1.add_argument("--meeting",
         help="Process this specific meeting")
+    ex_group_1.add_argument("--next-meeting", action="store_true",
+        help="Process the next meeting to occur")
     parser.add_argument("--councillor-info", required=True,
         help="File with councillor info")
     parser.add_argument("--session", type=int,
@@ -266,6 +272,17 @@ class Meeting:
     final_actions: str
     minutes: str
     attendance: str=None
+    _dt=None
+
+    def getDate(self):
+        if self._dt is not None:
+            return self._dt
+
+        self._dt = dt.datetime.fromisoformat(self.date)
+        return self._dt
+
+    def __lt__(self, other):
+        return (self.getDate() < other.getDate())
 
     def __str__(self):
         return f"{self.body} - {self.type} {self.date} ({self.id})"
@@ -1533,16 +1550,25 @@ def setAttenance(args, final_actions):
             writer.writerow(meeting)
 
 
-def main(args):
+def getNextMeeting(meetings):
+    today = dt.datetime.now()
+    for meeting in sorted(meetings):
+        if meeting.getDate() > today:
+            return meeting
+
+    return None
+
+
+def preprocessArgs(args):
+    args = copy.copy(args)
     if args.verbose:
         global VERBOSE ## pylint: disable=global-statement
         VERBOSE = args.verbose
 
-    ## Check args
-    skip_processing = False
+    ## Processing
     if args.set_attendance_only:
         args.set_attendance = True
-        skip_processing = True
+        args.skip_processing = True
 
     ## Set councillor info
     if args.councillor_info is not None:
@@ -1552,8 +1578,19 @@ def main(args):
 
         setCouncillorColumns(getCouncillorNames())
 
+    return args
+
+
+def main(args):
+    ## Check args
+    args = preprocessArgs(args)
+
     ## Open meetings file
     meetings = openMeetings(args.meetings_file, session=args.session)
+    if args.next_meeting:
+        args.meeting = getNextMeeting(meetings).id
+
+    ## Meetings and final actions
     output_files = None
     final_actions = None
     if args.final_actions:
@@ -1563,7 +1600,7 @@ def main(args):
     ## Do work
     try:
         ## Process meetings
-        if not skip_processing:
+        if not args.skip_processing:
             output_files, writers = setupOutputFiles(args.output_dir)
             if output_files is None:
                 return 1
