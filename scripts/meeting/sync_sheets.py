@@ -168,6 +168,7 @@ res_col_map = {
     "Category":          'E',
     "Sponsor":           'F',
     "Outcome":           'G',
+    "Type of Vote":      'I',
     "Link":              'W',
     "Summary":           'X',
     "Notes":             'Y',
