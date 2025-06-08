@@ -193,6 +193,8 @@ def parseArgs():
     ex_group_1 = parser.add_mutually_exclusive_group()
     ex_group_1.add_argument("--meeting",
         help="Process this specific meeting")
+    ex_group_1.add_argument("--meetings",
+        help="Process specific meetings, comma seperated. Overrides --meeting")
     ex_group_1.add_argument("--next-meeting", action="store_true",
         help="Process the next meeting to occur")
     parser.add_argument("--councillor-info", required=True,
@@ -1328,7 +1330,7 @@ def processMeetings(args, meetings, writers, final_actions=None):
     ar_map = {}
     for meeting in meetings:
         try:
-            if args.meeting and meeting.id != args.meeting and args.meeting != meeting.date:
+            if args.meetings and meeting.id not in args.meetings and meeting.date not in args.meetings:
                 continue
             if meeting.body.lower() != 'city council' or meeting.type.lower() not in ALLOWED_TYPES:
                 print(f"Skipping meeting '{meeting}'")
@@ -1589,6 +1591,8 @@ def main(args):
     meetings = openMeetings(args.meetings_file, session=args.session)
     if args.next_meeting:
         args.meeting = getNextMeeting(meetings).id
+    if args.meetings is None and args.meeting is not None:
+        args.meetings = [args.meeting]
 
     ## Meetings and final actions
     output_files = None
