@@ -5,9 +5,6 @@
 ### Appropriations and Grants
 - # (CMA 2025 #) 
 
-### Responses to Council Requests
-- # (CMA 2025 #)
-
 ### Reports and Communications
 - # (CMA 2025 #)
 

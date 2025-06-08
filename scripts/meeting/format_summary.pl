@@ -54,6 +54,12 @@ my $skip_replacements;
 my $line_no;
 foreach (<>) {
     $line_no++;
+	## Breaks
+	if (/^##(?!#)/) {
+		print "\n<br><br>\n$_";
+		next;
+	}
+
     ## Replace keyword fields
     while (/\{\{([^\}]+)\}\}/) {
         last if $skip_replacements;
@@ -103,15 +109,18 @@ foreach (<>) {
         }
     }
 
-    next if $skip_replacements;
+    if ($skip_replacements) {
+		print;
+		next;
+	}
 
     ## Insert agenda item links
-    while (/(?<!\[)\((\w+ \d+\s#\s?\d+)\)/) {
+    while (/(?<!\[|\>)\((\w+ \d+\s#\s?\d+)\)/) {
         my $uid = $1;
         $uid =~ s/(\w+ \d+)\s#\s?(\d+)/$1 #$2/;
         print STDERR "Found agenda item '$uid'\n";
         if (defined $item_links{$uid}) {
-            my $replacement = "[$uid]($item_links{$uid})";
+            my $replacement = make_link($uid, $item_links{$uid});
             if (s/$uid/$replacement/) {
                 print STDERR "Replacement '$uid' >> $replacement\n";
                 $replacements++;
@@ -127,21 +136,32 @@ foreach (<>) {
         }
     }
 
+    if ($skip_replacements) {
+		print;
+		next;
+	}
+
     ## Insert MA legislature bill links
-    while (/(?<!\[)\b([SH]\.\d+)/) {
+	while (/(?<!\[)\b([SH]D?[\. ]\d+)/) {
+	#while (/(?<!\[)\b([SH]\.\d+)/) {
         my $uid = $1;
         print STDERR "Found MA legislature bill $uid\n";
         my $url = validate_bill_url($uid);
         if (defined $url) {
             my $replacement = "[$uid]($url)";
             if (s/\b\Q$uid\E\b/$replacement/) {
-                print STDERR "Replacement $uid >> $replacement\n";
+                print STDERR "Replacement $uid >> $replacement\n$_\n";
+                $replacements++;
             }
             else {
                 print STDERR "Replacement of $uid failed\n";
                 last;
             }
         }
+		else {
+			print STDERR "Failed to validate $uid\n";
+			last;
+		}
     }
     print;
 }
@@ -188,8 +208,9 @@ sub read_agenda_file {
 }
 
 sub validate_bill_url {
+	return undef;
     my $bill = shift;
-    $bill =~ s/\.//g;
+    $bill =~ s/[\. ]//g;
     my $url = "$malegislature_url/$bill";
     print STDERR "Validating $url\n";
     my $resp = `curl "$url" 2>/dev/null`;
@@ -198,4 +219,9 @@ sub validate_bill_url {
         $url = undef;
     }
     return $url;
+}
+
+sub make_link {
+	my ($text, $url) = @_;
+	return qq{<a href="$url" target="_blank">$text</a>};
 }
