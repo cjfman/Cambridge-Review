@@ -119,6 +119,8 @@ def parseArgs():
         help="List of filer summaries or directory of filer details")
     parser_list_filers.add_argument("--reports",
         help="Directory of reports")
+    parser_list_filers.add_argument("--cpfids",
+        help="Filter the filers to ones matching this comma separated list")
 
     ## Final parse
     args = parser.parse_args()
@@ -227,15 +229,15 @@ def load_filers_from_reports(path) -> List[Filer]:
     return filers
 
 
-def known_cfids(path) -> List[int]:
+def known_cpfids(path) -> List[int]:
     """Get list of cpfids from a directory of filer details"""
-    cfids = []
+    cpfids = []
     for name in os.listdir(path):
         match = re.match(r"(\d+).json", name)
         if match:
-            cfids.append(int(match.groups()[0]))
+            cpfids.append(int(match.groups()[0]))
 
-    return cfids
+    return cpfids
 
 
 def format_filer_keys(filer, keys) -> str:
@@ -306,7 +308,7 @@ def fetch_filer_hdlr(args):
 
     ignore = []
     if args.no_refetch:
-        ignore = known_cfids(args.out)
+        ignore = known_cpfids(args.out)
 
     ## Get the full details on every filer
     fetching = len(cpfids) - len(ignore)
@@ -378,6 +380,8 @@ def list_filers_keys(filers, keys, join):
 
 def list_filers_hdlr(args):
     filers = None
+    if args.cpfids is not None:
+        args.cpfids = [int(x) for x in args.cpfids.split(',')]
 
     ## Load filers
     if args.filers:
@@ -392,9 +396,11 @@ def list_filers_hdlr(args):
         eprint("No filers found")
         return 1
 
-    ## Filer filers
+    ## Filter filers
     if args.missing_recent_report:
         filers = [x for x in filers if x.missing_recent_report()]
+    if args.cpfids:
+        filers = [x for x in filers if x.cpfid in args.cpfids]
 
     ## Adjust join
     args.join = args.join.replace("\\n", "\n")

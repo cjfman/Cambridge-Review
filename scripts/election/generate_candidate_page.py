@@ -107,7 +107,7 @@ CANDIDATE_PAGE_TEMPLATE = dedent("""\
     <iframe src="/candidate-data/report-charts/{cpfid}_report_chart.html" width="100%" height="600"></iframe>
     </div>
     <div class="gbvc-hide-on-desktop">
-    <img src="/candidate-data/report-charts/{cpfid}_report_chart.png"></img>
+    <iframe src="/candidate-data/report-charts/{cpfid}_report_chart_mobile.html" style="width: 100%; height: 250px; border: none; margin: none; padding: none"></iframe>
     </div>
     <!-- /wp:html --></div>
     <!-- /wp:column --></div>

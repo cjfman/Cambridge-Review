@@ -7,10 +7,11 @@ no warnings qw/uninitialized/;
 use File::Compare;
 use File::Copy;
 
-my $UPDATE    = 0;
-my $REGEN     = 0;
+my @FILERS;
+my $UPDATE    = 1;
+my $REGEN     = 1;
 my $SHARED    = 0;
-my $MOBILE    = 0;
+my $MOBILE    = 1;
 my $NO_UPLOAD = 0;
 my $FLAGS     = '--missing-recent-report';
 my $base_dir  = ".";
@@ -105,6 +106,7 @@ foreach my $cpfid (@cpfids) {
     }
 
     ## Make an image file
+    my $img_idx = int rand 1000;
     if (-f $report_file and (not -f $img_file or $updated)) {
         print "Making img for filer $name and saving to '$img_file'\n";
         system "$scripts_dir/election/plot_finances.py single-filer --out '$img_file' --in-file '$report_file' --copyright-tight --h-legend --scale 2 1>&2";
@@ -118,7 +120,7 @@ foreach my $cpfid (@cpfids) {
         else {
             push @images, $img_file;
             if ($MOBILE) {
-                if (write_mobile_file("/$images_url/$img_name", $mobile_file)) {
+                if (write_mobile_file("/$images_url/$img_name", $mobile_file, $img_idx)) {
                     print "Wrote mobile file $mobile_file\n";
                     push @mobile_files, $mobile_file;
                     push @tmps, $mobile_file;
@@ -204,8 +206,9 @@ sub upload_files {
 }
 
 sub write_mobile_file {
-    my $url = shift;
+    my $url  = shift;
     my $file = shift;
+    my $idx  = shift or int rand 100;
     my $html = qq{
 <html>
 <head>
@@ -215,7 +218,7 @@ sub write_mobile_file {
     <meta http-equiv="Expires" content="0" />
 </head>
 <body>
-    <img src="$url"></img>
+    <img height="225px" src="$url?$idx" style="margin-left: auto; margin-right: auto; display: block;"></img>
 </body>
 </html>
     };
@@ -231,7 +234,14 @@ sub write_mobile_file {
 
 sub get_filers {
     my %filers;
-    my @filers = `$scripts_dir/election/ocpf.py list-filers --filers $filers_file --reports $reports_path $FLAGS --keys id,candidate --join '\t'`;
+    my @filers;
+    if (@FILERS) {
+        my $txt = join ',', @FILERS;
+        @filers = `$scripts_dir/election/ocpf.py list-filers --filers $filers_file --keys id,candidate --join '\t' --cpfids $txt`;
+    }
+    else {
+        @filers = `$scripts_dir/election/ocpf.py list-filers --filers $filers_file --reports $reports_path $FLAGS --keys id,candidate --join '\t'`;
+    }
     chomp @filers;
     foreach (@filers) {
         my ($cpfid, $name) = split /\t/;
