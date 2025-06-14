@@ -1199,7 +1199,7 @@ def processOrd(args, uid, num, title, link, vote, action) -> Ordinance:
 
     ## Process info
     info = processItemInfo(args, uid, link, action)
-    if 'action' in info.history:
+    if info.history is not None and 'action' in info.history:
         action = info.history['action']
 
     return Ordinance(uid, link, info.cma, info.order, info.app, info.sponsor, info.cosponsors, action, vote, info.amended, title, info.history)

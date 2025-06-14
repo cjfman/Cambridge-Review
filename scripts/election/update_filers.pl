@@ -8,8 +8,8 @@ use File::Compare;
 use File::Copy;
 
 my @FILERS;
-my $UPDATE    = 1;
-my $REGEN     = 1;
+my $UPDATE    = 0;
+my $REGEN     = 0;
 my $SHARED    = 0;
 my $MOBILE    = 1;
 my $NO_UPLOAD = 0;
