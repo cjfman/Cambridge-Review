@@ -197,6 +197,8 @@ def parseArgs():
         help="Process specific meetings, comma seperated. Overrides --meeting")
     ex_group_1.add_argument("--next-meeting", action="store_true",
         help="Process the next meeting to occur")
+    ex_group_1.add_argument("--last-meeting", action="store_true",
+        help="Process the most recent meeting to occur")
     parser.add_argument("--councillor-info", required=True,
         help="File with councillor info")
     parser.add_argument("--session", type=int,
@@ -1553,10 +1555,28 @@ def setAttenance(args, final_actions):
 
 
 def getNextMeeting(meetings):
-    today = dt.datetime.now()
+    today = dt.datetime.now().date()
     for meeting in sorted(meetings):
-        if meeting.getDate() > today:
+        if meeting.getDate().date() >= today:
             return meeting
+
+    return None
+
+
+def getNextMeeting(meetings):
+    today = dt.datetime.now().date()
+    previous = list(sorted([x for x in meetings if x.getDate().date() >= today]))
+    if previous:
+        return previous[0]
+
+    return None
+
+
+def getLastMeeting(meetings):
+    today = dt.datetime.now()
+    previous = list(sorted([x for x in meetings if x.getDate() < today]))
+    if previous:
+        return previous[-1]
 
     return None
 
@@ -1590,7 +1610,21 @@ def main(args):
     ## Open meetings file
     meetings = openMeetings(args.meetings_file, session=args.session)
     if args.next_meeting:
-        args.meeting = getNextMeeting(meetings).id
+        meeting = getNextMeeting(meetings)
+        if meeting is None:
+            print("No next meeting found")
+            return 1
+
+        print(f"Using next meeting date {meeting.getDate().date()}")
+        args.meeting = meeting.id
+    if args.last_meeting:
+        meeting = getLastMeeting(meetings)
+        if meeting is None:
+            print("No last meeting found")
+            return 1
+
+        print(f"Using last meeting date {meeting.getDate().date()}")
+        args.meeting = meeting.id
     if args.meetings is None and args.meeting is not None:
         args.meetings = [args.meeting]
 

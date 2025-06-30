@@ -1,0 +1,906 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en" lang="en">
+<head id="HeadMain"><title>
+	2025/06/30 05:30 PM City Council Regular Meeting - Web Outline - Cambridge City, MA
+</title><meta http-equiv="X-UA-Compatible" content="IE=9" />
+
+    <!-- this fixes a minor rendering issue with tables on the ipad -->
+    <meta content="width=device-width, initial-scale=1.0;" name="viewport" />
+
+    <!-- Agency specific meta tags -->
+    <meta name='google-site-verification' content='gk1uzLohfTCOHIcLpPfTMdkFQr1kAWFQpfsKsziX7T8' />
+<meta name='msvalidate.01' content='E8AC0C05C619B2FA426BD3B3D08FF440' />
+
+
+    <!-- open search discovery -->
+    <link rel="search" type="application/opensearchdescription+xml" href="/Services/GetFederatedSearch.aspx" title="IQM2 search" />
+
+    <!-- Icon -->
+    <link href="/favicon.ico?v=2018" rel="icon" />
+
+    <!-- CSS Links -->
+    <link type="text/css" href="/App_Themes/Main.css?v=86" rel="Stylesheet" /><link type="text/css" href="/lib/jquery-ui.css" rel="stylesheet" />
+ 
+  <script>
+      !function () { var a, b, c, d = window, e = document, f = arguments, g = "script", h = ["config", "track", "trackForm", "trackClick", "identify", "visit", "push", "call"], i = function () { var a, b = this, c = function (a) { b[a] = function () { return b._e.push([a].concat(Array.prototype.slice.call(arguments, 0))), b } }; for (b._e = [], a = 0; a < h.length; a++) c(h[a]) }; for (d.__woo = d.__woo || {}, a = 0; a < f.length; a++) d.__woo[f[a]] = d[f[a]] = d[f[a]] || new i; b = e.createElement(g), b.async = 1, b.src = "//static.woopra.com/js/w.js", c = e.getElementsByTagName(g)[0], c.parentNode.insertBefore(b, c) }("woopra");
+
+      woopra.config({
+          domain: "iqm2.com",
+          cookie_name:"accelaTracker"
+      });
+      woopra.track("mp_pv", {
+          domain: window.location.hostname,
+          title: document.title,
+          url: window.location.href,
+          uri: window.location.pathname,
+          hash: window.location.hash,
+          error: null
+      });
+  </script>
+    <!-- IQM2 Scripts -->
+    <script type="text/javascript" src="/lib/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="/App_Themes/Global.js?v=8_10_48"></script>
+    <script type="text/javascript" src="/lib/MinuteTraq.PopupWindow.js"></script>
+    <script type="text/javascript" src="/lib/jquery-ui.js"></script>
+    <link href="https://unpkg.com/video.js@7.21.1/dist/video-js.css" rel="stylesheet" /><link href="/Scripts/videojs-live-dvr/videojs-dvrseekbar.css" rel="stylesheet" />
+    <script src="https://unpkg.com/video.js@7.21.1/dist/video.js"></script>
+    <script src='https://unpkg.com/videojs-flash@2.1.0/dist/videojs-flash.min.js'></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+    <script src="/Scripts/videojs-live-dvr/videojs-dvrseekbar.min.js"></script>
+    <script type='text/javascript' src='/Scripts/player.js'></script>
+    <script type="text/javascript" src="/Scripts/js.cookie-2.0.3.min.js"></script>
+    <!-- RSS Feeds (Site) -->
+    
+
+    <!-- Generated CSS Link -->
+    
+  
+    <!-- External CSS / Script Links -->
+    <link type='text/css' href='/Lib/GetCustomCSS.ashx?timestamp=638823873820000000' rel='Stylesheet' /><link type='text/css' href='/Citizens/GetImage.aspx?ID=1012' rel='Stylesheet' /><script type='text/javascript' src='/Citizens/GetImage.aspx?ID=1013'></script>
+    
+   
+    <!--[if IE 7]>
+	   <style type="text/css">
+        .Section H2 { display:inline;}
+        .RowTop div { display:inline;}
+   </style>
+	
+	<![endif]-->
+    
+    <script type="text/javascript" src="/Lib/MinuteTraq.Search.js?v=8_10_66"></script>
+    
+    <script type="text/javascript">
+        
+        // configure tracker
+        
+        $(function () {
+            
+            
+            FixFooterPosition();
+            $(window).on('resize', FixFooterPosition);
+
+            var h = $("#Banner").height();
+            //  var w = $("body").width();
+
+            var sCoords = "0,0,5000," + h;
+
+            $("#lnkBanner").attr("coords", sCoords);
+            var hideTopBanner = Cookies.get('hideTopBanner');
+            var appStyles = {display:'block'};
+            if (hideTopBanner) {
+                appStyles.display = 'none';
+            }
+            $('#topbarAppBanner').css(appStyles);
+            $('.close-topbar-app-banner').bind('click', function () {
+                $('#topbarAppBanner').css('display', 'none');
+                Cookies.set('hideTopBanner', true);
+            });
+            $('.link-wrapper-banner').bind('click', function () {
+                woopra.track('portal-wegovern-banner', {
+                    agency: Cookies.get('AgencyName'),
+                    username: Cookies.get('WebUserName')
+                });
+                return true;
+            });
+        });
+
+        function FixFooterPosition() {
+            //hack for the footer, display at bottom of screen if page is short
+            if ($("form").height() < $(window).height() - 100) {
+                $("#Footer").css("position", "absolute");
+                $("#Footer").css("bottom", "0");
+            }
+            else {
+                $("#Footer").css("position", "");
+            }
+        }
+
+    </script>
+    <style type="text/css" media="screen">
+        #topbarAppBanner {
+            min-height: 40px;
+            z-index: 1000;
+        }
+        .top-banner-app-inner{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 40px;
+            border: 1px solid rgba(10,10,10,.5);
+            box-shadow: 0px 0px 16px 0px #303030;
+            background-color: #456ca7;
+        }
+        .close-topbar-app-banner {
+            position: absolute;
+            display: block;
+            top: 25px;
+            right: 5%;
+            font-size: 1em;
+            color: #e3e3e3
+        }
+        .app-link{
+            display: block;
+            margin: 0 auto;
+            width: 40%;
+        }
+        .wegovern-banner-logo {
+            left: 22px;
+            position: relative;
+            padding-top: 1px;
+        }
+
+        @media screen and (max-width: 981px ){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width: 1595px){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (max-width: 1594px){
+            .inside-banner-link {
+                position: relative;
+                top: -30px;
+                left: 75px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width:1100px){
+            .app-link{
+                display: block;
+                margin: 0 auto;
+                width: 40%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+        }
+        @media screen and (max-width:1099px){
+            .app-link {
+                display: block;
+                margin: 0 auto;
+                width: 65%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+    </style>
+    
+
+    <!-- Page Level Header Stuff -->
+    
+
+    <!-- JQuery & UI -->
+    <link type="text/css" href="/lib/jquery-ui.css" rel="stylesheet" />
+	<script type="text/javascript" src="/lib/jquery-ui.js"></script>
+	<script type="text/javascript" src="/lib/jquery.caret.js"></script>
+
+    <script type="text/javascript" src="/lib/MinuteTraq.UserComment.js"></script>
+    
+    <script type="text/javascript">
+        
+        function showSpeakerSignup(meetingid) 
+        {
+            PopupWindowShow("/Citizens/SpeakerSignup.aspx?ID=" + meetingid);
+        }
+        
+        $(function () {
+           
+            $('.tracked').bind('click', function () {
+                var $link = $(this);
+
+                if (woopra) {
+                    woopra.track("download", {
+                        url: window.location.href,
+                        type: $link.attr('data-type')
+                    });
+                }
+            });
+            $(".ShowMoreSpeakersButton").click(function ()
+            {
+                var link = $(this);
+                link.css("display", "none");
+                var hidden = link.parent().find(".HiddenSpeakers");
+                hidden.slideDown();
+                return false;
+            });
+
+            $(".ShowFewerSpeakersButton").click(function () {
+                var link = $(this);
+                var hidden = link.parent().parent().find(".HiddenSpeakers");
+                hidden.slideUp();
+
+                var showMoreLink = link.parent().parent().find(".ShowMoreSpeakersButton");
+                showMoreLink.css("display", "");
+                return false;
+            });
+        });
+
+      
+    </script>
+    <style>
+        a.lastClicked {
+            background-color: khaki;
+            color: #000;
+        }
+        #MeetingDetail * {
+            max-width:685px;
+        }
+    </style>
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <meta http-equiv="EXPIRES" content="0">
+</head>
+
+<body id="MainLayout">
+    
+    <form method="post" action="./Detail_Meeting.aspx?ID=4658" id="aspnetForm" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="A9A8eKQX4jnILqYVmTFPxDqZtccJAnFR/6zLvU2pRk6ZXXizBRcGr8lNUTS/QhE6UBgxH9GqdGCYIFBo4TvV1+ZWmhu+iQawi2xYUiz4d7C/cYfpJyyx7mNNdVzUQP39GlOK1QQ7n1CUEX+OWn/V7CRbxyYqhtSa9CppUYdYePRJbBUgOxWxfRU5oJfC8ygXO+Md6w4VaUagIBUwI6mCAg==" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1BACF619" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="VHmTYypCO2RsSzVsB8MUwVjW0payfXpdKJZbE3MLOHlvJinz+fwQeS8r3ouPMhcU0wfOqmSM0MW8JQ5e5+GsnQFnpymi6PPXD/biBWRho/oGTJutTV6SLXSOjRHrd8VtkOp4WMlrYiuQ2M754b64xky1uO3XTCjEBguGKML8dH9PSuoVo4OY8JRLriNIKYK4w24mtwXR8p585IzUFImZmWih95Wn5ac/yS7caPvTBWIaznX3ybu2J+OCFPMqmJWfrQZhl3Ac8KWicX3ACktuqbje+F50s4oXbSuE/xmsc7ij8XR9ebk42Yl/1GSwQwNC" />
+</div>
+        <div style="display: none">
+            <input type="submit" name="ctl00$btnRefreshPageAfterLogin" value="Button" id="btnRefreshPageAfterLogin" class="btnRefreshPage" />
+            <input name="ctl00$hfShowPopupOnLoad" type="hidden" id="hfShowPopupOnLoad" class="hfShowPopup" />
+        </div>
+        <span id="lblScript"></span>
+  
+    <div id="MainWindow">
+    
+            <div id="Banner" role="banner"  >
+                <img usemap="#bannerMap" src="/Citizens/GetImage.aspx?ID=1017&TimeStamp=638823873820000000" alt="IQM2 Meeting Portal" />
+                <map name="bannerMap">
+                    <area href="/Citizens/Default.aspx" id="lnkBanner" shape="rect" alt="Home" Target="_self" />
+                </map>
+
+                <div id="LogoHeaderTextHolder">
+                    
+                                                                       
+                </div>
+            </div>
+            
+            <div id="ToolStrip" role="navigation" aria-label="site">
+                <div id="Tabs">
+                    <div class="Shadow"></div>
+                    <a href="http://www.cambridgema.gov/" id="lnkMainSite" class="Tab LeftTab"><div><span>&laquo;Back to Main Site</span></div></a>
+                    <a href="/Citizens/default.aspx" class="Tab NormalTab"><div><span id="tabWelcome">Welcome</span></div></a>
+                    <a href="/Citizens/calendar.aspx" class="Tab NormalTab"><div><span id="tabMeetings">Meetings</span></div></a>                
+                    <a href="/Citizens/" style="display:none" class="Tab NormalTab"><div dropdown="Browse"><span>Browse</span></div></a>
+                                        
+                                        
+                    <a href="/Citizens/LegalNotice.aspx" id="lnkNotices" class="Tab NormalTab"><div id="tabNotices"><span>Notices</span></div></a>                                        
+                    <a href="/Citizens/Board" class="Tab NormalTab"><div><span id="tabContactUs">Boards+</span></div></a>                                                        
+                </div>
+                <div id="TopExtraBoxTransparentBG"></div>
+                <div id="TopExtraBox">  
+                    <div id="TopLine">
+                        
+                     <a href="../MasterPages/#" id="lnkLogin" onclick="javascript:return PopupWindowShow(&#39;/Citizens/Login.aspx&#39;);">Log in</a><span id="spnThatOneStupidBar"> | </span><a href="mailto:support@granicus.com" id="lnkHelp">Help</a> <span id="spnHelpBar">|</span> <a href="../MasterPages/#" id="lnkRegister" onclick="javascript:return PopupWindowShow(&#39;/Citizens/MyAccount.aspx&#39;);">Register</a>                                                
+                    </div> 
+                    <div id="BottomLine">                       
+                          
+                    </div>                            
+                   <input name="ctl00$txtQuickSearch" type="text" id="txtQuickSearch" value="Search" title="Search" />
+                   <input type="image" name="ctl00$btnQuickSearch" id="btnQuickSearch" alt="Search" src="/Lib/images/search.png" style="cursor:pointer" />                   
+                </div>     
+            </div>
+                     
+            <table class="LayoutTable" role="presentation">
+                <tr>
+                    <td id="tdLeftPanel" class="LeftPanel">
+                        
+                        <div role="navigation" aria-label="Meeting Group">
+                            
+                        </div>
+                        
+                        <div class="DetailBox">
+                            <img src="/Citizens/images/Print.gif" border="0" alt="Print" />
+                            <a href="/Citizens/Detail_Meeting.aspx?ID=4658&Print=Yes" id="lnkPrint" class="PrintButton" target="_blank">Print This Page</a>                           
+                        </div>
+                        
+                        
+                                                
+                       <!-- <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 1" />
+                            <a href="#">Quick Link #1</a>
+                        </div>
+                        <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 2"  />
+                            <a href="#">Quick Link #2</a>
+                        </div>     -->
+                                      
+                    </td>
+
+                    <td id="MainContentHolder">
+                        <div style="width:100%;height:100%;position:relative;margin:0;padding:0;border:0;">
+                            <div id="MainContentLeftShadow">                           
+                            </div>   
+                          
+                            <div class="MainContentPlaceholder" role="main">
+                                
+                                
+
+    <style>
+        a.lastClicked {
+            background-color: khaki;
+            color: #000;
+        }
+    </style>
+    <script>
+        $('#divOutlineScroller a').click(function (e) {
+            $('a.lastClicked').removeClass('lastClicked');
+            $(e.currentTarget).addClass('lastClicked');
+        });
+    </script>
+    
+
+    <div       
+        >        
+        <div id="CC" style="background: Black; color: White; display:none;"></div>
+           
+        <div id="ContentPlaceholder1_pnlStart" style="width:100%;">
+	
+            <table border="0" width="100%" id="table1" cellpadding="5" role="presentation">
+                <tr>
+                    <td colspan="2" align="center" class="MeetingHeading">
+                        <span id="ContentPlaceholder1_lblMeetingGroup">City Council</span><br />
+                        <span id="ContentPlaceholder1_lblMeetingType">Regular Meeting</span><br />
+                        <span id="ContentPlaceholder1_lblMeetingDate">6/30/2025 5:30 PM</span>
+                        <br /> Sullivan Chamber<div class='MeetingAddress'>Cambridge City Hall&nbsp;&nbsp;&nbsp;795 Massachusetts Ave&nbsp;&nbsp;&nbsp;Cambridge, MA  02139</div>
+                       
+                        <span id="ContentPlaceholder1_lblMeetingStatus"></span>
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtMeetingID" id="ContentPlaceholder1_txtMeetingID" value="4658" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtMinutesID" id="ContentPlaceholder1_txtMinutesID" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtAgendaID" id="ContentPlaceholder1_txtAgendaID" value="4278" />
+                        <input type="hidden" name="ctl00$ContentPlaceholder1$txtFileFormat" id="ContentPlaceholder1_txtFileFormat" value="pdf" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">
+                        
+                    </td>
+                </tr>
+                <tr id="ContentPlaceholder1_trMeetingDetail">
+		<td id="ContentPlaceholder1_tdMainContent" align="left" valign="top" colspan="2" role="main" class=""> 
+                        <div id="ContentPlaceholder1_pnlDownloads" class="MeetingDownloads" style="width:100%;">
+			
+                            <strong>Downloads:</strong><br />
+                            <img id="ContentPlaceholder1_imgPublicAgendaFile" src="images/PublicAgenda.jpg" />
+                            <a id="ContentPlaceholder1_hlPublicAgendaFile" class="tracked Link" data-type="agenda" href="FileOpen.aspx?Type=14&amp;ID=4278&amp;Inline=True" target="_blank">Agenda Summary</a>
+                            <img id="ContentPlaceholder1_imgFullAgendaFile" src="images/FullAgenda.jpg" />
+                            <a id="ContentPlaceholder1_hlFullAgendaFile" class="tracked Link" data-type="agenda_packet" href="FileOpen.aspx?Type=1&amp;ID=4278&amp;Inline=True" target="_blank">Agenda Packet</a>
+                            
+                            
+                            
+                            
+                            
+                            <br />
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+		</div>
+                        
+                        <span id="ContentPlaceholder1_lblOutline"><table id='MeetingDetail' class='MeetingDetail' cellpadding='0' cellspacing='0'>
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Call to Order</strong></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'>Roll Call</td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Pledge of Allegiance</strong></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Public Comment</strong></td></tr>
+
+<tr><td class='Num'><strong>I. </strong></td><td class='Title' colspan='10'><strong>City Manager's Agenda</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30681&CssClass='>CMA 2025 #177 : A communication transmitted from Yi-An Huang, City Manager, relative to a federal update and the Law Department will provide an update on relevant court cases.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113872&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26621&MeetingID=4658'>Lawsuits Challenging Federal Actions -6.26.25</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30659&CssClass='>CMA 2025 #178 : A communication transmitted from Yi-An Huang, City Manager, relative to a recommendation from the Board of Election Commissioners for the City Council to vote to authorize in-person early voting for the November 4, 2025 Municipal Election, in accordance with "The VOTES Act".</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113869&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26572&MeetingID=4658'>2025 Election Comm Ltr CC In-Person Early Voting Recommendation_f</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26573&MeetingID=4658'>ORDER Elections</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30664&CssClass='>CMA 2025 #179 : A communication transmitted from Yi-An Huang, City Manager, relative to the 2024 Transportation Demand Management Program Report.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113870&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26575&MeetingID=4658'>2024 TDM Program Report - Cover memo</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26576&MeetingID=4658'>2024 TDM Program Report - Final</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30688&CssClass='>CMA 2025 #180 : A communication transmitted from Yi-An Huang, City Manager, relative to Awaiting Report Item Number 25-30, regarding a review of barriers to housing production, a timeline for next Inclusionary Housing Study, and the feasibility of additional development incentives.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113875&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26607&MeetingID=4658'>Awaiting Report 25-30 Response 6.30.2025</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30687&CssClass='>CMA 2025 #181 : A communication transmitted from Yi-An Huang, City Manager, relative to Awaiting Report Item Number 25-36, regarding a request that the language of the Welcoming Community Ordinance be amended to clarify that City employees shall not participate in federal immigration enforcement operations and that the sole role of City employees during any action by ICE is only to protect public safety, and be amended to clarify that if Cambridge Police Department Officers respond to the scene of ICE action, CPD Officers should document the actions of ICE including their badge numbers.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113874&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26603&MeetingID=4658'>Response to AR 25-36 re Amendments to Welcoming Community Ordinance 6.30.25</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26606&MeetingID=4658'>Proposed Amendments to Welcoming Community Ordinance</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30682&CssClass='>CMA 2025 #183 : A communication transmitted from Yi-An Huang, City Manager, relative to an update on the first half of 2025.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113873&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30680&CssClass='>CMA 2025 #184 : A communication transmitted from Yi-An Huang, City Manager, relative to the 2025 Goals and Metrics for the Annual City Manager Performance Review.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113871&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26599&MeetingID=4658'>City Manager 2025 Goals_06-30-25 f</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30689&CssClass='>CMA 2025 #185 : A communication transmitted from Yi-An Huang, City Manager, relative to the appointment of Florrie Darwin, Scott Kyle, and Michael Rogove; and the reappointments of Chandra Harrington, Joseph Ferrara, Kyle Sheffield, Gavin Kleespies, Paula Paris, Elizabeth Lyster, and Yuting Zhang as members of the Cambridge Historical Commission.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113876&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26609&MeetingID=4658'>F. Darwin_9a_CHC</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26610&MeetingID=4658'>S. Kyle_9b_CHC</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26611&MeetingID=4658'>M. Rogove_9c_CHC</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>d. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26612&MeetingID=4658'>C. Harrington_9d_CHC</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>e. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26613&MeetingID=4658'>J. Ferrara_9e_CHC</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>f. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26614&MeetingID=4658'>K. Sheffield_9f_CHC</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>g. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26615&MeetingID=4658'>G. Kleespies_9g_CHC</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>h. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26616&MeetingID=4658'>P. Paris_9h_CHC</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>i. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26617&MeetingID=4658'>E.Lyster_9i_CHC</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>j. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26618&MeetingID=4658'>Y. Zhang_9j_CHC</a></td></tr>
+
+<tr><td class='Num'><strong>II. </strong></td><td class='Title' colspan='10'><strong>Policy Order and Resolution List</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30661&CssClass='>POR 2025 #100 : That the City Manager is requested to work with relevant City departments to explore creative solutions that reduce car dependency, while expanding access to parking options nearby Broadway.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113909&MeetingID=4658'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30663&CssClass='>POR 2025 #101 : That the City Manager is requested to direct the City Solicitor to ensure that the wording for the proposed amendment to Section 5.40 Footnote #2 is in line with the City Council’s intention to continue to include the inclusionary requirement for any nonreligious use property that is going above four stories, and to strike “except for religious purposes” used from Section 5.40 Footnotes #1 and #37.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113910&MeetingID=4658'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30679&CssClass='>POR 2025 #102 : That the Mayor is hereby appointing a committee, to be announced in the coming days, to screen applicants for the position of City Clerk.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113911&MeetingID=4658'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30683&CssClass='>POR 2025 #103 : That the City Manager is requested to work with relevant City departments to continue to work with stakeholders in the area including Harvard University and the Harvard Square Business Association to pursue options for pedestrianization on Lower Bow Street and to report on the option for automatic bollards for Winthrop and/or Bow Street.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113912&MeetingID=4658'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30684&CssClass='>POR 2025 #104 : That the City Manager is requested to work with relevant City departments to prepare an interim report on demolition requests and building permit applications, in order to facilitate a discussion on the outcomes observed during the first six months of the new Multifamily Housing Zoning.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113913&MeetingID=4658'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30685&CssClass='>POR 2025 #105 : That the Human Services and Veterans Committee hold a meeting in Fall 2025 and extend an invitation to the Superintendent of Cambridge Public Schools and the School Committee to discuss the progress and future direction of the Cambridge Preschool Program.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113914&MeetingID=4658'>Policy Order Printout</a></td></tr>
+
+<tr><td class='Num'><strong>III. </strong></td><td class='Title' colspan='10'><strong>Calendar</strong></td></tr>
+
+<tr><td></td><td class='Num'><strong></strong></td><td class='Title' colspan='9'><strong>On the Table</strong></td></tr>
+
+<tr><td></td><td></td><td class='Num'>1. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29351&CssClass='>CMA 2025 #113 : A communication transmitted from Yi-An Huang, City Manager, relative to Awaiting Report Item Number 25-22, regarding a request to work with the School Department, the Department of Public Works, and other relevant departments to open the publicly owned parking at the King Open/Cambridge Street Upper School Complex for either residential free parking or commercial parking opportunities during “off” hours. TABLED IN COUNCIL MAY 5, 2025</a></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=113877&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>2. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29525&CssClass='>POR 2025 #76 : That the City Manager is requested to explore with the Government Operations Committee whether the functions of the Peace Commission may be improved and enhanced by bringing them within another City Commission or Department, such as the Human Rights Commission, and report back in a timely manner.  CHARTER RIGHT EXERCISED BY MAYOR SIMMONS IN COUNCIL MAY 19, 2025 PLACED ON THE TABLE JUNE 2, 2025</a></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=113878&MeetingID=4658'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>3. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30159&CssClass='>RES 2025 #148 : That the City Council go on record thanking SEIU 32BJ for their vigilance, partnership and advocacy on behalf of unionized workers.  CHARTER RIGHT EXERCISED BY MAYOR SIMMONS IN COUNCIL JUNE 16, 2025  PLACED ON THE TABLE IN COUNCIL JUNE 23, 2025</a></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=113879&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>4. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30398&CssClass='>POR 2025 #94 : That the City Council go on record expressing its profound disappointment 
+over Apex Clean Energy’s decision to forgo the use of local union labor on the Bowman Wind Project. PLACED ON THE TABLE AS AMENDED IN COUNCIL JUNE 23, 2025.</a></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=113880&MeetingID=4658'>Policy Order Printout</a></td></tr>
+
+<tr><td></td><td class='Num'><strong></strong></td><td class='Title' colspan='9'><strong>Unfinished Business</strong></td></tr>
+
+<tr><td></td><td></td><td class='Num'>5. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29844&CssClass='>CMA 2025 #153 : A communication transmitted from Yi-An Huang, City Manager, relative to a revised draft of the “Eastern Cambridge Community Enhancements” Zoning Petition.  PLACED ON UNFINISHED BUSINESS IN COUNCIL JUNE 9, 2025</a></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=113881&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=25661&MeetingID=4658'>20250605_CoverMemo_BioMedECCE</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=25662&MeetingID=4658'>2025-06-04_ECCE_PetitionText_Staff_Review_MARKUP</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=25663&MeetingID=4658'>2025-06-04_ECCE_PetitionText_Staff_Review_CLEAN</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>6. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30135&CssClass='>ORD 2025 # 10 : An Ordinance has been received from City Clerk, relative to East Cambridge Community Enhancement Overlay District (“ECCE Overlay District”), which is governed by the regulations and procedures specified in this Section 20.1200. It is the intent of this Section that these regulations will apply to land within the  ECCE Overlay District. PASSED TO SECOND READING IN COUNCIL JUNE 9, 2025  
+ELIGIBLE TO BE ORDAINED JUNE 30, 2025</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26003&MeetingID=4658'>2025-06-04_ECCE_PetitionText_Staff_Review_CLEAN</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>7. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29918&CssClass='>CMA 2025 #151 : A communication transmitted from Yi-An Huang, City Manager, relative to an amendment to the Fresh Pond Golf Pro Shop Fund ordinance to enable the funds to be used to cover the purchase of office supplies for the shop and the purchase of supplies and services for the care, maintenance, and improvement of the golf course, shop, and parking lot.  PLACED ON UNFINISHED BUSINESS IN COUNCIL JUNE 9, 2025</a></td></tr>
+<tr><td></td><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='7'><a href='FileOpen.aspx?Type=30&ID=113882&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=25746&MeetingID=4658'>Revolving Fund Ordinance  - Golf Supplies Amendment CLEAN</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=25748&MeetingID=4658'>Revolving Fund Ordinance  - Golf Supplies Amendment REDLINE</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>8. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30314&CssClass='>ORD 2025 # 11 : An Ordinance has been received from Interim City Clerk, relative to Fresh Pond Golf Course Revolving Fund Amendments to Section 3.24.070 – Authorized Revolving Funds.  PASSED TO A SECOND READING IN COUNCIL JUNE 9, 2025 ELIGIBLE TO BE ORDAINED JUNE 30, 2025</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26175&MeetingID=4658'>Revolving Fund Ordinance  - Golf Supplies Amendment CLEAN</a></td></tr>
+
+<tr><td class='Num'><strong>IV. </strong></td><td class='Title' colspan='10'><strong>Applications and Petitions</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30658&CssClass='>APP 2025 #25 : An application was received from Yung Chen, requesting permission for a curb cut at the premises numbered 527 Green Street; said petition has received approval from Inspectional Services, Traffic, Parking and Transportation, Historical Commission and Public Works.  Response has been received from the neighborhood association.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113883&MeetingID=4658'>Application and Petitions Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26570&MeetingID=4658'>NEIGHBORHOOD_ Curb Cut Application for 527 Green Street</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30666&CssClass='>APP 2025 #26 : An application was received from representing Lou's Harvard Square, requesting permission for a projecting blade sign at the premises numbered 13 Brattle Street. approval has been received from Inspectional Services, Department of Public Works, Community Development Department and abutter.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113884&MeetingID=4658'>Application and Petitions Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26585&MeetingID=4658'>Scanned application</a></td></tr>
+
+<tr><td class='Num'><strong>V. </strong></td><td class='Title' colspan='10'><strong>Communications</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30665&CssClass='>COM 3198 #2025 : A communication was received from Aaron Rosenthal, regarding Policy Order #94 (Apex Clean Energy) Written Testimony and Report.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26577&MeetingID=4658'>Aaron Rosenthal Policy Order #94 (Apex Clean Energy) Written Testimony and Report</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26578&MeetingID=4658'>Aaron Rosenthal North Star Policy Action_Rosenthal_Written Testimony_Report</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30667&CssClass='>COM 3199 #2025 : A communication was received from Ashley Gaschk, regarding ND AFL-CIO comments on Policy Order #94 (Apex Clean Energy).</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26579&MeetingID=4658'>Ashley GaschkND AFL-CIO comments on Policy Order #94 (Apex Clean Energy)</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26580&MeetingID=4658'>Ashley Gaschk North Dakota AFL-CIO Clean Energy Resolution</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30668&CssClass='>COM 3200 #2025 : A communication was received from Catherine Forde-Augustine, regarding Policy orders 2025-88 & 89 rejected.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26581&MeetingID=4658'>Catherine Forde-Augustine Policy orders 2025-88 & 89 rejected</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30669&CssClass='>COM 3201 #2025 : A communication was received from Darrin Korte, regarding Letter of Support for Amendment to Community Benefits Ordinance.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26582&MeetingID=4658'>Darrin KorteLetter of Support for Amendment to Community Benefits Ordinance</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26583&MeetingID=4658'>Darrin KorteSupport for Proposed Amendment to the Community Benefits Ordinance (POR 2025 #96)</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30670&CssClass='>COM 3202 #2025 : A communication was received from Erin Shackelford, regarding Support for Policy Order #94 (Apex Clean Energy).</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26584&MeetingID=4658'>Erin ShackelfordSupport for Policy Order #94 (Apex Clean Energy)</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30671&CssClass='>COM 3203 #2025 : A communication was received from Heather Hoffman, regarding Larkin v. Grendel's Den, Inc., 459 U.S. 116 (1982).</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26586&MeetingID=4658'>Heather Hoffman Larkin v_ Grendel's Den_ Inc__ 459 U_S_ 116 (1982)</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26587&MeetingID=4658'>Heather Hoffman_ Larkin v_ Grendel's Den_ Inc__ 459 U_S_ 116 (1982)</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30672&CssClass='>COM 3204 #2025 : A communication was received from Kirsten Spalding, regarding Policy Order #94 (Apex Clean Energy),</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26588&MeetingID=4658'>Kirsten SpaldingPolicy Order #94 (Apex Clean Energy) </a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26597&MeetingID=4658'>Kirsten Spalding ceres-clean-energy-design-2020-final-update-feb21 (2)</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26598&MeetingID=4658'>Kirsten Spalding Apex Energy Resolution Written Testimony from Ceres 6.21.25</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30673&CssClass='>COM 3205 #2025 : A communication was received from Luis Mejias, regarding Reject pending NCD appointments.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26591&MeetingID=4658'>Luis Mejias Reject pending NCD appointments</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30674&CssClass='>COM 3206 #2025 : A communication was received from Marilee Meyer, regarding Government Operations rules... term limits CHC NCDs.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26592&MeetingID=4658'>Marilee MeyerGovernment Operations rules____ term limits CHC NCDs</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30675&CssClass='>COM 3207 #2025 : A communication was received from Marilee Meyer, regarding vetting in public  NCDs and CHCs.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26593&MeetingID=4658'>Marilee Meyer vetting in public  NCDs and CHCs</a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30676&CssClass='>COM 3208 #2025 : A communication was received from Nonie Valentine, regarding Support historical commission and conservation districts.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26594&MeetingID=4658'>Nonie Valentine Support historical commission and conservation districts</a></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30677&CssClass='>COM 3209 #2025 : A communication was received from Rachel Plummer, regarding In Support of Policy Order #3 Amendments to Community Benefits Ordinance.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26595&MeetingID=4658'>Rachel PlummerIn Support of Policy Order #3 Amendments to Community Benefits Ordinance</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30678&CssClass='>COM 3210 #2025 : A communication was received from Sarah L. Merin, regarding Please!! The Heat Is On.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26596&MeetingID=4658'>Sarah L. Merin Please!! The Heat Is On ??</a></td></tr>
+
+<tr><td class='Num'><strong>VI. </strong></td><td class='Title' colspan='10'><strong>Resolutions</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29436&CssClass='>RES 2025 #152 : Congratulations to Caron Courier on her retirement from the Cambridge School Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113885&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29437&CssClass='>RES 2025 #153 : Congratulations to Jimmy Hamamoto on his retirement from the Cambridge Public Schools.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113886&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>3. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29439&CssClass='>RES 2025 #154 : Congratulations to Margaret Ranstrom on her retirement from the Department of Transportation.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113887&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>4. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29444&CssClass='>RES 2025 #155 : Congratulations to Linda Vierboom on her retirement from the Water Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113888&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>5. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29447&CssClass='>RES 2025 #156 : Congratulations to Dennis Vigilante on his retirement from the Cambridge Fire Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113889&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>6. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29448&CssClass='>RES 2025 #157 : Congratulations to Firefighter Donald Johnson on his retirement from the Cambridge Fire Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113890&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>7. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30160&CssClass='>RES 2025 #158 : Congratulations to Robert Anderka on his retirement from the Department of Transportation.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113891&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>8. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30163&CssClass='>RES 2025 #159 : Congratulations to Joseph Grassi on his retirement from the Cambridge Police Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113892&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>9. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30164&CssClass='>RES 2025 #160 : Congratulations to Captain Robert Jutras on his retirement from the Cambridge Fire Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113893&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>10. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30165&CssClass='>RES 2025 #161 : Congratulations to Steven Kelley on his retirement from the Cambridge Fire Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113894&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>11. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30171&CssClass='>RES 2025 #162 : Congratulations to Lieutenant Miguel Torres on his retirement from the Cambridge Fire Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113895&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>12. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30319&CssClass='>RES 2025 #163 : Congratulations to Sergeant Beth C. Halloran on her promotion to the rank of Lieutenant in the Cambridge Police Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113896&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>13. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30320&CssClass='>RES 2025 #164 : Congratulations to Sergeant Timothy P. Lawton on his promotion to the rank of Lieutenant with the Cambridge Police Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113897&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>14. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30321&CssClass='>RES 2025 #165 : Congratulations Sergeant Sean Norton on his promotion to the rank of Lieutenant with the Cambridge Police Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113898&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>15. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30616&CssClass='>RES 2025 #166 : Congratulations to Officer Michael A. Bonilla on his promotion to the rank of Sergeant with the Cambridge Police Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113899&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>16. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30646&CssClass='>RES 2025 #167 : Congratulations to Officer Stephen Lenkauskas on his promotion to the rank of Sergeant with the Cambridge Police Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113900&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>17. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30647&CssClass='>RES 2025 #168 : Congratulations to Officer Kyle Galuski on his promotion to the rank of Sergeant with the Cambridge Police Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113901&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>18. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30648&CssClass='>RES 2025 #169 : Congratulations to Officer Robert P. Reardon on his promotion to the rank of Sergeant with the Cambridge Police Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113902&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>19. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30649&CssClass='>RES 2025 #170 : Congratulations Officer Pamela Morris on her promotion to the rank of Sergeant with the Cambridge Police Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113903&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>20. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30650&CssClass='>RES 2025 #171 : Congratulations to Superintendent Pauline Wells on being awarded the 2025 Massachusetts Association of Women in Law Enforcement Organization Heritage Award.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113904&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>21. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30655&CssClass='>RES 2025 #172 : Congratulations to Kelly Tarney on her retirement from the Cambridge Public School Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113905&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>22. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30656&CssClass='>RES 2025 #173 : Congratulations to Richard Kelly on his retirement from the Cambridge School Department.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113906&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>23. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30660&CssClass='>RES 2025 #174 : Condolences to the family of John Diamond.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113907&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td></td><td class='Num'>24. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30662&CssClass='>RES 2025 #175 : Congratulations to Donald "Ducky" Down on his retirement from the Department of Public Works.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113908&MeetingID=4658'>Resolution Printout</a></td></tr>
+
+<tr><td class='Num'><strong>VII. </strong></td><td class='Title' colspan='10'><strong>Committee Reports</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='FileOpen.aspx?Type=12&ID=3049 '>Minutes of Jun 18, 2025 2:00 PM</a></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30691&CssClass='>ORD 2025 # 12 : An Ordinance has been received from Paula M. Crane, Interim City Clerk, relative the Mushla Marasao et al Zoning petition in regard to Article 5.28.21, 8.22.1, 8.22.2, Tbl 5.1.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26620&MeetingID=4658'>Zoning Petition Lubavitch of Cambridge Inc</a></td></tr>
+
+<tr><td></td><td class='Num'>2. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='FileOpen.aspx?Type=12&ID=3050 '>Minutes of Jun 25, 2025 3:00 PM</a></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29846&CssClass='>CMA 2025 #145 : A communication transmitted from Yi-An Huang, City Manager, relative to the appointments of Florrie Darwin, Scott Kyle, and Michael Rogove and the reappointments of Chandra Harrington, Joseph Ferrara, Elizabeth Lyster, Yuting Zhang, gavin Kleespies, Paula Paris, and Kyle Sheffield.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113918&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29842&CssClass='>CMA 2025 #146 : A communication transmitted from Yi-An Huang, City Manager, relative to the appointment Sarah Holt, Emily Oldshue, and Ruth Webb and the reappointments of Marie-Pierre Dillenseger, Donna Marcantonio, and Peter Schur to the Half Crown-Marsh Neighborhood Conservation District Commission.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113916&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td></td><td class='Num'></td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29843&CssClass='>CMA 2025 #147 : A communication transmitted from Yi-An Huang, City Manager, relative to the appointment of Nondita Mehrotra, and the reappointments of Constantin von Wentzel, Heli Meltsner, McKelden Smith, Theresa Hamacher, and Freweyni Gebrehiwet to the Avon Hill Neighborhood Conservation District Commission.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113917&MeetingID=4658'>City Manager's Agenda Item Printout</a></td></tr>
+
+<tr><td class='Num'><strong>VIII. </strong></td><td class='Title' colspan='10'><strong>Communications and Reports from Other City Officers</strong></td></tr>
+
+<tr><td></td><td class='Num'>1. </td><td class='Title' colspan='9'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30651&CssClass='>COF 2025 #100 : A communication was received from Paula M. Crane, Interim City Clerk, transmitting an update regarding legislative activity.</a></td></tr>
+<tr><td></td><td></td><td class='Num'><img src='/Citizens/images/DocumentIcon.gif' alt='document'></td><td class='Title' colspan='8'><a href='FileOpen.aspx?Type=30&ID=113915&MeetingID=4658'>Communication and Report from Other City Officers Printout</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26600&MeetingID=4658'>Updated Hearing Schedule 6.26.2025</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>b. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26562&MeetingID=4658'>PENDING HOME RULE PETITIONS JUNE 30, 2025</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>c. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26563&MeetingID=4658'>2024-2025 Committee Referral List</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>d. </td><td class='Title' colspan='8'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26564&MeetingID=4658'>Pending Zoning Petitions and Municipal Ordinances Chart</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Appended Information</strong></td></tr>
+
+<tr><td></td><td class='Num'><strong></strong></td><td class='Title' colspan='9'><strong>AwaitingReport Status Update</strong></td></tr>
+
+<tr><td></td><td></td><td class='Num'></td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30690&CssClass='>ARS-25-20 : Awaiting Report Status Update 06.30.25</a></td></tr>
+
+<tr><td></td><td></td><td></td><td class='Num'>a. </td><td class='Title' colspan='7'><a target='_blank' class='Link'  href='FileOpen.aspx?Type=4&ID=26608&MeetingID=4658'>Awaiting Report Status Update 06.30.25</a></td></tr>
+
+<tr><td></td><td class='Num'><strong></strong></td><td class='Title' colspan='9'><strong>Awaiting Report List</strong></td></tr>
+
+<tr><td></td><td></td><td class='Num'>1. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=26200&CssClass='>AR-24-64 : The City Manager is requested to work with relevant City departments to prepare a Home Rule Petition to enact legislation which would allow the City of Cambridge to prohibit associations from unreasonably restricting the use of a solar energy system.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>2. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=27429&CssClass='>AR-25-5 : The City Manager is requested to work with relevant City departments to prepare a report on the use of M.G.L. Ch. 40U to determine which local statutes can be enforced by the local-option procedure in order to better collect fines in violation of Cambridge ordinances and provide a recommendation to the City Council for implementation of Ch. 40U procedures.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>3. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=27921&CssClass='>AR-25-12 : The City Manager is requested to work with all appropriate Departments to develop language to create an “Affordable Rent Incentive Program” program for Cambridge and to report back to the City Council with option, including the percentage of possible tax abatements.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>4. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=27924&CssClass='>AR-25-15 : The City Manager is requested to work with relevant departments to create a plaque to be placed at the entrance of or inside City Hall that demonstrates the values that the Cambridge City Council upholds of the separation of church and state and gender equality.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>5. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=28174&CssClass='>AR-25-20 : That the City Manager is requested to confer with the Community Development Department to develop a timeline for the next Incentive Zoning Nexus Study.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>6. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29335&CssClass='>AR-25-26 : That the City Manager is requested to confer with the Community Development Department to assemble a list of public and private spaces available to the public, indoors and outdoors, noting contact information and any associated requirements, ensuring that there are public meeting places identified in each neighborhood.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>7. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29405&CssClass='>AR-25-27 : That the City Manager investigate bike pod storage options to be placed in suitable areas in the City to provide residents and visitors safe storage options.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>8. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29406&CssClass='>AR-25-28 : That the City Manager is requested to prepare an update with details on the status of potential civilian flagger operations in the Cambridge police union contract and work with relevant city staff to explore a civilian traffic flagger program and update the current police union contract on the City's website.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>9. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29506&CssClass='>AR-25-30 : The City Manager is requested to confer with the Community Development Department to develop a timeline for the next Inclusionary Housing Study, explore remedies to address the lack of housing starts and provide for consideration draft amendments to the Inclusionary Housing Ordinance, and explore other incentives to encourage developers to include affordable units beyond the requirement voluntarily.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>10. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29509&CssClass='>AR-25-29 : That the City Manager is requested to work with the School Department, the Department of Public Works, and other relevant departments to ensure that all city owned parking lots, with a focus on school complexes, including the still under construction parking at Tobin/Darby Vassal school complex, could be made available for after-hours use by residents.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>11. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29581&CssClass='>AR-25-32 : That the City Manager is requested to meet with the leadership of the Harvard Square Business Association to discuss the proposal and to take the necessary steps to facilitate the release of $72,000 to fund the RFP development for the tunnel engineering study.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>12. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=29835&CssClass='>AR-25-33 : The City Manager is requested to work with relevant City departments to provide a legal opinion outlining, in light of current zoning including the most recent Multifamily Zoning Amendments, the ability of Cambridge to regulate institutional and religious uses in C-1 residential districts and what state and federal law allows in terms of local restrictions, if any, for institutional and religious uses.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>13. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30177&CssClass='>AR-25-34 : The City Manager is requested to work with relevant City departments to determine whether the City Council can revoke an already approved curb cut application if said application was incomplete due to applicant failure.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>14. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30182&CssClass='>AR-25-35 : The City Manager is requested to work with the City Clerk, the Information Technology Department, the Law Department, and any other relevant departments to draft an ordinance establishing the City of Cambridge Electronic Records Archiving Policy.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>15. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30191&CssClass='>AR-25-36 : The exception language in Chapter 2.129.040 Section J of the Cambridge Municipal Code be revised with language clarifying that Cambridge city employees shall not participate in federal immigration enforcement operations and that the sole role of Cambridge city employees during any action by ICE is only to protect public safety and not to assist or facilitate the work of ICE.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>16. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30192&CssClass='>AR-25-37 : The City Manager is requested to work with relevant City departments to ensure that there is full open access for all users to Linear Park from Westley Avenue as an additional community access point.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>17. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30434&CssClass='>AR-25-38 : The City Manager is requested to work with the Department of Transportation to evaluate adjustments to meter enforcement hours on Broadway Segment A, designating 25 spaces as residential permit parking overnight to increase overnight parking access for residents.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>18. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30436&CssClass='>AR-25-39 : The City Manager be and hereby is requested to work with the Cambridge Department of Transportation to study the feasibility of modifying non-resident parking permit fees for households in within the Broadway Segment A project area, including offering a discounted rate structure for permits that are requested by residents with low- income residents.</a></td></tr>
+
+<tr><td></td><td></td><td class='Num'>19. </td><td class='Title' colspan='8'><a target='_top' class='Link'  href='Detail_LegiFile.aspx?Frame=&MeetingID=4658&MediaPosition=&ID=30654&CssClass='>AR-25-40 : The City Manager be and hereby is requested to direct the City Solicitor, in consultation with relevant City departments and the Community Benefits Advisory Committee, to draft amendments to the Community Benefits Ordinance that allow for the use of funds for capital expenses, provided that such expenses clearly advance the goals of the Community Benefits program.</a></td></tr>
+
+<tr><td class='Num'><strong></strong></td><td class='Title' colspan='10'><strong>Adjournment</strong></td></tr>
+
+</table>
+</span>
+                    </td>
+	</tr>
+	
+            </table>
+        
+</div>
+        
+        
+        <br />
+        <hr class="Dotted" />
+        <br />
+    </div>
+    
+    <!-- Dialog Definition (Do Not Display in Page) -->
+    <div style="display: none;">
+    
+        <div id="UserComment" class="UserComment">
+            <input type="hidden" id="ItemID" />
+            <input type="hidden" id="ItemType" />
+            <table><tr><td colspan="2" style="text-align: center;"><textarea rows="10" cols="10"></textarea></td></tr>
+            <tr>
+                <td class="Status"><img src='/Lib/Images/ui-anim_basic_16x16.gif' alt='Loading' />&nbsp;&nbsp;Loading - Please Wait...</td>
+                <td class="Help"><a href="#" onclick="javascript: ShowHelp(); return false;"><img src="images/Help.png" alt="Help" /></a></td>
+            </tr></table>            
+        </div>
+        
+        <div id="frmHelp">
+            <p><strong>Shortcut Keys:</strong></p>
+            <p><strong>Alt + S</strong> - Save</p>
+            <p><strong>Ctrl + S</strong> - Save (may not be compatible in all browsers)</p>
+            <p><strong>Alt + C</strong> - Save and Close</p>
+            <p><strong>Ctrl + Enter</strong> - Save and Close</p>
+            <p><strong>Escape</strong> - Closes the form (same as Cancel)</p>
+            <p><strong>Alt + Up Arrow</strong> - Previous Item (Saves if changed)</p>
+            <p><strong>Alt + Down Arrow</strong> - Next Item (Saves if changed)</p>
+        </div>
+    
+    </div>
+
+   
+    
+                            </div>
+                        </div>                                                           
+                    </td>
+                </tr>               
+            </table>                                
+        </div>
+        
+    <div id="Footer" role="contentinfo">
+        <br />
+        <span id="lblPoweredBy">
+            Powered by <a href="https://granicus.com/" target="_blank" >Granicus</a>
+        </span>
+    </div>
+
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-21761819-8'></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+  gtag('config', 'UA-21761819-8');</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-70364301-2'></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+  gtag('config', 'UA-70364301-2');</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    
+        <!-- Popup Menus -->
+        <div id="mnuBrowse" class="PopupMenu" dropdown="Browse">
+            <ul>
+                <li><a href="#">Legislative Files</a></li>
+                <li><a href="#">Legal Notices</a></li>
+                <li><a href="#">Some other Sort of Thing</a></li>
+            </ul>
+        </div>
+
+    
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){woopra.identify({ email:"", name:"Anonymous User", agency:"CambridgeMA", userlogin:"Anonymous"}).push(); })//]]>
+</script>
+</form>
+</body>
+</html>
+
+
