@@ -368,7 +368,7 @@ def list_filers_keys(filers, keys, join):
             getters.append(lambda x: x.cpfid)
         elif key == 'committee':
             getters.append(lambda x: x.committee_name)
-        elif key == 'candidate':
+        elif key in ('candidate', 'name'):
             getters.append(lambda x: x.candidate_name)
         else:
             raise KeyError(f"'{key}' is not a valid filer key")
