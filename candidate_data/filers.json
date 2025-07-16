@@ -105,6 +105,27 @@
         "category": "filers"
     },
     {
+        "cpfId": 13239,
+        "filerName": "Tim Flaherty",
+        "filerNameReverse": "Flaherty, Tim",
+        "filerCity": "Cambridge",
+        "isActive": true,
+        "districtHeldDescription": "No office",
+        "officeSought": "City Councilor, Cambridge",
+        "officeHeld": "N/A, No office",
+        "officeDescription": "Office Sought: City Councilor, Cambridge",
+        "isIncumbent": false,
+        "accountTypeCode": "D",
+        "accountTypeDescription": "Depository Candidate",
+        "isCandidate": true,
+        "firstName": "Tim",
+        "lastName": "Flaherty",
+        "committeeName": "Flaherty Committee",
+        "filerThumbnailPhotoUrl": "",
+        "score": 0,
+        "category": "filers"
+    },
+    {
         "cpfId": 16531,
         "filerName": "Samuel M. Gebru",
         "filerNameReverse": "Gebru, Samuel M.",
