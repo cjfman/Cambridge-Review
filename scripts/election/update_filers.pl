@@ -208,7 +208,7 @@ sub upload_files {
 sub write_mobile_file {
     my $url  = shift;
     my $file = shift;
-    my $idx  = shift or int rand 100;
+    my $idx  = shift or (int rand 100);
     my $html = qq{
 <html>
 <head>
