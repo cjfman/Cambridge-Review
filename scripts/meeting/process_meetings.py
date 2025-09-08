@@ -1515,7 +1515,9 @@ def openMeetings(path, *, session=None):
                 row['uid'] = f"{row['Date']} {row['Type']}"
             if 'Session' not in row and session is not None:
                 row['Session'] = session
-            meetings.append(Meeting(**{ k.lower().replace(' ', '_'): v for k, v in row.items() }))
+            meeting = Meeting(**{ k.lower().replace(' ', '_'): v for k, v in row.items() })
+            if meeting.body.lower() == 'city council' and meeting.type.lower() in ALLOWED_TYPES:
+                meetings.append(meeting)
 
     return meetings
 
@@ -1555,17 +1557,8 @@ def setAttenance(args, final_actions):
 
 
 def getNextMeeting(meetings):
-    today = dt.datetime.now().date()
-    for meeting in sorted(meetings):
-        if meeting.getDate().date() >= today:
-            return meeting
-
-    return None
-
-
-def getNextMeeting(meetings):
-    today = dt.datetime.now().date()
-    previous = list(sorted([x for x in meetings if x.getDate().date() >= today]))
+    today = dt.datetime.now()
+    previous = list(sorted([x for x in meetings if x.getDate() >= today]))
     if previous:
         return previous[0]
 
