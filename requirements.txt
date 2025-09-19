@@ -7,5 +7,6 @@ markdown_table_generator
 matplotlib
 numpy
 plotly
-termcolor
 pyyaml
+shapely
+termcolor
