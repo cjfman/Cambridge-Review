@@ -37,6 +37,7 @@ my %tooltip  = (
     CPD     => 'Cambridge Police Department',
     CPS     => 'Cambirdge Public Schools',
     DCR     => 'Department of Conservation and Recreation',
+	HSBA    => 'Harvard Square Business Association',
     EOPSS   => 'Executive Office of Public Safety',
     MassDEP => 'Massachusetts Department of Environmental Protection',
     MEMA    => 'Massachusetts Emergency Management Agency',
