@@ -1,5 +1,6 @@
 bs4
-glob
+glob2
+folium
 html5lib
 kaleido
 markdown_table_generator
@@ -7,4 +8,4 @@ matplotlib
 numpy
 plotly
 termcolor
-yaml
+pyyaml
