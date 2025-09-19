@@ -1,5 +1,16 @@
+#!/usr/bin/env python3
+
+## pylint: disable=too-many-locals
+
+import argparse
+import sys
+
+from pathlib import Path
+
 import folium
 
+## pylint: disable=wrong-import-position
+sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 from citylib.utils.gis import CITY_BOUNDARY
 
 VERBOSE   = False
