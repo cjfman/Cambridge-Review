@@ -1,8 +1,36 @@
 import json
+import os
 
 import numpy as np
 
 from shapely.geometry import shape, Point
+
+ROOT      = "/home/charles/Projects/cambridge_review/"
+GEOJSON   = os.path.join(ROOT, "geojson")
+CITY_BOUNDARY = {
+    'name': "City Boundary",
+    'geo_path': os.path.join(GEOJSON, "BOUNDARY_CityBoundary.geojson"),
+    'show': True,
+    'weight': 5,
+    'control': False,
+}
+
+WARD_BOUNDARIES = {
+    'name': "Wards",
+    'geo_path': os.path.join(GEOJSON, "WardsPrecincts2020.geojson"),
+    'weight': 1,
+    'tooltip': "WardPrecinct",
+    'show': True,
+    'sticky': False,
+    'control': False,
+}
+
+NEIGHBORHOOD_BOUNDARIES = {
+    'name': "Neighborhoods",
+    'geo_path': os.path.join(GEOJSON, "BOUNDARY_CDDNeighborhoods.geojson"),
+    'weight': 5,
+    'tooltip': "NAME",
+}
 
 class GisGeoJson:
     def __init__(self, path, *, secondary_id_key=None):

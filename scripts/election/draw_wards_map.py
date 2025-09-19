@@ -20,38 +20,13 @@ from citylib import elections
 from citylib.utils import color_schemes as cs
 from citylib.utils import gis
 from citylib.utils.simplehtml import Element, LinearGradient, Text, TickMark
+from citylib.utils.gis import CITY_BOUNDARY, WARD_BOUNDARIES, NEIGHBORHOOD_BOUNDARIES
 
 ROOT      = "/home/charles/Projects/cambridge_review/"
 GEOJSON   = os.path.join(ROOT, "geojson")
 OVERWRITE = True
 VERBOSE   = False
 DEBUG     = False
-
-CITY_BOUNDARY = {
-    'name': "City Boundary",
-    'geo_path': os.path.join(GEOJSON, "BOUNDARY_CityBoundary.geojson"),
-    'show': True,
-    'weight': 5,
-    'control': False,
-}
-
-WARD_BOUNDARIES = {
-    'name': "Wards",
-    'geo_path': os.path.join(GEOJSON, "WardsPrecincts2020.geojson"),
-    'weight': 1,
-    'tooltip': "WardPrecinct",
-    'show': True,
-    'sticky': False,
-    'control': False,
-}
-
-NEIGHBORHOOD_BOUNDARIES = {
-    'name': "Neighborhoods",
-    'geo_path': os.path.join(GEOJSON, "BOUNDARY_CDDNeighborhoods.geojson"),
-    'weight': 5,
-    'tooltip': "NAME",
-}
-
 
 def parseArgs():
     """Parse command line arguments"""
