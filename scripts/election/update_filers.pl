@@ -164,7 +164,6 @@ if (@charts or $SHARED) {
 }
 
 ## Finish up
-system "$scripts_dir/add_no_cache.pl $_" foreach @charts;
 my $total = @charts + @images + @mobile_files;
 if ($total) {
     print "Made ${\(scalar @charts)} chart(s), ${\(scalar @images)} image(s), and ${\(scalar @mobile_files)} mobile file(s)\n";

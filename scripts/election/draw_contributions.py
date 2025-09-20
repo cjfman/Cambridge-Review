@@ -337,9 +337,7 @@ def makeContributionBox(title, in_city, in_state, total, cbox_h=20, cbox_w=400):
     els = []
 
     ## Title
-    els.append(Text(title, x=x_off, y=y_off))
-    y_off += text_h
-    els.append(Text(f"${total:.2f}", x=x_off, y=y_off))
+    els.append(Text(f"{title}: ${total:.2f}", x=x_off, y=y_off))
     y_off += text_h
 
     ## Boxes
@@ -480,7 +478,7 @@ def makeMap(contributors, m, out_file, title=None, subtitle=None):
         template = f.read()
 
     if template is not None:
-        contr_box = makeContributionBox("Contribution Totals", *sumContributions(contributors=contributors))
+        contr_box = makeContributionBox("Contribution Total", *sumContributions(contributors=contributors))
         template = template.replace("{{SVG1}}", makeMapKey("Contribution Scale"))
         template = template.replace("{{DISCLAIMER}}", DISCLAIMER)
         template = template.replace("{{CONTRIBUTIONS}}", contr_box)
