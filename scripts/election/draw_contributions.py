@@ -176,7 +176,7 @@ class Contributor:
         return self.make_key(self.name, self.address)
 
     def addRecord(self, record):
-        self.contributors.append(record)
+        self.contributions.append(record)
 
     def __hash__(self):
         return hash(self.key())
@@ -184,13 +184,15 @@ class Contributor:
     def __eq__(self, other):
         return (self.name == other.name and self.address == other.address)
 
+    def __lt__(self, other):
+        return (self.total < other.total)
+
     def __str__(self):
         if self.coord:
             coord = tuple([f"{x:.5f}" for x in self.coord])
             return f"Name: {self.name}; Address {self.address}; Coordinates: {coord}"
 
         return f"Name: {self.name}; Address {self.address}"
-
 
     def __repr__(self):
         return f"[Contributor {self}]"
@@ -206,7 +208,7 @@ def recordsToContributors(records, *, addr_map) -> Dict[str, Contributor]:
     for record in records:
         key = Contributor.make_key_from_json(record)
         if key in contributors:
-            contributors[key].addRecord(record)
+            contributors[key].addRecord(Contribution.fromJson(record))
         else:
             c = Contributor.fromJson(record, addr_map=addr_map)
             if c.coord is not None:
@@ -252,10 +254,23 @@ def plotContributor(contributor, m):
     tooltip = folium.map.Tooltip(tooltip_txt, style="font-size: 1.5em;", sticky=False)
     angle = 1
     pin_args = { 'prefix': 'fa', 'color': 'green', 'icon': 'arrow-up' }
-#    icon = folium.Icon(**pin_args)
-#    folium.Marker(contributor.coord, icon=icon, tooltip=tooltip).add_to(m)
-    radius = size_scale(contributor.total, max_val=100, min_val=20, scale=1000)
-    folium.vector_layers.Circle(contributor.coord, radius=radius, tooltip=tooltip).add_to(m)
+#    radius = size_scale(contributor.total, max_val=100, min_val=20, scale=1000)
+#    folium.Circle(contributor.coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4).add_to(m)
+    radius = size_scale(contributor.total, max_val=20, min_val=2, scale=1000)
+    folium.CircleMarker(contributor.coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4).add_to(m)
+
+
+def makeMap(contributors, m, out_file):
+    for c in sorted(contributors, reverse=True):
+        plotContributor(c, m)
+
+    ## Make bounds and plot map
+    all_coords = [c.coord for c in contributors]
+    sw = min(all_coords)
+    ne = max(all_coords)
+    m.fit_bounds([sw, ne])
+    m.save(out_file)
+    print(f"Wrote to {out_file}")
 
 
 def main(args):
@@ -265,18 +280,12 @@ def main(args):
     contributors = recordsToContributors(records, addr_map=addr_map)
 
     ## Make map
-    m = folium.Map(location=[42.378, -71.11], zoom_start=14)
+    m = folium.Map(location=[42.378, -71.11], zoom_start=14)#, tiles="Cartodb Positron")
     city_boundary = makeLayer(**CITY_BOUNDARY)
     city_boundary.add_to(m)
 
     try:
-#        for record in records:
-#            plotRecord(m, record, addr_map)
-        for c in contributors:
-            plotContributor(c, m)
-
-        m.save(args.out_file)
-        print(f"Wrote to {args.out_file}")
+        makeMap(contributors, m, args.out_file)
     finally:
         addr_map.save()
 
