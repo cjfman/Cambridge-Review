@@ -5,7 +5,7 @@ import numpy as np
 
 from shapely.geometry import shape, Point
 
-ROOT      = "/home/charles/Projects/cambridge_review/"
+ROOT      = "./"
 GEOJSON   = os.path.join(ROOT, "geojson")
 CITY_BOUNDARY = {
     'name': "City Boundary",
