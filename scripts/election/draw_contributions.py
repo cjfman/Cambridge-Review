@@ -28,8 +28,11 @@ from citylib.utils import gis
 from citylib.utils.gis import CITY_BOUNDARY
 from citylib.utils.simplehtml import Element, LinearGradient, Text, TickMark
 
-VERBOSE   = False
-DEBUG     = False
+VERBOSE = False
+DEBUG   = False
+
+FUZZ_DIST  = 30 ## 30 meters
+DISCLAIMER = f"Contribution locations are purposefully off by {FUZZ_DIST} meters"
 
 def parseArgs():
     """Parse command line arguments"""
@@ -73,7 +76,7 @@ def size_scale(val, max_val, min_val=0, scale=None):
     return min(max_val, max(min_val, val))
 
 
-def fuzzCoords(coord, length):
+def fuzzCoords(coord, length=FUZZ_DIST):
     ## Calculate basic info
     lon = coord[0]
     lat = coord[1]
@@ -311,7 +314,7 @@ def plotContributor(contributor, m):
     if VERBOSE:
         print(f"Plotting {contributor}")
 
-    coord = fuzzCoords(contributor.coord, 20)
+    coord = fuzzCoords(contributor.coord)
     lines = [
         f"Name: {contributor.name}",
         f"Total: ${contributor.total:.2f}",
@@ -332,7 +335,7 @@ def plotColocatedContributors(contributors, coord, addr, m):
     if VERBOSE:
         print(f"Plotting contributor group at {addr}")
 
-    coord = fuzzCoords(coord, 30)
+    coord = fuzzCoords(coord)
     lines = []
     total = 0
     for c in contributors:
@@ -378,19 +381,12 @@ def makeMap(contributors, m, out_file, title=None, subtitle=None):
     if template is not None:
         legend = plotMapKey("Contribution Scale")
         template = template.replace("{{SVG1}}", legend)
+        template = template.replace("{{DISCLAIMER}}", DISCLAIMER)
+        if title:
+            template = template.replace("{{TITLE}}", f'<h2>{title}</h2><p>{subtitle or ''}</p>')
         macro = MacroElement()
         macro._template = Template(template) ## pylint: disable=protected-access
         m.get_root().add_child(macro)
-
-    ## Title
-    if title:
-        title_html = f"""
-            <div style="background-color: rgba(255, 255, 255, 1); position:absolute; z-index:100000; left:40vw; border:2px solid grey; border-radius:6px; padding: 10px; margin-top: 10px; text-align: center">
-            <h2>{title}</h2>
-            <p>{subtitle or ''}</p>
-            </div>
-        """
-        m.get_root().html.add_child(folium.Element(title_html))
 
     ## Make bounds and plot map
     all_coords = [c.coord for c in contributors]
