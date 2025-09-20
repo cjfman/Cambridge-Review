@@ -16,6 +16,7 @@ from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-o
 from pathlib import Path
 
 import folium
+from branca.element import Template, MacroElement
 
 ## pylint: disable=wrong-import-position
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
@@ -23,6 +24,7 @@ sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 from citylib import utils
 from citylib.utils import gis
 from citylib.utils.gis import CITY_BOUNDARY
+from citylib.utils.simplehtml import Element, LinearGradient, Text, TickMark
 
 VERBOSE   = False
 DEBUG     = False
@@ -34,6 +36,10 @@ def parseArgs():
         help="File that contains address coordinates")
     parser.add_argument("--google-api-key", required=True,
         help="The file to the google API key")
+    parser.add_argument("--title", default="Contributions",
+        help="Map title")
+    parser.add_argument("--filer",
+        help="The filer's id")
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("records_file",
@@ -60,7 +66,6 @@ def size_scale(val, max_val, min_val=0, scale=None):
     if scale:
         val *= max_val / scale
 
-    print(val)
     return min(max_val, max(min_val, val))
 
 
@@ -220,6 +225,44 @@ def recordsToContributors(records, *, addr_map) -> Dict[str, Contributor]:
     return list(contributors.values())
 
 
+def plotMapKey(title, box_size=8):
+    ## Add elements
+    y_off = 20
+    x_off = 10
+    text_h = 15
+    els = []
+
+    ## Title
+    els.append(Text(title, x=x_off, y=y_off))
+    y_off += text_h / 2
+
+    ## Add circles
+    txts = []
+    circ_off = size_scale(1000, max_val=20, min_val=2, scale=1000)
+    for x in (1, 10, 100, 500, 1000):
+        radius = size_scale(x, max_val=20, min_val=2, scale=1000)
+        y_off += radius*1.1 + 3
+        els.append(Element(
+            'circle',
+            cx=(x_off + circ_off*1.1),
+            cy=y_off,
+            r=radius,
+            stroke='black',
+            stroke_width=3,
+            fill='orange',
+        ))
+        txt = f"${x}"
+        txts.append(txt)
+        els.append(Text(txt, x=x_off+circ_off*2.4, y=y_off, dominant_baseline="central"))
+        y_off += radius*1.1 + 3
+
+    ## Create SVG
+    width = min(15 * max([len(x) for x in txts]), 150) + circ_off*2.2
+    width = max(8*len(title), width)
+    height = y_off
+    return Element('svg', els, width=width, height=height).to_html()
+
+
 def plotRecord(m, record, addr_map):
     addr = addressFromRecord(record)
     coord = addr_map[addr]
@@ -258,7 +301,7 @@ def plotContributor(contributor, m):
 #    radius = size_scale(contributor.total, max_val=100, min_val=20, scale=1000)
 #    folium.Circle(contributor.coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4).add_to(m)
     radius = size_scale(contributor.total, max_val=20, min_val=2, scale=1000)
-    folium.CircleMarker(contributor.coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4).add_to(m)
+    folium.CircleMarker(contributor.coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4, stroke_width=3).add_to(m)
 
 
 def plotColocatedContributors(contributors, coord, addr, m):
@@ -292,7 +335,7 @@ def plotColocatedContributors(contributors, coord, addr, m):
     folium.CircleMarker(coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4).add_to(m)
 
 
-def makeMap(contributors, m, out_file):
+def makeMap(contributors, m, out_file, title=None):
 #    for c in sorted(contributors, reverse=True):
 #        plotContributor(c, m)
 
@@ -307,6 +350,24 @@ def makeMap(contributors, m, out_file):
 
         plotColocatedContributors(group, group[0].coord, group[0].address, m)
 
+    ## Load template
+    template = None
+    with open("templates/map_w_legend.html") as f:
+        template = f.read()
+
+    if template is not None:
+        legend = plotMapKey("Contribution Scale")
+        template = template.replace("{{SVG1}}", legend)
+        macro = MacroElement()
+        macro._template = Template(template) ## pylint: disable=protected-access
+        m.get_root().add_child(macro)
+
+    ## Title
+    if title:
+        title_html = f"""
+            <h1 style="background-color: rgba(255, 255, 255, 1); position:absolute; z-index:100000; left:40vw; border:2px solid grey; border-radius:6px; padding: 10px;">{title}</h1>
+        """
+        m.get_root().html.add_child(folium.Element(title_html))
 
     ## Make bounds and plot map
     all_coords = [c.coord for c in contributors]
@@ -315,6 +376,7 @@ def makeMap(contributors, m, out_file):
     m.fit_bounds([sw, ne])
     m.save(out_file)
     print(f"Wrote to {out_file}")
+
 
 
 def main(args):
@@ -329,7 +391,7 @@ def main(args):
     city_boundary.add_to(m)
 
     try:
-        makeMap(contributors, m, args.out_file)
+        makeMap(contributors, m, args.out_file, title=args.title)
     finally:
         addr_map.save()
 
