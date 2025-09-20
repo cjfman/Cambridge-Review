@@ -463,7 +463,7 @@ def plotColocatedContributors(contributors, coord, addr, m):
     folium.CircleMarker(coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4).add_to(m)
 
 
-def makeMap(contributors, m, out_file, title=None, subtitle=None):
+def makeMap(contributors, m, title=None, subtitle=None):
     grouped = defaultdict(list)
     for c in contributors:
         grouped[c.address].append(c)
@@ -490,15 +490,6 @@ def makeMap(contributors, m, out_file, title=None, subtitle=None):
         macro = MacroElement()
         macro._template = Template(template) ## pylint: disable=protected-access
         m.get_root().add_child(macro)
-
-    ## Make bounds and plot map
-    all_coords = [tuple(c.coord) for c in contributors]
-    sw = min(all_coords)
-    ne = max(all_coords)
-    m.fit_bounds([sw, ne])
-    m.save(out_file)
-    print(f"Wrote to {out_file}")
-
 
 def getFiler(cpfid):
     try:
@@ -544,14 +535,27 @@ def main(args):
 
         ## Make map
         m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles="Cartodb Positron")
-        makeMap(contributors, m, args.out_file, title=title, subtitle=subtitle)
+        makeMap(contributors, m, title=title, subtitle=subtitle)
         makeLayer(**CITY_BOUNDARY).add_to(m)
         #makeLayer(**STATE_BOUNDARY).add_to(m)
+
+        ## Make bounds and plot map
+        all_coords = [tuple(c.coord) for c in contributors]
+        sw = min(all_coords)
+        ne = max(all_coords)
+        m.fit_bounds([sw, ne])
+        m.save(args.out_file)
+        print(f"Wrote to {args.out_file}")
     finally:
         addr_map.save()
 
 
-def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=None, sticky=False, control=True, geo_args=None, **kwargs):
+def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=None, sticky=False, control=True, geo_args=None, interactive=None, **kwargs):
+    if interactive is None:
+        interactive = bool(tooltip)
+    else:
+        interactive = False
+
     geo_args = geo_args or {}
     geojson = gis.GisGeoJson(geo_path, **geo_args)
     style_function = lambda x: {
@@ -562,7 +566,15 @@ def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=N
         'opacity': 1,
     }
 
-    geo = folium.GeoJson(geojson.geojson, name=name, show=show, control=control, style_function=style_function)
+    geo = folium.GeoJson(
+        geojson.geojson,
+        name=name,
+        show=show,
+        interactive=interactive,
+        control=control,
+        style_function=style_function,
+    )
+
     if tooltip is not None:
         tooltip_name = tooltip_name or tooltip
         folium.GeoJsonTooltip(fields=[tooltip], aliases=[tooltip], sticky=sticky).add_to(geo)
