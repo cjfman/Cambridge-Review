@@ -8,6 +8,7 @@ import math
 import os
 import sys
 
+from collections import defaultdict
 from typing import Dict, List
 
 from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-order
@@ -260,9 +261,52 @@ def plotContributor(contributor, m):
     folium.CircleMarker(contributor.coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4).add_to(m)
 
 
+def plotColocatedContributors(contributors, coord, addr, m):
+    print(f"Plotting contributor group at {addr}")
+    lines = [
+        f"Address: {addr}",
+        "",
+    ]
+
+    total = 0
+    for c in contributors:
+        total += c.total
+        lines.extend([
+            f"Name: {c.name}",
+            f"Total: ${c.total:.2f}",
+            'Contributions',
+        ])
+
+        for d in c.contributions:
+            lines.append(f" - {d.date} ${d.amount:.2f}")
+
+        lines.append("---")
+
+    del lines[-1]
+
+    tooltip_txt = "<br />".join(lines)
+    tooltip = folium.map.Tooltip(tooltip_txt, style="font-size: 1.5em;", sticky=False)
+    angle = 1
+    pin_args = { 'prefix': 'fa', 'color': 'green', 'icon': 'arrow-up' }
+    radius = size_scale(total, max_val=20, min_val=2, scale=1000)
+    folium.CircleMarker(coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4).add_to(m)
+
+
 def makeMap(contributors, m, out_file):
-    for c in sorted(contributors, reverse=True):
-        plotContributor(c, m)
+#    for c in sorted(contributors, reverse=True):
+#        plotContributor(c, m)
+
+    grouped = defaultdict(list)
+    for c in contributors:
+        grouped[c.address].append(c)
+
+    for group in sorted(grouped.values(), reverse=True):
+        if not group[0].coord:
+            print(f"Skipping group")
+            continue
+
+        plotColocatedContributors(group, group[0].coord, group[0].address, m)
+
 
     ## Make bounds and plot map
     all_coords = [c.coord for c in contributors]
