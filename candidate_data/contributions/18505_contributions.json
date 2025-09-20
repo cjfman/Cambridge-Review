@@ -1,0 +1,44 @@
+{
+    "summary": {
+        "count": 1,
+        "total": 45.93,
+        "totalDisplay": "$45.93",
+        "description": "",
+        "start": "09/20/2024",
+        "end": "09/20/2025",
+        "filerCpfId": 18505
+    },
+    "items": [
+        {
+            "recordTypeId": 204,
+            "cityStateZip": "Cambridge, MA  02139",
+            "fullNameReverse": "Totten, Dan",
+            "fullNameReverseAddress": "<b>Totten, Dan</b><br>54 Bishop Allen Drive",
+            "firstName": "Dan",
+            "lastName": "Totten",
+            "occupation": "",
+            "employer": "",
+            "principalOfficer": "",
+            "contributorCpfId": 0,
+            "description": "Refund For Accidental Personal Charges On 7/6",
+            "sourceLink": "<a target='_blank' href='https://www.ocpf.us/Reports/DisplayReport?menuHidden=true&id=945270'>9/20/24 Deposit Report</a>",
+            "tenderTypeId": 3,
+            "tenderTypeDescription": "Credit Card",
+            "isPreviousYearContribution": false,
+            "isTransfer": false,
+            "linkedRefundGuid": null,
+            "id": 6125190,
+            "reportId": 945270,
+            "filerCpfId": 18505,
+            "filerFullNameReverse": "Totten, Dan",
+            "date": "9/20/2024",
+            "amount": "$45.93",
+            "recordTypeDescription": "Non-Contribution",
+            "streetAddress": "54 Bishop Allen Drive",
+            "city": "Cambridge",
+            "state": "MA",
+            "zipCode": "02139",
+            "sourceDescription": "9/20/24 Deposit Report"
+        }
+    ]
+}
