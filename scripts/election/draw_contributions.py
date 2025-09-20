@@ -523,7 +523,7 @@ def main(args):
     ## Make map
     m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles="Cartodb Positron")
     city_boundary = makeLayer(**CITY_BOUNDARY)
-    city_boundary = makeLayer(**STATE_BOUNDARY)
+    #city_boundary = makeLayer(**STATE_BOUNDARY)
     city_boundary.add_to(m)
 
     try:
