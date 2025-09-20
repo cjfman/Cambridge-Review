@@ -7,6 +7,10 @@ import json
 import os
 import sys
 
+from typing import Dict, List
+
+from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-order
+
 from pathlib import Path
 
 import folium
@@ -48,6 +52,10 @@ def parseArgs():
     return args
 
 
+def addressFromRecord(record):
+    return f"{record['streetAddress']}, {record['cityStateZip']}"
+
+
 class AddressMap:
     def __init__(self, api_key, cache_path=None):
         self.api_key    = api_key
@@ -76,7 +84,7 @@ class AddressMap:
         print("Cache changed size. Writing cache to file")
         try:
             with open(self.cache_path, 'w', encoding='utf8') as f:
-                json.dump(self.cache, f)
+                json.dump(self.cache, f, indent=4)
         except Exception as e:
             print(f"Failed to save address cache file '{self.cache_path}': {e}")
 
@@ -91,7 +99,8 @@ class AddressMap:
         coord = utils.address_to_coordinates(addr, self.api_key)
         print(f"{addr} >> {coord}")
         self.cache[addr] = coord
-
+        self.updated = True
+        return coord
 
     def __getitem__(self, key):
         if key not in self.cache:
@@ -111,13 +120,94 @@ class AddressMap:
         return (item in self.cache)
 
 
-def getContributions(path):
+@dataclass
+class Contribution:
+    date: str
+    amount: float
+
+    @classmethod
+    def fromJson(cls, data):
+        amt = float(data['amount'][1:].replace(',', ''))
+        return cls(data['date'], amt)
+
+
+class Contributor:
+    @staticmethod
+    def make_key(name, addr):
+        return f"{name}-{addr}"
+
+    @classmethod
+    def make_key_from_json(cls, data):
+        return cls.make_key(data['fullNameReverse'], addressFromRecord(data))
+
+    def __init__(self, name, addr, coord=None):
+        self.name    = name
+        self.address = addr
+        self.coord   = coord
+        self.contributions = []
+
+    @classmethod
+    def fromJson(cls, data, *, addr_map=None):
+        coord = None
+        addr = addressFromRecord(data)
+        if addr_map:
+            coord = addr_map[addr]
+
+        contributor = cls(data['fullNameReverse'], addr, coord)
+        contributor.contributions.append(Contribution.fromJson(data))
+        return contributor
+
+    @property
+    def total(self):
+        return sum([x.amount for x in self.contributions])
+
+    def key(self):
+        return self.make_key(self.name, self.address)
+
+    def addRecord(self, record):
+        self.contributors.append(record)
+
+    def __hash__(self):
+        return hash(self.key())
+
+    def __eq__(self, other):
+        return (self.name == other.name and self.address == other.address)
+
+    def __str__(self):
+        if self.coord:
+            coord = tuple([f"{x:.5f}" for x in self.coord])
+            return f"Name: {self.name}; Address {self.address}; Coordinates: {coord}"
+
+        return f"Name: {self.name}; Address {self.address}"
+
+
+    def __repr__(self):
+        return f"[Contributor {self}]"
+
+
+def getContributions(path) -> List[Dict]:
     with open(path, encoding='utf8') as f:
         return json.load(f)['items']
 
 
+def recordsToContributors(records, *, addr_map) -> Dict[str, Contributor]:
+    contributors = {}
+    for record in records:
+        key = Contributor.make_key_from_json(record)
+        if key in contributors:
+            contributors[key].addRecord(record)
+        else:
+            c = Contributor.fromJson(record, addr_map=addr_map)
+            if c.coord is not None:
+                contributors[key] = c
+            else:
+                print(f"No coordindates found for {c}")
+
+    return list(contributors.values())
+
+
 def plotRecord(m, record, addr_map):
-    addr = f"{record['streetAddress']} {record['cityStateZip']}"
+    addr = addressFromRecord(record)
     coord = addr_map[addr]
     if not coord:
         print(f"Skipping record with address '{addr}'")
@@ -131,10 +221,33 @@ def plotRecord(m, record, addr_map):
     folium.Marker(coord, icon=icon, tooltip=tooltip).add_to(m)
 
 
+def plotContributor(contributor, m):
+    if not contributor.coord:
+        print(f"Skipping {contributor}")
+        return
+
+    print(f"Plotting {contributor}")
+    lines = [
+        f"Name: {contributor.name}",
+        f"Address: {contributor.address}",
+        f"Total: ${contributor.total:.2f}",
+        'Contributions',
+    ]
+    for c in contributor.contributions:
+        lines.append(f" - {c.date} ${c.amount:.2f}")
+
+    tooltip = "<br />".join(lines)
+    angle = 1
+    pin_args = { 'prefix': 'fa', 'color': 'green', 'icon': 'arrow-up' }
+    icon = folium.Icon(**pin_args)
+    folium.Marker(contributor.coord, icon=icon, tooltip=tooltip).add_to(m)
+
+
 def main(args):
     ## Get info
     addr_map = AddressMap(utils.load_file(args.google_api_key), args.address_cache)
     records = getContributions(args.records_file)
+    contributors = recordsToContributors(records, addr_map=addr_map)
 
     ## Make map
     m = folium.Map(location=[42.378, -71.11], zoom_start=14)
@@ -142,8 +255,10 @@ def main(args):
     city_boundary.add_to(m)
 
     try:
-        for record in records:
-            plotRecord(m, record, addr_map)
+#        for record in records:
+#            plotRecord(m, record, addr_map)
+        for c in contributors:
+            plotContributor(c, m)
 
         m.save(args.out_file)
         print(f"Wrote to {args.out_file}")
