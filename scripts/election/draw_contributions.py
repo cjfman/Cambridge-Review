@@ -250,12 +250,15 @@ class Contributor:
 
 def getContributions(path) -> List[Dict]:
     with open(path, encoding='utf8') as f:
-        return json.load(f)['items']
+        return json.load(f)
 
 
 def recordsToContributors(records, *, addr_map) -> Dict[str, Contributor]:
     contributors = {}
     for record in records:
+        if record['fullNameReverse'] == "Aggregated Unitemized Receipts":
+            continue
+
         key = Contributor.make_key_from_json(record)
         if key in contributors:
             contributors[key].addRecord(Contribution.fromJson(record))
@@ -489,7 +492,7 @@ def makeMap(contributors, m, out_file, title=None, subtitle=None):
         m.get_root().add_child(macro)
 
     ## Make bounds and plot map
-    all_coords = [c.coord for c in contributors]
+    all_coords = [tuple(c.coord) for c in contributors]
     sw = min(all_coords)
     ne = max(all_coords)
     m.fit_bounds([sw, ne])
@@ -505,29 +508,45 @@ def getFiler(cpfid):
         return None
 
 
-def main(args):
-    ## Get info
-    addr_map = AddressMap(utils.load_file(args.google_api_key), args.address_cache)
-    records = getContributions(args.records_file)
-    contributors = recordsToContributors(records, addr_map=addr_map)
+def makeTitles(summary, args):
     title = args.title
-    filer = None
-    if args.filer:
-        filer = getFiler(args.filer)
-        title = filer.candidate_name + " Contributions"
-        print(f"Using title: {title}")
+    subtitle = args.subtitle
+    cpfid = args.filer
+    if cpfid is None and 'filerCpfId' in summary:
+        cpfid = summary['filerCpfId']
+    if cpfid:
+        filer = getFiler(cpfid)
+        if filer:
+            title = filer.candidate_name + " Contributions"
+            print(f"Using title: {title}")
+        else:
+            print(f"No such filer {cpfid}")
+
     else:
         title = "Contributions"
 
+    if subtitle is None and summary['start'] and summary['end']:
+        subtitle = f"{summary['start']} to {summary['end']}"
 
-    ## Make map
-    m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles="Cartodb Positron")
-    city_boundary = makeLayer(**CITY_BOUNDARY)
-    #city_boundary = makeLayer(**STATE_BOUNDARY)
-    city_boundary.add_to(m)
+    return (title, subtitle)
 
+def main(args):
+    ## Get info
+    addr_map = AddressMap(utils.load_file(args.google_api_key), args.address_cache)
+    data = getContributions(args.records_file)
+    summary = data['summary']
+    records = data['items']
+
+    ## Keep anything that could fail during or after the coordindates are loaded in this try block
     try:
-        makeMap(contributors, m, args.out_file, title=title, subtitle=args.subtitle)
+        contributors = recordsToContributors(records, addr_map=addr_map)
+        title, subtitle = makeTitles(summary, args)
+
+        ## Make map
+        m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles="Cartodb Positron")
+        makeMap(contributors, m, args.out_file, title=title, subtitle=subtitle)
+        makeLayer(**CITY_BOUNDARY).add_to(m)
+        #makeLayer(**STATE_BOUNDARY).add_to(m)
     finally:
         addr_map.save()
 

@@ -29,6 +29,8 @@ REQUEST_HDR = {
 }
 
 #https://api.ocpf.us/reports/reportList/17146?reportYear=0&baseReportTypeId=1&reportStartDate=10%2F1%2F2024&reportEndDate=4%2F1%2F2025&pagesize=50&startIndex=1&sortField=&sortDirection=DESC&withSummary=true
+#https://api.ocpf.us/search/items?searchTypeCategory=A&startDate=1%2F1%2F2024&endDate=8%2F31%2F2025&pagesize=1000&startIndex=1&sortField=&sortDirection=DESC&cpfId=15589&recordTypeId=-1&name=&cityCode=-1&state=&zipCode=&occupation=&employer=&minAmount=&maxAmount=&description=&withSummary=true
+
 RECORD_TYPE = {
     "IndividualContribution":       201,
     "CommitteeContribution":        202,
@@ -99,6 +101,16 @@ def parseArgs():
     parser_query_reports.add_argument('filer', type=int,
         help="OCPF ID to fetch reports of")
     parser_query_reports.add_argument('path',
+        help="Save path")
+
+    ## Get contributions
+    parser_query_contributions = subparsers.add_parser('query-contributions',
+        help="Query contributions"
+    )
+    parser_query_contributions.set_defaults(subcmd=query_contributions_hdlr)
+    parser_query_contributions.add_argument('filer', type=int,
+        help="OCPF ID to fetch contributions to")
+    parser_query_contributions.add_argument('path',
         help="Save path")
 
     ## Filer filer subparser
@@ -348,12 +360,49 @@ def format_report_query_url(cpfid, start:dt.datetime, end:dt.datetime):
     )
 
 
+def format_contributions_query_url(cpfid, start:dt.datetime, end:dt.datetime):
+
+    return "https://api.ocpf.us/search/items?searchTypeCategory=A&startDate={start}&endDate={end}&pagesize=1000&startIndex=1&sortField=&sortDirection=DESC&cpfId={cpfid}&recordTypeId=-1&name=&cityCode=-1&state=&zipCode=&occupation=&employer=&minAmount=&maxAmount=&description=&withSummary=true".format(
+        cpfid=cpfid,
+        start=url_format_dt(start),
+        end=url_format_dt(end),
+    )
+
+
 def query_reports_hdlr(args):
     now = dt.datetime.now()
     then = now - dateutil.relativedelta.relativedelta(months=6)
-    url = format_report_query_url(args.filer, then, now)
+    url = query_reports_hdlr(args.filer, then, now)
     print_stderr(f"Fetching {url}")
     reports = fetch_json(url)
+    with open(args.path, 'w', encoding='utf8') as f:
+        print_stderr(f"Writting to {args.path}")
+        json.dump(reports, f, indent=4)
+
+    return 0
+
+
+def query_contributions_hdlr(args):
+    now = dt.datetime.now()
+    then = now - dateutil.relativedelta.relativedelta(years=1)
+    url = format_contributions_query_url(args.filer, then, now)
+    print_stderr(f"Fetching {url}")
+    reports = fetch_json(url)
+    try:
+        if reports:
+            ## Add things to the summary
+            if 'summary' not in reports:
+                reports['summary'] = {}
+
+            reports['summary']['start'] = then.strftime('%m/%d/%Y')
+            reports['summary']['end']   = now.strftime('%m/%d/%Y')
+            if 'items' in reports and reports['items']:
+                cpfid = reports['items'][0]['filerCpfId']
+                if all([cpfid == x['filerCpfId'] for x in reports['items']]):
+                    reports['summary']['filerCpfId'] = cpfid
+    except Exception as e:
+        print(f"Failed to update summary: {e}")
+
     with open(args.path, 'w', encoding='utf8') as f:
         print_stderr(f"Writting to {args.path}")
         json.dump(reports, f, indent=4)
