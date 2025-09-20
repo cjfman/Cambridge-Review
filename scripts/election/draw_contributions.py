@@ -217,7 +217,8 @@ def plotRecord(m, record, addr_map):
     angle = 1
     pin_args = { 'prefix': 'fa', 'color': 'green', 'icon': 'arrow-up' }
     icon = folium.Icon(**pin_args)
-    tooltip = "<br />".join([f"{x}: {record[x]}" for x in ('fullNameReverse', 'amount')])
+    tooltip_txt = "<br />".join([f"{x}: {record[x]}" for x in ('fullNameReverse', 'amount')])
+    tooltip = folium.map.Tooltip(tooltip_txt, style="font-size: 24px;", sticky=True)
     folium.Marker(coord, icon=icon, tooltip=tooltip).add_to(m)
 
 
@@ -236,7 +237,8 @@ def plotContributor(contributor, m):
     for c in contributor.contributions:
         lines.append(f" - {c.date} ${c.amount:.2f}")
 
-    tooltip = "<br />".join(lines)
+    tooltip_txt = "<br />".join(lines)
+    tooltip = folium.map.Tooltip(tooltip_txt, style="font-size: 1.5em;", sticky=False)
     angle = 1
     pin_args = { 'prefix': 'fa', 'color': 'green', 'icon': 'arrow-up' }
     icon = folium.Icon(**pin_args)
