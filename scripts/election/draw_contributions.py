@@ -5,6 +5,7 @@
 import argparse
 import json
 import math
+import random
 import os
 import sys
 
@@ -70,6 +71,23 @@ def size_scale(val, max_val, min_val=0, scale=None):
         val *= max_val / scale
 
     return min(max_val, max(min_val, val))
+
+
+def fuzzCoords(coord, length):
+    ## Calculate basic info
+    lon = coord[0]
+    lat = coord[1]
+    earth = 40008 * 1000 ## Earth circumference in meters
+    lat_circ = earth * math.cos(lat*2*math.pi/180)
+
+    ## Choose a direction and move the circle
+    angle = random.randint(0, 350)
+    radians = angle*2*math.pi/360
+    dy = length*math.sin(radians)
+    dx = length*math.cos(radians)
+    lat += dx*360/earth
+    lon += dy*360/lat_circ
+    return (lon, lat)
 
 
 def addressFromRecord(record):
@@ -293,9 +311,9 @@ def plotContributor(contributor, m):
     if VERBOSE:
         print(f"Plotting {contributor}")
 
+    coord = fuzzCoords(contributor.coord, 20)
     lines = [
         f"Name: {contributor.name}",
-        f"Address: {contributor.address}",
         f"Total: ${contributor.total:.2f}",
         'Contributions',
     ]
@@ -306,21 +324,16 @@ def plotContributor(contributor, m):
     tooltip = folium.map.Tooltip(tooltip_txt, style="font-size: 1.5em;", sticky=False)
     angle = 1
     pin_args = { 'prefix': 'fa', 'color': 'green', 'icon': 'arrow-up' }
-#    radius = size_scale(contributor.total, max_val=100, min_val=20, scale=1000)
-#    folium.Circle(contributor.coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4).add_to(m)
     radius = size_scale(contributor.total, max_val=20, min_val=2, scale=1000)
-    folium.CircleMarker(contributor.coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4, stroke_width=3).add_to(m)
+    folium.CircleMarker(coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4, stroke_width=3).add_to(m)
 
 
 def plotColocatedContributors(contributors, coord, addr, m):
     if VERBOSE:
         print(f"Plotting contributor group at {addr}")
 
-    lines = [
-        f"Address: {addr}",
-        "",
-    ]
-
+    coord = fuzzCoords(coord, 30)
+    lines = []
     total = 0
     for c in contributors:
         total += c.total
@@ -346,9 +359,6 @@ def plotColocatedContributors(contributors, coord, addr, m):
 
 
 def makeMap(contributors, m, out_file, title=None, subtitle=None):
-#    for c in sorted(contributors, reverse=True):
-#        plotContributor(c, m)
-
     grouped = defaultdict(list)
     for c in contributors:
         grouped[c.address].append(c)
@@ -362,7 +372,7 @@ def makeMap(contributors, m, out_file, title=None, subtitle=None):
 
     ## Load template
     template = None
-    with open("templates/map_w_legend.html") as f:
+    with open("templates/map_contributions.html") as f:
         template = f.read()
 
     if template is not None:
