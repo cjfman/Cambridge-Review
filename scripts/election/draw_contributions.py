@@ -4,6 +4,7 @@
 
 import argparse
 import json
+import math
 import os
 import sys
 
@@ -50,6 +51,16 @@ def parseArgs():
         VERBOSE = True
 
     return args
+
+
+def size_scale(val, max_val, min_val=0, scale=None):
+    scale = math.log(1 + scale)
+    val = math.log(1 + val)
+    if scale:
+        val *= max_val / scale
+
+    print(val)
+    return min(max_val, max(min_val, val))
 
 
 def addressFromRecord(record):
@@ -241,8 +252,10 @@ def plotContributor(contributor, m):
     tooltip = folium.map.Tooltip(tooltip_txt, style="font-size: 1.5em;", sticky=False)
     angle = 1
     pin_args = { 'prefix': 'fa', 'color': 'green', 'icon': 'arrow-up' }
-    icon = folium.Icon(**pin_args)
-    folium.Marker(contributor.coord, icon=icon, tooltip=tooltip).add_to(m)
+#    icon = folium.Icon(**pin_args)
+#    folium.Marker(contributor.coord, icon=icon, tooltip=tooltip).add_to(m)
+    radius = size_scale(contributor.total, max_val=100, min_val=20, scale=1000)
+    folium.vector_layers.Circle(contributor.coord, radius=radius, tooltip=tooltip).add_to(m)
 
 
 def main(args):
