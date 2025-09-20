@@ -340,8 +340,13 @@ def makeContributionBox(title, in_city, in_state, total, cbox_h=20, cbox_w=400):
     els = []
 
     ## Title
-    els.append(Text(f"{title}: ${total:.2f}", x=x_off, y=y_off))
+    title = f"{title}: ${total:.2f}"
+    if not total:
+        return f"<p>{title}</p>"
+
+    els.append(Text(title, x=x_off, y=y_off))
     y_off += text_h
+
 
     ## Boxes
     headers = {
@@ -486,10 +491,11 @@ def makeMap(contributors, m, title=None, subtitle=None):
         template = template.replace("{{DISCLAIMER}}", DISCLAIMER)
         template = template.replace("{{CONTRIBUTIONS}}", contr_box)
         if title:
-            template = template.replace("{{TITLE}}", f'<h2>{title}</h2><p>{subtitle or ''}</p>')
+            template = template.replace("{{TITLE}}", f"<h2>{title}</h2><p>{subtitle or ''}</p>")
         macro = MacroElement()
         macro._template = Template(template) ## pylint: disable=protected-access
         m.get_root().add_child(macro)
+
 
 def getFiler(cpfid):
     try:
@@ -540,10 +546,12 @@ def main(args):
         #makeLayer(**STATE_BOUNDARY).add_to(m)
 
         ## Make bounds and plot map
-        all_coords = [tuple(c.coord) for c in contributors]
-        sw = min(all_coords)
-        ne = max(all_coords)
-        m.fit_bounds([sw, ne])
+        if contributors:
+            all_coords = [tuple(c.coord) for c in contributors]
+            sw = min(all_coords)
+            ne = max(all_coords)
+            m.fit_bounds([sw, ne])
+
         m.save(args.out_file)
         print(f"Wrote to {args.out_file}")
     finally:

@@ -3,6 +3,14 @@
 <head>
     
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -17,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_922139b2f41233e73872e88ea15b87f8 {
+                #map_c3452a2bee7c520aab9272b891a80892 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -26,35 +34,12 @@
                 }
                 .leaflet-container { font-size: 1rem; }
             </style>
-
-            <style>html, body {
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-            </style>
-
-            <style>#map {
-                position:absolute;
-                top:0;
-                bottom:0;
-                right:0;
-                left:0;
-                }
-            </style>
-
-            <script>
-                L_NO_TOUCH = false;
-                L_DISABLE_3D = false;
-            </script>
-
         
 </head>
 <body>
     
     
-            <div class="folium-map" id="map_922139b2f41233e73872e88ea15b87f8" ></div>
+            <div class="folium-map" id="map_c3452a2bee7c520aab9272b891a80892" ></div>
         
     
 
@@ -179,17 +164,14 @@
 <script>
     
     
-            var map_922139b2f41233e73872e88ea15b87f8 = L.map(
-                "map_922139b2f41233e73872e88ea15b87f8",
+            var map_c3452a2bee7c520aab9272b891a80892 = L.map(
+                "map_c3452a2bee7c520aab9272b891a80892",
                 {
                     center: [42.378, -71.11],
                     crs: L.CRS.EPSG3857,
-                    ...{
-  "zoom": 14,
-  "zoomControl": true,
-  "preferCanvas": false,
-}
-
+                    zoom: 14,
+                    zoomControl: true,
+                    preferCanvas: false,
                 }
             );
 
@@ -197,1947 +179,1696 @@
 
         
     
-            var tile_layer_f004670c12fbc4ada4f71ee18e5384d9 = L.tileLayer(
+            var tile_layer_8c00b2d997814cc6fe48ad7c11bbde80 = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-                {
-  "minZoom": 0,
-  "maxZoom": 20,
-  "maxNativeZoom": 20,
-  "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
-  "subdomains": "abcd",
-  "detectRetina": false,
-  "tms": false,
-  "opacity": 1,
-}
-
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
             );
         
     
-            tile_layer_f004670c12fbc4ada4f71ee18e5384d9.addTo(map_922139b2f41233e73872e88ea15b87f8);
+            tile_layer_8c00b2d997814cc6fe48ad7c11bbde80.addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            var circle_marker_dab52ab52678bb8b6f301c729ac1680f = L.circleMarker(
-                [42.36497827340387, -71.30719133197555],
+            var circle_marker_1aa36a835a14d187c3e50962268d249a = L.circleMarker(
+                [42.36485327949562, -71.3072959888934],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_dab52ab52678bb8b6f301c729ac1680f.bindTooltip(
+            circle_marker_1aa36a835a14d187c3e50962268d249a.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Esposito, Catherine<br />Total: $2000.00<br />Contributions<br /> - 9/18/2025 $2000.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_a3777bd9353a1eff582c999d3aa0c66f = L.circleMarker(
-                [42.36152733060824, -71.10992591365773],
+            var circle_marker_7f9b0d5c939cb67bf20fbc97a1bffbba = L.circleMarker(
+                [42.36166933035782, -71.11045392731202],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_a3777bd9353a1eff582c999d3aa0c66f.bindTooltip(
+            circle_marker_7f9b0d5c939cb67bf20fbc97a1bffbba.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Gould, Sandy<br />Total: $1100.00<br />Contributions<br /> - 8/12/2025 $1000.00<br /> - 7/12/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_5d02bdb1725659591117e825ad5aa851 = L.circleMarker(
-                [42.44600327779899, -71.13027916532913],
+            var circle_marker_6824056790cde63ac88d386c867e8ef9 = L.circleMarker(
+                [42.44598434359735, -71.13030312757702],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_5d02bdb1725659591117e825ad5aa851.bindTooltip(
+            circle_marker_6824056790cde63ac88d386c867e8ef9.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Moriarty, John<br />Total: $1000.00<br />Contributions<br /> - 9/18/2025 $1000.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_4393f33392117690b874e12d8087488b = L.circleMarker(
-                [42.214300576508364, -71.43970218368811],
+            var circle_marker_68885a41bee20d4e1ae331a8efe460b5 = L.circleMarker(
+                [42.21408356175073, -71.43996362097991],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_4393f33392117690b874e12d8087488b.bindTooltip(
+            circle_marker_68885a41bee20d4e1ae331a8efe460b5.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Young, Peter<br />Total: $1000.00<br />Contributions<br /> - 9/18/2025 $1000.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_0b74b392839ccd8ce90d40c49cf17e40 = L.circleMarker(
-                [42.44271976130486, -71.19575113077659],
+            var circle_marker_57150f871d66e37da7e91fc163092909 = L.circleMarker(
+                [42.44308096986012, -71.19605798843588],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_0b74b392839ccd8ce90d40c49cf17e40.bindTooltip(
+            circle_marker_57150f871d66e37da7e91fc163092909.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: DiGiovanni, Fiorella<br />Total: $1000.00<br />Contributions<br /> - 9/3/2025 $1000.00<br />---<br />Name: Digiovanni, Matthew<br />Total: $1000.00<br />Contributions<br /> - 9/3/2025 $1000.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_361fd16d4e1501e2d15518d6e4ddd90e = L.circleMarker(
-                [42.374235092105245, -71.12031904243526],
+            var circle_marker_33532d4d05d1d2b4d48883fcbdefebd7 = L.circleMarker(
+                [42.37426388025587, -71.12060823197555],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_361fd16d4e1501e2d15518d6e4ddd90e.bindTooltip(
+            circle_marker_33532d4d05d1d2b4d48883fcbdefebd7.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: DiGiovanni, John<br />Total: $1000.00<br />Contributions<br /> - 7/3/2025 $1000.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_b9b92e7af748c0fd18e1bccf6280c857 = L.circleMarker(
-                [42.383238019943875, -71.07109180898108],
+            var circle_marker_a9a1fc8445b6053e24f4613e4b7b6460 = L.circleMarker(
+                [42.383750253275906, -71.07104215189355],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_b9b92e7af748c0fd18e1bccf6280c857.bindTooltip(
+            circle_marker_a9a1fc8445b6053e24f4613e4b7b6460.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Massachusetts Brick Layers People's Committee<br />Total: $1000.00<br />Contributions<br /> - 5/2/2025 $500.00<br /> - 10/4/2024 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_ebb8ca5583755f976a55f95698c5fbda = L.circleMarker(
-                [41.38960334113758, -70.70541021152998],
+            var circle_marker_79c6f708a704692e00f0cef60f298231 = L.circleMarker(
+                [41.38906191058327, -70.70569566716874],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_ebb8ca5583755f976a55f95698c5fbda.bindTooltip(
+            circle_marker_79c6f708a704692e00f0cef60f298231.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Green, Robert<br />Total: $1000.00<br />Contributions<br /> - 10/7/2024 $1000.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_72f83dbe81d222e8942e610a0cef4fa5 = L.circleMarker(
-                [42.35983385413509, -71.10573492971594],
+            var circle_marker_af2f196e6aeb7102c3b40c5b915583bc = L.circleMarker(
+                [42.359939408862836, -71.106127380103],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.35474962025225, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_72f83dbe81d222e8942e610a0cef4fa5.bindTooltip(
+            circle_marker_af2f196e6aeb7102c3b40c5b915583bc.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Halperin, Daviid<br />Total: $800.00<br />Contributions<br /> - 9/3/2025 $300.00<br /> - 7/3/2025 $250.00<br /> - 10/14/2024 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_901ebe7054027146a438262aec777268 = L.circleMarker(
-                [42.39164699506708, -71.12701853387418],
+            var circle_marker_93b3d5fbf28b06f45c0bc587e380fc81 = L.circleMarker(
+                [42.39190344347019, -71.12696038745212],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.16815942458572, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_901ebe7054027146a438262aec777268.bindTooltip(
+            circle_marker_93b3d5fbf28b06f45c0bc587e380fc81.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: De Lima, Elizabeth<br />Total: $750.00<br />Contributions<br /> - 9/18/2025 $750.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_85947b0c5d20494b242e7053933dab8b = L.circleMarker(
-                [42.235911680061236, -71.15676459414935],
+            var circle_marker_c2b5c2ad1c259a155b2493157976ccd3 = L.circleMarker(
+                [42.235239587437846, -71.15682989999999],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_85947b0c5d20494b242e7053933dab8b.bindTooltip(
+            circle_marker_c2b5c2ad1c259a155b2493157976ccd3.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Coughlin, Robert<br />Total: $500.00<br />Contributions<br /> - 9/18/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_6877d0d5a5cfd789c5ded3d21d2f171b = L.circleMarker(
-                [42.35849984356145, -71.11189693999837],
+            var circle_marker_466aba90999a19b8d1a298cd90604d09 = L.circleMarker(
+                [42.357975463508566, -71.11201578847],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_6877d0d5a5cfd789c5ded3d21d2f171b.bindTooltip(
+            circle_marker_466aba90999a19b8d1a298cd90604d09.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Keane, Maurice<br />Total: $500.00<br />Contributions<br /> - 9/18/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_5470abbb866fae274704d3d05d08b332 = L.circleMarker(
-                [42.239422288693824, -70.8959469274606],
+            var circle_marker_20d2b847616b0bae8bb451c3d372a18b = L.circleMarker(
+                [42.23916206325156, -70.8956755790201],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_5470abbb866fae274704d3d05d08b332.bindTooltip(
+            circle_marker_20d2b847616b0bae8bb451c3d372a18b.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Smith, Eric<br />Total: $500.00<br />Contributions<br /> - 9/18/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_d1df08cd5db6c037fb5b51061398dfc0 = L.circleMarker(
-                [42.4626706206808, -71.35012576532911],
+            var circle_marker_d657219e2b9fca4df38399cb833df9fb = L.circleMarker(
+                [42.46311312018781, -71.35004449989908],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_d1df08cd5db6c037fb5b51061398dfc0.bindTooltip(
+            circle_marker_d657219e2b9fca4df38399cb833df9fb.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Wiener, David<br />Total: $500.00<br />Contributions<br /> - 9/18/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_c93b7c62a861e2d9a852130db987f5b6 = L.circleMarker(
-                [42.29801683914517, -71.05415031156411],
+            var circle_marker_7c9495f52c96d5e9ec3f7f6facdfa5dc = L.circleMarker(
+                [42.298174353240135, -71.0541711133869],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_c93b7c62a861e2d9a852130db987f5b6.bindTooltip(
+            circle_marker_7c9495f52c96d5e9ec3f7f6facdfa5dc.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Elevator Constructors Local 4 People's Cttee<br />Total: $500.00<br />Contributions<br /> - 9/3/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_1dcd6368444bada28f706407b687ed25 = L.circleMarker(
-                [42.38020895749488, -71.135080580103],
+            var circle_marker_2a6feca639c607ef8cb815d5ba8aaace = L.circleMarker(
+                [42.38022916092012, -71.13462300461448],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_1dcd6368444bada28f706407b687ed25.bindTooltip(
+            circle_marker_2a6feca639c607ef8cb815d5ba8aaace.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Sarkisian, Ellen<br />Total: $500.00<br />Contributions<br /> - 9/3/2025 $250.00<br /> - 7/3/2025 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_af00e61dd1c44a6ae22d8dee094f17ef = L.circleMarker(
-                [42.37819098128808, -71.14353522252745],
+            var circle_marker_ab8aa1126b6eabb80082c432760b0f3f = L.circleMarker(
+                [42.37785807469692, -71.14342343467088],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_af00e61dd1c44a6ae22d8dee094f17ef.bindTooltip(
+            circle_marker_ab8aa1126b6eabb80082c432760b0f3f.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Schatzow, Emily<br />Total: $500.00<br />Contributions<br /> - 8/12/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_f5ef2c778d6fdcc6e3c392c60e0802bd = L.circleMarker(
-                [42.40202289453966, -71.08187026802445],
+            var circle_marker_44a9fa8c4286ae79f10f8afa914c869a = L.circleMarker(
+                [42.40159860859594, -71.08224901631189],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_f5ef2c778d6fdcc6e3c392c60e0802bd.bindTooltip(
+            circle_marker_44a9fa8c4286ae79f10f8afa914c869a.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Unite Here Local 26<br />Total: $500.00<br />Contributions<br /> - 8/8/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_8b084f3facaafd43ccb72db3bf8ade8b = L.circleMarker(
-                [42.38339374460996, -71.07287383048181],
+            var circle_marker_5abdc8bfa6dc8411725070566688b801 = L.circleMarker(
+                [42.383890014000464, -71.07261447634319],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_8b084f3facaafd43ccb72db3bf8ade8b.bindTooltip(
+            circle_marker_5abdc8bfa6dc8411725070566688b801.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Chapter 25 Associated The Nat'l Drive Pac of The Int'l Brotherhood Of Teamsters<br />Total: $500.00<br />Contributions<br /> - 8/6/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_e1e60133a977f32df1b0e8eba0aabdf3 = L.circleMarker(
-                [42.36260074479384, -71.11035356000161],
+            var circle_marker_8731db1faffaaeace693d241eae95132 = L.circleMarker(
+                [42.36278068310275, -71.11069690795198],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_e1e60133a977f32df1b0e8eba0aabdf3.bindTooltip(
+            circle_marker_8731db1faffaaeace693d241eae95132.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Schmidt, Christopher<br />Total: $500.00<br />Contributions<br /> - 7/29/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_d9c081623fae189bb481b1c0007b8abe = L.circleMarker(
-                [42.3718432427208, -71.09834146915951],
+            var circle_marker_9839432416bec086bcc957e64d11382d = L.circleMarker(
+                [42.37130014202879, -71.09844846000162],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_d9c081623fae189bb481b1c0007b8abe.bindTooltip(
+            circle_marker_9839432416bec086bcc957e64d11382d.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Franklin, Charles<br />Total: $500.00<br />Contributions<br /> - 7/12/2025 $250.00<br /> - 10/14/2024 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_d61f1f8519750c2e8d8938b0f01c39f7 = L.circleMarker(
-                [42.3743256226097, -71.10474893654232],
+            var circle_marker_1f2b61ac2e9483a78c24a2c69925db8e = L.circleMarker(
+                [42.37435391790832, -71.10457909187286],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_d61f1f8519750c2e8d8938b0f01c39f7.bindTooltip(
+            circle_marker_1f2b61ac2e9483a78c24a2c69925db8e.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Galluccio, Anthony<br />Total: $500.00<br />Contributions<br /> - 7/12/2025 $250.00<br /> - 10/14/2024 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_b4edec429376882492989ad2cd8fcc0a = L.circleMarker(
-                [42.32386644624891, -71.0627676203594],
+            var circle_marker_5f0bdcd9b425387b18db1df0ce9d76dc = L.circleMarker(
+                [42.32380581582921, -71.06279752586732],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_b4edec429376882492989ad2cd8fcc0a.bindTooltip(
+            circle_marker_5f0bdcd9b425387b18db1df0ce9d76dc.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Pipefitters Local 537<br />Total: $500.00<br />Contributions<br /> - 7/3/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_67009081ee00d0d1e8150d2a224eb532 = L.circleMarker(
-                [42.36877897850311, -71.10830846802445],
+            var circle_marker_bae948e91e63b764e615418044a83f46 = L.circleMarker(
+                [42.36880224170394, -71.1083517820951],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_67009081ee00d0d1e8150d2a224eb532.bindTooltip(
+            circle_marker_bae948e91e63b764e615418044a83f46.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Rafferty, James<br />Total: $500.00<br />Contributions<br /> - 7/3/2025 $250.00<br /> - 10/14/2024 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_e64e66720d526aa4292294b552a541a6 = L.circleMarker(
-                [42.36909075025416, -71.09425039693424],
+            var circle_marker_e0cd6bb0a8a775a941b26107e13e87a9 = L.circleMarker(
+                [42.36849532532897, -71.09398964810644],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_e64e66720d526aa4292294b552a541a6.bindTooltip(
+            circle_marker_e0cd6bb0a8a775a941b26107e13e87a9.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Smith, Quentin<br />Total: $500.00<br />Contributions<br /> - 7/3/2025 $250.00<br /> - 10/14/2024 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_794b3ff342a94314124bafe27c304b7f = L.circleMarker(
-                [42.27280556911825, -71.0650308796406],
+            var circle_marker_33c1e6da44cef532fbc6439b552242bf = L.circleMarker(
+                [42.27272610245978, -71.06510055040857],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_794b3ff342a94314124bafe27c304b7f.bindTooltip(
+            circle_marker_33c1e6da44cef532fbc6439b552242bf.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Sheet Metal Workers Local Union 17 People's Ctte<br />Total: $500.00<br />Contributions<br /> - 6/16/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_5c7c4204a225726006236f2f75051572 = L.circleMarker(
-                [42.3230954552898, -71.0631470269733],
+            var circle_marker_6dc9079d5bd1339d93b3ce7d31dbcc08 = L.circleMarker(
+                [42.322573089695226, -71.0632730909103],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_5c7c4204a225726006236f2f75051572.bindTooltip(
+            circle_marker_6dc9079d5bd1339d93b3ce7d31dbcc08.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Plumbers and Gasfitters Local #12<br />Total: $500.00<br />Contributions<br /> - 5/20/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_6a81de7aefbafeb82000e21f797c490d = L.circleMarker(
-                [42.303315578999644, -71.0530047308405],
+            var circle_marker_08234e8d3c050411e1f5fe1f59ce7439 = L.circleMarker(
+                [42.3032095815001, -71.05287086716875],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_6a81de7aefbafeb82000e21f797c490d.bindTooltip(
+            circle_marker_08234e8d3c050411e1f5fe1f59ce7439.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: IBEW #103<br />Total: $500.00<br />Contributions<br /> - 5/7/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_4cbadee498ba17d7e06aa6770050e5b9 = L.circleMarker(
-                [42.22107436950113, -71.4752917730267],
+            var circle_marker_fbc1110074e310cb25277f4fac538bab = L.circleMarker(
+                [42.22152976978326, -71.47563070795198],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_4cbadee498ba17d7e06aa6770050e5b9.bindTooltip(
+            circle_marker_fbc1110074e310cb25277f4fac538bab.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: MA & Northern NE Laborers' District Council Pol Action Comm<br />Total: $500.00<br />Contributions<br /> - 5/2/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_a7aabf38e7d2657c991cf3953517bcd5 = L.circleMarker(
-                [42.333530683698875, -71.05456862493153],
+            var circle_marker_d6c8c7ddb4e8805a76a080ba77236d29 = L.circleMarker(
+                [42.333406692239365, -71.0542997796406],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_a7aabf38e7d2657c991cf3953517bcd5.bindTooltip(
+            circle_marker_d6c8c7ddb4e8805a76a080ba77236d29.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Ironworkers Union Local 7 Pol Action Comm<br />Total: $500.00<br />Contributions<br /> - 4/7/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_4da8183330098063d07209875e358dca = L.circleMarker(
-                [42.389775673835246, -71.13347833896762],
+            var circle_marker_63b73db0c1fe3ad841457e824c2cb69f = L.circleMarker(
+                [42.38983340423049, -71.13348972252744],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_4da8183330098063d07209875e358dca.bindTooltip(
+            circle_marker_63b73db0c1fe3ad841457e824c2cb69f.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Haber, Jonathan<br />Total: $500.00<br />Contributions<br /> - 3/12/2025 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_37a7de3ab2044970ef2fa72d1cb91581 = L.circleMarker(
-                [42.30256280724724, -71.05204098295832],
+            var circle_marker_2f279cccb81d696144a43f906046f346 = L.circleMarker(
+                [42.30212258513527, -71.05181104934601],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.996314240874067, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_37a7de3ab2044970ef2fa72d1cb91581.bindTooltip(
+            circle_marker_2f279cccb81d696144a43f906046f346.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Heat & Frost Insulators Local 8<br />Total: $500.00<br />Contributions<br /> - 10/7/2024 $500.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_98a3e01d6f7122c1c2e60545df3cc6f0 = L.circleMarker(
-                [42.387604866358515, -71.12634452493153],
+            var circle_marker_181945f44697834e334ec08933ab7e64 = L.circleMarker(
+                [42.388093789595295, -71.1260478763432],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.69195038677703, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_98a3e01d6f7122c1c2e60545df3cc6f0.bindTooltip(
+            circle_marker_181945f44697834e334ec08933ab7e64.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Boswell, Mark<br />Total: $450.00<br />Contributions<br /> - 9/3/2025 $200.00<br /> - 7/22/2025 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_1ef9b9b5df356da2ccdc006091c8bc2c = L.circleMarker(
-                [42.36456394198387, -71.10858168661309],
+            var circle_marker_6a38ef36e6af84fa1d1c8bd9d17ec08f = L.circleMarker(
+                [42.364632227332336, -71.10806821365773],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.69195038677703, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_1ef9b9b5df356da2ccdc006091c8bc2c.bindTooltip(
+            circle_marker_6a38ef36e6af84fa1d1c8bd9d17ec08f.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Spears, Artis<br />Total: $450.00<br />Contributions<br /> - 7/3/2025 $250.00<br /> - 10/22/2024 $200.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_53f3f9eb5a02ed06ad950cb8666bf07b = L.circleMarker(
-                [42.33018296183968, -71.19814887686516],
+            var circle_marker_c1561a2d532d208312cc364b46939d51 = L.circleMarker(
+                [42.32958355460642, -71.19840137630942],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.351785144415494, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_53f3f9eb5a02ed06ad950cb8666bf07b.bindTooltip(
+            circle_marker_c1561a2d532d208312cc364b46939d51.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Grill, Michael<br />Total: $400.00<br />Contributions<br /> - 9/18/2025 $150.00<br /> - 10/22/2024 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_11373ef03e9ccdf921bcd13989d9c8e1 = L.circleMarker(
-                [42.35784723159935, -71.06133973372565],
+            var circle_marker_7e5bd24c7b6d36ea529bbdd838797309 = L.circleMarker(
+                [42.35787568576961, -71.06185414782354],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.966259219427013, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_11373ef03e9ccdf921bcd13989d9c8e1.bindTooltip(
+            circle_marker_7e5bd24c7b6d36ea529bbdd838797309.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: MA Pace Social Workers Political Action Committee<br />Total: $350.00<br />Contributions<br /> - 8/12/2025 $350.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_562b437290d200dc52ced9b2b99898b9 = L.circleMarker(
-                [42.36897415558362, -71.08254760422582],
+            var circle_marker_bd3bbc1ed384e87e5d46d52ac980bdaf = L.circleMarker(
+                [42.36845248350287, -71.08272249187289],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.752360059710472, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_562b437290d200dc52ced9b2b99898b9.bindTooltip(
+            circle_marker_bd3bbc1ed384e87e5d46d52ac980bdaf.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Saif, Justin<br />Total: $325.00<br />Contributions<br /> - 7/22/2025 $200.00<br /> - 10/14/2024 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_bcfc7fb7765620eeaa7228b88f98669c = L.circleMarker(
-                [42.46696131459123, -71.22898192731203],
+            var circle_marker_e2f65f6ab60daf9a21954b8d2658a57a = L.circleMarker(
+                [42.46669931138521, -71.22874711704168],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.752360059710472, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_bcfc7fb7765620eeaa7228b88f98669c.bindTooltip(
+            circle_marker_e2f65f6ab60daf9a21954b8d2658a57a.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Culhane, Bonnie<br />Total: $325.00<br />Contributions<br /> - 7/3/2025 $100.00<br /> - 7/3/2025 $125.00<br /> - 10/14/2024 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_41a89da6d2e467ea257710b6e7e901d5 = L.circleMarker(
-                [42.36628198264172, -71.11027167542464],
+            var circle_marker_47b18dd33fd13613db40be10c4678dd7 = L.circleMarker(
+                [42.3669496730089, -71.1103364721174],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.521386116745486, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_41a89da6d2e467ea257710b6e7e901d5.bindTooltip(
+            circle_marker_47b18dd33fd13613db40be10c4678dd7.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Diaz, Junot<br />Total: $300.00<br />Contributions<br /> - 9/3/2025 $300.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_8ae94206b93e427c78da504bf6083a62 = L.circleMarker(
-                [41.47727169855259, -81.5773177125479],
+            var circle_marker_090ee42db0d29241509b69b49cf7e77d = L.circleMarker(
+                [41.47682307806893, -81.57760190720464],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.521386116745486, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_8ae94206b93e427c78da504bf6083a62.bindTooltip(
+            circle_marker_090ee42db0d29241509b69b49cf7e77d.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Durbin, Wilford<br />Total: $300.00<br />Contributions<br /> - 9/3/2025 $300.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_689733206f6bcdec58ba30231e0e068f = L.circleMarker(
-                [42.28747379463021, -71.24200706802444],
+            var circle_marker_ec5e86802925146d373b799ea94de8de = L.circleMarker(
+                [42.28744510059632, -71.24229625756473],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.521386116745486, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_689733206f6bcdec58ba30231e0e068f.bindTooltip(
+            circle_marker_ec5e86802925146d373b799ea94de8de.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Holmquist, Kara<br />Total: $300.00<br />Contributions<br /> - 7/12/2025 $200.00<br /> - 10/7/2024 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_c185171a1a32d5fddabf02f0958a55d5 = L.circleMarker(
-                [42.201887036916126, -71.30554390585064],
+            var circle_marker_a359c60f34bc1ab8d5669b21ea379a16 = L.circleMarker(
+                [42.20192857119238, -71.30533555040857],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.521386116745486, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_c185171a1a32d5fddabf02f0958a55d5.bindTooltip(
+            circle_marker_a359c60f34bc1ab8d5669b21ea379a16.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Modest, Peter<br />Total: $300.00<br />Contributions<br /> - 7/12/2025 $300.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_a59d5534a6889d6cd6b58881f3c44b04 = L.circleMarker(
-                [42.359491766289764, -71.11065922885977],
+            var circle_marker_1a1128574656c2d4ddb5dc786ca61100 = L.circleMarker(
+                [42.35950079200944, -71.11054259279535],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.270373012933106, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_a59d5534a6889d6cd6b58881f3c44b04.bindTooltip(
+            circle_marker_1a1128574656c2d4ddb5dc786ca61100.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Downing, Robert<br />Total: $275.00<br />Contributions<br /> - 7/12/2025 $125.00<br /> - 10/14/2024 $150.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_9c933841a6721c1b734967ef0473cd1f = L.circleMarker(
-                [42.378527880833445, -71.11146141843301],
+            var circle_marker_56ac42e1bb6a56be9c9e616596addf63 = L.circleMarker(
+                [42.37884410396321, -71.11185375292433],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.995510379598255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_9c933841a6721c1b734967ef0473cd1f.bindTooltip(
+            circle_marker_56ac42e1bb6a56be9c9e616596addf63.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Burke, Brian<br />Total: $250.00<br />Contributions<br /> - 8/12/2025 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_1757322d698289a810ba06776ef6e13e = L.circleMarker(
-                [42.37067052622421, -71.09872525507566],
+            var circle_marker_5cea4bc9c2a6140532af93bb1163a99f = L.circleMarker(
+                [42.37073918288499, -71.09874081041717],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.995510379598255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_1757322d698289a810ba06776ef6e13e.bindTooltip(
+            circle_marker_5cea4bc9c2a6140532af93bb1163a99f.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Eckles, Dean<br />Total: $250.00<br />Contributions<br /> - 8/12/2025 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_ca29a18a459b24dcb175aabc44bfd898 = L.circleMarker(
-                [42.36010541766575, -71.11160262586732],
+            var circle_marker_ec2c892f7dcdc7c7cfa4da7f7e0e0e3d = L.circleMarker(
+                [42.359622921684775, -71.11142072463973],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.995510379598255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_ca29a18a459b24dcb175aabc44bfd898.bindTooltip(
+            circle_marker_ec2c892f7dcdc7c7cfa4da7f7e0e0e3d.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Stern, Randy<br />Total: $250.00<br />Contributions<br /> - 8/12/2025 $75.00<br /> - 12/29/2024 $75.00<br /> - 10/22/2024 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_75c3fa558f082cccfb8e51fd6d7f4543 = L.circleMarker(
-                [42.385675859083385, -71.52332984492432],
+            var circle_marker_d281ac24f8b53aa72c20291129b12a09 = L.circleMarker(
+                [42.385337147627794, -71.52321495189355],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.995510379598255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_75c3fa558f082cccfb8e51fd6d7f4543.bindTooltip(
+            circle_marker_d281ac24f8b53aa72c20291129b12a09.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Massachusetts Voters for Animals Political Action Committee<br />Total: $250.00<br />Contributions<br /> - 8/8/2025 $150.00<br /> - 10/4/2024 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_4f259af69192da90aee3a2d9b66ef38f = L.circleMarker(
-                [42.32689854762077, -71.2771963133869],
+            var circle_marker_dade9aa401f42d1fe6b398206eafdd02 = L.circleMarker(
+                [42.327362695287015, -71.27738407536026],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.995510379598255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_4f259af69192da90aee3a2d9b66ef38f.bindTooltip(
+            circle_marker_dade9aa401f42d1fe6b398206eafdd02.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Barron, Kenneth<br />Total: $250.00<br />Contributions<br /> - 7/18/2025 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_76db0b0b8770d398c42f65bc21225ed5 = L.circleMarker(
-                [42.4430541892414, -71.68651503896763],
+            var circle_marker_db0718c5d677724f6023466322a2ef05 = L.circleMarker(
+                [42.44283595294155, -71.68619907536026],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.995510379598255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_76db0b0b8770d398c42f65bc21225ed5.bindTooltip(
+            circle_marker_db0718c5d677724f6023466322a2ef05.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Santos, Paula<br />Total: $250.00<br />Contributions<br /> - 7/12/2025 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_8e9049c6834dc56b23afcf16535d94ae = L.circleMarker(
-                [42.35187734962319, -71.2243211104172],
+            var circle_marker_cf6aa5dadac97c44ee4f19567e316873 = L.circleMarker(
+                [42.35226951162713, -71.22440151747094],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.995510379598255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_8e9049c6834dc56b23afcf16535d94ae.bindTooltip(
+            circle_marker_cf6aa5dadac97c44ee4f19567e316873.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Dickey, Robert<br />Total: $250.00<br />Contributions<br /> - 7/3/2025 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_ba028f3f240791016d23335ff579c5f9 = L.circleMarker(
-                [42.36075889511755, -71.10664566345767],
+            var circle_marker_eec56a86187bf639d1f21ad2951a7c30 = L.circleMarker(
+                [42.36078272213121, -71.10661304810644],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.995510379598255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_ba028f3f240791016d23335ff579c5f9.bindTooltip(
+            circle_marker_eec56a86187bf639d1f21ad2951a7c30.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Farrar, Andrew<br />Total: $250.00<br />Contributions<br /> - 7/3/2025 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_e16b0630265cd85be8208d9523e54950 = L.circleMarker(
-                [42.22982600193404, -71.22282302731203],
+            var circle_marker_170eeb3a2fb45d04e2032f779fcdc4fb = L.circleMarker(
+                [42.22996172892743, -71.22229415507567],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.995510379598255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_e16b0630265cd85be8208d9523e54950.bindTooltip(
+            circle_marker_170eeb3a2fb45d04e2032f779fcdc4fb.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Zinno, Salvatore<br />Total: $250.00<br />Contributions<br /> - 10/22/2024 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_1656ae526a1dfb0175a459d1dddb8e4f = L.circleMarker(
-                [42.39626713593053, -71.1325337600016],
+            var circle_marker_e71a43ce46b2d3016b878cc8df44668d = L.circleMarker(
+                [42.396761600738984, -71.1328618888934],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.995510379598255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_1656ae526a1dfb0175a459d1dddb8e4f.bindTooltip(
+            circle_marker_e71a43ce46b2d3016b878cc8df44668d.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Ditrani, Leslie<br />Total: $250.00<br />Contributions<br /> - 10/7/2024 $250.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_34f1f6a1d5c817aff253b6d69178a537 = L.circleMarker(
-                [42.569986345299554, -71.67640685181956],
+            var circle_marker_b49364c9c246892f532e78ef04163104 = L.circleMarker(
+                [42.570398223634825, -71.67646809948228],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.691785777377255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_34f1f6a1d5c817aff253b6d69178a537.bindTooltip(
+            circle_marker_b49364c9c246892f532e78ef04163104.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Fair, David<br />Total: $225.00<br />Contributions<br /> - 9/3/2025 $100.00<br /> - 10/7/2024 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_ef0ee2e89fc67ab85e0c8c0999e2e54d = L.circleMarker(
-                [42.356523069363135, -71.10876917542464],
+            var circle_marker_973387ab89ea923a0840953c313d3d07 = L.circleMarker(
+                [42.35682587433009, -71.10857881156412],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.691785777377255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_ef0ee2e89fc67ab85e0c8c0999e2e54d.bindTooltip(
+            circle_marker_973387ab89ea923a0840953c313d3d07.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Codd, Edward<br />Total: $225.00<br />Contributions<br /> - 8/12/2025 $150.00<br /> - 10/14/2024 $75.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_e3b046d24479ac3f6d935e0d03c3961e = L.circleMarker(
-                [42.35903667428416, -71.11113227902008],
+            var circle_marker_9e01eb4ada71d85268805f3b7a7949a1 = L.circleMarker(
+                [42.35971932571584, -71.11113227902008],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.691785777377255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_e3b046d24479ac3f6d935e0d03c3961e.bindTooltip(
+            circle_marker_9e01eb4ada71d85268805f3b7a7949a1.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Shetterley, John<br />Total: $225.00<br />Contributions<br /> - 7/3/2025 $125.00<br /> - 10/14/2024 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_7d333b025240526e4061a1a1f79e39b7 = L.circleMarker(
-                [42.38647114007828, -71.12015737279947],
+            var circle_marker_641df09cbe0146934ee9fc699a94c3de = L.circleMarker(
+                [42.38663159638327, -71.1203815887925],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.352419003022499, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_7d333b025240526e4061a1a1f79e39b7.bindTooltip(
+            circle_marker_641df09cbe0146934ee9fc699a94c3de.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Harris, William<br />Total: $200.00<br />Contributions<br /> - 9/18/2025 $200.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_2ef81e1571e02d4eeb02f1862b2c85fa = L.circleMarker(
-                [42.48578970491318, -70.88333831934521],
+            var circle_marker_1cfb754d851a30580c3f1e820ceb1188 = L.circleMarker(
+                [42.4852035101313, -70.8835433278826],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.352419003022499, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_2ef81e1571e02d4eeb02f1862b2c85fa.bindTooltip(
+            circle_marker_1cfb754d851a30580c3f1e820ceb1188.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Heffernan, John<br />Total: $200.00<br />Contributions<br /> - 9/18/2025 $200.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_acacf5ed5a7054968f108ef0218e5679 = L.circleMarker(
-                [42.3793872933798, -71.1432877018569],
+            var circle_marker_59e1697a27c1dda7acb42b6ad4fb3bc1 = L.circleMarker(
+                [42.3788247284455, -71.1431168691595],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.352419003022499, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_acacf5ed5a7054968f108ef0218e5679.bindTooltip(
+            circle_marker_59e1697a27c1dda7acb42b6ad4fb3bc1.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Keating, Elizabeth<br />Total: $200.00<br />Contributions<br /> - 9/18/2025 $200.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_4427b4e5d4cabd634085d2ccf9b3b640 = L.circleMarker(
-                [42.38621538998969, -71.11659788411384],
+            var circle_marker_4c1ab1cea485ae39a2906bb62f4ab4e1 = L.circleMarker(
+                [42.38624318018088, -71.11644157114021],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.352419003022499, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_4427b4e5d4cabd634085d2ccf9b3b640.bindTooltip(
+            circle_marker_4c1ab1cea485ae39a2906bb62f4ab4e1.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Turner-trauring, Itamar<br />Total: $200.00<br />Contributions<br /> - 9/18/2025 $200.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_0039d8a90b5f2333fb6c819af457fe77 = L.circleMarker(
-                [42.357069025314736, -71.11288022731203],
+            var circle_marker_da84e8a1b957e9309e3fc65d50275671 = L.circleMarker(
+                [42.35720246079096, -71.1124044796406],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.352419003022499, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_0039d8a90b5f2333fb6c819af457fe77.bindTooltip(
+            circle_marker_da84e8a1b957e9309e3fc65d50275671.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Schlesinger, Susan<br />Total: $200.00<br />Contributions<br /> - 9/3/2025 $200.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_e8590bde3ab6bc6d4da8937566eecb11 = L.circleMarker(
-                [42.36548166631833, -71.10716407413267],
+            var circle_marker_0ad6049179b2b11d81ac527cbb034300 = L.circleMarker(
+                [42.36587710366336, -71.10759422025598],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.352419003022499, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_e8590bde3ab6bc6d4da8937566eecb11.bindTooltip(
+            circle_marker_0ad6049179b2b11d81ac527cbb034300.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Gani, Mohammad<br />Total: $200.00<br />Contributions<br /> - 7/25/2025 $100.00<br /> - 10/14/2024 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_ee5d981415698db419577fadf5a5089c = L.circleMarker(
-                [42.368263758948416, -71.10408188108524],
+            var circle_marker_b343783131f8a062f74c2e98e85bed7b = L.circleMarker(
+                [42.368024813024725, -71.10420217686519],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.352419003022499, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_ee5d981415698db419577fadf5a5089c.bindTooltip(
+            circle_marker_b343783131f8a062f74c2e98e85bed7b.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Abrams, Sarah<br />Total: $200.00<br />Contributions<br /> - 7/12/2025 $100.00<br /> - 10/30/2024 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_5accd70852aa5109b7a93275ad479777 = L.circleMarker(
-                [42.6862695, -70.8736584460108],
+            var circle_marker_f9d6b5694303bf8c701cfc11fc3da916 = L.circleMarker(
+                [42.68652893649977, -70.87321139948227],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.352419003022499, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_5accd70852aa5109b7a93275ad479777.bindTooltip(
+            circle_marker_f9d6b5694303bf8c701cfc11fc3da916.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Smith, Jefferson<br />Total: $200.00<br />Contributions<br /> - 7/3/2025 $200.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_66f11889a148e27ac4201d7253dae187 = L.circleMarker(
-                [42.361651253788544, -71.11549930273667],
+            var circle_marker_2e6ed9a995d49c4b11adc4c8a2e0b1b6 = L.circleMarker(
+                [42.3615070278245, -71.11557193391262],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.352419003022499, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_66f11889a148e27ac4201d7253dae187.bindTooltip(
+            circle_marker_2e6ed9a995d49c4b11adc4c8a2e0b1b6.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Gebru, Samuel<br />Total: $200.00<br />Contributions<br /> - 10/22/2024 $200.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_f0df915950ed7eca0949cc37c8a4e2b3 = L.circleMarker(
-                [42.37438908567495, -71.15385882493155],
+            var circle_marker_a81b55a2047ede5980fe70d41adf42aa = L.circleMarker(
+                [42.374367047273275, -71.15369290306577],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.352419003022499, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_f0df915950ed7eca0949cc37c8a4e2b3.bindTooltip(
+            circle_marker_a81b55a2047ede5980fe70d41adf42aa.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Sette, Janice<br />Total: $200.00<br />Contributions<br /> - 10/14/2024 $200.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_3e92cff3398f775ab554ccd48ccc1c27 = L.circleMarker(
-                [42.408966893310996, -71.13956859204802],
+            var circle_marker_816eec52660a5100f0b5d839cb39d2eb = L.circleMarker(
+                [42.409170817233296, -71.14008018634226],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.352419003022499, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_3e92cff3398f775ab554ccd48ccc1c27.bindTooltip(
+            circle_marker_816eec52660a5100f0b5d839cb39d2eb.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Tocci, Linda<br />Total: $200.00<br />Contributions<br /> - 10/7/2024 $200.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_af2d32ef777667fb2dfeed61122628db = L.circleMarker(
-                [43.66276520781619, -70.26423117114021],
+            var circle_marker_414619e0a47fa0e59e0ca16183ed93bb = L.circleMarker(
+                [43.66334002222908, -70.26447713084049],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.884487062406025, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_af2d32ef777667fb2dfeed61122628db.bindTooltip(
+            circle_marker_414619e0a47fa0e59e0ca16183ed93bb.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Carito, William<br />Total: $170.00<br />Contributions<br /> - 9/3/2025 $10.00<br /> - 7/29/2025 $10.00<br /> - 7/3/2025 $10.00<br /> - 1/4/2025 $10.00<br /> - 11/27/2024 $10.00<br /> - 10/30/2024 $10.00<br /> - 10/7/2024 $10.00<br /> - 10/7/2024 $10.00<br /> - 10/7/2024 $90.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_6ac6a1663ad5b1ef0a1cc63fc3030a66 = L.circleMarker(
-                [42.379850243085215, -71.12294288121527],
+            var circle_marker_4af95de96f2f6565e2fa99bc1f20747c = L.circleMarker(
+                [42.379607328021464, -71.12337425756473],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.524411408656842, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_6ac6a1663ad5b1ef0a1cc63fc3030a66.bindTooltip(
+            circle_marker_4af95de96f2f6565e2fa99bc1f20747c.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Baratz, Maggie<br />Total: $150.00<br />Contributions<br /> - 9/18/2025 $150.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_d24b6ede1e18d1814a745877ad09d200 = L.circleMarker(
-                [42.211919511192505, -71.15041957563284],
+            var circle_marker_14a8e9e836ba41aff005e5e4528af252 = L.circleMarker(
+                [42.21244628094808, -71.1505964953855],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.524411408656842, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_d24b6ede1e18d1814a745877ad09d200.bindTooltip(
+            circle_marker_14a8e9e836ba41aff005e5e4528af252.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Grant, George<br />Total: $150.00<br />Contributions<br /> - 9/10/2025 $150.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_06c75350861145bb34fd0c5376bbd8e1 = L.circleMarker(
-                [42.38184549529642, -71.1259638866131],
+            var circle_marker_30bb9d07ea12a90b6e8a318bb45d6d82 = L.circleMarker(
+                [42.38138930071051, -71.12562751417546],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.524411408656842, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_06c75350861145bb34fd0c5376bbd8e1.bindTooltip(
+            circle_marker_30bb9d07ea12a90b6e8a318bb45d6d82.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Chatterjee, Avik<br />Total: $150.00<br />Contributions<br /> - 9/3/2025 $150.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_58ac8ba19a63b59d3657af9cf747d692 = L.circleMarker(
-                [42.3827867017401, -71.11446508582453],
+            var circle_marker_5fc39b3a25a38f9407b2dc042ebc44f4 = L.circleMarker(
+                [42.38343618178231, -71.11429827542463],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.524411408656842, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_58ac8ba19a63b59d3657af9cf747d692.bindTooltip(
+            circle_marker_5fc39b3a25a38f9407b2dc042ebc44f4.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Smiles, Andrew<br />Total: $150.00<br />Contributions<br /> - 9/3/2025 $150.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_3e17a88be6863b359a214cbf47aeed52 = L.circleMarker(
-                [42.50240131655865, -70.85418377242299],
+            var circle_marker_74015097b45a143dc0dff6358a2a259d = L.circleMarker(
+                [42.5017682796297, -70.85398303283125],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.524411408656842, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_3e17a88be6863b359a214cbf47aeed52.bindTooltip(
+            circle_marker_74015097b45a143dc0dff6358a2a259d.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Amberick, Gary<br />Total: $150.00<br />Contributions<br /> - 8/22/2025 $150.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_d841d9830f14d5c7e71f669fc865672b = L.circleMarker(
-                [42.395476567383874, -71.07936382463974],
+            var circle_marker_f507dd55780056d77dfe97eb8f8d09af = L.circleMarker(
+                [42.39538520919678, -71.07949398065479],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.524411408656842, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_d841d9830f14d5c7e71f669fc865672b.bindTooltip(
+            circle_marker_f507dd55780056d77dfe97eb8f8d09af.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Tocci, Linda<br />Total: $150.00<br />Contributions<br /> - 7/3/2025 $150.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_7c2623b1ae297b471ab64b2c8ac45a63 = L.circleMarker(
-                [42.493874186527805, -71.25275492369057],
+            var circle_marker_d4eb9062990a889b70c4927b5133b5e6 = L.circleMarker(
+                [42.4932455410527, -71.25296152355551],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.524411408656842, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_7c2623b1ae297b471ab64b2c8ac45a63.bindTooltip(
+            circle_marker_d4eb9062990a889b70c4927b5133b5e6.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Culhane, Michael<br />Total: $150.00<br />Contributions<br /> - 10/14/2024 $150.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_d52ca3c6253fc1f2635a3fc12fdff386 = L.circleMarker(
-                [42.26512044333063, -71.74360492757701],
+            var circle_marker_3c51af4d8e47efbc1e5b7202e12b8a93 = L.circleMarker(
+                [42.26521678181172, -71.74351740908969],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.524411408656842, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_d52ca3c6253fc1f2635a3fc12fdff386.bindTooltip(
+            circle_marker_3c51af4d8e47efbc1e5b7202e12b8a93.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Ricca, Joweph<br />Total: $150.00<br />Contributions<br /> - 10/7/2024 $150.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_7c7b540d336783d1e3ca554ff5e25aaf = L.circleMarker(
-                [42.369400741244405, -71.09276321152998],
+            var circle_marker_5fed28a462c6f43ea4affb20eeddbde8 = L.circleMarker(
+                [42.3694679951485, -71.09314125756474],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.000444541558439, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_7c7b540d336783d1e3ca554ff5e25aaf.bindTooltip(
+            circle_marker_5fed28a462c6f43ea4affb20eeddbde8.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Wilson, Tyler<br />Total: $125.00<br />Contributions<br /> - 8/6/2025 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_3227ed2f9d7cb8bb64d10675b2d2fbbe = L.circleMarker(
-                [42.36412804604165, -71.10031289726332],
+            var circle_marker_8b4b9bb8cea5b98796a7c4c9012bbbba = L.circleMarker(
+                [42.36405895888508, -71.10059373999837],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.995510379598255, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_3227ed2f9d7cb8bb64d10675b2d2fbbe.bindTooltip(
+            circle_marker_8b4b9bb8cea5b98796a7c4c9012bbbba.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Fuller, Carolyn<br />Total: $125.00<br />Contributions<br /> - 7/3/2025 $125.00<br />---<br />Name: McAvinney, Bill<br />Total: $125.00<br />Contributions<br /> - 7/3/2025 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_9025ccaf9ddfc3dcf5a43909bb7c400a = L.circleMarker(
-                [42.371047119681805, -71.10738351110659],
+            var circle_marker_f2a7e090a6b712beed754b138b3811b2 = L.circleMarker(
+                [42.37056686214257, -71.10749234707566],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.000444541558439, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_9025ccaf9ddfc3dcf5a43909bb7c400a.bindTooltip(
+            circle_marker_f2a7e090a6b712beed754b138b3811b2.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Lipkin, Arthur<br />Total: $125.00<br />Contributions<br /> - 7/3/2025 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_51a227e220d6c458831570f5858fcdb0 = L.circleMarker(
-                [42.3920612025503, -71.12189716951818],
+            var circle_marker_702721d78e2bc409830eb61500440f0e = L.circleMarker(
+                [42.39195345761018, -71.12211342601424],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.000444541558439, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_51a227e220d6c458831570f5858fcdb0.bindTooltip(
+            circle_marker_702721d78e2bc409830eb61500440f0e.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Schulman, Johanna<br />Total: $125.00<br />Contributions<br /> - 7/3/2025 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_de6f4f2c0b648bda1ce87b71fdf71ba3 = L.circleMarker(
-                [42.37829698181297, -71.1083813691595],
+            var circle_marker_ff7f4c298c1cfa129b98a6b9200d1a7a = L.circleMarker(
+                [42.377751941036244, -71.1084927730267],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.000444541558439, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_de6f4f2c0b648bda1ce87b71fdf71ba3.bindTooltip(
+            circle_marker_ff7f4c298c1cfa129b98a6b9200d1a7a.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Sleczkowski, Alex<br />Total: $125.00<br />Contributions<br /> - 3/31/2025 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_4fdb2a1126e2b8a7a4802c45321fd5a9 = L.circleMarker(
-                [42.39248205848179, -71.12561922355552],
+            var circle_marker_b18d2293a93b1c472a82e6d1c504fc71 = L.circleMarker(
+                [42.3924623856238, -71.12556497563286],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.000444541558439, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_4fdb2a1126e2b8a7a4802c45321fd5a9.bindTooltip(
+            circle_marker_b18d2293a93b1c472a82e6d1c504fc71.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Baldwin, Elizabeth<br />Total: $125.00<br />Contributions<br /> - 11/15/2024 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_a3c7431b03686d46020700fbbe6fe8bf = L.circleMarker(
-                [42.36102161138498, -71.1110448018569],
+            var circle_marker_d71de0c8ac8c501097c363e5a126e4ef = L.circleMarker(
+                [42.36161440949262, -71.11089707086211],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.000444541558439, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_a3c7431b03686d46020700fbbe6fe8bf.bindTooltip(
+            circle_marker_d71de0c8ac8c501097c363e5a126e4ef.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Feldman, Ellen<br />Total: $125.00<br />Contributions<br /> - 10/14/2024 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_b9bb49cd1918488e5419366a1289a603 = L.circleMarker(
-                [42.384590939948495, -71.13424731041718],
+            var circle_marker_36a18ffcafb63b4851735fd571b304e9 = L.circleMarker(
+                [42.38498776241897, -71.13466379535927],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.000444541558439, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_b9bb49cd1918488e5419366a1289a603.bindTooltip(
+            circle_marker_36a18ffcafb63b4851735fd571b304e9.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Santos, Albertino<br />Total: $125.00<br />Contributions<br /> - 10/14/2024 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_ba016d4b2dfe696444897116d33fc1b6 = L.circleMarker(
-                [42.33489935928255, -71.1405322820951],
+            var circle_marker_6fe91aea9ef7ccb02254f8329fa9b5da = L.circleMarker(
+                [42.334515540505954, -71.14034985507567],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.000444541558439, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_ba016d4b2dfe696444897116d33fc1b6.bindTooltip(
+            circle_marker_6fe91aea9ef7ccb02254f8329fa9b5da.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Baker, Charles<br />Total: $125.00<br />Contributions<br /> - 10/7/2024 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_0ba002fb390f3ae516be7fac4ea8d505 = L.circleMarker(
-                [42.34368724843502, -71.0793453203594],
+            var circle_marker_72610aae8f03f4ed0641fc0cb630e290 = L.circleMarker(
+                [42.344135155074014, -71.07893841709048],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.000444541558439, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_0ba002fb390f3ae516be7fac4ea8d505.bindTooltip(
+            circle_marker_72610aae8f03f4ed0641fc0cb630e290.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Golkar, Parisa<br />Total: $125.00<br />Contributions<br /> - 10/7/2024 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_09839fc7a870642f5984961b9071c5f9 = L.circleMarker(
-                [42.393956216603954, -71.1322606307766],
+            var circle_marker_e451ce357218321e3be2d9f03355d892 = L.circleMarker(
+                [42.39335293017361, -71.13212831747093],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.000444541558439, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_09839fc7a870642f5984961b9071c5f9.bindTooltip(
+            circle_marker_e451ce357218321e3be2d9f03355d892.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Patterson, Joel<br />Total: $125.00<br />Contributions<br /> - 10/7/2024 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_0b958e9a3ab79053eafb1f8176e22dc1 = L.circleMarker(
-                [42.56938017652533, -70.98269613247372],
+            var circle_marker_b740a7d3d09e6ca666a5a04aea0a2160 = L.circleMarker(
+                [42.56883170234126, -70.9823764708621],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.000444541558439, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_0b958e9a3ab79053eafb1f8176e22dc1.bindTooltip(
+            circle_marker_b740a7d3d09e6ca666a5a04aea0a2160.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Whouley, Michael<br />Total: $125.00<br />Contributions<br /> - 10/7/2024 $125.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_84bb4213b60cff544e20b941ba19365d = L.circleMarker(
-                [42.38548317414655, -71.13155663999838],
+            var circle_marker_fb372f6e7768b0d5440623cf79001cae = L.circleMarker(
+                [42.384988693701686, -71.13122851110658],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_84bb4213b60cff544e20b941ba19365d.bindTooltip(
+            circle_marker_fb372f6e7768b0d5440623cf79001cae.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Fields, Evan<br />Total: $100.00<br />Contributions<br /> - 9/10/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_f711af2061a1b73a7823da0fd12b98e9 = L.circleMarker(
-                [42.39069664338755, -71.13186504582833],
+            var circle_marker_a1fb40588404ddb53d0a7109be777342 = L.circleMarker(
+                [42.39062608763627, -71.13231948745211],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_f711af2061a1b73a7823da0fd12b98e9.bindTooltip(
+            circle_marker_a1fb40588404ddb53d0a7109be777342.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Zall, James<br />Total: $100.00<br />Contributions<br /> - 9/10/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_9b1d5413395b5715da10e8e5a87c3d49 = L.circleMarker(
-                [42.3662416699842, -71.10891533077658],
+            var circle_marker_f51815341d282125e96e298b46cf4b5c = L.circleMarker(
+                [42.366355820417155, -71.10915663084049],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_9b1d5413395b5715da10e8e5a87c3d49.bindTooltip(
+            circle_marker_f51815341d282125e96e298b46cf4b5c.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Alexandrov, Kyril<br />Total: $100.00<br />Contributions<br /> - 9/3/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_3b19b0c910097b67247172640d6c2747 = L.circleMarker(
-                [42.389362861360716, -71.12551302586732],
+            var circle_marker_7bff06b4269c5a237f631bc189816a21 = L.circleMarker(
+                [42.38915979275578, -71.12553702252744],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_3b19b0c910097b67247172640d6c2747.bindTooltip(
+            circle_marker_7bff06b4269c5a237f631bc189816a21.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Fleck-henderson, Ann<br />Total: $100.00<br />Contributions<br /> - 9/3/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_7312e01e56184bbc3342dcb0dc843462 = L.circleMarker(
-                [42.28028327794963, -71.05139270051771],
+            var circle_marker_592013898034d150921510920e488ca7 = L.circleMarker(
+                [42.279710205288296, -71.05132107630942],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_7312e01e56184bbc3342dcb0dc843462.bindTooltip(
+            circle_marker_592013898034d150921510920e488ca7.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Christopher, Michael<br />Total: $100.00<br />Contributions<br /> - 8/22/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_7840322e77a79013deb7c76279890718 = L.circleMarker(
-                [42.38783615584253, -71.1276113269946],
+            var circle_marker_9c03486306b4ea38cc5ae493bbc39a45 = L.circleMarker(
+                [42.388450506122716, -71.12784303999838],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_7840322e77a79013deb7c76279890718.bindTooltip(
+            circle_marker_9c03486306b4ea38cc5ae493bbc39a45.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Daoust, Norman<br />Total: $100.00<br />Contributions<br /> - 8/6/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_1c9c45c06d76715a7a02b51f1d739e20 = L.circleMarker(
-                [42.362195438188365, -71.11194143391262],
+            var circle_marker_c41cd9af4cb5952b6f6bc6a759fa9518 = L.circleMarker(
+                [42.361750242178466, -71.11171291704167],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_1c9c45c06d76715a7a02b51f1d739e20.bindTooltip(
+            circle_marker_c41cd9af4cb5952b6f6bc6a759fa9518.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Sheehan, Jessica<br />Total: $100.00<br />Contributions<br /> - 8/6/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_e7b156c81e56b2389ea8ccdd73eba675 = L.circleMarker(
-                [42.38619498288036, -71.11665724782353],
+            var circle_marker_635e7b8340daa818f3e29feec55f670c = L.circleMarker(
+                [42.38629755611557, -71.1166202953855],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_e7b156c81e56b2389ea8ccdd73eba675.bindTooltip(
+            circle_marker_635e7b8340daa818f3e29feec55f670c.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Stockard, Susan<br />Total: $100.00<br />Contributions<br /> - 8/6/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_b256ee98d2b078c84ecc298666cbf81d = L.circleMarker(
-                [42.37236388959686, -71.08279321631188],
+            var circle_marker_f569660143af77ebcff17e472d0c2112 = L.circleMarker(
+                [42.37214718758888, -71.08280068876014],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_b256ee98d2b078c84ecc298666cbf81d.bindTooltip(
+            circle_marker_f569660143af77ebcff17e472d0c2112.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Cassa, Christopher<br />Total: $100.00<br />Contributions<br /> - 7/22/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_654c781a4b81e1b45f9313a47ca14eb6 = L.circleMarker(
-                [42.39950346753087, -71.12132275189356],
+            var circle_marker_d0faf2623e1ae985253717efb50a2238 = L.circleMarker(
+                [42.398951340712806, -71.12100560464073],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_654c781a4b81e1b45f9313a47ca14eb6.bindTooltip(
+            circle_marker_d0faf2623e1ae985253717efb50a2238.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Auspitz, Katherine<br />Total: $100.00<br />Contributions<br /> - 7/18/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_2c4afd27482186eac62ace6d3e8feb64 = L.circleMarker(
-                [42.38425407474147, -71.11520580908969],
+            var circle_marker_8c916f61c4bf6622139e5d626c76692c = L.circleMarker(
+                [42.38452580063795, -71.1151601529572],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_2c4afd27482186eac62ace6d3e8feb64.bindTooltip(
+            circle_marker_8c916f61c4bf6622139e5d626c76692c.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Connolly, Colin<br />Total: $100.00<br />Contributions<br /> - 7/12/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_45e71489e796bb43e2a42ffb7f3ed7ce = L.circleMarker(
-                [42.355747215985346, -71.11160529414936],
+            var circle_marker_53906fa36059ac8bf070ed7f7cfaecc2 = L.circleMarker(
+                [42.35628886617538, -71.1114578796406],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_45e71489e796bb43e2a42ffb7f3ed7ce.bindTooltip(
+            circle_marker_53906fa36059ac8bf070ed7f7cfaecc2.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Kauffman, Jake<br />Total: $100.00<br />Contributions<br /> - 7/12/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_c531f170f11abbc9a18ce25cb2e8d81f = L.circleMarker(
-                [42.22808879408587, -71.17622242731203],
+            var circle_marker_a5690bcfd17d167a4da6b6ff1c62530e = L.circleMarker(
+                [42.227779581681986, -71.17615682601424],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_c531f170f11abbc9a18ce25cb2e8d81f.bindTooltip(
+            circle_marker_a5690bcfd17d167a4da6b6ff1c62530e.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: O'Neil, Matthew<br />Total: $100.00<br />Contributions<br /> - 7/12/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_eb680dccf129aa018eb1476da242a6db = L.circleMarker(
-                [42.38262558064025, -71.14184983048182],
+            var circle_marker_f50951073b5d63cefc890d6a2632211d = L.circleMarker(
+                [42.382966, -71.1421009460108],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_eb680dccf129aa018eb1476da242a6db.bindTooltip(
+            circle_marker_f50951073b5d63cefc890d6a2632211d.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Adams, Lara<br />Total: $100.00<br />Contributions<br /> - 7/3/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_99e14340b894f37d122f121f67a603ee = L.circleMarker(
-                [42.361066673387015, -71.11145318204898],
+            var circle_marker_49d17e3e97d1dac33ced5fd66f8c0d17 = L.circleMarker(
+                [42.36150928294883, -71.11139777279948],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_99e14340b894f37d122f121f67a603ee.bindTooltip(
+            circle_marker_49d17e3e97d1dac33ced5fd66f8c0d17.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Alu, Tina<br />Total: $100.00<br />Contributions<br /> - 7/3/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_11e39adfea5f6c530784ebd12ac8b561 = L.circleMarker(
-                [42.22600702531192, -71.08044227563285],
+            var circle_marker_687b08ae796fbecd5a07a2d490c76602 = L.circleMarker(
+                [42.225542352611086, -71.08064568958282],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_11e39adfea5f6c530784ebd12ac8b561.bindTooltip(
+            circle_marker_687b08ae796fbecd5a07a2d490c76602.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Beckman, Mary<br />Total: $100.00<br />Contributions<br /> - 7/3/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_66e2fc900c762cddc70368a62418fee0 = L.circleMarker(
-                [42.37037750154845, -71.09563082355551],
+            var circle_marker_b4d55b26a10150675451b231a44b139b = L.circleMarker(
+                [42.37085994884756, -71.0952935998991],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_66e2fc900c762cddc70368a62418fee0.bindTooltip(
+            circle_marker_b4d55b26a10150675451b231a44b139b.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Committee To Elect Joseph McGuirk, Jr<br />Total: $100.00<br />Contributions<br /> - 7/3/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_80c3f68973757d5d7ea218b4db38ccf3 = L.circleMarker(
-                [42.371045099391516, -71.082267619897],
+            var circle_marker_ff2676d1d71a5dbbd8d27b6e2f02383f = L.circleMarker(
+                [42.37063251176272, -71.08231051934521],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_80c3f68973757d5d7ea218b4db38ccf3.bindTooltip(
+            circle_marker_ff2676d1d71a5dbbd8d27b6e2f02383f.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Dietterich, Dan<br />Total: $100.00<br />Contributions<br /> - 7/3/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_3e8825056ce02e1cc2e99ca6d8fb60b6 = L.circleMarker(
-                [42.383551255616645, -71.12464898634225],
+            var circle_marker_49856c2886fc9e37ccc16ca8a3e2916f = L.circleMarker(
+                [42.38341093343642, -71.12459958847],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_3e8825056ce02e1cc2e99ca6d8fb60b6.bindTooltip(
+            circle_marker_49856c2886fc9e37ccc16ca8a3e2916f.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Epstein, Gail<br />Total: $100.00<br />Contributions<br /> - 7/3/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_6ab1ea7bb36164d20853bd843d4fea97 = L.circleMarker(
-                [42.391987494090614, -71.13147008879251],
+            var circle_marker_0045740415bc791e586a34c36a1836a5 = L.circleMarker(
+                [42.39168188038111, -71.13174326721831],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_6ab1ea7bb36164d20853bd843d4fea97.bindTooltip(
+            circle_marker_0045740415bc791e586a34c36a1836a5.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Sullivan, David<br />Total: $100.00<br />Contributions<br /> - 7/3/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_2c44a8aadb1a41f7a0b815cc84d766b8 = L.circleMarker(
-                [42.365858833701935, -71.09960322586733],
+            var circle_marker_890b1bc7e62042bbcdeba858399ec971 = L.circleMarker(
+                [42.36628499474269, -71.09920192971593],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_2c44a8aadb1a41f7a0b815cc84d766b8.bindTooltip(
+            circle_marker_890b1bc7e62042bbcdeba858399ec971.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Wysocker, Alec<br />Total: $100.00<br />Contributions<br /> - 7/3/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_bf9853a5fdf6b4006182e84c8a9f231d = L.circleMarker(
-                [42.38431206828145, -71.1325520470428],
+            var circle_marker_99fcadbe1379c18b11a9578c95a93048 = L.circleMarker(
+                [42.3840652976345, -71.13205661110659],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_bf9853a5fdf6b4006182e84c8a9f231d.bindTooltip(
+            circle_marker_99fcadbe1379c18b11a9578c95a93048.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Hickey, Brendan<br />Total: $100.00<br />Contributions<br /> - 2/26/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_02f83b0eb9e74042ebb4b463407e3430 = L.circleMarker(
-                [42.39001069974696, -71.13260801110658],
+            var circle_marker_93608cc78b9a8b99a8bd98042a18b3fa = L.circleMarker(
+                [42.389894171939645, -71.13257355507567],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_02f83b0eb9e74042ebb4b463407e3430.bindTooltip(
+            circle_marker_93608cc78b9a8b99a8bd98042a18b3fa.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Raccuglia, Paul<br />Total: $100.00<br />Contributions<br /> - 2/26/2025 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_8726ce9e605831c931d93292b4d515e8 = L.circleMarker(
-                [42.37211879604922, -71.10506478010299],
+            var circle_marker_a1e2ff77a975cdcb35b45c47050152dc = L.circleMarker(
+                [42.37180363694114, -71.10458634582832],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_8726ce9e605831c931d93292b4d515e8.bindTooltip(
+            circle_marker_a1e2ff77a975cdcb35b45c47050152dc.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: O'Mara, Martha<br />Total: $100.00<br />Contributions<br /> - 10/14/2024 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_9abac642df2b0784171999b71b4ff4d1 = L.circleMarker(
-                [41.57423271366877, -70.47580824818043],
+            var circle_marker_14f453079351783f06b4799361c375b9 = L.circleMarker(
+                [41.57474159160797, -70.47554168295832],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_9abac642df2b0784171999b71b4ff4d1.bindTooltip(
+            circle_marker_14f453079351783f06b4799361c375b9.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: McShane, Thomas<br />Total: $100.00<br />Contributions<br /> - 10/7/2024 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_d454910379e4c4e4da8172f54a8487bd = L.circleMarker(
-                [42.36869548869332, -71.11272088368811],
+            var circle_marker_46094fdeb54723b5f43a1df9d80ee18a = L.circleMarker(
+                [42.368439658735745, -71.1132213866131],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.360209369882135, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_d454910379e4c4e4da8172f54a8487bd.bindTooltip(
+            circle_marker_46094fdeb54723b5f43a1df9d80ee18a.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Silverglate, Harvey<br />Total: $100.00<br />Contributions<br /> - 10/7/2024 $100.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_f832d8801bff2c1b237cfd39f7d55160 = L.circleMarker(
-                [42.36634287654083, -71.10057161041718],
+            var circle_marker_84c4e93f2bb3ad793cdad602abd16403 = L.circleMarker(
+                [42.36650461797001, -71.10096494959143],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.536943280292785, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_f832d8801bff2c1b237cfd39f7d55160.bindTooltip(
+            circle_marker_84c4e93f2bb3ad793cdad602abd16403.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Hidalgo, Fernando<br />Total: $75.00<br />Contributions<br /> - 9/10/2025 $75.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_d1840c99366a0d5d84387f4d0b94c294 = L.circleMarker(
-                [42.37197685979852, -71.10623549101891],
+            var circle_marker_43b198467732f1cda668c3ae3172163f = L.circleMarker(
+                [42.3714439524336, -71.10655865292433],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.536943280292785, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_d1840c99366a0d5d84387f4d0b94c294.bindTooltip(
+            circle_marker_43b198467732f1cda668c3ae3172163f.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Hattis, David<br />Total: $75.00<br />Contributions<br /> - 7/18/2025 $75.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_bbb0dfdf7c8faeba9a9ab8e809a873b5 = L.circleMarker(
-                [42.392803702419215, -71.125338580103],
+            var circle_marker_fa707d4d87adda403d059021474f88c4 = L.circleMarker(
+                [42.39288671323908, -71.12528542913789],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.536943280292785, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_bbb0dfdf7c8faeba9a9ab8e809a873b5.bindTooltip(
+            circle_marker_fa707d4d87adda403d059021474f88c4.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Hirschi, Jane<br />Total: $75.00<br />Contributions<br /> - 7/3/2025 $75.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_b3645f5d446c37a1014354bf0fcc8f9f = L.circleMarker(
-                [42.372351175942185, -71.16319950935848],
+            var circle_marker_4ae34bb633be7f6608bd529bb02429cb = L.circleMarker(
+                [42.37290725317299, -71.16336407114021],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.536943280292785, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_b3645f5d446c37a1014354bf0fcc8f9f.bindTooltip(
+            circle_marker_4ae34bb633be7f6608bd529bb02429cb.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Owens, Steve<br />Total: $75.00<br />Contributions<br /> - 10/14/2024 $75.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_3a56135413e20e81df74e76b030688d8 = L.circleMarker(
-                [42.378583988410654, -71.15474307974402],
+            var circle_marker_fc3477a7168071d1bcd6d44a3300b5ce = L.circleMarker(
+                [42.37799933871191, -71.15495881704167],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.536943280292785, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_3a56135413e20e81df74e76b030688d8.bindTooltip(
+            circle_marker_fc3477a7168071d1bcd6d44a3300b5ce.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Ball, Alison<br />Total: $75.00<br />Contributions<br /> - 10/7/2024 $75.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            var circle_marker_167672d1744c577ae48cf0f554cce357 = L.circleMarker(
-                [42.38089485951275, -71.12179012682658],
+            var circle_marker_ff690121205803f771cb3afb7412855d = L.circleMarker(
+                [42.380792072060025, -71.12169987242298],
                 {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.026305204928965, "stroke": true, "weight": 3}
-            ).addTo(map_922139b2f41233e73872e88ea15b87f8);
+            ).addTo(map_c3452a2bee7c520aab9272b891a80892);
         
     
-            circle_marker_167672d1744c577ae48cf0f554cce357.bindTooltip(
+            circle_marker_ff690121205803f771cb3afb7412855d.bindTooltip(
                 `<div style="font-size: 1.5em;">
                      Name: Block, Sarah<br />Total: $15.00<br />Contributions<br /> - 8/22/2025 $10.00<br /> - 7/22/2025 $5.00
                  </div>`,
-                {
-  "sticky": false,
-}
+                {"sticky": false}
             );
         
     
-            map_922139b2f41233e73872e88ea15b87f8.fitBounds(
+            map_c3452a2bee7c520aab9272b891a80892.fitBounds(
                 [[41.3893955, -70.70562579999999], [43.6631106, -70.2642734]],
                 {}
             );
