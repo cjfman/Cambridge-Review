@@ -22,6 +22,7 @@ from branca.element import Template, MacroElement
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 
 from citylib import utils
+from citylib.filers import Filer
 from citylib.utils import gis
 from citylib.utils.gis import CITY_BOUNDARY
 from citylib.utils.simplehtml import Element, LinearGradient, Text, TickMark
@@ -36,8 +37,10 @@ def parseArgs():
         help="File that contains address coordinates")
     parser.add_argument("--google-api-key", required=True,
         help="The file to the google API key")
-    parser.add_argument("--title", default="Contributions",
+    parser.add_argument("--title",
         help="Map title")
+    parser.add_argument("--subtitle",
+        help="Map subtitle")
     parser.add_argument("--filer",
         help="The filer's id")
     parser.add_argument("-v", "--verbose", action="store_true")
@@ -95,7 +98,8 @@ class AddressMap:
 
     def save(self):
         if not self.updated:
-            print("Cache wasn't updated. Not writing to file")
+            if VERBOSE:
+                print("Cache wasn't updated. Not writing to file")
             return
 
         print("Cache changed size. Writing cache to file")
@@ -270,7 +274,9 @@ def plotRecord(m, record, addr_map):
         print(f"Skipping record with address '{addr}'")
         return
 
-    print(f"Plotting record with address {addr} at {coord}")
+    if VERBOSE:
+        print(f"Plotting record with address {addr} at {coord}")
+
     angle = 1
     pin_args = { 'prefix': 'fa', 'color': 'green', 'icon': 'arrow-up' }
     icon = folium.Icon(**pin_args)
@@ -284,7 +290,9 @@ def plotContributor(contributor, m):
         print(f"Skipping {contributor}")
         return
 
-    print(f"Plotting {contributor}")
+    if VERBOSE:
+        print(f"Plotting {contributor}")
+
     lines = [
         f"Name: {contributor.name}",
         f"Address: {contributor.address}",
@@ -305,7 +313,9 @@ def plotContributor(contributor, m):
 
 
 def plotColocatedContributors(contributors, coord, addr, m):
-    print(f"Plotting contributor group at {addr}")
+    if VERBOSE:
+        print(f"Plotting contributor group at {addr}")
+
     lines = [
         f"Address: {addr}",
         "",
@@ -335,7 +345,7 @@ def plotColocatedContributors(contributors, coord, addr, m):
     folium.CircleMarker(coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4).add_to(m)
 
 
-def makeMap(contributors, m, out_file, title=None):
+def makeMap(contributors, m, out_file, title=None, subtitle=None):
 #    for c in sorted(contributors, reverse=True):
 #        plotContributor(c, m)
 
@@ -365,7 +375,10 @@ def makeMap(contributors, m, out_file, title=None):
     ## Title
     if title:
         title_html = f"""
-            <h1 style="background-color: rgba(255, 255, 255, 1); position:absolute; z-index:100000; left:40vw; border:2px solid grey; border-radius:6px; padding: 10px;">{title}</h1>
+            <div style="background-color: rgba(255, 255, 255, 1); position:absolute; z-index:100000; left:40vw; border:2px solid grey; border-radius:6px; padding: 10px; margin-top: 10px; text-align: center">
+            <h2>{title}</h2>
+            <p>{subtitle or ''}</p>
+            </div>
         """
         m.get_root().html.add_child(folium.Element(title_html))
 
@@ -378,12 +391,28 @@ def makeMap(contributors, m, out_file, title=None):
     print(f"Wrote to {out_file}")
 
 
+def getFiler(cpfid):
+    try:
+        return Filer.fromFile(f"candidate_data/filers/{cpfid}.json")
+    except Exception as e:
+        print(f"Couldn't load filer {cpfid}: {e}")
+        return None
+
 
 def main(args):
     ## Get info
     addr_map = AddressMap(utils.load_file(args.google_api_key), args.address_cache)
     records = getContributions(args.records_file)
     contributors = recordsToContributors(records, addr_map=addr_map)
+    title = args.title
+    filer = None
+    if args.filer:
+        filer = getFiler(args.filer)
+        title = filer.candidate_name + " Contributions"
+        print(f"Using title: {title}")
+    else:
+        title = "Contributions"
+
 
     ## Make map
     m = folium.Map(location=[42.378, -71.11], zoom_start=14)#, tiles="Cartodb Positron")
@@ -391,7 +420,7 @@ def main(args):
     city_boundary.add_to(m)
 
     try:
-        makeMap(contributors, m, args.out_file, title=args.title)
+        makeMap(contributors, m, args.out_file, title=title, subtitle=args.subtitle)
     finally:
         addr_map.save()
 
