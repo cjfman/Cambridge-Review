@@ -49,21 +49,23 @@
         bottom: 10px;
         text-align: center;
     }
+    #mapcontributions {
+        position: absolute;
+        z-index:100000;
+        border:2px solid grey;
+        padding: 10px;
+        border-radius:6px;
+        background-color:rgba(255, 255, 255, 1);
+        padding-bottom: 10px;
+        font-size:14px;
+        right: 20px;
+        bottom: 10px;
+        text-align: center;
+    }
   </style>
   <script>
   $(function() {
     $("#maplegend").draggable({
-            start: function (event, ui) {
-                $(this).css({
-                    right: "auto",
-                    top: "auto",
-                    bottom: "auto"
-                });
-            }
-        });
-  });
-  $(function() {
-    $("#candidatelegend").draggable({
             start: function (event, ui) {
                 $(this).css({
                     right: "auto",
@@ -85,6 +87,9 @@
 </div>
 <div id='mapdisclaimer' class='mapdisclaimer'>
     <div>{{DISCLAIMER}}</div>
+</div>
+<div id='mapcontributions' class='mapcontributions'>
+    <div>{{CONTRIBUTIONS}}</div>
 </div>
 
 </body>

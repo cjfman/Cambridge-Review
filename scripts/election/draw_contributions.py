@@ -6,6 +6,7 @@ import argparse
 import json
 import math
 import random
+import re
 import os
 import sys
 
@@ -166,11 +167,29 @@ class AddressMap:
 class Contribution:
     date: str
     amount: float
+    street: str
+    city_state: str
 
     @classmethod
     def fromJson(cls, data):
         amt = float(data['amount'][1:].replace(',', ''))
-        return cls(data['date'], amt)
+        return cls(data['date'], amt, data['streetAddress'], data['cityStateZip'])
+
+    @property
+    def city(self):
+        match = re.search(r"^([^,]+)\s*,\s*[A-Z]{2}\s+\S+", self.city_state)
+        if match:
+            return match.groups()[0]
+
+        return None
+
+    @property
+    def state(self):
+        match = re.search(r"^[^,]+\s*,\s*([A-Z]{2})\s+\S+", self.city_state)
+        if match:
+            return match.groups()[0]
+
+        return None
 
 
 class Contributor:
@@ -250,7 +269,29 @@ def recordsToContributors(records, *, addr_map) -> Dict[str, Contributor]:
     return list(contributors.values())
 
 
-def plotMapKey(title, box_size=8):
+def sumContributions(*, contributors=None, contributions=None):
+    if (contributors is None and contributions is None) or (contributors is not None and contributions is not None):
+        raise ValueError("Exactly one argument is required")
+
+    if contributors is not None:
+        contributions = []
+        for c in contributors:
+            contributions.extend(c.contributions)
+
+    city  = 0
+    state = 0
+    total = 0
+    for c in contributions:
+        total += c.amount
+        if c.state == 'MA':
+            state += c.amount
+            if c.city == 'Cambridge':
+                city += c.amount
+
+    return (city, state, total)
+
+
+def makeMapKey(title, box_size=8):
     ## Add elements
     y_off = 20
     x_off = 10
@@ -285,6 +326,66 @@ def plotMapKey(title, box_size=8):
     width = min(15 * max([len(x) for x in txts]), 150) + circ_off*2.2
     width = max(8*len(title), width)
     height = y_off
+    return Element('svg', els, width=width, height=height).to_html()
+
+
+def makeContributionBox(title, in_city, in_state, total, cbox_h=20, cbox_w=400):
+    ## Add elements
+    y_off = 20
+    x_off = 10
+    text_h = 15
+    els = []
+
+    ## Title
+    els.append(Text(title, x=x_off, y=y_off))
+    y_off += text_h
+    els.append(Text(f"${total:.2f}", x=x_off, y=y_off))
+    y_off += text_h
+
+    ## Boxes
+    headers = {
+        'city':  "Cambridge",
+        'state': "Massachusetts",
+        'total': "Total",
+    }
+    fractions = {
+        'city': in_city/total,
+        'state': in_state/total,
+        'total': 1,
+    }
+    perc_txts = {
+        'city':  f"${int(in_city)} ({int(fractions['city']*100)}%)",
+        'state': f"${int(in_state)} ({int(fractions['state']*100)}%)",
+        'total': f"${int(total)}",
+    }
+    widths = {
+        'city': int(cbox_w*fractions['city']),
+        'state': int(cbox_w*fractions['state']),
+        'total': cbox_w,
+    }
+    colors = {
+        'city': '#6C8EBF',
+        'state': 'orange',
+        'total': '#FFF178',
+    }
+    txt_end = x_off + 20*(len(max(headers.values())))
+    box_off = txt_end + 10
+
+    for location in ('city', 'state', 'total'):
+        txt_off = y_off+cbox_h//2 - 2
+        els.append(Text(headers[location], x=txt_end, y=txt_off, dominant_baseline="central", text_anchor='end'))
+        els.append(Element(
+            'rect', x=box_off, y=y_off, width=widths[location], height=cbox_h,
+            #stroke='black', stroke_width=2,
+            fill=colors[location],
+        ))
+        perc_off = box_off + widths[location] + 10
+        els.append(Text(perc_txts[location], x=perc_off, y=txt_off, dominant_baseline="central"))
+        y_off += cbox_h - 1
+
+    ## Create SVG
+    width = txt_end + max([10*len(perc_txts[x]) + widths[x] for x in ('city', 'state', 'total')])
+    height = y_off+10
     return Element('svg', els, width=width, height=height).to_html()
 
 
@@ -379,9 +480,10 @@ def makeMap(contributors, m, out_file, title=None, subtitle=None):
         template = f.read()
 
     if template is not None:
-        legend = plotMapKey("Contribution Scale")
-        template = template.replace("{{SVG1}}", legend)
+        contr_box = makeContributionBox("Contribution Totals", *sumContributions(contributors=contributors))
+        template = template.replace("{{SVG1}}", makeMapKey("Contribution Scale"))
         template = template.replace("{{DISCLAIMER}}", DISCLAIMER)
+        template = template.replace("{{CONTRIBUTIONS}}", contr_box)
         if title:
             template = template.replace("{{TITLE}}", f'<h2>{title}</h2><p>{subtitle or ''}</p>')
         macro = MacroElement()
