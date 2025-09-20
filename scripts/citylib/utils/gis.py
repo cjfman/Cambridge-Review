@@ -7,6 +7,16 @@ from shapely.geometry import shape, Point
 
 ROOT      = "./"
 GEOJSON   = os.path.join(ROOT, "geojson")
+
+STATE_BOUNDARY = {
+    'name': "State Boundary",
+    'geo_path': os.path.join(GEOJSON, "BOUNDARY_MA.geojson"),
+    'show': True,
+    'weight': 5,
+    'control': False,
+    'geo_args': { 'property_filters': { 'basename': 'Massachusetts' } },
+}
+
 CITY_BOUNDARY = {
     'name': "City Boundary",
     'geo_path': os.path.join(GEOJSON, "BOUNDARY_CityBoundary.geojson"),
@@ -33,7 +43,7 @@ NEIGHBORHOOD_BOUNDARIES = {
 }
 
 class GisGeoJson:
-    def __init__(self, path, *, secondary_id_key=None):
+    def __init__(self, path, *, secondary_id_key=None, property_filters=None):
         self.geojson          = None
         self.secondary_id_key = secondary_id_key
         self.id_to_secondary  = {}
@@ -43,7 +53,17 @@ class GisGeoJson:
         with open(path) as f:
             self.geojson = json.load(f)
 
-        self.features = { x['id']: x for x in self.geojson['features'] }
+        if property_filters is not None:
+            for i in range(len(self.geojson['features'])-1, -1, -1):
+                props = self.geojson['features'][i]['properties']
+                if not all([k in props and props[k] == v for k, v in property_filters.items()]):
+                    del self.geojson['features'][i]
+
+        if 'id' in self.geojson['features'][0]:
+            self.features = { x['id']: x for x in self.geojson['features'] }
+        else:
+            self.features = {}
+
         if self.secondary_id_key is not None:
             for feature in self.geojson['features']:
                 sec_id = feature['properties'][self.secondary_id_key]

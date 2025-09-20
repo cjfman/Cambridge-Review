@@ -26,7 +26,7 @@ sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 from citylib import utils
 from citylib.filers import Filer
 from citylib.utils import gis
-from citylib.utils.gis import CITY_BOUNDARY
+from citylib.utils.gis import CITY_BOUNDARY, STATE_BOUNDARY
 from citylib.utils.simplehtml import Element, LinearGradient, Text, TickMark
 
 VERBOSE = False
@@ -523,6 +523,7 @@ def main(args):
     ## Make map
     m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles="Cartodb Positron")
     city_boundary = makeLayer(**CITY_BOUNDARY)
+    city_boundary = makeLayer(**STATE_BOUNDARY)
     city_boundary.add_to(m)
 
     try:
@@ -531,8 +532,9 @@ def main(args):
         addr_map.save()
 
 
-def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=None, sticky=False, control=True, **kwargs):
-    geojson = gis.GisGeoJson(geo_path)
+def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=None, sticky=False, control=True, geo_args=None, **kwargs):
+    geo_args = geo_args or {}
+    geojson = gis.GisGeoJson(geo_path, **geo_args)
     style_function = lambda x: {
         'fillColor': '#000000',
         'fillOpacity': 0.0,
