@@ -121,7 +121,7 @@ foreach my $cpfid (@cpfids) {
         else {
             push @images, $img_file;
             if ($MOBILE) {
-                if (write_mobile_file("/$images_url/$img_name", $mobile_file, $img_idx)) {
+                if (write_mobile_file($mobile_file, "/$images_url/$img_name", $img_idx)) {
                     print "Wrote mobile file $mobile_file\n";
                     push @mobile_files, $mobile_file;
                     push @tmps, $mobile_file;
@@ -139,41 +139,36 @@ foreach my $cpfid (@cpfids) {
 
 ## Make shared charts
 if (@charts or $SHARED) {
+    my $img_idx = int rand 1000;
     ## Combined report
-    my $chart_file = "$charts_path/combined_report_chart.html";
-    print "Making combined report in '$chart_file'\n";
-    system "$scripts_dir/election/plot_finances.py many-filers --out $chart_file --h-legend --copyright-tight $reports_path/*";
-    if ($?) {
-        $errors += 1;
-        print "Couldn't make '$chart_file'\n";
-    }
-    else {
-        push @charts, $chart_file;
-    }
+    my $name = 'combined_report_chart';
+    my $chart_file = "$charts_path/$name.html";
+    my $image_file = "$charts_path/$name.png";
+    my $ok = make_charts_file('combined report', $chart_file, 'many-filers', "--h-legend --copyright-tight $reports_path/*");
+    push @charts, $chart_file if $ok;
+    $ok = make_charts_file('combined report', $image_file, 'many-filers', "--h-legend --scale 2 $reports_path/*");
+    push @images, $image_file if $ok;
+    write_mobile_file_and_push("${name}_mobile.html", "/$images_url/$name.png", $img_idx) if $MOBILE;
 
     ## Cash on hand report
-    $chart_file = "$charts_path/cash_on_hand_report_chart.html";
-    print "Making cash on hand report in '$chart_file'\n";
-    system "$scripts_dir/election/plot_finances.py many-filers --coh --out $chart_file --h-legend --copyright-tight $reports_path/*";
-    if ($?) {
-        print "Couldn't make '$chart_file'\n";
-        $errors += 1;
-    }
-    else {
-        push @charts, $chart_file;
-    }
+    $name = 'cash_on_hand_report_chart';
+    $chart_file = "$charts_path/$name.html";
+    $image_file = "$charts_path/$name.png";
+    $ok = make_charts_file("cash on hand", $chart_file, 'many-filers', "--coh --h-legend --copyright-tight $reports_path/*");
+    push @charts, $chart_file if $ok;
+    $ok = make_charts_file("cash on hand", $image_file, 'many-filers', "--coh --h-legend --scale 2 $reports_path/*");
+    push @images, $image_file if $ok;
+    write_mobile_file_and_push("${name}_mobile.html", "/$images_url/$name.png", $img_idx) if $MOBILE;
 
     ## Contributions report
-    $chart_file = "$charts_path/contributions_chart.html";
-    print "Making contributions report in '$chart_file'\n";
-    system "$scripts_dir/election/plot_finances.py contributions --out $chart_file --copyright-tight $contributions_path/*";
-    if ($?) {
-        print "Couldn't make '$chart_file'\n";
-        $errors += 1;
-    }
-    else {
-        push @charts, $chart_file;
-    }
+    $name = 'contributions_chart';
+    $chart_file = "$charts_path/$name.html";
+    $image_file = "$charts_path/$name.png";
+    $ok = make_charts_file('contributions', $chart_file, 'contributions', "--copyright-tight $contributions_path/*");
+    push @charts, $chart_file if $ok;
+    $ok = make_charts_file('contributions', $image_file, 'contributions', "--scale 2 $contributions_path/*");
+    push @images, $image_file if $ok;
+    write_mobile_file_and_push("${name}_mobile.html", "/$images_url/$name.png", $img_idx) if $MOBILE;
 }
 
 ## Add no-cache to each chart
@@ -221,8 +216,8 @@ sub upload_files {
 }
 
 sub write_mobile_file {
-    my $url  = shift;
     my $file = shift;
+    my $url  = shift;
     my $idx  = shift or (int rand 100);
     my $html = qq{
 <html>
@@ -245,6 +240,17 @@ sub write_mobile_file {
     print FILE $html;
     close FILE;
     return 1;
+}
+
+sub write_mobile_file_and_push {
+    my $file = shift;
+    $file = "/tmp/$file";
+    if (write_mobile_file($file, @_)) {
+        print "Wrote mobile file $file\n";
+        push @mobile_files, $file;
+        push @tmps, $file;
+    }
+    return 0;
 }
 
 sub get_filers {
@@ -302,4 +308,19 @@ sub add_no_cache {
     else {
         print STDERR "Failed to add no-cache to $file\n";
     }
+}
+
+sub make_charts_file {
+    my $name = shift;
+    my $file = shift;
+    my $cmd = shift;
+    my @args = @_;
+    print "Making '$name' chart in '$file'\n";
+    system "$scripts_dir/election/plot_finances.py $cmd --out $file @args";
+    if ($?) {
+        print "Couldn't make '$name' chart\n";
+        $errors += 1;
+        return 0;
+    }
+    return 1;
 }
