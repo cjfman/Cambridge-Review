@@ -1,4 +1,5 @@
 import datetime as dt
+import json
 import re
 import requests
 import sys
@@ -136,39 +137,13 @@ def load_file(path, *, encoding='utf8', quiet=True):
 
         return None
 
-def load_file(path, encoding='utf8'):
+
+def load_json(path, *, encoding='utf8', quiet=True):
     try:
         with open(path, encoding=encoding) as f:
-            return "".join(f.readlines())
-    except:
-        return None
-
-def address_to_coordinates(address, key, *, quiet=True):
-    #url = f"https://maps.googleapis.com/maps/api/geocode/json?address=1600+AmphitheatreParkway,+Mountain+View,+CA&key={key}"
-    url = f"https://maps.googleapis.com/maps/api/geocode/json"
-    if not quiet:
-        print(f"Making API request to {url}")
-
-    ## Make the request
-    resp = requests.get(url=url, params={
-        'address': address.replace(' ', '+'),
-        'key': key,
-    })
-    data = resp.json()
-    if 'status' not in data or data['status'] != 'OK':
+            return json.load(f)
+    except Exception as e:
         if not quiet:
-            print("Got bad response")
-            print(data)
+            print(f"Failed to read file '{path}': {e}")
 
         return None
-
-    ## There should be at least one result
-    if not data['results']:
-        if not quiet:
-            print("Didn't find any results")
-
-        return None
-
-    ## Use the first result
-    location = data['results'][0]['geometry']['location']
-    return (location['lat'], location['lng'])

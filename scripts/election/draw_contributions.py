@@ -11,8 +11,6 @@ import os
 import sys
 
 from collections import defaultdict
-from typing import Dict, List
-
 from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-order
 
 from pathlib import Path
@@ -23,10 +21,11 @@ from branca.element import Template, MacroElement
 ## pylint: disable=wrong-import-position
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 
-from citylib import utils
-from citylib.filers import Filer
+from citylib import filers, utils
+from citylib.filers import Contributor, Contribution, Filer, address_from_record
 from citylib.utils import gis, format_dollar, strip_currency
 from citylib.utils import color_schemes as cs
+from citylib.utils.addresses import AddressMap
 from citylib.utils.gis import CITY_BOUNDARY, STATE_BOUNDARY
 from citylib.utils.simplehtml import Element, LinearGradient, Text, TickMark
 
@@ -100,206 +99,6 @@ def fuzzCoords(coord, length=FUZZ_DIST):
     lat += dx*360/earth
     lon += dy*360/lat_circ
     return (lon, lat)
-
-
-def addressFromRecord(record):
-    return f"{record['streetAddress']}, {record['cityStateZip']}"
-
-
-class AddressMap:
-    def __init__(self, api_key, cache_path=None):
-        self.api_key    = api_key
-        self.cache_path = cache_path
-        self.cache      = {}
-        self.updated    = False
-        if self.cache_path:
-            self.load()
-
-    def load(self):
-        if not os.path.isfile(self.cache_path):
-            print(f"Can't load address cache file '{self.cache_path}'")
-            return
-
-        try:
-            with open(self.cache_path, encoding='utf8') as f:
-                self.cache = json.load(f)
-        except Exception as e:
-            print(f"Failed to load address cache file '{self.cache_path}': {e}")
-
-    def save(self):
-        if not self.updated:
-            if VERBOSE:
-                print("Cache wasn't updated. Not writing to file")
-            return
-
-        print("Cache changed size. Writing cache to file")
-        try:
-            with open(self.cache_path, 'w', encoding='utf8') as f:
-                json.dump(self.cache, f, indent=4)
-        except Exception as e:
-            print(f"Failed to save address cache file '{self.cache_path}': {e}")
-
-    def query_address(self, addr):
-        if addr in self.cache:
-            return self.cache[addr]
-
-        if not self.api_key:
-            print("Cannot access google maps API without an access key")
-            return None
-
-        coord = utils.address_to_coordinates(addr, self.api_key)
-        print(f"{addr} >> {coord}")
-        self.cache[addr] = coord
-        self.updated = True
-        return coord
-
-    def __getitem__(self, key):
-        if key not in self.cache:
-            val = self.query_address(key)
-            if val:
-                self.cache[key] = val
-
-            return val
-
-        return self.cache[key]
-
-    def __setitem__(self, key, value):
-        self.updated = True
-        self.cache[key] = value
-
-    def __contains__(self, item):
-        return (item in self.cache)
-
-
-@dataclass
-class Contribution:
-    date: str
-    amount: float
-    street: str
-    city_state: str
-
-    @classmethod
-    def fromJson(cls, data):
-        amt = strip_currency(data['amount'])
-        return cls(data['date'], amt, data['streetAddress'], data['cityStateZip'])
-
-    @property
-    def city(self):
-        match = re.search(r"^([^,]+)\s*,\s*[A-Z]{2}\s+\S+", self.city_state)
-        if match:
-            return match.groups()[0]
-
-        return None
-
-    @property
-    def state(self):
-        match = re.search(r"^[^,]+\s*,\s*([A-Z]{2})\s+\S+", self.city_state)
-        if match:
-            return match.groups()[0]
-
-        return None
-
-
-class Contributor:
-    @staticmethod
-    def make_key(name, addr):
-        return f"{name}-{addr}"
-
-    @classmethod
-    def make_key_from_json(cls, data):
-        return cls.make_key(data['fullNameReverse'], addressFromRecord(data))
-
-    def __init__(self, name, addr, coord=None):
-        self.name    = name
-        self.address = addr
-        self.coord   = coord
-        self.contributions = []
-
-    @classmethod
-    def fromJson(cls, data, *, addr_map=None):
-        coord = None
-        addr = addressFromRecord(data)
-        if addr_map:
-            coord = addr_map[addr]
-
-        contributor = cls(data['fullNameReverse'], addr, coord)
-        contributor.contributions.append(Contribution.fromJson(data))
-        return contributor
-
-    @property
-    def total(self):
-        return sum([x.amount for x in self.contributions])
-
-    def key(self):
-        return self.make_key(self.name, self.address)
-
-    def addRecord(self, record):
-        self.contributions.append(record)
-
-    def __hash__(self):
-        return hash(self.key())
-
-    def __eq__(self, other):
-        return (self.name == other.name and self.address == other.address)
-
-    def __lt__(self, other):
-        return (self.total < other.total)
-
-    def __str__(self):
-        if self.coord:
-            coord = tuple([f"{x:.5f}" for x in self.coord])
-            return f"Name: {self.name}; Address {self.address}; Coordinates: {coord}"
-
-        return f"Name: {self.name}; Address {self.address}"
-
-    def __repr__(self):
-        return f"[Contributor {self}]"
-
-
-def getContributions(path) -> List[Dict]:
-    with open(path, encoding='utf8') as f:
-        return json.load(f)
-
-
-def recordsToContributors(records, *, addr_map) -> Dict[str, Contributor]:
-    contributors = {}
-    for record in records:
-        if record['fullNameReverse'] == "Aggregated Unitemized Receipts":
-            continue
-
-        key = Contributor.make_key_from_json(record)
-        if key in contributors:
-            contributors[key].addRecord(Contribution.fromJson(record))
-        else:
-            c = Contributor.fromJson(record, addr_map=addr_map)
-            if c.coord is not None:
-                contributors[key] = c
-            else:
-                print(f"No coordindates found for {c}")
-
-    return list(contributors.values())
-
-
-def sumContributions(*, contributors=None, contributions=None):
-    if (contributors is None and contributions is None) or (contributors is not None and contributions is not None):
-        raise ValueError("Exactly one argument is required")
-
-    if contributors is not None:
-        contributions = []
-        for c in contributors:
-            contributions.extend(c.contributions)
-
-    city  = 0
-    state = 0
-    total = 0
-    for c in contributions:
-        total += c.amount
-        if c.state == 'MA':
-            state += c.amount
-            if c.city == 'Cambridge':
-                city += c.amount
-
-    return (city, state, total)
 
 
 def makeMapKey(title, box_size=8):
@@ -404,7 +203,7 @@ def makeContributionBox(title, in_city, in_state, total, cbox_h=20, cbox_w=400):
 
 
 def plotRecord(m, record, addr_map):
-    addr = addressFromRecord(record)
+    addr = address_from_record(record)
     coord = addr_map[addr]
     if not coord:
         print(f"Skipping record with address '{addr}'")
@@ -504,7 +303,7 @@ def makeMap(contributors, m, title=None, subtitle=None):
         template = f.read()
 
     if template is not None:
-        contr_box = makeContributionBox("Contribution Total", *sumContributions(contributors=contributors))
+        contr_box = makeContributionBox("Contribution Total", *filers.sum_contributions(contributors=contributors))
         template = template.replace("{{SVG1}}", makeMapKey("Contribution Scale"))
         template = template.replace("{{DISCLAIMER}}", DISCLAIMER)
         template = template.replace("{{CONTRIBUTIONS}}", contr_box)
@@ -548,13 +347,13 @@ def makeTitles(summary, args):
 def main(args):
     ## Get info
     addr_map = AddressMap(utils.load_file(args.google_api_key), args.address_cache)
-    data = getContributions(args.records_file)
+    data = utils.load_json(args.records_file)
     summary = data['summary']
     records = data['items']
 
     ## Keep anything that could fail during or after the coordindates are loaded in this try block
     try:
-        contributors = recordsToContributors(records, addr_map=addr_map)
+        contributors = filers.records_to_contributors(records, addr_map=addr_map)
         title, subtitle = makeTitles(summary, args)
 
         ## Make map
