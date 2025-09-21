@@ -25,7 +25,7 @@ sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 
 from citylib import utils
 from citylib.filers import Filer
-from citylib.utils import gis
+from citylib.utils import gis, format_dollar, strip_currency
 from citylib.utils.gis import CITY_BOUNDARY, STATE_BOUNDARY
 from citylib.utils.simplehtml import Element, LinearGradient, Text, TickMark
 
@@ -34,6 +34,12 @@ DEBUG   = False
 
 FUZZ_DIST  = 30 ## 30 meters
 DISCLAIMER = f"Contribution locations are purposefully off by {FUZZ_DIST} meters"
+SCALE_ARGS = {
+    'max_val': 10,
+    'min_val': 2,
+    'scale':   1000,
+}
+
 
 def parseArgs():
     """Parse command line arguments"""
@@ -172,7 +178,7 @@ class Contribution:
 
     @classmethod
     def fromJson(cls, data):
-        amt = float(data['amount'][1:].replace(',', ''))
+        amt = strip_currency(data['amount'])
         return cls(data['date'], amt, data['streetAddress'], data['cityStateZip'])
 
     @property
@@ -307,17 +313,17 @@ def makeMapKey(title, box_size=8):
 
     ## Add circles
     txts = []
-    circ_off = size_scale(1000, max_val=20, min_val=2, scale=1000)
+    circ_off = size_scale(1000, **SCALE_ARGS)
     for x in (1, 10, 100, 500, 1000):
-        radius = size_scale(x, max_val=20, min_val=2, scale=1000)
+        radius = size_scale(x, **SCALE_ARGS)
         y_off += radius*1.1 + 3
         els.append(Element(
             'circle',
             cx=(x_off + circ_off*1.1),
             cy=y_off,
             r=radius,
-            stroke='black',
-            stroke_width=3,
+            stroke='#bf6321',
+            stroke_width=1,
             fill='orange',
         ))
         txt = f"${x}"
@@ -340,7 +346,7 @@ def makeContributionBox(title, in_city, in_state, total, cbox_h=20, cbox_w=400):
     els = []
 
     ## Title
-    title = f"{title}: ${total:.2f}"
+    title = f"{title}: {format_dollar(total)}"
     if not total:
         return f"<p>{title}</p>"
 
@@ -360,9 +366,9 @@ def makeContributionBox(title, in_city, in_state, total, cbox_h=20, cbox_w=400):
         'total': 1,
     }
     perc_txts = {
-        'city':  f"${int(in_city)} ({int(fractions['city']*100)}%)",
-        'state': f"${int(in_state)} ({int(fractions['state']*100)}%)",
-        'total': f"${int(total)}",
+        'city':  f"{format_dollar(in_city)} ({int(fractions['city']*100)}%)",
+        'state': f"{format_dollar(in_state)} ({int(fractions['state']*100)}%)",
+        'total': f"{format_dollar(total)}",
     }
     widths = {
         'city': int(cbox_w*fractions['city']),
@@ -434,7 +440,7 @@ def plotContributor(contributor, m):
     tooltip = folium.map.Tooltip(tooltip_txt, style="font-size: 1.5em;", sticky=False)
     angle = 1
     pin_args = { 'prefix': 'fa', 'color': 'green', 'icon': 'arrow-up' }
-    radius = size_scale(contributor.total, max_val=20, min_val=2, scale=1000)
+    radius = size_scale(contributor.total, **SCALE_ARGS)
     folium.CircleMarker(coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4, stroke_width=3).add_to(m)
 
 
@@ -464,8 +470,17 @@ def plotColocatedContributors(contributors, coord, addr, m):
     tooltip = folium.map.Tooltip(tooltip_txt, style="font-size: 1.5em;", sticky=False)
     angle = 1
     pin_args = { 'prefix': 'fa', 'color': 'green', 'icon': 'arrow-up' }
-    radius = size_scale(total, max_val=20, min_val=2, scale=1000)
-    folium.CircleMarker(coord, radius=radius, tooltip=tooltip, color="black", fill_color="orange", fill_opacity=0.4).add_to(m)
+    radius = size_scale(total, **SCALE_ARGS)
+    folium.CircleMarker(
+        coord,
+        radius=radius,
+        stroke=True,
+        weight=1,
+        color="#bf6321",
+        fill_color="orange",
+        fill_opacity=0.4,
+        tooltip=tooltip,
+    ).add_to(m)
 
 
 def makeMap(contributors, m, title=None, subtitle=None):
