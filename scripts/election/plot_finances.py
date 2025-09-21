@@ -293,29 +293,38 @@ def contributions_hdlr(args):
         in_state.append(state)
         totals.append(total)
 
+    ## Calculate percentages
+    in_city_prc  = [x*100//y for x, y in zip(in_city, totals)]
+    in_state_prc = [x*100//y for x, y in zip(in_state, totals)]
+
     ## Make chart
     fig = go.Figure()
     fig.add_trace(go.Bar(
         x=names,
         y=in_city,
         name='Cambridge',
-        marker_color='#6C8EBF'
+        marker_color='#6C8EBF',
+        customdata=[[x] for x in in_city_prc],
+        hovertemplate="%{x} %{y} (%{customdata[0]}%)",
     ))
     fig.add_trace(go.Bar(
         x=names,
         y=in_state,
         name='Massachusetts',
-        marker_color='orange'
+        marker_color='orange',
+        customdata=[[x] for x in in_state_prc],
+        hovertemplate="%{x} %{y} (%{customdata[0]}%)",
     ))
     fig.add_trace(go.Bar(
         x=names,
         y=in_state,
         name='Total',
-        marker_color='#FFF178'
+        marker_color='red',
+        hovertemplate="%{x} %{y}",
     ))
 
     ## Finalize plot
-    fig.update_layout(barmode='group', xaxis_tickangle=-45)
+    fig.update_layout(barmode='group', xaxis_tickangle=-45, yaxis=dict(tickformat="$,"))
 
     if args.out is not None:
         finalPlot(args, fig)
