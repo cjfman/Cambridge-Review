@@ -18,12 +18,13 @@ my $base_dir  = ".";
 $base_dir = shift @ARGV if @ARGV;
 $base_dir =~ s{/$}{};
 
-my $scripts_dir  = "$base_dir/scripts";
-my $filers_file  = "$base_dir/candidate_data/filers.json";
-my $reports_path = "$base_dir/candidate_data/reports";
-my $charts_path  = "$base_dir/charts/filers/reports";
-my $reports_url  = "candidate-data/report-charts";
-my $images_url   = "images/candidate-data/reports";
+my $scripts_dir        = "$base_dir/scripts";
+my $filers_file        = "$base_dir/candidate_data/filers.json";
+my $reports_path       = "$base_dir/candidate_data/reports";
+my $contributions_path = "$base_dir/candidate_data/contributions";
+my $charts_path        = "$base_dir/charts/filers/reports";
+my $reports_url        = "candidate-data/report-charts";
+my $images_url         = "images/candidate-data/reports";
 
 $reports_path =~ s{/$}{};
 $charts_path  =~ s{/$}{};
@@ -161,7 +162,22 @@ if (@charts or $SHARED) {
     else {
         push @charts, $chart_file;
     }
+
+    ## Contributions report
+    $chart_file = "$charts_path/contributions_chart.html";
+    print "Making contributions report in '$chart_file'\n";
+    system "$scripts_dir/election/plot_finances.py contributions --out $chart_file --copyright-tight $contributions_path/*";
+    if ($?) {
+        print "Couldn't make '$chart_file'\n";
+        $errors += 1;
+    }
+    else {
+        push @charts, $chart_file;
+    }
 }
+
+## Add no-cache to each chart
+add_no_cache($_) foreach @charts;
 
 ## Finish up
 my $total = @charts + @images + @mobile_files;
@@ -252,4 +268,38 @@ sub get_filers {
         exit 1;
     }
     return %filers;
+}
+
+sub add_no_cache {
+    my $file = shift;
+    my $no_cache = '<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+    </head>';
+    my $found;
+    my @lines;
+    print STDERR "Added no-cache to $file\n";
+    open FILE, '<', $file or die "Failed to open file $file: $!";
+    foreach my $line (<FILE>) {
+        chomp $line;
+        if ($line eq '<head><meta charset="utf-8" /></head>') {
+            push @lines, $no_cache;
+            $found = 1;
+        }
+        else {
+            push @lines, $line;
+        }
+    }
+    close FILE;
+
+    if ($found) {
+        open FILE, '>', $file or die "Failed to open file $file: $!";
+        print FILE join "\n", @lines;
+        close FILE;
+    }
+    else {
+        print STDERR "Failed to add no-cache to $file\n";
+    }
 }

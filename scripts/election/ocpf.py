@@ -372,7 +372,7 @@ def format_contributions_query_url(cpfid, start:dt.datetime, end:dt.datetime):
 def query_reports_hdlr(args):
     now = dt.datetime.now()
     then = now - dateutil.relativedelta.relativedelta(months=6)
-    url = query_reports_hdlr(args.filer, then, now)
+    url = format_contributions_query_url(args.filer, then, now)
     print_stderr(f"Fetching {url}")
     reports = fetch_json(url)
     with open(args.path, 'w', encoding='utf8') as f:
