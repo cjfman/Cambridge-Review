@@ -129,15 +129,18 @@ def plot_expenses(args, title, stacks, recpts, expncs, *, cashes=None, subtitle=
         title_info['subtitle'] = { 'text': subtitle }
 
     if not args.h_legend:
-        fig.update_layout(barmode='relative', title=title_info, legend_title_text="Legend")
+        fig.update_layout(barmode='relative', legend_title_text="Legend")
     else:
-        fig.update_layout(barmode='relative', title=title_info, legend=dict(
+        fig.update_layout(barmode='relative', legend=dict(
             yanchor="bottom",
             xanchor="right",
             x=1,
             y=1,
             orientation="h",
         ))
+
+    ## Finalize chart
+    fig.update_layout(title=title_info, xaxis_tickangle=45)
     if args.out is not None:
         finalPlot(args, fig)
     else:
@@ -348,7 +351,7 @@ def contributions_hdlr(args):
 
     fig.update_yaxes(title_text="Amount (dollars)")
     fig.update_xaxes(title_text="Candidate")
-    fig.update_layout(barmode='group', xaxis_tickangle=-45, title=title_info, yaxis=dict(tickformat="$,"))
+    fig.update_layout(barmode='group', xaxis_tickangle=45, title=title_info, yaxis=dict(tickformat="$,"))
     if args.out is not None:
         finalPlot(args, fig)
     else:
