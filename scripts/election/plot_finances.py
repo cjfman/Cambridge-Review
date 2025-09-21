@@ -218,7 +218,7 @@ def plot_filers_last_report(args, filers):
     recpts = []
     expncs = []
     cashes = []
-    for filer in filers:
+    for filer in sorted(filers, key=lambda x: x.committee_name):
         stacks.append(filer.committee_name)
         recpts.append(filer.reports[0].credit_total)
         expncs.append(filer.reports[0].expenditure_total*-1)
