@@ -68,7 +68,7 @@ def parseArgs():
         help="Create a chart for a many filer")
     many_parser.set_defaults(func=many_filer_hdlr)
     many_parser.add_argument("--title",
-        help="Title of the chart. Default: Finances <REPORT PERIOD>")
+         help="Title of the chart. Default: Finances <REPORT PERIOD>")
     many_parser.add_argument("reports", nargs='+',
         help="Filer report files")
 
@@ -76,8 +76,10 @@ def parseArgs():
     contributions_parser = subparsers.add_parser('contributions', parents=[shared_parser], add_help=False,
         help="Create a chart for a contributions filer")
     contributions_parser.set_defaults(func=contributions_hdlr)
-    contributions_parser.add_argument("--title",
-        help="Title of the chart. Default: Contributions <REPORT PERIOD>")
+    contributions_parser.add_argument("--title", default="Contributions",
+        help="Title of the chart")
+    contributions_parser.add_argument("--subtitle",
+        help="Subtitle of the chart. Default: <REPORT PERIOD>")
     contributions_parser.add_argument("contributions", nargs='+',
         help="Contribution files")
 
@@ -270,13 +272,16 @@ def many_filer_hdlr(args):
 def contributions_hdlr(args):
     ## Build filers
     filers = {}
+    all_contributions = []
     for path in args.contributions:
         data = utils.load_json(path)
         if 'filerFullName' not in data['summary']:
             print(f"File '{path}' doesn't have a candidate name. Skipping")
             continue
 
-        filers[data['summary']['filerFullName']] = sum_contributions(contributions=map(Contribution.fromJson, data['items']))
+        contributions = list(map(Contribution.fromJson, data['items']))
+        all_contributions.extend(contributions)
+        filers[data['summary']['filerFullName']] = sum_contributions(contributions=contributions)
 
     if not filers:
         print("No contributions were found")
@@ -323,8 +328,19 @@ def contributions_hdlr(args):
         hovertemplate="%{x} %{y}",
     ))
 
+    ## Make subtitle
+    if args.subtitle is None:
+        dates = sorted([x.date for x in all_contributions])
+        start = utils.simpleFormatDateTime(dates[0], date_only=True)
+        end = utils.simpleFormatDateTime(dates[-1], date_only=True)
+        args.subtitle = f"{start} to {end}"
+
     ## Finalize plot
-    fig.update_layout(barmode='group', xaxis_tickangle=-45, yaxis=dict(tickformat="$,"))
+    title_info = {
+        'text': args.title,
+        'subtitle': { 'text': args.subtitle },
+    }
+    fig.update_layout(barmode='group', xaxis_tickangle=-45, title=title_info, yaxis=dict(tickformat="$,"))
 
     if args.out is not None:
         finalPlot(args, fig)

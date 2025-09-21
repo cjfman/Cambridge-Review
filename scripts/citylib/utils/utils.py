@@ -53,8 +53,11 @@ def setDefaultValue(d, v, keys):
                 d[key] = v
 
 
-def simpleFormatDateTime(stamp:dt.datetime) -> str:
-    return stamp.strftime('%-m/%-d/%y %-I:%-M %p')
+def simpleFormatDateTime(stamp:dt.datetime, *, date_only=False) -> str:
+    if date_only:
+        return stamp.strftime('%-m/%-d/%Y')
+
+    return stamp.strftime('%-m/%-d/%Y %-I:%-M %p')
 
 
 def insertLineInFile(path, match, line, *, after=True, stop=True, regex=False, re_args=None) -> bool:

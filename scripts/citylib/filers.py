@@ -149,7 +149,7 @@ class Report:
 
 @dataclass
 class Contribution:
-    date: str
+    date: dt.datetime
     amount: float
     street: str
     city_state: str
@@ -157,7 +157,12 @@ class Contribution:
     @classmethod
     def fromJson(cls, data):
         amt = strip_currency(data['amount'])
-        return cls(data['date'], amt, data['streetAddress'], data['cityStateZip'])
+        return cls(
+            dateutil.parser.parse(data['date']),
+            amt,
+            data['streetAddress'],
+            data['cityStateZip']
+        )
 
     @property
     def city(self):
