@@ -26,6 +26,7 @@ sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 from citylib import utils
 from citylib.filers import Filer
 from citylib.utils import gis, format_dollar, strip_currency
+from citylib.utils import color_schemes as cs
 from citylib.utils.gis import CITY_BOUNDARY, STATE_BOUNDARY
 from citylib.utils.simplehtml import Element, LinearGradient, Text, TickMark
 
@@ -34,9 +35,10 @@ DEBUG   = False
 
 FUZZ_DIST  = 30 ## 30 meters
 DISCLAIMER = f"Contribution locations are purposefully off by {FUZZ_DIST} meters"
+GRADIENT   = cs.ColorGradient(cs.BlueRedYellow, 1000, scale_fn=lambda x: math.log(1 + x/50))
 SCALE_ARGS = {
-    'max_val': 10,
-    'min_val': 2,
+    'max_val': 13,
+    'min_val': 3,
     'scale':   1000,
 }
 
@@ -322,9 +324,9 @@ def makeMapKey(title, box_size=8):
             cx=(x_off + circ_off*1.1),
             cy=y_off,
             r=radius,
-            stroke='#bf6321',
+            stroke=GRADIENT.pick(x),
             stroke_width=1,
-            fill='orange',
+            fill=GRADIENT.pick(x),
         ))
         txt = f"${x}"
         txts.append(txt)
@@ -471,14 +473,15 @@ def plotColocatedContributors(contributors, coord, addr, m):
     angle = 1
     pin_args = { 'prefix': 'fa', 'color': 'green', 'icon': 'arrow-up' }
     radius = size_scale(total, **SCALE_ARGS)
+    color = GRADIENT.pick(total)
     folium.CircleMarker(
         coord,
         radius=radius,
         stroke=True,
         weight=1,
-        color="#bf6321",
-        fill_color="orange",
-        fill_opacity=0.4,
+        color=color,
+        fill_color=color,
+        fill_opacity=0.6,
         tooltip=tooltip,
     ).add_to(m)
 
