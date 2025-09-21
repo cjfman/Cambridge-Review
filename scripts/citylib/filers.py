@@ -7,6 +7,7 @@ import re
 
 import dateutil
 
+from collections import namedtuple
 from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-order
 from typing import Dict, List
 
@@ -14,6 +15,8 @@ from .utils import format_dollar, strip_currency, eprint
 
 VERBOSE=False
 FORCE_ACTIVE = [17259, 18437]
+
+ContributionSet = namedtuple('ContributionSet', ['city', 'state', 'total'])
 
 class Filer:
     def __init__(self, cpfid:int, committee_name, candidate_name="", *, reports=None, cash_on_hand:float=0):
@@ -300,4 +303,4 @@ def sum_contributions(*, contributors=None, contributions=None):
             if c.city == 'Cambridge':
                 city += c.amount
 
-    return (city, state, total)
+    return ContributionSet(city, state, total)

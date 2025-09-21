@@ -398,8 +398,11 @@ def query_contributions_hdlr(args):
             reports['summary']['end']   = now.strftime('%m/%d/%Y')
             if 'items' in reports and reports['items']:
                 cpfid = reports['items'][0]['filerCpfId']
+                name = reports['items'][0]['filerFullNameReverse']
                 if all([cpfid == x['filerCpfId'] for x in reports['items']]):
                     reports['summary']['filerCpfId'] = cpfid
+                    reports['summary']['filerFullName'] = name
+                    reports['summary']['fillerFullNameReverse'] = name
     except Exception as e:
         print(f"Failed to update summary: {e}")
 

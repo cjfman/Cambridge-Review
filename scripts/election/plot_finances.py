@@ -15,7 +15,8 @@ from plotly.subplots import make_subplots
 
 ## pylint: disable=wrong-import-position
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
-from citylib.filers import Filer, Report, read_reports, read_report_and_filer
+from citylib import utils
+from citylib.filers import Contribution, Filer, Report, read_reports, read_report_and_filer, sum_contributions
 from citylib.utils import insertCopyright, format_dollar
 
 VERBOSE=False
@@ -29,7 +30,7 @@ def parseArgs():
 
     ## Shared arguments
     shared_parser = argparse.ArgumentParser(description="The shared parser")
-    shared_parser.add_argument("--out", required=True,
+    shared_parser.add_argument("--out", required=False,
         help="Write to this file")
     shared_parser.add_argument("--dual", action="store_true",
         help="Use dual axes. Ignored unless --coh is set")
@@ -70,6 +71,15 @@ def parseArgs():
         help="Title of the chart. Default: Finances <REPORT PERIOD>")
     many_parser.add_argument("reports", nargs='+',
         help="Filer report files")
+
+    ## Contributions CMD
+    contributions_parser = subparsers.add_parser('contributions', parents=[shared_parser], add_help=False,
+        help="Create a chart for a contributions filer")
+    contributions_parser.set_defaults(func=contributions_hdlr)
+    contributions_parser.add_argument("--title",
+        help="Title of the chart. Default: Contributions <REPORT PERIOD>")
+    contributions_parser.add_argument("contributions", nargs='+',
+        help="Contribution files")
 
     ## Final parse
     args = parser.parse_args()
@@ -254,6 +264,64 @@ def many_filer_hdlr(args):
         print("\n".join(map(str, filers)))
 
     plot_filers_last_report(args, filers)
+    return 0
+
+
+def contributions_hdlr(args):
+    ## Build filers
+    filers = {}
+    for path in args.contributions:
+        data = utils.load_json(path)
+        if 'filerFullName' not in data['summary']:
+            print(f"File '{path}' doesn't have a candidate name. Skipping")
+            continue
+
+        filers[data['summary']['filerFullName']] = sum_contributions(contributions=map(Contribution.fromJson, data['items']))
+
+    if not filers:
+        print("No contributions were found")
+        return 1
+
+    ## Start chart
+    in_city  = []
+    in_state = []
+    totals   = []
+    names    = list(sorted(filers.keys()))
+    for name in names:
+        city, state, total = filers[name]
+        in_city.append(city)
+        in_state.append(state)
+        totals.append(total)
+
+    ## Make chart
+    fig = go.Figure()
+    fig.add_trace(go.Bar(
+        x=names,
+        y=in_city,
+        name='Cambridge',
+        marker_color='#6C8EBF'
+    ))
+    fig.add_trace(go.Bar(
+        x=names,
+        y=in_state,
+        name='Massachusetts',
+        marker_color='orange'
+    ))
+    fig.add_trace(go.Bar(
+        x=names,
+        y=in_state,
+        name='Total',
+        marker_color='#FFF178'
+    ))
+
+    ## Finalize plot
+    fig.update_layout(barmode='group', xaxis_tickangle=-45)
+
+    if args.out is not None:
+        finalPlot(args, fig)
+    else:
+        fig.show()
+
     return 0
 
 

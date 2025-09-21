@@ -344,6 +344,7 @@ def makeTitles(summary, args):
 
     return (title, subtitle)
 
+
 def main(args):
     ## Get info
     addr_map = AddressMap(utils.load_file(args.google_api_key), args.address_cache)
