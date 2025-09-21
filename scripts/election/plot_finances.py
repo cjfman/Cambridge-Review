@@ -154,7 +154,7 @@ def plot_coh(args, title, names, cashes, *, subtitle=None, x_title="Category"):
 
     fig.update_xaxes(title_text=x_title)
     fig.update_yaxes(title_text="Amount (dollars)")
-    fig.update_layout(yaxis_tickformat="$,")
+    fig.update_layout(xaxis_tickangle=45, yaxis_tickformat="$,")
 
     ## Title info
     title_info = { 'text': title }

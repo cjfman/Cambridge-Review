@@ -139,36 +139,9 @@ foreach my $cpfid (@cpfids) {
 
 ## Make shared charts
 if (@charts or $SHARED) {
-    my $img_idx = int rand 1000;
-    ## Combined report
-    my $name = 'combined_report_chart';
-    my $chart_file = "$charts_path/$name.html";
-    my $image_file = "$charts_path/$name.png";
-    my $ok = make_charts_file('combined report', $chart_file, 'many-filers', "--h-legend --copyright-tight $reports_path/*");
-    push @charts, $chart_file if $ok;
-    $ok = make_charts_file('combined report', $image_file, 'many-filers', "--h-legend --scale 2 $reports_path/*");
-    push @images, $image_file if $ok;
-    write_mobile_file_and_push("${name}_mobile.html", "/$images_url/$name.png", $img_idx) if $MOBILE;
-
-    ## Cash on hand report
-    $name = 'cash_on_hand_report_chart';
-    $chart_file = "$charts_path/$name.html";
-    $image_file = "$charts_path/$name.png";
-    $ok = make_charts_file("cash on hand", $chart_file, 'many-filers', "--coh --h-legend --copyright-tight $reports_path/*");
-    push @charts, $chart_file if $ok;
-    $ok = make_charts_file("cash on hand", $image_file, 'many-filers', "--coh --h-legend --scale 2 $reports_path/*");
-    push @images, $image_file if $ok;
-    write_mobile_file_and_push("${name}_mobile.html", "/$images_url/$name.png", $img_idx) if $MOBILE;
-
-    ## Contributions report
-    $name = 'contributions_chart';
-    $chart_file = "$charts_path/$name.html";
-    $image_file = "$charts_path/$name.png";
-    $ok = make_charts_file('contributions', $chart_file, 'contributions', "--copyright-tight $contributions_path/*");
-    push @charts, $chart_file if $ok;
-    $ok = make_charts_file('contributions', $image_file, 'contributions', "--scale 2 $contributions_path/*");
-    push @images, $image_file if $ok;
-    write_mobile_file_and_push("${name}_mobile.html", "/$images_url/$name.png", $img_idx) if $MOBILE;
+    make_charts_file_set_and_push('combined_report_chart', 'many-filers', "--h-legend --copyright-tight $reports_path/*");
+    make_charts_file_set_and_push('cash_on_hand_report_chart', 'many-filers', "--coh --h-legend --copyright-tight $reports_path/*");
+    make_charts_file_set_and_push('contributions_chart', 'contributions', "--copyright-tight $contributions_path/*");
 }
 
 ## Add no-cache to each chart
@@ -323,4 +296,19 @@ sub make_charts_file {
         return 0;
     }
     return 1;
+}
+
+sub make_charts_file_set_and_push {
+    my $name = shift;
+    my $cmd = shift;
+    my @args = @_;
+
+    my $chart_file = "$charts_path/$name.html";
+    my $image_file = "$charts_path/$name.png";
+
+    my $ok = make_charts_file($name, $chart_file, $cmd, @args);
+    push @charts, $chart_file if $ok;
+    $ok = make_charts_file($name, $image_file, $cmd, @args);
+    push @images, $image_file if $ok;
+    write_mobile_file_and_push("${name}_mobile.html", "/$images_url/$name.png", int rand 1000) if $MOBILE;
 }
