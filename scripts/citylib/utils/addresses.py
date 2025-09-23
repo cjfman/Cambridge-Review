@@ -2,6 +2,8 @@ import json
 import os
 import requests
 
+from .gis import Coordinate
+
 class AddressMap:
     def __init__(self, api_key, cache_path=None, *, verbose=False):
         self.api_key    = api_key
@@ -96,4 +98,4 @@ def address_to_coordinates(address, key, *, quiet=True):
 
     ## Use the first result
     location = data['results'][0]['geometry']['location']
-    return (location['lat'], location['lng'])
+    return Coordinate(location['lat'], location['lng'])

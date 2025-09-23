@@ -180,6 +180,10 @@ class Contribution:
 
         return None
 
+    @property
+    def address(self):
+        return f"{self.street}, {self.city_state}"
+
 
 class Contributor:
     @staticmethod

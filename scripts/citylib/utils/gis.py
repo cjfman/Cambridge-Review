@@ -1,6 +1,8 @@
 import json
 import os
 
+from collections import namedtuple
+
 import numpy as np
 
 from shapely.geometry import shape, Point
@@ -41,6 +43,8 @@ NEIGHBORHOOD_BOUNDARIES = {
     'weight': 5,
     'tooltip': "NAME",
 }
+
+Coordinate = namedtuple('Coordinate', ['lat', 'lon'])
 
 class GisGeoJson:
     def __init__(self, path, *, secondary_id_key=None, property_filters=None):
