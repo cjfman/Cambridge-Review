@@ -55,6 +55,8 @@ def parseArgs():
         help="Map subtitle")
     parser.add_argument("--filer",
         help="The filer's id")
+    parser.add_argument("-m", "--mobile", action="store_true",
+        help="Generate mobile version of map")
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("records_file",
@@ -101,7 +103,7 @@ def fuzzCoords(coord, length=FUZZ_DIST):
     return (lon, lat)
 
 
-def makeMapKey(title, box_size=8):
+def makeMapKey(title, *, subtitles=None, box_size=8):
     ## Add elements
     y_off = 20
     x_off = 10
@@ -111,6 +113,15 @@ def makeMapKey(title, box_size=8):
     ## Title
     els.append(Text(title, x=x_off, y=y_off))
     y_off += text_h / 2
+    if subtitles is not None:
+        y_off += text_h / 2
+        for subtitle in subtitles:
+            if subtitle:
+                els.append(Text(subtitle, x=x_off, y=y_off))
+                y_off += text_h
+            else:
+                y_off += text_h / 2
+        y_off -= text_h / 2
 
     ## Add circles
     txts = []
@@ -139,10 +150,10 @@ def makeMapKey(title, box_size=8):
     return Element('svg', els, width=width, height=height).to_html()
 
 
-def makeContributionBox(title, in_city, in_state, total, cbox_h=20, cbox_w=400):
+def makeContributionBox(title, in_city, in_state, total, *, cbox_h=20, cbox_w=400, subtxt=None):
     ## Add elements
-    y_off = 20
-    x_off = 10
+    y_off = 10
+    x_off = 5
     text_h = 15
     els = []
 
@@ -196,9 +207,13 @@ def makeContributionBox(title, in_city, in_state, total, cbox_h=20, cbox_w=400):
         els.append(Text(perc_txts[location], x=perc_off, y=txt_off, dominant_baseline="central"))
         y_off += cbox_h - 1
 
+    if subtxt:
+        y_off += text_h *1.5
+        els.append(Text(subtxt, x=x_off, y=y_off))
+
     ## Create SVG
     width = txt_end + max([10*len(perc_txts[x]) + widths[x] for x in ('city', 'state', 'total')])
-    height = y_off+10
+    height = y_off+5
     return Element('svg', els, width=width, height=height).to_html()
 
 
@@ -285,7 +300,39 @@ def plotColocatedContributors(contributors, coord, addr, m):
     ).add_to(m)
 
 
-def makeMap(contributors, m, title=None, subtitle=None):
+def processTemplate(m, template, contributors, *, title=None, subtitle=None, mobile=False):
+    ## Make the map key
+    map_key = None
+    if not mobile:
+        map_key = makeMapKey("Contribution Scale")
+    else:
+        ## Incldue the map titles
+        subtitles = []
+        if subtitle:
+            subtitles.append(subtitle)
+        subtitles.extend(["", "Contribution Scale"])
+        map_key = makeMapKey(title, subtitles=subtitles)
+
+    ## Make the contribution box
+    contr_box = None
+    if not mobile:
+        contr_box = makeContributionBox("Contribution Total", *filers.sum_contributions(contributors=contributors))
+    else:
+        contr_box = makeContributionBox("Contribution Total", subtxt=DISCLAIMER, *filers.sum_contributions(contributors=contributors))
+
+    ## Do replacements
+    template = template.replace("{{SVG1}}", map_key)
+    template = template.replace("{{CONTRIBUTIONS}}", contr_box)
+    if not mobile:
+        template = template.replace("{{DISCLAIMER}}", DISCLAIMER)
+        if title:
+            template = template.replace("{{TITLE}}", f"<h2>{title}</h2><p>{subtitle or ''}</p>")
+    macro = MacroElement()
+    macro._template = Template(template) ## pylint: disable=protected-access
+    m.get_root().add_child(macro)
+
+
+def makeMap(contributors, m, title=None, subtitle=None, mobile=False):
     grouped = defaultdict(list)
     for c in contributors:
         grouped[c.address].append(c)
@@ -303,15 +350,7 @@ def makeMap(contributors, m, title=None, subtitle=None):
         template = f.read()
 
     if template is not None:
-        contr_box = makeContributionBox("Contribution Total", *filers.sum_contributions(contributors=contributors))
-        template = template.replace("{{SVG1}}", makeMapKey("Contribution Scale"))
-        template = template.replace("{{DISCLAIMER}}", DISCLAIMER)
-        template = template.replace("{{CONTRIBUTIONS}}", contr_box)
-        if title:
-            template = template.replace("{{TITLE}}", f"<h2>{title}</h2><p>{subtitle or ''}</p>")
-        macro = MacroElement()
-        macro._template = Template(template) ## pylint: disable=protected-access
-        m.get_root().add_child(macro)
+        processTemplate(m, template, contributors, title=title, subtitle=subtitle, mobile=mobile)
 
 
 def getFiler(cpfid):
@@ -359,7 +398,7 @@ def main(args):
 
         ## Make map
         m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles="Cartodb Positron")
-        makeMap(contributors, m, title=title, subtitle=subtitle)
+        makeMap(contributors, m, title=title, subtitle=subtitle, mobile=args.mobile)
         makeLayer(**CITY_BOUNDARY).add_to(m)
         #makeLayer(**STATE_BOUNDARY).add_to(m)
 
