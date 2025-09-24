@@ -1,6 +1,7 @@
 *.swp
 *.swo
 *.log
+*.pyc
 .DS_Store
 GIS/
 by_address/
