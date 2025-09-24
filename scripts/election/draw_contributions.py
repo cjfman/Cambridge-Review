@@ -103,7 +103,7 @@ def fuzzCoords(coord, length=FUZZ_DIST):
     return (lon, lat)
 
 
-def makeMapKey(title, *, subtitles=None, box_size=8):
+def makeMapKey(title, *, subtitles=None, box_size=8, horizontal=False):
     ## Add elements
     y_off = 20
     x_off = 10
@@ -124,11 +124,17 @@ def makeMapKey(title, *, subtitles=None, box_size=8):
         y_off -= text_h / 2
 
     ## Add circles
-    txts = []
     circ_off = size_scale(1000, **SCALE_ARGS)
+    if horizontal:
+        ## Move row down by half of the biggest circle
+        y_off += circ_off*1.1
+
+    txts = []
     for x in (1, 10, 100, 500, 1000):
         radius = size_scale(x, **SCALE_ARGS)
-        y_off += radius*1.1 + 3
+        if not horizontal:
+            y_off += radius*1.2 + 3
+
         els.append(Element(
             'circle',
             cx=(x_off + circ_off*1.1),
@@ -140,13 +146,23 @@ def makeMapKey(title, *, subtitles=None, box_size=8):
         ))
         txt = f"${x}"
         txts.append(txt)
-        els.append(Text(txt, x=x_off+circ_off*2.4, y=y_off, dominant_baseline="central"))
-        y_off += radius*1.1 + 3
+        if not horizontal:
+            els.append(Text(txt, x=x_off+circ_off*2.4, y=y_off, dominant_baseline="central"))
+            y_off += radius*1.1 + 3
+        else:
+            x_off += max(radius*2 + 10, 20)
+            els.append(Text(txt, x=x_off, y=y_off, dominant_baseline="central"))
+            x_off += 8*len(txt) + 10
 
     ## Create SVG
-    width = min(15 * max([len(x) for x in txts]), 150) + circ_off*2.2
-    width = max(8*len(title), width)
-    height = y_off
+    if not horizontal:
+        width = min(15 * max([len(x) for x in txts]), 150) + circ_off*2.2
+        width = max(8*len(title), width)
+        height = y_off
+    else:
+        width = x_off + 10
+        height = y_off + circ_off
+
     return Element('svg', els, width=width, height=height).to_html()
 
 
@@ -311,7 +327,7 @@ def processTemplate(m, template, contributors, *, title=None, subtitle=None, mob
         if subtitle:
             subtitles.append(subtitle)
         subtitles.extend(["", "Contribution Scale"])
-        map_key = makeMapKey(title, subtitles=subtitles)
+        map_key = makeMapKey(title, subtitles=subtitles, horizontal=True)
 
     ## Make the contribution box
     contr_box = None
