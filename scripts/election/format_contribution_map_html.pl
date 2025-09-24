@@ -11,6 +11,16 @@ print qq[<!-- wp:heading {"level":4} -->
 <!-- /wp:paragraph -->
 
 <!-- wp:html -->
+];
+
+print qq[<div class="gbvc-hide-on-mobile">
 <iframe src="/candidate-data/contribution-maps/contributions_$cpfid.html" width="100%" height="600"></iframe>
+</div>
+<div class="gbvc-hide-on-desktop gbvc-hide-on-tablet">
+<iframe src="/candidate-data/contribution-maps/contributions_mobile_$cpfid.html" width="100%" height="600"></iframe>
+</div>];
+
+print qq[
+
 <!-- /wp:html -->
 ];
