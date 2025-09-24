@@ -33,7 +33,7 @@ VERBOSE = False
 DEBUG   = False
 
 FUZZ_DIST  = 30 ## 30 meters
-DISCLAIMER = f"Contribution locations are purposefully off by {FUZZ_DIST} meters"
+DISCLAIMER = f"Contributor locations are purposefully off by {FUZZ_DIST}m"
 GRADIENT   = cs.ColorGradient(cs.BlueRedYellow, 1000, scale_fn=lambda x: math.log(1 + x/50))
 SCALE_ARGS = {
     'max_val': 13,
@@ -318,7 +318,12 @@ def processTemplate(m, template, contributors, *, title=None, subtitle=None, mob
     if not mobile:
         contr_box = makeContributionBox("Contribution Total", *filers.sum_contributions(contributors=contributors))
     else:
-        contr_box = makeContributionBox("Contribution Total", subtxt=DISCLAIMER, *filers.sum_contributions(contributors=contributors))
+        contr_box = makeContributionBox(
+            "Contribution Total",
+            subtxt=DISCLAIMER,
+            cbox_w=100,
+            *filers.sum_contributions(contributors=contributors),
+        )
 
     ## Do replacements
     template = template.replace("{{SVG1}}", map_key)
