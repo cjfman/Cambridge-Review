@@ -158,7 +158,7 @@ class Contribution:
     def fromJson(cls, data):
         amt = strip_currency(data['amount'])
         return cls(
-            dateutil.parser.parse(data['date']),
+            dateutil.parser.parse(data['date']).date(),
             amt,
             data['streetAddress'],
             data['cityStateZip']

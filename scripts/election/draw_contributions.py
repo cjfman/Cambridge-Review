@@ -45,27 +45,47 @@ SCALE_ARGS = {
 def parseArgs():
     """Parse command line arguments"""
     parser = argparse.ArgumentParser()
+    parser.set_defaults(subcmd=None)
+    parser.add_argument("-v", "--verbose", action="store_true")
+    parser.add_argument("--debug", action="store_true")
     parser.add_argument("--address-cache", default="address_coordindates.json",
         help="File that contains address coordinates")
     parser.add_argument("--google-api-key",
         help="The file to the google API key")
-    parser.add_argument("--title",
+
+    shared_parser = argparse.ArgumentParser(description="The shared parser")
+    shared_parser.add_argument("--title",
         help="Map title")
-    parser.add_argument("--subtitle",
+    shared_parser.add_argument("--subtitle",
         help="Map subtitle")
-    parser.add_argument("--filer",
-        help="The filer's id")
-    parser.add_argument("-m", "--mobile", action="store_true",
+    shared_parser.add_argument("-m", "--mobile", action="store_true",
         help="Generate mobile version of map")
-    parser.add_argument("-v", "--verbose", action="store_true")
-    parser.add_argument("--debug", action="store_true")
-    parser.add_argument("records_file",
+
+    ## Subparsers
+    subparsers = parser.add_subparsers()
+
+    ## single filer cmd
+    single_parser = subparsers.add_parser('single-filer', parents=[shared_parser], add_help=False,
+        help="create a map for a single filer")
+    single_parser.set_defaults(subcmd=single_filer_hdlr)
+    single_parser.add_argument("--filer",
+        help="The filer's id")
+    single_parser.add_argument("records_file",
         help="JSON file of contriutions")
-    parser.add_argument("out_file",
+    single_parser.add_argument("out_file",
         help="Output file")
 
-    args = parser.parse_args()
+    ## many filers cmd
+    many_parser = subparsers.add_parser('many-filers', parents=[shared_parser], add_help=False,
+        help="create a map for many filers")
+    many_parser.set_defaults(subcmd=many_filers_hdlr)
+    many_parser.add_argument("--out-file",
+        help="Output file")
+    many_parser.add_argument("records_files", nargs='+',
+        help="JSON files of contriutions")
 
+    ## Parse args
+    args = parser.parse_args()
     global VERBOSE ## pylint: disable=global-statement
     global DEBUG   ## pylint: disable=global-statement
     if args.debug:
@@ -316,7 +336,7 @@ def plotColocatedContributors(contributors, coord, addr, m):
     ).add_to(m)
 
 
-def processTemplate(m, template, contributors, *, title=None, subtitle=None, mobile=False):
+def processTemplate(m, template, *, contributors=None, title=None, subtitle=None, mobile=False):
     ## Make the map key
     map_key = None
     if not mobile:
@@ -331,19 +351,21 @@ def processTemplate(m, template, contributors, *, title=None, subtitle=None, mob
 
     ## Make the contribution box
     contr_box = None
-    if not mobile:
-        contr_box = makeContributionBox("Contribution Total", *filers.sum_contributions(contributors=contributors))
-    else:
-        contr_box = makeContributionBox(
-            "Contribution Total",
-            subtxt=DISCLAIMER,
-            cbox_w=100,
-            *filers.sum_contributions(contributors=contributors),
-        )
+    if contributors is not None:
+        if not mobile:
+            contr_box = makeContributionBox("Contribution Total", *filers.sum_contributions(contributors=contributors))
+        else:
+            contr_box = makeContributionBox(
+                "Contribution Total",
+                subtxt=DISCLAIMER,
+                cbox_w=100,
+                *filers.sum_contributions(contributors=contributors),
+            )
+
+        template = template.replace("{{CONTRIBUTIONS}}", contr_box)
 
     ## Do replacements
     template = template.replace("{{SVG1}}", map_key)
-    template = template.replace("{{CONTRIBUTIONS}}", contr_box)
     if not mobile:
         template = template.replace("{{DISCLAIMER}}", DISCLAIMER)
         if title:
@@ -353,7 +375,7 @@ def processTemplate(m, template, contributors, *, title=None, subtitle=None, mob
     m.get_root().add_child(macro)
 
 
-def makeMap(contributors, m, title=None, subtitle=None, mobile=False):
+def plotContributions(contributors, m):
     grouped = defaultdict(list)
     for c in contributors:
         grouped[c.address].append(c)
@@ -365,13 +387,17 @@ def makeMap(contributors, m, title=None, subtitle=None, mobile=False):
 
         plotColocatedContributors(group, group[0].coord, group[0].address, m)
 
+
+def makeMap(contributors, m, title=None, subtitle=None, mobile=False):
+    plotContributions(contributors, m)
+
     ## Load template
     template = None
     with open("templates/map_contributions.html") as f:
         template = f.read()
 
     if template is not None:
-        processTemplate(m, template, contributors, title=title, subtitle=subtitle, mobile=mobile)
+        processTemplate(m, template, contributors=contributors, title=title, subtitle=subtitle, mobile=mobile)
 
 
 def getFiler(cpfid):
@@ -403,37 +429,6 @@ def makeTitles(summary, args):
         subtitle = f"{summary['start']} to {summary['end']}"
 
     return (title, subtitle)
-
-
-def main(args):
-    ## Get info
-    addr_map = AddressMap(api_key=utils.load_file(args.google_api_key), cache_path=args.address_cache)
-    data = utils.load_json(args.records_file)
-    summary = data['summary']
-    records = data['items']
-
-    ## Keep anything that could fail during or after the coordindates are loaded in this try block
-    try:
-        contributors = filers.records_to_contributors(records, addr_map=addr_map)
-        title, subtitle = makeTitles(summary, args)
-
-        ## Make map
-        m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles="Cartodb Positron")
-        makeMap(contributors, m, title=title, subtitle=subtitle, mobile=args.mobile)
-        makeLayer(**CITY_BOUNDARY).add_to(m)
-        #makeLayer(**STATE_BOUNDARY).add_to(m)
-
-        ## Make bounds and plot map
-        if contributors:
-            all_coords = [tuple(c.coord) for c in contributors]
-            sw = min(all_coords)
-            ne = max(all_coords)
-            m.fit_bounds([sw, ne])
-
-        m.save(args.out_file)
-        print(f"Wrote to {args.out_file}")
-    finally:
-        addr_map.save()
 
 
 def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=None, sticky=False, control=True, geo_args=None, interactive=None, **kwargs):
@@ -468,11 +463,101 @@ def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=N
     return geo
 
 
-if __name__ == '__main__':
-    _args = parseArgs()
-    if _args.google_api_key is None and _args.address_cache is None:
+def single_filer_hdlr(args):
+    ## Get info
+    addr_map = AddressMap(api_key=utils.load_file(args.google_api_key), cache_path=args.address_cache)
+    data = utils.load_json(args.records_file)
+    summary = data['summary']
+    records = data['items']
+    title, subtitle = makeTitles(summary, args)
+
+    ## Make map
+    m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles="Cartodb Positron")
+
+    ## Keep anything that could fail during or after the coordindates are loaded in this try block
+    try:
+        contributors = filers.records_to_contributors(records, addr_map=addr_map)
+
+        ## Make bounds and plot map
+        makeMap(contributors, m, title=title, subtitle=subtitle, mobile=args.mobile)
+        makeLayer(**CITY_BOUNDARY).add_to(m)
+        #makeLayer(**STATE_BOUNDARY).add_to(m)
+
+        if contributors:
+            all_coords = [tuple(c.coord) for c in contributors]
+            sw = min(all_coords)
+            ne = max(all_coords)
+            m.fit_bounds([sw, ne])
+
+        m.save(args.out_file)
+        print(f"Wrote to {args.out_file}")
+    finally:
+        addr_map.save()
+
+
+def addRecords(m, addr_map, name, contributors, *, bounds=None):
+
+    ## Get bounds
+    if bounds is not None:
+        all_coords = [tuple(c.coord) for c in contributors]
+        sw = min(all_coords)
+        ne = max(all_coords)
+        bounds.append([sw, ne])
+
+
+def many_filers_hdlr(args):
+    ## Get info
+    addr_map = AddressMap(api_key=utils.load_file(args.google_api_key), cache_path=args.address_cache)
+    args.title = args.title or "Contributions"
+    candidates = {}
+    for records_path in args.records_files:
+        try:
+            data = utils.load_json(records_path)
+            candidates[data['summary']['filerFullName']] = filers.records_to_contributors(data['items'], addr_map=addr_map)
+        except Exception as e:
+            print(f"Failed to add records from file '{records_path}': {e}")
+    addr_map.save()
+
+    ## Make map
+    m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles=None)
+    base_map = folium.FeatureGroup(name='Basemap', overlay=True, control=False)
+    folium.TileLayer(tiles="Cartodb Positron").add_to(base_map)
+    base_map.add_to(m)
+    bounds = []
+
+    ## Plot contributions
+    for name, contributors in sorted(candidates.items()):
+        addRecords(m, addr_map, name, contributors, bounds=bounds)
+        group = folium.map.FeatureGroup(name, overlay=False)
+        group.add_to(m)
+        plotContributions(contributors, group)
+        bounds.extend([tuple(c.coord) for c in contributors])
+
+    makeLayer(**CITY_BOUNDARY).add_to(m)
+    folium.LayerControl(position='topleft', collapsed=False).add_to(m)
+
+    ## Load template
+    template = None
+    with open("templates/map_contributions.html") as f:
+        template = f.read()
+
+    if template is not None:
+        processTemplate(m, template, title=args.title, subtitle=args.subtitle, mobile=args.mobile)
+
+    ## Finalize map
+    if bounds:
+        m.fit_bounds(bounds)
+    m.save(args.out_file)
+    print(f"Wrote to {args.out_file}")
+
+
+def main(args):
+    if args.google_api_key is None and args.address_cache is None:
         print("At least one of --address-cache and --google-api-key must be specififed")
-        sys.exit(1)
+        return 1
+
+    return args.subcmd(args)
 
 
-    sys.exit(main(_args))
+if __name__ == '__main__':
+    sys.exit(main(parseArgs()))
