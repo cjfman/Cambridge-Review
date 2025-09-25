@@ -47,7 +47,7 @@ def parseArgs():
     parser = argparse.ArgumentParser()
     parser.add_argument("--address-cache", default="address_coordindates.json",
         help="File that contains address coordinates")
-    parser.add_argument("--google-api-key", required=True,
+    parser.add_argument("--google-api-key",
         help="The file to the google API key")
     parser.add_argument("--title",
         help="Map title")
@@ -407,7 +407,7 @@ def makeTitles(summary, args):
 
 def main(args):
     ## Get info
-    addr_map = AddressMap(utils.load_file(args.google_api_key), args.address_cache)
+    addr_map = AddressMap(api_key=utils.load_file(args.google_api_key), cache_path=args.address_cache)
     data = utils.load_json(args.records_file)
     summary = data['summary']
     records = data['items']
@@ -469,4 +469,10 @@ def makeLayer(name, geo_path, show=False, weight=2, tooltip=None, tooltip_name=N
 
 
 if __name__ == '__main__':
-    sys.exit(main(parseArgs()))
+    _args = parseArgs()
+    if _args.google_api_key is None and _args.address_cache is None:
+        print("At least one of --address-cache and --google-api-key must be specififed")
+        sys.exit(1)
+
+
+    sys.exit(main(_args))

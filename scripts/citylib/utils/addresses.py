@@ -5,12 +5,15 @@ import requests
 from .gis import Coordinate
 
 class AddressMap:
-    def __init__(self, api_key, cache_path=None, *, verbose=False):
+    def __init__(self, api_key=None, cache_path=None, *, verbose=False):
         self.api_key    = api_key
         self.cache_path = cache_path
         self.cache      = {}
         self.updated    = False
         self.verbose    = verbose
+        if api_key is None and cache_path is None:
+            raise ValueError("Both 'api_key' and 'cache_path' cannot be None")
+
         if self.cache_path:
             self.load()
 
@@ -42,8 +45,7 @@ class AddressMap:
         if addr in self.cache:
             return self.cache[addr]
 
-        if not self.api_key:
-            print("Cannot access google maps API without an access key")
+        if self.api_key is None:
             return None
 
         coord = utils.address_to_coordinates(addr, self.api_key)
