@@ -526,14 +526,16 @@ def many_filers_hdlr(args):
     bounds = []
 
     ## Plot contributions
+    show = True
     for name, contributors in sorted(candidates.items()):
         addRecords(m, addr_map, name, contributors, bounds=bounds)
-        group = folium.map.FeatureGroup(name, overlay=False)
+        group = folium.map.FeatureGroup(name, overlay=False, show=show)
         group.add_to(m)
         plotContributions(contributors, group)
+        makeLayer(**CITY_BOUNDARY).add_to(group)
         bounds.extend([tuple(c.coord) for c in contributors])
+        show = False
 
-    makeLayer(**CITY_BOUNDARY).add_to(m)
     folium.LayerControl(position='topleft', collapsed=False).add_to(m)
 
     ## Load template
