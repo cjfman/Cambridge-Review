@@ -7,11 +7,13 @@ for FILER in $FILERS; do
 
     #./scripts/election/ocpf.py query-contributions $FILER "candidate_data/contributions/${FILER}_contributions.json"
 
-    #./scripts/election/draw_contributions.py --google-api-key credentials/maps_key \
-    #    candidate_data/contributions/${FILER}_contributions.json maps/contributions/contributions_$FILER.html
+    if [[ -f candidate_data/contributions/${FILER}_contributions.json ]]; then
+        ./scripts/election/draw_contributions.py --google-api-key credentials/maps_key single-filer \
+            candidate_data/contributions/${FILER}_contributions.json maps/contributions/contributions_$FILER.html
 
-    ./scripts/election/draw_contributions.py -m --google-api-key credentials/maps_key \
-        candidate_data/contributions/${FILER}_contributions.json maps/contributions/contributions_mobile_$FILER.html
+        ./scripts/election/draw_contributions.py --google-api-key credentials/maps_key single-filer \
+            -m candidate_data/contributions/${FILER}_contributions.json maps/contributions/contributions_mobile_$FILER.html
+    fi;
 
     #./scripts/election/plot_finances.py --out "$CHART" --in-file "candidate_data/reports/${FILER}_reports.json" --copyright-tight --h-legend
 #    if [[ ! -f "$CHART" ]]; then
