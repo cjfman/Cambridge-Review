@@ -333,7 +333,7 @@ def contributions_hdlr(args):
     ))
     fig.add_trace(go.Bar(
         x=names,
-        y=in_state,
+        y=totals,
         name='Total',
         marker_color='red',
         hovertemplate="%{x} %{y}",
