@@ -102,6 +102,7 @@ def insertCopyright(path, holder, *, tight=False, blocking=False) -> bool:
     style = 'style="position:absolute; right:1%; bottom: 1%;"'
     notice = f"<p {style}>Copyright &#169; {year}, {holder}. All rights reserved.</p>\n"
     if tight:
+        holder = holder.replace("\n", "<br>")
         style = 'style="position:absolute; left:1%; bottom: 0px;"'
         notice = f"<p {style}>Copyright &#169; {year}<br>{holder}<br>All rights reserved.</p>\n"
     if blocking:

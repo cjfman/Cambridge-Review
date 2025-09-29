@@ -36,7 +36,7 @@ def parseArgs():
         help="Use dual axes. Ignored unless --coh is set")
     shared_parser.add_argument("--coh", action="store_true",
         help="Show cash on hand line")
-    shared_parser.add_argument("--copyright", default="Charles Jessup Franklin",
+    shared_parser.add_argument("--copyright", default="cambridgereview.org",
         help="The copyright holder")
     shared_parser.add_argument("--copyright-tight", action="store_true",
         help="Put the copyright notice in the bottom right corner")
