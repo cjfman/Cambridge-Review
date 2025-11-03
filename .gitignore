@@ -16,4 +16,5 @@ meeting_data/processed/current/
 processed/*
 tmp/
 credentials/
+google_credentials/
 charts/filers/reports/*.png
