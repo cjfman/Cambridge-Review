@@ -38,6 +38,10 @@ while [[ $# -gt 0 ]]; do
             SCHOOL=1;
             shift
             ;;
+        --no-school)
+            SCHOOL=;
+            shift
+            ;;
         --png)
             PNG=1
             shift
@@ -247,7 +251,7 @@ if [ ! -z $LINE ]; then
                 $CC_LINE/cc_election_20${Y}_linechart.png
         done
 
-        file_check "$ALL_CC_YEARS" $CC_LINE/cc_election_20${Y}_linechart.png
+        #file_check "$ALL_CC_YEARS" $CC_LINE/cc_election_20${Y}_linechart.png
     fi ## Council
     if [ ! -z $SCHOOL ]; then
         ## School Committee
@@ -262,12 +266,12 @@ if [ ! -z $LINE ]; then
                 "School Committee Election 20$Y"                    \
                 $CS_LINE/sc_election_20${Y}_linechart.png
             echo "Adding copyright to sc_election_linechart_20$Y.png"
-            convert $CS_LINE/sc_election_20${Y}_linechart.png \
-                -gravity SouthEast -pointsize 12 -annotate +10+10                 \
-                'Copyright © 2024, Charles Jessup Franklin. All rights reserved'  \
+            convert $CS_LINE/sc_election_20${Y}_linechart.png                    \
+                -gravity SouthEast -pointsize 12 -annotate +10+10                \
+                'Copyright © 2024, Charles Jessup Franklin. All rights reserved' \
                 $CS_LINE/sc_election_20${Y}_linechart.png
         done
 
-        file_check "$ALL_SC_YEARS" $SC_LINE/sc_election_20${Y}_linechart.png
+        #file_check "$ALL_SC_YEARS" $SC_LINE/sc_election_20${Y}_linechart.png
     fi ## School
 fi ## Line
