@@ -178,7 +178,7 @@ if [ ! -z $SANKEY ]; then
             for Y in $ALL_CC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
                 echo "Adding copyright to cc_election_sankey_20$Y.png"
-                magick convert $CC_SANKEY/png/cc_election_sankey_20$Y.png            \
+                convert $CC_SANKEY/png/cc_election_sankey_20$Y.png                   \
                     -gravity SouthEast -pointsize 30 -annotate +40+40                \
                     'Copyright © 2024, Charles Jessup Franklin. All rights reserved' \
                     $CC_SANKEY/png/cc_election_sankey_20$Y.png
@@ -227,7 +227,7 @@ if [ ! -z $SANKEY ]; then
             for Y in $ALL_SC_YEARS; do
                 if [[ ! -z "$YEARS" && ! "$YEARS" = *$Y* ]]; then continue; fi
                 echo "Adding copyright to sc_election_sankey_20$Y.png"
-                magick convert $SC_SANKEY/png/sc_election_sankey_20$Y.png            \
+                convert $SC_SANKEY/png/sc_election_sankey_20$Y.png                   \
                     -gravity SouthEast -pointsize 30 -annotate +40+40                \
                     'Copyright © 2024, Charles Jessup Franklin. All rights reserved' \
                     $SC_SANKEY/png/sc_election_sankey_20$Y.png
@@ -249,7 +249,7 @@ if [ ! -z $LINE ]; then
                 "City Council Election 20$Y"                        \
                 $CC_LINE/cc_election_20${Y}_linechart.png
             echo "Adding copyright to cc_election_linechart_20$Y.png"
-            magick convert $CC_LINE/cc_election_20${Y}_linechart.png             \
+            convert $CC_LINE/cc_election_20${Y}_linechart.png                    \
                 -gravity SouthEast -pointsize 12 -annotate +10+10                \
                 'Copyright © 2024, Charles Jessup Franklin. All rights reserved' \
                 $CC_LINE/cc_election_20${Y}_linechart.png
@@ -270,7 +270,7 @@ if [ ! -z $LINE ]; then
                 "School Committee Election 20$Y"                    \
                 $SC_LINE/sc_election_20${Y}_linechart.png
             echo "Adding copyright to sc_election_linechart_20$Y.png"
-            magick convert $SC_LINE/sc_election_20${Y}_linechart.png             \
+            convert $SC_LINE/sc_election_20${Y}_linechart.png                    \
                 -gravity SouthEast -pointsize 12 -annotate +10+10                \
                 'Copyright © 2024, Charles Jessup Franklin. All rights reserved' \
                 $SC_LINE/sc_election_20${Y}_linechart.png
