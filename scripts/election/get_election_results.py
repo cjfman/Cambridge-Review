@@ -43,7 +43,7 @@ def processFirstPage(page_path):
         if 'valid ballots' not in text:
             continue
 
-        match = re.search(r"([,0-9]) valid ballots", text)
+        match = re.search(r"([,0-9]+) valid ballots", text)
         if match:
             count = int(match.groups()[0].replace(',', ''))
 

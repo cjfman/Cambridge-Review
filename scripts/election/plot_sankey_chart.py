@@ -17,7 +17,6 @@ sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 from citylib import elections
 from citylib.utils import insertCopyright
 
-PLOT=True
 VERBOSE=False
 DEBUG=False
 SQUEEZE=True
@@ -75,6 +74,8 @@ def parseArgs():
         help="Put the copyright notice in the bottom right corner")
     parser.add_argument("--no-copyright", action="store_true",
         help="Don't set a copyright holder. Overrides --copyright")
+    parser.add_argument("--show", action="store_true",
+        help="Show the chart in the brower")
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("vote_file",
@@ -496,7 +497,7 @@ def main(args):
         x_width = xWidth(election.num_rounds, first_label_max, label_max, last_label_max)
         finalPlot(args, fig, election, x_width)
 
-    elif PLOT:
+    elif args.show:
         ## Plot now
         fig.show()
 
