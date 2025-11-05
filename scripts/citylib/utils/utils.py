@@ -5,6 +5,10 @@ import requests
 import sys
 
 USE_TERMCOLOR = True
+REQUEST_HDR = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
+}
+
 try:
     from termcolor import colored
 except:
@@ -151,3 +155,28 @@ def load_json(path, *, encoding='utf8', quiet=True):
             print(f"Failed to read file '{path}': {e}")
 
         return None
+
+def fetch_url(url, cache_path=None, *, verbose=False, force=False) -> str:
+    """Fetch the data from a URL. Optionally cache it locally to disk"""
+    if cache_path is not None and not force and os.path.isfile(cache_path):
+        if VERBOSE or verbose:
+            print(f"Reading '{url}' from cache '{cache_path}'")
+
+        with open(cache_path, 'r', encoding='utf8') as f:
+            return f.read()
+
+    print(f"Fetching '{url}'")
+    content = requests.get(url, headers=REQUEST_HDR).content.decode('utf8')
+    if cache_path is not None:
+        print(f"Caching '{cache_path}'")
+        try:
+            with open(cache_path, 'w', encoding='utf8') as f:
+                f.write(content)
+        except Exception as e:
+            ## Remove bad cached file
+            if os.path.isfile(cache_path):
+                os.remove(cache_path)
+
+            raise e
+
+    return content
