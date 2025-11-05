@@ -79,11 +79,13 @@ def getCandidatesFromPage(node):
 def getPageLinks(node):
     links = {}
     for link in hp.findAllTags(node, 'a'):
+        val = link.text.strip()
         try:
-            num = int(link.text.strip())
-            links[num] = link['href']
+            val = int(val)
         except:
-            continue
+            pass
+
+        links[val] = link['href']
 
     return links
 
@@ -129,9 +131,17 @@ def main(args):
     links = first_page[3]
     round_num = 1
     while round_num in links:
+        print(f"Loading round {round_num}")
         round_n, links = processPage(os.path.join(args.base_url, links[round_num]))
         rounds.append(round_n)
         round_num += 1
+
+    if 'Final' in links:
+        print("Loading final round")
+        round_n, links = processPage(os.path.join(args.base_url, links['Final']))
+        rounds.append(round_n)
+    else:
+        print("No final round")
 
     printCsv(args.out_file, rounds, first_page)
 
