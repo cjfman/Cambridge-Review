@@ -258,7 +258,10 @@ def loadElectionsFile(path, include_exhausted=False) -> Election:
         del stats['election date']
 
     ## Check for required stats
-    missing = [x for x in ('total', 'quota', 'invalid', 'date') if x not in stats]
+    if 'invalid' not in stats:
+        stats['invalid'] = 0
+
+    missing = [x for x in ('total', 'quota', 'date') if x not in stats]
     if missing:
         raise FormatError("Missing required stats: " + ", ".join(missing))
 
