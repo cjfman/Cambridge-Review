@@ -22,7 +22,8 @@ from citylib.utils import gis
 from citylib.utils.simplehtml import Element, LinearGradient, Text, TickMark
 from citylib.utils.gis import CITY_BOUNDARY, WARD_BOUNDARIES, NEIGHBORHOOD_BOUNDARIES
 
-ROOT      = "/home/charles/Projects/cambridge_review/"
+#ROOT      = "/home/charles/Projects/cambridge_review/"
+ROOT      = "./"
 GEOJSON   = os.path.join(ROOT, "geojson")
 OVERWRITE = True
 VERBOSE   = False

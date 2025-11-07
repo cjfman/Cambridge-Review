@@ -309,8 +309,11 @@ def loadWardElectionFile(path) -> WardElection:
     precincts = None
     candidates = {}
     ## Open file and do basic processing
-    with open(path, 'r', encoding='utf8') as f:
+    with open(path, 'r', encoding='utf-8-sig') as f:
         reader = csv.DictReader(f)
+        if 'Candidate' not in reader.fieldnames:
+            raise KeyError(f"Wards file '{path}' not properly formatted. Missing column 'Candidate'. Found {reader.fieldnames}")
+
         precincts = reader.fieldnames[2:]
         for row in reader:
             candidate = row['Candidate']
