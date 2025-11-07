@@ -217,8 +217,10 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, totals,
         ('Winners', style_solid),
         ("Vote Count", style_gradient),
     )
+    show = True
     for layer_name, style in styles:
-        layer = folium.FeatureGroup(name=layer_name, overlay=False)
+        layer = folium.FeatureGroup(name=layer_name, overlay=False, show=show)
+        show = False
         geo = folium.GeoJson(geojson.geojson, name=layer_name, style_function=style)
         folium.GeoJsonTooltip(fields=['WardPrecinct', 'winner', 'vote_count'], aliases=['Ward', 'Winner', 'Votes'], sticky=False).add_to(geo)
         geo.add_to(layer)
