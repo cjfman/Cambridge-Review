@@ -262,6 +262,8 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, election, template=None):
         for precinct, count in results.items():
             geoid = geojson.getGeoId(precinct)
             if geoid is None:
+                if precinct != "Total":
+                    print(f"Couldn't find geoid for precinct {precinct}")
                 continue
 
             all_precincts.add(precinct)
@@ -270,9 +272,13 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, election, template=None):
             count_txt = "%d (%.2f%%)" % (count, 100 * count / election.p_totals[precinct])
             if election.p_winners[precinct][0] == candidate:
                 count_txt += "*"
+            if VERBOSE:
+                print(f"Setting geojson id {geoid} property '{candidate}' to {count_txt}")
             geojson.setProperty(candidate, count_txt, geoid)
 
     for geoid, total in precinct_totals.items():
+        if VERBOSE:
+            print(f"Setting geojson id {geoid} property 'Total' to {total}")
         geojson.setProperty("Total", total, geoid)
 
     ## Make map
@@ -288,17 +294,19 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, election, template=None):
     makeLabelLayer(geojson, all_precincts).add_to(m)
 
     ## Add candidates
+    show = True
     for candidate, precincts in sorted(values.items()):
         print(f"Plot {candidate}")
-        layer = folium.FeatureGroup(name=candidate, overlay=False)
-        geo = makeCandidateLayer(geojson, candidate, precincts, gradient)
+        layer = folium.FeatureGroup(name=candidate, overlay=False, show=show)
+        show = False
+        geo = makeCandidateLayer(geojson, candidate, precincts, gradient, show=True)
         geo.add_to(layer)
         layer.add_to(m)
 
     ## Add total layer
     print(f"Plot Totals")
-    layer = folium.FeatureGroup(name="Totals", overlay=False)
-    geo = makeTotalLayer(geojson, sorted(election.c_votes.keys()), precinct_totals, gradient, show=False)
+    layer = folium.FeatureGroup(name="Totals", overlay=False, show=False)
+    geo = makeTotalLayer(geojson, sorted(election.c_votes.keys()), precinct_totals, gradient, show=True)
     geo.add_to(layer)
     layer.add_to(m)
 
