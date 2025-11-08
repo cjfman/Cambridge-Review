@@ -31,15 +31,15 @@ class ColorGradient:
         self.size         = len(self.colors)
         self.factor       = 1
         self.scale_fn     = scale_fn or (lambda x: x)
-        self.min_scaled   = self.scale_fn(self.min) if self.min > 0 else 0
+        self.min_scaled   = self.scale_fn(self.min) if self.min > 0 else self.min
         self.max_scaled   = self.scale_fn(self.max*self.factor)
         self.range_scaled = self.max_scaled - self.min_scaled
 
     def scale(self, val):
-        if val == 0:
+        try:
+            return self.scale_fn((val-self.min)*self.factor)
+        except:
             return 0
-
-        return self.scale_fn((val-self.min)*self.factor)
 
     def percent(self, val):
         if val is None or val < self.min:
@@ -59,6 +59,10 @@ class ColorGradient:
 
         index = int(max(min(self.scale(val)*self.size//self.range_scaled, self.size - 1), 0))
         return self.colors[index]
+
+    def __str__(self):
+        return f"Size:{self.size} Max:{self.max} Min:{self.min} Range:{self.range}" \
+            + f" MaxScaled:{self.max_scaled} MinScaled:{self.min_scaled} RangeScaled:{self.range_scaled}"
 
 
 ## https://gka.github.io/palettes/#/256|d|648fff,785ef0,dc267f|dc267f,fe6100,ffb000|0|1
@@ -96,4 +100,41 @@ BlueRedYellow = [
     '#ff970f', '#ff980e', '#ff990d', '#ff9a0c', '#ff9b0b', '#ff9c0a', '#ff9d09', '#ff9e08',
     '#ffa007', '#ffa106', '#ffa205', '#ffa304', '#ffa403', '#ffa503', '#ffa602', '#ffa702',
     '#ffa801', '#ffa901', '#ffaa00', '#ffac00', '#ffad00', '#ffae00', '#ffaf00', '#ffb000',
+]
+
+
+#https://gka.github.io/palettes/#/256|d|648fff|ffb000|0|1
+BlueYellow = [
+    '#002d89', '#012e8b', '#03308d', '#04328f', '#063391', '#073593', '#093695', '#0a3897',
+    '#0b3a99', '#0d3b9b', '#0e3d9d', '#103f9f', '#1140a1', '#1342a3', '#1444a5', '#1545a7',
+    '#1747a9', '#1848ab', '#1a4aad', '#1b4caf', '#1c4db1', '#1e4fb3', '#1f51b5', '#2152b7',
+    '#2254b9', '#2456bb', '#2557bd', '#2659bf', '#285ac1', '#295cc3', '#2b5ec5', '#2c5fc7',
+    '#2e61c9', '#2f63cb', '#3064cd', '#3266cf', '#3368d1', '#3569d3', '#366bd5', '#386cd7',
+    '#396ed9', '#3a70db', '#3c71dd', '#3e73df', '#4075df', '#4277e0', '#4579e1', '#477be2',
+    '#497de2', '#4c7ee3', '#4e80e4', '#5082e5', '#5384e5', '#5586e6', '#5788e7', '#5a8ae8',
+    '#5c8ce8', '#5e8ee9', '#618fea', '#6391eb', '#6593ec', '#6895ec', '#6a97ed', '#6c99ee',
+    '#6f9bef', '#719def', '#739ff0', '#76a0f1', '#78a2f2', '#7aa4f2', '#7da6f3', '#7fa8f4',
+    '#81aaf5', '#84acf6', '#86aef6', '#88b0f7', '#8bb1f8', '#8db3f9', '#8fb5f9', '#92b7fa',
+    '#94b9fb', '#96bbfc', '#99bdfc', '#9bbffd', '#9dc1fe', '#a0c2ff', '#a2c4ff', '#a4c5ff',
+    '#a6c6fe', '#a8c7fe', '#aac9fe', '#accafe', '#aecbfd', '#b0ccfd', '#b2cdfd', '#b4cefd',
+    '#b6d0fd', '#b8d1fc', '#bad2fc', '#bcd3fc', '#bed4fc', '#c0d5fb', '#c2d7fb', '#c4d8fb',
+    '#c6d9fb', '#c7dafa', '#c9dbfa', '#cbdcfa', '#cddefa', '#cfdff9', '#d1e0f9', '#d3e1f9',
+    '#d5e2f9', '#d7e3f9', '#d9e5f8', '#dbe6f8', '#dde7f8', '#dfe8f8', '#e1e9f7', '#e3eaf7',
+    '#e5ecf7', '#e7edf7', '#e9eef6', '#ebeff6', '#edf0f6', '#eff1f6', '#f1f3f5', '#f3f4f5',
+    '#f5f4f0', '#f5f2eb', '#f6f1e5', '#f6efe0', '#f6eedb', '#f6edd6', '#f7ebd1', '#f7eacb',
+    '#f7e8c6', '#f7e7c1', '#f8e6bc', '#f8e4b7', '#f8e3b2', '#f8e1ac', '#f9e0a7', '#f9dfa2',
+    '#f9dd9d', '#f9dc98', '#f9da92', '#fad98d', '#fad888', '#fad683', '#fad57e', '#fbd378',
+    '#fbd273', '#fbd16e', '#fbcf69', '#fcce64', '#fccc5e', '#fccb59', '#fcc954', '#fdc84f',
+    '#fdc74a', '#fdc545', '#fdc43f', '#fdc23a', '#fec135', '#fec030', '#febe2b', '#febd25',
+    '#ffbb20', '#ffba1b', '#feb817', '#fcb717', '#fab516', '#f8b316', '#f6b115', '#f4af15',
+    '#f2ad14', '#f0ab13', '#eea913', '#eca812', '#eaa612', '#e8a411', '#e6a211', '#e4a010',
+    '#e29e10', '#e09c0f', '#de9a0f', '#dc990e', '#da970d', '#d8950d', '#d6930c', '#d4910c',
+    '#d28f0b', '#d08d0b', '#ce8b0a', '#cc8a0a', '#ca8809', '#c88608', '#c68408', '#c48207',
+    '#c28007', '#c07e06', '#be7c06', '#bc7b05', '#ba7905', '#b87704', '#b67503', '#b47303',
+    '#b27102', '#b06f02', '#ae6d01', '#ac6c01', '#aa6a00', '#a86800', '#a66600', '#a46400',
+    '#a26300', '#a06100', '#9e5f00', '#9c5e00', '#9a5c00', '#985a00', '#975900', '#955700',
+    '#935500', '#915300', '#8f5200', '#8d5000', '#8b4e00', '#894d00', '#874b00', '#854900',
+    '#834800', '#814600', '#7f4400', '#7d4200', '#7b4100', '#793f00', '#783d00', '#763c00',
+    '#743a00', '#723800', '#703700', '#6e3500', '#6c3300', '#6a3100', '#683000', '#662e00',
+    '#642c00', '#622b00', '#602900', '#5e2700', '#5c2600', '#5a2400', '#592200', '#572000',
 ]

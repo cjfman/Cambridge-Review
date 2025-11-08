@@ -35,6 +35,7 @@ def parseArgs():
     parser.set_defaults(all=False)
     parser.set_defaults(winners=False)
     parser.set_defaults(candidate=False)
+    parser.set_defaults(candidate_diff=False)
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--debug", action="store_true")
 #    parser.add_argument("--ward-geojson", default=os.path.join(GEOJSON, "WardsPrecincts2020.geojson"),
@@ -64,9 +65,23 @@ def parseArgs():
     parser_candidate = subparsers.add_parser('candidate',
         help="Only plot this candidate")
     parser_candidate.set_defaults(candidate=True)
+    parser_candidate.add_argument("name",
+        help="The name of the candidate")
     parser_candidate.add_argument("vote_file",
         help="CSV of vote counts")
     parser_candidate.add_argument("out_file",
+        help="Output file")
+
+    parser_candidate_diff = subparsers.add_parser('candidate-diff',
+        help="Plot the difference between two elections for a given candidate")
+    parser_candidate_diff.set_defaults(candidate_diff=True)
+    parser_candidate_diff.add_argument("name",
+        help="The name of the candidate")
+    parser_candidate_diff.add_argument("vote_file_1",
+        help="CSV of vote counts 1")
+    parser_candidate_diff.add_argument("vote_file_2",
+        help="CSV of vote counts 2")
+    parser_candidate_diff.add_argument("out_file",
         help="Output file")
 
     args = parser.parse_args()
@@ -91,6 +106,14 @@ def cleanTitle(title):
 
     return title
 
+
+def loadElection(vote_file):
+    print(f"Reading '{vote_file}'")
+    election = elections.loadWardElectionFile(vote_file)
+    election.printStats()
+    return election
+
+
 def main(args):
     global VERBOSE ## pylint: disable=global-statement
     global DEBUG   ## pylint: disable=global-statement
@@ -100,20 +123,35 @@ def main(args):
     elif args.verbose:
         VERBOSE = True
 
-    print(f"Reading '{args.vote_file}'")
-    election = elections.loadWardElectionFile(args.vote_file)
-    election.printStats()
     template = None
     with open(os.path.join(ROOT, "templates/map.html")) as f:
         template = f.read()
 
     geo_path = WARD_BOUNDARIES['geo_path']
     if args.all:
+        election = loadElection(args.vote_file)
         plotAllCandidatesGeoJson(args.title, geo_path, args.out_file, election, template=template)
     elif args.winners:
-        plotWinnerGeoJson(args.title, geo_path, args.out_file, election.p_winners, max_count=election.max_count, totals=election.p_totals, template=template)
+        election = loadElection(args.vote_file)
+        plotWinnerGeoJson(
+            args.title, geo_path, args.out_file, election.p_winners,
+            max_count=election.max_count, totals=election.p_totals, template=template,
+        )
+    elif args.candidate:
+        election = loadElection(args.vote_file)
+        plotGeoJson(
+            args.title, geo_path, args.out_file, election.p_votes, args.name,
+            max_count=election.max_count, totals=election.p_totals, template=template
+        )
+    elif args.candidate_diff:
+        election_1 = loadElection(args.vote_file_1)
+        election_2 = loadElection(args.vote_file_2)
+        plotCandidateDiffGeoJson(args.title, geo_path, args.out_file, args.name, election_1, election_2, template=template)
     else:
-        plotGeoJson(args.title, geo_path, args.out_file, election.p_votes, args.candidate, max_count=election.max_count, totals=election.p_totals, template=template)
+        print("Error: No valid subcommand chosen")
+        return 1
+
+    return 0
 
 
 def plotGeoJson(name, geo_path, out_path, precincts, metric, *, max_count, totals, template=None):
@@ -254,8 +292,6 @@ def plotWinnerGeoJson(name, geo_path, out_path, precincts, *, max_count, totals,
         candidate_key = makeCandidateKey("Ward Winners", candidate_colors)
         template = template.replace("{{SVG1}}", color_key)
         template = template.replace("{{SVG2}}", candidate_key)
-
-
         macro = MacroElement()
         macro._template = Template(template) ## pylint: disable=protected-access
         m.get_root().add_child(macro)
@@ -339,6 +375,81 @@ def plotAllCandidatesGeoJson(name, geo_path, out_path, election, template=None):
         key_values = list(range(0, half, gradient.max//10))
         key_values += list(range(half, gradient.max - 1, gradient.max//5))[1:]
         key_values[-1] = gradient.max
+        color_key = makeColorKey(name, gradient, values=key_values)
+        template = template.replace("{{SVG1}}", color_key)
+        macro = MacroElement()
+        macro._template = Template(template) ## pylint: disable=protected-access
+        m.get_root().add_child(macro)
+
+    m.save(out_path)
+    print(f"Wrote to {out_path}")
+
+
+def plotCandidateDiffGeoJson(name, geo_path, out_path, candidate, election_1, election_2, template=None):
+    print(f"Generating {name}")
+    print(f"Reading {geo_path}")
+    geojson = gis.GisGeoJson(geo_path, secondary_id_key='WardPrecinct')
+    geojson.setProperty('count_d', "N/A")
+    values = {}
+    for precinct in set(list(election_1.p_votes.keys()) + list(election_2.p_votes.keys())):
+        if precinct not in election_1.p_votes or precinct not in election_2.p_votes:
+            print(f"Precinct {precinct} didn't exist in both elections. Skipping it")
+            continue
+
+        geoid = geojson.getGeoId(precinct)
+        if geoid is None:
+            print(f"Skipping {precinct}")
+            continue
+
+        count_1 = election_1.p_votes[precinct][candidate]
+        count_2 = election_2.p_votes[precinct][candidate]
+        count_d = count_2 - count_1
+        count_txt_1 = "%d (%.2f%%)" % (count_1, 100 * count_1 / election_1.p_totals[precinct])
+        count_txt_2 = "%d (%.2f%%)" % (count_2, 100 * count_2 / election_2.p_totals[precinct])
+        count_txt_d = str(count_d)
+        geojson.setProperty('count_d', count_txt_d, geoid)
+        geojson.setProperty('count_1', count_txt_1, geoid)
+        geojson.setProperty('count_2', count_txt_2, geoid)
+        values[geoid] = count_d
+
+    max_count = max(map(abs, values.values()))
+    gradient = cs.ColorGradient(cs.BlueYellow, max_count, -max_count)
+    print(f"Gradeint {gradient}")
+
+    ## Make style function
+    style_function = lambda x: {
+        'fillColor': gradient.pick(float(noThrow(values, x['id']) or 0) or 0),
+        'fillOpacity': 0.7,
+        'weight': 2,
+        'color': '#000000',
+        'opacity': 0.2,
+    }
+
+    ## Make map
+    m = folium.Map(location=[42.378, -71.11], zoom_start=14, tiles=None)
+    base_map = folium.FeatureGroup(name='Basemap', overlay=True, control=False)
+    folium.TileLayer(tiles='OpenStreetMap').add_to(base_map)
+    base_map.add_to(m)
+    city_boundary = makeLayer(**CITY_BOUNDARY)
+    city_boundary.add_to(base_map)
+
+    ## Plot extra layers
+    makeLayer(**WARD_BOUNDARIES).add_to(m)
+    makeLayer(**NEIGHBORHOOD_BOUNDARIES).add_to(m)
+
+    ## Plot wards
+    geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function)
+    folium.GeoJsonTooltip(fields=['WardPrecinct', 'count_d'], aliases=['Ward', 'Count'], sticky=False).add_to(geo)
+    geo.add_to(m)
+
+    ## Plot labels
+    makeLabelLayer(geojson, election_1.p_winners).add_to(m)
+
+    folium.LayerControl(position='topleft', collapsed=False).add_to(m)
+
+    ## Load template
+    if template is not None:
+        key_values = list(range(gradient.min, gradient.max + 1, gradient.range//8))
         color_key = makeColorKey(name, gradient, values=key_values)
         template = template.replace("{{SVG1}}", color_key)
         macro = MacroElement()
