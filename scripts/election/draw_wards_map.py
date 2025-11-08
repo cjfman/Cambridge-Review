@@ -402,14 +402,19 @@ def plotCandidateDiffGeoJson(name, geo_path, out_path, candidate, election_1, el
             continue
 
         count_1 = election_1.p_votes[precinct][candidate]
+        total_1 = election_1.p_totals[precinct]
         count_2 = election_2.p_votes[precinct][candidate]
+        total_2 = election_2.p_totals[precinct]
         count_d = count_2 - count_1
-        count_txt_1 = "%d (%.2f%%)" % (count_1, 100 * count_1 / election_1.p_totals[precinct])
-        count_txt_2 = "%d (%.2f%%)" % (count_2, 100 * count_2 / election_2.p_totals[precinct])
-        count_txt_d = str(count_d)
+        count_p = count_2/total_2 - count_1/total_1
+        count_txt_1 = "%d (%.2f%%)" % (count_1, 100 * count_1 / total_1)
+        count_txt_2 = "%d (%.2f%%)" % (count_2, 100 * count_2 / total_2)
+        count_txt_d = "%d (%.2f%%)" % (count_d, 100 * count_d / count_1)
+        count_txt_p = "%.2f%%" % (count_p*100)
         geojson.setProperty('count_d', count_txt_d, geoid)
         geojson.setProperty('count_1', count_txt_1, geoid)
         geojson.setProperty('count_2', count_txt_2, geoid)
+        geojson.setProperty('count_p', count_txt_p, geoid)
         values[geoid] = count_d
 
     max_count = max(map(abs, values.values()))
@@ -437,13 +442,17 @@ def plotCandidateDiffGeoJson(name, geo_path, out_path, candidate, election_1, el
     makeLayer(**WARD_BOUNDARIES).add_to(m)
     makeLayer(**NEIGHBORHOOD_BOUNDARIES).add_to(m)
 
-    ## Plot wards
-    geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function)
-    folium.GeoJsonTooltip(fields=['WardPrecinct', 'count_d'], aliases=['Ward', 'Count'], sticky=False).add_to(geo)
-    geo.add_to(m)
-
     ## Plot labels
     makeLabelLayer(geojson, election_1.p_winners).add_to(m)
+
+    ## Plot wards
+    geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function)
+    folium.GeoJsonTooltip(
+        fields=['WardPrecinct', 'count_d', 'count_p'],
+        aliases=['Ward', 'Count', 'Points'],
+        sticky=False,
+    ).add_to(geo)
+    geo.add_to(m)
 
     folium.LayerControl(position='topleft', collapsed=False).add_to(m)
 
