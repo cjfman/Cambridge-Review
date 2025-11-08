@@ -32,6 +32,9 @@ DEBUG     = False
 def parseArgs():
     """Parse command line arguments"""
     parser = argparse.ArgumentParser()
+    parser.set_defaults(all=False)
+    parser.set_defaults(winners=False)
+    parser.set_defaults(candidate=False)
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--debug", action="store_true")
 #    parser.add_argument("--ward-geojson", default=os.path.join(GEOJSON, "WardsPrecincts2020.geojson"),
@@ -40,16 +43,30 @@ def parseArgs():
         help="Census year. Used to look up geojson")
     parser.add_argument("--title", default="Precinct Election Map",
         help="Map title")
-    who_group = parser.add_mutually_exclusive_group(required=True)
-    who_group.add_argument("--all", action="store_true",
+
+    subparsers = parser.add_subparsers()
+    parser_all = subparsers.add_parser('all',
         help="Plot all candidates")
-    who_group.add_argument("--candidate",
-        help="Only plot this candidate")
-    who_group.add_argument("--winners", action="store_true",
-        help="Plot winners for each ward")
-    parser.add_argument("vote_file",
+    parser_all.set_defaults(all=True)
+    parser_all.add_argument("vote_file",
         help="CSV of vote counts")
-    parser.add_argument("out_file",
+    parser_all.add_argument("out_file",
+        help="Output file")
+
+    parser_winners = subparsers.add_parser('winners',
+        help="Plot winners for each ward")
+    parser_winners.set_defaults(winners=True)
+    parser_winners.add_argument("vote_file",
+        help="CSV of vote counts")
+    parser_winners.add_argument("out_file",
+        help="Output file")
+
+    parser_candidate = subparsers.add_parser('candidate',
+        help="Only plot this candidate")
+    parser_candidate.set_defaults(candidate=True)
+    parser_candidate.add_argument("vote_file",
+        help="CSV of vote counts")
+    parser_candidate.add_argument("out_file",
         help="Output file")
 
     args = parser.parse_args()
@@ -82,7 +99,6 @@ def main(args):
         DEBUG = True
     elif args.verbose:
         VERBOSE = True
-
 
     print(f"Reading '{args.vote_file}'")
     election = elections.loadWardElectionFile(args.vote_file)
