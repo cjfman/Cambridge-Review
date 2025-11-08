@@ -391,6 +391,7 @@ def plotCandidateDiffGeoJson(name, geo_path, out_path, candidate, election_1, el
     geojson = gis.GisGeoJson(geo_path, secondary_id_key='WardPrecinct')
     geojson.setProperty('count_d', "N/A")
     values = {}
+    percents = {}
     for precinct in set(list(election_1.p_votes.keys()) + list(election_2.p_votes.keys())):
         if precinct not in election_1.p_votes or precinct not in election_2.p_votes:
             print(f"Precinct {precinct} didn't exist in both elections. Skipping it")
@@ -416,14 +417,23 @@ def plotCandidateDiffGeoJson(name, geo_path, out_path, candidate, election_1, el
         geojson.setProperty('count_2', count_txt_2, geoid)
         geojson.setProperty('count_p', count_txt_p, geoid)
         values[geoid] = count_d
+        percents[geoid] = count_p*100
 
-    max_count = max(map(abs, values.values()))
+    max_count   = max(map(abs, values.values()))
+    max_percent = int(max(map(abs, percents.values())))
     gradient = cs.ColorGradient(cs.BlueYellow, max_count, -max_count)
-    print(f"Gradeint {gradient}")
+    gradient_p = cs.ColorGradient(cs.BlueYellow, max_percent, -max_percent)
 
     ## Make style function
-    style_function = lambda x: {
+    style_function_count = lambda x: {
         'fillColor': gradient.pick(float(noThrow(values, x['id']) or 0) or 0),
+        'fillOpacity': 0.7,
+        'weight': 2,
+        'color': '#000000',
+        'opacity': 0.2,
+    }
+    style_function_percent = lambda x: {
+        'fillColor': gradient_p.pick(float(noThrow(percents, x['id']) or 0) or 0),
         'fillOpacity': 0.7,
         'weight': 2,
         'color': '#000000',
@@ -445,22 +455,42 @@ def plotCandidateDiffGeoJson(name, geo_path, out_path, candidate, election_1, el
     ## Plot labels
     makeLabelLayer(geojson, election_1.p_winners).add_to(m)
 
-    ## Plot wards
-    geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function)
+    ## Plot vote counts
+    layer = folium.FeatureGroup(name="Count", overlay=False, show=True)
+    geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function_count)
     folium.GeoJsonTooltip(
         fields=['WardPrecinct', 'count_d', 'count_p'],
         aliases=['Ward', 'Count', 'Points'],
         sticky=False,
     ).add_to(geo)
-    geo.add_to(m)
+    geo.add_to(layer)
+    layer.add_to(m)
+
+    ## Plot vote percents
+    layer = folium.FeatureGroup(name="Percents", overlay=False, show=False)
+    geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function_percent)
+    folium.GeoJsonTooltip(
+        fields=['WardPrecinct', 'count_d', 'count_p'],
+        aliases=['Ward', 'Count', 'Points'],
+        sticky=False,
+    ).add_to(geo)
+    geo.add_to(layer)
+    layer.add_to(m)
 
     folium.LayerControl(position='topleft', collapsed=False).add_to(m)
 
     ## Load template
     if template is not None:
+        ## Counts
         key_values = list(range(gradient.min, gradient.max + 1, gradient.range//8))
-        color_key = makeColorKey(name, gradient, values=key_values)
+        color_key = makeColorKey(name, gradient, values=key_values, subtitle="Vote Counts")
         template = template.replace("{{SVG1}}", color_key)
+
+        ## Percentage
+        key_values = list(range(gradient_p.min, gradient_p.max + 1, gradient_p.range//8))
+        color_key = makeColorKey("Percentage Points", gradient_p, values=key_values, subtitle=None)
+        template = template.replace("{{SVG2}}", color_key)
+
         macro = MacroElement()
         macro._template = Template(template) ## pylint: disable=protected-access
         m.get_root().add_child(macro)
@@ -547,7 +577,7 @@ def makeCandidateLayer(geojson, name, precincts, gradient, *, show=False):
     return geo
 
 
-def makeColorKey(title, gradient, cbox_h=20, cbox_w=400, tick_h=10, values=None):
+def makeColorKey(title, gradient, cbox_h=20, cbox_w=400, tick_h=10, values=None, subtitle="Vote"):
     values = values or []
     ## Add data
     color_tag = "color-scheme-red"
@@ -563,8 +593,9 @@ def makeColorKey(title, gradient, cbox_h=20, cbox_w=400, tick_h=10, values=None)
     els.append(Text(title, x=x_off, y=y_off))
     y_off += text_h
 
-    els.append(Text('Votes', x=x_off, y=y_off))
-    y_off += text_h/2
+    if subtitle is not None:
+        els.append(Text(subtitle, x=x_off, y=y_off))
+        y_off += text_h/2
 
     ## Create Color box
     els.append(Element('defs', gradient_el))
