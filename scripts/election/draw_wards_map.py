@@ -412,8 +412,8 @@ def plotCandidateDiffGeoJson(name, geo_path, out_path, candidate, election_1, el
         count_txt_2 = "%d (%.2f%%)" % (count_2, 100 * count_2 / total_2)
         count_txt_d = str(count_d)
         if count_1:
-            count_txt_d = "%d (%.2f%%)" % (count_d, 100 * count_d / count_1)
-        count_txt_p = "%.2f%%" % (count_p*100)
+            count_txt_d = "%+d (%+.2f%%)" % (count_d, 100 * count_d / count_1)
+        count_txt_p = "%+.2f%%" % (count_p*100)
         geojson.setProperty('count_d', count_txt_d, geoid)
         geojson.setProperty('count_1', count_txt_1, geoid)
         geojson.setProperty('count_2', count_txt_2, geoid)
