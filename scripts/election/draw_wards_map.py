@@ -410,7 +410,9 @@ def plotCandidateDiffGeoJson(name, geo_path, out_path, candidate, election_1, el
         count_p = count_2/total_2 - count_1/total_1
         count_txt_1 = "%d (%.2f%%)" % (count_1, 100 * count_1 / total_1)
         count_txt_2 = "%d (%.2f%%)" % (count_2, 100 * count_2 / total_2)
-        count_txt_d = "%d (%.2f%%)" % (count_d, 100 * count_d / count_1)
+        count_txt_d = str(count_d)
+        if count_1:
+            count_txt_d = "%d (%.2f%%)" % (count_d, 100 * count_d / count_1)
         count_txt_p = "%.2f%%" % (count_p*100)
         geojson.setProperty('count_d', count_txt_d, geoid)
         geojson.setProperty('count_1', count_txt_1, geoid)
@@ -456,11 +458,13 @@ def plotCandidateDiffGeoJson(name, geo_path, out_path, candidate, election_1, el
     makeLabelLayer(geojson, election_1.p_winners).add_to(m)
 
     ## Plot vote counts
+    fields  = ['WardPrecinct', 'count_1',  'count_2', 'count_d',    'count_p']
+    aliases = ['Ward',         'Previous', 'Current', 'Count Diff', 'Points Diff']
     layer = folium.FeatureGroup(name="Count", overlay=False, show=True)
     geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function_count)
     folium.GeoJsonTooltip(
-        fields=['WardPrecinct', 'count_d', 'count_p'],
-        aliases=['Ward', 'Count', 'Points'],
+        fields=fields,
+        aliases=aliases,
         sticky=False,
     ).add_to(geo)
     geo.add_to(layer)
@@ -470,8 +474,8 @@ def plotCandidateDiffGeoJson(name, geo_path, out_path, candidate, election_1, el
     layer = folium.FeatureGroup(name="Percents", overlay=False, show=False)
     geo = folium.GeoJson(geojson.geojson, name=name, style_function=style_function_percent)
     folium.GeoJsonTooltip(
-        fields=['WardPrecinct', 'count_d', 'count_p'],
-        aliases=['Ward', 'Count', 'Points'],
+        fields=fields,
+        aliases=aliases,
         sticky=False,
     ).add_to(geo)
     geo.add_to(layer)
@@ -487,7 +491,7 @@ def plotCandidateDiffGeoJson(name, geo_path, out_path, candidate, election_1, el
         template = template.replace("{{SVG1}}", color_key)
 
         ## Percentage
-        key_values = list(range(gradient_p.min, gradient_p.max + 1, gradient_p.range//8))
+        key_values = list(range(gradient_p.min, gradient_p.max + 1, gradient_p.range//8 or 1))
         color_key = makeColorKey("Percentage Points", gradient_p, values=key_values, subtitle=None)
         template = template.replace("{{SVG2}}", color_key)
 
