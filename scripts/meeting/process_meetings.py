@@ -25,7 +25,7 @@ from bs4 import BeautifulSoup
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 from citylib.councillors import getCouncillorNames, setCouncillorInfo, lookUpCouncillorName
 from citylib.utils import print_green, print_red, overlayKeys, toTitleCase, setDefaultValue
-from citylib.html_parsing import *
+from citylib.utils.html_parsing import *
 
 VERBOSE = False
 ALLOWED_TYPES = ('regular', 'special')
