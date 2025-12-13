@@ -10,8 +10,10 @@ if [[ ! -z $1 ]]; then
     echo "Generating election ward maps for election year $YEAR using the $CYEAR census"
     "$DIR/draw_wards_map.py" --census-year $CYEAR --title "Election $YEAR Precinct Map" \
         all elections/wards/council/wards_$YEAR.csv maps/wards/ward_all_$YEAR.html
+    "$DIR/../add_no_cache.pl" maps/wards/ward_all_$YEAR.html
     "$DIR/draw_wards_map.py" --census-year $CYEAR --title "Election $YEAR Precinct Map" \
         winners elections/wards/council/wards_$YEAR.csv maps/wards/ward_winners_$YEAR.html
+    "$DIR/../add_no_cache.pl" maps/wards/ward_winners_$YEAR.html
     exit;
 fi
 
