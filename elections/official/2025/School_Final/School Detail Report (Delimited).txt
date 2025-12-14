@@ -1,0 +1,452 @@
+C:\Cambridge\Election2025\3 Final 2025\School_Final\School Detail Report (Delimited)
+10|School Committee Election
+10|Cambridge, Massachusetts
+10|Final Election Results
+10|November 14, 2025
+20|C01|"LaQueen Arleen Battle"
+20|C02|"Alborz Bejnood"
+20|C03|"Alex Bowers"
+20|C04|"Anne Mathilde Coburn"
+20|C05|"Luisa de Paula Santos"
+20|C06|"Caitlin E. Dube"
+20|C07|"Melanie Gause"
+20|C08|"Jessica Diaz Goetz"
+20|C09|"Richard N. Harding, Jr."
+20|C10|"Lilly Havstad"
+20|C11|"Jane Hirschi"
+20|C12|"Elizabeth Hudson"
+20|C13|"Caroline Mary Lisette Hunter"
+20|C14|"Arjun Kent Jaikumar"
+20|C15|"Jia-Jing Lee"
+20|C16|"José Luis Rojas Villarreal"
+20|C17|"Eugenia Schraa Huh"
+20|C18|"David J. Weinstein"
+20|WI01|"Write-in 1"
+20|WI02|"Write-in 2"
+20|WI03|"Write-in 3"
+20|WI04|"Write-in 4"
+20|WI05|"Write-in 5"
+20|WI06|"Write-in 6"
+30|system|Proportional Representation
+30|threshold|Droop
+30|surplusTransfers|Random, every nth ballot (Cambridge style)|Avoid exhausted ballots if possible|Elected immediately (after the 1st count)
+30|ties|1) Previous Count method|2) By election official|3) Random (by computer)
+40|23115|23115|6|3303|2213
+50|1|Tally of 1st place votes.
+60|C12|+3333|3333|ELECTED -- 1st count
+60|C09|+3043|3043|CONTINUING
+60|C05|+2453|2453|CONTINUING
+60|C06|+2195|2195|CONTINUING
+60|C17|+1956|1956|CONTINUING
+60|C14|+1750|1750|CONTINUING
+60|C11|+1575|1575|CONTINUING
+60|C18|+1517|1517|CONTINUING
+60|C16|+1036|1036|CONTINUING
+60|C13|+856|856|CONTINUING
+60|C10|+850|850|CONTINUING
+60|C08|+721|721|CONTINUING
+60|C15|+689|689|CONTINUING
+60|C01|+325|325|CONTINUING
+60|C03|+267|267|CONTINUING
+60|C04|+235|235|CONTINUING
+60|C02|+184|184|CONTINUING
+60|C07|+108|108|CONTINUING
+60|WI01|+21|21|CONTINUING
+60|WI03|+1|1|CONTINUING
+60|WI02|0|0|CONTINUING
+60|WI04|0|0|CONTINUING
+60|WI05|0|0|CONTINUING
+60|WI06|0|0|CONTINUING
+60|CAND_EXHAUSTED|0|0|
+70|Elizabeth Hudson has been ELECTED because s/he has met the quota.
+50|2|Elizabeth Hudson has been ELECTED -- transferring surplus votes.
+60|C12|-30|3303|ELECTED -- 1st count
+60|C09|+5|3048|CONTINUING
+60|C05|0|2453|CONTINUING
+60|C06|+3|2198|CONTINUING
+60|C17|+5|1961|CONTINUING
+60|C14|+1|1751|CONTINUING
+60|C11|+3|1578|CONTINUING
+60|C18|+4|1521|CONTINUING
+60|C16|+1|1037|CONTINUING
+60|C13|+3|859|CONTINUING
+60|C10|0|850|CONTINUING
+60|C08|+1|722|CONTINUING
+60|C15|+3|692|CONTINUING
+60|C01|0|325|CONTINUING
+60|C03|0|267|CONTINUING
+60|C04|0|235|CONTINUING
+60|C02|0|184|CONTINUING
+60|C07|+1|109|CONTINUING
+60|WI01|0|21|DEFEATED -- 2nd count
+60|WI03|0|1|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|0|0|
+70|Write-in 6 is declared DEFEATED, as s/he has less than 50 votes.
+70|Write-in 5 is declared DEFEATED, as s/he has less than 50 votes.
+70|Write-in 4 is declared DEFEATED, as s/he has less than 50 votes.
+70|Write-in 2 is declared DEFEATED, as s/he has less than 50 votes.
+70|Write-in 3 is declared DEFEATED, as s/he has less than 50 votes.
+70|Write-in 1 is declared DEFEATED, as s/he has less than 50 votes.
+50|3|Transferring all votes simultaneously from all defeated candidates.
+60|C12|0|3303|ELECTED -- 1st count
+60|C09|+4|3052|CONTINUING
+60|C05|0|2453|CONTINUING
+60|C06|0|2198|CONTINUING
+60|C17|0|1961|CONTINUING
+60|C14|0|1751|CONTINUING
+60|C11|0|1578|CONTINUING
+60|C18|0|1521|CONTINUING
+60|C16|+1|1038|CONTINUING
+60|C13|0|859|CONTINUING
+60|C10|0|850|CONTINUING
+60|C08|0|722|CONTINUING
+60|C15|0|692|CONTINUING
+60|C01|0|325|CONTINUING
+60|C03|0|267|CONTINUING
+60|C04|+1|236|CONTINUING
+60|C02|0|184|CONTINUING
+60|C07|0|109|DEFEATED -- 3rd count
+60|WI01|-21|0|DEFEATED -- 2nd count
+60|WI03|-1|0|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|+16|16|
+70|Melanie Gause is declared DEFEATED because s/he has the lowest number of votes.
+50|4|Melanie Gause has been DEFEATED -- transferring all votes.
+60|C12|0|3303|ELECTED -- 1st count
+60|C09|+12|3064|CONTINUING
+60|C05|+2|2455|CONTINUING
+60|C06|+3|2201|CONTINUING
+60|C17|+5|1966|CONTINUING
+60|C14|+4|1755|CONTINUING
+60|C11|+6|1584|CONTINUING
+60|C18|+2|1523|CONTINUING
+60|C16|+6|1044|CONTINUING
+60|C13|+2|861|CONTINUING
+60|C10|+5|855|CONTINUING
+60|C08|+18|740|CONTINUING
+60|C15|+5|697|CONTINUING
+60|C01|+7|332|CONTINUING
+60|C03|+1|268|CONTINUING
+60|C04|+2|238|CONTINUING
+60|C02|+2|186|DEFEATED -- 4th count
+60|C07|-109|0|DEFEATED -- 3rd count
+60|WI01|0|0|DEFEATED -- 2nd count
+60|WI03|0|0|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|+27|43|
+70|Alborz Bejnood is declared DEFEATED because s/he has the lowest number of votes.
+50|5|Alborz Bejnood has been DEFEATED -- transferring all votes.
+60|C12|0|3303|ELECTED -- 1st count
+60|C09|+16|3080|CONTINUING
+60|C05|+11|2466|CONTINUING
+60|C06|+17|2218|CONTINUING
+60|C17|+17|1983|CONTINUING
+60|C14|+15|1770|CONTINUING
+60|C11|+15|1599|CONTINUING
+60|C18|+7|1530|CONTINUING
+60|C16|+5|1049|CONTINUING
+60|C13|+6|867|CONTINUING
+60|C10|+3|858|CONTINUING
+60|C08|+4|744|CONTINUING
+60|C15|+14|711|CONTINUING
+60|C01|+2|334|CONTINUING
+60|C03|+20|288|CONTINUING
+60|C04|+7|245|DEFEATED -- 5th count
+60|C02|-186|0|DEFEATED -- 4th count
+60|C07|0|0|DEFEATED -- 3rd count
+60|WI01|0|0|DEFEATED -- 2nd count
+60|WI03|0|0|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|+27|70|
+70|Anne Mathilde Coburn is declared DEFEATED because s/he has the lowest number of votes.
+50|6|Anne Mathilde Coburn has been DEFEATED -- transferring all votes.
+60|C12|0|3303|ELECTED -- 1st count
+60|C09|+26|3106|CONTINUING
+60|C05|+32|2498|CONTINUING
+60|C06|+32|2250|CONTINUING
+60|C17|+24|2007|CONTINUING
+60|C14|+15|1785|CONTINUING
+60|C11|+15|1614|CONTINUING
+60|C18|+10|1540|CONTINUING
+60|C16|+7|1056|CONTINUING
+60|C13|+5|872|CONTINUING
+60|C10|+8|866|CONTINUING
+60|C08|+16|760|CONTINUING
+60|C15|+12|723|CONTINUING
+60|C01|+8|342|CONTINUING
+60|C03|+8|296|DEFEATED -- 6th count
+60|C04|-245|0|DEFEATED -- 5th count
+60|C02|0|0|DEFEATED -- 4th count
+60|C07|0|0|DEFEATED -- 3rd count
+60|WI01|0|0|DEFEATED -- 2nd count
+60|WI03|0|0|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|+27|97|
+70|Alex Bowers is declared DEFEATED because s/he has the lowest number of votes.
+50|7|Alex Bowers has been DEFEATED -- transferring all votes.
+60|C12|0|3303|ELECTED -- 1st count
+60|C09|+35|3141|CONTINUING
+60|C05|+41|2539|CONTINUING
+60|C06|+40|2290|CONTINUING
+60|C17|+23|2030|CONTINUING
+60|C14|+13|1798|CONTINUING
+60|C11|+31|1645|CONTINUING
+60|C18|+15|1555|CONTINUING
+60|C16|+9|1065|CONTINUING
+60|C10|+12|878|CONTINUING
+60|C13|+6|878|CONTINUING
+60|C08|+19|779|CONTINUING
+60|C15|+11|734|CONTINUING
+60|C01|+6|348|DEFEATED -- 7th count
+60|C03|-296|0|DEFEATED -- 6th count
+60|C04|0|0|DEFEATED -- 5th count
+60|C02|0|0|DEFEATED -- 4th count
+60|C07|0|0|DEFEATED -- 3rd count
+60|WI01|0|0|DEFEATED -- 2nd count
+60|WI03|0|0|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|+35|132|
+70|LaQueen Arleen Battle is declared DEFEATED because s/he has the lowest number of votes.
+50|8|LaQueen Arleen Battle has been DEFEATED -- transferring all votes.
+60|C12|0|3303|ELECTED -- 1st count
+60|C09|+37|3178|CONTINUING
+60|C05|+32|2571|CONTINUING
+60|C06|+19|2309|CONTINUING
+60|C17|+21|2051|CONTINUING
+60|C14|+21|1819|CONTINUING
+60|C11|+9|1654|CONTINUING
+60|C18|+19|1574|CONTINUING
+60|C16|+36|1101|CONTINUING
+60|C13|+25|903|CONTINUING
+60|C10|+6|884|CONTINUING
+60|C08|+18|797|CONTINUING
+60|C15|+23|757|DEFEATED -- 8th count
+60|C01|-348|0|DEFEATED -- 7th count
+60|C03|0|0|DEFEATED -- 6th count
+60|C04|0|0|DEFEATED -- 5th count
+60|C02|0|0|DEFEATED -- 4th count
+60|C07|0|0|DEFEATED -- 3rd count
+60|WI01|0|0|DEFEATED -- 2nd count
+60|WI03|0|0|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|+82|214|
+70|Jia-Jing Lee is declared DEFEATED because s/he has the lowest number of votes.
+50|9|Jia-Jing Lee has been DEFEATED -- transferring all votes.
+60|C12|0|3303|ELECTED -- 1st count
+60|C09|+82|3260|CONTINUING
+60|C05|+57|2628|CONTINUING
+60|C06|+52|2361|CONTINUING
+60|C17|+61|2112|CONTINUING
+60|C14|+97|1916|CONTINUING
+60|C11|+92|1746|CONTINUING
+60|C18|+60|1634|CONTINUING
+60|C16|+58|1159|CONTINUING
+60|C13|+35|938|CONTINUING
+60|C10|+21|905|CONTINUING
+60|C08|+28|825|DEFEATED -- 9th count
+60|C15|-757|0|DEFEATED -- 8th count
+60|C01|0|0|DEFEATED -- 7th count
+60|C03|0|0|DEFEATED -- 6th count
+60|C04|0|0|DEFEATED -- 5th count
+60|C02|0|0|DEFEATED -- 4th count
+60|C07|0|0|DEFEATED -- 3rd count
+60|WI01|0|0|DEFEATED -- 2nd count
+60|WI03|0|0|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|+114|328|
+70|Jessica Diaz Goetz is declared DEFEATED because s/he has the lowest number of votes.
+50|10|Jessica Diaz Goetz has been DEFEATED -- transferring all votes.
+60|C12|0|3303|ELECTED -- 1st count
+60|C09|+43|3303|ELECTED -- 10th count
+60|C05|+94|2722|CONTINUING
+60|C06|+129|2490|CONTINUING
+60|C17|+40|2152|CONTINUING
+60|C14|+167|2083|CONTINUING
+60|C11|+95|1841|CONTINUING
+60|C18|+32|1666|CONTINUING
+60|C16|+38|1197|CONTINUING
+60|C10|+97|1002|CONTINUING
+60|C13|+25|963|DEFEATED -- 10th count
+60|C08|-825|0|DEFEATED -- 9th count
+60|C15|0|0|DEFEATED -- 8th count
+60|C01|0|0|DEFEATED -- 7th count
+60|C03|0|0|DEFEATED -- 6th count
+60|C04|0|0|DEFEATED -- 5th count
+60|C02|0|0|DEFEATED -- 4th count
+60|C07|0|0|DEFEATED -- 3rd count
+60|WI01|0|0|DEFEATED -- 2nd count
+60|WI03|0|0|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|+65|393|
+70|Richard N. Harding, Jr. has been ELECTED because s/he has met the quota.
+70|Caroline Mary Lisette Hunter is declared DEFEATED because s/he has the lowest number of votes.
+50|11|Caroline Mary Lisette Hunter has been DEFEATED -- transferring all votes.
+60|C12|0|3303|ELECTED -- 1st count
+60|C09|0|3303|ELECTED -- 10th count
+60|C05|+72|2794|CONTINUING
+60|C06|+60|2550|CONTINUING
+60|C17|+70|2222|CONTINUING
+60|C14|+75|2158|CONTINUING
+60|C11|+76|1917|CONTINUING
+60|C18|+208|1874|CONTINUING
+60|C16|+191|1388|CONTINUING
+60|C10|+22|1024|DEFEATED -- 11th count
+60|C13|-963|0|DEFEATED -- 10th count
+60|C08|0|0|DEFEATED -- 9th count
+60|C15|0|0|DEFEATED -- 8th count
+60|C01|0|0|DEFEATED -- 7th count
+60|C03|0|0|DEFEATED -- 6th count
+60|C04|0|0|DEFEATED -- 5th count
+60|C02|0|0|DEFEATED -- 4th count
+60|C07|0|0|DEFEATED -- 3rd count
+60|WI01|0|0|DEFEATED -- 2nd count
+60|WI03|0|0|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|+189|582|
+70|Lilly Havstad is declared DEFEATED because s/he has the lowest number of votes.
+50|12|Lilly Havstad has been DEFEATED -- transferring all votes.
+60|C12|0|3303|ELECTED -- 1st count
+60|C09|0|3303|ELECTED -- 10th count
+60|C05|+384|3178|CONTINUING
+60|C06|+176|2726|CONTINUING
+60|C14|+135|2293|CONTINUING
+60|C17|+40|2262|CONTINUING
+60|C11|+155|2072|CONTINUING
+60|C18|+30|1904|CONTINUING
+60|C16|+25|1413|DEFEATED -- 12th count
+60|C10|-1024|0|DEFEATED -- 11th count
+60|C13|0|0|DEFEATED -- 10th count
+60|C08|0|0|DEFEATED -- 9th count
+60|C15|0|0|DEFEATED -- 8th count
+60|C01|0|0|DEFEATED -- 7th count
+60|C03|0|0|DEFEATED -- 6th count
+60|C04|0|0|DEFEATED -- 5th count
+60|C02|0|0|DEFEATED -- 4th count
+60|C07|0|0|DEFEATED -- 3rd count
+60|WI01|0|0|DEFEATED -- 2nd count
+60|WI03|0|0|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|+79|661|
+70|José Luis Rojas Villarreal is declared DEFEATED because s/he has the lowest number of votes.
+50|13|José Luis Rojas Villarreal has been DEFEATED -- transferring all votes.
+60|C12|0|3303|ELECTED -- 1st count
+60|C09|0|3303|ELECTED -- 10th count
+60|C05|+125|3303|ELECTED -- 13th count
+60|C06|+110|2836|CONTINUING
+60|C14|+112|2405|CONTINUING
+60|C18|+481|2385|CONTINUING
+60|C17|+110|2372|CONTINUING
+60|C11|+128|2200|DEFEATED -- 13th count
+60|C16|-1413|0|DEFEATED -- 12th count
+60|C10|0|0|DEFEATED -- 11th count
+60|C13|0|0|DEFEATED -- 10th count
+60|C08|0|0|DEFEATED -- 9th count
+60|C15|0|0|DEFEATED -- 8th count
+60|C01|0|0|DEFEATED -- 7th count
+60|C03|0|0|DEFEATED -- 6th count
+60|C04|0|0|DEFEATED -- 5th count
+60|C02|0|0|DEFEATED -- 4th count
+60|C07|0|0|DEFEATED -- 3rd count
+60|WI01|0|0|DEFEATED -- 2nd count
+60|WI03|0|0|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|+347|1008|
+70|Luisa de Paula Santos has been ELECTED because s/he has met the quota.
+70|Jane Hirschi is declared DEFEATED because s/he has the lowest number of votes.
+50|14|Jane Hirschi has been DEFEATED -- transferring all votes.
+60|C12|0|3303|ELECTED -- 1st count
+60|C09|0|3303|ELECTED -- 10th count
+60|C05|0|3303|ELECTED -- 13th count
+60|C06|+467|3303|ELECTED -- 14th count
+60|C14|+419|2824|CONTINUING
+60|C18|+379|2764|CONTINUING
+60|C17|+297|2669|DEFEATED -- 14th count
+60|C11|-2200|0|DEFEATED -- 13th count
+60|C16|0|0|DEFEATED -- 12th count
+60|C10|0|0|DEFEATED -- 11th count
+60|C13|0|0|DEFEATED -- 10th count
+60|C08|0|0|DEFEATED -- 9th count
+60|C15|0|0|DEFEATED -- 8th count
+60|C01|0|0|DEFEATED -- 7th count
+60|C03|0|0|DEFEATED -- 6th count
+60|C04|0|0|DEFEATED -- 5th count
+60|C02|0|0|DEFEATED -- 4th count
+60|C07|0|0|DEFEATED -- 3rd count
+60|WI01|0|0|DEFEATED -- 2nd count
+60|WI03|0|0|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|+638|1646|
+70|Caitlin E. Dube has been ELECTED because s/he has met the quota.
+70|Eugenia Schraa Huh is declared DEFEATED because s/he has the lowest number of votes.
+50|15|Eugenia Schraa Huh has been DEFEATED -- transferring all votes.
+60|C12|0|3303|ELECTED -- 1st count
+60|C09|0|3303|ELECTED -- 10th count
+60|C05|0|3303|ELECTED -- 13th count
+60|C06|0|3303|ELECTED -- 14th count
+60|C14|+479|3303|ELECTED -- 15th count
+60|C18|+539|3303|ELECTED -- 15th count
+60|C17|-2669|0|DEFEATED -- 14th count
+60|C11|0|0|DEFEATED -- 13th count
+60|C16|0|0|DEFEATED -- 12th count
+60|C10|0|0|DEFEATED -- 11th count
+60|C13|0|0|DEFEATED -- 10th count
+60|C08|0|0|DEFEATED -- 9th count
+60|C15|0|0|DEFEATED -- 8th count
+60|C01|0|0|DEFEATED -- 7th count
+60|C03|0|0|DEFEATED -- 6th count
+60|C04|0|0|DEFEATED -- 5th count
+60|C02|0|0|DEFEATED -- 4th count
+60|C07|0|0|DEFEATED -- 3rd count
+60|WI01|0|0|DEFEATED -- 2nd count
+60|WI03|0|0|DEFEATED -- 2nd count
+60|WI02|0|0|DEFEATED -- 2nd count
+60|WI04|0|0|DEFEATED -- 2nd count
+60|WI05|0|0|DEFEATED -- 2nd count
+60|WI06|0|0|DEFEATED -- 2nd count
+60|CAND_EXHAUSTED|+1651|3297|
+70|Arjun Kent Jaikumar has been ELECTED because s/he has met the quota.
+70|David J. Weinstein has been ELECTED because s/he has met the quota.
+80|ELECTION COUNT SUCCESSFULLY COMPLETED
+80|Friday, November 14, 2025 5:12 PM
+80|ChoicePlus Pro -- Version 2.3.4
+80|(c) 1993-2009 Voting Solutions -- All Rights Reserved

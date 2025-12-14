@@ -1,0 +1,710 @@
+C:\Cambridge\Election2025\3 Final 2025\Council_Final\Council Detail Report
+
+
+City Council Election
+Cambridge, Massachusetts
+Final Election Results
+November 14, 2025
+
+CANDIDATES:
+	Ayah A. Al-Zubi
+	Burhan Azeem
+	LaQueen Arleen Battle
+	Elizabeth Bisio
+	Dana Ray Bullister
+	Timothy R. Flaherty
+	John Hanratty
+	Peter Hsu
+	Marc C. McGovern
+	Ned S. Melanson
+	Patricia M. Nolan
+	Stanislav A. Rivkin
+	Zion Nathaniel Sherin
+	Sumbul Siddiqui
+	E. Denise Simmons
+	Jivan G. Sobrinho-Wheeler
+	Ayesha M. Wilson
+	Robert Winters
+	Catherine Zusy
+	WI - Louise A. Venden
+	Write-in 2
+	Write-in 3
+	Write-in 4
+	Write-in 5
+	Write-in 6
+	Write-in 7
+	Write-in 8
+	Write-in 9
+
+ELECTION RULES:
+               System:  Proportional Representation
+           Quota Type:  Droop
+    Surplus Transfers:  Random, every nth ballot (Cambridge style)
+                        Avoid exhausted ballots if possible
+                        Elected immediately (after the 1st count)
+    Simultaneous Drop:  Those with less than 50 votes
+                 Ties:  1) Previous Count method
+                        2) By election official
+                        3) Random (by computer)
+
+--------------------------------------------------
+25,366 valid ballots.
+Electing 9 candidates.
+Quota is 2537 votes.
+There were 232 invalid ballots.
+(25,598 total ballots processed.)
+--------------------------------------------------
+
+
+
+********************************************************************************
+
+
+COUNT 1 -- Tally of 1st place votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                  +2869           2869  ELECTED -- 1st count
+Marc C. McGovern                 +2864           2864  ELECTED -- 1st count
+Ayah A. Al-Zubi                  +2493           2493  CONTINUING
+Catherine Zusy                   +2025           2025  CONTINUING
+Burhan Azeem                     +1999           1999  CONTINUING
+Jivan G. Sobrinho-Whee.          +1892           1892  CONTINUING
+Timothy R. Flaherty              +1818           1818  CONTINUING
+E. Denise Simmons                +1642           1642  CONTINUING
+Patricia M. Nolan                +1506           1506  CONTINUING
+John Hanratty                    +1325           1325  CONTINUING
+Dana Ray Bullister               +1199           1199  CONTINUING
+Ayesha M. Wilson                 +1032           1032  CONTINUING
+Peter Hsu                         +557            557  CONTINUING
+Ned S. Melanson                   +528            528  CONTINUING
+Elizabeth Bisio                   +502            502  CONTINUING
+Zion Nathaniel Sherin             +376            376  CONTINUING
+Stanislav A. Rivkin               +337            337  CONTINUING
+Robert Winters                    +253            253  CONTINUING
+LaQueen Arleen Battle              +78             78  CONTINUING
+WI - Louise A. Venden              +49             49  CONTINUING
+Write-in 2                         +22             22  CONTINUING
+Write-in 3                           0              0  CONTINUING
+Write-in 4                           0              0  CONTINUING
+Write-in 5                           0              0  CONTINUING
+Write-in 6                           0              0  CONTINUING
+Write-in 7                           0              0  CONTINUING
+Write-in 8                           0              0  CONTINUING
+Write-in 9                           0              0  CONTINUING
+
+EXHAUSTED PILE:                      0              0  
+TOTALS:                         +25366          25366  
+
+
+
+-- Sumbul Siddiqui has been ELECTED because s/he has met the quota.
+-- Marc C. McGovern has been ELECTED because s/he has met the quota.
+
+
+********************************************************************************
+
+
+COUNT 2 -- Sumbul Siddiqui has been ELECTED -- transferring surplus votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                   -332           2537  ELECTED -- 1st count
+Marc C. McGovern                     0           2864  ELECTED -- 1st count
+Ayah A. Al-Zubi                    +36           2529  CONTINUING
+Burhan Azeem                       +44           2043  CONTINUING
+Catherine Zusy                     +12           2037  CONTINUING
+Jivan G. Sobrinho-Whee.            +72           1964  CONTINUING
+Timothy R. Flaherty                +10           1828  CONTINUING
+E. Denise Simmons                  +61           1703  CONTINUING
+Patricia M. Nolan                  +17           1523  CONTINUING
+John Hanratty                       +1           1326  CONTINUING
+Dana Ray Bullister                  +6           1205  CONTINUING
+Ayesha M. Wilson                   +49           1081  CONTINUING
+Peter Hsu                           +3            560  CONTINUING
+Ned S. Melanson                     +9            537  CONTINUING
+Elizabeth Bisio                     +3            505  CONTINUING
+Zion Nathaniel Sherin               +2            378  CONTINUING
+Stanislav A. Rivkin                 +3            340  CONTINUING
+Robert Winters                      +3            256  CONTINUING
+LaQueen Arleen Battle               +1             79  CONTINUING
+WI - Louise A. Venden                0             49  CONTINUING
+Write-in 2                           0             22  CONTINUING
+Write-in 3                           0              0  CONTINUING
+Write-in 4                           0              0  CONTINUING
+Write-in 5                           0              0  CONTINUING
+Write-in 6                           0              0  CONTINUING
+Write-in 7                           0              0  CONTINUING
+Write-in 8                           0              0  CONTINUING
+Write-in 9                           0              0  CONTINUING
+
+EXHAUSTED PILE:                      0              0  
+TOTALS:                              0          25366  
+
+
+
+
+
+********************************************************************************
+
+
+COUNT 3 -- Marc C. McGovern has been ELECTED -- transferring surplus votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                      0           2537  ELECTED -- 1st count
+Marc C. McGovern                  -327           2537  ELECTED -- 1st count
+Ayah A. Al-Zubi                     +8           2537  ELECTED -- 3rd count
+Burhan Azeem                       +84           2127  CONTINUING
+Catherine Zusy                     +12           2049  CONTINUING
+Jivan G. Sobrinho-Whee.            +64           2028  CONTINUING
+Timothy R. Flaherty                +12           1840  CONTINUING
+E. Denise Simmons                  +29           1732  CONTINUING
+Patricia M. Nolan                  +31           1554  CONTINUING
+John Hanratty                       +4           1330  CONTINUING
+Dana Ray Bullister                 +27           1232  CONTINUING
+Ayesha M. Wilson                   +20           1101  CONTINUING
+Peter Hsu                           +6            566  CONTINUING
+Ned S. Melanson                    +18            555  CONTINUING
+Elizabeth Bisio                      0            505  CONTINUING
+Zion Nathaniel Sherin               +4            382  CONTINUING
+Stanislav A. Rivkin                 +6            346  CONTINUING
+Robert Winters                      +2            258  CONTINUING
+LaQueen Arleen Battle                0             79  CONTINUING
+WI - Louise A. Venden                0             49  DEFEATED -- 3rd count
+Write-in 2                           0             22  DEFEATED -- 3rd count
+Write-in 3                           0              0  DEFEATED -- 3rd count
+Write-in 4                           0              0  DEFEATED -- 3rd count
+Write-in 5                           0              0  DEFEATED -- 3rd count
+Write-in 6                           0              0  DEFEATED -- 3rd count
+Write-in 7                           0              0  DEFEATED -- 3rd count
+Write-in 8                           0              0  DEFEATED -- 3rd count
+Write-in 9                           0              0  DEFEATED -- 3rd count
+
+EXHAUSTED PILE:                      0              0  
+TOTALS:                              0          25366  
+
+
+
+-- Ayah A. Al-Zubi has been ELECTED because s/he has met the quota.
+-- Write-in 9 is declared DEFEATED, as s/he has less than 50 votes.
+-- Write-in 8 is declared DEFEATED, as s/he has less than 50 votes.
+-- Write-in 7 is declared DEFEATED, as s/he has less than 50 votes.
+-- Write-in 6 is declared DEFEATED, as s/he has less than 50 votes.
+-- Write-in 5 is declared DEFEATED, as s/he has less than 50 votes.
+-- Write-in 4 is declared DEFEATED, as s/he has less than 50 votes.
+-- Write-in 3 is declared DEFEATED, as s/he has less than 50 votes.
+-- Write-in 2 is declared DEFEATED, as s/he has less than 50 votes.
+-- WI - Louise A. Venden is declared DEFEATED, as s/he has less than 50 votes.
+
+
+********************************************************************************
+
+
+COUNT 4 -- Transferring all votes simultaneously from all defeated candidates.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                      0           2537  ELECTED -- 1st count
+Marc C. McGovern                     0           2537  ELECTED -- 1st count
+Ayah A. Al-Zubi                      0           2537  ELECTED -- 3rd count
+Burhan Azeem                        +2           2129  CONTINUING
+Catherine Zusy                      +3           2052  CONTINUING
+Jivan G. Sobrinho-Whee.             +3           2031  CONTINUING
+Timothy R. Flaherty                 +2           1842  CONTINUING
+E. Denise Simmons                   +6           1738  CONTINUING
+Patricia M. Nolan                   +4           1558  CONTINUING
+John Hanratty                       +5           1335  CONTINUING
+Dana Ray Bullister                   0           1232  CONTINUING
+Ayesha M. Wilson                    +6           1107  CONTINUING
+Peter Hsu                           +7            573  CONTINUING
+Ned S. Melanson                     +1            556  CONTINUING
+Elizabeth Bisio                     +7            512  CONTINUING
+Zion Nathaniel Sherin               +3            385  CONTINUING
+Stanislav A. Rivkin                 +2            348  CONTINUING
+Robert Winters                       0            258  CONTINUING
+LaQueen Arleen Battle                0             79  DEFEATED -- 4th count
+WI - Louise A. Venden              -49              0  DEFEATED -- 3rd count
+Write-in 2                         -22              0  DEFEATED -- 3rd count
+Write-in 3                           0              0  DEFEATED -- 3rd count
+Write-in 4                           0              0  DEFEATED -- 3rd count
+Write-in 5                           0              0  DEFEATED -- 3rd count
+Write-in 6                           0              0  DEFEATED -- 3rd count
+Write-in 7                           0              0  DEFEATED -- 3rd count
+Write-in 8                           0              0  DEFEATED -- 3rd count
+Write-in 9                           0              0  DEFEATED -- 3rd count
+
+EXHAUSTED PILE:                    +20             20  
+TOTALS:                              0          25366  
+
+
+
+-- LaQueen Arleen Battle is declared DEFEATED because s/he has the lowest
+   number of votes.
+
+
+********************************************************************************
+
+
+COUNT 5 -- LaQueen Arleen Battle has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                      0           2537  ELECTED -- 1st count
+Marc C. McGovern                     0           2537  ELECTED -- 1st count
+Ayah A. Al-Zubi                      0           2537  ELECTED -- 3rd count
+Burhan Azeem                        +5           2134  CONTINUING
+Catherine Zusy                      +4           2056  CONTINUING
+Jivan G. Sobrinho-Whee.             +3           2034  CONTINUING
+Timothy R. Flaherty                +10           1852  CONTINUING
+E. Denise Simmons                   +7           1745  CONTINUING
+Patricia M. Nolan                   +1           1559  CONTINUING
+John Hanratty                       +2           1337  CONTINUING
+Dana Ray Bullister                  +1           1233  CONTINUING
+Ayesha M. Wilson                    +9           1116  CONTINUING
+Peter Hsu                           +7            580  CONTINUING
+Ned S. Melanson                      0            556  CONTINUING
+Elizabeth Bisio                     +9            521  CONTINUING
+Zion Nathaniel Sherin                0            385  CONTINUING
+Stanislav A. Rivkin                 +7            355  CONTINUING
+Robert Winters                      +1            259  DEFEATED -- 5th count
+LaQueen Arleen Battle              -79              0  DEFEATED -- 4th count
+WI - Louise A. Venden                0              0  DEFEATED -- 3rd count
+Write-in 2                           0              0  DEFEATED -- 3rd count
+Write-in 3                           0              0  DEFEATED -- 3rd count
+Write-in 4                           0              0  DEFEATED -- 3rd count
+Write-in 5                           0              0  DEFEATED -- 3rd count
+Write-in 6                           0              0  DEFEATED -- 3rd count
+Write-in 7                           0              0  DEFEATED -- 3rd count
+Write-in 8                           0              0  DEFEATED -- 3rd count
+Write-in 9                           0              0  DEFEATED -- 3rd count
+
+EXHAUSTED PILE:                    +13             33  
+TOTALS:                              0          25366  
+
+
+
+-- Robert Winters is declared DEFEATED because s/he has the lowest number of
+   votes.
+
+
+********************************************************************************
+
+
+COUNT 6 -- Robert Winters has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                      0           2537  ELECTED -- 1st count
+Marc C. McGovern                     0           2537  ELECTED -- 1st count
+Ayah A. Al-Zubi                      0           2537  ELECTED -- 3rd count
+Burhan Azeem                       +10           2144  CONTINUING
+Catherine Zusy                     +49           2105  CONTINUING
+Jivan G. Sobrinho-Whee.             +3           2037  CONTINUING
+Timothy R. Flaherty                +32           1884  CONTINUING
+E. Denise Simmons                  +18           1763  CONTINUING
+Patricia M. Nolan                  +18           1577  CONTINUING
+John Hanratty                      +33           1370  CONTINUING
+Dana Ray Bullister                 +17           1250  CONTINUING
+Ayesha M. Wilson                    +9           1125  CONTINUING
+Peter Hsu                          +10            590  CONTINUING
+Ned S. Melanson                     +4            560  CONTINUING
+Elizabeth Bisio                    +21            542  CONTINUING
+Zion Nathaniel Sherin              +14            399  CONTINUING
+Stanislav A. Rivkin                 +7            362  DEFEATED -- 6th count
+Robert Winters                    -259              0  DEFEATED -- 5th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 4th count
+WI - Louise A. Venden                0              0  DEFEATED -- 3rd count
+Write-in 2                           0              0  DEFEATED -- 3rd count
+Write-in 3                           0              0  DEFEATED -- 3rd count
+Write-in 4                           0              0  DEFEATED -- 3rd count
+Write-in 5                           0              0  DEFEATED -- 3rd count
+Write-in 6                           0              0  DEFEATED -- 3rd count
+Write-in 7                           0              0  DEFEATED -- 3rd count
+Write-in 8                           0              0  DEFEATED -- 3rd count
+Write-in 9                           0              0  DEFEATED -- 3rd count
+
+EXHAUSTED PILE:                    +14             47  
+TOTALS:                              0          25366  
+
+
+
+-- Stanislav A. Rivkin is declared DEFEATED because s/he has the lowest number
+   of votes.
+
+
+********************************************************************************
+
+
+COUNT 7 -- Stanislav A. Rivkin has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                      0           2537  ELECTED -- 1st count
+Marc C. McGovern                     0           2537  ELECTED -- 1st count
+Ayah A. Al-Zubi                      0           2537  ELECTED -- 3rd count
+Burhan Azeem                       +29           2173  CONTINUING
+Catherine Zusy                     +49           2154  CONTINUING
+Jivan G. Sobrinho-Whee.            +76           2113  CONTINUING
+Timothy R. Flaherty                +14           1898  CONTINUING
+E. Denise Simmons                  +20           1783  CONTINUING
+Patricia M. Nolan                  +38           1615  CONTINUING
+John Hanratty                      +15           1385  CONTINUING
+Dana Ray Bullister                 +16           1266  CONTINUING
+Ayesha M. Wilson                   +26           1151  CONTINUING
+Peter Hsu                          +19            609  CONTINUING
+Ned S. Melanson                    +16            576  CONTINUING
+Elizabeth Bisio                    +10            552  CONTINUING
+Zion Nathaniel Sherin              +18            417  DEFEATED -- 7th count
+Stanislav A. Rivkin               -362              0  DEFEATED -- 6th count
+Robert Winters                       0              0  DEFEATED -- 5th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 4th count
+WI - Louise A. Venden                0              0  DEFEATED -- 3rd count
+Write-in 2                           0              0  DEFEATED -- 3rd count
+Write-in 3                           0              0  DEFEATED -- 3rd count
+Write-in 4                           0              0  DEFEATED -- 3rd count
+Write-in 5                           0              0  DEFEATED -- 3rd count
+Write-in 6                           0              0  DEFEATED -- 3rd count
+Write-in 7                           0              0  DEFEATED -- 3rd count
+Write-in 8                           0              0  DEFEATED -- 3rd count
+Write-in 9                           0              0  DEFEATED -- 3rd count
+
+EXHAUSTED PILE:                    +16             63  
+TOTALS:                              0          25366  
+
+
+
+-- Zion Nathaniel Sherin is declared DEFEATED because s/he has the lowest
+   number of votes.
+
+
+********************************************************************************
+
+
+COUNT 8 -- Zion Nathaniel Sherin has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                      0           2537  ELECTED -- 1st count
+Marc C. McGovern                     0           2537  ELECTED -- 1st count
+Ayah A. Al-Zubi                      0           2537  ELECTED -- 3rd count
+Catherine Zusy                     +85           2239  CONTINUING
+Burhan Azeem                        +5           2178  CONTINUING
+Jivan G. Sobrinho-Whee.            +10           2123  CONTINUING
+Timothy R. Flaherty                +25           1923  CONTINUING
+E. Denise Simmons                  +21           1804  CONTINUING
+Patricia M. Nolan                  +27           1642  CONTINUING
+John Hanratty                      +95           1480  CONTINUING
+Dana Ray Bullister                 +14           1280  CONTINUING
+Ayesha M. Wilson                    +7           1158  CONTINUING
+Peter Hsu                          +39            648  CONTINUING
+Elizabeth Bisio                    +62            614  CONTINUING
+Ned S. Melanson                     +8            584  DEFEATED -- 8th count
+Zion Nathaniel Sherin             -417              0  DEFEATED -- 7th count
+Stanislav A. Rivkin                  0              0  DEFEATED -- 6th count
+Robert Winters                       0              0  DEFEATED -- 5th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 4th count
+WI - Louise A. Venden                0              0  DEFEATED -- 3rd count
+Write-in 2                           0              0  DEFEATED -- 3rd count
+Write-in 3                           0              0  DEFEATED -- 3rd count
+Write-in 4                           0              0  DEFEATED -- 3rd count
+Write-in 5                           0              0  DEFEATED -- 3rd count
+Write-in 6                           0              0  DEFEATED -- 3rd count
+Write-in 7                           0              0  DEFEATED -- 3rd count
+Write-in 8                           0              0  DEFEATED -- 3rd count
+Write-in 9                           0              0  DEFEATED -- 3rd count
+
+EXHAUSTED PILE:                    +19             82  
+TOTALS:                              0          25366  
+
+
+
+-- Ned S. Melanson is declared DEFEATED because s/he has the lowest number of
+   votes.
+
+
+********************************************************************************
+
+
+COUNT 9 -- Ned S. Melanson has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                      0           2537  ELECTED -- 1st count
+Marc C. McGovern                     0           2537  ELECTED -- 1st count
+Ayah A. Al-Zubi                      0           2537  ELECTED -- 3rd count
+Burhan Azeem                      +119           2297  CONTINUING
+Catherine Zusy                     +15           2254  CONTINUING
+Jivan G. Sobrinho-Whee.            +91           2214  CONTINUING
+Timothy R. Flaherty                +12           1935  CONTINUING
+E. Denise Simmons                  +21           1825  CONTINUING
+Patricia M. Nolan                  +43           1685  CONTINUING
+Dana Ray Bullister                +216           1496  CONTINUING
+John Hanratty                       +4           1484  CONTINUING
+Ayesha M. Wilson                   +12           1170  CONTINUING
+Peter Hsu                          +19            667  CONTINUING
+Elizabeth Bisio                    +11            625  DEFEATED -- 9th count
+Ned S. Melanson                   -584              0  DEFEATED -- 8th count
+Zion Nathaniel Sherin                0              0  DEFEATED -- 7th count
+Stanislav A. Rivkin                  0              0  DEFEATED -- 6th count
+Robert Winters                       0              0  DEFEATED -- 5th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 4th count
+WI - Louise A. Venden                0              0  DEFEATED -- 3rd count
+Write-in 2                           0              0  DEFEATED -- 3rd count
+Write-in 3                           0              0  DEFEATED -- 3rd count
+Write-in 4                           0              0  DEFEATED -- 3rd count
+Write-in 5                           0              0  DEFEATED -- 3rd count
+Write-in 6                           0              0  DEFEATED -- 3rd count
+Write-in 7                           0              0  DEFEATED -- 3rd count
+Write-in 8                           0              0  DEFEATED -- 3rd count
+Write-in 9                           0              0  DEFEATED -- 3rd count
+
+EXHAUSTED PILE:                    +21            103  
+TOTALS:                              0          25366  
+
+
+
+-- Elizabeth Bisio is declared DEFEATED because s/he has the lowest number of
+   votes.
+
+
+********************************************************************************
+
+
+COUNT 10 -- Elizabeth Bisio has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                      0           2537  ELECTED -- 1st count
+Marc C. McGovern                     0           2537  ELECTED -- 1st count
+Ayah A. Al-Zubi                      0           2537  ELECTED -- 3rd count
+Catherine Zusy                     +47           2301  CONTINUING
+Burhan Azeem                        +3           2300  CONTINUING
+Jivan G. Sobrinho-Whee.             +7           2221  CONTINUING
+Timothy R. Flaherty                +72           2007  CONTINUING
+E. Denise Simmons                  +16           1841  CONTINUING
+John Hanratty                     +334           1818  CONTINUING
+Patricia M. Nolan                  +24           1709  CONTINUING
+Dana Ray Bullister                 +39           1535  CONTINUING
+Ayesha M. Wilson                   +23           1193  CONTINUING
+Peter Hsu                          +42            709  DEFEATED -- 10th count
+Elizabeth Bisio                   -625              0  DEFEATED -- 9th count
+Ned S. Melanson                      0              0  DEFEATED -- 8th count
+Zion Nathaniel Sherin                0              0  DEFEATED -- 7th count
+Stanislav A. Rivkin                  0              0  DEFEATED -- 6th count
+Robert Winters                       0              0  DEFEATED -- 5th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 4th count
+WI - Louise A. Venden                0              0  DEFEATED -- 3rd count
+Write-in 2                           0              0  DEFEATED -- 3rd count
+Write-in 3                           0              0  DEFEATED -- 3rd count
+Write-in 4                           0              0  DEFEATED -- 3rd count
+Write-in 5                           0              0  DEFEATED -- 3rd count
+Write-in 6                           0              0  DEFEATED -- 3rd count
+Write-in 7                           0              0  DEFEATED -- 3rd count
+Write-in 8                           0              0  DEFEATED -- 3rd count
+Write-in 9                           0              0  DEFEATED -- 3rd count
+
+EXHAUSTED PILE:                    +18            121  
+TOTALS:                              0          25366  
+
+
+
+-- Peter Hsu is declared DEFEATED because s/he has the lowest number of votes.
+
+
+********************************************************************************
+
+
+COUNT 11 -- Peter Hsu has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                      0           2537  ELECTED -- 1st count
+Marc C. McGovern                     0           2537  ELECTED -- 1st count
+Ayah A. Al-Zubi                      0           2537  ELECTED -- 3rd count
+Catherine Zusy                    +118           2419  CONTINUING
+Burhan Azeem                       +34           2334  CONTINUING
+Jivan G. Sobrinho-Whee.            +39           2260  CONTINUING
+Timothy R. Flaherty                +73           2080  CONTINUING
+John Hanratty                     +158           1976  CONTINUING
+E. Denise Simmons                  +46           1887  CONTINUING
+Patricia M. Nolan                  +82           1791  CONTINUING
+Dana Ray Bullister                 +43           1578  CONTINUING
+Ayesha M. Wilson                   +40           1233  DEFEATED -- 11th count
+Peter Hsu                         -709              0  DEFEATED -- 10th count
+Elizabeth Bisio                      0              0  DEFEATED -- 9th count
+Ned S. Melanson                      0              0  DEFEATED -- 8th count
+Zion Nathaniel Sherin                0              0  DEFEATED -- 7th count
+Stanislav A. Rivkin                  0              0  DEFEATED -- 6th count
+Robert Winters                       0              0  DEFEATED -- 5th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 4th count
+WI - Louise A. Venden                0              0  DEFEATED -- 3rd count
+Write-in 2                           0              0  DEFEATED -- 3rd count
+Write-in 3                           0              0  DEFEATED -- 3rd count
+Write-in 4                           0              0  DEFEATED -- 3rd count
+Write-in 5                           0              0  DEFEATED -- 3rd count
+Write-in 6                           0              0  DEFEATED -- 3rd count
+Write-in 7                           0              0  DEFEATED -- 3rd count
+Write-in 8                           0              0  DEFEATED -- 3rd count
+Write-in 9                           0              0  DEFEATED -- 3rd count
+
+EXHAUSTED PILE:                    +76            197  
+TOTALS:                              0          25366  
+
+
+
+-- Ayesha M. Wilson is declared DEFEATED because s/he has the lowest number of
+   votes.
+
+
+********************************************************************************
+
+
+COUNT 12 -- Ayesha M. Wilson has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                      0           2537  ELECTED -- 1st count
+Marc C. McGovern                     0           2537  ELECTED -- 1st count
+Ayah A. Al-Zubi                      0           2537  ELECTED -- 3rd count
+Catherine Zusy                    +118           2537  ELECTED -- 12th count
+Burhan Azeem                       +98           2432  CONTINUING
+Jivan G. Sobrinho-Whee.           +162           2422  CONTINUING
+E. Denise Simmons                 +357           2244  CONTINUING
+Timothy R. Flaherty               +109           2189  CONTINUING
+John Hanratty                      +66           2042  CONTINUING
+Patricia M. Nolan                  +93           1884  CONTINUING
+Dana Ray Bullister                 +37           1615  DEFEATED -- 12th count
+Ayesha M. Wilson                 -1233              0  DEFEATED -- 11th count
+Peter Hsu                            0              0  DEFEATED -- 10th count
+Elizabeth Bisio                      0              0  DEFEATED -- 9th count
+Ned S. Melanson                      0              0  DEFEATED -- 8th count
+Zion Nathaniel Sherin                0              0  DEFEATED -- 7th count
+Stanislav A. Rivkin                  0              0  DEFEATED -- 6th count
+Robert Winters                       0              0  DEFEATED -- 5th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 4th count
+WI - Louise A. Venden                0              0  DEFEATED -- 3rd count
+Write-in 2                           0              0  DEFEATED -- 3rd count
+Write-in 3                           0              0  DEFEATED -- 3rd count
+Write-in 4                           0              0  DEFEATED -- 3rd count
+Write-in 5                           0              0  DEFEATED -- 3rd count
+Write-in 6                           0              0  DEFEATED -- 3rd count
+Write-in 7                           0              0  DEFEATED -- 3rd count
+Write-in 8                           0              0  DEFEATED -- 3rd count
+Write-in 9                           0              0  DEFEATED -- 3rd count
+
+EXHAUSTED PILE:                   +193            390  
+TOTALS:                              0          25366  
+
+
+
+-- Catherine Zusy has been ELECTED because s/he has met the quota.
+-- Dana Ray Bullister is declared DEFEATED because s/he has the lowest number
+   of votes.
+
+
+********************************************************************************
+
+
+COUNT 13 -- Dana Ray Bullister has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                      0           2537  ELECTED -- 1st count
+Marc C. McGovern                     0           2537  ELECTED -- 1st count
+Ayah A. Al-Zubi                      0           2537  ELECTED -- 3rd count
+Catherine Zusy                       0           2537  ELECTED -- 12th count
+Burhan Azeem                      +105           2537  ELECTED -- 13th count
+Jivan G. Sobrinho-Whee.           +115           2537  ELECTED -- 13th count
+E. Denise Simmons                 +236           2480  CONTINUING
+Patricia M. Nolan                 +468           2352  CONTINUING
+Timothy R. Flaherty                +78           2267  CONTINUING
+John Hanratty                      +62           2104  DEFEATED -- 13th count
+Dana Ray Bullister               -1615              0  DEFEATED -- 12th count
+Ayesha M. Wilson                     0              0  DEFEATED -- 11th count
+Peter Hsu                            0              0  DEFEATED -- 10th count
+Elizabeth Bisio                      0              0  DEFEATED -- 9th count
+Ned S. Melanson                      0              0  DEFEATED -- 8th count
+Zion Nathaniel Sherin                0              0  DEFEATED -- 7th count
+Stanislav A. Rivkin                  0              0  DEFEATED -- 6th count
+Robert Winters                       0              0  DEFEATED -- 5th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 4th count
+WI - Louise A. Venden                0              0  DEFEATED -- 3rd count
+Write-in 2                           0              0  DEFEATED -- 3rd count
+Write-in 3                           0              0  DEFEATED -- 3rd count
+Write-in 4                           0              0  DEFEATED -- 3rd count
+Write-in 5                           0              0  DEFEATED -- 3rd count
+Write-in 6                           0              0  DEFEATED -- 3rd count
+Write-in 7                           0              0  DEFEATED -- 3rd count
+Write-in 8                           0              0  DEFEATED -- 3rd count
+Write-in 9                           0              0  DEFEATED -- 3rd count
+
+EXHAUSTED PILE:                   +551            941  
+TOTALS:                              0          25366  
+
+
+
+-- Burhan Azeem has been ELECTED because s/he has met the quota.
+-- Jivan G. Sobrinho-Wheeler has been ELECTED because s/he has met the quota.
+-- John Hanratty is declared DEFEATED because s/he has the lowest number of
+   votes.
+
+
+********************************************************************************
+
+
+COUNT 14 -- John Hanratty has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Sumbul Siddiqui                      0           2537  ELECTED -- 1st count
+Marc C. McGovern                     0           2537  ELECTED -- 1st count
+Ayah A. Al-Zubi                      0           2537  ELECTED -- 3rd count
+Catherine Zusy                       0           2537  ELECTED -- 12th count
+Burhan Azeem                         0           2537  ELECTED -- 13th count
+Jivan G. Sobrinho-Whee.              0           2537  ELECTED -- 13th count
+Timothy R. Flaherty               +270           2537  ELECTED -- 14th count
+E. Denise Simmons                  +57           2537  ELECTED -- 14th count
+Patricia M. Nolan                 +185           2537  ELECTED -- 14th count
+John Hanratty                    -2104              0  DEFEATED -- 13th count
+Dana Ray Bullister                   0              0  DEFEATED -- 12th count
+Ayesha M. Wilson                     0              0  DEFEATED -- 11th count
+Peter Hsu                            0              0  DEFEATED -- 10th count
+Elizabeth Bisio                      0              0  DEFEATED -- 9th count
+Ned S. Melanson                      0              0  DEFEATED -- 8th count
+Zion Nathaniel Sherin                0              0  DEFEATED -- 7th count
+Stanislav A. Rivkin                  0              0  DEFEATED -- 6th count
+Robert Winters                       0              0  DEFEATED -- 5th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 4th count
+WI - Louise A. Venden                0              0  DEFEATED -- 3rd count
+Write-in 2                           0              0  DEFEATED -- 3rd count
+Write-in 3                           0              0  DEFEATED -- 3rd count
+Write-in 4                           0              0  DEFEATED -- 3rd count
+Write-in 5                           0              0  DEFEATED -- 3rd count
+Write-in 6                           0              0  DEFEATED -- 3rd count
+Write-in 7                           0              0  DEFEATED -- 3rd count
+Write-in 8                           0              0  DEFEATED -- 3rd count
+Write-in 9                           0              0  DEFEATED -- 3rd count
+
+EXHAUSTED PILE:                  +1592           2533  
+TOTALS:                              0          25366  
+
+
+
+-- Timothy R. Flaherty has been ELECTED because s/he has met the quota.
+-- E. Denise Simmons has been ELECTED because s/he has met the quota.
+-- Patricia M. Nolan has been ELECTED because s/he has met the quota.
+
+
+********************************************************************************
+
+
+ELECTION COUNT SUCCESSFULLY COMPLETED
+
+
+
+
+
+Friday, November 14, 2025 5:28 PM
+ChoicePlus Pro -- Version 2.3.4
+(c) 1993-2009 Voting Solutions -- All Rights Reserved
