@@ -1,5 +1,7 @@
 #! /usr/bin/python3
 
+## pylint: disable=line-too-long
+
 import csv
 import re
 
@@ -133,11 +135,11 @@ class Election:
         """))
 
     def generateTableRows(self, *, separate_writeins=True, include_total=True):
-        ## |Candidate |Round1 Count| |Round2 Transfer|Round2 Count| |Round3 Transfer|Round3 Count| |Round4 Transfer|Round4 Count| |Round5 Transfer|Round5 Count|
+        ## |Candidate |Round1 Count|Round2 Transfer|Round2 Count|Round3 Transfer|Round3 Count|Round4 Transfer|Round4 Count|Round5 Transfer|Round5 Count|
         rows = []
         headers = ["Candidate", "Round1 Count"]
         for n in range(2, self.num_rounds + 1):
-            headers.extend([" ", f"Round{n} Transfer", f"Round{n} Count"])
+            headers.extend([f"Round{n} Transfer", f"Round{n} Count"])
 
         rows.append(headers)
 
@@ -150,7 +152,7 @@ class Election:
             rounds = self.rounds[candidate]
             row = [candidate, format(rounds[0].total, ",")]
             for tx, total in rounds[1:]:
-                row.extend([" ", format(tx, ","), format(total, ",")])
+                row.extend([format(tx, ","), format(total, ",")])
 
             rows.append(row)
 
@@ -330,3 +332,67 @@ def loadWardElectionFile(path) -> WardElection:
     del candidates['Blank / Invalid']
     del candidates['Write-In']
     return WardElection(precincts, list(candidates.keys()), totals, candidates, writein, blank_inv)
+
+
+class Ballot:
+    def __init__(self, key, holder, candidates):
+        self.key        = key
+        self.holder     = holder
+        self.candidates = candidates
+
+    def __len__(self):
+        return len(self.candidates)
+
+    def __contains__(self, key):
+        return key in self.candidates
+
+    def __get__(self, idx):
+        return self.candidates[idx]
+
+
+def loadBallotPiles(path) -> Dict[str, List[Ballot]]:
+    valid_count = 0
+    invalid_count = 0
+    name = None
+    piles = {}
+    candidate_codes = {}
+    code_to_name = lambda x: candidate_codes[x] if x in candidate_codes else x
+    with open(path, encoding='utf8') as f:
+        for line in f:
+            ## Register a candidate
+            match = re.match(r'^.CANDIDATE (\w+), "(.+)"$', line)
+            if match:
+                candidate_codes[match.groups()[0]] = match.groups()[1]
+                name = None
+                continue
+
+            ## Start of a pile
+            match = re.match(r"^.FINAL-PILE (\w+)", line)
+            if match:
+                name = code_to_name(match.groups()[0])
+                piles[name] = []
+                continue
+
+            ## Other unsupported command
+            if line.startswith('.'):
+                name = None
+
+            ## Add ballot to the pile
+            ## Ex: 000203-00-09060000167208, 1) C17,C08,C05,C04,C07,C14
+            match = re.match(r"(\S+), (\d+)\) (.+)$", line)
+            if match:
+                key = match.groups()[0]
+                valid = bool(int(match.groups()[1]))
+                if not valid:
+                    invalid_count += 1
+                    continue
+
+                valid_count += 1
+                names = [code_to_name(x) for x in match.groups()[2].split(",")]
+                piles[name].append(Ballot(key, name, names))
+
+    return piles
+
+
+def loadFlattenedBallotPiles(path) -> List[Ballot]:
+    return [ballot for pile in loadBallotPiles(path).values() for ballot in pile]
