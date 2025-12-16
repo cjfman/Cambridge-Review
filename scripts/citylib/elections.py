@@ -346,7 +346,7 @@ class Ballot:
     def __contains__(self, key):
         return key in self.candidates
 
-    def __get__(self, idx):
+    def __getitem__(self, idx):
         return self.candidates[idx]
 
 
@@ -379,7 +379,7 @@ def loadBallotPiles(path) -> Dict[str, List[Ballot]]:
 
             ## Add ballot to the pile
             ## Ex: 000203-00-09060000167208, 1) C17,C08,C05,C04,C07,C14
-            match = re.match(r"(\S+), (\d+)\) (.+)$", line)
+            match = re.match(r"(\S+), (\d+)\) ([C0-9,]+)$", line)
             if match:
                 key = match.groups()[0]
                 valid = bool(int(match.groups()[1]))

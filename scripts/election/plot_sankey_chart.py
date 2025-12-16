@@ -341,7 +341,7 @@ def main(args):
     label_rounds[init_label]    = 0 ## psudo round
     round_labels[0].append(init_label)
     label_colors[init_label]    = GREY
-    source_map[1][init_label]   = election.total ## All votes are availabel as a source in round 1
+    source_map[1][init_label]   = election.total ## All votes are available as a source in round 1
     label_total[init_label]     = election.total
     previous_labels[init_label] = init_label     ## This is needed so that the makeNodes(...)
                                                  ## function knows what source to use in round 1
