@@ -74,41 +74,57 @@ def parseArgs():
 def main(args):
     print(f"Reading '{args.ballots_file}'")
     ballots = elections.loadFlattenedBallotPiles(args.ballots_file)
-    labels = set() ## Label per candidate per side
     pairs = set() ## Pairs of source and targets
     transfers = defaultdict(lambda: defaultdict(int))
+    transposed = defaultdict(lambda: defaultdict(int))
     label_names:Dict[str] = {}
+    source_labels = set()
+    target_labels = set()
 
     ## Sum the transfers
     for ballot in ballots:
         source = ballot[0]
         target = ballot[1] if len(ballot) > 1 else source
         transfers[source][target] += 1
+        transposed[target][source] += 1
         if target == "CAND_EXHAUSTED":
             continue
 
         ## Generate lables
-        src_label = f"{source} - source"
-        labels.add(src_label)
+        src_label = f"{source} - #1s"
+        source_labels.add(src_label)
         label_names[src_label] = source
-        dst_label = f"{target} - target"
+        dst_label = f"{target} - #2s"
         pairs.add((src_label, dst_label))
-        labels.add(dst_label)
+        target_labels.add(dst_label)
         label_names[dst_label] = target
 
+    labels = list(sorted(source_labels)) + list(sorted(target_labels))
     pairs  = sorted(pairs)
-    labels = sorted(list(labels))
     label_map = { x: i for i, x in enumerate(labels) }
     sources = [label_map[x[0]] for x in pairs]
     targets = [label_map[x[1]] for x in pairs]
     values  = [transfers[label_names[x[0]]][label_names[x[1]]] for x in pairs]
+
+    ## Colors
     hovercolors = ['midnightblue', 'lightskyblue', 'gold', 'mediumturquoise', 'lightgreen', 'cyan']
     hovercolors *= len(pairs) // len(hovercolors)
     hovercolors += hovercolors[:len(pairs) % len(hovercolors)]
-    out_text_map = { src: f"{src}<br><br>" + "<br>".join([f"{dst}: {val}" for dst, val in sorted(dsts.items())]) for src, dsts in transfers.items() }
-    node_txt = [out_text_map[label_names[x]] for x in labels]
+
+    ## Custom nodes
+    out_text_map = { src: f"{src} #1s<br><br>" + "<br>".join([f"{dst}: {val}" for dst, val in sorted(dsts.items())]) for src, dsts in transfers.items() }
+    in_text_map =  { dst: f"{dst} #2s<br><br>" + "<br>".join([f"{src}: {val}" for src, val in sorted(srcs.items())]) for dst, srcs in transposed.items() }
+    text_map = { x: out_text_map[label_names[x]] for x in source_labels }
+    text_map.update({ x: in_text_map[label_names[x]] for x in target_labels })
+    node_txt = [text_map[x] for x in labels]
+    src_steps = len(source_labels)
+    dst_steps = len(target_labels)
+    x_vals = [0.2]*src_steps + [0.8]*dst_steps
+    y_vals = [min(0.99, x/src_steps+0.01) for x in range(src_steps)]
+    y_vals += [min(0.99, x/dst_steps+0.01) for x in range(dst_steps)]
 
     fig = go.Figure(data=[go.Sankey(
+        arrangement='snap',
         node={
             'pad':       15,
             'thickness': 20,
@@ -117,6 +133,8 @@ def main(args):
             'color':     'blue',
             'customdata': node_txt,
             'hovertemplate': '%{customdata}',
+            'x': x_vals,
+            'y': y_vals,
         },
         link={
             'source':     sources,
