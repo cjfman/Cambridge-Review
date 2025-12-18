@@ -4,6 +4,8 @@ import re
 import requests
 import sys
 
+from textwrap import dedent
+
 USE_TERMCOLOR = True
 REQUEST_HDR = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
@@ -64,14 +66,14 @@ def simpleFormatDateTime(stamp:dt.datetime, *, date_only=False) -> str:
     return stamp.strftime('%-m/%-d/%Y %-I:%-M %p')
 
 
-def insertLineInFile(path, match, line, *, after=True, stop=True, regex=False, re_args=None) -> bool:
+def insertLineInFile(path, match, line, *, after=True, stop=True, replace=False, regex=False, re_args=None) -> bool:
     """Insert a line into the file after a matching line"""
     check_match = lambda x: (not regex and match in x) or (regex and re.search(match, line, re_args))
     update = False
     re_args = re_args or []
     with open(path, "r+", encoding='utf8') as f:
         contents = f.readlines()
-        ## Hadnle last line now to avoid IndexError
+        ## Handle last line now to avoid IndexError
         if check_match(contents[-1]):
             if after:
                 contents.append(line)
@@ -83,7 +85,9 @@ def insertLineInFile(path, match, line, *, after=True, stop=True, regex=False, r
             ## Check all other lines
             for i, old_line in enumerate(contents):
                 if check_match(old_line) and line != contents[i+1]:
-                    if after:
+                    if replace:
+                        contents[i] = line
+                    elif after:
                         contents.insert(i + 1, line)
                     else:
                         contents.insert(i, line)
@@ -112,6 +116,19 @@ def insertCopyright(path, holder, *, tight=False, blocking=False) -> bool:
     if blocking:
         notice = f"<div>{notice}</div>"
     return insertLineInFile(path, "</body>", notice, after=False)
+
+
+def insertNoCache(path):
+    replace = '<head><meta charset="utf-8" /></head>'
+    no_cache = dedent("""\
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+            <meta http-equiv="Pragma" content="no-cache" />
+            <meta http-equiv="Expires" content="0" />
+        </head>
+    """)
+    return insertLineInFile(path, replace, no_cache, replace=True)
 
 
 def insertDate(path, prefix, *, blocking=False) -> bool:

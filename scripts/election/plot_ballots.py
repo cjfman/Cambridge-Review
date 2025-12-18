@@ -15,7 +15,7 @@ import plotly.graph_objects as go
 ## pylint: disable=wrong-import-position
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 from citylib import elections
-from citylib.utils import insertCopyright
+from citylib.utils import insertCopyright, insertNoCache
 
 VERBOSE=False
 DEBUG=False
@@ -152,7 +152,9 @@ def main(args):
         fig.show()
     else:
         print(f"Saving as '{args.chart_file}'")
-        plotly.offline.plot(fig, filename=args.chart_file)
+        plotly.offline.plot(fig, filename=args.chart_file, auto_open=False)
+        if insertNoCache(args.chart_file):
+            print(f"Inserted no-cache lines into '{args.chart_file}'")
 
     return 0
 
