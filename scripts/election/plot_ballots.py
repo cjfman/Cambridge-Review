@@ -21,6 +21,8 @@ VERBOSE=False
 DEBUG=False
 SQUEEZE=True
 
+#HOVERCOLORS      = ['midnightblue', 'lightskyblue', 'gold', 'mediumturquoise', 'lightgreen', 'cyan']
+HOVERCOLORS      = ['#648FFF', '#785EF0', '#DC267F', '#FE6100', '#FFB000']
 COLORS_FOR_NODES = ['steelblue', 'gold', 'steelblue', 'green', 'maroon']
 COLORS_FOR_LINKS = ['goldenrod', 'lightgreen', 'LightSkyBlue', 'indianred']
 ## https://davidmathlogic.com/colorblind/#%23332288-%23117733-%2344AA99-%2388CCEE-%23DDCC77-%23CC6677-%23AA4499-%23882255
@@ -107,7 +109,7 @@ def main(args):
     values  = [transfers[label_names[x[0]]][label_names[x[1]]] for x in pairs]
 
     ## Colors
-    hovercolors = ['midnightblue', 'lightskyblue', 'gold', 'mediumturquoise', 'lightgreen', 'cyan']
+    hovercolors = HOVERCOLORS
     hovercolors *= len(pairs) // len(hovercolors)
     hovercolors += hovercolors[:len(pairs) % len(hovercolors)]
 
