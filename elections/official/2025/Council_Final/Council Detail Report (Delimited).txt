@@ -1,0 +1,490 @@
+C:\Cambridge\Election2025\3 Final 2025\Council_Final\Council Detail Report (Delimited)
+10|City Council Election
+10|Cambridge, Massachusetts
+10|Final Election Results
+10|November 14, 2025
+20|C01|"Ayah A. Al-Zubi"
+20|C02|"Burhan Azeem"
+20|C03|"LaQueen Arleen Battle"
+20|C04|"Elizabeth Bisio"
+20|C05|"Dana Ray Bullister"
+20|C06|"Timothy R. Flaherty"
+20|C07|"John Hanratty"
+20|C08|"Peter Hsu"
+20|C09|"Marc C. McGovern"
+20|C10|"Ned S. Melanson"
+20|C11|"Patricia M. Nolan"
+20|C12|"Stanislav A. Rivkin"
+20|C13|"Zion Nathaniel Sherin"
+20|C14|"Sumbul Siddiqui"
+20|C15|"E. Denise Simmons"
+20|C16|"Jivan G. Sobrinho-Wheeler"
+20|C17|"Ayesha M. Wilson"
+20|C18|"Robert Winters"
+20|C19|"Catherine Zusy"
+20|WI01|"WI - Louise A. Venden"
+20|WI02|"Write-in 2"
+20|WI03|"Write-in 3"
+20|WI04|"Write-in 4"
+20|WI05|"Write-in 5"
+20|WI06|"Write-in 6"
+20|WI07|"Write-in 7"
+20|WI08|"Write-in 8"
+20|WI09|"Write-in 9"
+30|system|Proportional Representation
+30|threshold|Droop
+30|surplusTransfers|Random, every nth ballot (Cambridge style)|Avoid exhausted ballots if possible|Elected immediately (after the 1st count)
+30|ties|1) Previous Count method|2) By election official|3) Random (by computer)
+40|25366|25366|9|2537|232
+50|1|Tally of 1st place votes.
+60|C14|+2869|2869|ELECTED -- 1st count
+60|C09|+2864|2864|ELECTED -- 1st count
+60|C01|+2493|2493|CONTINUING
+60|C19|+2025|2025|CONTINUING
+60|C02|+1999|1999|CONTINUING
+60|C16|+1892|1892|CONTINUING
+60|C06|+1818|1818|CONTINUING
+60|C15|+1642|1642|CONTINUING
+60|C11|+1506|1506|CONTINUING
+60|C07|+1325|1325|CONTINUING
+60|C05|+1199|1199|CONTINUING
+60|C17|+1032|1032|CONTINUING
+60|C08|+557|557|CONTINUING
+60|C10|+528|528|CONTINUING
+60|C04|+502|502|CONTINUING
+60|C13|+376|376|CONTINUING
+60|C12|+337|337|CONTINUING
+60|C18|+253|253|CONTINUING
+60|C03|+78|78|CONTINUING
+60|WI01|+49|49|CONTINUING
+60|WI02|+22|22|CONTINUING
+60|WI03|0|0|CONTINUING
+60|WI04|0|0|CONTINUING
+60|WI05|0|0|CONTINUING
+60|WI06|0|0|CONTINUING
+60|WI07|0|0|CONTINUING
+60|WI08|0|0|CONTINUING
+60|WI09|0|0|CONTINUING
+60|CAND_EXHAUSTED|0|0|
+70|Sumbul Siddiqui has been ELECTED because s/he has met the quota.
+70|Marc C. McGovern has been ELECTED because s/he has met the quota.
+50|2|Sumbul Siddiqui has been ELECTED -- transferring surplus votes.
+60|C14|-332|2537|ELECTED -- 1st count
+60|C09|0|2864|ELECTED -- 1st count
+60|C01|+36|2529|CONTINUING
+60|C02|+44|2043|CONTINUING
+60|C19|+12|2037|CONTINUING
+60|C16|+72|1964|CONTINUING
+60|C06|+10|1828|CONTINUING
+60|C15|+61|1703|CONTINUING
+60|C11|+17|1523|CONTINUING
+60|C07|+1|1326|CONTINUING
+60|C05|+6|1205|CONTINUING
+60|C17|+49|1081|CONTINUING
+60|C08|+3|560|CONTINUING
+60|C10|+9|537|CONTINUING
+60|C04|+3|505|CONTINUING
+60|C13|+2|378|CONTINUING
+60|C12|+3|340|CONTINUING
+60|C18|+3|256|CONTINUING
+60|C03|+1|79|CONTINUING
+60|WI01|0|49|CONTINUING
+60|WI02|0|22|CONTINUING
+60|WI03|0|0|CONTINUING
+60|WI04|0|0|CONTINUING
+60|WI05|0|0|CONTINUING
+60|WI06|0|0|CONTINUING
+60|WI07|0|0|CONTINUING
+60|WI08|0|0|CONTINUING
+60|WI09|0|0|CONTINUING
+60|CAND_EXHAUSTED|0|0|
+50|3|Marc C. McGovern has been ELECTED -- transferring surplus votes.
+60|C14|0|2537|ELECTED -- 1st count
+60|C09|-327|2537|ELECTED -- 1st count
+60|C01|+8|2537|ELECTED -- 3rd count
+60|C02|+84|2127|CONTINUING
+60|C19|+12|2049|CONTINUING
+60|C16|+64|2028|CONTINUING
+60|C06|+12|1840|CONTINUING
+60|C15|+29|1732|CONTINUING
+60|C11|+31|1554|CONTINUING
+60|C07|+4|1330|CONTINUING
+60|C05|+27|1232|CONTINUING
+60|C17|+20|1101|CONTINUING
+60|C08|+6|566|CONTINUING
+60|C10|+18|555|CONTINUING
+60|C04|0|505|CONTINUING
+60|C13|+4|382|CONTINUING
+60|C12|+6|346|CONTINUING
+60|C18|+2|258|CONTINUING
+60|C03|0|79|CONTINUING
+60|WI01|0|49|DEFEATED -- 3rd count
+60|WI02|0|22|DEFEATED -- 3rd count
+60|WI03|0|0|DEFEATED -- 3rd count
+60|WI04|0|0|DEFEATED -- 3rd count
+60|WI05|0|0|DEFEATED -- 3rd count
+60|WI06|0|0|DEFEATED -- 3rd count
+60|WI07|0|0|DEFEATED -- 3rd count
+60|WI08|0|0|DEFEATED -- 3rd count
+60|WI09|0|0|DEFEATED -- 3rd count
+60|CAND_EXHAUSTED|0|0|
+70|Ayah A. Al-Zubi has been ELECTED because s/he has met the quota.
+70|Write-in 9 is declared DEFEATED, as s/he has less than 50 votes.
+70|Write-in 8 is declared DEFEATED, as s/he has less than 50 votes.
+70|Write-in 7 is declared DEFEATED, as s/he has less than 50 votes.
+70|Write-in 6 is declared DEFEATED, as s/he has less than 50 votes.
+70|Write-in 5 is declared DEFEATED, as s/he has less than 50 votes.
+70|Write-in 4 is declared DEFEATED, as s/he has less than 50 votes.
+70|Write-in 3 is declared DEFEATED, as s/he has less than 50 votes.
+70|Write-in 2 is declared DEFEATED, as s/he has less than 50 votes.
+70|WI - Louise A. Venden is declared DEFEATED, as s/he has less than 50 votes.
+50|4|Transferring all votes simultaneously from all defeated candidates.
+60|C14|0|2537|ELECTED -- 1st count
+60|C09|0|2537|ELECTED -- 1st count
+60|C01|0|2537|ELECTED -- 3rd count
+60|C02|+2|2129|CONTINUING
+60|C19|+3|2052|CONTINUING
+60|C16|+3|2031|CONTINUING
+60|C06|+2|1842|CONTINUING
+60|C15|+6|1738|CONTINUING
+60|C11|+4|1558|CONTINUING
+60|C07|+5|1335|CONTINUING
+60|C05|0|1232|CONTINUING
+60|C17|+6|1107|CONTINUING
+60|C08|+7|573|CONTINUING
+60|C10|+1|556|CONTINUING
+60|C04|+7|512|CONTINUING
+60|C13|+3|385|CONTINUING
+60|C12|+2|348|CONTINUING
+60|C18|0|258|CONTINUING
+60|C03|0|79|DEFEATED -- 4th count
+60|WI01|-49|0|DEFEATED -- 3rd count
+60|WI02|-22|0|DEFEATED -- 3rd count
+60|WI03|0|0|DEFEATED -- 3rd count
+60|WI04|0|0|DEFEATED -- 3rd count
+60|WI05|0|0|DEFEATED -- 3rd count
+60|WI06|0|0|DEFEATED -- 3rd count
+60|WI07|0|0|DEFEATED -- 3rd count
+60|WI08|0|0|DEFEATED -- 3rd count
+60|WI09|0|0|DEFEATED -- 3rd count
+60|CAND_EXHAUSTED|+20|20|
+70|LaQueen Arleen Battle is declared DEFEATED because s/he has the lowest number of votes.
+50|5|LaQueen Arleen Battle has been DEFEATED -- transferring all votes.
+60|C14|0|2537|ELECTED -- 1st count
+60|C09|0|2537|ELECTED -- 1st count
+60|C01|0|2537|ELECTED -- 3rd count
+60|C02|+5|2134|CONTINUING
+60|C19|+4|2056|CONTINUING
+60|C16|+3|2034|CONTINUING
+60|C06|+10|1852|CONTINUING
+60|C15|+7|1745|CONTINUING
+60|C11|+1|1559|CONTINUING
+60|C07|+2|1337|CONTINUING
+60|C05|+1|1233|CONTINUING
+60|C17|+9|1116|CONTINUING
+60|C08|+7|580|CONTINUING
+60|C10|0|556|CONTINUING
+60|C04|+9|521|CONTINUING
+60|C13|0|385|CONTINUING
+60|C12|+7|355|CONTINUING
+60|C18|+1|259|DEFEATED -- 5th count
+60|C03|-79|0|DEFEATED -- 4th count
+60|WI01|0|0|DEFEATED -- 3rd count
+60|WI02|0|0|DEFEATED -- 3rd count
+60|WI03|0|0|DEFEATED -- 3rd count
+60|WI04|0|0|DEFEATED -- 3rd count
+60|WI05|0|0|DEFEATED -- 3rd count
+60|WI06|0|0|DEFEATED -- 3rd count
+60|WI07|0|0|DEFEATED -- 3rd count
+60|WI08|0|0|DEFEATED -- 3rd count
+60|WI09|0|0|DEFEATED -- 3rd count
+60|CAND_EXHAUSTED|+13|33|
+70|Robert Winters is declared DEFEATED because s/he has the lowest number of votes.
+50|6|Robert Winters has been DEFEATED -- transferring all votes.
+60|C14|0|2537|ELECTED -- 1st count
+60|C09|0|2537|ELECTED -- 1st count
+60|C01|0|2537|ELECTED -- 3rd count
+60|C02|+10|2144|CONTINUING
+60|C19|+49|2105|CONTINUING
+60|C16|+3|2037|CONTINUING
+60|C06|+32|1884|CONTINUING
+60|C15|+18|1763|CONTINUING
+60|C11|+18|1577|CONTINUING
+60|C07|+33|1370|CONTINUING
+60|C05|+17|1250|CONTINUING
+60|C17|+9|1125|CONTINUING
+60|C08|+10|590|CONTINUING
+60|C10|+4|560|CONTINUING
+60|C04|+21|542|CONTINUING
+60|C13|+14|399|CONTINUING
+60|C12|+7|362|DEFEATED -- 6th count
+60|C18|-259|0|DEFEATED -- 5th count
+60|C03|0|0|DEFEATED -- 4th count
+60|WI01|0|0|DEFEATED -- 3rd count
+60|WI02|0|0|DEFEATED -- 3rd count
+60|WI03|0|0|DEFEATED -- 3rd count
+60|WI04|0|0|DEFEATED -- 3rd count
+60|WI05|0|0|DEFEATED -- 3rd count
+60|WI06|0|0|DEFEATED -- 3rd count
+60|WI07|0|0|DEFEATED -- 3rd count
+60|WI08|0|0|DEFEATED -- 3rd count
+60|WI09|0|0|DEFEATED -- 3rd count
+60|CAND_EXHAUSTED|+14|47|
+70|Stanislav A. Rivkin is declared DEFEATED because s/he has the lowest number of votes.
+50|7|Stanislav A. Rivkin has been DEFEATED -- transferring all votes.
+60|C14|0|2537|ELECTED -- 1st count
+60|C09|0|2537|ELECTED -- 1st count
+60|C01|0|2537|ELECTED -- 3rd count
+60|C02|+29|2173|CONTINUING
+60|C19|+49|2154|CONTINUING
+60|C16|+76|2113|CONTINUING
+60|C06|+14|1898|CONTINUING
+60|C15|+20|1783|CONTINUING
+60|C11|+38|1615|CONTINUING
+60|C07|+15|1385|CONTINUING
+60|C05|+16|1266|CONTINUING
+60|C17|+26|1151|CONTINUING
+60|C08|+19|609|CONTINUING
+60|C10|+16|576|CONTINUING
+60|C04|+10|552|CONTINUING
+60|C13|+18|417|DEFEATED -- 7th count
+60|C12|-362|0|DEFEATED -- 6th count
+60|C18|0|0|DEFEATED -- 5th count
+60|C03|0|0|DEFEATED -- 4th count
+60|WI01|0|0|DEFEATED -- 3rd count
+60|WI02|0|0|DEFEATED -- 3rd count
+60|WI03|0|0|DEFEATED -- 3rd count
+60|WI04|0|0|DEFEATED -- 3rd count
+60|WI05|0|0|DEFEATED -- 3rd count
+60|WI06|0|0|DEFEATED -- 3rd count
+60|WI07|0|0|DEFEATED -- 3rd count
+60|WI08|0|0|DEFEATED -- 3rd count
+60|WI09|0|0|DEFEATED -- 3rd count
+60|CAND_EXHAUSTED|+16|63|
+70|Zion Nathaniel Sherin is declared DEFEATED because s/he has the lowest number of votes.
+50|8|Zion Nathaniel Sherin has been DEFEATED -- transferring all votes.
+60|C14|0|2537|ELECTED -- 1st count
+60|C09|0|2537|ELECTED -- 1st count
+60|C01|0|2537|ELECTED -- 3rd count
+60|C19|+85|2239|CONTINUING
+60|C02|+5|2178|CONTINUING
+60|C16|+10|2123|CONTINUING
+60|C06|+25|1923|CONTINUING
+60|C15|+21|1804|CONTINUING
+60|C11|+27|1642|CONTINUING
+60|C07|+95|1480|CONTINUING
+60|C05|+14|1280|CONTINUING
+60|C17|+7|1158|CONTINUING
+60|C08|+39|648|CONTINUING
+60|C04|+62|614|CONTINUING
+60|C10|+8|584|DEFEATED -- 8th count
+60|C13|-417|0|DEFEATED -- 7th count
+60|C12|0|0|DEFEATED -- 6th count
+60|C18|0|0|DEFEATED -- 5th count
+60|C03|0|0|DEFEATED -- 4th count
+60|WI01|0|0|DEFEATED -- 3rd count
+60|WI02|0|0|DEFEATED -- 3rd count
+60|WI03|0|0|DEFEATED -- 3rd count
+60|WI04|0|0|DEFEATED -- 3rd count
+60|WI05|0|0|DEFEATED -- 3rd count
+60|WI06|0|0|DEFEATED -- 3rd count
+60|WI07|0|0|DEFEATED -- 3rd count
+60|WI08|0|0|DEFEATED -- 3rd count
+60|WI09|0|0|DEFEATED -- 3rd count
+60|CAND_EXHAUSTED|+19|82|
+70|Ned S. Melanson is declared DEFEATED because s/he has the lowest number of votes.
+50|9|Ned S. Melanson has been DEFEATED -- transferring all votes.
+60|C14|0|2537|ELECTED -- 1st count
+60|C09|0|2537|ELECTED -- 1st count
+60|C01|0|2537|ELECTED -- 3rd count
+60|C02|+119|2297|CONTINUING
+60|C19|+15|2254|CONTINUING
+60|C16|+91|2214|CONTINUING
+60|C06|+12|1935|CONTINUING
+60|C15|+21|1825|CONTINUING
+60|C11|+43|1685|CONTINUING
+60|C05|+216|1496|CONTINUING
+60|C07|+4|1484|CONTINUING
+60|C17|+12|1170|CONTINUING
+60|C08|+19|667|CONTINUING
+60|C04|+11|625|DEFEATED -- 9th count
+60|C10|-584|0|DEFEATED -- 8th count
+60|C13|0|0|DEFEATED -- 7th count
+60|C12|0|0|DEFEATED -- 6th count
+60|C18|0|0|DEFEATED -- 5th count
+60|C03|0|0|DEFEATED -- 4th count
+60|WI01|0|0|DEFEATED -- 3rd count
+60|WI02|0|0|DEFEATED -- 3rd count
+60|WI03|0|0|DEFEATED -- 3rd count
+60|WI04|0|0|DEFEATED -- 3rd count
+60|WI05|0|0|DEFEATED -- 3rd count
+60|WI06|0|0|DEFEATED -- 3rd count
+60|WI07|0|0|DEFEATED -- 3rd count
+60|WI08|0|0|DEFEATED -- 3rd count
+60|WI09|0|0|DEFEATED -- 3rd count
+60|CAND_EXHAUSTED|+21|103|
+70|Elizabeth Bisio is declared DEFEATED because s/he has the lowest number of votes.
+50|10|Elizabeth Bisio has been DEFEATED -- transferring all votes.
+60|C14|0|2537|ELECTED -- 1st count
+60|C09|0|2537|ELECTED -- 1st count
+60|C01|0|2537|ELECTED -- 3rd count
+60|C19|+47|2301|CONTINUING
+60|C02|+3|2300|CONTINUING
+60|C16|+7|2221|CONTINUING
+60|C06|+72|2007|CONTINUING
+60|C15|+16|1841|CONTINUING
+60|C07|+334|1818|CONTINUING
+60|C11|+24|1709|CONTINUING
+60|C05|+39|1535|CONTINUING
+60|C17|+23|1193|CONTINUING
+60|C08|+42|709|DEFEATED -- 10th count
+60|C04|-625|0|DEFEATED -- 9th count
+60|C10|0|0|DEFEATED -- 8th count
+60|C13|0|0|DEFEATED -- 7th count
+60|C12|0|0|DEFEATED -- 6th count
+60|C18|0|0|DEFEATED -- 5th count
+60|C03|0|0|DEFEATED -- 4th count
+60|WI01|0|0|DEFEATED -- 3rd count
+60|WI02|0|0|DEFEATED -- 3rd count
+60|WI03|0|0|DEFEATED -- 3rd count
+60|WI04|0|0|DEFEATED -- 3rd count
+60|WI05|0|0|DEFEATED -- 3rd count
+60|WI06|0|0|DEFEATED -- 3rd count
+60|WI07|0|0|DEFEATED -- 3rd count
+60|WI08|0|0|DEFEATED -- 3rd count
+60|WI09|0|0|DEFEATED -- 3rd count
+60|CAND_EXHAUSTED|+18|121|
+70|Peter Hsu is declared DEFEATED because s/he has the lowest number of votes.
+50|11|Peter Hsu has been DEFEATED -- transferring all votes.
+60|C14|0|2537|ELECTED -- 1st count
+60|C09|0|2537|ELECTED -- 1st count
+60|C01|0|2537|ELECTED -- 3rd count
+60|C19|+118|2419|CONTINUING
+60|C02|+34|2334|CONTINUING
+60|C16|+39|2260|CONTINUING
+60|C06|+73|2080|CONTINUING
+60|C07|+158|1976|CONTINUING
+60|C15|+46|1887|CONTINUING
+60|C11|+82|1791|CONTINUING
+60|C05|+43|1578|CONTINUING
+60|C17|+40|1233|DEFEATED -- 11th count
+60|C08|-709|0|DEFEATED -- 10th count
+60|C04|0|0|DEFEATED -- 9th count
+60|C10|0|0|DEFEATED -- 8th count
+60|C13|0|0|DEFEATED -- 7th count
+60|C12|0|0|DEFEATED -- 6th count
+60|C18|0|0|DEFEATED -- 5th count
+60|C03|0|0|DEFEATED -- 4th count
+60|WI01|0|0|DEFEATED -- 3rd count
+60|WI02|0|0|DEFEATED -- 3rd count
+60|WI03|0|0|DEFEATED -- 3rd count
+60|WI04|0|0|DEFEATED -- 3rd count
+60|WI05|0|0|DEFEATED -- 3rd count
+60|WI06|0|0|DEFEATED -- 3rd count
+60|WI07|0|0|DEFEATED -- 3rd count
+60|WI08|0|0|DEFEATED -- 3rd count
+60|WI09|0|0|DEFEATED -- 3rd count
+60|CAND_EXHAUSTED|+76|197|
+70|Ayesha M. Wilson is declared DEFEATED because s/he has the lowest number of votes.
+50|12|Ayesha M. Wilson has been DEFEATED -- transferring all votes.
+60|C14|0|2537|ELECTED -- 1st count
+60|C09|0|2537|ELECTED -- 1st count
+60|C01|0|2537|ELECTED -- 3rd count
+60|C19|+118|2537|ELECTED -- 12th count
+60|C02|+98|2432|CONTINUING
+60|C16|+162|2422|CONTINUING
+60|C15|+357|2244|CONTINUING
+60|C06|+109|2189|CONTINUING
+60|C07|+66|2042|CONTINUING
+60|C11|+93|1884|CONTINUING
+60|C05|+37|1615|DEFEATED -- 12th count
+60|C17|-1233|0|DEFEATED -- 11th count
+60|C08|0|0|DEFEATED -- 10th count
+60|C04|0|0|DEFEATED -- 9th count
+60|C10|0|0|DEFEATED -- 8th count
+60|C13|0|0|DEFEATED -- 7th count
+60|C12|0|0|DEFEATED -- 6th count
+60|C18|0|0|DEFEATED -- 5th count
+60|C03|0|0|DEFEATED -- 4th count
+60|WI01|0|0|DEFEATED -- 3rd count
+60|WI02|0|0|DEFEATED -- 3rd count
+60|WI03|0|0|DEFEATED -- 3rd count
+60|WI04|0|0|DEFEATED -- 3rd count
+60|WI05|0|0|DEFEATED -- 3rd count
+60|WI06|0|0|DEFEATED -- 3rd count
+60|WI07|0|0|DEFEATED -- 3rd count
+60|WI08|0|0|DEFEATED -- 3rd count
+60|WI09|0|0|DEFEATED -- 3rd count
+60|CAND_EXHAUSTED|+193|390|
+70|Catherine Zusy has been ELECTED because s/he has met the quota.
+70|Dana Ray Bullister is declared DEFEATED because s/he has the lowest number of votes.
+50|13|Dana Ray Bullister has been DEFEATED -- transferring all votes.
+60|C14|0|2537|ELECTED -- 1st count
+60|C09|0|2537|ELECTED -- 1st count
+60|C01|0|2537|ELECTED -- 3rd count
+60|C19|0|2537|ELECTED -- 12th count
+60|C02|+105|2537|ELECTED -- 13th count
+60|C16|+115|2537|ELECTED -- 13th count
+60|C15|+236|2480|CONTINUING
+60|C11|+468|2352|CONTINUING
+60|C06|+78|2267|CONTINUING
+60|C07|+62|2104|DEFEATED -- 13th count
+60|C05|-1615|0|DEFEATED -- 12th count
+60|C17|0|0|DEFEATED -- 11th count
+60|C08|0|0|DEFEATED -- 10th count
+60|C04|0|0|DEFEATED -- 9th count
+60|C10|0|0|DEFEATED -- 8th count
+60|C13|0|0|DEFEATED -- 7th count
+60|C12|0|0|DEFEATED -- 6th count
+60|C18|0|0|DEFEATED -- 5th count
+60|C03|0|0|DEFEATED -- 4th count
+60|WI01|0|0|DEFEATED -- 3rd count
+60|WI02|0|0|DEFEATED -- 3rd count
+60|WI03|0|0|DEFEATED -- 3rd count
+60|WI04|0|0|DEFEATED -- 3rd count
+60|WI05|0|0|DEFEATED -- 3rd count
+60|WI06|0|0|DEFEATED -- 3rd count
+60|WI07|0|0|DEFEATED -- 3rd count
+60|WI08|0|0|DEFEATED -- 3rd count
+60|WI09|0|0|DEFEATED -- 3rd count
+60|CAND_EXHAUSTED|+551|941|
+70|Burhan Azeem has been ELECTED because s/he has met the quota.
+70|Jivan G. Sobrinho-Wheeler has been ELECTED because s/he has met the quota.
+70|John Hanratty is declared DEFEATED because s/he has the lowest number of votes.
+50|14|John Hanratty has been DEFEATED -- transferring all votes.
+60|C14|0|2537|ELECTED -- 1st count
+60|C09|0|2537|ELECTED -- 1st count
+60|C01|0|2537|ELECTED -- 3rd count
+60|C19|0|2537|ELECTED -- 12th count
+60|C02|0|2537|ELECTED -- 13th count
+60|C16|0|2537|ELECTED -- 13th count
+60|C06|+270|2537|ELECTED -- 14th count
+60|C15|+57|2537|ELECTED -- 14th count
+60|C11|+185|2537|ELECTED -- 14th count
+60|C07|-2104|0|DEFEATED -- 13th count
+60|C05|0|0|DEFEATED -- 12th count
+60|C17|0|0|DEFEATED -- 11th count
+60|C08|0|0|DEFEATED -- 10th count
+60|C04|0|0|DEFEATED -- 9th count
+60|C10|0|0|DEFEATED -- 8th count
+60|C13|0|0|DEFEATED -- 7th count
+60|C12|0|0|DEFEATED -- 6th count
+60|C18|0|0|DEFEATED -- 5th count
+60|C03|0|0|DEFEATED -- 4th count
+60|WI01|0|0|DEFEATED -- 3rd count
+60|WI02|0|0|DEFEATED -- 3rd count
+60|WI03|0|0|DEFEATED -- 3rd count
+60|WI04|0|0|DEFEATED -- 3rd count
+60|WI05|0|0|DEFEATED -- 3rd count
+60|WI06|0|0|DEFEATED -- 3rd count
+60|WI07|0|0|DEFEATED -- 3rd count
+60|WI08|0|0|DEFEATED -- 3rd count
+60|WI09|0|0|DEFEATED -- 3rd count
+60|CAND_EXHAUSTED|+1592|2533|
+70|Timothy R. Flaherty has been ELECTED because s/he has met the quota.
+70|E. Denise Simmons has been ELECTED because s/he has met the quota.
+70|Patricia M. Nolan has been ELECTED because s/he has met the quota.
+80|ELECTION COUNT SUCCESSFULLY COMPLETED
+80|Friday, November 14, 2025 5:28 PM
+80|ChoicePlus Pro -- Version 2.3.4
+80|(c) 1993-2009 Voting Solutions -- All Rights Reserved

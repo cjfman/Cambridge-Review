@@ -23,8 +23,10 @@ def parseArgs():
         help="Title to give each election")
     parser.add_argument("--full", action="store_true",
         help="Generate full wordpress HTML")
-    parser.add_argument("--table-only", action="store_true",
+    parser.add_argument("--markdown-only", action="store_true",
         help="Only generate the markdown table")
+    parser.add_argument("--table-only", action="store_true",
+        help="Only generate the wordpress/markdown table")
     parser.add_argument("--iframe-only", action="store_true",
         help="Only generate the interactive iframe page")
     parser.add_argument("--force", action="store_true")
@@ -103,7 +105,7 @@ def summarizeElection(elcn):
     return lines
 
 
-def makeTable(elcn):
+def makeMarkdownTable(elcn):
     table = generate_markdown(table_from_string_list(elcn.generateTableRows(), Alignment.RIGHT))
     ## Switch first row to be left aligned
     lines = table.split("\n")
@@ -112,6 +114,19 @@ def makeTable(elcn):
     formatter = formatter.replace('-', ':', 1)
     lines[1] = formatter
     return lines
+
+
+def writeWordpressTable(f, elcn, *, html_class="table-wrapper election-table"):
+    ## Markdown table
+    table_lines = makeMarkdownTable(elcn)
+    table_txt = "\\n".join(table_lines).replace("--", "\\u002d\\u002d")
+    f.write('<!-- wp:jetpack/markdown {"source":"\\n')
+    f.write(table_txt)
+    f.write(f'","className":"{html_class}"}} -->\n')
+    f.write('<div class="wp-block-jetpack-markdown {html_class}"></div>\n')
+
+    ## End markdown table
+    f.write("<!-- /wp:jetpack/markdown -->")
 
 
 def write(f, elcn, title, year):
@@ -157,12 +172,12 @@ def write(f, elcn, title, year):
 
     ## Table
     f.write("\n------\n\nVote Table\n\n")
-    f.write("\n".join(makeTable(elcn)))
+    f.write("\n".join(makeMarkdownTable(elcn)))
     f.write("\n")
 
 
-def writeTable(f, elcn):
-    f.write("\n".join(makeTable(elcn)))
+def writeMarkdownTable(f, elcn):
+    f.write("\n".join(makeMarkdownTable(elcn)))
 
 
 def writeFull(f, elcn, year):
@@ -286,17 +301,8 @@ def writeFull(f, elcn, year):
     """))
 
     ## Markdown table
-    table_lines = makeTable(elcn)
-    table_txt = "\\n".join(table_lines).replace("--", "\\u002d\\u002d")
-    f.write('<!-- wp:jetpack/markdown {"source":"\\n')
-    f.write(table_txt)
-    f.write('","className":"table-wrapper"} -->\n')
-    f.write('<div class="wp-block-jetpack-markdown table-wrapper"></div>\n')
-
-    ## End markdown table and do table only link
+    writeWordpressTable(f, elcn)
     f.write(dedent(f"""\
-        <!-- /wp:jetpack/markdown -->
-
         <!-- wp:paragraph -->
         <p><a href="/election/city-council-election-{year}-table/" target="_blank" rel="noreferrer noopener">View Full Table</a></p>
         <!-- /wp:paragraph -->
@@ -352,8 +358,10 @@ def runDecider(args, elcn, year, f):
         title += " " + year
 
     ## Pick generation type
-    if args.table_only:
-        writeTable(f, elcn)
+    if args.markdown_only:
+        writeMarkdownTable(f, elcn)
+    elif args.table_only:
+        writeWordpressTable(f, elcn, html_class="election-table")
     elif args.iframe_only:
         writeIFrame(f, title, year)
     elif args.full:

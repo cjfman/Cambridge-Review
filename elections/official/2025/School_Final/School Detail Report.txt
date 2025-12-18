@@ -1,0 +1,689 @@
+C:\Cambridge\Election2025\3 Final 2025\School_Final\School Detail Report
+
+
+School Committee Election
+Cambridge, Massachusetts
+Final Election Results
+November 14, 2025
+
+CANDIDATES:
+	LaQueen Arleen Battle
+	Alborz Bejnood
+	Alex Bowers
+	Anne Mathilde Coburn
+	Luisa de Paula Santos
+	Caitlin E. Dube
+	Melanie Gause
+	Jessica Diaz Goetz
+	Richard N. Harding, Jr.
+	Lilly Havstad
+	Jane Hirschi
+	Elizabeth Hudson
+	Caroline Mary Lisette Hunter
+	Arjun Kent Jaikumar
+	Jia-Jing Lee
+	José Luis Rojas Villarreal
+	Eugenia Schraa Huh
+	David J. Weinstein
+	Write-in 1
+	Write-in 2
+	Write-in 3
+	Write-in 4
+	Write-in 5
+	Write-in 6
+
+ELECTION RULES:
+               System:  Proportional Representation
+           Quota Type:  Droop
+    Surplus Transfers:  Random, every nth ballot (Cambridge style)
+                        Avoid exhausted ballots if possible
+                        Elected immediately (after the 1st count)
+    Simultaneous Drop:  Those with less than 50 votes
+                 Ties:  1) Previous Count method
+                        2) By election official
+                        3) Random (by computer)
+
+--------------------------------------------------
+23,115 valid ballots.
+Electing 6 candidates.
+Quota is 3303 votes.
+There were 2,213 invalid ballots.
+(25,328 total ballots processed.)
+--------------------------------------------------
+
+
+
+********************************************************************************
+
+
+COUNT 1 -- Tally of 1st place votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                 +3333           3333  ELECTED -- 1st count
+Richard N. Harding, Jr.          +3043           3043  CONTINUING
+Luisa de Paula Santos            +2453           2453  CONTINUING
+Caitlin E. Dube                  +2195           2195  CONTINUING
+Eugenia Schraa Huh               +1956           1956  CONTINUING
+Arjun Kent Jaikumar              +1750           1750  CONTINUING
+Jane Hirschi                     +1575           1575  CONTINUING
+David J. Weinstein               +1517           1517  CONTINUING
+José Luis Rojas Villa.          +1036           1036  CONTINUING
+Caroline Mary Lisette .           +856            856  CONTINUING
+Lilly Havstad                     +850            850  CONTINUING
+Jessica Diaz Goetz                +721            721  CONTINUING
+Jia-Jing Lee                      +689            689  CONTINUING
+LaQueen Arleen Battle             +325            325  CONTINUING
+Alex Bowers                       +267            267  CONTINUING
+Anne Mathilde Coburn              +235            235  CONTINUING
+Alborz Bejnood                    +184            184  CONTINUING
+Melanie Gause                     +108            108  CONTINUING
+Write-in 1                         +21             21  CONTINUING
+Write-in 3                          +1              1  CONTINUING
+Write-in 2                           0              0  CONTINUING
+Write-in 4                           0              0  CONTINUING
+Write-in 5                           0              0  CONTINUING
+Write-in 6                           0              0  CONTINUING
+
+EXHAUSTED PILE:                      0              0  
+TOTALS:                         +23115          23115  
+
+
+
+-- Elizabeth Hudson has been ELECTED because s/he has met the quota.
+
+
+********************************************************************************
+
+
+COUNT 2 -- Elizabeth Hudson has been ELECTED -- transferring surplus votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                   -30           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.             +5           3048  CONTINUING
+Luisa de Paula Santos                0           2453  CONTINUING
+Caitlin E. Dube                     +3           2198  CONTINUING
+Eugenia Schraa Huh                  +5           1961  CONTINUING
+Arjun Kent Jaikumar                 +1           1751  CONTINUING
+Jane Hirschi                        +3           1578  CONTINUING
+David J. Weinstein                  +4           1521  CONTINUING
+José Luis Rojas Villa.             +1           1037  CONTINUING
+Caroline Mary Lisette .             +3            859  CONTINUING
+Lilly Havstad                        0            850  CONTINUING
+Jessica Diaz Goetz                  +1            722  CONTINUING
+Jia-Jing Lee                        +3            692  CONTINUING
+LaQueen Arleen Battle                0            325  CONTINUING
+Alex Bowers                          0            267  CONTINUING
+Anne Mathilde Coburn                 0            235  CONTINUING
+Alborz Bejnood                       0            184  CONTINUING
+Melanie Gause                       +1            109  CONTINUING
+Write-in 1                           0             21  DEFEATED -- 2nd count
+Write-in 3                           0              1  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                      0              0  
+TOTALS:                              0          23115  
+
+
+
+-- Write-in 6 is declared DEFEATED, as s/he has less than 50 votes.
+-- Write-in 5 is declared DEFEATED, as s/he has less than 50 votes.
+-- Write-in 4 is declared DEFEATED, as s/he has less than 50 votes.
+-- Write-in 2 is declared DEFEATED, as s/he has less than 50 votes.
+-- Write-in 3 is declared DEFEATED, as s/he has less than 50 votes.
+-- Write-in 1 is declared DEFEATED, as s/he has less than 50 votes.
+
+
+********************************************************************************
+
+
+COUNT 3 -- Transferring all votes simultaneously from all defeated candidates.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                     0           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.             +4           3052  CONTINUING
+Luisa de Paula Santos                0           2453  CONTINUING
+Caitlin E. Dube                      0           2198  CONTINUING
+Eugenia Schraa Huh                   0           1961  CONTINUING
+Arjun Kent Jaikumar                  0           1751  CONTINUING
+Jane Hirschi                         0           1578  CONTINUING
+David J. Weinstein                   0           1521  CONTINUING
+José Luis Rojas Villa.             +1           1038  CONTINUING
+Caroline Mary Lisette .              0            859  CONTINUING
+Lilly Havstad                        0            850  CONTINUING
+Jessica Diaz Goetz                   0            722  CONTINUING
+Jia-Jing Lee                         0            692  CONTINUING
+LaQueen Arleen Battle                0            325  CONTINUING
+Alex Bowers                          0            267  CONTINUING
+Anne Mathilde Coburn                +1            236  CONTINUING
+Alborz Bejnood                       0            184  CONTINUING
+Melanie Gause                        0            109  DEFEATED -- 3rd count
+Write-in 1                         -21              0  DEFEATED -- 2nd count
+Write-in 3                          -1              0  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                    +16             16  
+TOTALS:                              0          23115  
+
+
+
+-- Melanie Gause is declared DEFEATED because s/he has the lowest number of
+   votes.
+
+
+********************************************************************************
+
+
+COUNT 4 -- Melanie Gause has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                     0           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.            +12           3064  CONTINUING
+Luisa de Paula Santos               +2           2455  CONTINUING
+Caitlin E. Dube                     +3           2201  CONTINUING
+Eugenia Schraa Huh                  +5           1966  CONTINUING
+Arjun Kent Jaikumar                 +4           1755  CONTINUING
+Jane Hirschi                        +6           1584  CONTINUING
+David J. Weinstein                  +2           1523  CONTINUING
+José Luis Rojas Villa.             +6           1044  CONTINUING
+Caroline Mary Lisette .             +2            861  CONTINUING
+Lilly Havstad                       +5            855  CONTINUING
+Jessica Diaz Goetz                 +18            740  CONTINUING
+Jia-Jing Lee                        +5            697  CONTINUING
+LaQueen Arleen Battle               +7            332  CONTINUING
+Alex Bowers                         +1            268  CONTINUING
+Anne Mathilde Coburn                +2            238  CONTINUING
+Alborz Bejnood                      +2            186  DEFEATED -- 4th count
+Melanie Gause                     -109              0  DEFEATED -- 3rd count
+Write-in 1                           0              0  DEFEATED -- 2nd count
+Write-in 3                           0              0  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                    +27             43  
+TOTALS:                              0          23115  
+
+
+
+-- Alborz Bejnood is declared DEFEATED because s/he has the lowest number of
+   votes.
+
+
+********************************************************************************
+
+
+COUNT 5 -- Alborz Bejnood has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                     0           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.            +16           3080  CONTINUING
+Luisa de Paula Santos              +11           2466  CONTINUING
+Caitlin E. Dube                    +17           2218  CONTINUING
+Eugenia Schraa Huh                 +17           1983  CONTINUING
+Arjun Kent Jaikumar                +15           1770  CONTINUING
+Jane Hirschi                       +15           1599  CONTINUING
+David J. Weinstein                  +7           1530  CONTINUING
+José Luis Rojas Villa.             +5           1049  CONTINUING
+Caroline Mary Lisette .             +6            867  CONTINUING
+Lilly Havstad                       +3            858  CONTINUING
+Jessica Diaz Goetz                  +4            744  CONTINUING
+Jia-Jing Lee                       +14            711  CONTINUING
+LaQueen Arleen Battle               +2            334  CONTINUING
+Alex Bowers                        +20            288  CONTINUING
+Anne Mathilde Coburn                +7            245  DEFEATED -- 5th count
+Alborz Bejnood                    -186              0  DEFEATED -- 4th count
+Melanie Gause                        0              0  DEFEATED -- 3rd count
+Write-in 1                           0              0  DEFEATED -- 2nd count
+Write-in 3                           0              0  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                    +27             70  
+TOTALS:                              0          23115  
+
+
+
+-- Anne Mathilde Coburn is declared DEFEATED because s/he has the lowest number
+   of votes.
+
+
+********************************************************************************
+
+
+COUNT 6 -- Anne Mathilde Coburn has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                     0           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.            +26           3106  CONTINUING
+Luisa de Paula Santos              +32           2498  CONTINUING
+Caitlin E. Dube                    +32           2250  CONTINUING
+Eugenia Schraa Huh                 +24           2007  CONTINUING
+Arjun Kent Jaikumar                +15           1785  CONTINUING
+Jane Hirschi                       +15           1614  CONTINUING
+David J. Weinstein                 +10           1540  CONTINUING
+José Luis Rojas Villa.             +7           1056  CONTINUING
+Caroline Mary Lisette .             +5            872  CONTINUING
+Lilly Havstad                       +8            866  CONTINUING
+Jessica Diaz Goetz                 +16            760  CONTINUING
+Jia-Jing Lee                       +12            723  CONTINUING
+LaQueen Arleen Battle               +8            342  CONTINUING
+Alex Bowers                         +8            296  DEFEATED -- 6th count
+Anne Mathilde Coburn              -245              0  DEFEATED -- 5th count
+Alborz Bejnood                       0              0  DEFEATED -- 4th count
+Melanie Gause                        0              0  DEFEATED -- 3rd count
+Write-in 1                           0              0  DEFEATED -- 2nd count
+Write-in 3                           0              0  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                    +27             97  
+TOTALS:                              0          23115  
+
+
+
+-- Alex Bowers is declared DEFEATED because s/he has the lowest number of votes.
+
+
+********************************************************************************
+
+
+COUNT 7 -- Alex Bowers has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                     0           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.            +35           3141  CONTINUING
+Luisa de Paula Santos              +41           2539  CONTINUING
+Caitlin E. Dube                    +40           2290  CONTINUING
+Eugenia Schraa Huh                 +23           2030  CONTINUING
+Arjun Kent Jaikumar                +13           1798  CONTINUING
+Jane Hirschi                       +31           1645  CONTINUING
+David J. Weinstein                 +15           1555  CONTINUING
+José Luis Rojas Villa.             +9           1065  CONTINUING
+Lilly Havstad                      +12            878  CONTINUING
+Caroline Mary Lisette .             +6            878  CONTINUING
+Jessica Diaz Goetz                 +19            779  CONTINUING
+Jia-Jing Lee                       +11            734  CONTINUING
+LaQueen Arleen Battle               +6            348  DEFEATED -- 7th count
+Alex Bowers                       -296              0  DEFEATED -- 6th count
+Anne Mathilde Coburn                 0              0  DEFEATED -- 5th count
+Alborz Bejnood                       0              0  DEFEATED -- 4th count
+Melanie Gause                        0              0  DEFEATED -- 3rd count
+Write-in 1                           0              0  DEFEATED -- 2nd count
+Write-in 3                           0              0  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                    +35            132  
+TOTALS:                              0          23115  
+
+
+
+-- LaQueen Arleen Battle is declared DEFEATED because s/he has the lowest
+   number of votes.
+
+
+********************************************************************************
+
+
+COUNT 8 -- LaQueen Arleen Battle has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                     0           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.            +37           3178  CONTINUING
+Luisa de Paula Santos              +32           2571  CONTINUING
+Caitlin E. Dube                    +19           2309  CONTINUING
+Eugenia Schraa Huh                 +21           2051  CONTINUING
+Arjun Kent Jaikumar                +21           1819  CONTINUING
+Jane Hirschi                        +9           1654  CONTINUING
+David J. Weinstein                 +19           1574  CONTINUING
+José Luis Rojas Villa.            +36           1101  CONTINUING
+Caroline Mary Lisette .            +25            903  CONTINUING
+Lilly Havstad                       +6            884  CONTINUING
+Jessica Diaz Goetz                 +18            797  CONTINUING
+Jia-Jing Lee                       +23            757  DEFEATED -- 8th count
+LaQueen Arleen Battle             -348              0  DEFEATED -- 7th count
+Alex Bowers                          0              0  DEFEATED -- 6th count
+Anne Mathilde Coburn                 0              0  DEFEATED -- 5th count
+Alborz Bejnood                       0              0  DEFEATED -- 4th count
+Melanie Gause                        0              0  DEFEATED -- 3rd count
+Write-in 1                           0              0  DEFEATED -- 2nd count
+Write-in 3                           0              0  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                    +82            214  
+TOTALS:                              0          23115  
+
+
+
+-- Jia-Jing Lee is declared DEFEATED because s/he has the lowest number of
+   votes.
+
+
+********************************************************************************
+
+
+COUNT 9 -- Jia-Jing Lee has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                     0           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.            +82           3260  CONTINUING
+Luisa de Paula Santos              +57           2628  CONTINUING
+Caitlin E. Dube                    +52           2361  CONTINUING
+Eugenia Schraa Huh                 +61           2112  CONTINUING
+Arjun Kent Jaikumar                +97           1916  CONTINUING
+Jane Hirschi                       +92           1746  CONTINUING
+David J. Weinstein                 +60           1634  CONTINUING
+José Luis Rojas Villa.            +58           1159  CONTINUING
+Caroline Mary Lisette .            +35            938  CONTINUING
+Lilly Havstad                      +21            905  CONTINUING
+Jessica Diaz Goetz                 +28            825  DEFEATED -- 9th count
+Jia-Jing Lee                      -757              0  DEFEATED -- 8th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 7th count
+Alex Bowers                          0              0  DEFEATED -- 6th count
+Anne Mathilde Coburn                 0              0  DEFEATED -- 5th count
+Alborz Bejnood                       0              0  DEFEATED -- 4th count
+Melanie Gause                        0              0  DEFEATED -- 3rd count
+Write-in 1                           0              0  DEFEATED -- 2nd count
+Write-in 3                           0              0  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                   +114            328  
+TOTALS:                              0          23115  
+
+
+
+-- Jessica Diaz Goetz is declared DEFEATED because s/he has the lowest number
+   of votes.
+
+
+********************************************************************************
+
+
+COUNT 10 -- Jessica Diaz Goetz has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                     0           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.            +43           3303  ELECTED -- 10th count
+Luisa de Paula Santos              +94           2722  CONTINUING
+Caitlin E. Dube                   +129           2490  CONTINUING
+Eugenia Schraa Huh                 +40           2152  CONTINUING
+Arjun Kent Jaikumar               +167           2083  CONTINUING
+Jane Hirschi                       +95           1841  CONTINUING
+David J. Weinstein                 +32           1666  CONTINUING
+José Luis Rojas Villa.            +38           1197  CONTINUING
+Lilly Havstad                      +97           1002  CONTINUING
+Caroline Mary Lisette .            +25            963  DEFEATED -- 10th count
+Jessica Diaz Goetz                -825              0  DEFEATED -- 9th count
+Jia-Jing Lee                         0              0  DEFEATED -- 8th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 7th count
+Alex Bowers                          0              0  DEFEATED -- 6th count
+Anne Mathilde Coburn                 0              0  DEFEATED -- 5th count
+Alborz Bejnood                       0              0  DEFEATED -- 4th count
+Melanie Gause                        0              0  DEFEATED -- 3rd count
+Write-in 1                           0              0  DEFEATED -- 2nd count
+Write-in 3                           0              0  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                    +65            393  
+TOTALS:                              0          23115  
+
+
+
+-- Richard N. Harding, Jr. has been ELECTED because s/he has met the quota.
+-- Caroline Mary Lisette Hunter is declared DEFEATED because s/he has the
+   lowest number of votes.
+
+
+********************************************************************************
+
+
+COUNT 11 -- Caroline Mary Lisette Hunter has been DEFEATED -- transferring all
+            votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                     0           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.              0           3303  ELECTED -- 10th count
+Luisa de Paula Santos              +72           2794  CONTINUING
+Caitlin E. Dube                    +60           2550  CONTINUING
+Eugenia Schraa Huh                 +70           2222  CONTINUING
+Arjun Kent Jaikumar                +75           2158  CONTINUING
+Jane Hirschi                       +76           1917  CONTINUING
+David J. Weinstein                +208           1874  CONTINUING
+José Luis Rojas Villa.           +191           1388  CONTINUING
+Lilly Havstad                      +22           1024  DEFEATED -- 11th count
+Caroline Mary Lisette .           -963              0  DEFEATED -- 10th count
+Jessica Diaz Goetz                   0              0  DEFEATED -- 9th count
+Jia-Jing Lee                         0              0  DEFEATED -- 8th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 7th count
+Alex Bowers                          0              0  DEFEATED -- 6th count
+Anne Mathilde Coburn                 0              0  DEFEATED -- 5th count
+Alborz Bejnood                       0              0  DEFEATED -- 4th count
+Melanie Gause                        0              0  DEFEATED -- 3rd count
+Write-in 1                           0              0  DEFEATED -- 2nd count
+Write-in 3                           0              0  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                   +189            582  
+TOTALS:                              0          23115  
+
+
+
+-- Lilly Havstad is declared DEFEATED because s/he has the lowest number of
+   votes.
+
+
+********************************************************************************
+
+
+COUNT 12 -- Lilly Havstad has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                     0           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.              0           3303  ELECTED -- 10th count
+Luisa de Paula Santos             +384           3178  CONTINUING
+Caitlin E. Dube                   +176           2726  CONTINUING
+Arjun Kent Jaikumar               +135           2293  CONTINUING
+Eugenia Schraa Huh                 +40           2262  CONTINUING
+Jane Hirschi                      +155           2072  CONTINUING
+David J. Weinstein                 +30           1904  CONTINUING
+José Luis Rojas Villa.            +25           1413  DEFEATED -- 12th count
+Lilly Havstad                    -1024              0  DEFEATED -- 11th count
+Caroline Mary Lisette .              0              0  DEFEATED -- 10th count
+Jessica Diaz Goetz                   0              0  DEFEATED -- 9th count
+Jia-Jing Lee                         0              0  DEFEATED -- 8th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 7th count
+Alex Bowers                          0              0  DEFEATED -- 6th count
+Anne Mathilde Coburn                 0              0  DEFEATED -- 5th count
+Alborz Bejnood                       0              0  DEFEATED -- 4th count
+Melanie Gause                        0              0  DEFEATED -- 3rd count
+Write-in 1                           0              0  DEFEATED -- 2nd count
+Write-in 3                           0              0  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                    +79            661  
+TOTALS:                              0          23115  
+
+
+
+-- José Luis Rojas Villarreal is declared DEFEATED because s/he has the lowest
+   number of votes.
+
+
+********************************************************************************
+
+
+COUNT 13 -- José Luis Rojas Villarreal has been DEFEATED -- transferring all
+            votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                     0           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.              0           3303  ELECTED -- 10th count
+Luisa de Paula Santos             +125           3303  ELECTED -- 13th count
+Caitlin E. Dube                   +110           2836  CONTINUING
+Arjun Kent Jaikumar               +112           2405  CONTINUING
+David J. Weinstein                +481           2385  CONTINUING
+Eugenia Schraa Huh                +110           2372  CONTINUING
+Jane Hirschi                      +128           2200  DEFEATED -- 13th count
+José Luis Rojas Villa.          -1413              0  DEFEATED -- 12th count
+Lilly Havstad                        0              0  DEFEATED -- 11th count
+Caroline Mary Lisette .              0              0  DEFEATED -- 10th count
+Jessica Diaz Goetz                   0              0  DEFEATED -- 9th count
+Jia-Jing Lee                         0              0  DEFEATED -- 8th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 7th count
+Alex Bowers                          0              0  DEFEATED -- 6th count
+Anne Mathilde Coburn                 0              0  DEFEATED -- 5th count
+Alborz Bejnood                       0              0  DEFEATED -- 4th count
+Melanie Gause                        0              0  DEFEATED -- 3rd count
+Write-in 1                           0              0  DEFEATED -- 2nd count
+Write-in 3                           0              0  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                   +347           1008  
+TOTALS:                              0          23115  
+
+
+
+-- Luisa de Paula Santos has been ELECTED because s/he has met the quota.
+-- Jane Hirschi is declared DEFEATED because s/he has the lowest number of
+   votes.
+
+
+********************************************************************************
+
+
+COUNT 14 -- Jane Hirschi has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                     0           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.              0           3303  ELECTED -- 10th count
+Luisa de Paula Santos                0           3303  ELECTED -- 13th count
+Caitlin E. Dube                   +467           3303  ELECTED -- 14th count
+Arjun Kent Jaikumar               +419           2824  CONTINUING
+David J. Weinstein                +379           2764  CONTINUING
+Eugenia Schraa Huh                +297           2669  DEFEATED -- 14th count
+Jane Hirschi                     -2200              0  DEFEATED -- 13th count
+José Luis Rojas Villa.              0              0  DEFEATED -- 12th count
+Lilly Havstad                        0              0  DEFEATED -- 11th count
+Caroline Mary Lisette .              0              0  DEFEATED -- 10th count
+Jessica Diaz Goetz                   0              0  DEFEATED -- 9th count
+Jia-Jing Lee                         0              0  DEFEATED -- 8th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 7th count
+Alex Bowers                          0              0  DEFEATED -- 6th count
+Anne Mathilde Coburn                 0              0  DEFEATED -- 5th count
+Alborz Bejnood                       0              0  DEFEATED -- 4th count
+Melanie Gause                        0              0  DEFEATED -- 3rd count
+Write-in 1                           0              0  DEFEATED -- 2nd count
+Write-in 3                           0              0  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                   +638           1646  
+TOTALS:                              0          23115  
+
+
+
+-- Caitlin E. Dube has been ELECTED because s/he has met the quota.
+-- Eugenia Schraa Huh is declared DEFEATED because s/he has the lowest number
+   of votes.
+
+
+********************************************************************************
+
+
+COUNT 15 -- Eugenia Schraa Huh has been DEFEATED -- transferring all votes.
+
+CANDIDATE                   THIS COUNT          TOTAL  STATUS
+-----------------------  -------------  -------------  ----------------------
+Elizabeth Hudson                     0           3303  ELECTED -- 1st count
+Richard N. Harding, Jr.              0           3303  ELECTED -- 10th count
+Luisa de Paula Santos                0           3303  ELECTED -- 13th count
+Caitlin E. Dube                      0           3303  ELECTED -- 14th count
+Arjun Kent Jaikumar               +479           3303  ELECTED -- 15th count
+David J. Weinstein                +539           3303  ELECTED -- 15th count
+Eugenia Schraa Huh               -2669              0  DEFEATED -- 14th count
+Jane Hirschi                         0              0  DEFEATED -- 13th count
+José Luis Rojas Villa.              0              0  DEFEATED -- 12th count
+Lilly Havstad                        0              0  DEFEATED -- 11th count
+Caroline Mary Lisette .              0              0  DEFEATED -- 10th count
+Jessica Diaz Goetz                   0              0  DEFEATED -- 9th count
+Jia-Jing Lee                         0              0  DEFEATED -- 8th count
+LaQueen Arleen Battle                0              0  DEFEATED -- 7th count
+Alex Bowers                          0              0  DEFEATED -- 6th count
+Anne Mathilde Coburn                 0              0  DEFEATED -- 5th count
+Alborz Bejnood                       0              0  DEFEATED -- 4th count
+Melanie Gause                        0              0  DEFEATED -- 3rd count
+Write-in 1                           0              0  DEFEATED -- 2nd count
+Write-in 3                           0              0  DEFEATED -- 2nd count
+Write-in 2                           0              0  DEFEATED -- 2nd count
+Write-in 4                           0              0  DEFEATED -- 2nd count
+Write-in 5                           0              0  DEFEATED -- 2nd count
+Write-in 6                           0              0  DEFEATED -- 2nd count
+
+EXHAUSTED PILE:                  +1651           3297  
+TOTALS:                              0          23115  
+
+
+
+-- Arjun Kent Jaikumar has been ELECTED because s/he has met the quota.
+-- David J. Weinstein has been ELECTED because s/he has met the quota.
+
+
+********************************************************************************
+
+
+ELECTION COUNT SUCCESSFULLY COMPLETED
+
+
+
+
+
+Friday, November 14, 2025 5:12 PM
+ChoicePlus Pro -- Version 2.3.4
+(c) 1993-2009 Voting Solutions -- All Rights Reserved

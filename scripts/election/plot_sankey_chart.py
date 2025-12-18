@@ -15,7 +15,7 @@ import plotly.graph_objects as go
 ## pylint: disable=wrong-import-position
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 from citylib import elections
-from citylib.utils import insertCopyright
+from citylib.utils import insertCopyright, insertNoCache
 
 VERBOSE=False
 DEBUG=False
@@ -261,13 +261,15 @@ def finalPlot(args, fig, election, max_length):
     print(f"max_length={max_length} width={width} height={height}")
     if re.search(r"\.html$", chart_file, re.IGNORECASE):
         ## Write an html file
-        ## Don't fix size unless unless forced
+        ## Don't fix size unless forced
         if args.force_fixed_size:
             width *= 1.2
             fig.update_layout(width=width)
 
         print(f"Saving as '{chart_file}'")
         plotly.offline.plot(fig, filename=chart_file)
+        if insertNoCache(args.chart_file):
+            print(f"Inserted no-cache lines into '{args.chart_file}'")
         if args.copyright and not args.no_copyright:
             print(f"Updating with copyright")
             if not insertCopyright(chart_file, args.copyright, tight=args.copyright_tight):
@@ -341,7 +343,7 @@ def main(args):
     label_rounds[init_label]    = 0 ## psudo round
     round_labels[0].append(init_label)
     label_colors[init_label]    = GREY
-    source_map[1][init_label]   = election.total ## All votes are availabel as a source in round 1
+    source_map[1][init_label]   = election.total ## All votes are available as a source in round 1
     label_total[init_label]     = election.total
     previous_labels[init_label] = init_label     ## This is needed so that the makeNodes(...)
                                                  ## function knows what source to use in round 1
