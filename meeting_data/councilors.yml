@@ -70,6 +70,14 @@ councillors:
       - Craig Kelley
       - Craig
       - Kelley
+  - name: Ayah A. Al-Zubi
+    aliases:
+      - Ayah
+      - Al-Zubi
+  - name: Timothy R. Flaherty
+    aliases:
+      - Timothy
+      - Flaherty
 sessions:
   2018:
     mayor: Marc C. McGovern
@@ -126,3 +134,14 @@ sessions:
       - Ayesha M. Wilson
       - Jivan Sobrinho-Wheeler
       - Catherine Zusy
+  2026:
+    mayor: Sumbul Siddiqui
+    vice_mayor: Burhan Azeem
+    councillors:
+      - Patricia Nolan
+      - Jivan Sobrinho-Wheeler
+      - Catherine Zusy
+      - Marc C. McGovern
+      - E. Denise Simmons
+      - Timothy R. Flaherty
+      - Ayah A. Al-Zubi

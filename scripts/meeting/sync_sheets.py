@@ -42,6 +42,7 @@ SHEETS = {
     2022: "1BBS7C-TwU9kBNJo48EQnz1sDTVOhAHlvjQbKjVvWZ4A",
     2024: "17qiYpxVFX8zwDrMJKpK_C-hZL9-Y8y5QU3GhVhi4xeg",
     2025: "1BEBniAqsR0bb3gU7Cy9PJW4lTQO1x2TlekJsyS89vNA",
+    2026: "1KN4AVMR36L3gz_q3KRFpgS_FvW6tDVXdlLOobjH_nF8",
 }
 
 item_keys = (
