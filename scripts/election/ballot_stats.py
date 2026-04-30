@@ -53,13 +53,33 @@ GREY = (68, 68, 68)
 def parseArgs():
     parser = argparse.ArgumentParser()
 
+    parser.set_defaults(func=None)
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--debug", action="store_true")
-    parser.add_argument("ballots_file",
+    parser.add_argument("--config",
+        help="Election configuration")
+    subparsers = parser.add_subparsers()
+
+    ## plot cmd
+    plot_parser = subparsers.add_parser('plot',
+        help="Plot first transfer")
+    plot_parser.set_defaults(func=plot_hdlr)
+    plot_parser.add_argument("ballots_file",
         help="Ballot piles file")
-    parser.add_argument("chart_file", nargs="?",
+    plot_parser.add_argument("chart_file", nargs="?",
         help="Where to save the chart. If no extention is provided '.png' will be added.")
 
+    ## counts
+    plot_parser = subparsers.add_parser('count',
+        help="Count ballot positions")
+    plot_parser.set_defaults(func=count_hdlr)
+    plot_parser.add_argument("--holders", action='store_true')
+    plot_parser.add_argument("ballots_file",
+        help="Ballot piles file")
+    #plot_parser.add_argument("chart_file", nargs="?",
+    #    help="Where to save the chart. If no extention is provided '.png' will be added.")
+
+    ## Final parse
     args = parser.parse_args()
 
     global VERBOSE ## pylint: disable=global-statement
@@ -72,8 +92,7 @@ def parseArgs():
 
     return args
 
-
-def main(args):
+def plot_hdlr(args):
     print(f"Reading '{args.ballots_file}'")
     ballots = elections.loadFlattenedBallotPiles(args.ballots_file)
     pairs = set() ## Pairs of source and targets
@@ -157,6 +176,57 @@ def main(args):
             print(f"Inserted no-cache lines into '{args.chart_file}'")
 
     return 0
+
+
+def count_hdlr(args):
+
+    elec_config = None
+    if args.config is not None:
+        print(f"Reading '{args.config}'")
+        elec_config = elections.load_election_configuration(args.config)
+
+    code_to_name = lambda x: elec_config.candidates[x] if elec_config and x in elec_config.candidates else x
+
+    print(f"Reading '{args.ballots_file}'")
+    ballots = None
+    if args.holders:
+        ballots = elections.loadFlattenedBallotPiles(args.ballots_file)
+    else:
+        ballots = elections.loadFinalBallots(args.ballots_file)
+
+    max_rank = 0
+    candidates = defaultdict(lambda: defaultdict(int))
+    for ballot in ballots:
+        if args and ballot.holder:
+            candidates[ballot.holder]['holder'] += 1
+        for i, candidate in enumerate(ballot.candidates):
+            n = i + 1
+            candidates[candidate][n] += 1
+            max_rank = max(max_rank, n)
+
+    ## Print header
+    ranks = list(range(1, max_rank+1))
+    if not args.holders:
+        print("Candidate," + ",".join(map(str, ranks)))
+    else:
+        print("Candidate,holding," + ",".join(map(str, ranks)))
+    for candidate in sorted(candidates.keys()):
+        name = code_to_name(candidate)
+        if not args.holders:
+            print(f"{name}," + ",".join([str(candidates[candidate][x]) for x in ranks]))
+        else:
+            print(f"{name},{candidates[candidate]['holder']}," + ",".join([str(candidates[candidate][x]) for x in ranks]))
+
+    return 0
+
+
+def main(args):
+    if args.func is None:
+        print("Didn't find a handler")
+        return 1
+
+    return args.func(args)
+
 
 if __name__ == '__main__':
     sys.exit(main(parseArgs()))

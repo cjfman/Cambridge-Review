@@ -6,6 +6,7 @@ import csv
 import re
 
 from collections import defaultdict, namedtuple
+from dataclasses import dataclass
 from textwrap import dedent
 from typing import Dict, List, Sequence
 
@@ -379,7 +380,7 @@ def loadBallotPiles(path) -> Dict[str, List[Ballot]]:
 
             ## Add ballot to the pile
             ## Ex: 000203-00-09060000167208, 1) C17,C08,C05,C04,C07,C14
-            match = re.match(r"(\S+), (\d+)\) ([C0-9,]+)$", line)
+            match = re.match(r"(\S+), (\d+)\) ([C0-9,=]+)$", line)
             if match:
                 key = match.groups()[0]
                 valid = bool(int(match.groups()[1]))
@@ -388,7 +389,7 @@ def loadBallotPiles(path) -> Dict[str, List[Ballot]]:
                     continue
 
                 valid_count += 1
-                names = [code_to_name(x) for x in match.groups()[2].split(",")]
+                names = [code_to_name(x) for x in match.groups()[2].split(",") if '=' not in x]
                 piles[name].append(Ballot(key, name, names))
 
     return piles
@@ -396,3 +397,81 @@ def loadBallotPiles(path) -> Dict[str, List[Ballot]]:
 
 def loadFlattenedBallotPiles(path) -> List[Ballot]:
     return [ballot for pile in loadBallotPiles(path).values() for ballot in pile]
+
+
+def loadFinalBallots(path) -> List[Ballot]:
+    ## 001001-00-00290000006098,00112,001,1) C19[1],C08[2],C12[3],C17[4],C07[5],C13[6]
+    invalid = 0
+    ballots = []
+    with open(path, encoding='utf8') as f:
+        ## Parse each line
+        for line in f:
+            line = line.strip()
+            #match = re.match(r"^(\S+)(?:,\d+)+\) ((?:C|WI)\d+\[\d+\](?:,(?:C|WI)\d+\[\d+\])*)", line)
+            match = re.match(r"^(\S+)(?:,\d+)+\) ([CWI0-9,=\[\]]+)$", line)
+            if not match:
+                print(f"Invalid ballot: {line}")
+                invalid += 1
+                continue
+
+            key = match.groups()[0]
+            entries = match.groups()[1].split(',')
+            ranks = {}
+
+            ## Parse each entry
+            for entry in entries:
+                match = re.match(r"^([CWI0-9]+)\[(\d+)\]$", entry)
+                if match:
+                    name = match.groups()[0]
+                    rank = int(match.groups()[1])
+                    if rank in ranks:
+                        ranks[rank] = ""
+                    else:
+                        ranks[rank] = name
+
+            ## Sort candidates
+            candidates = [x[1] for x in sorted(ranks.items()) if x[1]]
+            ballots.append(Ballot(key, None, candidates))
+
+    print(f"Invalid ballots: {invalid}")
+    return ballots
+
+
+@dataclass
+class ElectionConfiguration:
+    titles:List[str]
+    contest:str
+    elect:int
+    candidates:Dict[str,str]
+
+
+def load_election_configuration(path) -> ElectionConfiguration:
+    titles = []
+    contest = ""
+    elect = 0
+    candidates = {}
+    with open(path, encoding='utf8') as f:
+        for line in f:
+            ## Get title
+            match = re.match(r'^.TITLE (\S+)', line)
+            if match:
+                titles.append(match.groups()[0])
+                continue
+
+            match = re.match(r'^.CONTEST (\S+)', line)
+            if match:
+                contest = match.groups()[0]
+                continue
+
+            match = re.match(r'^.ELECT (\d+)', line)
+            if match:
+                contest = int(match.groups()[0])
+                continue
+
+            ## Register a candidate
+            match = re.match(r'^.CANDIDATE (\w+), "(.+)"$', line)
+            if match:
+                candidates[match.groups()[0]] = match.groups()[1]
+                continue
+
+    return ElectionConfiguration(titles, contest, elect, candidates)

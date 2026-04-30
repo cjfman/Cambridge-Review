@@ -1,4 +1,4 @@
-#! /usr/bin/python3.8
+#!/usr/bin/env python3
 ## pylint: disable=too-many-locals,too-many-branches
 
 import argparse
@@ -16,20 +16,19 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 import requests
-from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-order
 
 import html5lib ## pylint: disable=unused-import
 from bs4 import BeautifulSoup
 
-## pylint: disable=import-error,wrong-import-order
+## pylint: disable=import-error,wrong-import-order,wrong-import-position
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
+from citylib import agenda
 from citylib.councillors import getCouncillorNames, setCouncillorInfo, lookUpCouncillorName
-from citylib.utils import print_green, print_red, overlayKeys, toTitleCase, setDefaultValue
-from citylib.utils.html_parsing import *
+from citylib.utils import print_green, print_red, overlayKeys, toTitleCase
+import citylib.utils.html_parsing as hp
 
 VERBOSE = False
 ALLOWED_TYPES = ('regular', 'special')
-MAX_MSG_LEN = 48
 REQUEST_HDR = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
 }
@@ -222,439 +221,6 @@ def parseArgs():
     return parser.parse_args()
 
 
-class AgendaItem:
-    """Abstract class"""
-    ## pylint: disable=no-member,attribute-defined-outside-init,access-member-before-definition
-    def setMeeting(self, meeting):
-        self.meeting_uid  = meeting.uid
-        self.meeting_date = meeting.date
-        if hasattr(self, 'name'):
-            msg = " ".join([self.uid, self.name, self.meeting_uid])
-            if len(self.subject) > MAX_MSG_LEN:
-                return msg + self.subject[:MAX_MSG_LEN] + "..."
-
-            return msg + self.subject
-
-        return None
-
-    def setNotes(self, notes):
-        self.notes = notes
-        lower = notes.lower()
-
-        ## Check for affirmative vote
-        if hasattr(self, 'vote') and not self.vote:
-            match = re.match(r"(?:by )?(?:the|an?)? ?((?:Affirmative|Voice) Vote) of \w+ Members", self.notes, re.IGNORECASE)
-            if match:
-                self.vote = toTitleCase(match.groups()[0])
-
-        ## Check charter right
-        if hasattr(self, 'charter_right') and not self.charter_right          \
-            and ("charter right" in lower                                     \
-                or self.action == "Charter Right" and "exercised by" in lower \
-            ):
-            match = re.search(r"exercised by (?:councill?or|vice mayor|mayor) (\w+)", self.notes, re.IGNORECASE)
-            if match:
-                self.charter_right = lookUpCouncillorName(match.groups()[0])
-            else:
-                ## Some mistake has been made
-                self.charter_right = "!!!"
-
-
-@dataclass
-class Meeting:
-    uid: str
-    body: str
-    type: str
-    other: str
-    session: str
-    date: str
-    time: str
-    status: str
-    id: str
-    url: str
-    agenda_summary: str
-    agenda_packet: str
-    final_actions: str
-    minutes: str
-    attendance: str=None
-    _dt=None
-
-    def getDate(self):
-        if self._dt is not None:
-            return self._dt
-
-        self._dt = dt.datetime.fromisoformat(self.date)
-        return self._dt
-
-    def __lt__(self, other):
-        return (self.getDate() < other.getDate())
-
-    def __str__(self):
-        return f"{self.body} - {self.type} {self.date} ({self.id})"
-
-    def __repr__(self):
-        return f"[Meeting {str(self)}]"
-
-
-@dataclass
-class CMA(AgendaItem):
-    uid:      str
-    num:      int
-    category: str
-    awaiting: str
-    order:    str
-    url:      str
-    action:   str
-    vote:     str
-    charter_right: str  = ""
-    description:   str  = ""
-    final_action:  dict = None
-    meeting_uid:   str  = ""
-    meeting_date:  str  = ""
-    notes:         str  = ""
-
-    @property
-    def type(self):
-        return "CMA"
-
-    def to_dict(self):
-        return {
-            "Unique Identifier": self.uid,
-            "Agenda Number":     self.num,
-            "Category":          self.category,
-            "Awaiting Report":   self.awaiting,
-            "Policy Order":      self.order,
-            "Link":              self.url,
-            "Outcome":           self.action,
-            "Vote":              self.vote,
-            "Charter Right":     self.charter_right,
-            "Summary":           self.description,
-            "Meeting":           self.meeting_uid,
-            "Meeting Date":      self.meeting_date,
-            "Notes":             self.notes,
-        }
-
-    def __str__(self):
-        msg = " ".join([self.uid, self.category, self.action, f"[{self.vote}]", self.meeting_uid])
-        if len(self.description) > MAX_MSG_LEN:
-            return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
-
-        return msg + " - " + self.description
-
-    def __repr__(self):
-        return f"[CMA: {str(self)}]"
-
-
-@dataclass
-class Application(AgendaItem):
-    uid:      str
-    num:      int
-    category: str
-    name:     str
-    subject:  str
-    url:      str
-    action:   str
-    vote:     str
-    charter_right: str  = ""
-    address:       str  = ""
-    final_action:  dict = None
-    meeting_uid:   str  = ""
-    meeting_date:  str  = ""
-    notes:         str  = ""
-
-    @property
-    def type(self):
-        return "APP"
-
-    def to_dict(self):
-        return {
-            "Unique Identifier": self.uid,
-            "Agenda Number":     self.num,
-            "Category":          self.category,
-            "Name":              self.name,
-            "Subject":           self.subject,
-            "Outcome":           self.action,
-            "Vote":              self.vote,
-            "Address":           self.address,
-            "Charter Right":     self.charter_right,
-            "Link":              self.url,
-            "Meeting":           self.meeting_uid,
-            "Meeting Date":      self.meeting_date,
-            "Notes":             self.notes,
-        }
-
-    def __str__(self):
-        msg = " ".join([self.uid, self.category, self.name, self.meeting_uid])
-        if len(self.subject) > MAX_MSG_LEN:
-            return msg + " - " + self.subject[:MAX_MSG_LEN] + "..."
-
-        return msg + " - " + self.subject
-
-    def __repr__(self):
-        return f"[Application: {str(self)}]"
-
-
-@dataclass
-class Communication(AgendaItem):
-    uid:     str
-    num:     int
-    name:    str
-    address: str
-    subject: str
-    url:     str
-    meeting_uid:  str = ""
-    meeting_date: str = ""
-    notes:        str = ""
-    final_action: dict = None
-
-    @property
-    def type(self):
-        return "COM"
-
-    def to_dict(self):
-        return {
-            "Unique Identifier": self.uid,
-            "Agenda Number":     self.num,
-            "Name":              self.name,
-            "Address":           self.address,
-            "Subject":           self.subject,
-            "Link":              self.url,
-            "Meeting":           self.meeting_uid,
-            "Meeting Date":      self.meeting_date,
-            "Notes":             self.notes,
-        }
-
-    def __str__(self):
-        msg = None
-        if self.address:
-            msg = " ".join([self.uid, self.name, f'"{self.address}"', self.meeting_uid])
-        else:
-            msg = " ".join([self.uid, self.name, self.meeting_uid])
-
-        if len(self.subject) > MAX_MSG_LEN:
-            return msg + " - " + self.subject[:MAX_MSG_LEN] + "..."
-
-        return msg + " - " + self.subject
-
-    def __repr__(self):
-        return f"[Communication: {str(self)}]"
-
-
-@dataclass
-class Resolution(AgendaItem):
-    uid:      str
-    num:      int
-    category: str
-    url:      str
-    sponsor:  str
-    cosponsors:   str  = ""
-    action:       str  = ""
-    vote:         str  = ""
-    description:  str  = ""
-    final_action: dict = None
-    meeting_uid:  str  = ""
-    meeting_date: str  = ""
-    notes:        str  = ""
-
-    @property
-    def type(self):
-        return "RES"
-
-    def to_dict(self):
-        return {
-            "Unique Identifier": self.uid,
-            "Agenda Number":     self.num,
-            "Category":          self.category,
-            "Link":              self.url,
-            "Sponsor":           self.sponsor,
-            "Outcome":           self.action,
-            "Vote":              self.vote,
-            "Summary":           self.description,
-            "Meeting":           self.meeting_uid,
-            "Meeting Date":      self.meeting_date,
-            "Notes":             self.notes,
-        }
-
-    def __str__(self):
-        msg = " ".join([self.uid, self.category, self.sponsor, self.meeting_uid])
-        if len(self.description) > MAX_MSG_LEN:
-            return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
-
-        return msg + " - " + self.description
-
-    def __repr__(self):
-        return f"[Resolution: {str(self)}]"
-
-
-@dataclass
-class PolicyOrder(AgendaItem):
-    uid:      str
-    num:      int
-    url:      str
-    sponsor:  str
-    cosponsors:    str  = ""
-    action:        str  = ""
-    vote:          str  = ""
-    amended:       str  = ""
-    charter_right: str  = ""
-    description:   str  = ""
-    final_action:  dict = None
-    meeting_uid:   str  = ""
-    meeting_date:  str  = ""
-    notes:         str  = ""
-
-    @property
-    def type(self):
-        return "POR"
-
-    def to_dict(self):
-        return {
-            "Unique Identifier": self.uid,
-            "Agenda Number":     self.num,
-            "Link":              self.url,
-            "Sponsor":           self.sponsor,
-            "Co-Sponsors":       ",".join(self.cosponsors),
-            "Outcome":           self.action,
-            "Vote":              self.vote,
-            "Amended":           self.amended,
-            "Charter Right":     self.charter_right,
-            "Summary":           self.description,
-            "Meeting":           self.meeting_uid,
-            "Meeting Date":      self.meeting_date,
-            "Notes":             self.notes,
-        }
-
-    def __str__(self):
-        msg = " ".join([self.uid, self.sponsor, self.meeting_uid])
-        if self.charter_right:
-            msg += f" - charter right {self.charter_right}"
-        if self.notes:
-            msg += " - " + self.notes
-        if len(self.description) > MAX_MSG_LEN:
-            return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
-
-        return msg + " - " + self.description
-
-    def __repr__(self):
-        return f"[PolicyOrder: {str(self)}]"
-
-
-@dataclass
-class Ordinance(AgendaItem):
-    uid: str
-    url: str
-    cma:           str  = ""
-    order:         str  = ""
-    application:   str  = ""
-    sponsor:       str  = ""
-    cosponsors:    str  = ""
-    action:        str  = ""
-    vote:          str  = ""
-    amended:       str  = ""
-    description:   str  = ""
-    final_action:  dict = None
-    meeting_uid:   str  = ""
-    meeting_date:  str  = ""
-    notes:         str  = ""
-
-    @property
-    def type(self):
-        return "ORD"
-
-    def to_dict(self):
-        return {
-            "Unique Identifier": self.uid,
-            "Link":              self.url,
-            "CMA":               self.cma,
-            "Policy Order":      self.order,
-            "Application":       self.application,
-            "Sponsor":           self.sponsor,
-            "Co-Sponsors":       ",".join(self.cosponsors),
-            "Outcome":           self.action,
-            "Vote":              self.vote,
-            "Amended":           self.amended,
-            "Summary":           self.description,
-            "Meeting":           self.meeting_uid,
-            "Meeting Date":      self.meeting_date,
-            "Notes":             self.notes,
-        }
-
-    def __str__(self):
-        msg = " ".join([self.uid, self.sponsor, self.meeting_uid])
-        if self.notes:
-            msg += " - " + self.notes
-        if len(self.description) > MAX_MSG_LEN:
-            return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
-
-        return msg + " - " + self.description
-
-    def __repr__(self):
-        return f"[Ordinance: {str(self)}]"
-
-
-@dataclass
-class AwaitingReport(AgendaItem):
-    uid: str
-    url: str
-    description:  str = ""
-    department:   str = ""
-    category:     str = ""
-    policy_order: str = ""
-    notes:        str = ""
-    final_action: dict = None
-
-    @property
-    def type(self):
-        return "AR"
-
-    def setMeeting(self, meeting):
-        pass
-
-    def update(self, **kwargs):
-        if 'description' in kwargs:
-            self.description = kwargs['description']
-        if 'department' in kwargs:
-            self.department = kwargs['department']
-        if 'category' in kwargs:
-            self.category = kwargs['category']
-        if 'policy_order' in kwargs:
-            self.policy_order = kwargs['policy_order']
-
-    def to_dict(self):
-        return {
-            "Unique Identifier": self.uid,
-            "Department":        self.department,
-            "Category":          self.category,
-            "Policy Order":      self.policy_order,
-            "Link":              self.url,
-            "Description":       self.description,
-        }
-
-    def __str__(self):
-        msg = " ".join([self.uid, self.url])
-        if len(self.description) > MAX_MSG_LEN:
-            return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
-
-        return msg + " - " + self.description
-
-    def __repr__(self):
-        return f"[AwaitingReport: {str(self)}]"
-
-@dataclass
-class ItemInfo:
-    category:      str  = ""
-    charter_right: str  = ""
-    cma:           str  = ""
-    order:         str  = ""
-    app:           str  = ""
-    awaiting:      str  = ""
-    action:        str  = ""
-    amended:       str  = ""
-    history:       dict = None
-    sponsor:       list = None
-    cosponsors:    list = None
-
-
 def expandUrl(base, url) -> str:
     """Expand a URL found from HTML"""
     if url[0] == '/':
@@ -771,11 +337,11 @@ def processKeyWordTable(table) -> Dict[str, str]:
 
 def processResLinks(node) -> Dict[str, List[Tuple[str, str]]]:
     links = defaultdict(list)
-    for reslink in findAllTags(node, 'div', 'ResLink'):
+    for reslink in hp.findAllTags(node, 'div', 'ResLink'):
         ## Process each link type
         try:
-            name = findText(reslink, 'span', 'LinkType').lower()
-            links[name].append(findATag(reslink))
+            name = hp.findText(reslink, 'span', 'LinkType').lower()
+            links[name].append(hp.findATag(reslink))
         except:
             pass
 
@@ -809,115 +375,9 @@ def processResLinkNames(node) -> Dict[str, Dict[str, str]]:
 
     return names
 
-def parseAction(line):
-    ## Check for voice vote
-    match = re.match(r"(?:Order )?(.+?)\s+(?:by|on) (?:an |am )?(affirmative vote|voice vote)", line, re.IGNORECASE)
-    if match:
-        action, vote_type = match.groups()
-        return (toTitleCase(action), toTitleCase(vote_type))
-
-    ## Check for vote count
-    match = re.match(r"(?:Order )?(.+?)\s\[?((?:\d-\d-\d(?:-\d)?)|(?:\d+ to \d+)|Unanimous)\]?", line, re.IGNORECASE)
-    if match:
-        action, vote = match.groups()
-        return (toTitleCase(action), toTitleCase(vote))
-
-    match = re.match(r"(?:Order )(.+)", line, re.IGNORECASE)
-    if match:
-        action = match.groups()[0]
-        return (toTitleCase(action), "")
-
-    return (line, "")
-
-
-def findCouncillorsInRow(row):
-    councillors = findText(findAllTags(row, 'td')[1]).split(',')
-    return [lookUpCouncillorName(x.strip()) for x in councillors]
-
-
-def extractAction(action) -> str:
-    """Find the simple action from an action string"""
-    if action == "Failed of Adoption":
-        action = 'Failed'
-    else:
-        match = re.match(r"(Fail(?:s|ed) to )?Pass(?:ed)? to be (\w+)", action, re.IGNORECASE)
-        if match:
-            if match.groups()[0]:
-                action = 'Failed'
-            else:
-                action = match.groups()[1]
-
-    ## Cleanup
-    if action == "Ordainded":
-        action = "Ordained"
-
-    return action
-
-
-def processHistory(history_table):
-    history = {}
-    ## Look for a vote record
-    for results_table in findAllTags(history_table, 'table', 'VoteRecord'):
-        rows = findAllTags(results_table, 'tr')
-        if not rows:
-            continue
-        for row in rows:
-            role = findText(row, 'td', 'Role')
-            if not role:
-                continue
-
-            ## Check for the type of vote
-            role = role.lower().replace(':', '')
-            if role == "result":
-                result = findText(row, 'td', 'Result').lower()
-                if result == "charter right":
-                    ## Found a charter right
-                    history['charter_right'] = True
-                else:
-                    ## Try and parse an action
-                    action, vote = parseAction(result)
-                    if action is not None:
-                        history['action'] = action.strip()
-                        history['vote']   = vote.strip()
-            elif role in ('yeas', 'nays', 'present', 'absent', 'recused'):
-                history[role] = findCouncillorsInRow(row)
-
-    if not history:
-        ## Look for affirmative vote
-        txt = findText(history_table, 'p').lower()
-        if 'affirmative' in txt:
-            history['vote'] = "Affirmative Vote"
-        elif 'voice' in txt:
-            history['vote'] = "Voice Vote"
-
-    if history:
-        ## Set default values
-        setDefaultValue(history, "", ('action', 'vote', 'charter_right', 'amended'))
-        setDefaultValue(history, list, ('yeas', 'nays', 'recused', 'present', 'absent'))
-
-        ## Check action
-        if history['action']:
-            ## Check for amended
-            match = re.match(r"(.+) as amended", history['action'], re.IGNORECASE)
-            if match:
-                history['action'] = match.groups()[0]
-                history['amended'] = 'yes'
-
-            ## Other actions
-            history['action'] = extractAction(history['action'])
-
-        ## Set absence
-        if history['yeas']:
-            all_councillors = set(getCouncillorNames())
-            councillors = set(history['yeas'] + history['nays'] + history['present'])
-            history['absent'] = list(sorted(all_councillors.difference(councillors)))
-
-    return history
-
-
 
 def findCharterRight(soup):
-    header = findTag(soup, 'h1', 'LegiFileHeading').text
+    header = hp.findTag(soup, 'h1', 'LegiFileHeading').text
     match = re.search(r"charter right exercised by (?:councill?or|vice mayor|mayor) (\w+) in\b", header, re.IGNORECASE)
     if match:
         return lookUpCouncillorName(match.groups()[0])
@@ -928,7 +388,7 @@ def findCharterRight(soup):
 def processItem(args, row, num):
     """Process a meeting agenda item"""
     ## Process the title and link
-    title, link = findATag(row, 'td', 'Title')
+    title, link = hp.findATag(row, 'td', 'Title')
     link = expandUrl(args.base_url, link)
     match = re.match(r"((CMA|APP|COM|RES|POR|COF|ORD) \d+ # ?\d+)\s(?:: )(.*)", title)
     if not match:
@@ -936,7 +396,7 @@ def processItem(args, row, num):
         match = re.match(r"(AR-\d+-\d+)\s(?:: )(.*)", title)
         if match:
             uid, description = match.groups()
-            return AwaitingReport(uid, link, description)
+            return agenda.AwaitingReport(uid, link, description)
 
         if VERBOSE:
             print_red(f"Failed to process item type '{title}'")
@@ -946,7 +406,7 @@ def processItem(args, row, num):
     uid, itype, title = match.groups()
 
     ## Process the result
-    result = findText(row, 'span', 'ItemVoteResult')
+    result = hp.findText(row, 'span', 'ItemVoteResult')
     action = result
     vote   = ""
     match = re.match(r"(?:Order )?(.*) by (?:the|an?) ((?:Affirmative|Voice) Vote) of \w+ Members", result, re.IGNORECASE)
@@ -982,7 +442,7 @@ def processItem(args, row, num):
     return None
 
 
-def processItemInfo(args, uid, link, action) -> ItemInfo:
+def processItemInfo(args, uid, link, action) -> agenda.ItemInfo:
     ## Fetch CMA page from city website
     path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
     fetched = fetchUrl(link, path, force=args.force_fetch)
@@ -990,8 +450,8 @@ def processItemInfo(args, uid, link, action) -> ItemInfo:
     charter_right = findCharterRight(soup)
 
     ## Category
-    info_div = findTag(soup, 'div', 'LegiFileInfo')
-    table = processKeyWordTable(findTag(info_div, 'table', 'LegiFileSectionContents'))
+    info_div = hp.findTag(soup, 'div', 'LegiFileInfo')
+    table = processKeyWordTable(hp.findTag(info_div, 'table', 'LegiFileSectionContents'))
     sponsors = [lookUpCouncillorName(x.strip()) for x in table['Sponsors'].split(',')]
     category = table['Category']
     if category.lower() == "transmitting communication":
@@ -1005,7 +465,7 @@ def processItemInfo(args, uid, link, action) -> ItemInfo:
         action = match.groups()[0]
 
     ## Other actions
-    action = extractAction(action)
+    action = agenda.extractAction(action)
 
     ## Cleanup
     if action == "Ordainded":
@@ -1030,11 +490,11 @@ def processItemInfo(args, uid, link, action) -> ItemInfo:
         awaiting = awaiting or names['ar']
 
     ## History
-    history_table = findTag(soup, 'table', 'MeetingHistory')
+    history_table = hp.findTag(soup, 'table', 'MeetingHistory')
     history = None
     if history_table:
         try:
-            history = processHistory(history_table)
+            history = meeting_portal.processHistory(history_table)
         except Exception as e:
             print_red(f"Error: Failed to process history for {uid}: {e}")
             if VERBOSE or args.exit_on_error:
@@ -1042,10 +502,10 @@ def processItemInfo(args, uid, link, action) -> ItemInfo:
             if args.exit_on_error:
                 raise e
 
-    return ItemInfo(category, charter_right, cma, order, app, awaiting, action, amended, history, sponsors[0], sponsors[1:])
+    return agenda.ItemInfo(category, charter_right, cma, order, app, awaiting, action, amended, history, sponsors[0], sponsors[1:])
 
 
-def processCma(args, uid, num, title, link, vote, action) -> CMA:
+def processCma(args, uid, num, title, link, vote, action) -> agenda.CMA:
     """Process a CMA agenda item"""
     ## Clean up title
     title = re.sub(r"(?:A|Transmitting) ?communication (?:transmitted )?from (?:.+), City Manager, relative to ", "", title, flags=re.IGNORECASE)
@@ -1053,10 +513,10 @@ def processCma(args, uid, num, title, link, vote, action) -> CMA:
 
     ## Process info
     info = processItemInfo(args, uid, link, action)
-    return CMA(uid, num, info.category, info.awaiting, info.order, link, action, vote, info.charter_right, title, info.history)
+    return agenda.CMA(uid, num, info.category, info.awaiting, info.order, link, action, vote, info.charter_right, title, info.history)
 
 
-def processApp(args, uid, num, title, link, vote, action) -> Application:
+def processApp(args, uid, num, title, link, vote, action) -> agenda.Application:
     """Process an application agenda item"""
     ## pylint: disable=unused-argument
     info = processItemInfo(args, uid, link, action)
@@ -1078,10 +538,10 @@ def processApp(args, uid, num, title, link, vote, action) -> Application:
     if match:
         address = match.groups()[0]
 
-    return Application(uid, num, info.category, name, subject, link, action, vote, info.charter_right, address, info.history)
+    return agenda.Application(uid, num, info.category, name, subject, link, action, vote, info.charter_right, address, info.history)
 
 
-def processCom(args, uid, num, title, link, vote, action) -> Communication:
+def processCom(args, uid, num, title, link, vote, action) -> agenda.Communication:
     """Process a communication agenda item"""
     ## pylint: disable=unused-argument
     name    = ""
@@ -1129,22 +589,22 @@ def processCom(args, uid, num, title, link, vote, action) -> Communication:
     if not subject:
         subject = title
 
-    return Communication(uid, num, name, address, subject, link)
+    return agenda.Communication(uid, num, name, address, subject, link)
 
 
-def processRes(args, uid, num, title, link, vote, action) -> Resolution:
+def processRes(args, uid, num, title, link, vote, action) -> agenda.Resolution:
     """Process a resolution agenda item"""
     info = processItemInfo(args, uid, link, action)
-    return Resolution(uid, num, info.category, link, info.sponsor, info.cosponsors, info.action, vote, title, info.history)
+    return agenda.Resolution(uid, num, info.category, link, info.sponsor, info.cosponsors, info.action, vote, title, info.history)
 
 
-def processPor(args, uid, num, title, link, vote, action) -> PolicyOrder:
+def processPor(args, uid, num, title, link, vote, action) -> agenda.PolicyOrder:
     """Process a policy order agenda item"""
     info = processItemInfo(args, uid, link, action)
-    return PolicyOrder(uid, num, link, info.sponsor, info.cosponsors, info.action, vote, info.amended, info.charter_right, title, info.history)
+    return agenda.PolicyOrder(uid, num, link, info.sponsor, info.cosponsors, info.action, vote, info.amended, info.charter_right, title, info.history)
 
 
-def processOrd(args, uid, num, title, link, vote, action) -> Ordinance:
+def processOrd(args, uid, num, title, link, vote, action) -> agenda.Ordinance:
     """Process an ordinance agenda item"""
     ## pylint: disable=unused-argument
     ## Clean up title
@@ -1155,7 +615,7 @@ def processOrd(args, uid, num, title, link, vote, action) -> Ordinance:
     if info.history is not None and 'action' in info.history:
         action = info.history['action']
 
-    return Ordinance(uid, link, info.cma, info.order, info.app, info.sponsor, info.cosponsors, action, vote, info.amended, title, info.history)
+    return agenda.Ordinance(uid, link, info.cma, info.order, info.app, info.sponsor, info.cosponsors, action, vote, info.amended, title, info.history)
 
 
 def processAr(args, item):
@@ -1165,8 +625,8 @@ def processAr(args, item):
     soup = BeautifulSoup(fetched, 'html.parser')
 
     ## Additional info
-    info_div = findTag(soup, 'div', 'LegiFileInfo')
-    table = processKeyWordTable(findTag(info_div, 'table', 'LegiFileSectionContents'))
+    info_div = hp.findTag(soup, 'div', 'LegiFileInfo')
+    table = processKeyWordTable(hp.findTag(info_div, 'table', 'LegiFileSectionContents'))
     category   = table['Category']
     department = table['Department']
 
@@ -1202,6 +662,7 @@ def processNewArs(args, ar_map, items, writer:csv.DictWriter):
 
 def processMeeting(args, meeting) -> Dict[str, List[Any]]:
     """Process a meeting"""
+    ## pylint: disable=too-many-statements
     meeting_path = os.path.join(args.cache_dir, f"meeting_{meeting.id}.html")
     meeting_html = fetchUrl(meeting.url, meeting_path, verbose=True, force=args.force_fetch)
     soup = BeautifulSoup(meeting_html, 'html.parser')
@@ -1223,7 +684,7 @@ def processMeeting(args, meeting) -> Dict[str, List[Any]]:
     print(f"Checking {len(rows)} rows")
     for row in rows:
         ## Look for section title
-        td = findTag(row, 'td', 'Title')
+        td = hp.findTag(row, 'td', 'Title')
         if td is not None:
             ## Enable or disable processessing baesd upon section
             title = td.text.strip()
@@ -1243,7 +704,7 @@ def processMeeting(args, meeting) -> Dict[str, List[Any]]:
             continue
 
         ## Look for agenda item number
-        td = findTag(row, 'td', 'Num')
+        td = hp.findTag(row, 'td', 'Num')
         if td is not None and re.match(r"\d+\.?", td.text.strip()):
             if VERBOSE:
                 print(f"Processing row: {row.text}")
@@ -1258,16 +719,16 @@ def processMeeting(args, meeting) -> Dict[str, List[Any]]:
                 items[item.type].append(item)
         elif item is not None:
             ## Look for comments
-            td = findTag(row, 'td', 'Comments')
+            td = hp.findTag(row, 'td', 'Comments')
             if td is not None:
                 ## Set comment for most recent item
-                item.setNotes(". ".join(findAllText(td, 'span')))
+                item.setNotes(". ".join(hp.findAllText(td, 'span')))
         elif td is not None:
             if VERBOSE:
                 print_red(f"Tag td didn't match anything: {td.text}")
         else:
             if VERBOSE:
-                print_red(f"Couldn't find a td with class 'Num'")
+                print_red("Couldn't find a td with class 'Num'")
 
     print(f"Found {len(items)} for meeting '{meeting}'")
     for item in [x for l in items.values() for x in l]:
@@ -1466,7 +927,7 @@ def openMeetings(path, *, session=None):
                 row['uid'] = f"{row['Date']} {row['Type']}"
             if 'Session' not in row and session is not None:
                 row['Session'] = session
-            meeting = Meeting(**{ k.lower().replace(' ', '_'): v for k, v in row.items() })
+            meeting = agenda.Meeting(**{ k.lower().replace(' ', '_'): v for k, v in row.items() })
             if meeting.body.lower() == 'city council' and meeting.type.lower() in ALLOWED_TYPES:
                 meetings.append(meeting)
 
@@ -1539,7 +1000,7 @@ def preprocessArgs(args):
     ## Set councillor info
     if args.councillor_info is not None:
         if not setCouncillorInfo(args.councillor_info, args.session):
-            print_red(f"Failed to set up councillor info")
+            print_red("Failed to set up councillor info")
             return 1
 
         setCouncillorColumns(getCouncillorNames())
@@ -1594,7 +1055,7 @@ def main(args):
             print("Updating attendance")
             setAttenance(args, final_actions)
     except KeyboardInterrupt:
-        print(f"User requested exit")
+        print("User requested exit")
         return 1
     finally:
         ## Close all files
