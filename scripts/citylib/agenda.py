@@ -481,3 +481,109 @@ def extractAction(action) -> str:
         action = "Ordained"
 
     return action
+
+
+def processCma(info, uid, num, title, link, vote, action) -> CMA:
+    """Process a CMA agenda item"""
+    ## Clean up title
+    title = re.sub(r"(?:A|Transmitting) ?communication (?:transmitted )?from (?:.+), City Manager, relative to ", "", title, flags=re.IGNORECASE)
+    title = re.sub(r"^the (?=appropriation|(?:re-?)?appointment|transfer)", "", title, flags=re.IGNORECASE).capitalize()
+    return CMA(uid, num, info.category, info.awaiting, info.order, link, action, vote, info.charter_right, title, info.history)
+
+
+def processApp(info, uid, num, title, link, vote, action) -> Application:
+    """Process an application agenda item"""
+    ## Attempt to get the name
+    name    = ""
+    subject = ""
+    options = "|".join(("regarding", "to amend", "transmitting", "petitioning", "opposing", "urging"))
+    regex = re.compile(fr"An? (?:application|(?:zoning )?petition|request) (?:has been|was) (?:received? ?from|filed by) (.+?),? ((?:requesting ?(?:permission|that)?|{options}) .+)", re.IGNORECASE)
+    match = regex.search(title)
+    if match:
+        name, subject = match.groups()
+    else:
+        subject = title
+
+    ## Attempt to get address
+    address = ""
+    match = re.search(r"at the premises numbered ([^;]+)(?:;|\. Approval)", subject)
+    if match:
+        address = match.groups()[0]
+
+    return Application(uid, num, info.category, name, subject, link, action, vote, info.charter_right, address, info.history)
+
+
+def processCom(info, uid, num, title, link, vote, action) -> Communication:
+    """Process a communication agenda item"""
+    ## pylint: disable=unused-argument
+    name    = ""
+    subject = ""
+    address = ""
+
+    ## Attempt to match the name of a person
+    types = "|".join(["communication", "email", "e-mail", "written protest", "zoning petition"])
+    options = "|".join((
+        "regarding", "expressing", "transmitting", "commenting", "stating", "re", "relating to", "relative to", "noting that", "concerning", "stated", "raising",
+        "announcing that", "outlining", "spoke about",
+    ))
+    opinions = (
+        "supporting", "in support", "on support", "supported", "endorsing", "in favor", "urging", "requesting", "thanking", "encouraging", "to amend",
+        "opposing", "in opposition",
+    )
+    options += "|" + "|".join(opinions)
+    match = re.search(fr"(?:\w+ )?(?:{types})s? (?:was|were|has been)? ?(?:received )?from ?(.+?)(?:, (\d.+?))?,? ({options})[,:]? (.+)", title, re.IGNORECASE)
+    if match:
+        name, address, option, subject = match.groups()
+        address = address or ""
+        if option in opinions:
+            subject = f"{option} {subject}"
+
+    ## Attempt to match 'Sundry'
+    if match is None:
+        match = re.search(fr"Sundry (communication|e-?mail)s? (?:(?:was|were|have been)? ?(?:received|regarding))?,? ?(?:{options})[,:]? (.+)", title, re.IGNORECASE)
+        if match:
+            name = 'Sundry'
+            subject = match.groups()[0]
+
+    ## Attempt to match 'anonymous'
+    if match is None:
+        match = re.search(fr"(?:A|An)? ?(anonymous|unidentified) (?:{types})s? (?:(?:was|were|have been)? ?received)?,? ?(?:{options})[,:]? (.+)", title, re.IGNORECASE)
+        if match:
+            name = 'Anonymous'
+            subject = match.groups()[0]
+    if match is None:
+        match = re.search(fr"A (?:{types}) (?:(?:was|were|have been)? ?received)?,? ?(?:anonymously )?(?:{options})[,:]? (.+)", title, re.IGNORECASE)
+        if match:
+            name = 'Anonymous'
+            subject = match.groups()[0]
+
+    ## Backup
+    if not subject:
+        subject = title
+
+    return Communication(uid, num, name, address, subject, link)
+
+
+def processRes(info, uid, num, title, link, vote, action) -> Resolution:
+    """Process a resolution agenda item"""
+    ## pylint: disable=unused-argument
+    return Resolution(uid, num, info.category, link, info.sponsor, info.cosponsors, info.action, vote, title, info.history)
+
+
+def processPor(info, uid, num, title, link, vote, action) -> PolicyOrder:
+    """Process a policy order agenda item"""
+    ## pylint: disable=unused-argument
+    return PolicyOrder(uid, num, link, info.sponsor, info.cosponsors, info.action, vote, info.amended, info.charter_right, title, info.history)
+
+
+def processOrd(info, uid, num, title, link, vote, action) -> Ordinance:
+    """Process an ordinance agenda item"""
+    ## pylint: disable=unused-argument
+    ## Clean up title
+    title = re.sub(r"(?:An? )Ordinance (?:.+ )?has been received (?:from City Clerk(?: .+)?)?,?.*?relative to ", "", title, flags=re.IGNORECASE)
+
+    ## Process info
+    if info.history is not None and 'action' in info.history:
+        action = info.history['action']
+
+    return Ordinance(uid, link, info.cma, info.order, info.app, info.sponsor, info.cosponsors, action, vote, info.amended, title, info.history)
