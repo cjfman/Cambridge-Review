@@ -9,6 +9,22 @@ from citylib.councillors import lookUpCouncillorName
 from citylib.utils import toTitleCase
 
 MAX_MSG_LEN = 48
+SUPPORTED_TITLES = (
+    "City Manager's Agenda",
+    "Communications",
+    "Resolutions",
+    "Policy Order and Resolution List",
+    "Applications and Petitions",
+    "Communications and Reports from Other City Officers",
+    "Unfinished Business",
+)
+
+UNSUPPORTED_TITLES = (
+    "Charter Right",
+    "Calendar",
+    "Committee Reports",
+    "Communications and Reports from Other City Officers",
+)
 
 class AgendaItem:
     """Abstract class"""
@@ -587,3 +603,8 @@ def processOrd(info, uid, num, title, link, vote, action) -> Ordinance:
         action = info.history['action']
 
     return Ordinance(uid, link, info.cma, info.order, info.app, info.sponsor, info.cosponsors, action, vote, info.amended, title, info.history)
+
+
+def uidToFileSafe(uid) -> str:
+    """Take a meeting agenda item UID and make it file name safe"""
+    return uid.replace(' ', '_').replace('#', 'no')

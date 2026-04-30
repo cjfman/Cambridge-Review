@@ -6,48 +6,22 @@ import copy
 import csv
 import datetime as dt
 import os
-import re
 import sys
 import traceback
 
-from collections import defaultdict
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
-
-import requests
-
-import html5lib ## pylint: disable=unused-import
-from bs4 import BeautifulSoup
 
 ## pylint: disable=import-error,wrong-import-order,wrong-import-position
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 from citylib import agenda, meeting_portal
 from citylib.councillors import getCouncillorNames, setCouncillorInfo, lookUpCouncillorName
-from citylib.utils import print_green, print_red, toTitleCase
-import citylib.utils.html_parsing as hp
+from citylib.utils import print_green, print_red
 
 VERBOSE = False
 ALLOWED_TYPES = ('regular', 'special')
 REQUEST_HDR = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
 }
-
-SUPPORTED_TITLES = (
-    "City Manager's Agenda",
-    "Communications",
-    "Resolutions",
-    "Policy Order and Resolution List",
-    "Applications and Petitions",
-    "Communications and Reports from Other City Officers",
-    "Unfinished Business",
-)
-
-UNSUPPORTED_TITLES = (
-    "Charter Right",
-    "Calendar",
-    "Committee Reports",
-    "Communications and Reports from Other City Officers",
-)
 
 CMA_HDRS = (
     "Unique Identifier",
@@ -220,21 +194,6 @@ def parseArgs():
     return parser.parse_args()
 
 
-def expandUrl(base, url) -> str:
-    """Expand a URL found from HTML"""
-    if url[0] == '/':
-        return os.path.join(base, url[1:])
-    if re.search(r"^\w+\.aspx", url):
-        return os.path.join(base, 'Citizens', url)
-
-    return url
-
-
-def uidToFileSafe(uid) -> str:
-    """Take a meeting agenda item UID and make it file name safe"""
-    return uid.replace(' ', '_').replace('#', 'no')
-
-
 def buildRow(item, hdrs, final_action=None, *, aggrigate_votes=False):
     """Make a csv row from an agenda item"""
     d = item.to_dict()
@@ -323,150 +282,6 @@ def setCouncillorColumns(names):
     ORD_HDRS = ORD_HDRS[:idx] + names + ORD_HDRS[idx:]
 
 
-def processItem(args, row, num):
-    """Process a meeting agenda item"""
-    ## Process the title and link
-    title, link = hp.findATag(row, 'td', 'Title')
-    link = expandUrl(args.base_url, link)
-    match = re.match(r"((CMA|APP|COM|RES|POR|COF|ORD) \d+ # ?\d+)\s(?:: )(.*)", title)
-    if not match:
-        ## Maybe it's an awaiting report
-        match = re.match(r"(AR-\d+-\d+)\s(?:: )(.*)", title)
-        if match:
-            uid, description = match.groups()
-            return agenda.AwaitingReport(uid, link, description)
-
-        if VERBOSE:
-            print_red(f"Failed to process item type '{title}'")
-
-        return None
-
-    uid, itype, title = match.groups()
-
-    ## Process the result
-    result = hp.findText(row, 'span', 'ItemVoteResult')
-    action = result
-    vote   = ""
-    match = re.match(r"(?:Order )?(.*) by (?:the|an?) ((?:Affirmative|Voice) Vote) of \w+ Members", result, re.IGNORECASE)
-    if match:
-        action, vote = match.groups()
-        action = toTitleCase(action)
-        vote = toTitleCase(vote)
-
-    ## Try something else
-    if match is None:
-        match = re.match(r"(?:order\s+)?(\w+(?: \w+)*)\s?(?:\[([^\]]+)\])?", result, re.IGNORECASE)
-        if match:
-            action, vote = match.groups()
-
-    ## Action
-    if action.lower() == "failed of adoption":
-        action = 'Failed'
-    else:
-        action = toTitleCase(action)
-
-    ## Init item type
-    handlers = {
-        'CMA': agenda.processCma,
-        'APP': agenda.processApp,
-        'COM': agenda.processCom,
-        'RES': agenda.processRes,
-        'POR': agenda.processPor,
-        'ORD': agenda.processOrd,
-    }
-    if itype in handlers:
-        info = processItemInfo(args, uid, link, action)
-        return handlers[itype](info, uid, num, title, link, vote, action)
-
-    return None
-
-
-def processItemInfo(args, uid, link, action) -> agenda.ItemInfo:
-    ## Fetch CMA page from city website
-    path = os.path.join(args.cache_dir, f"{uidToFileSafe(uid)}.html")
-    fetched = fetchUrl(link, path, force=args.force_fetch)
-    soup = BeautifulSoup(fetched, 'html.parser')
-    charter_right = process_meetings.findCharterRight(soup)
-
-    ## Category
-    info_div = hp.findTag(soup, 'div', 'LegiFileInfo')
-    table = meeting_portal.processKeyWordTable(hp.findTag(info_div, 'table', 'LegiFileSectionContents'))
-    sponsors = [lookUpCouncillorName(x.strip()) for x in table['Sponsors'].split(',')]
-    category = table['Category']
-    if category.lower() == "transmitting communication":
-        category = "Communication"
-
-    ## Amended
-    amended = ""
-    match = re.match(r"(.*) as Amended", action, re.IGNORECASE)
-    if match:
-        amended = "yes"
-        action = match.groups()[0]
-
-    ## Other actions
-    action = agenda.extractAction(action)
-
-    ## Cleanup
-    if action == "Ordainded":
-        action = "Ordained"
-
-    ## Origins if any
-    cma      = ""
-    order    = ""
-    app      = ""
-    awaiting = ""
-    link_names = meeting_portal.processResLinkNames(soup)
-    if 'origin' in link_names:
-        cma      = link_names['origin']['cma']
-        order    = link_names['origin']['por']
-        app      = link_names['origin']['app']
-        awaiting = link_names['origin']['ar']
-
-    for names in link_names.values():
-        cma      = cma      or names['cma']
-        order    = order    or names['por']
-        app      = app      or names['app']
-        awaiting = awaiting or names['ar']
-
-    ## History
-    history_table = hp.findTag(soup, 'table', 'MeetingHistory')
-    history = None
-    if history_table:
-        try:
-            history = meeting_portal.processHistory(history_table)
-        except Exception as e:
-            print_red(f"Error: Failed to process history for {uid}: {e}")
-            if VERBOSE or args.exit_on_error:
-                traceback.print_exc()
-            if args.exit_on_error:
-                raise e
-
-    return agenda.ItemInfo(category, charter_right, cma, order, app, awaiting, action, amended, history, sponsors[0], sponsors[1:])
-
-
-def processAr(args, item):
-    ## Fetch AR page from the city website
-    ar_path = os.path.join(args.cache_dir, f"{uidToFileSafe(item.uid)}.html")
-    fetched = fetchUrl(item.url, ar_path, force=args.force_fetch)
-    soup = BeautifulSoup(fetched, 'html.parser')
-
-    ## Additional info
-    info_div = hp.findTag(soup, 'div', 'LegiFileInfo')
-    table = meeting_portal.processKeyWordTable(hp.findTag(info_div, 'table', 'LegiFileSectionContents'))
-    category   = table['Category']
-    department = table['Department']
-
-    ## Origin if any
-    order = ""
-    links = meeting_portal.processResLinks(soup)
-    link_names = meeting_portal.processResLinkNames(soup)
-    if 'origin' in link_names:
-        order = link_names['origin']['por']
-
-    item.update(department=department, category=category, policy_order=order)
-    return item
-
-
 def processNewArs(args, ar_map, items, writer:csv.DictWriter):
     """Process awaiting reports"""
     ## Unlike most agenda items, the list of awaiting reports tends to grow, so track
@@ -479,90 +294,11 @@ def processNewArs(args, ar_map, items, writer:csv.DictWriter):
         if VERBOSE:
             print(f"New awaiting report: {item}")
 
-        ar_map[item.uid] = processAr(args, item)
+        ar_map[item.uid] = meeting_portal.processAr(item, args.cache_dir, force_fetch=args.force_fetch)
         writer.writerow(buildRow(item, AR_HDRS, aggrigate_votes=args.aggrigate_votes))
         total += 1
 
     print_green(f"Wrote {total} awaiting reports")
-
-
-def processMeeting(args, meeting) -> Dict[str, List[Any]]:
-    """Process a meeting"""
-    ## pylint: disable=too-many-statements
-    meeting_path = os.path.join(args.cache_dir, f"meeting_{meeting.id}.html")
-    meeting_html = fetchUrl(meeting.url, meeting_path, verbose=True, force=args.force_fetch)
-    soup = BeautifulSoup(meeting_html, 'html.parser')
-
-    ## Iterate through agenda table
-    table = soup.find('table', {'class': 'MeetingDetail'})
-    if table is None:
-        print_red("Error: Failed to find meeting details")
-        try:
-            os.remove(meeting_path)
-        except:
-            pass
-        return None
-
-    item  = None
-    items = defaultdict(list)
-    rows = table.find_all('tr')
-    enabled = False
-    print(f"Checking {len(rows)} rows")
-    for row in rows:
-        ## Look for section title
-        td = hp.findTag(row, 'td', 'Title')
-        if td is not None:
-            ## Enable or disable processessing baesd upon section
-            title = td.text.strip()
-            if not enabled and title in SUPPORTED_TITLES:
-                if VERBOSE:
-                    print(f"""Found section "{title}". Enable agenda item processing""")
-                enabled = True
-                continue
-            if enabled and title in UNSUPPORTED_TITLES:
-                if VERBOSE:
-                    print(f"""Found section "{title}". Disable agenda item processing""")
-
-                enabled = False
-                continue
-
-        if not enabled:
-            continue
-
-        ## Look for agenda item number
-        td = hp.findTag(row, 'td', 'Num')
-        if td is not None and re.match(r"\d+\.?", td.text.strip()):
-            if VERBOSE:
-                print(f"Processing row: {row.text}")
-            num = td.text.strip().replace('.', '')
-            try:
-                item = processItem(args, row, num)
-            except Exception as e:
-                print_red(f"Failed to process item '{row}': {e}")
-                raise e
-
-            if item is not None:
-                items[item.type].append(item)
-        elif item is not None:
-            ## Look for comments
-            td = hp.findTag(row, 'td', 'Comments')
-            if td is not None:
-                ## Set comment for most recent item
-                item.setNotes(". ".join(hp.findAllText(td, 'span')))
-        elif td is not None:
-            if VERBOSE:
-                print_red(f"Tag td didn't match anything: {td.text}")
-        else:
-            if VERBOSE:
-                print_red("Couldn't find a td with class 'Num'")
-
-    print(f"Found {len(items)} for meeting '{meeting}'")
-    for item in [x for l in items.values() for x in l]:
-        item.setMeeting(meeting)
-        if VERBOSE and item.type != "AR":
-            print(item)
-
-    return items
 
 
 def processMeetings(args, meetings, writers, final_actions=None):
@@ -580,7 +316,7 @@ def processMeetings(args, meetings, writers, final_actions=None):
                 continue
 
             print(f"Processing meeting '{meeting}'")
-            items = processMeeting(args, meeting)
+            items = meeting_portal.processMeeting(meeting, args.base_url, args.cache_dir, force_fetch=args.force_fetch, verbose=args.VERBOSE)
             if items is not None:
                 if final_actions is not None and meeting.id in final_actions:
                     print(f"Found final actions for meeting '{meeting}'")
@@ -605,32 +341,6 @@ def processMeetings(args, meetings, writers, final_actions=None):
                 traceback.print_exc()
             if args.exit_on_error:
                 raise e
-
-
-def fetchUrl(url, cache_path=None, *, verbose=False, force=False) -> str:
-    """Fetch the data from a URL. Optionally cache it locally to disk"""
-    if cache_path is not None and not force and os.path.isfile(cache_path):
-        if VERBOSE or verbose:
-            print(f"Reading '{url}' from cache '{cache_path}'")
-
-        with open(cache_path, 'r', encoding='utf8') as f:
-            return f.read()
-
-    print(f"Fetching '{url}'")
-    content = requests.get(url, headers=REQUEST_HDR).content.decode('utf8')
-    if cache_path is not None:
-        print(f"Caching '{cache_path}'")
-        try:
-            with open(cache_path, 'w', encoding='utf8') as f:
-                f.write(content)
-        except Exception as e:
-            ## Remove bad cached file
-            if os.path.isfile(cache_path):
-                os.remove(cache_path)
-
-            raise e
-
-    return content
 
 
 def postProcessItems(writers, items, final_actions=None):

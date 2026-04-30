@@ -173,6 +173,7 @@ def load_json(path, *, encoding='utf8', quiet=True):
 
         return None
 
+
 def fetch_url(url, cache_path=None, *, verbose=False, force=False) -> str:
     """Fetch the data from a URL. Optionally cache it locally to disk"""
     if cache_path is not None and not force and os.path.isfile(cache_path):
