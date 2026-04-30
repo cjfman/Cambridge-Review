@@ -147,6 +147,21 @@ def _parse_vote_lists(text: str) -> tuple:
     return yeas, nays, present, absent, remaining
 
 
+def _normalize_primegov_action(text: str) -> str:
+    """Reduce verbose PrimeGov action phrases to canonical action words."""
+    # "X and CMA Placed on File" → X  (e.g. "Order Adopted and CMA Placed on File" → "Order Adopted")
+    text = re.sub(r'\s+and\s+CMA\s+Placed\s+on\s+File\b.*', '', text, flags=re.IGNORECASE).strip()
+    # "CMA Placed on File" (alone) → "Placed on File"
+    text = re.sub(r'^CMA\s+(?=Placed\b)', '', text, flags=re.IGNORECASE).strip()
+    # "Report Accepted and Placed on File" → "Placed on File"
+    text = re.sub(r'^Report\s+Accepted\s+and\s+', '', text, flags=re.IGNORECASE).strip()
+    # "Referred to …" → "Referred"
+    text = re.sub(r'^Referred\s+to\b.*', 'Referred', text, flags=re.IGNORECASE).strip()
+    # "Order X" → X
+    text = re.sub(r'^Order\s+', '', text, flags=re.IGNORECASE).strip()
+    return text
+
+
 def _parse_result_row(row) -> tuple:
     """Parse (action, vote, amended, yeas, nays, present, absent, charter_right) from a RESULT: row."""
     text = row.get_text(' ').strip()
@@ -186,6 +201,7 @@ def _parse_result_row(row) -> tuple:
         amended = 'yes'
         result_text = re.sub(r'\s*\bas amended\b', '', result_text, flags=re.IGNORECASE).strip()
 
+    result_text = _normalize_primegov_action(result_text)
     action = toTitleCase(agenda.extractAction(result_text))
     return (action, vote, amended, yeas, nays, present, absent, '')
 
