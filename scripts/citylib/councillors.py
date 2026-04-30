@@ -24,7 +24,7 @@ def setCouncillorInfo(path, year=None) -> bool:
     all_info = None
     try:
         with open(path, 'r', encoding='utf8') as f:
-            all_info = yaml.load(f)
+            all_info = yaml.safe_load(f)
     except Exception as e:
         print_red(f"Failed to open councillor info file '{path}': {e}")
         return False

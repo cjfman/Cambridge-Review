@@ -154,7 +154,7 @@ def parseArgs():
     parser = argparse.ArgumentParser()
     parser.set_defaults(skip_processing=False)
     parser.add_argument("--base-url", default="https://cambridgema.iqm2.com",
-        help="The base URL")
+        help="The base URL (IQM2 meetings only; ignored for PrimeGov meetings)")
     parser.add_argument("--cache-dir", required=True,
         help="Where to cache downloads from the city website")
     parser.add_argument("--force-fetch", action="store_true",
@@ -177,7 +177,7 @@ def parseArgs():
     parser.add_argument("--session", type=int,
         help="The session year. Defaults to most recent one found in councillor info file")
     parser.add_argument("--final-actions",
-        help="Json file with the final actions")
+        help="JSON file with final actions (IQM2 meetings only; PrimeGov meetings read votes from the meeting page)")
     parser.add_argument("--aggrigate-votes", action="store_true",
         help="Add aggrigate vote columns")
     parser.add_argument("--set-attendance", action="store_true",
@@ -316,7 +316,7 @@ def processMeetings(args, meetings, writers, final_actions=None):
                 continue
 
             print(f"Processing meeting '{meeting}'")
-            items = meeting_portal.processMeeting(meeting, args.base_url, args.cache_dir, force_fetch=args.force_fetch, verbose=args.VERBOSE)
+            items = meeting_portal.processMeeting(meeting, args.base_url, args.cache_dir, force_fetch=args.force_fetch, verbose=args.verbose)
             if items is not None:
                 if final_actions is not None and meeting.id in final_actions:
                     print(f"Found final actions for meeting '{meeting}'")
@@ -382,11 +382,11 @@ def setupOutputFiles(output_dir):
     for key, hdrs, name in sets:
         path = os.path.join(output_dir, name)
         try:
-            with open(path, 'w', encoding='utf8') as f:
-                w = csv.DictWriter(f, fieldnames=hdrs, lineterminator='\n')
-                w.writeheader()
-                files[key]   = f
-                writers[key] = w
+            f = open(path, 'w', encoding='utf8')
+            w = csv.DictWriter(f, fieldnames=hdrs, lineterminator='\n')
+            w.writeheader()
+            files[key]   = f
+            writers[key] = w
         except Exception as e:
             print_red(f"Failed to open file '{path}' for writing: {e}")
             return None
@@ -479,8 +479,8 @@ def preprocessArgs(args):
     ## Set councillor info
     if args.councillor_info is not None:
         if not setCouncillorInfo(args.councillor_info, args.session):
-            print_red("Failed to set up councillor info")
-            return 1
+            print_red("Failed to setup councillor info")
+            return None
 
         setCouncillorColumns(getCouncillorNames())
 
@@ -490,6 +490,9 @@ def preprocessArgs(args):
 def main(args):
     ## Check args
     args = preprocessArgs(args)
+    if args is None:
+        print_red("Failed to process the args")
+        return 1
 
     ## Open meetings file
     meetings = openMeetings(args.meetings_file, session=args.session)

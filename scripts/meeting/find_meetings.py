@@ -12,19 +12,36 @@ from bs4 import BeautifulSoup
 
 ## https://cambridgema.iqm2.com/Citizens/Calendar.aspx?From=1/1/2020&To=12/31/2021
 
+PRIMEGOV_BASE = "https://cambridgema.primegov.com"
+CITY_COUNCIL_COMMITTEE_ID = 1
+REQUEST_HDR = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
+}
+CSV_HEADERS = (
+    'Unique Identifier',
+    'Body', 'Type', 'Other', 'Session', 'Date', 'Time', 'Status', 'Id', 'url',
+    'Agenda Summary', 'Agenda Packet', 'Final Actions', 'Minutes',
+)
+
 
 def parseArgs():
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-url", default="https://cambridgema.iqm2.com",
-        help="The base URL")
+        help="The base URL (IQM2 mode only)")
     parser.add_argument("--council-only", action="store_true",
         help="Only get council meetings")
-    parser.add_argument("meetings_file",
-        help="The html file containing meeting info")
+    parser.add_argument("--primegov", action="store_true",
+        help="Fetch meetings from the PrimeGov API instead of a local HTML file")
+    parser.add_argument("--year", type=int, default=dt.date.today().year,
+        help="Year to fetch archived meetings for (PrimeGov mode only)")
+    parser.add_argument("meetings_file", nargs='?',
+        help="The html file containing meeting info (IQM2 mode only)")
     parser.add_argument("output_file", nargs='?',
         help="The output csv file. Print to stdout otherwise")
     return parser.parse_args()
 
+
+## ── IQM2 mode ─────────────────────────────────────────────────────────────────
 
 def getDate(date):
     try:
@@ -55,7 +72,7 @@ def findAllATags(div, cls=None):
     return [(a_tag.text.strip(), a_tag['href']) for a_tag in a_tags]
 
 
-def parseMeeting(args, meeting_row) -> dict:
+def parseMeetingIqm2(args, meeting_row) -> dict:
     ## Get meeting type
     details_txt = meeting_row.find('div', {'class': 'RowDetails'}).text.strip()
     details     = details_txt.split(' - ')
@@ -106,8 +123,7 @@ def parseMeeting(args, meeting_row) -> dict:
     if date > dt.datetime.now():
         status = "scheduled"
 
-    ## Return all data
-    data = {
+    return {
         'Unique Identifier': f"{date_str} {mtype}",
         'Body':           body,
         'Type':           mtype,
@@ -123,40 +139,159 @@ def parseMeeting(args, meeting_row) -> dict:
         'Final Actions':  links['Final Actions'],
         'Minutes':        links['Minutes'],
     }
-    return data
 
+
+def mainIqm2(args):
+    if not args.meetings_file:
+        print("Error: meetings_file is required in IQM2 mode", file=sys.stderr)
+        return 1
+
+    soup = None
+    with open(args.meetings_file, 'r', encoding='utf8') as f:
+        soup = BeautifulSoup(f.read(), 'html5lib')
+
+    meetings = soup.find_all('div', {'class': 'MeetingRow'})
+    data = []
+    for meeting_row in meetings:
+        meeting = parseMeetingIqm2(args, meeting_row)
+        if meeting is not None:
+            data.append(meeting)
+
+    writeCsv(sys.stdout if not args.output_file else open(args.output_file, 'w', encoding='utf8'), data)
+    return 0
+
+
+## ── PrimeGov mode ─────────────────────────────────────────────────────────────
+
+def _primegov_doc_url(meeting_json, template_name: str) -> str:
+    """Return the HTML compiled-document URL for the given template name, or ''."""
+    for doc in meeting_json.get('documentList', []):
+        if doc.get('templateName') == template_name and doc.get('compileOutputType') == 3:
+            return f"{PRIMEGOV_BASE}/Portal/Meeting?meetingTemplateId={doc['templateId']}"
+    return ''
+
+
+def fetchPrimegovMeetings(year: int):
+    """Fetch City Council meetings from the PrimeGov API for the given year."""
+    import requests  ## pylint: disable=import-outside-toplevel
+    meetings = []
+
+    archived_url = (
+        f"{PRIMEGOV_BASE}/api/v2/PublicPortal/ListArchivedMeetings"
+        f"?committeeId={CITY_COUNCIL_COMMITTEE_ID}&year={year}"
+    )
+    resp = requests.get(archived_url, headers=REQUEST_HDR)
+    resp.raise_for_status()
+    meetings.extend(resp.json())
+
+    upcoming_url = f"{PRIMEGOV_BASE}/api/v2/PublicPortal/ListUpcomingMeetings"
+    resp = requests.get(upcoming_url, headers=REQUEST_HDR)
+    resp.raise_for_status()
+    for m in resp.json():
+        if m.get('committeeId') == CITY_COUNCIL_COMMITTEE_ID:
+            meetings.append(m)
+
+    return meetings
+
+
+def _classify_meeting_title(title: str) -> str:
+    """Map a PrimeGov meeting title to a meeting type string."""
+    t = title.lower()
+    if 'do not use' in t:
+        return None
+    if 'special' in t:
+        return 'Special'
+    if 'inaugural' in t:
+        return 'Inaugural'
+    if 'executive session' in t:
+        return 'Executive Session'
+    if 'roundtable' in t or 'round table' in t or 'working' in t:
+        return 'Roundtable'
+    if 'hearing' in t:
+        return 'Hearing'
+    return 'Regular'
+
+
+def parseMeetingPrimegov(meeting_json) -> dict:
+    """Convert a PrimeGov meeting JSON object into a CSV-row dict.
+    Returns None for meetings that should be skipped.
+    """
+    title = meeting_json.get('title', '')
+    mtype = _classify_meeting_title(title)
+    if mtype is None:
+        return None
+
+    meeting_dt = dt.datetime.fromisoformat(meeting_json['dateTime'])
+    date_str   = meeting_dt.strftime('%Y-%m-%d')
+    time_str   = meeting_dt.strftime('%I:%M %p')
+    session    = meeting_dt.year
+
+    meeting_state = meeting_json.get('meetingState', 0)
+    status = 'scheduled'
+    if 'cancelled' in title.lower():
+        status = 'cancelled'
+    else if meeting_dt <= dt.datetime.now() and meeting_state == 3:
+        status = 'completed'
+
+    url_agenda = _primegov_doc_url(meeting_json, 'HTML Agenda')
+    url_final  = _primegov_doc_url(meeting_json, 'HTML Final Actions')
+    url_packet = _primegov_doc_url(meeting_json, 'HTML Packet')
+
+    return                   {
+        'Unique Identifier': f"{date_str} {mtype}",
+        'Body':              'City Council',
+        'Type':              mtype,
+        'Other':             '',
+        'Session':           session,
+        'Date':              date_str,
+        'Time':              time_str,
+        'Status':            status,
+        'Id':                str(meeting_json['id']),
+        'url':               url_agenda,
+        'Agenda Summary':    url_agenda,
+        'Agenda Packet':     url_packet,
+        'Final Actions':     url_final,
+        'Minutes':           '',
+    }
+
+
+def mainPrimegov(args):
+    meetings_json = fetchPrimegovMeetings(args.year)
+
+    ## Filter to City Council only (the API does not filter server-side)
+    council = [m for m in meetings_json if m.get('committeeId') == CITY_COUNCIL_COMMITTEE_ID]
+    data = [parseMeetingPrimegov(m) for m in council]
+    data = [r for r in data if r is not None]
+
+    ## Deduplicate by Unique Identifier (archived + upcoming may overlap)
+    seen = set()
+    unique = []
+    for row in data:
+        key = row['Unique Identifier']
+        if key not in seen:
+            seen.add(key)
+            unique.append(row)
+
+    ## Sort by date
+    unique.sort(key=lambda r: r['Date'])
+
+    f = open(args.output_file, 'w', encoding='utf8') if args.output_file else sys.stdout
+    writeCsv(f, unique)
+    return 0
+
+
+## ── shared ────────────────────────────────────────────────────────────────────
 
 def writeCsv(f, rows):
-    headers = (
-        'Unique Identifier',
-        'Body', 'Type', 'Other', 'Session', 'Date', 'Time', 'Status', 'Id', 'url',
-        'Agenda Summary', 'Agenda Packet', 'Final Actions', 'Minutes',
-    )
-    writer = csv.DictWriter(f, fieldnames=headers)
+    writer = csv.DictWriter(f, fieldnames=CSV_HEADERS)
     writer.writeheader()
     writer.writerows(rows)
 
 
 def main(args):
-    soup = None
-    with open(args.meetings_file, 'r', encoding='utf8') as f:
-        soup = BeautifulSoup(f.read(), 'html5lib')
-
-    ## Find all the meetings
-    meetings = soup.find_all('div', {'class': 'MeetingRow'})
-    data = []
-    for meeting_row in meetings:
-        meeting = parseMeeting(args, meeting_row)
-        if meeting is not None:
-            data.append(meeting)
-
-    if args.output_file:
-        with open(args.output_file, 'w', encoding='utf8') as f:
-            writeCsv(f, data)
-    else:
-        writeCsv(sys.stdout, data)
-
-    return 0
+    if args.primegov:
+        return mainPrimegov(args)
+    return mainIqm2(args)
 
 
 if __name__ == '__main__':
