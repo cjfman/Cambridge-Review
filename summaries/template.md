@@ -2,26 +2,26 @@
 
 ## City Manager’s Agenda
 
-### Appropriations and Grants
-- # (CMA 2025 #) 
-
 ### Reports and Communications
-- # (CMA 2025 #)
+- # (CMA 2026-)
+
+### Appropriations and Grants
+- # (CMA 2026-) 
 
 ### Appointments
-- # (CMA 2025 #) 
+- # (CMA 2026-) 
 
 
 ## Policy Orders
 ### Requests that the city...
-- # (POR 2025 #) 
+- # (POR 2026-) 
 ### That the council...
-- # (POR 2025 #) 
+- # (POR 2026-) 
 
 
 ## Charter Rights
-- # (POR 2025 #1)
+- # (POR 2026-1)
 
 
 ## Applications and Petitions
-- # (APP 2025 #) 
+- # (APP 2026-) 
