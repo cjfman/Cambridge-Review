@@ -148,13 +148,22 @@ def _parse_vote_lists(text: str) -> tuple:
 
 
 def _parse_result_row(row) -> tuple:
-    """Parse (action, vote, amended, yeas, nays, present, absent) from a RESULT: table row."""
+    """Parse (action, vote, amended, yeas, nays, present, absent, charter_right) from a RESULT: row."""
     text = row.get_text(' ').strip()
     match = re.match(r'RESULT:\s*(.+)', text, re.IGNORECASE)
     if not match:
-        return ('', '', '', [], [], [], [])
+        return ('', '', '', [], [], [], [], '')
 
     result_text = match.group(1).strip()
+
+    if 'CHARTER RIGHT' in result_text.upper():
+        cr_match = re.search(
+            r'CHARTER RIGHT EXERCISED\s+BY\s+(?:COUNCILL?OR|VICE MAYOR|MAYOR)\s+(\S+)',
+            result_text, re.IGNORECASE
+        )
+        cr = lookUpCouncillorName(cr_match.group(1)) if cr_match else '!!!'
+        return ('Charter Right', '', '', [], [], [], [], cr)
+
     vote = ''
     amended = ''
 
@@ -178,7 +187,7 @@ def _parse_result_row(row) -> tuple:
         result_text = re.sub(r'\s*\bas amended\b', '', result_text, flags=re.IGNORECASE).strip()
 
     action = toTitleCase(agenda.extractAction(result_text))
-    return (action, vote, amended, yeas, nays, present, absent)
+    return (action, vote, amended, yeas, nays, present, absent, '')
 
 
 def _strip_inline_vote(text: str) -> str:
@@ -289,7 +298,7 @@ def _parse_item_table(table, template_id: str) -> Optional[agenda.AgendaItem]:
     for row in rows[1:]:
         row_text = row.get_text(' ').strip()
         if re.match(r'RESULT:\s*\S', row_text, re.IGNORECASE):
-            r_action, r_vote, r_amended, r_yeas, r_nays, r_present, r_absent = _parse_result_row(row)
+            r_action, r_vote, r_amended, r_yeas, r_nays, r_present, r_absent, r_cr = _parse_result_row(row)
             if r_action:
                 action = r_action
                 vote = r_vote
@@ -297,6 +306,8 @@ def _parse_item_table(table, template_id: str) -> Optional[agenda.AgendaItem]:
                 nays = r_nays
                 present = r_present
                 absent = r_absent
+                if r_cr and not charter_right:
+                    charter_right = r_cr
                 if r_amended:
                     amended = r_amended
             break
@@ -361,6 +372,37 @@ def _parse_item_table(table, template_id: str) -> Optional[agenda.AgendaItem]:
     return item
 
 
+def _apply_result_table(result_tr, item) -> None:
+    """Apply a standalone RESULT table row's data to an already-parsed item."""
+    r_action, r_vote, r_amended, r_yeas, r_nays, r_present, r_absent, r_cr = _parse_result_row(result_tr)
+    if not r_action:
+        return
+
+    existing = item.final_action or {}
+    existing_cr = r_cr or existing.get('charter_right', '') or getattr(item, 'charter_right', '')
+
+    item.final_action = {
+        'action': r_action,
+        'vote': r_vote,
+        'charter_right': existing_cr,
+        'amended': r_amended or existing.get('amended', ''),
+        'yeas': r_yeas,
+        'nays': r_nays,
+        'present': r_present,
+        'absent': r_absent,
+        'recused': [],
+    }
+
+    if hasattr(item, 'action'):
+        item.action = r_action
+    if hasattr(item, 'vote'):
+        item.vote = r_vote
+    if hasattr(item, 'charter_right') and existing_cr:
+        item.charter_right = existing_cr
+    if hasattr(item, 'amended') and (r_amended or existing.get('amended', '')):
+        item.amended = r_amended or existing.get('amended', '')
+
+
 def processMeeting(meeting, cache_dir, *, force_fetch=False, verbose=False) -> Dict[str, List[Any]]:
     """Fetch and parse a PrimeGov meeting page.
 
@@ -382,22 +424,32 @@ def processMeeting(meeting, cache_dir, *, force_fetch=False, verbose=False) -> D
     html = _fetch(url, cache_path, verbose=verbose, force=force_fetch)
     soup = BeautifulSoup(html, 'html.parser')
 
-    tables = soup.find_all('table', class_='item-table-fromdocx')
-    print(f"Checking {len(tables)} item tables for meeting '{meeting}'")
+    all_tables = soup.find_all('table')
+    item_tables = [t for t in all_tables if 'item-table-fromdocx' in (t.get('class') or [])]
+    print(f"Checking {len(item_tables)} item tables for meeting '{meeting}'")
 
     items: Dict[str, List] = defaultdict(list)
-    for table in tables:
-        try:
-            item = _parse_item_table(table, template_id)
-            if item is not None:
-                items[item.type].append(item)
+    last_item = None
+    for table in all_tables:
+        classes = table.get('class') or []
+        if 'item-table-fromdocx' in classes:
+            try:
+                item = _parse_item_table(table, template_id)
+                last_item = item  # None for section headers; prevents RESULT bleed across sections
+                if item is not None:
+                    items[item.type].append(item)
+                    if verbose:
+                        print(item)
+            except Exception as e:  ## pylint: disable=broad-except
+                last_item = None
+                print_red(f"Error parsing item table: {e}")
                 if verbose:
-                    print(item)
-        except Exception as e:  ## pylint: disable=broad-except
-            print_red(f"Error parsing item table: {e}")
-            if verbose:
-                import traceback  ## pylint: disable=import-outside-toplevel
-                traceback.print_exc()
+                    import traceback  ## pylint: disable=import-outside-toplevel
+                    traceback.print_exc()
+        elif last_item is not None:
+            first_tr = table.find('tr')
+            if first_tr and re.match(r'RESULT:\s*\S', first_tr.get_text(' ').strip(), re.IGNORECASE):
+                _apply_result_table(first_tr, last_item)
 
     total = sum(len(v) for v in items.values())
     print(f"Found {total} items for meeting '{meeting}'")

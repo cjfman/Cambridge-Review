@@ -208,7 +208,7 @@ def buildRow(item, hdrs, final_action=None, *, aggrigate_votes=False):
     ## Replace with found final action from item if one wasn't provided
     replaceable = (not final_action or not final_action['action'] or final_action['action'] == "Charter Right")
     if replaceable and item.final_action and item.final_action['vote']:
-        if d['Outcome'] == "Charter Right":
+        if 'Outcome' in d and d['Outcome'] == "Charter Right":
             if 'Charter Right' in d and d['Charter Right']:
                 item.final_action['charter_right'] = d['Charter Right']
             elif final_action is not None and final_action['charter_right']:
