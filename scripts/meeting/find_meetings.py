@@ -230,7 +230,7 @@ def parseMeetingPrimegov(meeting_json) -> dict:
     status = 'scheduled'
     if 'cancelled' in title.lower():
         status = 'cancelled'
-    else if meeting_dt <= dt.datetime.now() and meeting_state == 3:
+    elif meeting_dt <= dt.datetime.now() and meeting_state == 3:
         status = 'completed'
 
     url_agenda = _primegov_doc_url(meeting_json, 'HTML Agenda')
