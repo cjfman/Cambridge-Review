@@ -3,7 +3,7 @@ import os
 import re
 
 from collections import defaultdict
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from bs4 import BeautifulSoup
 
@@ -17,7 +17,7 @@ REQUEST_HDR = {
 }
 
 
-def _check_sponsor_paragraph(p) -> Optional[str]:
+def _check_sponsor_paragraph(p: Any) -> Optional[str]:
     """If <p> is a sponsor line (bold + text-transform:uppercase), return the councillor name"""
     for span in p.find_all('span'):
         style = span.get('style', '')
@@ -31,7 +31,7 @@ def _check_sponsor_paragraph(p) -> Optional[str]:
     return None
 
 
-def _check_uid_paragraph(p) -> Optional[str]:
+def _check_uid_paragraph(p: Any) -> Optional[str]:
     """If <p> has a bold span matching a UID pattern, return the UID string."""
     for span in p.find_all('span'):
         style = span.get('style', '')
@@ -54,7 +54,7 @@ def _is_vote_only_paragraph(text: str) -> bool:
     ))
 
 
-def _parse_vote_text(text: str) -> tuple:
+def _parse_vote_text(text: str) -> Tuple[str, str, str, str]:
     """Parse (action, vote, amended, charter_right) from vote result text.
 
     Works for both standalone vote paragraphs and text with an embedded vote
@@ -82,7 +82,7 @@ def _parse_vote_text(text: str) -> tuple:
     return ('', '', '', '')
 
 
-def _parse_vote_lists(text: str) -> tuple:
+def _parse_vote_lists(text: str) -> Tuple[List[str], List[str], List[str], List[str], str]:
     """Split YEAS/NAYS/PRESENT/ABSENT sections from result text.
 
     Returns (yeas, nays, present, absent, remaining_text) where remaining_text
@@ -139,7 +139,7 @@ def _normalize_primegov_action(text: str) -> str:
     return text
 
 
-def _parse_result_row(row) -> tuple:
+def _parse_result_row(row: Any) -> Tuple[str, str, str, List[str], List[str], List[str], List[str], str]:
     """Parse (action, vote, amended, yeas, nays, present, absent, charter_right) from a RESULT: row."""
     text = row.get_text(' ').strip()
     match = re.match(r'RESULT:\s*(.+)', text, re.IGNORECASE)
@@ -197,7 +197,7 @@ def _strip_inline_vote(text: str) -> str:
     return text.strip().rstrip('. ').strip()
 
 
-def _parse_item_table(table, template_id: str) -> Optional[agenda.AgendaItem]:
+def _parse_item_table(table: Any, template_id: str) -> Optional[agenda.AgendaItem]:
     """Parse one PrimeGov item table. Returns None for section headers and unrecognised rows."""
     if table.get('data-sectionid'):
         return None
@@ -365,7 +365,7 @@ def _parse_item_table(table, template_id: str) -> Optional[agenda.AgendaItem]:
     return item
 
 
-def _apply_result_table(result_tr, item) -> None:
+def _apply_result_table(result_tr: Any, item: agenda.AgendaItem) -> None:
     """Apply a standalone RESULT table row's data to an already-parsed item."""
     r_action, r_vote, r_amended, r_yeas, r_nays, r_present, r_absent, r_cr = _parse_result_row(result_tr)
     if not r_action:
@@ -396,7 +396,7 @@ def _apply_result_table(result_tr, item) -> None:
         item.amended = r_amended or existing.get('amended', '')
 
 
-def processMeeting(meeting, cache_dir, *, force_fetch=False, verbose=False) -> Dict[str, List[Any]]:
+def processMeeting(meeting: agenda.Meeting, cache_dir, *, force_fetch: bool = False, verbose: bool = False) -> Dict[str, List[Any]]:
     """Fetch and parse a PrimeGov meeting page.
 
     Uses the Final Actions HTML when meeting.final_actions is set (post-meeting),

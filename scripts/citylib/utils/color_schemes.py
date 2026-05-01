@@ -1,3 +1,5 @@
+from typing import Callable, List, Optional
+
 ## https://davidmathlogic.com/colorblind/#%23332288-%23117733-%2344AA99-%2388CCEE-%23DDCC77-%23CC6677-%23AA4499-%23882255
 COLOR_BLIND_FRIENDLY_HEX = [
     "#332288", ## Dark Blue
@@ -23,7 +25,7 @@ COLOR_BLIND_FRIENDLY.reverse()
 GREY = (68, 68, 68)
 
 class ColorGradient:
-    def __init__(self, colors, max_val, min_val=0, *, scale_fn=None):
+    def __init__(self, colors: List, max_val: float, min_val: float = 0, *, scale_fn: Optional[Callable] = None):
         self.colors       = colors
         self.max          = max_val
         self.min          = min_val
@@ -35,13 +37,13 @@ class ColorGradient:
         self.max_scaled   = self.scale_fn(self.max*self.factor)
         self.range_scaled = self.max_scaled - self.min_scaled
 
-    def scale(self, val):
+    def scale(self, val: float) -> float:
         try:
             return self.scale_fn((val-self.min)*self.factor)
         except:
             return 0
 
-    def percent(self, val):
+    def percent(self, val: float) -> float:
         if val is None or val < self.min:
             return 0
         elif val > self.max:
@@ -49,7 +51,7 @@ class ColorGradient:
 
         return self.scale(val)*100/self.range_scaled
 
-    def pick(self, val):
+    def pick(self, val: float) -> str:
         if val is None:
             return '#000000'
         elif val < self.min:
@@ -60,7 +62,7 @@ class ColorGradient:
         index = int(max(min(self.scale(val)*self.size//self.range_scaled, self.size - 1), 0))
         return self.colors[index]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Size:{self.size} Max:{self.max} Min:{self.min} Range:{self.range}" \
             + f" MaxScaled:{self.max_scaled} MinScaled:{self.min_scaled} RangeScaled:{self.range_scaled}"
 

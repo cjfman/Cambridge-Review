@@ -6,6 +6,7 @@ import requests
 import sys
 
 from textwrap import dedent
+from typing import Any, Iterable, List, Optional
 
 USE_TERMCOLOR = True
 REQUEST_HDR = {
@@ -18,25 +19,25 @@ except:
     print("Cannot import termcolor. Disabling terminal coloring", file=sys.stderr)
     USE_TERMCOLOR=False
 
-def eprint(*args, **kwargs):
+def eprint(*args, **kwargs) -> None:
     print(*args, file=sys.stderr, **kwargs)
 
 
-def print_red(msg, **kwargs):
+def print_red(msg, **kwargs) -> None:
     if USE_TERMCOLOR:
         print(colored(msg, 'red'), **kwargs)
     else:
         print(msg, **kwargs)
 
 
-def print_green(msg, **kwargs):
+def print_green(msg, **kwargs) -> None:
     if USE_TERMCOLOR:
         print(colored(msg, 'green'), **kwargs)
     else:
         print(msg, **kwargs)
 
 
-def overlayKeys(original, other, keys):
+def overlayKeys(original: dict, other: dict, keys: Iterable) -> None:
     for key in keys:
         original[key] = other[key]
 
@@ -51,7 +52,7 @@ def toTitleCase(txt) -> str:
     return " ".join(words)
 
 
-def setDefaultValue(d, v, keys):
+def setDefaultValue(d: dict, v: Any, keys: Iterable) -> None:
     for key in keys:
         if key not in d:
             if callable(v):
@@ -60,14 +61,14 @@ def setDefaultValue(d, v, keys):
                 d[key] = v
 
 
-def simpleFormatDateTime(stamp:dt.datetime, *, date_only=False) -> str:
+def simpleFormatDateTime(stamp: dt.datetime, *, date_only: bool = False) -> str:
     if date_only:
         return stamp.strftime('%-m/%-d/%Y')
 
     return stamp.strftime('%-m/%-d/%Y %-I:%-M %p')
 
 
-def insertLineInFile(path, match, line, *, after=True, stop=True, replace=False, regex=False, re_args=None) -> bool:
+def insertLineInFile(path, match, line, *, after: bool = True, stop: bool = True, replace: bool = False, regex: bool = False, re_args: Optional[List] = None) -> bool:
     """Insert a line into the file after a matching line"""
     check_match = lambda x: (not regex and match in x) or (regex and re.search(match, line, re_args))
     update = False
@@ -105,7 +106,7 @@ def insertLineInFile(path, match, line, *, after=True, stop=True, replace=False,
     return update
 
 
-def insertCopyright(path, holder, *, tight=False, blocking=False) -> bool:
+def insertCopyright(path, holder, *, tight: bool = False, blocking: bool = False) -> bool:
     """Insert a copyright notice"""
     year = dt.date.today().year
     style = 'style="position:absolute; right:1%; bottom: 1%;"'
@@ -119,7 +120,7 @@ def insertCopyright(path, holder, *, tight=False, blocking=False) -> bool:
     return insertLineInFile(path, "</body>", notice, after=False)
 
 
-def insertNoCache(path):
+def insertNoCache(path) -> bool:
     replace = '<head><meta charset="utf-8" /></head>'
     no_cache = dedent("""\
         <head>
@@ -153,7 +154,7 @@ def format_dollar(val:float) -> str:
     return '${:,.2f}'.format(val)
 
 
-def load_file(path, *, encoding='utf8', quiet=True):
+def load_file(path, *, encoding='utf8', quiet: bool = True) -> Optional[str]:
     try:
         with open(path, encoding=encoding) as f:
             return f.read()
@@ -164,7 +165,7 @@ def load_file(path, *, encoding='utf8', quiet=True):
         return None
 
 
-def load_json(path, *, encoding='utf8', quiet=True):
+def load_json(path, *, encoding='utf8', quiet: bool = True) -> Optional[Any]:
     try:
         with open(path, encoding=encoding) as f:
             return json.load(f)
@@ -175,7 +176,7 @@ def load_json(path, *, encoding='utf8', quiet=True):
         return None
 
 
-def fetch_url(url, cache_path=None, *, verbose=False, force=False) -> str:
+def fetch_url(url, cache_path=None, *, verbose: bool = False, force: bool = False) -> str:
     """Fetch the data from a URL. Optionally cache it locally to disk"""
     if cache_path is not None and not force and os.path.isfile(cache_path):
         if verbose:

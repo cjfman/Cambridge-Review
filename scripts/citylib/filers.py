@@ -9,7 +9,7 @@ import dateutil
 
 from collections import namedtuple
 from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-order
-from typing import Dict, List
+from typing import Any, Dict, Iterable, List, Optional
 
 from .utils import format_dollar, strip_currency, eprint
 
@@ -19,7 +19,7 @@ FORCE_ACTIVE = [17259, 18437]
 ContributionSet = namedtuple('ContributionSet', ['city', 'state', 'total'])
 
 class Filer:
-    def __init__(self, cpfid:int, committee_name, candidate_name="", *, reports=None, cash_on_hand:float=0):
+    def __init__(self, cpfid: int, committee_name, candidate_name="", *, reports: Optional[List['Report']] = None, cash_on_hand: float = 0) -> None:
         self.cpfid               = cpfid
         self.committee_name      = committee_name
         self.candidate_name      = candidate_name
@@ -36,7 +36,7 @@ class Filer:
         self.data                = None
 
     @classmethod
-    def fromJson(cls, obj, *, simple=False):
+    def fromJson(cls, obj: Any, *, simple: bool = False) -> 'Filer':
         if isinstance(obj, str):
             obj = json.loads(obj)
 
@@ -56,11 +56,11 @@ class Filer:
         return filer
 
     @classmethod
-    def fromFile(cls, path):
+    def fromFile(cls, path) -> 'Filer':
         with open(path, encoding='utf8') as f:
             return cls.fromJson(json.load(f))
 
-    def active(self):
+    def active(self) -> bool:
         if self.cpfid in FORCE_ACTIVE:
             if VERBOSE:
                 eprint(f"{self.committee_name} forced to be active")
@@ -85,14 +85,14 @@ class Filer:
             eprint(f"{self.committee_name} is inactive")
         return False
 
-    def missing_recent_report(self, *, months=1) -> bool:
+    def missing_recent_report(self, *, months: int = 1) -> bool:
         if not self.reports:
             return True
 
         then = dt.datetime.now().date() - dateutil.relativedelta.relativedelta(months=months)
         return (self.reports and self.reports[0].end_date < then)
 
-    def load_reports(self, path):
+    def load_reports(self, path) -> Optional[List['Report']]:
         reports = None
         if os.path.isfile(path):
             reports = read_reports(path)
@@ -109,7 +109,7 @@ class Filer:
 
 
 class Report:
-    def __init__(self):
+    def __init__(self) -> None:
         self.cpfid             = 0
         self.report_id         = 0
         self.committee_name    = ""
@@ -125,7 +125,7 @@ class Report:
         self.other             = {}
 
     @classmethod
-    def fromJson(cls, obj):
+    def fromJson(cls, obj: Any) -> 'Report':
         if isinstance(obj, str):
             obj = json.loads(obj)
 
@@ -155,7 +155,7 @@ class Contribution:
     city_state: str
 
     @classmethod
-    def fromJson(cls, data):
+    def fromJson(cls, data: Dict) -> 'Contribution':
         amt = strip_currency(data['amount'])
         return cls(
             dateutil.parser.parse(data['date']).date(),
@@ -165,7 +165,7 @@ class Contribution:
         )
 
     @property
-    def city(self):
+    def city(self) -> Optional[str]:
         match = re.search(r"^([^,]+)\s*,\s*[A-Z]{2}\s+\S+", self.city_state)
         if match:
             return match.groups()[0]
@@ -173,7 +173,7 @@ class Contribution:
         return None
 
     @property
-    def state(self):
+    def state(self) -> Optional[str]:
         match = re.search(r"^[^,]+\s*,\s*([A-Z]{2})\s+\S+", self.city_state)
         if match:
             return match.groups()[0]
@@ -181,27 +181,27 @@ class Contribution:
         return None
 
     @property
-    def address(self):
+    def address(self) -> str:
         return f"{self.street}, {self.city_state}"
 
 
 class Contributor:
     @staticmethod
-    def make_key(name, addr):
+    def make_key(name, addr) -> str:
         return f"{name}-{addr}"
 
     @classmethod
-    def make_key_from_json(cls, data):
+    def make_key_from_json(cls, data: Dict) -> str:
         return cls.make_key(data['fullNameReverse'], address_from_record(data))
 
-    def __init__(self, name, addr, coord=None):
+    def __init__(self, name, addr, coord=None) -> None:
         self.name    = name
         self.address = addr
         self.coord   = coord
         self.contributions = []
 
     @classmethod
-    def fromJson(cls, data, *, addr_map=None):
+    def fromJson(cls, data: Dict, *, addr_map=None) -> 'Contributor':
         coord = None
         addr = address_from_record(data)
         if addr_map:
@@ -212,36 +212,36 @@ class Contributor:
         return contributor
 
     @property
-    def total(self):
+    def total(self) -> float:
         return sum([x.amount for x in self.contributions])
 
-    def key(self):
+    def key(self) -> str:
         return self.make_key(self.name, self.address)
 
-    def addRecord(self, record):
+    def addRecord(self, record: 'Contribution') -> None:
         self.contributions.append(record)
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self.key())
 
-    def __eq__(self, other):
+    def __eq__(self, other: 'Contributor') -> bool:
         return (self.name == other.name and self.address == other.address)
 
-    def __lt__(self, other):
+    def __lt__(self, other: 'Contributor') -> bool:
         return (self.total < other.total)
 
-    def __str__(self):
+    def __str__(self) -> str:
         if self.coord:
             coord = tuple([f"{x:.5f}" for x in self.coord])
             return f"Name: {self.name}; Address {self.address}; Coordinates: {coord}"
 
         return f"Name: {self.name}; Address {self.address}"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"[Contributor {self}]"
 
 
-def read_reports(path):
+def read_reports(path) -> Optional[List['Report']]:
     data = None
     try:
         with open(path, encoding='utf8') as f:
@@ -270,11 +270,11 @@ def read_report_and_filer(path) -> Filer:
     return Filer(recent.cpfid, recent.committee_name, recent.filer_name, cash_on_hand=recent.cash_on_hand, reports=reports)
 
 
-def address_from_record(record):
+def address_from_record(record: Dict) -> str:
     return f"{record['streetAddress']}, {record['cityStateZip']}"
 
 
-def records_to_contributors(records, *, addr_map) -> Dict[str, Contributor]:
+def records_to_contributors(records: Iterable[Dict], *, addr_map) -> List[Contributor]:
     contributors = {}
     for record in records:
         if record['fullNameReverse'] == "Aggregated Unitemized Receipts":
@@ -293,7 +293,7 @@ def records_to_contributors(records, *, addr_map) -> Dict[str, Contributor]:
     return list(contributors.values())
 
 
-def sum_contributions(*, contributors=None, contributions=None):
+def sum_contributions(*, contributors: Optional[List[Contributor]] = None, contributions: Optional[List[Contribution]] = None) -> ContributionSet:
     if (contributors is None and contributions is None) or (contributors is not None and contributions is not None):
         raise ValueError("Exactly one argument is required")
 

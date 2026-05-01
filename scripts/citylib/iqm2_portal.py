@@ -4,7 +4,7 @@ import os
 import re
 
 from collections import defaultdict
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 import html5lib ## pylint: disable=unused-import
 from bs4 import BeautifulSoup
@@ -27,12 +27,12 @@ def expandUrl(base, url) -> str:
     return url
 
 
-def findCouncillorsInRow(row):
+def findCouncillorsInRow(row: Any) -> List[str]:
     councillors = hp.findText(hp.findAllTags(row, 'td')[1]).split(',')
     return [lookUpCouncillorName(x.strip()) for x in councillors]
 
 
-def processHistory(history_table):
+def processHistory(history_table: Any) -> Dict[str, Any]:
     history = {}
     ## Look for a vote record
     for results_table in hp.findAllTags(history_table, 'table', 'VoteRecord'):
@@ -93,7 +93,7 @@ def processHistory(history_table):
     return history
 
 
-def processFinalActions(path):
+def processFinalActions(path) -> Dict[str, Dict[str, Any]]:
     final_actions = None
     print(f"Opening final actions file '{path}'")
     with open(path, 'r', encoding='utf8') as f:
@@ -150,7 +150,7 @@ def processFinalActions(path):
     return regrouped
 
 
-def processResLinks(node) -> Dict[str, List[Tuple[str, str]]]:
+def processResLinks(node: Any) -> Dict[str, List[Tuple[str, str]]]:
     links = defaultdict(list)
     for reslink in hp.findAllTags(node, 'div', 'ResLink'):
         ## Process each link type
@@ -163,7 +163,7 @@ def processResLinks(node) -> Dict[str, List[Tuple[str, str]]]:
     return links
 
 
-def processResLinkNames(node) -> Dict[str, Dict[str, str]]:
+def processResLinkNames(node: Any) -> Dict[str, Dict[str, str]]:
     links = processResLinks(node)
     names = defaultdict(lambda: defaultdict(str))
     for link_type in links.keys():
@@ -191,7 +191,7 @@ def processResLinkNames(node) -> Dict[str, Dict[str, str]]:
     return names
 
 
-def findCharterRight(soup):
+def findCharterRight(soup: Any) -> str:
     header = hp.findTag(soup, 'h1', 'LegiFileHeading').text
     match = re.search(r"charter right exercised by (?:councill?or|vice mayor|mayor) (\w+) in\b", header, re.IGNORECASE)
     if match:
@@ -200,7 +200,7 @@ def findCharterRight(soup):
     return ""
 
 
-def processKeyWordTable(table) -> Dict[str, str]:
+def processKeyWordTable(table: Any) -> Dict[str, str]:
     """Take a table from a city agenda item website and process it into a dictionary"""
     ths = []
     tds = []
@@ -211,7 +211,7 @@ def processKeyWordTable(table) -> Dict[str, str]:
     return dict(zip(ths, tds))
 
 
-def processItemInfo(uid, link, action, cache_dir, *, force_fetch=False) -> agenda.ItemInfo:
+def processItemInfo(uid, link, action, cache_dir, *, force_fetch: bool = False) -> agenda.ItemInfo:
     ## Fetch CMA page from city website
     path = os.path.join(cache_dir, f"{agenda.uidToFileSafe(uid)}.html")
     fetched = fetch_url(link, path, force=force_fetch)
@@ -270,7 +270,7 @@ def processItemInfo(uid, link, action, cache_dir, *, force_fetch=False) -> agend
     return agenda.ItemInfo(category, charter_right, cma, order, app, awaiting, action, amended, history, sponsors[0], sponsors[1:])
 
 
-def processAr(item, cache_dir, *, force_fetch=False):
+def processAr(item: agenda.AwaitingReport, cache_dir, *, force_fetch: bool = False) -> agenda.AwaitingReport:
     ## Fetch AR page from the city website
     ar_path = os.path.join(cache_dir, f"{agenda.uidToFileSafe(item.uid)}.html")
     fetched = fetch_url(item.url, ar_path, force=force_fetch)
@@ -293,7 +293,7 @@ def processAr(item, cache_dir, *, force_fetch=False):
     return item
 
 
-def processItem(base_url, cache_dir, row, num, *, force_fetch=False):
+def processItem(base_url, cache_dir, row: Any, num, *, force_fetch: bool = False) -> Optional[agenda.AgendaItem]:
     """Process a meeting agenda item"""
     ## Process the title and link
     title, link = hp.findATag(row, 'td', 'Title')
@@ -349,7 +349,7 @@ def processItem(base_url, cache_dir, row, num, *, force_fetch=False):
     return None
 
 
-def processMeeting(meeting, base_url, cache_dir, *, force_fetch=False, verbose=False) -> Dict[str, List[Any]]:
+def processMeeting(meeting: agenda.Meeting, base_url, cache_dir, *, force_fetch: bool = False, verbose: bool = False) -> Dict[str, List[Any]]:
     """Process a meeting"""
     ## pylint: disable=too-many-statements
     if 'iqm2.com' not in (meeting.url or ''):

@@ -4,6 +4,7 @@ import datetime as dt
 import re
 
 from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-order
+from typing import Any, Dict, List, Optional, Tuple
 
 from citylib.councillors import lookUpCouncillorName
 from citylib.utils import toTitleCase
@@ -29,7 +30,7 @@ UNSUPPORTED_TITLES = (
 class AgendaItem:
     """Abstract class"""
     ## pylint: disable=no-member,attribute-defined-outside-init,access-member-before-definition
-    def setMeeting(self, meeting):
+    def setMeeting(self, meeting: 'Meeting') -> Optional[str]:
         self.meeting_uid  = meeting.uid
         self.meeting_date = meeting.date
         if hasattr(self, 'name'):
@@ -41,7 +42,7 @@ class AgendaItem:
 
         return None
 
-    def setNotes(self, notes):
+    def setNotes(self, notes) -> None:
         self.notes = notes
         lower = notes.lower()
 
@@ -83,20 +84,20 @@ class Meeting:
     attendance: str=None
     _dt=None
 
-    def getDate(self):
+    def getDate(self) -> dt.datetime:
         if self._dt is not None:
             return self._dt
 
         self._dt = dt.datetime.fromisoformat(self.date)
         return self._dt
 
-    def __lt__(self, other):
+    def __lt__(self, other: 'Meeting') -> bool:
         return (self.getDate() < other.getDate())
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.body} - {self.type} {self.date} ({self.id})"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"[Meeting {str(self)}]"
 
 
@@ -112,7 +113,7 @@ class CMA(AgendaItem):
     vote:     str
     charter_right: str  = ""
     description:   str  = ""
-    final_action:  dict = None
+    final_action:  Optional[Dict] = None
     meeting_uid:   str  = ""
     meeting_date:  str  = ""
     notes:         str  = ""
@@ -121,7 +122,7 @@ class CMA(AgendaItem):
     def type(self):
         return "CMA"
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "Unique Identifier": self.uid,
             "Agenda Number":     self.num,
@@ -138,14 +139,14 @@ class CMA(AgendaItem):
             "Notes":             self.notes,
         }
 
-    def __str__(self):
+    def __str__(self) -> str:
         msg = " ".join([self.uid, self.category, self.action, f"[{self.vote}]", self.meeting_uid])
         if len(self.description) > MAX_MSG_LEN:
             return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
 
         return msg + " - " + self.description
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"[CMA: {str(self)}]"
 
 
@@ -161,7 +162,7 @@ class Application(AgendaItem):
     vote:     str
     charter_right: str  = ""
     address:       str  = ""
-    final_action:  dict = None
+    final_action:  Optional[Dict] = None
     meeting_uid:   str  = ""
     meeting_date:  str  = ""
     notes:         str  = ""
@@ -170,7 +171,7 @@ class Application(AgendaItem):
     def type(self):
         return "APP"
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "Unique Identifier": self.uid,
             "Agenda Number":     self.num,
@@ -187,14 +188,14 @@ class Application(AgendaItem):
             "Notes":             self.notes,
         }
 
-    def __str__(self):
+    def __str__(self) -> str:
         msg = " ".join([self.uid, self.category, self.name, self.meeting_uid])
         if len(self.subject) > MAX_MSG_LEN:
             return msg + " - " + self.subject[:MAX_MSG_LEN] + "..."
 
         return msg + " - " + self.subject
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"[Application: {str(self)}]"
 
 
@@ -209,13 +210,13 @@ class Communication(AgendaItem):
     meeting_uid:  str = ""
     meeting_date: str = ""
     notes:        str = ""
-    final_action: dict = None
+    final_action: Optional[Dict] = None
 
     @property
     def type(self):
         return "COM"
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "Unique Identifier": self.uid,
             "Agenda Number":     self.num,
@@ -228,7 +229,7 @@ class Communication(AgendaItem):
             "Notes":             self.notes,
         }
 
-    def __str__(self):
+    def __str__(self) -> str:
         msg = None
         if self.address:
             msg = " ".join([self.uid, self.name, f'"{self.address}"', self.meeting_uid])
@@ -240,7 +241,7 @@ class Communication(AgendaItem):
 
         return msg + " - " + self.subject
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"[Communication: {str(self)}]"
 
 
@@ -255,7 +256,7 @@ class Resolution(AgendaItem):
     action:       str  = ""
     vote:         str  = ""
     description:  str  = ""
-    final_action: dict = None
+    final_action: Optional[Dict] = None
     meeting_uid:  str  = ""
     meeting_date: str  = ""
     notes:        str  = ""
@@ -264,7 +265,7 @@ class Resolution(AgendaItem):
     def type(self):
         return "RES"
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "Unique Identifier": self.uid,
             "Agenda Number":     self.num,
@@ -279,14 +280,14 @@ class Resolution(AgendaItem):
             "Notes":             self.notes,
         }
 
-    def __str__(self):
+    def __str__(self) -> str:
         msg = " ".join([self.uid, self.category, self.sponsor, self.meeting_uid])
         if len(self.description) > MAX_MSG_LEN:
             return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
 
         return msg + " - " + self.description
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"[Resolution: {str(self)}]"
 
 
@@ -302,7 +303,7 @@ class PolicyOrder(AgendaItem):
     amended:       str  = ""
     charter_right: str  = ""
     description:   str  = ""
-    final_action:  dict = None
+    final_action:  Optional[Dict] = None
     meeting_uid:   str  = ""
     meeting_date:  str  = ""
     notes:         str  = ""
@@ -311,7 +312,7 @@ class PolicyOrder(AgendaItem):
     def type(self):
         return "POR"
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "Unique Identifier": self.uid,
             "Agenda Number":     self.num,
@@ -328,7 +329,7 @@ class PolicyOrder(AgendaItem):
             "Notes":             self.notes,
         }
 
-    def __str__(self):
+    def __str__(self) -> str:
         msg = " ".join([self.uid, self.sponsor, self.meeting_uid])
         if self.charter_right:
             msg += f" - charter right {self.charter_right}"
@@ -339,7 +340,7 @@ class PolicyOrder(AgendaItem):
 
         return msg + " - " + self.description
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"[PolicyOrder: {str(self)}]"
 
 
@@ -356,7 +357,7 @@ class Ordinance(AgendaItem):
     vote:          str  = ""
     amended:       str  = ""
     description:   str  = ""
-    final_action:  dict = None
+    final_action:  Optional[Dict] = None
     meeting_uid:   str  = ""
     meeting_date:  str  = ""
     notes:         str  = ""
@@ -365,7 +366,7 @@ class Ordinance(AgendaItem):
     def type(self):
         return "ORD"
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "Unique Identifier": self.uid,
             "Link":              self.url,
@@ -383,7 +384,7 @@ class Ordinance(AgendaItem):
             "Notes":             self.notes,
         }
 
-    def __str__(self):
+    def __str__(self) -> str:
         msg = " ".join([self.uid, self.sponsor, self.meeting_uid])
         if self.notes:
             msg += " - " + self.notes
@@ -392,7 +393,7 @@ class Ordinance(AgendaItem):
 
         return msg + " - " + self.description
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"[Ordinance: {str(self)}]"
 
 
@@ -405,16 +406,16 @@ class AwaitingReport(AgendaItem):
     category:     str = ""
     policy_order: str = ""
     notes:        str = ""
-    final_action: dict = None
+    final_action: Optional[Dict] = None
 
     @property
     def type(self):
         return "AR"
 
-    def setMeeting(self, meeting):
+    def setMeeting(self, meeting: 'Meeting') -> None:
         pass
 
-    def update(self, **kwargs):
+    def update(self, **kwargs) -> None:
         if 'description' in kwargs:
             self.description = kwargs['description']
         if 'department' in kwargs:
@@ -424,7 +425,7 @@ class AwaitingReport(AgendaItem):
         if 'policy_order' in kwargs:
             self.policy_order = kwargs['policy_order']
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "Unique Identifier": self.uid,
             "Department":        self.department,
@@ -434,14 +435,14 @@ class AwaitingReport(AgendaItem):
             "Description":       self.description,
         }
 
-    def __str__(self):
+    def __str__(self) -> str:
         msg = " ".join([self.uid, self.url])
         if len(self.description) > MAX_MSG_LEN:
             return msg + " - " + self.description[:MAX_MSG_LEN] + "..."
 
         return msg + " - " + self.description
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"[AwaitingReport: {str(self)}]"
 
 @dataclass
@@ -454,12 +455,12 @@ class ItemInfo:
     awaiting:      str  = ""
     action:        str  = ""
     amended:       str  = ""
-    history:       dict = None
-    sponsor:       list = None
-    cosponsors:    list = None
+    history:       Optional[Dict]       = None
+    sponsor:       Optional[List[str]]  = None
+    cosponsors:    Optional[List[str]]  = None
 
 
-def parseAction(line):
+def parseAction(line) -> Tuple[str, str]:
     ## Check for voice vote
     match = re.match(r"(?:Order )?(.+?)\s+(?:by|on) (?:an |am )?(affirmative vote|voice vote)", line, re.IGNORECASE)
     if match:
@@ -499,7 +500,7 @@ def extractAction(action) -> str:
     return action
 
 
-def processCma(info, uid, num, title, link, vote, action) -> CMA:
+def processCma(info: 'ItemInfo', uid, num: int, title, link, vote, action) -> CMA:
     """Process a CMA agenda item"""
     ## Clean up title
     title = re.sub(r"(?:A|Transmitting) ?communication (?:transmitted )?from (?:.+), City Manager, relative to ", "", title, flags=re.IGNORECASE)
@@ -507,7 +508,7 @@ def processCma(info, uid, num, title, link, vote, action) -> CMA:
     return CMA(uid, num, info.category, info.awaiting, info.order, link, action, vote, info.charter_right, title, info.history)
 
 
-def processApp(info, uid, num, title, link, vote, action) -> Application:
+def processApp(info: 'ItemInfo', uid, num: int, title, link, vote, action) -> Application:
     """Process an application agenda item"""
     ## Attempt to get the name
     name    = ""
@@ -529,7 +530,7 @@ def processApp(info, uid, num, title, link, vote, action) -> Application:
     return Application(uid, num, info.category, name, subject, link, action, vote, info.charter_right, address, info.history)
 
 
-def processCom(info, uid, num, title, link, vote, action) -> Communication:
+def processCom(info: 'ItemInfo', uid, num: int, title, link, vote, action) -> Communication:
     """Process a communication agenda item"""
     ## pylint: disable=unused-argument
     name    = ""
@@ -580,19 +581,19 @@ def processCom(info, uid, num, title, link, vote, action) -> Communication:
     return Communication(uid, num, name, address, subject, link)
 
 
-def processRes(info, uid, num, title, link, vote, action) -> Resolution:
+def processRes(info: 'ItemInfo', uid, num: int, title, link, vote, action) -> Resolution:
     """Process a resolution agenda item"""
     ## pylint: disable=unused-argument
     return Resolution(uid, num, info.category, link, info.sponsor, info.cosponsors, info.action, vote, title, info.history)
 
 
-def processPor(info, uid, num, title, link, vote, action) -> PolicyOrder:
+def processPor(info: 'ItemInfo', uid, num: int, title, link, vote, action) -> PolicyOrder:
     """Process a policy order agenda item"""
     ## pylint: disable=unused-argument
     return PolicyOrder(uid, num, link, info.sponsor, info.cosponsors, info.action, vote, info.amended, info.charter_right, title, info.history)
 
 
-def processOrd(info, uid, num, title, link, vote, action) -> Ordinance:
+def processOrd(info: 'ItemInfo', uid, num: int, title, link, vote, action) -> Ordinance:
     """Process an ordinance agenda item"""
     ## pylint: disable=unused-argument
     ## Clean up title

@@ -2,6 +2,7 @@ import json
 import os
 
 from collections import namedtuple
+from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
 
@@ -47,7 +48,7 @@ NEIGHBORHOOD_BOUNDARIES = {
 Coordinate = namedtuple('Coordinate', ['lat', 'lon'])
 
 class GisGeoJson:
-    def __init__(self, path, *, secondary_id_key=None, property_filters=None):
+    def __init__(self, path, *, secondary_id_key=None, property_filters=None) -> None:
         self.geojson          = None
         self.secondary_id_key = secondary_id_key
         self.id_to_secondary  = {}
@@ -75,7 +76,7 @@ class GisGeoJson:
                 self.secondary_to_id[sec_id] = geo_id
                 self.id_to_secondary[geo_id] = sec_id
 
-    def findAllFeatures(self, point):
+    def findAllFeatures(self, point: Any) -> List[Any]:
         if not isinstance(point, Point):
             point = Point(point)
 
@@ -87,30 +88,30 @@ class GisGeoJson:
 
         return found
 
-    def findFeature(self, point):
+    def findFeature(self, point: Any) -> Optional[Any]:
         found = self.findAllFeatures(point)
         if not found:
             return None
 
         return found[0]
 
-    def getGeoId(self, sec_id):
+    def getGeoId(self, sec_id) -> Optional[str]:
         if sec_id not in self.secondary_to_id:
             return None
 
         return self.secondary_to_id[sec_id]
 
-    def setProperty(self, key, val, geo_id=None):
+    def setProperty(self, key, val: Any, geo_id=None) -> None:
         if geo_id is not None:
             self.features[geo_id]['properties'][key] = val
         else:
             for f in self.features.values():
                 f['properties'][key] = val
 
-    def getProperty(self, key, geo_id):
+    def getProperty(self, key, geo_id) -> Any:
         return self.features[geo_id]['properties'][key]
 
-    def getCentroid(self, geo_id):
+    def getCentroid(self, geo_id) -> Tuple[float, float]:
         if geo_id in self.centroids:
             return self.centroids[geo_id]
 
@@ -122,10 +123,10 @@ class GisGeoJson:
 
 
 class ZoningDistricts(GisGeoJson):
-    def __init__(self, path):
+    def __init__(self, path) -> None:
         GisGeoJson.__init__(self, path, secondary_id_key='ZONE_TYPE')
 
-    def findZone(self, point):
+    def findZone(self, point: Any) -> Optional[str]:
         found = self.findFeature(point)
         if not found:
             return None
@@ -134,10 +135,10 @@ class ZoningDistricts(GisGeoJson):
 
 
 class CityBlocks(GisGeoJson):
-    def __init__(self, path):
+    def __init__(self, path) -> None:
         GisGeoJson.__init__(self, path, secondary_id_key='UNQ_ID')
 
-    def findBlock(self, point):
+    def findBlock(self, point: Any) -> Optional[str]:
         found = self.findFeature(point)
         if not found:
             return None
@@ -145,5 +146,5 @@ class CityBlocks(GisGeoJson):
         return found['properties']['UNQ_ID']
 
 class Lots(GisGeoJson):
-    def __init__(self, path):
+    def __init__(self, path) -> None:
         GisGeoJson.__init__(self, path, secondary_id_key='ML')

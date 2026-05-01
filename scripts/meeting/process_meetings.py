@@ -9,7 +9,7 @@ import os
 import sys
 import traceback
 
-from typing import Any, Dict, List
+from typing import IO, Any, Dict, Iterable, List, Optional, Tuple
 
 from pathlib import Path
 
@@ -151,7 +151,7 @@ AR_HDRS = (
 )
 
 
-def parseArgs():
+def parseArgs() -> argparse.Namespace:
     """Parse command line arguments"""
     parser = argparse.ArgumentParser()
     parser.set_defaults(skip_processing=False)
@@ -196,7 +196,7 @@ def parseArgs():
     return parser.parse_args()
 
 
-def buildRow(item, hdrs, final_action=None, *, aggrigate_votes=False):
+def buildRow(item: agenda.AgendaItem, hdrs: Iterable[str], final_action: Optional[Dict] = None, *, aggrigate_votes: bool = False) -> Dict[str, str]:
     """Make a csv row from an agenda item"""
     d = item.to_dict()
     action_map = {
@@ -259,7 +259,7 @@ def buildRow(item, hdrs, final_action=None, *, aggrigate_votes=False):
     return row
 
 
-def setCouncillorColumns(names):
+def setCouncillorColumns(names: Iterable[str]) -> None:
     """Add councillor names to headers"""
     ## pylint: disable=global-statement
     global CMA_HDRS, APP_HDRS, RES_HDRS, POR_HDRS, ORD_HDRS
@@ -284,7 +284,7 @@ def setCouncillorColumns(names):
     ORD_HDRS = ORD_HDRS[:idx] + names + ORD_HDRS[idx:]
 
 
-def processNewArs(args, ar_map, items, writer:csv.DictWriter):
+def processNewArs(args: argparse.Namespace, ar_map: Dict, items: Iterable[Any], writer: csv.DictWriter) -> None:
     """Process awaiting reports"""
     ## Unlike most agenda items, the list of awaiting reports tends to grow, so track
     ## ARs across meetings
@@ -303,7 +303,7 @@ def processNewArs(args, ar_map, items, writer:csv.DictWriter):
     print_green(f"Wrote {total} awaiting reports")
 
 
-def processMeeting(meeting, base_url, cache_dir, *, force_fetch=False, verbose=False) -> Dict[str, List[Any]]:
+def processMeeting(meeting: agenda.Meeting, base_url, cache_dir, *, force_fetch: bool = False, verbose: bool = False) -> Dict[str, List[Any]]:
     """Process a meeting. Dispatches to PrimeGov parser for primegov.com URLs."""
     if 'primegov.com' in (meeting.url or ''):
         return primegov_portal.processMeeting(meeting, cache_dir, force_fetch=force_fetch, verbose=verbose)
@@ -311,7 +311,7 @@ def processMeeting(meeting, base_url, cache_dir, *, force_fetch=False, verbose=F
     return iqm2_portal.processMeeting(meeting, base_url, cache_dir, force_fetch=force_fetch, verbose=verbose)
 
 
-def processMeetings(args, meetings, writers, final_actions=None):
+def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting], writers: Dict[str, csv.DictWriter], final_actions: Optional[Dict] = None) -> None:
     num = 0
     ar_map = {}
     for meeting in meetings:
@@ -353,7 +353,7 @@ def processMeetings(args, meetings, writers, final_actions=None):
                 raise e
 
 
-def postProcessItems(writers, items, final_actions=None):
+def postProcessItems(writers: Dict[str, csv.DictWriter], items: Dict[str, List[Any]], final_actions: Optional[Dict] = None) -> None:
     sets = (
         ('CMA', CMA_HDRS),
         ('APP', APP_HDRS),
@@ -375,7 +375,7 @@ def postProcessItems(writers, items, final_actions=None):
     print_green(f"Wrote {total} items. {msg}")
 
 
-def setupOutputFiles(output_dir):
+def setupOutputFiles(output_dir) -> Optional[Tuple[Dict[str, IO], Dict[str, csv.DictWriter]]]:
     """Open output files"""
     print("Opening output files")
     files   = {}
@@ -404,7 +404,7 @@ def setupOutputFiles(output_dir):
     return (files, writers)
 
 
-def openMeetings(path, *, session=None):
+def openMeetings(path, *, session: Optional[int] = None) -> List[agenda.Meeting]:
     meetings = []
     with open(path, 'r', encoding='utf8') as f:
         reader = csv.DictReader(f)
@@ -423,7 +423,7 @@ def openMeetings(path, *, session=None):
     return meetings
 
 
-def setAttenance(args, final_actions):
+def setAttenance(args: argparse.Namespace, final_actions: Dict) -> None:
     ## Load meetings
     meetings = None
     with open(args.meetings_file, 'r', encoding='utf8') as f:
@@ -457,7 +457,7 @@ def setAttenance(args, final_actions):
             writer.writerow(meeting)
 
 
-def getNextMeeting(meetings):
+def getNextMeeting(meetings: Iterable[agenda.Meeting]) -> Optional[agenda.Meeting]:
     today = dt.datetime.now()
     previous = list(sorted([x for x in meetings if x.getDate() >= today]))
     if previous:
@@ -466,7 +466,7 @@ def getNextMeeting(meetings):
     return None
 
 
-def getLastMeeting(meetings):
+def getLastMeeting(meetings: Iterable[agenda.Meeting]) -> Optional[agenda.Meeting]:
     today = dt.datetime.now()
     previous = list(sorted([x for x in meetings if x.getDate() < today]))
     if previous:
@@ -475,7 +475,7 @@ def getLastMeeting(meetings):
     return None
 
 
-def preprocessArgs(args):
+def preprocessArgs(args: argparse.Namespace) -> Optional[argparse.Namespace]:
     args = copy.copy(args)
     if args.verbose:
         global VERBOSE ## pylint: disable=global-statement
@@ -497,7 +497,7 @@ def preprocessArgs(args):
     return args
 
 
-def main(args):
+def main(args: argparse.Namespace) -> int:
     ## Check args
     args = preprocessArgs(args)
     if args is None:

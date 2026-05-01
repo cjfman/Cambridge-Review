@@ -2,10 +2,12 @@ import json
 import os
 import requests
 
+from typing import Optional
+
 from .gis import Coordinate
 
 class AddressMap:
-    def __init__(self, api_key=None, cache_path=None, *, verbose=False):
+    def __init__(self, api_key=None, cache_path=None, *, verbose: bool = False) -> None:
         self.api_key    = api_key
         self.cache_path = cache_path
         self.cache      = {}
@@ -17,7 +19,7 @@ class AddressMap:
         if self.cache_path:
             self.load()
 
-    def load(self):
+    def load(self) -> None:
         if not os.path.isfile(self.cache_path):
             print(f"Can't load address cache file '{self.cache_path}'")
             return
@@ -28,7 +30,7 @@ class AddressMap:
         except Exception as e:
             print(f"Failed to load address cache file '{self.cache_path}': {e}")
 
-    def save(self):
+    def save(self) -> None:
         if not self.updated:
             if self.verbose:
                 print("Cache wasn't updated. Not writing to file")
@@ -41,7 +43,7 @@ class AddressMap:
         except Exception as e:
             print(f"Failed to save address cache file '{self.cache_path}': {e}")
 
-    def query_address(self, addr):
+    def query_address(self, addr) -> Optional[Coordinate]:
         if addr in self.cache:
             return self.cache[addr]
 
@@ -54,7 +56,7 @@ class AddressMap:
         self.updated = True
         return coord
 
-    def __getitem__(self, key):
+    def __getitem__(self, key) -> Optional[Coordinate]:
         if key not in self.cache:
             val = self.query_address(key)
             if val:
@@ -64,15 +66,15 @@ class AddressMap:
 
         return self.cache[key]
 
-    def __setitem__(self, key, value):
+    def __setitem__(self, key, value: Coordinate) -> None:
         self.updated = True
         self.cache[key] = value
 
-    def __contains__(self, item):
+    def __contains__(self, item) -> bool:
         return (item in self.cache)
 
 
-def address_to_coordinates(address, key, *, quiet=True):
+def address_to_coordinates(address, key, *, quiet: bool = True) -> Optional[Coordinate]:
     #url = f"https://maps.googleapis.com/maps/api/geocode/json?address=1600+AmphitheatreParkway,+Mountain+View,+CA&key={key}"
     url = f"https://maps.googleapis.com/maps/api/geocode/json"
     if not quiet:

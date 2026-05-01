@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Tuple
 import html5lib ## pylint: disable=unused-import
 from bs4 import BeautifulSoup
 
-def findTag(node, tag, cls=None):
+def findTag(node: Any, tag, cls=None) -> Any:
     """Find a tag in a soup node"""
     if cls is None:
         return node.find(tag)
@@ -11,7 +11,7 @@ def findTag(node, tag, cls=None):
     return node.find(tag, {'class': cls})
 
 
-def findAllTags(node, tag, cls=None):
+def findAllTags(node: Any, tag, cls=None) -> List[Any]:
     """Find all matching tags in a soup node"""
     if cls is None:
         return node.find_all(tag)
@@ -19,7 +19,7 @@ def findAllTags(node, tag, cls=None):
     return node.find_all(tag, {'class': cls})
 
 
-def findATag(node, tag=None, cls=None) -> Tuple[str, str]:
+def findATag(node: Any, tag=None, cls=None) -> Tuple[str, str]:
     """Find an A tag in a soup node. Return the text and href"""
     if tag is not None:
         node = findTag(node, tag, cls)
@@ -33,7 +33,7 @@ def findATag(node, tag=None, cls=None) -> Tuple[str, str]:
     return (a_tag.text.strip(), a_tag['href'])
 
 
-def findText(node, tag=None, cls=None) -> str:
+def findText(node: Any, tag=None, cls=None) -> str:
     """Find the text in a soup node"""
     found = None
     if tag is None:
@@ -47,7 +47,7 @@ def findText(node, tag=None, cls=None) -> str:
     return found.text.strip()
 
 
-def findAllText(node, tag, cls=None) -> List[str]:
+def findAllText(node: Any, tag, cls=None) -> List[str]:
     """Find all the text in a soup node"""
     found = findAllTags(node, tag, cls)
     return [x.text.strip() for x in found if x is not None]

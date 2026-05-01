@@ -1,10 +1,13 @@
+from typing import Any, List, Optional, Union
+
+
 class Element:
-    def __init__(self, tag, data=None, **kwargs):
+    def __init__(self, tag, data=None, **kwargs) -> None:
         self.tag   = tag
         self.data  = data
         self.attrs = { k.replace('_', '-'): v for k, v in kwargs.items() }
 
-    def to_html(self):
+    def to_html(self) -> str:
         ## Handle data
         data = self.data
         if isinstance(data, list):
@@ -20,7 +23,7 @@ class Element:
 
 
 class Path(Element):
-    def __init__(self, *, x1, y1, x2, y2, width=1, color='black', **kwargs):
+    def __init__(self, *, x1: float, y1: float, x2: float, y2: float, width=1, color='black', **kwargs) -> None:
         location = f"M{x1},{y1},{x2},{y2}"
         Element.__init__(
             self, 'path', d=location, stroke=color, stroke_width=width, **kwargs,
@@ -28,18 +31,18 @@ class Path(Element):
 
 
 class Text(Element):
-    def __init__(self, text, **kwargs):
+    def __init__(self, text, **kwargs) -> None:
         Element.__init__(self, 'text', text, **kwargs)
 
 
 class TickMark(Path):
-    def __init__(self, *, x, y, height, width=1, color='black', **kwargs):
+    def __init__(self, *, x: float, y: float, height: float, width=1, color='black', **kwargs) -> None:
         y2 = y + height
         Path.__init__(self, x1=x, y1=y, x2=x, y2=y2, color=color, width=width)
 
 
 class LinearGradient(Element):
-    def __init__(self, gradient, name=None):
+    def __init__(self, gradient: Any, name=None) -> None:
         stops = []
         for i, color in enumerate(gradient.colors):
             offset = round((i + 1)/gradient.size*100, 5)

@@ -8,14 +8,14 @@ import re
 from collections import defaultdict, namedtuple
 from dataclasses import dataclass
 from textwrap import dedent
-from typing import Dict, List, Sequence
+from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
 
 
 VotePair = namedtuple("VotePair", "transfer total")
 CandidateRounds = List[VotePair]
 
 
-def truncateList(l:Sequence, *, key=None) -> Sequence:
+def truncateList(l: Sequence, *, key: Optional[Callable] = None) -> Sequence:
     """Remove duplicate values from the end of a list"""
     if len(l) < 2:
         return l
@@ -40,18 +40,18 @@ class FormatError(Exception):
 
 
 
-def isWritein(name, *, unnamed=False):
+def isWritein(name, *, unnamed: bool = False) -> bool:
     if not unnamed:
         return bool(re.search(r"^(?:write|written)[ \-]?in\b", name, re.IGNORECASE))
 
     return bool(re.search(r"^(?:write|written)[ \-]?in\s+(?:P?\d+|other)", name, re.IGNORECASE))
 
 
-def isNamedWritein(name):
+def isNamedWritein(name) -> bool:
     return (isWritein(name) and not isWritein(name, unnamed=True))
 
 
-def candidateSortKey(name):
+def candidateSortKey(name) -> Tuple[int, str]:
     match = re.match(r"^write[ \-]in\b\D*(\d+)?", name, re.IGNORECASE)
     if not match:
         return (-1, name)
@@ -102,10 +102,10 @@ class Election:
         for name, rounds in self.truncated.items():
             self.last_round[name] = len(rounds)
 
-    def getNamedCandidates(self):
+    def getNamedCandidates(self) -> List[str]:
         return [x for x in self.candidates if not isWritein(x, unnamed=True)]
 
-    def getLastName(self, name):
+    def getLastName(self, name) -> str:
         if self.last_names:
             return self.last_names[name]
 
@@ -123,10 +123,10 @@ class Election:
 
         return self.last_names[name]
 
-    def electedInRound(self, candidate, n):
+    def electedInRound(self, candidate, n: int) -> bool:
         return (candidate in self.elected and (n == len(self.truncated[candidate]) or self.truncated2[candidate][-1].transfer < 0))
 
-    def printStats(self):
+    def printStats(self) -> None:
         print(dedent(f"""\
             Election stats
             Total: {self.total}
@@ -135,7 +135,7 @@ class Election:
             Number of candidates: {len(self.candidates)}
         """))
 
-    def generateTableRows(self, *, separate_writeins=True, include_total=True):
+    def generateTableRows(self, *, separate_writeins: bool = True, include_total: bool = True) -> List[List]:
         ## |Candidate |Round1 Count|Round2 Transfer|Round2 Count|Round3 Transfer|Round3 Count|Round4 Transfer|Round4 Count|Round5 Transfer|Round5 Count|
         rows = []
         headers = ["Candidate", "Round1 Count"]
@@ -164,7 +164,7 @@ class Election:
         return rows
 
 
-def toIntMaybe(x):
+def toIntMaybe(x: Any) -> Any:
     try:
         return int(x)
     except ValueError:
@@ -203,7 +203,7 @@ def processCandidate(votes:Sequence[str]) -> CandidateRounds:
     return rounds
 
 
-def loadElectionsFile(path, include_exhausted=False) -> Election:
+def loadElectionsFile(path, include_exhausted: bool = False) -> Election:
     ## pylint: disable=too-many-nested-blocks,too-many-locals,too-many-branches,too-many-statements
     state = 'start'
     round_count = 0
@@ -274,7 +274,7 @@ def loadElectionsFile(path, include_exhausted=False) -> Election:
     )
 
 class WardElection:
-    def __init__(self, precincts, candidates, totals, votes, writein, blank_inv):
+    def __init__(self, precincts: List[str], candidates: List[str], totals: Dict[str, int], votes: Dict[str, Dict[str, int]], writein: Dict[str, int], blank_inv: Dict[str, int]) -> None:
         self.precincts  = precincts
         self.candidates = candidates
         self.c_totals   = totals ## Dict[candidate, Dict[precinct, count]]
@@ -299,7 +299,7 @@ class WardElection:
                         self.winners.add(name)
                         self.p_winners[precinct] = (name, count)
 
-    def printStats(self):
+    def printStats(self) -> None:
         print(dedent(f"""\
             Election stats
             Number of precincts: {len(self.precincts)}
@@ -336,18 +336,18 @@ def loadWardElectionFile(path) -> WardElection:
 
 
 class Ballot:
-    def __init__(self, key, holder, candidates):
+    def __init__(self, key, holder, candidates: Sequence[str]) -> None:
         self.key        = key
         self.holder     = holder
         self.candidates = candidates
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.candidates)
 
-    def __contains__(self, key):
+    def __contains__(self, key) -> bool:
         return key in self.candidates
 
-    def __getitem__(self, idx):
+    def __getitem__(self, idx: int) -> str:
         return self.candidates[idx]
 
 

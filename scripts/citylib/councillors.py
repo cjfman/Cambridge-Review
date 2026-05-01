@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import List, Optional, Tuple
 
 import yaml
 
@@ -9,7 +9,7 @@ _session_year = None
 _councillor_info = {}
 _councillor_quick_lookup = {}
 _councillor_all_lookup = {}
-def getCouncillorNames(*, include_aliases=False) -> Tuple[str]:
+def getCouncillorNames(*, include_aliases: bool = False) -> Tuple[str, ...]:
     if not _councillor_info:
         return tuple()
     if include_aliases:
@@ -18,7 +18,7 @@ def getCouncillorNames(*, include_aliases=False) -> Tuple[str]:
     return tuple(_councillor_info.keys())
 
 
-def setCouncillorInfo(path, year=None) -> bool:
+def setCouncillorInfo(path, year: Optional[int] = None) -> bool:
     ## pylint: disable=too-many-return-statements,too-many-branches,too-many-statements
     ## Load file
     all_info = None
@@ -100,7 +100,7 @@ def setCouncillorInfo(path, year=None) -> bool:
     return True
 
 
-def expandName(name, info):
+def expandName(name, info: dict) -> List[str]:
     """Create common aliases for a name"""
     position = info['position']
     aliases = [name, f"{position} {name}"]
@@ -120,7 +120,7 @@ def expandName(name, info):
     return aliases + modified
 
 
-def lookUpCouncillorName(name, *, include_all=True):
+def lookUpCouncillorName(name, *, include_all: bool = True) -> str:
     if not name:
         return ""
     if not _councillor_quick_lookup:
@@ -158,5 +158,5 @@ def lookUpCouncillorName(name, *, include_all=True):
     print_red(f"""Error: Didn't find full name for councillor "{orig_name}". Using fallback "{name}".""")
     return name
 
-def getSessionYear():
+def getSessionYear() -> Optional[int]:
     return _session_year
