@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Cambridge Review is a civic journalism/data project covering Cambridge, MA local government. It processes raw election results, campaign finance records, and City Council meeting agendas into charts, maps, and HTML pages published to a WordPress site.
+Cambridge Review is a civic journalism/data project covering Cambridge, MA local government. It processes raw election results, campaign finance records, and City Council meeting agendas into charts, maps, and HTML pages published to a WordPress site. The website is cambridgereview.org.
 
 All generated HTML (~9,000 files) is intentionally tracked in git as a distribution mechanism for deploying from other machines.
 
@@ -62,7 +62,7 @@ scripts/meeting/find_meetings.py <meetings_html_file> <output_csv>
 # Process meetings: fetch agendas, extract actions, write CSVs and JSON
 scripts/meeting/process_meetings.py [args]
 
-# Join per-meeting final_actions JSON files into one (run from repo root)
+# Join per-meeting final_actions JSON files into one (run from repo root), iqm2 only
 # See scripts/meeting/scripts.sh for the exact shell one-liner
 
 # Sync data to Google Sheets
@@ -90,7 +90,8 @@ All pipeline scripts import from this package. Scripts locate it via `sys.path.a
 | `elections.py` | `Election`, `WardElection`, `Ballot` data classes; CSV loaders (`loadElectionsFile`, `loadWardElectionFile`, `loadBallotPiles`) |
 | `filers.py` | `Filer`, `Report`, `Contribution`, `Contributor` data classes; OCPF JSON parsers |
 | `agenda.py` | `AgendaItem` hierarchy for parsing City Council agenda items and votes |
-| `meeting_portal.py` | Scrapes the Cambridge meeting portal (IQM2) to extract agenda items and vote records |
+| `iqm2_portal.py` | Scrapes the Cambridge meeting portal (IQM2) to extract agenda items and vote records |
+| `primegov_portal.py` | Scrapes the Cambridge meeting portal (primegov) to extract agenda items and vote records |
 | `councillors.py` | Loads councillor name/alias data from a YAML file; used to resolve vote attributions |
 | `utils/utils.py` | `fetch_url` (with optional disk cache), `insertCopyright`, `insertNoCache`, currency helpers, colored terminal output |
 | `utils/html_parsing.py` | BeautifulSoup helper wrappers |
@@ -134,16 +135,11 @@ candidate_data/contributions/<cpfid>_contributions.json
 ### Meeting data flow
 
 ```
-Cambridge meeting portal (IQM2)
+Cambridge meeting portal (IQM2 and primegov)
   → find_meetings.py     → CSV of meeting IDs and URLs
   → process_meetings.py  → meeting_data/cache/  (HTML/PDF per meeting)
-                         → meeting_data/cache/final_actions_meeting_<id>.json
-                         → meeting_data/meetings_html/ (raw scraped HTML)
-
-Per-meeting JSON files
-  → scripts.sh one-liner → meeting_data/final_actions.json  (combined)
-  → tabulate_votes.py    → per-councillor vote tallies
-  → sync_sheets.py       → Google Sheets
+                         → meeting_data/processed/
+  → sync_sheets.py       → Google Sheets and AirTable
 ```
 
 ### Data directories
@@ -155,8 +151,14 @@ Per-meeting JSON files
 | `elections/official/` | Official results PDFs/data by year |
 | `candidate_data/filers.json` | Master list of OCPF filer IDs and committee names |
 | `candidate_data/contributions/`, `candidate_data/reports/` | Per-filer OCPF API responses |
+| `meeting_data/councilors.yml` | YAML file of current and past city councillors |
 | `meeting_data/cache/` | Cached meeting HTML/PDF and per-meeting JSON (gitignored for PDFs) |
+| `meeting_data/meeting_sessions` | CSVs of council meeting listings
+| `meeting_data/processed` | CSVs of council meeting agenda items
 | `summaries/` | Markdown meeting summaries by date |
 | `geojson/` | Cambridge ward/precinct boundary files used by folium maps |
 | `address_coordinates.json` | Geocoded address→coordinate cache for contribution maps |
 | `credentials/` | API keys (gitignored) |
+| `summaries/` | Written enumeration and summary of city council meeting agenda items |
+| `charts/` | Charts generated from election data |
+| `maps/` | Maps showing the distribution of local election votes and campaign contributions |

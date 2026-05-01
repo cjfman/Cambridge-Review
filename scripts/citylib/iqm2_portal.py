@@ -351,11 +351,11 @@ def processItem(base_url, cache_dir, row, num, *, force_fetch=False):
 
 def processMeeting(meeting, base_url, cache_dir, *, force_fetch=False, verbose=False) -> Dict[str, List[Any]]:
     """Process a meeting"""
+    ## pylint: disable=too-many-statements
     if 'iqm2.com' not in (meeting.url or ''):
         print_red(f"URL for meeting '{meeting}' wasn't for iqm2.com")
         return None
 
-    ## pylint: disable=too-many-statements
     meeting_path = os.path.join(cache_dir, f"meeting_{meeting.id}.html")
     meeting_html = fetch_url(meeting.url, meeting_path, verbose=True, force=force_fetch)
     soup = BeautifulSoup(meeting_html, 'html.parser')

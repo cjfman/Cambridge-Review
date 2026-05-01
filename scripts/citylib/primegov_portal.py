@@ -1,4 +1,4 @@
-## pylint: disable=too-many-branches,too-many-locals
+## pylint: disable=too-many-branches,too-many-locals,too-many-return-statements,too-many-statements
 import os
 import re
 
@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 
 from citylib import agenda
 from citylib.councillors import lookUpCouncillorName
-from citylib.utils import print_red, toTitleCase
+from citylib.utils import print_red, toTitleCase, fetch_url
 
 BASE_URL = "https://cambridgema.primegov.com"
 REQUEST_HDR = {
@@ -17,31 +17,8 @@ REQUEST_HDR = {
 }
 
 
-def _fetch(url: str, cache_path: str = None, *, verbose=False, force=False) -> str:
-    import requests
-    if cache_path and not force and os.path.isfile(cache_path):
-        if verbose:
-            print(f"Reading '{url}' from cache '{cache_path}'")
-        with open(cache_path, 'r', encoding='utf8') as f:
-            return f.read()
-
-    print(f"Fetching '{url}'")
-    content = requests.get(url, headers=REQUEST_HDR).content.decode('utf8')
-    if cache_path:
-        print(f"Caching '{cache_path}'")
-        try:
-            with open(cache_path, 'w', encoding='utf8') as f:
-                f.write(content)
-        except Exception as e:
-            if os.path.isfile(cache_path):
-                os.remove(cache_path)
-            raise e
-
-    return content
-
-
 def _check_sponsor_paragraph(p) -> Optional[str]:
-    """If <p> is a sponsor line (bold + text-transform:uppercase), return the councillor name."""
+    """If <p> is a sponsor line (bold + text-transform:uppercase), return the councillor name"""
     for span in p.find_all('span'):
         style = span.get('style', '')
         text = span.get_text().strip()
@@ -441,7 +418,7 @@ def processMeeting(meeting, cache_dir, *, force_fetch=False, verbose=False) -> D
     template_id = template_id_match.group(1)
 
     cache_path = os.path.join(cache_dir, f"meeting_pg_{template_id}.html")
-    html = _fetch(url, cache_path, verbose=verbose, force=force_fetch)
+    html = fetch_url(url, cache_path, verbose=verbose, force=force_fetch)
     soup = BeautifulSoup(html, 'html.parser')
 
     all_tables = soup.find_all('table')
