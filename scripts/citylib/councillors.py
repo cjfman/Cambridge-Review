@@ -101,6 +101,7 @@ def setCouncillorInfo(path, year=None) -> bool:
 
 
 def expandName(name, info):
+    """Create common aliases for a name"""
     position = info['position']
     aliases = [name, f"{position} {name}"]
     modified = []
@@ -150,6 +151,7 @@ def lookUpCouncillorName(name, *, include_all=True):
     name = name.replace("mayor", "").strip()
     name = name.replace("councilor", "").strip()
     name = name.replace("councillor", "").strip()
+    name = name.replace("concillor", "").strip()
     if name in lookup:
         return lookup[name]
 

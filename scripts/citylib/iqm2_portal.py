@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 import citylib.utils.html_parsing as hp
 from citylib.utils import print_red, fetch_url
 
-from citylib import agenda, primegov_portal
+from citylib import agenda
 from citylib.councillors import getCouncillorNames, lookUpCouncillorName
 from citylib.utils import setDefaultValue, toTitleCase, overlayKeys
 
@@ -350,11 +350,10 @@ def processItem(base_url, cache_dir, row, num, *, force_fetch=False):
 
 
 def processMeeting(meeting, base_url, cache_dir, *, force_fetch=False, verbose=False) -> Dict[str, List[Any]]:
-    """Process a meeting. Dispatches to PrimeGov parser for primegov.com URLs."""
-    if 'primegov.com' in (meeting.url or ''):
-        return primegov_portal.processMeeting(
-            meeting, cache_dir, force_fetch=force_fetch, verbose=verbose
-        )
+    """Process a meeting"""
+    if 'iqm2.com' not in (meeting.url or ''):
+        print_red(f"URL for meeting '{meeting}' wasn't for iqm2.com")
+        return None
 
     ## pylint: disable=too-many-statements
     meeting_path = os.path.join(cache_dir, f"meeting_{meeting.id}.html")

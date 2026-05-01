@@ -1,5 +1,6 @@
 import datetime as dt
 import json
+import os
 import re
 import requests
 import sys
@@ -177,7 +178,7 @@ def load_json(path, *, encoding='utf8', quiet=True):
 def fetch_url(url, cache_path=None, *, verbose=False, force=False) -> str:
     """Fetch the data from a URL. Optionally cache it locally to disk"""
     if cache_path is not None and not force and os.path.isfile(cache_path):
-        if VERBOSE or verbose:
+        if verbose:
             print(f"Reading '{url}' from cache '{cache_path}'")
 
         with open(cache_path, 'r', encoding='utf8') as f:

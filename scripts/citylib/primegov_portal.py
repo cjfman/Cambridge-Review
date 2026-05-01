@@ -430,6 +430,10 @@ def processMeeting(meeting, cache_dir, *, force_fetch=False, verbose=False) -> D
         print_red(f"No URL for meeting '{meeting}'")
         return None
 
+    if 'primegov.com' not in url:
+        print_red(f"URL for meeting '{meeting}' wasn't for primegov.com")
+        return None
+
     template_id_match = re.search(r'meetingTemplateId=(\d+)', url)
     if not template_id_match:
         print_red(f"Cannot extract meetingTemplateId from '{url}'")

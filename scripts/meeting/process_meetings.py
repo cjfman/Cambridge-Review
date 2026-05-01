@@ -9,11 +9,13 @@ import os
 import sys
 import traceback
 
+from typing import Any, Dict, List
+
 from pathlib import Path
 
 ## pylint: disable=import-error,wrong-import-order,wrong-import-position
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
-from citylib import agenda, meeting_portal
+from citylib import agenda, iqm2_portal, primegov_portal
 from citylib.councillors import getCouncillorNames, setCouncillorInfo, lookUpCouncillorName
 from citylib.utils import print_green, print_red
 
@@ -294,11 +296,19 @@ def processNewArs(args, ar_map, items, writer:csv.DictWriter):
         if VERBOSE:
             print(f"New awaiting report: {item}")
 
-        ar_map[item.uid] = meeting_portal.processAr(item, args.cache_dir, force_fetch=args.force_fetch)
+        ar_map[item.uid] = iqm2_portal.processAr(item, args.cache_dir, force_fetch=args.force_fetch)
         writer.writerow(buildRow(item, AR_HDRS, aggrigate_votes=args.aggrigate_votes))
         total += 1
 
     print_green(f"Wrote {total} awaiting reports")
+
+
+def processMeeting(meeting, base_url, cache_dir, *, force_fetch=False, verbose=False) -> Dict[str, List[Any]]:
+    """Process a meeting. Dispatches to PrimeGov parser for primegov.com URLs."""
+    if 'primegov.com' in (meeting.url or ''):
+        return primegov_portal.processMeeting(meeting, cache_dir, force_fetch=force_fetch, verbose=verbose)
+
+    return iqm2_portal.processMeeting(meeting, base_url, cache_dir, force_fetch=force_fetch, verbose=verbose)
 
 
 def processMeetings(args, meetings, writers, final_actions=None):
@@ -316,7 +326,7 @@ def processMeetings(args, meetings, writers, final_actions=None):
                 continue
 
             print(f"Processing meeting '{meeting}'")
-            items = meeting_portal.processMeeting(meeting, args.base_url, args.cache_dir, force_fetch=args.force_fetch, verbose=args.verbose)
+            items = processMeeting(meeting, args.base_url, args.cache_dir, force_fetch=args.force_fetch, verbose=args.verbose)
             if items is not None:
                 if final_actions is not None and meeting.id in final_actions:
                     print(f"Found final actions for meeting '{meeting}'")
@@ -353,7 +363,7 @@ def postProcessItems(writers, items, final_actions=None):
         ('ORD', ORD_HDRS),
     )
     for key, hdrs in sets:
-        for item in items[key]:
+        for item in sorted(items[key], key=lambda x: x.uid):
             if final_actions is not None and item.uid in final_actions:
                 writers[key].writerow(buildRow(item, hdrs, final_actions[item.uid]))
             else:
@@ -519,7 +529,7 @@ def main(args):
     output_files = None
     final_actions = None
     if args.final_actions:
-        final_actions = meeting_portal.processFinalActions(args.final_actions)
+        final_actions = iqm2_portal.processFinalActions(args.final_actions)
 
     print(f"Read {len(meetings)} meetings from '{args.meetings_file}'")
     ## Do work
