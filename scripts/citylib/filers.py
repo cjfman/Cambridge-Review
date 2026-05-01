@@ -19,7 +19,7 @@ FORCE_ACTIVE = [17259, 18437]
 ContributionSet = namedtuple('ContributionSet', ['city', 'state', 'total'])
 
 class Filer:
-    def __init__(self, cpfid: int, committee_name, candidate_name="", *, reports: Optional[List['Report']] = None, cash_on_hand: float = 0) -> None:
+    def __init__(self, cpfid: int, committee_name, candidate_name="", *, reports: Optional[List['Report']] = None, cash_on_hand: float = 0):
         self.cpfid               = cpfid
         self.committee_name      = committee_name
         self.candidate_name      = candidate_name
@@ -109,7 +109,7 @@ class Filer:
 
 
 class Report:
-    def __init__(self) -> None:
+    def __init__(self):
         self.cpfid             = 0
         self.report_id         = 0
         self.committee_name    = ""
@@ -194,7 +194,7 @@ class Contributor:
     def make_key_from_json(cls, data: Dict) -> str:
         return cls.make_key(data['fullNameReverse'], address_from_record(data))
 
-    def __init__(self, name, addr, coord=None) -> None:
+    def __init__(self, name, addr, coord=None):
         self.name    = name
         self.address = addr
         self.coord   = coord
@@ -218,7 +218,7 @@ class Contributor:
     def key(self) -> str:
         return self.make_key(self.name, self.address)
 
-    def addRecord(self, record: 'Contribution') -> None:
+    def addRecord(self, record: 'Contribution'):
         self.contributions.append(record)
 
     def __hash__(self) -> int:

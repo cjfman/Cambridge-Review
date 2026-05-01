@@ -259,7 +259,7 @@ def buildRow(item: agenda.AgendaItem, hdrs: Iterable[str], final_action: Optiona
     return row
 
 
-def setCouncillorColumns(names: Iterable[str]) -> None:
+def setCouncillorColumns(names: Iterable[str]):
     """Add councillor names to headers"""
     ## pylint: disable=global-statement
     global CMA_HDRS, APP_HDRS, RES_HDRS, POR_HDRS, ORD_HDRS
@@ -284,7 +284,7 @@ def setCouncillorColumns(names: Iterable[str]) -> None:
     ORD_HDRS = ORD_HDRS[:idx] + names + ORD_HDRS[idx:]
 
 
-def processNewArs(args: argparse.Namespace, ar_map: Dict, items: Iterable[Any], writer: csv.DictWriter) -> None:
+def processNewArs(args: argparse.Namespace, ar_map: Dict, items: Iterable[Any], writer: csv.DictWriter):
     """Process awaiting reports"""
     ## Unlike most agenda items, the list of awaiting reports tends to grow, so track
     ## ARs across meetings
@@ -311,7 +311,7 @@ def processMeeting(meeting: agenda.Meeting, base_url, cache_dir, *, force_fetch:
     return iqm2_portal.processMeeting(meeting, base_url, cache_dir, force_fetch=force_fetch, verbose=verbose)
 
 
-def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting], writers: Dict[str, csv.DictWriter], final_actions: Optional[Dict] = None) -> None:
+def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting], writers: Dict[str, csv.DictWriter], final_actions: Optional[Dict] = None):
     num = 0
     ar_map = {}
     for meeting in meetings:
@@ -353,7 +353,7 @@ def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting]
                 raise e
 
 
-def postProcessItems(writers: Dict[str, csv.DictWriter], items: Dict[str, List[Any]], final_actions: Optional[Dict] = None) -> None:
+def postProcessItems(writers: Dict[str, csv.DictWriter], items: Dict[str, List[Any]], final_actions: Optional[Dict] = None):
     sets = (
         ('CMA', CMA_HDRS),
         ('APP', APP_HDRS),
@@ -392,7 +392,7 @@ def setupOutputFiles(output_dir) -> Optional[Tuple[Dict[str, IO], Dict[str, csv.
     for key, hdrs, name in sets:
         path = os.path.join(output_dir, name)
         try:
-            f = open(path, 'w', encoding='utf8')
+            f = open(path, 'w', encoding='utf8') ## pylint: disable=consider-using-with
             w = csv.DictWriter(f, fieldnames=hdrs, lineterminator='\n')
             w.writeheader()
             files[key]   = f
@@ -423,7 +423,7 @@ def openMeetings(path, *, session: Optional[int] = None) -> List[agenda.Meeting]
     return meetings
 
 
-def setAttenance(args: argparse.Namespace, final_actions: Dict) -> None:
+def setAttenance(args: argparse.Namespace, final_actions: Dict):
     ## Load meetings
     meetings = None
     with open(args.meetings_file, 'r', encoding='utf8') as f:

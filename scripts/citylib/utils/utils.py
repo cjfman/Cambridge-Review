@@ -19,25 +19,25 @@ except:
     print("Cannot import termcolor. Disabling terminal coloring", file=sys.stderr)
     USE_TERMCOLOR=False
 
-def eprint(*args, **kwargs) -> None:
+def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
 
-def print_red(msg, **kwargs) -> None:
+def print_red(msg, **kwargs):
     if USE_TERMCOLOR:
         print(colored(msg, 'red'), **kwargs)
     else:
         print(msg, **kwargs)
 
 
-def print_green(msg, **kwargs) -> None:
+def print_green(msg, **kwargs):
     if USE_TERMCOLOR:
         print(colored(msg, 'green'), **kwargs)
     else:
         print(msg, **kwargs)
 
 
-def overlayKeys(original: dict, other: dict, keys: Iterable) -> None:
+def overlayKeys(original: dict, other: dict, keys: Iterable):
     for key in keys:
         original[key] = other[key]
 
@@ -52,7 +52,7 @@ def toTitleCase(txt) -> str:
     return " ".join(words)
 
 
-def setDefaultValue(d: dict, v: Any, keys: Iterable) -> None:
+def setDefaultValue(d: dict, v: Any, keys: Iterable):
     for key in keys:
         if key not in d:
             if callable(v):

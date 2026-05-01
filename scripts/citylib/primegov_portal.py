@@ -365,7 +365,7 @@ def _parse_item_table(table: Any, template_id: str) -> Optional[agenda.AgendaIte
     return item
 
 
-def _apply_result_table(result_tr: Any, item: agenda.AgendaItem) -> None:
+def _apply_result_table(result_tr: Any, item: agenda.AgendaItem):
     """Apply a standalone RESULT table row's data to an already-parsed item."""
     r_action, r_vote, r_amended, r_yeas, r_nays, r_present, r_absent, r_cr = _parse_result_row(result_tr)
     if not r_action:

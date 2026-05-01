@@ -42,7 +42,7 @@ class AgendaItem:
 
         return None
 
-    def setNotes(self, notes) -> None:
+    def setNotes(self, notes):
         self.notes = notes
         lower = notes.lower()
 
@@ -412,10 +412,10 @@ class AwaitingReport(AgendaItem):
     def type(self):
         return "AR"
 
-    def setMeeting(self, meeting: 'Meeting') -> None:
+    def setMeeting(self, meeting: 'Meeting'):
         pass
 
-    def update(self, **kwargs) -> None:
+    def update(self, **kwargs):
         if 'description' in kwargs:
             self.description = kwargs['description']
         if 'department' in kwargs:

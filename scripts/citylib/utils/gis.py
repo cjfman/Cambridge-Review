@@ -48,7 +48,7 @@ NEIGHBORHOOD_BOUNDARIES = {
 Coordinate = namedtuple('Coordinate', ['lat', 'lon'])
 
 class GisGeoJson:
-    def __init__(self, path, *, secondary_id_key=None, property_filters=None) -> None:
+    def __init__(self, path, *, secondary_id_key=None, property_filters=None):
         self.geojson          = None
         self.secondary_id_key = secondary_id_key
         self.id_to_secondary  = {}
@@ -101,7 +101,7 @@ class GisGeoJson:
 
         return self.secondary_to_id[sec_id]
 
-    def setProperty(self, key, val: Any, geo_id=None) -> None:
+    def setProperty(self, key, val: Any, geo_id=None):
         if geo_id is not None:
             self.features[geo_id]['properties'][key] = val
         else:
@@ -123,7 +123,7 @@ class GisGeoJson:
 
 
 class ZoningDistricts(GisGeoJson):
-    def __init__(self, path) -> None:
+    def __init__(self, path):
         GisGeoJson.__init__(self, path, secondary_id_key='ZONE_TYPE')
 
     def findZone(self, point: Any) -> Optional[str]:
@@ -135,7 +135,7 @@ class ZoningDistricts(GisGeoJson):
 
 
 class CityBlocks(GisGeoJson):
-    def __init__(self, path) -> None:
+    def __init__(self, path):
         GisGeoJson.__init__(self, path, secondary_id_key='UNQ_ID')
 
     def findBlock(self, point: Any) -> Optional[str]:
@@ -146,5 +146,5 @@ class CityBlocks(GisGeoJson):
         return found['properties']['UNQ_ID']
 
 class Lots(GisGeoJson):
-    def __init__(self, path) -> None:
+    def __init__(self, path):
         GisGeoJson.__init__(self, path, secondary_id_key='ML')

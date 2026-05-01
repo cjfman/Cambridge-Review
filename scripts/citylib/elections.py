@@ -126,7 +126,7 @@ class Election:
     def electedInRound(self, candidate, n: int) -> bool:
         return (candidate in self.elected and (n == len(self.truncated[candidate]) or self.truncated2[candidate][-1].transfer < 0))
 
-    def printStats(self) -> None:
+    def printStats(self):
         print(dedent(f"""\
             Election stats
             Total: {self.total}
@@ -274,7 +274,7 @@ def loadElectionsFile(path, include_exhausted: bool = False) -> Election:
     )
 
 class WardElection:
-    def __init__(self, precincts: List[str], candidates: List[str], totals: Dict[str, int], votes: Dict[str, Dict[str, int]], writein: Dict[str, int], blank_inv: Dict[str, int]) -> None:
+    def __init__(self, precincts: List[str], candidates: List[str], totals: Dict[str, int], votes: Dict[str, Dict[str, int]], writein: Dict[str, int], blank_inv: Dict[str, int]):
         self.precincts  = precincts
         self.candidates = candidates
         self.c_totals   = totals ## Dict[candidate, Dict[precinct, count]]
@@ -299,7 +299,7 @@ class WardElection:
                         self.winners.add(name)
                         self.p_winners[precinct] = (name, count)
 
-    def printStats(self) -> None:
+    def printStats(self):
         print(dedent(f"""\
             Election stats
             Number of precincts: {len(self.precincts)}
@@ -336,7 +336,7 @@ def loadWardElectionFile(path) -> WardElection:
 
 
 class Ballot:
-    def __init__(self, key, holder, candidates: Sequence[str]) -> None:
+    def __init__(self, key, holder, candidates: Sequence[str]):
         self.key        = key
         self.holder     = holder
         self.candidates = candidates

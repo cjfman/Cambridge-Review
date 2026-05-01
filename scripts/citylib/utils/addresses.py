@@ -7,7 +7,7 @@ from typing import Optional
 from .gis import Coordinate
 
 class AddressMap:
-    def __init__(self, api_key=None, cache_path=None, *, verbose: bool = False) -> None:
+    def __init__(self, api_key=None, cache_path=None, *, verbose: bool = False):
         self.api_key    = api_key
         self.cache_path = cache_path
         self.cache      = {}
@@ -19,7 +19,7 @@ class AddressMap:
         if self.cache_path:
             self.load()
 
-    def load(self) -> None:
+    def load(self):
         if not os.path.isfile(self.cache_path):
             print(f"Can't load address cache file '{self.cache_path}'")
             return
@@ -30,7 +30,7 @@ class AddressMap:
         except Exception as e:
             print(f"Failed to load address cache file '{self.cache_path}': {e}")
 
-    def save(self) -> None:
+    def save(self):
         if not self.updated:
             if self.verbose:
                 print("Cache wasn't updated. Not writing to file")
@@ -66,7 +66,7 @@ class AddressMap:
 
         return self.cache[key]
 
-    def __setitem__(self, key, value: Coordinate) -> None:
+    def __setitem__(self, key, value: Coordinate):
         self.updated = True
         self.cache[key] = value
 
