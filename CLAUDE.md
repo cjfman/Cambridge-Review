@@ -144,21 +144,21 @@ Cambridge meeting portal (IQM2 and primegov)
 
 ### Data directories
 
-| Path | Contents |
-|---|---|
-| `elections/csvs_cc/`, `elections/csvs_sc/` | Canonical RCV result CSVs (source of truth for charts) |
-| `elections/wards/council/` | Per-precinct vote counts by candidate |
-| `elections/official/` | Official results PDFs/data by year |
-| `candidate_data/filers.json` | Master list of OCPF filer IDs and committee names |
-| `candidate_data/contributions/`, `candidate_data/reports/` | Per-filer OCPF API responses |
-| `meeting_data/councilors.yml` | YAML file of current and past city councillors |
-| `meeting_data/cache/` | Cached meeting HTML/PDF and per-meeting JSON (gitignored for PDFs) |
-| `meeting_data/meeting_sessions` | CSVs of council meeting listings
-| `meeting_data/processed` | CSVs of council meeting agenda items
-| `summaries/` | Markdown meeting summaries by date |
-| `geojson/` | Cambridge ward/precinct boundary files used by folium maps |
-| `address_coordinates.json` | Geocoded address→coordinate cache for contribution maps |
-| `credentials/` | API keys (gitignored) |
-| `summaries/` | Written enumeration and summary of city council meeting agenda items |
-| `charts/` | Charts generated from election data |
-| `maps/` | Maps showing the distribution of local election votes and campaign contributions |
+| Path | Contents | Read? |
+|---|---|---|
+| `elections/csvs_cc/`, `elections/csvs_sc/` | Canonical RCV result CSVs (source of truth for charts) | Yes |
+| `elections/wards/council/` | Per-precinct vote counts by candidate | Yes |
+| `elections/official/` | Official results data by year (large files) | No |
+| `candidate_data/filers.json` | Master list of OCPF filer IDs and committee names | Yes |
+| `candidate_data/contributions/`, `candidate_data/reports/` | Per-filer OCPF API responses | No |
+| `meeting_data/councilors.yml` | YAML file of current and past city councillors | Yes |
+| `meeting_data/cache/` | Cached meeting HTML/PDF and per-meeting JSON (gitignored for PDFs) | No |
+| `meeting_data/meeting_sessions` | CSVs of council meeting listings | Yes |
+| `meeting_data/processed` | CSVs of council meeting agenda items | Yes |
+| `summaries/` | Markdown meeting summaries by date | Yes |
+| `geojson/` | Cambridge ward/precinct boundary files used by folium maps | No |
+| `address_coordinates.json` | Geocoded address→coordinate cache for contribution maps | No |
+| `credentials/` | API keys (gitignored) | No |
+| `charts/` | Charts generated from election data | No |
+| `maps/` | Maps showing the distribution of local election votes and campaign contributions | No |
+
