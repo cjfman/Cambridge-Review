@@ -56,8 +56,11 @@ scripts/election/draw_contributions.py --google-api-key credentials/maps_key \
 ### Meeting pipeline
 
 ```bash
-# Parse a downloaded meeting calendar HTML into a CSV of meeting IDs/URLs
-scripts/meeting/find_meetings.py <meetings_html_file> <output_csv>
+# Parse a downloaded IQM2 meeting calendar HTML into a CSV of meeting IDs/URLs
+scripts/meeting/find_meetings.py iqm2 <meetings_html_file> [output_csv] [--council-only]
+
+# Fetch City Council meetings from the PrimeGov API into a CSV
+scripts/meeting/find_meetings.py primegov [output_csv] [--year YYYY]
 
 # Process meetings: fetch agendas, extract actions, write CSVs and JSON
 scripts/meeting/process_meetings.py [args]

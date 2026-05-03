@@ -1,4 +1,4 @@
-#! /usr/bin/python3
+#!/usr/bin/env python3
 
 import argparse
 import csv
@@ -26,18 +26,21 @@ CSV_HEADERS = (
 
 def parseArgs():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--base-url", default="https://cambridgema.iqm2.com",
-        help="The base URL (IQM2 mode only)")
-    parser.add_argument("--council-only", action="store_true",
-        help="Only get council meetings")
-    parser.add_argument("--primegov", action="store_true",
-        help="Fetch meetings from the PrimeGov API instead of a local HTML file")
-    parser.add_argument("--year", type=int, default=dt.date.today().year,
-        help="Year to fetch archived meetings for (PrimeGov mode only)")
-    parser.add_argument("meetings_file", nargs='?',
-        help="The html file containing meeting info (IQM2 mode only)")
-    parser.add_argument("output_file", nargs='?',
-        help="The output csv file. Print to stdout otherwise")
+    subparsers = parser.add_subparsers(dest='subcommand', required=True)
+
+    iqm2 = subparsers.add_parser('iqm2', help='Parse meetings from a local IQM2 HTML file')
+    iqm2.add_argument('meetings_file', help='The HTML file containing meeting info')
+    iqm2.add_argument('output_file', nargs='?', help='Output CSV file (stdout if omitted)')
+    iqm2.add_argument('--base-url', default='https://cambridgema.iqm2.com',
+        help='Base URL for building links')
+    iqm2.add_argument('--council-only', action='store_true',
+        help='Only include City Council meetings')
+
+    pg = subparsers.add_parser('primegov', help='Fetch meetings from the PrimeGov API')
+    pg.add_argument('output_file', nargs='?', help='Output CSV file (stdout if omitted)')
+    pg.add_argument('--year', type=int, default=dt.date.today().year,
+        help='Year to fetch archived meetings for')
+
     return parser.parse_args()
 
 
@@ -142,10 +145,6 @@ def parseMeetingIqm2(args, meeting_row) -> dict:
 
 
 def mainIqm2(args):
-    if not args.meetings_file:
-        print("Error: meetings_file is required in IQM2 mode", file=sys.stderr)
-        return 1
-
     soup = None
     with open(args.meetings_file, 'r', encoding='utf8') as f:
         soup = BeautifulSoup(f.read(), 'html5lib')
@@ -289,7 +288,7 @@ def writeCsv(f, rows):
 
 
 def main(args):
-    if args.primegov:
+    if args.subcommand == 'primegov':
         return mainPrimegov(args)
     return mainIqm2(args)
 

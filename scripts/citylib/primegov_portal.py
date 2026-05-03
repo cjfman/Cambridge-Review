@@ -74,7 +74,7 @@ def _parse_vote_text(text: str) -> Tuple[str, str, str, str]:
         return ('Referred', 'Voice Vote', '', '')
 
     if 'PASSED TO A SECOND READING' in upper:
-        return ('Passed', 'Voice Vote', '', '')
+        return ('Passed To A Second Reading', 'Voice Vote', '', '')
 
     if 'ELIGIBLE TO BE ORDAINED' in upper:
         return ('', '', '', '')
