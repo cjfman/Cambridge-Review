@@ -1,5 +1,7 @@
 [Meeting Link]()
 
+Note: Some agenda item links may not work until after the meeting has completed
+
 ## City Manager’s Agenda
 
 ### Reports and Communications
