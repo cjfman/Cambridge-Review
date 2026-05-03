@@ -54,8 +54,8 @@ def _is_vote_only_paragraph(text: str) -> bool:
     ))
 
 
-def _parse_vote_text(text: str) -> Tuple[str, str, str, str]:
-    """Parse (action, vote, amended, charter_right) from vote result text.
+def _parse_vote_text(text: str) -> Tuple[str, str]:
+    """Parse (action, charter_right) from vote result text.
 
     Works for both standalone vote paragraphs and text with an embedded vote
     appended to a description (e.g. the charter right case).
@@ -68,18 +68,18 @@ def _parse_vote_text(text: str) -> Tuple[str, str, str, str]:
             text, re.IGNORECASE
         )
         cr = lookUpCouncillorName(match.group(1)) if match else '!!!'
-        return ('Charter Right', '', '', cr)
+        return ('Charter Right', cr)
 
     if 'REFERRED TO' in upper:
-        return ('Referred', 'Voice Vote', '', '')
+        return ('Referred', '')
 
     if 'PASSED TO A SECOND READING' in upper:
-        return ('Passed To A Second Reading', 'Voice Vote', '', '')
+        return ('Passed To A Second Reading', '')
 
     if 'ELIGIBLE TO BE ORDAINED' in upper:
-        return ('', '', '', '')
+        return ('', '')
 
-    return ('', '', '', '')
+    return ('', '')
 
 
 def _parse_vote_lists(text: str) -> Tuple[List[str], List[str], List[str], List[str], str]:
@@ -272,16 +272,16 @@ def _parse_item_table(table: Any, template_id: str) -> Optional[agenda.AgendaIte
 
         # Standalone vote-result paragraph
         if _is_vote_only_paragraph(p_text):
-            v_action, v_vote, v_amended, v_cr = _parse_vote_text(p_text)
+            v_action, v_cr = _parse_vote_text(p_text)
             if v_action and not action:
-                action, vote, amended, charter_right = v_action, v_vote, v_amended, v_cr
+                action, charter_right = v_action, v_cr
             continue
 
         # Description paragraph (first one wins); may have inline vote appended
         if description is None:
-            v_action, v_vote, v_amended, v_cr = _parse_vote_text(p_text)
+            v_action, v_cr = _parse_vote_text(p_text)
             if v_action and not action:
-                action, vote, amended, charter_right = v_action, v_vote, v_amended, v_cr
+                action, charter_right = v_action, v_cr
             description = _strip_inline_vote(p_text)
 
     if uid is None:
