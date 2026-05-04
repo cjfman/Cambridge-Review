@@ -145,6 +145,8 @@ Cambridge meeting portal (IQM2 and primegov)
   → sync_sheets.py       → Google Sheets and AirTable
 ```
 
+IQM2.com is the legacy portal. PrimeGov.gov is the current portal.
+
 ### Data directories
 
 | Path | Contents | Read? |
@@ -165,3 +167,17 @@ Cambridge meeting portal (IQM2 and primegov)
 | `charts/` | Charts generated from election data | No |
 | `maps/` | Maps showing the distribution of local election votes and campaign contributions | No |
 
+
+## Important prior sessions
+
+44fa7ed7 (largest, 1241 lines)
+The foundational session — analyzed the codebase, created CLAUDE.md, and built the PrimeGov portal integration (primegov_portal.py)
+to replace the old IQM2-only meeting pipeline. Ran out of context and was continued twice.
+
+33f53b89
+Refactored find_meetings.py to use iqm2/primegov subcommands; fixed _parse_vote_text treating "PASSED TO A SECOND READING" as
+"Passed"; removed unused return values from that function; fixed malformed settings.json.
+
+43630346
+Added type hints to process_meetings.py and the scripts/citylib module. This is the session you were looking for regarding type hint
+preferences.
