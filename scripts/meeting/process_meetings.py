@@ -237,12 +237,21 @@ def buildRow(item: agenda.AgendaItem, hdrs: Iterable[str], final_action: Optiona
             elif d['Outcome']:
                 d['Vote'] = "Voice Vote"
 
+        yeas = final_action.get('yeas', [])
+        nays = final_action.get('nays', [])
+        present = final_action.get('present', [])
+        recused = final_action.get('recused', [])
+        if yeas:
+            unanimous = not nays and not present and not recused
+            d['Vote'] = 'Unanimous' if unanimous else 'Roll Call'
+
         for key, val in action_map.items():
             column = key.title()
             if aggrigate_votes:
                 d[column] = ",".join(final_action[key])
-            for name in final_action[key]:
-                d[name] = val
+            if d.get('Vote') != 'Unanimous':
+                for name in final_action[key]:
+                    d[name] = val
 
     ## Check vote type
     if ('Vote' not in d or d['Vote'] is None) and ('Outcome' in d and d['Outcome'] and d['Outcome'] != "Charter Right"):

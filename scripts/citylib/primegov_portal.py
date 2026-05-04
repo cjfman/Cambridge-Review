@@ -93,7 +93,7 @@ def _parse_vote_lists(text: str) -> Tuple[List[str], List[str], List[str], List[
     present: List[str] = []
     absent: List[str] = []
 
-    m = re.search(r'\bYEAS?\s*:', text, re.IGNORECASE)
+    m = re.search(r'\b(?:YEAS?|NAYS?|PRESENT|ABSENT)\s*:', text, re.IGNORECASE)
     if not m:
         return yeas, nays, present, absent, text
 
@@ -173,6 +173,12 @@ def _parse_result_row(row: Any) -> Tuple[str, str, str, List[str], List[str], Li
             vote = 'Unanimous'
         else:
             vote = code
+
+    if not vote:
+        vv_match = re.search(r'\bVV\d*\b', result_text, re.IGNORECASE)
+        if vv_match:
+            vote = 'Voice Vote'
+            result_text = (result_text[:vv_match.start()] + result_text[vv_match.end():]).strip()
 
     if re.search(r'\bas amended\b', result_text, re.IGNORECASE):
         amended = 'yes'
