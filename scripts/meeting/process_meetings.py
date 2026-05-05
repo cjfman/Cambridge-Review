@@ -8,6 +8,7 @@ import datetime as dt
 import os
 import sys
 import traceback
+from collections import defaultdict
 
 from typing import IO, Any, Dict, Iterable, List, Optional, Tuple
 
@@ -320,9 +321,30 @@ def processMeeting(meeting: agenda.Meeting, base_url, cache_dir, *, force_fetch:
     return iqm2_portal.processMeeting(meeting, base_url, cache_dir, force_fetch=force_fetch, verbose=verbose)
 
 
+def _effective_action(item, item_fa: Optional[Dict]) -> str:
+    """Return the resolved action string for an item.
+
+    IQM2 meetings supply final actions via an external JSON (item_fa); PrimeGov
+    meetings embed them on item.final_action.  Check both sources.
+    """
+    if item_fa and item_fa.get('action'):
+        return item_fa['action']
+    fa = getattr(item, 'final_action', None)
+    if fa and fa.get('action'):
+        return fa['action']
+    return getattr(item, 'action', '') or ''
+
+
 def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting], writers: Dict[str, csv.DictWriter], final_actions: Optional[Dict] = None):
     num = 0
     ar_map = {}
+    ## type → {uid: (first_item, latest_item_fa)}
+    ## The same agenda item (uid) can appear across multiple meetings when it is
+    ## tabled or carried over.  We emit one CSV row per uid: metadata (sponsor,
+    ## description, first meeting date, …) comes from the first occurrence, while
+    ## final actions are updated whenever a later meeting records a vote.
+    seen: Dict[str, Dict[str, Tuple[Any, Optional[Dict]]]] = defaultdict(dict)
+
     for meeting in meetings:
         try:
             if args.meetings and meeting.id not in args.meetings and meeting.date not in args.meetings:
@@ -337,14 +359,31 @@ def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting]
             print(f"Processing meeting '{meeting}'")
             items = processMeeting(meeting, args.base_url, args.cache_dir, force_fetch=args.force_fetch, verbose=args.verbose)
             if items is not None:
-                if final_actions is not None and meeting.id in final_actions:
-                    print(f"Found final actions for meeting '{meeting}'")
-                    postProcessItems(writers, items, final_actions[meeting.id])
-                else:
-                    if final_actions is not None:
+                ## For IQM2 meetings, final actions live in a separate JSON keyed by
+                ## meeting id then item uid.  For PrimeGov they are already on the item.
+                meeting_fa = None
+                if final_actions is not None:
+                    if meeting.id in final_actions:
+                        print(f"Found final actions for meeting '{meeting}'")
+                        meeting_fa = final_actions[meeting.id]
+                    else:
                         print_red(f"No final actions for meeting '{meeting}'")
 
-                    postProcessItems(writers, items)
+                for item_type, item_list in items.items():
+                    if item_type == 'AR':
+                        continue
+                    for item in item_list:
+                        uid = item.uid
+                        item_fa = meeting_fa.get(uid) if meeting_fa else None
+                        if uid not in seen[item_type]:
+                            seen[item_type][uid] = (item, item_fa)
+                        elif _effective_action(item, item_fa):
+                            ## This meeting recorded a vote: overwrite the final action
+                            ## on the first item so its metadata is preserved but the
+                            ## outcome reflects the most recent council decision.
+                            first_item, _ = seen[item_type][uid]
+                            first_item.final_action = item.final_action
+                            seen[item_type][uid] = (first_item, item_fa)
 
                 ## Process awaiting reports
                 if 'AR' in items:
@@ -360,6 +399,17 @@ def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting]
                 traceback.print_exc()
             if args.exit_on_error:
                 raise e
+
+    ## Flatten and write all deduplicated items
+    merged_items: Dict[str, List] = defaultdict(list)
+    merged_fa: Dict[str, Dict] = {}
+    for item_type, uid_map in seen.items():
+        for uid, (item, item_fa) in uid_map.items():
+            merged_items[item_type].append(item)
+            if item_fa is not None:
+                merged_fa[uid] = item_fa
+
+    postProcessItems(writers, merged_items, merged_fa or None)
 
 
 def postProcessItems(writers: Dict[str, csv.DictWriter], items: Dict[str, List[Any]], final_actions: Optional[Dict] = None):
