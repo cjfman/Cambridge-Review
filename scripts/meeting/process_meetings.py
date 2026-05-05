@@ -6,6 +6,7 @@ import copy
 import csv
 import datetime as dt
 import os
+import re
 import sys
 import traceback
 from collections import defaultdict
@@ -200,6 +201,9 @@ def parseArgs() -> argparse.Namespace:
 def buildRow(item: agenda.AgendaItem, hdrs: Iterable[str], final_action: Optional[agenda.FinalAction] = None, *, aggrigate_votes: bool = False) -> Dict[str, str]:
     """Make a csv row from an agenda item"""
     d = item.to_dict()
+    ## Normalize numeric vote tallies on item (e.g. "9-0-0" → "Unanimous", "8-1-0" → "Roll Call")
+    if d.get('Vote') and re.match(r'^\d+(?:-\d+)+$', d['Vote']):
+        d['Vote'] = 'Unanimous' if re.match(r'^\d+-0(-0)*$', d['Vote']) else 'Roll Call'
     action_map = {
         'yeas':    'yes',
         'nays':    'no',

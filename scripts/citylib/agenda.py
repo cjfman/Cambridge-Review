@@ -39,6 +39,14 @@ class FinalAction:
     absent:        List[str] = field(default_factory=list)
     recused:       List[str] = field(default_factory=list)
 
+    def __post_init__(self):
+        ## Normalize numeric vote tallies: "9-0-0" → "Unanimous", "8-1-0" → "Roll Call"
+        if self.vote and re.match(r'^\d+(?:-\d+)+$', self.vote):
+            if re.match(r'^\d+-0(-0)*$', self.vote):
+                self.vote = 'Unanimous'
+            else:
+                self.vote = 'Roll Call'
+
 
 class AgendaItem:
     """Abstract class"""
