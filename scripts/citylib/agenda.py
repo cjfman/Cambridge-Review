@@ -3,7 +3,7 @@
 import datetime as dt
 import re
 
-from dataclasses import dataclass ## pylint: disable=import-error,wrong-import-order
+from dataclasses import dataclass, field ## pylint: disable=import-error,wrong-import-order
 from typing import Any, Dict, List, Optional, Tuple
 
 from citylib.councillors import lookUpCouncillorName
@@ -26,6 +26,19 @@ UNSUPPORTED_TITLES = (
     "Committee Reports",
     "Communications and Reports from Other City Officers",
 )
+
+@dataclass
+class FinalAction:
+    action:        str       = ''
+    vote:          str       = ''
+    charter_right: str       = ''
+    amended:       str       = ''
+    yeas:          List[str] = field(default_factory=list)
+    nays:          List[str] = field(default_factory=list)
+    present:       List[str] = field(default_factory=list)
+    absent:        List[str] = field(default_factory=list)
+    recused:       List[str] = field(default_factory=list)
+
 
 class AgendaItem:
     """Abstract class"""
@@ -113,7 +126,7 @@ class CMA(AgendaItem):
     vote:     str
     charter_right: str  = ""
     description:   str  = ""
-    final_action:  Optional[Dict] = None
+    final_action:  Optional['FinalAction'] = None
     meeting_uid:   str  = ""
     meeting_date:  str  = ""
     notes:         str  = ""
@@ -162,7 +175,7 @@ class Application(AgendaItem):
     vote:     str
     charter_right: str  = ""
     address:       str  = ""
-    final_action:  Optional[Dict] = None
+    final_action:  Optional['FinalAction'] = None
     meeting_uid:   str  = ""
     meeting_date:  str  = ""
     notes:         str  = ""
@@ -210,7 +223,7 @@ class Communication(AgendaItem):
     meeting_uid:  str = ""
     meeting_date: str = ""
     notes:        str = ""
-    final_action: Optional[Dict] = None
+    final_action: Optional['FinalAction'] = None
 
     @property
     def type(self):
@@ -256,7 +269,7 @@ class Resolution(AgendaItem):
     action:       str  = ""
     vote:         str  = ""
     description:  str  = ""
-    final_action: Optional[Dict] = None
+    final_action: Optional['FinalAction'] = None
     meeting_uid:  str  = ""
     meeting_date: str  = ""
     notes:        str  = ""
@@ -303,7 +316,7 @@ class PolicyOrder(AgendaItem):
     amended:       str  = ""
     charter_right: str  = ""
     description:   str  = ""
-    final_action:  Optional[Dict] = None
+    final_action:  Optional['FinalAction'] = None
     meeting_uid:   str  = ""
     meeting_date:  str  = ""
     notes:         str  = ""
@@ -357,7 +370,7 @@ class Ordinance(AgendaItem):
     vote:          str  = ""
     amended:       str  = ""
     description:   str  = ""
-    final_action:  Optional[Dict] = None
+    final_action:  Optional['FinalAction'] = None
     meeting_uid:   str  = ""
     meeting_date:  str  = ""
     notes:         str  = ""
@@ -406,7 +419,7 @@ class AwaitingReport(AgendaItem):
     category:     str = ""
     policy_order: str = ""
     notes:        str = ""
-    final_action: Optional[Dict] = None
+    final_action: Optional['FinalAction'] = None
 
     @property
     def type(self):
@@ -455,7 +468,7 @@ class ItemInfo:
     awaiting:      str  = ""
     action:        str  = ""
     amended:       str  = ""
-    history:       Optional[Dict]       = None
+    history:       Optional['FinalAction'] = None
     sponsor:       Optional[List[str]]  = None
     cosponsors:    Optional[List[str]]  = None
 
@@ -600,8 +613,8 @@ def processOrd(info: 'ItemInfo', uid, num: int, title, link, vote, action) -> Or
     title = re.sub(r"(?:An? )Ordinance (?:.+ )?has been received (?:from City Clerk(?: .+)?)?,?.*?relative to ", "", title, flags=re.IGNORECASE)
 
     ## Process info
-    if info.history is not None and 'action' in info.history:
-        action = info.history['action']
+    if info.history is not None and info.history.action:
+        action = info.history.action
 
     return Ordinance(uid, link, info.cma, info.order, info.app, info.sponsor, info.cosponsors, action, vote, info.amended, title, info.history)
 

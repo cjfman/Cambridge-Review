@@ -197,7 +197,7 @@ def parseArgs() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def buildRow(item: agenda.AgendaItem, hdrs: Iterable[str], final_action: Optional[Dict] = None, *, aggrigate_votes: bool = False) -> Dict[str, str]:
+def buildRow(item: agenda.AgendaItem, hdrs: Iterable[str], final_action: Optional[agenda.FinalAction] = None, *, aggrigate_votes: bool = False) -> Dict[str, str]:
     """Make a csv row from an agenda item"""
     d = item.to_dict()
     action_map = {
@@ -209,39 +209,39 @@ def buildRow(item: agenda.AgendaItem, hdrs: Iterable[str], final_action: Optiona
     }
 
     ## Replace with found final action from item if one wasn't provided
-    replaceable = (not final_action or not final_action['action'] or final_action['action'] == "Charter Right")
-    if replaceable and item.final_action and item.final_action['vote']:
+    replaceable = (not final_action or not final_action.action or final_action.action == "Charter Right")
+    if replaceable and item.final_action and item.final_action.vote:
         if 'Outcome' in d and d['Outcome'] == "Charter Right":
             if 'Charter Right' in d and d['Charter Right']:
-                item.final_action['charter_right'] = d['Charter Right']
-            elif final_action is not None and final_action['charter_right']:
-                item.final_action['charter_right'] = final_action['charter_right']
-            elif item.final_action['charter_right']:
+                item.final_action.charter_right = d['Charter Right']
+            elif final_action is not None and final_action.charter_right:
+                item.final_action.charter_right = final_action.charter_right
+            elif item.final_action.charter_right:
                 ## This is probably a boolean, so replace it
-                item.final_action['charter_right'] = "!!!"
+                item.final_action.charter_right = "!!!"
         final_action = item.final_action
 
     ## Update with final actions
     if final_action is not None:
-        d['Vote'] = final_action['vote'] or d['Vote']
-        d['Amended'] = (('Amended' in d and d['Amended']) or final_action['amended'])
+        d['Vote'] = final_action.vote or d['Vote']
+        d['Amended'] = (('Amended' in d and d['Amended']) or final_action.amended)
         ## Update the charter righing councilor
-        if ('Charter Right' not in d or not d['Charter Right']) and final_action['charter_right']:
-            d['Charter Right'] = lookUpCouncillorName(final_action['charter_right'])
+        if ('Charter Right' not in d or not d['Charter Right']) and final_action.charter_right:
+            d['Charter Right'] = lookUpCouncillorName(final_action.charter_right)
         ## Update the final action
         #no_outcome = ('Outcome' not in d or not d['Outcome'] or d['Outcome'] == 'Charter Right')
-        if final_action['action'] and final_action['vote']:
-            d['Outcome'] = final_action['action']
+        if final_action.action and final_action.vote:
+            d['Outcome'] = final_action.action
         if d['Vote'] is None:
             if action_map:
                 d['Vote'] = "Roll Call"
             elif d['Outcome']:
                 d['Vote'] = "Voice Vote"
 
-        yeas = final_action.get('yeas', [])
-        nays = final_action.get('nays', [])
-        present = final_action.get('present', [])
-        recused = final_action.get('recused', [])
+        yeas = final_action.yeas
+        nays = final_action.nays
+        present = final_action.present
+        recused = final_action.recused
         if yeas:
             unanimous = not nays and not present and not recused
             d['Vote'] = 'Unanimous' if unanimous else 'Roll Call'
@@ -249,9 +249,9 @@ def buildRow(item: agenda.AgendaItem, hdrs: Iterable[str], final_action: Optiona
         for key, val in action_map.items():
             column = key.title()
             if aggrigate_votes:
-                d[column] = ",".join(final_action[key])
+                d[column] = ",".join(getattr(final_action, key))
             if d.get('Vote') != 'Unanimous':
-                for name in final_action[key]:
+                for name in getattr(final_action, key):
                     d[name] = val
 
     ## Check vote type
@@ -321,21 +321,21 @@ def processMeeting(meeting: agenda.Meeting, base_url, cache_dir, *, force_fetch:
     return iqm2_portal.processMeeting(meeting, base_url, cache_dir, force_fetch=force_fetch, verbose=verbose)
 
 
-def _effective_action(item, item_fa: Optional[Dict]) -> str:
+def _effective_action(item, item_fa: Optional[agenda.FinalAction]) -> str:
     """Return the resolved action string for an item.
 
     IQM2 meetings supply final actions via an external JSON (item_fa); PrimeGov
     meetings embed them on item.final_action.  Check both sources.
     """
-    if item_fa and item_fa.get('action'):
-        return item_fa['action']
+    if item_fa and item_fa.action:
+        return item_fa.action
     fa = getattr(item, 'final_action', None)
-    if fa and fa.get('action'):
-        return fa['action']
+    if fa and fa.action:
+        return fa.action
     return getattr(item, 'action', '') or ''
 
 
-def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting], writers: Dict[str, csv.DictWriter], final_actions: Optional[Dict] = None):
+def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting], writers: Dict[str, csv.DictWriter], final_actions: Optional[Dict[str, Dict[str, agenda.FinalAction]]] = None):
     num = 0
     ar_map = {}
     ## type → {uid: (first_item, latest_item_fa)}
@@ -343,7 +343,7 @@ def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting]
     ## tabled or carried over.  We emit one CSV row per uid: metadata (sponsor,
     ## description, first meeting date, …) comes from the first occurrence, while
     ## final actions are updated whenever a later meeting records a vote.
-    seen: Dict[str, Dict[str, Tuple[Any, Optional[Dict]]]] = defaultdict(dict)
+    seen: Dict[str, Dict[str, Tuple[Any, Optional[agenda.FinalAction]]]] = defaultdict(dict)
 
     for meeting in meetings:
         try:
@@ -402,7 +402,7 @@ def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting]
 
     ## Flatten and write all deduplicated items
     merged_items: Dict[str, List] = defaultdict(list)
-    merged_fa: Dict[str, Dict] = {}
+    merged_fa: Dict[str, agenda.FinalAction] = {}
     for item_type, uid_map in seen.items():
         for uid, (item, item_fa) in uid_map.items():
             merged_items[item_type].append(item)
@@ -412,7 +412,7 @@ def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting]
     postProcessItems(writers, merged_items, merged_fa or None)
 
 
-def postProcessItems(writers: Dict[str, csv.DictWriter], items: Dict[str, List[Any]], final_actions: Optional[Dict] = None):
+def postProcessItems(writers: Dict[str, csv.DictWriter], items: Dict[str, List[Any]], final_actions: Optional[Dict[str, agenda.FinalAction]] = None):
     sets = (
         ('CMA', CMA_HDRS),
         ('APP', APP_HDRS),
@@ -505,7 +505,7 @@ def setAttenance(args: argparse.Namespace, final_actions: Dict):
         #votes = ('yeas', 'nays', 'present', 'recused')
         attendance = set()
         for action in final_actions[meeting['Id']].values():
-            attendance.update(action['yeas'] + action['nays'] + action['present'] + action['recused'])
+            attendance.update(action.yeas + action.nays + action.present + action.recused)
         meeting['Attendance'] = ",".join(sorted(attendance))
 
     ## Write back to meetings file

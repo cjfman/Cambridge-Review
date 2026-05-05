@@ -32,7 +32,7 @@ def findCouncillorsInRow(row: Any) -> List[str]:
     return [lookUpCouncillorName(x.strip()) for x in councillors]
 
 
-def processHistory(history_table: Any) -> Dict[str, Any]:
+def processHistory(history_table: Any) -> Optional[agenda.FinalAction]:
     history = {}
     ## Look for a vote record
     for results_table in hp.findAllTags(history_table, 'table', 'VoteRecord'):
@@ -68,32 +68,44 @@ def processHistory(history_table: Any) -> Dict[str, Any]:
         elif 'voice' in txt:
             history['vote'] = "Voice Vote"
 
-    if history:
-        ## Set default values
-        setDefaultValue(history, "", ('action', 'vote', 'charter_right', 'amended'))
-        setDefaultValue(history, list, ('yeas', 'nays', 'recused', 'present', 'absent'))
+    if not history:
+        return None
 
-        ## Check action
-        if history['action']:
-            ## Check for amended
-            match = re.match(r"(.+) as amended", history['action'], re.IGNORECASE)
-            if match:
-                history['action'] = match.groups()[0]
-                history['amended'] = 'yes'
+    ## Set default values
+    setDefaultValue(history, "", ('action', 'vote', 'charter_right', 'amended'))
+    setDefaultValue(history, list, ('yeas', 'nays', 'recused', 'present', 'absent'))
 
-            ## Other actions
-            history['action'] = agenda.extractAction(history['action'])
+    ## Check action
+    if history['action']:
+        ## Check for amended
+        match = re.match(r"(.+) as amended", history['action'], re.IGNORECASE)
+        if match:
+            history['action'] = match.groups()[0]
+            history['amended'] = 'yes'
 
-        ## Set absence
-        if history['yeas']:
-            all_councillors = set(getCouncillorNames())
-            councillors = set(history['yeas'] + history['nays'] + history['present'])
-            history['absent'] = list(sorted(all_councillors.difference(councillors)))
+        ## Other actions
+        history['action'] = agenda.extractAction(history['action'])
 
-    return history
+    ## Set absence
+    if history['yeas']:
+        all_councillors = set(getCouncillorNames())
+        councillors = set(history['yeas'] + history['nays'] + history['present'])
+        history['absent'] = list(sorted(all_councillors.difference(councillors)))
+
+    return agenda.FinalAction(
+        action=history.get('action', ''),
+        vote=history.get('vote', ''),
+        charter_right=history.get('charter_right', '') or '',
+        amended=history.get('amended', ''),
+        yeas=history.get('yeas', []),
+        nays=history.get('nays', []),
+        present=history.get('present', []),
+        absent=history.get('absent', []),
+        recused=history.get('recused', []),
+    )
 
 
-def processFinalActions(path) -> Dict[str, Dict[str, Any]]:
+def processFinalActions(path) -> Dict[str, Dict[str, agenda.FinalAction]]:
     final_actions = None
     print(f"Opening final actions file '{path}'")
     with open(path, 'r', encoding='utf8') as f:
@@ -146,6 +158,21 @@ def processFinalActions(path) -> Dict[str, Dict[str, Any]]:
                 overlayKeys(items[action_uid], action, keys)
             else:
                 items[action_uid] = action
+
+    ## Convert action dicts to FinalAction objects
+    for meeting_dict in regrouped.values():
+        for uid, action in list(meeting_dict.items()):
+            meeting_dict[uid] = agenda.FinalAction(
+                action=action.get('action', ''),
+                vote=action.get('vote', ''),
+                charter_right=action.get('charter_right', '') or '',
+                amended=action.get('amended', ''),
+                yeas=action.get('yeas', []),
+                nays=action.get('nays', []),
+                present=action.get('present', []),
+                absent=action.get('absent', []),
+                recused=action.get('recused', []),
+            )
 
     return regrouped
 

@@ -356,17 +356,16 @@ def _parse_item_table(table: Any, template_id: str) -> Optional[agenda.AgendaIte
 
     # Embed vote result so buildRow can use it without a separate final_actions JSON
     if item is not None and (action or vote or charter_right):
-        item.final_action = {
-            'action': action,
-            'vote': vote,
-            'charter_right': charter_right,
-            'amended': amended,
-            'yeas': yeas,
-            'nays': nays,
-            'present': present,
-            'absent': absent,
-            'recused': [],
-        }
+        item.final_action = agenda.FinalAction(
+            action=action,
+            vote=vote,
+            charter_right=charter_right,
+            amended=amended,
+            yeas=yeas,
+            nays=nays,
+            present=present,
+            absent=absent,
+        )
 
     return item
 
@@ -377,20 +376,20 @@ def _apply_result_table(result_tr: Any, item: agenda.AgendaItem):
     if not r_action:
         return
 
-    existing = item.final_action or {}
-    existing_cr = r_cr or existing.get('charter_right', '') or getattr(item, 'charter_right', '')
+    existing = item.final_action
+    existing_cr = r_cr or (existing.charter_right if existing else '') or getattr(item, 'charter_right', '')
+    existing_amended = existing.amended if existing else ''
 
-    item.final_action = {
-        'action': r_action,
-        'vote': r_vote,
-        'charter_right': existing_cr,
-        'amended': r_amended or existing.get('amended', ''),
-        'yeas': r_yeas,
-        'nays': r_nays,
-        'present': r_present,
-        'absent': r_absent,
-        'recused': [],
-    }
+    item.final_action = agenda.FinalAction(
+        action=r_action,
+        vote=r_vote,
+        charter_right=existing_cr,
+        amended=r_amended or existing_amended,
+        yeas=r_yeas,
+        nays=r_nays,
+        present=r_present,
+        absent=r_absent,
+    )
 
     if hasattr(item, 'action'):
         item.action = r_action
@@ -398,8 +397,8 @@ def _apply_result_table(result_tr: Any, item: agenda.AgendaItem):
         item.vote = r_vote
     if hasattr(item, 'charter_right') and existing_cr:
         item.charter_right = existing_cr
-    if hasattr(item, 'amended') and (r_amended or existing.get('amended', '')):
-        item.amended = r_amended or existing.get('amended', '')
+    if hasattr(item, 'amended') and (r_amended or existing_amended):
+        item.amended = r_amended or existing_amended
 
 
 def processMeeting(meeting: agenda.Meeting, cache_dir, *, force_fetch: bool = False, verbose: bool = False) -> Dict[str, List[Any]]:
