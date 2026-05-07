@@ -86,6 +86,7 @@ def sync_file(
     local_path: Path,
     remote_path,
     dry_run: bool,
+    quiet: bool = False,
 ) -> bool:
     """Upload local_path to remote_path if local is newer. Returns True if uploaded (or would be)."""
     local_mtime = local_path.stat().st_mtime
@@ -94,7 +95,8 @@ def sync_file(
     if r_mtime is not None and r_mtime >= local_mtime:
         return False
 
-    print(f"{'[dry-run] ' if dry_run else ''}{'create' if r_mtime is None else 'update'}: {local_path} -> {remote_path}")
+    if not quiet:
+        print(f"{'[dry-run] ' if dry_run else ''}{'create' if r_mtime is None else 'update'}: {local_path} -> {remote_path}")
 
     if not dry_run:
         remote_dir = str(Path(remote_path).parent)
@@ -113,6 +115,7 @@ def sync_mapping(
     mapping: Dict[str, Any],
     filter_pattern: Optional[str],
     dry_run: bool,
+    quiet: bool = False,
 ) -> Tuple[int, int]:
     """Sync one mapping entry. Returns (uploaded, up_to_date) counts."""
     local_dir = PROJECT_ROOT / mapping['local']
@@ -131,7 +134,7 @@ def sync_mapping(
     up_to_date = 0
     for local_path, rel_path in files:
         remote_path = f"{remote_dir}/{rel_path}"
-        if sync_file(sftp, local_path, remote_path, dry_run):
+        if sync_file(sftp, local_path, remote_path, dry_run, quiet):
             uploaded += 1
         else:
             up_to_date += 1
@@ -174,6 +177,7 @@ def main():
     parser.add_argument('--config', default='sync_config.yaml', help='Path to config file (default: sync_config.yaml)')
     parser.add_argument('--filter', dest='filter_pattern', metavar='PATTERN', help='Bash-style wildcard filter on relative file paths, e.g. "*.html"')
     parser.add_argument('--dry-run', action='store_true', help='Print what would be transferred without actually uploading')
+    parser.add_argument('--quiet', action='store_true', help='Suppress per-file transfer log')
     args = parser.parse_args()
 
     config_path = Path(args.config)
@@ -198,7 +202,7 @@ def main():
 
     try:
         for mapping in mappings:
-            n_uploaded, n_up_to_date = sync_mapping(sftp, mapping, args.filter_pattern, args.dry_run)
+            n_uploaded, n_up_to_date = sync_mapping(sftp, mapping, args.filter_pattern, args.dry_run, args.quiet)
             uploaded += n_uploaded
             up_to_date += n_up_to_date
     finally:
