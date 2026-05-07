@@ -6,6 +6,7 @@ import fnmatch
 import os
 import socket
 import sys
+import time
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
@@ -81,18 +82,35 @@ def collect_files(
     return result
 
 
+def collect_mapping_files(
+    mapping: Dict[str, Any],
+    filter_pattern: Optional[str],
+) -> Optional[List[Tuple[Path, str]]]:
+    local_dir = PROJECT_ROOT / mapping['local']
+    if not local_dir.exists():
+        print(f"Warning: local path does not exist, skipping: {local_dir}", file=sys.stderr)
+        return None
+    if local_dir.is_file():
+        return [(local_dir, local_dir.name)]
+    files = collect_files(local_dir, filter_pattern)
+    mapping_filter = mapping.get('filter')
+    if mapping_filter:
+        files = [(p, r) for p, r in files if matches_filter(r, mapping_filter)]
+    return files
+
+
 def sync_file(
     sftp: paramiko.SFTPClient,
     local_path: Path,
     remote_path,
     dry_run: bool,
     quiet: bool = False,
+    force: bool = False,
 ) -> Optional[str]:
     """Upload local_path to remote_path if local is newer. Returns 'create', 'update', or None if up to date."""
-    local_mtime = local_path.stat().st_mtime
     r_mtime = remote_mtime(sftp, remote_path)
 
-    if r_mtime is not None and r_mtime >= local_mtime:
+    if not force and r_mtime is not None and r_mtime >= local_path.stat().st_mtime:
         return None
 
     action = 'create' if r_mtime is None else 'update'
@@ -118,30 +136,20 @@ def sync_mapping(
     filter_pattern: Optional[str],
     dry_run: bool,
     quiet: bool = False,
+    force: bool = False,
 ) -> Tuple[int, int, int]:
     """Sync one mapping entry. Returns (created, updated, up_to_date) counts."""
-    local_dir = PROJECT_ROOT / mapping['local']
     remote_dir = mapping['remote'].rstrip('/')
-
-    if not local_dir.exists():
-        print(f"Warning: local path does not exist, skipping: {local_dir}", file=sys.stderr)
+    files = collect_mapping_files(mapping, filter_pattern)
+    if files is None:
         return 0, 0, 0
-
-    mapping_filter = mapping.get('filter')
-
-    if local_dir.is_file():
-        files = [(local_dir, local_dir.name)]
-    else:
-        files = collect_files(local_dir, filter_pattern)
-        if mapping_filter:
-            files = [(p, r) for p, r in files if matches_filter(r, mapping_filter)]
 
     created = 0
     updated = 0
     up_to_date = 0
     for local_path, rel_path in files:
         remote_path = f"{remote_dir}/{rel_path}"
-        action = sync_file(sftp, local_path, remote_path, dry_run, quiet)
+        action = sync_file(sftp, local_path, remote_path, dry_run, quiet, force)
         if action == 'create':
             created += 1
         elif action == 'update':
@@ -149,6 +157,42 @@ def sync_mapping(
         else:
             up_to_date += 1
     return created, updated, up_to_date
+
+
+def touch_remote(sftp: paramiko.SFTPClient, remote_path, dry_run: bool, quiet: bool = False) -> bool:
+    """Set mtime of remote_path to now. Returns False if the file doesn't exist remotely."""
+    if remote_mtime(sftp, remote_path) is None:
+        return False
+    if not quiet:
+        print(f"{'[dry-run] ' if dry_run else ''}touch: {remote_path}")
+    if not dry_run:
+        now = time.time()
+        sftp.utime(remote_path, (now, now))
+    return True
+
+
+def touch_mapping(
+    sftp: paramiko.SFTPClient,
+    mapping: Dict[str, Any],
+    filter_pattern: Optional[str],
+    dry_run: bool,
+    quiet: bool = False,
+) -> Tuple[int, int]:
+    """Touch all remotely mapped files. Returns (touched, not_found) counts."""
+    remote_dir = mapping['remote'].rstrip('/')
+    files = collect_mapping_files(mapping, filter_pattern)
+    if files is None:
+        return 0, 0
+
+    touched = 0
+    not_found = 0
+    for local_path, rel_path in files:
+        remote_path = f"{remote_dir}/{rel_path}"
+        if touch_remote(sftp, remote_path, dry_run, quiet):
+            touched += 1
+        else:
+            not_found += 1
+    return touched, not_found
 
 
 def connect(config: Dict[str, Any]) -> paramiko.SFTPClient:
@@ -188,6 +232,8 @@ def main():
     parser.add_argument('--filter', dest='filter_pattern', metavar='PATTERN', help='Bash-style wildcard filter on relative file paths, e.g. "*.html"')
     parser.add_argument('--dry-run', action='store_true', help='Print what would be transferred without actually uploading')
     parser.add_argument('--quiet', action='store_true', help='Suppress per-file transfer log')
+    parser.add_argument('--force', action='store_true', help='Upload all files regardless of modification time')
+    parser.add_argument('--touch-all', action='store_true', help='Touch all remote files to prevent re-syncing on next run')
     args = parser.parse_args()
 
     config_path = Path(args.config)
@@ -207,25 +253,30 @@ def main():
         print("[dry-run] No files will be transferred.\n")
 
     sftp = connect(config)
-    created = 0
-    updated = 0
-    up_to_date = 0
+    dry_txt = '[dry-run] ' if args.dry_run else ''
+    would_txt = 'would ' if args.dry_run else ''
 
     try:
-        for mapping in mappings:
-            n_created, n_updated, n_up_to_date = sync_mapping(sftp, mapping, args.filter_pattern, args.dry_run, args.quiet)
-            created += n_created
-            updated += n_updated
-            up_to_date += n_up_to_date
+        if args.touch_all:
+            touched = 0
+            not_found = 0
+            for mapping in mappings:
+                n_touched, n_not_found = touch_mapping(sftp, mapping, args.filter_pattern, args.dry_run, args.quiet)
+                touched += n_touched
+                not_found += n_not_found
+            print(f"\n{dry_txt}{would_txt}touch {touched}, {not_found} not found remotely.")
+        else:
+            created = 0
+            updated = 0
+            up_to_date = 0
+            for mapping in mappings:
+                n_created, n_updated, n_up_to_date = sync_mapping(sftp, mapping, args.filter_pattern, args.dry_run, args.quiet, args.force)
+                created += n_created
+                updated += n_updated
+                up_to_date += n_up_to_date
+            print(f"\n{dry_txt}{would_txt}create {created}, {would_txt}update {updated}, {up_to_date} already up to date.")
     finally:
         sftp.close()
-
-    dry_txt = ''
-    would_txt = ''
-    if args.dry_run:
-        dry_txt = '[dry-run] '
-        would_txt = 'would '
-    print(f"\n{dry_txt}{would_txt}create {created}, {would_txt}update {updated}, {up_to_date} already up to date.")
 
 
 if __name__ == '__main__':
