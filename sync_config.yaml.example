@@ -1,0 +1,28 @@
+# Sync configuration for sync_to_remote.py
+# Copy this file to sync_config.yaml and fill in your credentials.
+# sync_config.yaml is gitignored — do not commit it.
+
+host: example.com
+port: 22          # default 22; cPanel servers often also expose SFTP on a custom port
+username: cpaneluser
+
+# Authenticate with password OR private key (comment out the one you don't use)
+password: yourpassword
+# private_key: ~/.ssh/id_rsa
+
+# Map local directories (relative to project root) to remote absolute paths.
+# Each entry syncs the contents of `local` into `remote`.
+# An optional `filter` key restricts which files are synced for that entry (bash-style wildcard).
+mappings:
+  - local: charts/city_council/sankey/html/
+    remote: public_html/election-charts/city-council/
+
+  - local: maps/wards/
+    remote: public_html/election-maps/city-council/
+
+  - local: charts/filers/reports/
+    remote: public_html/candidate-data/report-charts/
+
+  - local: charts/filers/reports/
+    remote: public_html/images/candidate-data/reports/
+    filter: "*.png"
