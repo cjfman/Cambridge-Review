@@ -226,7 +226,7 @@ def connect(config: Dict[str, Any]) -> paramiko.SFTPClient:
     return ssh.open_sftp()
 
 
-def main():
+def make_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description='Sync files to a remote cPanel server via SFTP')
     parser.add_argument('--config', default='sync_config.yaml', help='Path to config file (default: sync_config.yaml)')
     parser.add_argument('--filter', dest='filter_pattern', metavar='PATTERN', help='Bash-style wildcard filter on relative file paths, e.g. "*.html"')
@@ -234,7 +234,11 @@ def main():
     parser.add_argument('--quiet', action='store_true', help='Suppress per-file transfer log')
     parser.add_argument('--force', action='store_true', help='Upload all files regardless of modification time')
     parser.add_argument('--touch-all', action='store_true', help='Touch all remote files to prevent re-syncing on next run')
-    args = parser.parse_args()
+    return parser
+
+
+def main():
+    args = make_parser().parse_args()
 
     config_path = Path(args.config)
     if not config_path.is_absolute():
