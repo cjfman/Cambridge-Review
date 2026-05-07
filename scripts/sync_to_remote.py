@@ -237,6 +237,45 @@ def make_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def run_sync(
+    sftp: paramiko.SFTPClient,
+    mappings: List[Dict[str, Any]],
+    filter_pattern: Optional[str],
+    dry_run: bool,
+    quiet: bool = False,
+    force: bool = False,
+):
+    created = 0
+    updated = 0
+    up_to_date = 0
+    for mapping in mappings:
+        n_created, n_updated, n_up_to_date = sync_mapping(sftp, mapping, filter_pattern, dry_run, quiet, force)
+        created += n_created
+        updated += n_updated
+        up_to_date += n_up_to_date
+    dry_txt = '[dry-run] ' if dry_run else ''
+    would_txt = 'would ' if dry_run else ''
+    print(f"\n{dry_txt}{would_txt}create {created}, {would_txt}update {updated}, {up_to_date} already up to date.")
+
+
+def run_touch_all(
+    sftp: paramiko.SFTPClient,
+    mappings: List[Dict[str, Any]],
+    filter_pattern: Optional[str],
+    dry_run: bool,
+    quiet: bool = False,
+):
+    touched = 0
+    not_found = 0
+    for mapping in mappings:
+        n_touched, n_not_found = touch_mapping(sftp, mapping, filter_pattern, dry_run, quiet)
+        touched += n_touched
+        not_found += n_not_found
+    dry_txt = '[dry-run] ' if dry_run else ''
+    would_txt = 'would ' if dry_run else ''
+    print(f"\n{dry_txt}{would_txt}touch {touched}, {not_found} not found remotely.")
+
+
 def main():
     args = make_parser().parse_args()
 
@@ -257,28 +296,11 @@ def main():
         print("[dry-run] No files will be transferred.\n")
 
     sftp = connect(config)
-    dry_txt = '[dry-run] ' if args.dry_run else ''
-    would_txt = 'would ' if args.dry_run else ''
-
     try:
         if args.touch_all:
-            touched = 0
-            not_found = 0
-            for mapping in mappings:
-                n_touched, n_not_found = touch_mapping(sftp, mapping, args.filter_pattern, args.dry_run, args.quiet)
-                touched += n_touched
-                not_found += n_not_found
-            print(f"\n{dry_txt}{would_txt}touch {touched}, {not_found} not found remotely.")
+            run_touch_all(sftp, mappings, args.filter_pattern, args.dry_run, args.quiet)
         else:
-            created = 0
-            updated = 0
-            up_to_date = 0
-            for mapping in mappings:
-                n_created, n_updated, n_up_to_date = sync_mapping(sftp, mapping, args.filter_pattern, args.dry_run, args.quiet, args.force)
-                created += n_created
-                updated += n_updated
-                up_to_date += n_up_to_date
-            print(f"\n{dry_txt}{would_txt}create {created}, {would_txt}update {updated}, {up_to_date} already up to date.")
+            run_sync(sftp, mappings, args.filter_pattern, args.dry_run, args.quiet, args.force)
     finally:
         sftp.close()
 
