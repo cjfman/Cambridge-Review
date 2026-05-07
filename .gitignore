@@ -17,4 +17,5 @@ processed/*
 tmp/
 credentials/
 google_credentials/
+sync_config.yaml
 charts/filers/reports/*.png
