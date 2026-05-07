@@ -194,7 +194,7 @@ def main():
     if not config_path.is_absolute():
         config_path = PROJECT_ROOT / config_path
     if not config_path.exists():
-        print(f"Error: config file not found: {config_path}", file=sys.stderr)
+        print(f"Error: config file not found: {config_path} (use --config to specify a path)", file=sys.stderr)
         sys.exit(1)
 
     config = load_config(config_path)
@@ -220,8 +220,12 @@ def main():
     finally:
         sftp.close()
 
-    prefix = '[dry-run] would ' if args.dry_run else ''
-    print(f"\n{prefix}create {created}, {prefix}update {updated}, {up_to_date} already up to date.")
+    dry_txt = ''
+    would_txt = ''
+    if args.dry_run:
+        dry_txt = '[dry-run] '
+        would_txt = 'would '
+    print(f"\n{dry_txt}{would_txt}create {created}, {would_txt}update {updated}, {up_to_date} already up to date.")
 
 
 if __name__ == '__main__':
