@@ -38,14 +38,17 @@ Called automatically by `plot_all_charts.sh` and `draw_all_maps.sh`; must be cal
 
 ## Important prior sessions
 
-44fa7ed7 (largest, 1241 lines)
+44fa7ed7-9eb9-4662-b559-987bc5953f23
 The foundational session — analyzed the codebase, created CLAUDE.md, and built the PrimeGov portal integration (primegov_portal.py)
 to replace the old IQM2-only meeting pipeline. Ran out of context and was continued twice.
 
-33f53b89
+33f53b89-9afd-42a5-a7c0-5354604e98e8
 Refactored find_meetings.py to use iqm2/primegov subcommands; fixed _parse_vote_text treating "PASSED TO A SECOND READING" as
 "Passed"; removed unused return values from that function; fixed malformed settings.json.
 
-43630346
-Added type hints to process_meetings.py and the scripts/citylib module. This is the session you were looking for regarding type hint
-preferences.
+43630346-e6ac-4e1f-b769-8ea18e082e7a
+Added type hints to process_meetings.py and the scripts/citylib module.
+
+89dc3315-c344-4a19-9c5c-4e839319ee8a
+Created a new script `sync_to_remote.py` to assist with syncing charts and images to a remote cPanel server
+
