@@ -87,16 +87,18 @@ def sync_file(
     remote_path,
     dry_run: bool,
     quiet: bool = False,
-) -> bool:
-    """Upload local_path to remote_path if local is newer. Returns True if uploaded (or would be)."""
+) -> Optional[str]:
+    """Upload local_path to remote_path if local is newer. Returns 'create', 'update', or None if up to date."""
     local_mtime = local_path.stat().st_mtime
     r_mtime = remote_mtime(sftp, remote_path)
 
     if r_mtime is not None and r_mtime >= local_mtime:
-        return False
+        return None
+
+    action = 'create' if r_mtime is None else 'update'
 
     if not quiet:
-        print(f"{'[dry-run] ' if dry_run else ''}{'create' if r_mtime is None else 'update'}: {local_path} -> {remote_path}")
+        print(f"{'[dry-run] ' if dry_run else ''}{action}: {local_path} -> {remote_path}")
 
     if not dry_run:
         remote_dir = str(Path(remote_path).parent)
@@ -105,9 +107,9 @@ def sync_file(
             sftp.put(str(local_path), remote_path)
         except (FileNotFoundError, IOError) as e:
             print(f"Error uploading {local_path}: {e}", file=sys.stderr)
-            return False
+            return None
 
-    return True
+    return action
 
 
 def sync_mapping(
@@ -116,29 +118,37 @@ def sync_mapping(
     filter_pattern: Optional[str],
     dry_run: bool,
     quiet: bool = False,
-) -> Tuple[int, int]:
-    """Sync one mapping entry. Returns (uploaded, up_to_date) counts."""
+) -> Tuple[int, int, int]:
+    """Sync one mapping entry. Returns (created, updated, up_to_date) counts."""
     local_dir = PROJECT_ROOT / mapping['local']
     remote_dir = mapping['remote'].rstrip('/')
 
     if not local_dir.exists():
         print(f"Warning: local path does not exist, skipping: {local_dir}", file=sys.stderr)
-        return 0, 0
+        return 0, 0, 0
+
+    mapping_filter = mapping.get('filter')
 
     if local_dir.is_file():
         files = [(local_dir, local_dir.name)]
     else:
         files = collect_files(local_dir, filter_pattern)
+        if mapping_filter:
+            files = [(p, r) for p, r in files if matches_filter(r, mapping_filter)]
 
-    uploaded = 0
+    created = 0
+    updated = 0
     up_to_date = 0
     for local_path, rel_path in files:
         remote_path = f"{remote_dir}/{rel_path}"
-        if sync_file(sftp, local_path, remote_path, dry_run, quiet):
-            uploaded += 1
+        action = sync_file(sftp, local_path, remote_path, dry_run, quiet)
+        if action == 'create':
+            created += 1
+        elif action == 'update':
+            updated += 1
         else:
             up_to_date += 1
-    return uploaded, up_to_date
+    return created, updated, up_to_date
 
 
 def connect(config: Dict[str, Any]) -> paramiko.SFTPClient:
@@ -197,19 +207,21 @@ def main():
         print("[dry-run] No files will be transferred.\n")
 
     sftp = connect(config)
-    uploaded = 0
+    created = 0
+    updated = 0
     up_to_date = 0
 
     try:
         for mapping in mappings:
-            n_uploaded, n_up_to_date = sync_mapping(sftp, mapping, args.filter_pattern, args.dry_run, args.quiet)
-            uploaded += n_uploaded
+            n_created, n_updated, n_up_to_date = sync_mapping(sftp, mapping, args.filter_pattern, args.dry_run, args.quiet)
+            created += n_created
+            updated += n_updated
             up_to_date += n_up_to_date
     finally:
         sftp.close()
 
-    verb = 'would upload' if args.dry_run else 'uploaded'
-    print(f"\n{uploaded} file(s) {verb}, {up_to_date} already up to date.")
+    prefix = '[dry-run] would ' if args.dry_run else ''
+    print(f"\n{prefix}create {created}, {prefix}update {updated}, {up_to_date} already up to date.")
 
 
 if __name__ == '__main__':
