@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://cambridgema.primegov.com/*\")",
+      "Bash(/usr/bin/curl -s \"https://cambridgema.primegov.com/*\")",
+      "Bash(curl -s \"https://portal-cambridgema.primegov.com/*\")",
+      "Bash(/usr/bin/curl -s \"https://portal-cambridgema.primegov.com/*\")",
+      "Bash(ssh -i ~/.ssh/charles-mbp -p 19199 franklin@franklin.cx *)"
+    ]
+  }
+}

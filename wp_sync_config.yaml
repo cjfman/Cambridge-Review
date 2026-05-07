@@ -1,0 +1,35 @@
+# Sync configuration for sync_to_remote.py
+# Copy this file to sync_config.yaml and fill in your credentials.
+# sync_config.yaml is gitignored — do not commit it.
+
+host: franklin.cx
+port: 19199          # default 22; cPanel servers often also expose SFTP on 22 or a custom port
+username: franklin
+
+# Authenticate with password OR private key (comment out the one you don't use)
+#password: yourpassword
+private_key: ~/.ssh/charles-mbp
+
+# Map local directories (relative to project root) to remote absolute paths.
+# Each entry syncs the contents of `local` into `remote`.
+mappings:
+  # Election charts - interactive HTML
+  - local: charts/city_council/sankey/html/
+    remote: public_html/election-charts/city-council/
+  - local: charts/school_committee/sankey/html/
+    remote: public_html/election-charts/school-committee/
+
+  # Election maps
+  - local: maps/wards/
+    remote: public_html/election-maps/city-council/
+  - local: maps/ward_diffs/
+    remote: public_html/election-maps/ward_diffs/
+
+  # Candidate / campaign finance data
+  - local: maps/contributions/
+    remote: public_html/candidate-data/contribution-maps/
+  - local: charts/filers/reports/
+    remote: public_html/candidate-data/report-charts/
+  - local: charts/filers/reports/
+    remote: public_html/images/candidate-data/reports/
+    filter: "*.png"
