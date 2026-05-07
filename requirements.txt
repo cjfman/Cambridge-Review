@@ -16,3 +16,4 @@ Requests>=2.33.1
 Shapely>=2.1.2
 termcolor>=3.3.0
 paramiko>=3.0.0
+pathspec>=0.12.0

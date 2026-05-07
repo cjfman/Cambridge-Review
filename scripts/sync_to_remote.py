@@ -11,12 +11,14 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 import paramiko
+import pathspec
 import yaml
 
 PROJECT_ROOT = Path(__file__).parent.parent.absolute()
 
 SKIP_NAMES = {'.DS_Store', '__pycache__', 'Thumbs.db', '.git'}
 SKIP_EXTENSIONS = {'.pyc', '.pyo'}
+IGNORE_SPEC: Optional[pathspec.PathSpec] = None
 
 
 def should_skip(path: Path) -> bool:
@@ -63,6 +65,10 @@ def ensure_remote_dir(sftp: paramiko.SFTPClient, remote_dir):
             sftp.mkdir(segment)
 
 
+def _ignore_matches(rel_path) -> bool:
+    return IGNORE_SPEC is not None and IGNORE_SPEC.match_file(rel_path)
+
+
 def collect_files(
     local_root: Path,
     filter_pattern: Optional[str],
@@ -70,13 +76,15 @@ def collect_files(
     result = []
     for dirpath, dirnames, filenames in os.walk(local_root):
         dirpath_obj = Path(dirpath)
-        dirnames[:] = [d for d in dirnames if not should_skip(Path(d))]
+        rel_dir = str(dirpath_obj.relative_to(local_root)).replace(os.sep, '/')
+        prefix = '' if rel_dir == '.' else rel_dir + '/'
+        dirnames[:] = [d for d in dirnames if not should_skip(Path(d)) and not _ignore_matches(prefix + d + '/')]
         for filename in filenames:
             file_path = dirpath_obj / filename
             if should_skip(file_path):
                 continue
-            rel_path = str(file_path.relative_to(local_root)).replace(os.sep, '/')
-            if not matches_filter(rel_path, filter_pattern):
+            rel_path = prefix + filename
+            if _ignore_matches(rel_path) or not matches_filter(rel_path, filter_pattern):
                 continue
             result.append((file_path, rel_path))
     return result
@@ -287,6 +295,12 @@ def main():
         sys.exit(1)
 
     config = load_config(config_path)
+
+    global IGNORE_SPEC
+    ignore_patterns = config.get('ignore', [])
+    if ignore_patterns:
+        IGNORE_SPEC = pathspec.PathSpec.from_lines('gitwildmatch', ignore_patterns)
+
     mappings = config.get('mappings', [])
     if not mappings:
         print("Error: no mappings defined in config.", file=sys.stderr)
