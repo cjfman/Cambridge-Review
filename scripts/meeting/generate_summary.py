@@ -35,6 +35,8 @@ def make_parser():
         help='YAML file of hand-curated example mappings to use as style examples with --summarize')
     parser.add_argument('--verbose', '-v', action='store_true',
         help='Print the Claude prompt to stderr')
+    parser.add_argument('--debug', action='store_true',
+        help='Print the Claude prompt and exit without calling the API')
     return parser
 
 
@@ -297,10 +299,13 @@ def main():
         print(f"Warning: no meeting found for date {args.date}", file=sys.stderr)
 
     client, summarize_prompt = None, ''
-    if args.summarize:
+    if args.summarize or args.debug:
         client, summarize_prompt = build_client_and_prompt(args)
         if args.verbose:
             print(summarize_prompt, file=sys.stderr)
+        if args.debug:
+            print(summarize_prompt)
+            return
 
     content = generate_summary(
         args.directory, args.date, meeting_url,
