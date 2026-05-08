@@ -3,9 +3,12 @@
 import argparse
 import csv
 import os
+import random
 import re
 import sys
 from typing import Any, Dict, Iterable, List, Optional, Tuple
+
+import yaml
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
@@ -28,6 +31,8 @@ def make_parser():
         help='Rewrite item summaries using Claude to be more concise and natural')
     parser.add_argument('--examples',
         help='Directory of summary markdown files to use as style examples with --summarize')
+    parser.add_argument('--examples-config',
+        help='YAML file of hand-curated example mappings to use as style examples with --summarize')
     parser.add_argument('--verbose', '-v', action='store_true',
         help='Print the Claude prompt to stderr')
     return parser
@@ -111,6 +116,24 @@ def load_examples(summaries_dir, uid_map: Dict[str, str], max_examples: int = 12
                 examples.append((uid_map.get(uid), written))
                 if len(examples) >= max_examples:
                     break
+    return examples
+
+
+def load_yaml_examples(config_path) -> List[Tuple[Optional[str], str]]:
+    with open(config_path, encoding='utf8') as f:
+        config = yaml.safe_load(f)
+
+    size = config.get('size', 3)
+    by_category: Dict[str, List[Tuple[Optional[str], str]]] = {}
+    for m in config.get('mappings', []):
+        uid = m.get('uid', '')
+        category = (m.get('category') or '').strip() or (uid.split()[0] if uid else 'other')
+        pair: Tuple[Optional[str], str] = (m.get('original') or None, m.get('summary', ''))
+        by_category.setdefault(category, []).append(pair)
+
+    examples: List[Tuple[Optional[str], str]] = []
+    for cat_examples in by_category.values():
+        examples.extend(random.sample(cat_examples, min(size, len(cat_examples))))
     return examples
 
 
@@ -258,9 +281,11 @@ def build_client_and_prompt(args: argparse.Namespace) -> Tuple[Any, str]:
     import anthropic
     client = anthropic.Anthropic()
     examples: List[Tuple[Optional[str], str]] = []
+    if args.examples_config:
+        examples.extend(load_yaml_examples(args.examples_config))
     if args.examples:
         uid_map = load_uid_summaries(args.directory)
-        examples = load_examples(args.examples, uid_map)
+        examples.extend(load_examples(args.examples, uid_map))
     return client, build_summarize_prompt(examples)
 
 
