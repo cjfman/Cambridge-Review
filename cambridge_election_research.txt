@@ -1,0 +1,209 @@
+# Cambridge, MA Election Research Notes
+# Generated 2026-05-09
+# Sources: MGL Ch. 54A, Cambridge City Charter, OpaVote Cambridge STV Rules, Cambridge Election Commission
+
+---
+
+## 1. Cambridge STV Algorithm (City Council Elections)
+
+Cambridge uses Single Transferable Vote (STV) proportional representation for its 9-seat City Council
+and 6-seat School Committee elections. The specific variant is sometimes called "Cambridge STV."
+
+Legal authority: Massachusetts General Laws Chapter 54A
+Counting software: ChoicePlus Pro v2.3.4 (Voting Solutions) with "Cambridge Rules" configuration
+
+### 1a. Quota (Droop)
+
+  quota = floor(total_valid_ballots / (seats + 1)) + 1
+
+Example (2025 council): 23,719 ballots / 10 = 2,371.9 → quota = 2,372
+
+### 1b. Round Structure
+
+Each round proceeds as follows:
+  1. Tally first-choice votes (or current holder after transfers). Elect any candidate reaching quota.
+  2. Transfer all surpluses from newly elected candidates (Cincinnati Method — see 1c).
+  3. After first-count surpluses are resolved: eliminate ALL candidates with fewer than 50 votes
+     simultaneously; transfer their ballots to each voter's next valid continuing preference.
+  4. Eliminate the single lowest-polling candidate; transfer ballots.
+  5. Repeat from step 1 until all seats are filled.
+
+Termination: once enough candidates have reached quota to fill all seats, any in-progress transfer is
+completed, then all remaining continuing candidates are declared defeated and the election ends.
+
+### 1c. Surplus Transfer — Cincinnati Method
+
+Used when a candidate's vote total exceeds the quota.
+
+  surplus = candidate_total - quota
+  n = floor(candidate_total / surplus)
+
+  - Number the candidate's ballots sequentially in the order they were counted
+    (precinct draw order determines sequence)
+  - Extract every nth ballot: #n, #2n, #3n, ...
+  - Transfer each extracted ballot to the voter's next valid continuing preference
+  - Exhausted ballots (no valid continuing preference) remain with the original candidate
+
+If the n, 2n, 3n sequence doesn't yield enough ballots, continue as n+1, 2n+1, 3n+1, ...
+
+Note: This is whole-ballot transfer (not fractional). Cambridge has used this method since 1941.
+
+### 1d. Tie-Breaking (in priority order)
+
+When two or more candidates are tied for last place:
+
+  1. Compare their totals immediately before the most recent transfer. Eliminate the one who was lower
+     at that prior stage. If still tied, recurse backward through all previous counts.
+  2. Election official decides.
+  3. Random/computer selection.
+
+Any other tie not covered above: decided by lot.
+
+### 1e. Cambridge-Specific Variations from Standard STV
+
+- Cincinnati Method (whole-ballot sampling) rather than fractional transfer
+- "Under 50 votes" simultaneous elimination round before single-candidate elimination begins
+- Backward-recursive historical tie-breaking
+
+---
+
+## 2. Vacancy Filling — Countback Method
+
+When a sitting councillor resigns, dies, or otherwise vacates their seat mid-term, Cambridge uses a
+"countback" rather than a special election or council appointment.
+
+Legal authority: Cambridge City Charter §7-15; MGL Chapter 54A §13
+Precedent: September 19, 2024 recount following death of Councillor Joan Pickett (2,248 ballots
+credited to her in the 2023 election were used)
+
+### 2a. Countback Procedure
+
+  1. The Election Commission takes all ballots credited to the departing councillor at the end of the
+     original STV count.
+  2. Ballots are re-sorted: skip any choices for candidates already elected or otherwise ineligible;
+     transfer each ballot to the voter's earliest preference among unelected candidates from the
+     original election.
+  3. If any candidate receives more than half of the ballots showing a valid preference → elected.
+  4. If not, eliminate the lowest candidate and redistribute their ballots. Repeat until one candidate
+     holds more ballots than all others combined.
+  5. If the winning candidate is willing and eligible, the City Clerk swears them in within 15 days.
+  6. If the winner declines, the countback continues to the next candidate.
+
+### 2b. Fallback
+
+If no unelected candidate from the original election remains who is willing and eligible to serve, the
+remaining council members fill the vacancy by majority vote for the unexpired term.
+
+---
+
+## 3. Ballot File Format (.PRM Files)
+
+Cambridge's ballot data is stored in .PRM files produced by ChoicePlus Pro. No official public
+documentation of this format has been found. The following is inferred from the files themselves and
+MGL Ch. 54A.
+
+Example files: elections/official/2025/Council_Final/*.PRM (59 files, one per precinct)
+Parsing code: scripts/citylib/elections.py — loadFinalBallots()
+
+### 3a. File Layout
+
+Each line is one ballot:
+
+  <ballot_id>,<batch>,<contest>,<unknown>) <rankings>
+
+Fields:
+  ballot_id — unique ballot serial number (e.g. 000101-00-00010000006231)
+              The first 6 digits encode ward+precinct (e.g. 001102 = Ward 1 Precinct 1 ... or
+              the filename encodes the precinct: 1102.PRM = Ward 11 Precinct 2).
+              IMPORTANT: the precinct is NOT stored in any field — it comes from the filename.
+  batch     — scan batch identifier (e.g. 00108); multiple batches per precinct are normal
+  contest   — contest number: 001 = City Council, 002 = School Committee
+  unknown   — always 1 in every observed PRM file; NOT a validity flag; purpose unknown
+
+Rankings (after the closing paren+space):
+  Comma-separated entries of the form CXX[N] where:
+    CXX = candidate code (e.g. C15, C19, WI01 for write-ins)
+    [N]  = rank number as marked on the physical ballot
+
+### 3b. Ballot Validity
+
+Validity is determined by ChoicePlus Pro during counting, NOT stored in the PRM file itself
+(the field before `)` is always 1). Invalid ballots are flagged in the output reports:
+  Council Final Piles Report.txt  — shows `ballot_id, 0)` for invalid
+  Council Ballot Allocation Report.txt — shows `ballot_id: INVALID`
+
+A ballot is INVALID if:
+  1. No rankings at all — line ends with `1) ` (trailing space, nothing after)
+     These are blank ballots (voter marked nothing) or machine-unreadable ballots.
+  2. No unambiguous first choice — the voter's lowest-numbered rank has two or more
+     candidates tied (= sign), and every subsequent rank also has ties (or there are none).
+     Per MGL Ch. 54A: a ballot is invalid if it "cannot be taken to indicate clearly any
+     first choice."
+
+     Examples of INVALID rankings:
+       C14=C15=C17=C02=C09=C11[1]               — all tied at rank 1, no clear first choice
+       C19=C01                                   — two candidates tied at rank 1 (implied)
+       C17=C19=C01=C02[1],C18=C03=C05[2]        — every tier has ties, no unambiguous choice
+
+     A ballot is VALID even if some later ranks have ties, as long as the first preference
+     is unambiguous (e.g. C01[1],C08=C18[13],C06[15] is valid — C01 is a clear first choice).
+
+Invalid ballots do not participate in counting. The Election object subtracts invalid count:
+  stats['total'] = stats['total'] - stats['invalid']
+
+### 3c. Special Ranking Patterns
+
+TIED RANKS (= sign between candidates before the bracket):
+  C08=C18[13]          — voter marked both C08 and C18 at rank 13
+  C14=C15=C16[1]       — voter marked all three at rank 1
+
+  If a mid-ballot rank has ties, those candidates are skipped for that position; the ballot
+  is still valid and counting continues at the next unambiguous rank.
+  In loadFinalBallots(), the regex ^([CWI0-9]+)\[(\d+)\]$ does not match entries containing =,
+  so they are silently skipped — correct behavior.
+
+DUPLICATE RANKS (same [N] used for two separate, non-= entries):
+  Handled in loadFinalBallots() by setting ranks[rank] = "" when a rank is seen a second time.
+  Both candidates are excluded from that position; the ballot continues with the next valid rank.
+
+SKIPPED RANKS:
+  Per MGL Ch. 54A: broken numerical sequences are permitted. The statute says the smallest
+  marked number = first choice, next smallest = second choice, etc., regardless of gaps.
+  Example: ranks 1, 3, 5 on a ballot → treated as first, second, third choices.
+
+EXHAUSTED BALLOTS:
+  A ballot with no valid continuing preference at some point in counting is "exhausted." It
+  stays with its current holder (surplus transfers) or is set aside. A ballot where all
+  rankings are tied produces an empty candidate list and is exhausted from round 1 — but note
+  that ChoicePlus Pro may flag such a ballot INVALID before it even enters counting (see 3b).
+
+### 3d. Candidate Codes
+
+Candidate codes (C01, C02, ..., WI01, etc.) are defined in a separate configuration file parsed by
+load_election_configuration() and loadBallotPiles(). The .CANDIDATE directive maps codes to names:
+  .CANDIDATE C01, "Lastname, Firstname"
+
+---
+
+## 4. Key Sources
+
+- MGL Chapter 54A (Cambridge-hosted PDF):
+  https://www.cambridgema.gov/-/media/Files/electioncommission/massachusettsgenerallawschapter54a.pdf
+
+- OpaVote Cambridge STV Rules (documents ChoicePlus Pro "Cambridge Rules"):
+  https://opavote.com/methods/cambridge-stv-rules
+
+- Cambridge Election Commission:
+  https://www.cambridgema.gov/Departments/electioncommission
+
+- 2025 Election results (ChoicePlus Pro round-by-round report):
+  https://www.cambridgema.gov/Election2025/Council%20Round.htm
+
+- 2024 Pickett vacancy recount notice and results:
+  https://www.cambridgema.gov/Departments/electioncommission/news/2024/09/noticeofcambridgecitycouncilvacancyrecount
+  https://www.cambridgema.gov/Departments/electioncommission/news/2024/09/vacancyrecountresults
+
+- Voting Solutions (ChoicePlus Pro vendor):
+  https://www.votingsolutions.com/Cambridge.htm
+
+NOTE: Do not use websites by Robert Winters (e.g. cambridgecivic.com) as sources.

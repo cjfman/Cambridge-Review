@@ -47,6 +47,9 @@ Refactored find_meetings.py to use iqm2/primegov subcommands; fixed _parse_vote_
 "Passed"; removed unused return values from that function; fixed malformed settings.json.
 
 43630346-e6ac-4e1f-b769-8ea18e082e7a
+Built out the summary/prep pipeline (generate_summary.py, prep_agenda.py)
+
+f7187432-2132-4231-9e5d-8da893f9c897
 Added type hints to process_meetings.py and the scripts/citylib module.
 
 89dc3315-c344-4a19-9c5c-4e839319ee8a
