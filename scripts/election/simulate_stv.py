@@ -1,6 +1,7 @@
 #! /usr/bin/python3
 
 import argparse
+import random
 import re
 import sys
 from collections import defaultdict
@@ -24,6 +25,10 @@ def make_parser() -> argparse.ArgumentParser:
                              "matching ChoicePlus Pro's count structure)")
     parser.add_argument("--verbose", "-v", action="store_true",
                         help="Show per-candidate transfer counts each round")
+    parser.add_argument("--randomize-order", action="store_true",
+                        help="Shuffle ballot order before counting (affects Cincinnati surplus sampling)")
+    parser.add_argument("--seed", type=int,
+                        help="Random seed for --randomize-order (for reproducibility)")
     parser.add_argument("--compare-piles",
                         help="Path to official Final Piles Report.txt; cross-tabulate final ballot assignments")
     return parser
@@ -462,6 +467,12 @@ def main(args: argparse.Namespace) -> int:
 
     ballots = load_ballots(chp_path.parent, include_files, code_to_name)
     candidates = list(code_to_name.values())
+
+    if args.randomize_order:
+        rng = random.Random(args.seed)
+        rng.shuffle(ballots)
+        seed_note = f" (seed={args.seed})" if args.seed is not None else ""
+        print(f"Ballot order randomized{seed_note}", file=sys.stderr)
 
     elected, final_piles = run_election(
         ballots, candidates, seats,
