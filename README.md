@@ -167,3 +167,4 @@ Requires `sync_config.yaml` (gitignored). Copy `sync_config.yaml.example` and fi
 | `maps/` | Generated ward and contribution maps |
 | `wp_html/` | Generated WordPress post HTML |
 | `credentials/` | API keys (gitignored) |
+| `configs/` | Common configurations |
