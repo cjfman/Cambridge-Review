@@ -339,7 +339,7 @@ def _effective_action(item, item_fa: Optional[agenda.FinalAction]) -> str:
     return getattr(item, 'action', '') or ''
 
 
-def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting], writers: Dict[str, csv.DictWriter], final_actions: Optional[Dict[str, Dict[str, agenda.FinalAction]]] = None):
+def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting], writers: Dict[str, csv.DictWriter], final_actions: Optional[Dict[str, Dict[str, agenda.FinalAction]]] = None) -> int:
     num = 0
     ar_map = {}
     ## type → {uid: (first_item, latest_item_fa)}
@@ -413,10 +413,10 @@ def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting]
             if item_fa is not None:
                 merged_fa[uid] = item_fa
 
-    postProcessItems(writers, merged_items, merged_fa or None)
+    return postProcessItems(writers, merged_items, merged_fa or None)
 
 
-def postProcessItems(writers: Dict[str, csv.DictWriter], items: Dict[str, List[Any]], final_actions: Optional[Dict[str, agenda.FinalAction]] = None):
+def postProcessItems(writers: Dict[str, csv.DictWriter], items: Dict[str, List[Any]], final_actions: Optional[Dict[str, agenda.FinalAction]] = None) -> int:
     sets = (
         ('CMA', CMA_HDRS),
         ('APP', APP_HDRS),
@@ -436,6 +436,7 @@ def postProcessItems(writers: Dict[str, csv.DictWriter], items: Dict[str, List[A
     msg = " ".join([f"{k}:{len(v)}" for k, v in items.items() if k in types])
     total = sum([len(v) for k, v in items.items() if k in types])
     print_green(f"Wrote {total} items. {msg}")
+    return total
 
 
 def setupOutputFiles(output_dir) -> Optional[Tuple[Dict[str, IO], Dict[str, csv.DictWriter]]]:
@@ -591,6 +592,7 @@ def main(args: argparse.Namespace) -> int:
     ## Meetings and final actions
     output_files = None
     final_actions = None
+    items_written = 0
     if args.final_actions:
         final_actions = iqm2_portal.processFinalActions(args.final_actions)
 
@@ -603,7 +605,7 @@ def main(args: argparse.Namespace) -> int:
             if output_files is None:
                 return 1
 
-            processMeetings(args, meetings, writers, final_actions)
+            items_written = processMeetings(args, meetings, writers, final_actions)
 
         ## Update attendance
         if args.set_attendance and final_actions is not None:
@@ -617,6 +619,10 @@ def main(args: argparse.Namespace) -> int:
         if output_files is not None:
             for f in output_files.values():
                 f.close()
+
+    if not args.skip_processing and items_written == 0:
+        print_red("No agenda items were written to file.")
+        return 1
 
     return 0
 
