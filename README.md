@@ -153,18 +153,19 @@ Requires `sync_config.yaml` (gitignored). Copy `sync_config.yaml.example` and fi
 
 ### Data directories
 
-| Path | Contents |
-|---|---|
-| `elections/csvs_cc/`, `elections/csvs_sc/` | Canonical RCV result CSVs — source of truth for all charts |
-| `elections/wards/council/` | Per-precinct vote counts by candidate |
-| `candidate_data/filers.json` | Master list of OCPF filer IDs and committee names |
-| `meeting_data/councilors.yml` | Current and past city councillors with name aliases |
-| `meeting_data/meeting_sessions/` | CSVs of council meeting listings |
-| `meeting_data/processed/` | CSVs of council meeting agenda items |
-| `summaries/` | Markdown meeting summaries by date |
-| `geojson/` | Cambridge ward/precinct boundary files used by folium maps |
-| `charts/` | Generated election charts (HTML and PNG) |
-| `maps/` | Generated ward and contribution maps |
-| `wp_html/` | Generated WordPress post HTML |
-| `credentials/` | API keys (gitignored) |
-| `configs/` | Common configurations |
+| Path | Contents | Read? |
+|---|---|---|
+| `elections/csvs_cc/`, `elections/csvs_sc/` | Canonical RCV result CSVs — source of truth for all charts | Yes |
+| `elections/wards/council/` | Per-precinct vote counts by candidate | Yes |
+| `candidate_data/filers.json` | Master list of OCPF filer IDs and committee names | Yes |
+| `candidate_data/contributions/`, `candidate_data/reports/` | Per-filer OCPF API responses | No |
+| `configs/` | Common configurations including `councilors.yml` (name aliases) | Yes |
+| `meeting_data/cache/` | Cached meeting HTML (gitignored) | No |
+| `meeting_data/meeting_sessions/` | CSVs of council meeting listings | Yes |
+| `meeting_data/processed/` | CSVs of council meeting agenda items | Yes |
+| `summaries/` | Markdown meeting summaries by date | Yes |
+| `geojson/` | Cambridge ward/precinct boundary files used by folium maps | No |
+| `charts/` | Generated election charts (HTML and PNG) | No |
+| `maps/` | Generated ward and contribution maps | No |
+| `wp_html/` | Generated WordPress post HTML | No |
+| `credentials/` | API keys (gitignored) | No |
