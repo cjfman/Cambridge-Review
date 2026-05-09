@@ -7,7 +7,7 @@ import sys
 from collections import defaultdict
 from io import StringIO
 from pathlib import Path
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, Iterable, List, Optional, Sequence, Set, Tuple
 
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 from citylib.elections import Ballot, loadFinalBallots
@@ -60,7 +60,7 @@ def parse_chp(path: Path) -> Tuple[int, Dict[str, str], List[str]]:
     return seats, code_to_name, include_files
 
 
-def load_ballots(chp_dir: Path, include_files: List[str], code_to_name: Dict[str, str]) -> List[Ballot]:
+def load_ballots(chp_dir: Path, include_files: Iterable[str], code_to_name: Dict[str, str]) -> List[Ballot]:
     """Load ballots in draw order, filter all-tied-rank invalids, remap codes to names."""
     raw: List[Ballot] = []
     for filename in include_files:
@@ -95,7 +95,7 @@ def next_pref(ballot: Ballot, ineligible: Set[str]) -> Optional[str]:
     return None
 
 
-def assign_ballots(ballots: List[Ballot], ineligible: Set[str]) -> Dict[str, List[Ballot]]:
+def assign_ballots(ballots: Iterable[Ballot], ineligible: Set[str]) -> Dict[str, List[Ballot]]:
     """Sort ballots into piles by first valid preference."""
     piles: Dict[str, List[Ballot]] = defaultdict(list)
     for b in ballots:
@@ -107,7 +107,7 @@ def assign_ballots(ballots: List[Ballot], ineligible: Set[str]) -> Dict[str, Lis
 
 def do_surplus(
     piles: Dict[str, List[Ballot]],
-    candidate: str,
+    candidate,
     quota: int,
     ineligible: Set[str],
 ) -> Dict[str, int]:
@@ -146,7 +146,7 @@ def do_surplus(
 
 def do_eliminate(
     piles: Dict[str, List[Ballot]],
-    candidate: str,
+    candidate,
     ineligible: Set[str],
 ) -> Dict[str, int]:
     """Eliminate a candidate and transfer all their ballots.
@@ -161,20 +161,20 @@ def do_eliminate(
     return dict(transfers)
 
 
-def pile_counts(piles: Dict[str, List[Ballot]], candidates: List[str]) -> Dict[str, int]:
+def pile_counts(piles: Dict[str, List[Ballot]], candidates: Iterable[str]) -> Dict[str, int]:
     return {c: len(piles.get(c, [])) for c in candidates}
 
 
 def print_round(
     count: int,
     counts: Dict[str, int],
-    elected: List[str],
+    elected: Sequence[str],
     elected_votes: Dict[str, int],
     eliminated: Set[str],
     quota: int,
     verbose: bool,
-    transfers: Optional[Dict[str, int]] = None,
-) -> None:
+    transfers=None,
+):
     print(f"\n--- Count {count} ---")
     if transfers and verbose:
         for dest, n in sorted(transfers.items(), key=lambda x: -x[1]):
@@ -210,7 +210,7 @@ def detect_elections(
     ineligible: Set[str],
     surplus_queue: List[str],
     seats: int,
-) -> None:
+):
     """Elect any candidate at or above quota (silent — caller prints announcements)."""
     active_unelected = [c for c in counts if c not in ineligible and counts[c] >= quota]
     for c in sorted(active_unelected, key=lambda x: -counts[x]):
@@ -223,7 +223,7 @@ def detect_elections(
             surplus_queue.append(c)
 
 
-def announce_elections(elected: List[str], elected_votes: Dict[str, int], announced: List[int]) -> None:
+def announce_elections(elected: Sequence[str], elected_votes: Dict[str, int], announced: List[int]):
     """Print election announcements for newly elected candidates since last call."""
     for i in range(announced[0], len(elected)):
         c = elected[i]
@@ -279,7 +279,7 @@ def drain_surplus_queue(
     piles: Dict[str, List[Ballot]],
     surplus_queue: List[str],
     quota: int,
-    candidates: List[str],
+    candidates: Iterable[str],
     elected: List[str],
     elected_votes: Dict[str, int],
     ineligible: Set[str],
@@ -313,9 +313,9 @@ def run_election(
     candidates: List[str],
     seats: int,
     *,
-    verbose: bool = False,
-    batch: bool = True,
-) -> List[str]:
+    verbose=False,
+    batch=True,
+) -> Tuple[List[str], Dict[str, List[Ballot]]]:
     total = len(ballots)
     quota = droop_quota(total, seats)
     print(f"\n{total:,} valid ballots | {seats} seats | quota = {quota:,}\n")
@@ -331,14 +331,14 @@ def run_election(
 
     piles = assign_ballots(ballots, ineligible)
 
-    def show_count(transfers: Optional[Dict[str, int]] = None) -> None:
+    def show_count(transfers=None):
         nonlocal count
         count += 1
         counts = pile_counts(piles, candidates)
         print_round(count, counts, elected, elected_votes, eliminated, quota, verbose, transfers)
         announce_elections(elected, elected_votes, announced)
 
-    def elect_and_maybe_drain(base_transfers: Optional[Dict[str, int]] = None) -> Dict[str, int]:
+    def elect_and_maybe_drain(base_transfers=None) -> Dict[str, int]:
         """Detect elections, then in batch mode drain all resulting surplus transfers."""
         detect_elections(
             pile_counts(piles, candidates), piles, quota,
@@ -421,7 +421,7 @@ def parse_piles_report(path: Path, code_to_name: Dict[str, str]) -> Dict[str, st
     return result
 
 
-def compare_piles(official: Dict[str, str], sim_piles: Dict[str, List[Ballot]]) -> None:
+def compare_piles(official: Dict[str, str], sim_piles: Dict[str, List[Ballot]]):
     # ballot.key includes batch+contest suffix (e.g. "000101-...,00108,001"); strip to serial only
     simulated: Dict[str, str] = {}
     for cand, pile in sim_piles.items():
