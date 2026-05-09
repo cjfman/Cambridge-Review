@@ -455,6 +455,9 @@ def processMeeting(meeting: agenda.Meeting, cache_dir, *, force_fetch: bool = Fa
 
     total = sum(len(v) for v in items.values())
     print(f"Found {total} items for meeting '{meeting}'")
+    if total == 0 and os.path.isfile(cache_path):
+        print(f"No items found; removing cached page so it will be re-fetched next run: {cache_path}")
+        os.remove(cache_path)
     for item in [x for lst in items.values() for x in lst]:
         item.setMeeting(meeting)
 
