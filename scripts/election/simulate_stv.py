@@ -18,6 +18,10 @@ def make_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("chp_file", help="ChoicePlus Pro .chp configuration file")
     parser.add_argument("--seats", type=int, help="Override seat count from .chp")
+    parser.add_argument("--no-batching", action="store_true",
+                        help="One operation per count (default batches surplus transfers "
+                             "from newly-elected candidates into the triggering count, "
+                             "matching ChoicePlus Pro's count structure)")
     parser.add_argument("--verbose", "-v", action="store_true",
                         help="Show per-candidate transfer counts each round")
     return parser
@@ -182,22 +186,34 @@ def print_round(
     print(f"  {'quota:':>8}  {quota:,}")
 
 
-def check_new_elections(
+def detect_elections(
     counts: Dict[str, int],
     piles: Dict[str, List[Ballot]],
     quota: int,
     elected: List[str],
+    elected_votes: Dict[str, int],
     ineligible: Set[str],
     surplus_queue: List[str],
+    seats: int,
 ) -> None:
-    """Elect any candidate at or above quota and queue surplus transfers."""
+    """Elect any candidate at or above quota (silent — caller prints announcements)."""
     active_unelected = [c for c in counts if c not in ineligible and counts[c] >= quota]
     for c in sorted(active_unelected, key=lambda x: -counts[x]):
+        if len(elected) >= seats:
+            break
         elected.append(c)
+        elected_votes[c] = counts[c]
         ineligible.add(c)
         if len(piles.get(c, [])) > quota:
             surplus_queue.append(c)
-        print(f"  >> Elected: {c} ({counts[c]:,} votes)")
+
+
+def announce_elections(elected: List[str], elected_votes: Dict[str, int], announced: List[int]) -> None:
+    """Print election announcements for newly elected candidates since last call."""
+    for i in range(announced[0], len(elected)):
+        c = elected[i]
+        print(f"  >> Elected: {c} ({elected_votes[c]:,} votes)")
+    announced[0] = len(elected)
 
 
 def do_under50_round(
@@ -228,14 +244,14 @@ def do_lowest_elimination(
     eliminated: Set[str],
 ) -> Dict[str, int]:
     """Eliminate the lowest-polling continuing candidate.
-    Tie-breaking: not implemented beyond min(); warns if tied.
+    Tie-breaking: warns if tied; eliminates first alphabetically as fallback.
     Returns transfer counts.
     """
     active = [c for c in counts if c not in ineligible]
     lowest_count = min(counts[c] for c in active)
     tied = [c for c in active if counts[c] == lowest_count]
     if len(tied) > 1:
-        print(f"  Warning: tie for last place ({lowest_count:,} votes): {', '.join(sorted(tied))}")
+        print(f"  Warning: tie for last ({lowest_count:,} votes): {', '.join(sorted(tied))}")
         print(f"  Tie-breaking not implemented; eliminating first alphabetically")
     lowest = sorted(tied)[0]
     print(f"  Eliminating: {lowest} ({lowest_count:,} votes)")
@@ -244,28 +260,92 @@ def do_lowest_elimination(
     return do_eliminate(piles, lowest, ineligible)
 
 
-def run_election(ballots: List[Ballot], candidates: List[str], seats: int, *, verbose: bool = False) -> List[str]:
+def drain_surplus_queue(
+    piles: Dict[str, List[Ballot]],
+    surplus_queue: List[str],
+    quota: int,
+    candidates: List[str],
+    elected: List[str],
+    elected_votes: Dict[str, int],
+    ineligible: Set[str],
+    eliminated: Set[str],
+    seats: int,
+    verbose: bool,
+) -> Dict[str, int]:
+    """Transfer all pending surpluses in sequence (batch mode).
+    Detects new elections after each transfer and queues their surpluses too.
+    Returns accumulated transfer counts.
+    """
+    merged: Dict[str, int] = {}
+    while surplus_queue and len(elected) < seats:
+        src = surplus_queue.pop(0)
+        surplus = len(piles.get(src, [])) - quota
+        if surplus <= 0:
+            continue
+        print(f"    + Surplus: {src} ({surplus:,} votes)")
+        transfers = do_surplus(piles, src, quota, ineligible)
+        for k, v in transfers.items():
+            merged[k] = merged.get(k, 0) + v
+        detect_elections(
+            pile_counts(piles, candidates), piles, quota,
+            elected, elected_votes, ineligible, surplus_queue, seats,
+        )
+    return merged
+
+
+def run_election(
+    ballots: List[Ballot],
+    candidates: List[str],
+    seats: int,
+    *,
+    verbose: bool = False,
+    batch: bool = True,
+) -> List[str]:
     total = len(ballots)
     quota = droop_quota(total, seats)
     print(f"\n{total:,} valid ballots | {seats} seats | quota = {quota:,}\n")
 
     elected: List[str] = []
+    elected_votes: Dict[str, int] = {}
     eliminated: Set[str] = set()
     ineligible: Set[str] = set()
     surplus_queue: List[str] = []
+    announced = [0]  # mutable int for announce_elections
     under50_done = False
-
-    piles = assign_ballots(ballots, ineligible)
     count = 0
 
-    def snapshot_and_check(transfers: Optional[Dict[str, int]] = None) -> None:
+    piles = assign_ballots(ballots, ineligible)
+
+    def show_count(transfers: Optional[Dict[str, int]] = None) -> None:
         nonlocal count
         count += 1
         counts = pile_counts(piles, candidates)
         print_round(count, counts, elected, eliminated, quota, verbose, transfers)
-        check_new_elections(counts, piles, quota, elected, ineligible, surplus_queue)
+        announce_elections(elected, elected_votes, announced)
 
-    snapshot_and_check()
+    def elect_and_maybe_drain(base_transfers: Optional[Dict[str, int]] = None) -> Dict[str, int]:
+        """Detect elections, then in batch mode drain all resulting surplus transfers."""
+        detect_elections(
+            pile_counts(piles, candidates), piles, quota,
+            elected, elected_votes, ineligible, surplus_queue, seats,
+        )
+        if not batch or not surplus_queue or len(elected) >= seats:
+            return base_transfers or {}
+        extra = drain_surplus_queue(
+            piles, surplus_queue, quota, candidates,
+            elected, elected_votes, ineligible, eliminated, seats, verbose,
+        )
+        merged = dict(base_transfers) if base_transfers else {}
+        for k, v in extra.items():
+            merged[k] = merged.get(k, 0) + v
+        return merged
+
+    # Count 1: initial tally
+    detect_elections(
+        pile_counts(piles, candidates), piles, quota,
+        elected, elected_votes, ineligible, surplus_queue, seats,
+    )
+    show_count()
 
     while len(elected) < seats:
         counts = pile_counts(piles, candidates)
@@ -273,19 +353,33 @@ def run_election(ballots: List[Ballot], candidates: List[str], seats: int, *, ve
         if surplus_queue:
             src = surplus_queue.pop(0)
             surplus = len(piles.get(src, [])) - quota
-            print(f"\n  Surplus transfer: {src} ({surplus:,} votes)")
-            transfers = do_surplus(piles, src, quota, ineligible)
-            snapshot_and_check(transfers)
+            if surplus > 0:
+                print(f"\n  Surplus transfer: {src} ({surplus:,} votes)")
+                transfers = do_surplus(piles, src, quota, ineligible)
+            else:
+                transfers = {}
+            # Each surplus transfer is its own count; don't batch further surpluses here.
+            detect_elections(
+                pile_counts(piles, candidates), piles, quota,
+                elected, elected_votes, ineligible, surplus_queue, seats,
+            )
+            show_count(transfers)
             continue
 
         if not under50_done:
             under50_done = True
             if do_under50_round(piles, counts, ineligible, eliminated):
-                snapshot_and_check()
+                # Under-50 redistribution is its own count; surplus transfers are not batched here
+                detect_elections(
+                    pile_counts(piles, candidates), piles, quota,
+                    elected, elected_votes, ineligible, surplus_queue, seats,
+                )
+                show_count()
                 continue
 
         transfers = do_lowest_elimination(piles, counts, ineligible, eliminated)
-        snapshot_and_check(transfers)
+        transfers = elect_and_maybe_drain(transfers)
+        show_count(transfers)
 
     return elected
 
@@ -305,7 +399,11 @@ def main(args: argparse.Namespace) -> int:
     ballots = load_ballots(chp_path.parent, include_files, code_to_name)
     candidates = list(code_to_name.values())
 
-    elected = run_election(ballots, candidates, seats, verbose=args.verbose)
+    elected = run_election(
+        ballots, candidates, seats,
+        verbose=args.verbose,
+        batch=not args.no_batching,
+    )
 
     print(f"\n{'=' * 50}")
     print("Elected (in order):")
