@@ -24,6 +24,8 @@ def make_parser() -> argparse.ArgumentParser:
                              "matching ChoicePlus Pro's count structure)")
     parser.add_argument("--verbose", "-v", action="store_true",
                         help="Show per-candidate transfer counts each round")
+    parser.add_argument("--compare-piles",
+                        help="Path to official Final Piles Report.txt; cross-tabulate final ballot assignments")
     return parser
 
 
@@ -381,7 +383,69 @@ def run_election(
         transfers = elect_and_maybe_drain(transfers)
         show_count(transfers)
 
-    return elected
+    return elected, piles
+
+
+def parse_piles_report(path: Path, code_to_name: Dict[str, str]) -> Dict[str, str]:
+    """Parse official Final Piles Report. Returns {ballot_id: candidate_name}.
+    Maps CAND_EXHAUSTED to 'Exhausted'. Skips invalid (validity=0) ballots.
+    """
+    result: Dict[str, str] = {}
+    current: Optional[str] = None
+    with open(path, encoding='utf8') as f:
+        for line in f:
+            line = line.strip()
+            m = re.match(r'^\.FINAL-PILE\s+(\S+)', line)
+            if m:
+                code = m.group(1)
+                current = 'Exhausted' if code == 'CAND_EXHAUSTED' else code_to_name.get(code, code)
+                continue
+            if current is None:
+                continue
+            m = re.match(r'^(\S+),\s+(\d+)\)', line)
+            if m and int(m.group(2)):
+                result[m.group(1)] = current
+    return result
+
+
+def compare_piles(official: Dict[str, str], sim_piles: Dict[str, List[Ballot]]) -> None:
+    # ballot.key includes batch+contest suffix (e.g. "000101-...,00108,001"); strip to serial only
+    simulated: Dict[str, str] = {}
+    for cand, pile in sim_piles.items():
+        for ballot in pile:
+            simulated[ballot.key.split(',')[0]] = cand
+
+    elected_official = {bid: c for bid, c in official.items() if c != 'Exhausted'}
+
+    same = 0
+    cross: Dict[Tuple[str, str], int] = defaultdict(int)
+    only_official: List[str] = []
+
+    for bid, off_cand in elected_official.items():
+        sim_cand = simulated.get(bid)
+        if sim_cand is None:
+            only_official.append(bid)
+        elif sim_cand == off_cand:
+            same += 1
+        else:
+            cross[(off_cand, sim_cand)] += 1
+
+    only_sim = [bid for bid in simulated if bid not in official]
+
+    total = len(elected_official)
+    diffs = sum(cross.values())
+    print(f"\nPiles comparison: {total:,} ballots in official elected piles")
+    print(f"  Identical assignment: {same:,}")
+    print(f"  Different candidate:  {diffs:,}")
+    if only_official:
+        print(f"  In official only:     {len(only_official):,}  (exhausted in simulation)")
+    if only_sim:
+        print(f"  In simulation only:   {len(only_sim):,}  (exhausted in official, kept by elected candidate in ours)")
+
+    if cross:
+        print("\nSwitched ballots (Official candidate → Simulated candidate):  count")
+        for (off, sim), n in sorted(cross.items(), key=lambda x: -x[1]):
+            print(f"  {off:<35}  →  {sim:<35}  {n:,}")
 
 
 def main(args: argparse.Namespace) -> int:
@@ -399,7 +463,7 @@ def main(args: argparse.Namespace) -> int:
     ballots = load_ballots(chp_path.parent, include_files, code_to_name)
     candidates = list(code_to_name.values())
 
-    elected = run_election(
+    elected, final_piles = run_election(
         ballots, candidates, seats,
         verbose=args.verbose,
         batch=not args.no_batching,
@@ -409,6 +473,10 @@ def main(args: argparse.Namespace) -> int:
     print("Elected (in order):")
     for i, c in enumerate(elected, 1):
         print(f"  {i:2d}. {c}")
+
+    if args.compare_piles:
+        official = parse_piles_report(Path(args.compare_piles), code_to_name)
+        compare_piles(official, final_piles)
 
     return 0
 
