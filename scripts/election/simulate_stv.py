@@ -448,12 +448,14 @@ def compare_piles(official: Dict[str, str], sim_piles: Dict[str, List[Ballot]]) 
     total = len(elected_official)
     diffs = sum(cross.values())
     print(f"\nPiles comparison: {total:,} ballots in official elected piles")
-    print(f"  Identical assignment: {same:,}")
-    print(f"  Different candidate:  {diffs:,}")
+    print(f"  Identical assignment: {same:,} ({same*100/total:.2f}%)")
+    print(f"  Different candidate:  {diffs:,} ({diffs*100/total:.2f}%)")
     if only_official:
-        print(f"  In official only:     {len(only_official):,}  (exhausted in simulation)")
+        only_off_c = len(only_official)
+        print(f"  In official only:     {only_off_c:,} ({only_off_c*100/total:.2f}%) (exhausted in simulation)")
     if only_sim:
-        print(f"  In simulation only:   {len(only_sim):,}  (exhausted in official, kept by elected candidate in ours)")
+        only_sim_c = len(only_sim)
+        print(f"  In simulation only:   {only_sim_c:,}  ({only_sim_c*100/total:.2f}%) (exhausted in official, kept by elected candidate in ours)")
 
     if cross:
         print("\nSwitched ballots (Official candidate → Simulated candidate):  count")
