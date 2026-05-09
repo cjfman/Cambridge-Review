@@ -8,7 +8,8 @@ import subprocess
 import sys
 from typing import List, Optional
 
-SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
+SCRIPTS_DIR        = os.path.dirname(os.path.abspath(__file__))
+SCRIPTS_PARENT_DIR = os.path.dirname(SCRIPTS_DIR)
 
 DEFAULT_CACHE_DIR       = "meeting_data/cache"
 DEFAULT_COUNCILLOR_INFO = "configs/councilors.yml"
@@ -89,6 +90,18 @@ def step_process_agenda(args: argparse.Namespace) -> int:
     return run(cmd, step='Processing next meeting agenda', verbose=args.verbose)
 
 
+def step_append_items(args: argparse.Namespace, year) -> int:
+    return run(
+        [
+            'bash', os.path.join(SCRIPTS_PARENT_DIR, 'append_items.sh'),
+            '--src', args.processed_dir,
+            '--year', year,
+        ],
+        step=f'Appending agenda items to {year} archive',
+        verbose=args.verbose,
+    )
+
+
 def step_generate_summary(args: argparse.Namespace, date) -> int:
     output = os.path.join(args.summaries_dir, f'{date}-draft.md')
     cmd = [
@@ -133,6 +146,11 @@ def main() -> int:
     date = read_meeting_date(args.processed_dir)
     if not date:
         print('\nError: No agenda items found in processed output. The agenda may not be published yet.', file=sys.stderr)
+        return 1
+
+    year = date.split('-')[0]
+    if step_append_items(args, year) != 0:
+        print('\nError: Failed to append agenda items to yearly archive.', file=sys.stderr)
         return 1
 
     if step_generate_summary(args, date) != 0:
