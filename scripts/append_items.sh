@@ -79,6 +79,10 @@ for FILE in $(ls "$SRC"); do
         echo "$SRC/$FILE >> $DST/$FILE (replaced; net $(( ADDED )) rows)"
     else
         ## Append only rows from SRC whose UID does not already exist in DST
+        ## Ensure DST ends with a newline before appending; $(tail -c1) strips
+        ## trailing newlines in command substitution, so an empty result means
+        ## the file already ends with \n.
+        [[ -n "$(tail -c1 "$DST/$FILE")" ]] && printf '\n' >> "$DST/$FILE"
         BEFORE=$(wc -l < "$DST/$FILE")
         awk -F',' '
             NR==FNR { if (FNR > 1) seen[$1]=1; next }
