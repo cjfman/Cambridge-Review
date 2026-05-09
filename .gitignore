@@ -19,3 +19,4 @@ credentials/
 google_credentials/
 sync_config.yaml
 charts/filers/reports/*.png
+summaries/*-draft.md
