@@ -169,6 +169,7 @@ def print_round(
     count: int,
     counts: Dict[str, int],
     elected: List[str],
+    elected_votes: Dict[str, int],
     eliminated: Set[str],
     quota: int,
     verbose: bool,
@@ -178,8 +179,15 @@ def print_round(
     if transfers and verbose:
         for dest, n in sorted(transfers.items(), key=lambda x: -x[1]):
             print(f"  {'':>8}  +{n:<6,}  {dest}")
+    elected_set = set(elected)
     active = {c for c, n in counts.items() if n > 0 or c in elected}
-    for c in sorted(active, key=lambda x: -counts[x]):
+
+    def sort_key(x):
+        if x in elected_set:
+            return (0, elected.index(x))   # elected first, in election order
+        return (1, -counts[x])             # then continuing, by vote count
+
+    for c in sorted(active, key=sort_key):
         n = counts[c]
         if c in elected:
             status = " [elected]"
@@ -327,7 +335,7 @@ def run_election(
         nonlocal count
         count += 1
         counts = pile_counts(piles, candidates)
-        print_round(count, counts, elected, eliminated, quota, verbose, transfers)
+        print_round(count, counts, elected, elected_votes, eliminated, quota, verbose, transfers)
         announce_elections(elected, elected_votes, announced)
 
     def elect_and_maybe_drain(base_transfers: Optional[Dict[str, int]] = None) -> Dict[str, int]:
