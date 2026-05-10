@@ -1,4 +1,4 @@
-#! /usr/bin/python3.8
+#!/usr/bin/env python3
 ## pylint: disable=too-many-locals,too-many-branches,too-many-statements
 
 import argparse
