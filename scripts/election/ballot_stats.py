@@ -134,7 +134,7 @@ def plot_hdlr(args):
 
     ## Custom nodes
     out_text_map = { src: f"{src} #1s<br><br>" + "<br>".join([f"{dst}: {val}" for dst, val in sorted(dsts.items())]) for src, dsts in transfers.items() }
-    in_text_map =  { dst: f"{dst} #2s<br><br>" + "<br>".join([f"{src}: {val}" for src, val in sorted(srcs.items())]) for dst, srcs in transposed.items() }
+    in_text_map  = { dst: f"{dst} #2s<br><br>" + "<br>".join([f"{src}: {val}" for src, val in sorted(srcs.items())]) for dst, srcs in transposed.items() }
     text_map = { x: out_text_map[label_names[x]] for x in source_labels }
     text_map.update({ x: in_text_map[label_names[x]] for x in target_labels })
     node_txt = [text_map[x] for x in labels]
@@ -145,12 +145,12 @@ def plot_hdlr(args):
     y_vals += [min(0.99, x/dst_steps+0.01) for x in range(dst_steps)]
 
     fig = go.Figure(data=[go.Sankey(
-        arrangement='snap',
+        arrangement='fixed',
         node={
-            'pad':       15,
+            'pad':       20,
             'thickness': 20,
             'line':      dict(color='black', width=0.5),
-            'label':     labels,
+            'label':     [''] * len(labels),
             'color':     'blue',
             'customdata': node_txt,
             'hovertemplate': '%{customdata}',
@@ -167,6 +167,22 @@ def plot_hdlr(args):
     )])
 
     fig.update_layout(title_text="Basic Sankey Diagram", font_size=10)
+
+    for i, label in enumerate(labels):
+        is_source = i < src_steps
+        x_shift = 0.0125 * 2 / 3
+        x_ann = x_vals[i] - x_shift if is_source else x_vals[i] + x_shift
+        fig.add_annotation(
+            x=x_ann, y=1.0 - y_vals[i],
+            xref='paper', yref='paper',
+            text=label,
+            showarrow=False,
+            xanchor='right' if is_source else 'left',
+            yanchor='middle',
+            align='right' if is_source else 'left',
+            font=dict(size=10),
+        )
+
     if not args.chart_file:
         fig.show()
     else:
