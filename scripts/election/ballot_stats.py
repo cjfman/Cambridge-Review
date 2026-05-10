@@ -173,7 +173,7 @@ def plot_hdlr(args):
         x_shift = 0.0125 * 2 / 3
         x_ann = x_vals[i] - x_shift if is_source else x_vals[i] + x_shift
         fig.add_annotation(
-            x=x_ann, y=1.0 - y_vals[i],
+            x=x_ann, y=1.002 - y_vals[i],
             xref='paper', yref='paper',
             text=label,
             showarrow=False,
