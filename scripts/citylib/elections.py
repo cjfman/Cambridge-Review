@@ -408,7 +408,7 @@ def loadFinalBallots(path) -> List[Ballot]:
         for line in f:
             line = line.strip()
             #match = re.match(r"^(\S+)(?:,\d+)+\) ((?:C|WI)\d+\[\d+\](?:,(?:C|WI)\d+\[\d+\])*)", line)
-            match = re.match(r"^(\S+)(?:,\d+)+\) ([CWI0-9,=\[\]]+)$", line)
+            match = re.match(r"^([0-9\-]+)(?:,\d+)+\) ([CWI0-9,=\[\]]+)$", line)
             if not match:
                 print(f"Invalid ballot: {line}")
                 invalid += 1
