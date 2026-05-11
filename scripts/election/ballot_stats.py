@@ -16,6 +16,7 @@ import plotly.graph_objects as go
 sys.path.append(str(Path(__file__).parent.parent.absolute()) + '/')
 from citylib import elections
 from citylib.utils import insertCopyright, insertNoCache
+from adjust_tooltip import insertTooltipAdjustment
 
 VERBOSE=False
 DEBUG=False
@@ -190,6 +191,8 @@ def plot_hdlr(args):
         plotly.offline.plot(fig, filename=args.chart_file, auto_open=False)
         if insertNoCache(args.chart_file):
             print(f"Inserted no-cache lines into '{args.chart_file}'")
+        if insertTooltipAdjustment(args.chart_file):
+            print(f"Inserted tooltip adjustment into '{args.chart_file}'")
 
     return 0
 
