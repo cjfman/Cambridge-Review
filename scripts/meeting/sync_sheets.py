@@ -9,6 +9,7 @@ import re
 import sys
 
 from pathlib import Path
+from typing import Dict, NamedTuple
 
 import requests
 
@@ -226,15 +227,21 @@ meetings_idx_map = { name: i for i, name in enumerate(meetings_cols) }
 meetings_col_map = { name: chr(ord('A') + i) for name, i in meetings_idx_map.items() }
 meetings_row_size = max(meetings_idx_map.values()) + 1
 
+class SheetMapping(NamedTuple):
+    col_map:  Dict[str, str]
+    idx_map:  Dict[str, int]
+    row_size: int
+
+
 item_mappings = {
-    'por': (por_col_map, por_idx_map, por_row_size),
-    'cma': (cma_col_map, cma_idx_map, cma_row_size),
-    'app': (app_col_map, app_idx_map, app_row_size),
-    'com': (com_col_map, com_idx_map, com_row_size),
-    'res': (res_col_map, res_idx_map, res_row_size),
-    'ord': (ord_col_map, ord_idx_map, ord_row_size),
-    'ar':  (ar_col_map, ar_idx_map, ar_row_size),
-    'meetings':  (meetings_col_map, meetings_idx_map, meetings_row_size),
+    'por':      SheetMapping(por_col_map, por_idx_map, por_row_size),
+    'cma':      SheetMapping(cma_col_map, cma_idx_map, cma_row_size),
+    'app':      SheetMapping(app_col_map, app_idx_map, app_row_size),
+    'com':      SheetMapping(com_col_map, com_idx_map, com_row_size),
+    'res':      SheetMapping(res_col_map, res_idx_map, res_row_size),
+    'ord':      SheetMapping(ord_col_map, ord_idx_map, ord_row_size),
+    'ar':       SheetMapping(ar_col_map,  ar_idx_map,  ar_row_size),
+    'meetings': SheetMapping(meetings_col_map, meetings_idx_map, meetings_row_size),
 }
 
 
@@ -355,12 +362,12 @@ def setCouncillorColumns(names):
     """Add councillor names to column maps"""
     names = tuple(enumerate(names))
     for item_key, col in item_vote_col.items():
-        col_map, idx_map, _ = item_mappings[item_key]
+        m = item_mappings[item_key]
         start = ord(col) - ord('A')
         for i, name in names:
             idx = start + i
-            col_map[name] = chr(idx + ord('A'))
-            idx_map[name] = idx
+            m.col_map[name] = chr(idx + ord('A'))
+            m.idx_map[name] = idx
 
 
 def fetchSheetHeader(service, sheet_id, sheet_name):
@@ -375,12 +382,11 @@ def fetchSheetHeader(service, sheet_id, sheet_name):
     return values[0] if values else []
 
 
-def buildMappingFromHeader(header_row):
-    """Build (col_map, idx_map, row_size) from a header row"""
+def buildMappingFromHeader(header_row) -> SheetMapping:
+    """Build a SheetMapping from a header row"""
     idx_map = {name: i for i, name in enumerate(header_row) if name}
     col_map = {name: chr(ord('A') + i) for name, i in idx_map.items()}
-    row_size = len(header_row)
-    return col_map, idx_map, row_size
+    return SheetMapping(col_map=col_map, idx_map=idx_map, row_size=len(header_row))
 
 
 def append(service, sheet_id, sheet_range, rows, *, user_entered=True):
@@ -461,7 +467,8 @@ def processItems(item_type, items, existing_uids=None, mapping=None):
         print(f"Skipping {count} {item_type} items")
 
     ## Convert item to sheets row by placing values in the correct column
-    _, idx_map, row_size = mapping if mapping is not None else item_mappings[item_type]
+    m = mapping if mapping is not None else item_mappings[item_type]
+    idx_map, row_size = m.idx_map, m.row_size
     rows = []
     for item in items:
         row = [""] * row_size
@@ -494,8 +501,8 @@ def add_item_type(service, sheet_id, item_type, rows, mapping=None):
     ## Figure out vote columns
     print("Updating vote aggrigation formulas")
     c_start_int = ord(item_vote_col[item_type])
-    if mapping is not None and "Type of Vote" in mapping[0]:
-        c_start_int = ord(mapping[0]["Type of Vote"])
+    if mapping is not None and "Type of Vote" in mapping.col_map:
+        c_start_int = ord(mapping.col_map["Type of Vote"])
 
     c_start = chr(c_start_int)
     c_end   = chr(c_start_int + 8)
