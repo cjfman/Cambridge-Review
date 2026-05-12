@@ -474,7 +474,7 @@ def processItems(item_type, items, existing_uids=None, mapping=None):
     return rows
 
 
-def add_item_type(service, sheet_id, item_type, rows):
+def add_item_type(service, sheet_id, item_type, rows, mapping=None):
     if not rows:
         print(f"No '{item_type}' rows to add")
         return
@@ -493,11 +493,15 @@ def add_item_type(service, sheet_id, item_type, rows):
 
     ## Figure out vote columns
     print("Updating vote aggrigation formulas")
-    c_start = item_vote_col[item_type]
-    c_end   = chr(ord(c_start) + 8)
-    c_yeas  = chr(ord(c_start) + 9)
-    c_pres  = chr(ord(c_start) + 11)
-    c_absnt = chr(ord(c_start) + 12)
+    c_start_int = ord(item_vote_col[item_type])
+    if mapping is not None and "Type of Vote" in mapping[0]:
+        c_start_int = ord(mapping[0]["Type of Vote"])
+
+    c_start = chr(c_start_int)
+    c_end   = chr(c_start_int + 8)
+    c_yeas  = chr(c_start_int + 9)
+    c_pres  = chr(c_start_int + 11)
+    c_absnt = chr(c_start_int + 12)
 
     ## Update formula rows
     r_start, r_end = tuple(int(re.search(r"\d+", x).group()) for x in results['updatedRange'].split('!')[1].split(':'))
@@ -613,7 +617,7 @@ def add_hdlr(args, service):
     ## Add rows
     for item_type in item_keys:
         rows = loadAndProcessItems(item_type, args.processed_dir, uids[item_type], sheet_mappings[item_type])
-        add_item_type(service, args.sheet_id, item_type, rows)
+        add_item_type(service, args.sheet_id, item_type, rows, sheet_mappings[item_type])
 
     return 0
 
