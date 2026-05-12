@@ -18,31 +18,30 @@ REQUEST_HDR = {
 
 
 def _check_sponsor_paragraph(p: Any) -> Optional[str]:
-    """If <p> is a sponsor line (bold + text-transform:uppercase), return the councillor name"""
-    for span in p.find_all('span'):
-        style = span.get('style', '')
-        text = span.get_text().strip()
-        if not text:
-            continue
-        if 'text-transform:uppercase' in style and 'font-weight:bold' in style:
-            for prefix in ('VICE MAYOR ', 'COUNCILLOR ', 'MAYOR '):
-                if text.upper().startswith(prefix):
-                    return lookUpCouncillorName(text[len(prefix):].strip())
+    """If the entire <p> text is a councillor title + last name, return the councillor name.
+
+    A sponsor line looks like 'COUNCILLOR SOBRINHO-WHEELER' or 'MAYOR SIDDIQUI' — the whole
+    paragraph is just that and nothing else. Matching on text content is more reliable than
+    matching on CSS styles, which PrimeGov changes between exports.
+    """
+    text = ' '.join(p.get_text(' ').split()).strip()
+    upper = text.upper()
+    for prefix in ('VICE MAYOR ', 'COUNCILLOR ', 'MAYOR '):
+        if upper.startswith(prefix):
+            name_part = text[len(prefix):].strip()
+            # A sponsor line is only a name — no spaces (except hyphens), not a sentence
+            if name_part and re.match(r"^[\w][\w\-'.]*$", name_part):
+                return lookUpCouncillorName(name_part)
     return None
 
 
 def _check_uid_paragraph(p: Any) -> Optional[str]:
-    """If <p> has a bold span matching a UID pattern, return the UID string."""
-    for span in p.find_all('span'):
-        style = span.get('style', '')
-        text = span.get_text().strip()
-        if not text:
-            continue
-        if 'font-weight:bold' in style and 'text-transform:uppercase' not in style:
-            if re.match(r'^(CMA|APP|COM|RES|POR|COF|ORD)\s+\d{4}-\d+$', text):
-                return text
-            if re.match(r'^AR-\d{2,4}-\d+$', text):
-                return text
+    """If the entire <p> text matches a UID pattern, return the UID string."""
+    text = p.get_text(' ').strip()
+    if re.match(r'^(CMA|APP|COM|RES|POR|COF|ORD)\s+\d{4}-\d+$', text):
+        return text
+    if re.match(r'^AR-\d{2,4}-\d+$', text):
+        return text
     return None
 
 

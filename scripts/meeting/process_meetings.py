@@ -37,7 +37,7 @@ CMA_HDRS = (
     "Policy Order",
     "Charter Right",
     "Outcome",
-    "Vote",
+    "Type of Vote",
     "Yeas",
     "Nays",
     "Present",
@@ -59,7 +59,7 @@ APP_HDRS = (
     "Subject",
     "Charter Right",
     "Outcome",
-    "Vote",
+    "Type of Vote",
     "Yeas",
     "Nays",
     "Present",
@@ -89,7 +89,7 @@ RES_HDRS = (
     "Category",
     "Sponsor",
     "Outcome",
-    "Vote",
+    "Type of Vote",
     "Yeas",
     "Nays",
     "Present",
@@ -110,7 +110,7 @@ POR_HDRS = (
     "Charter Right",
     "Amended",
     "Outcome",
-    "Vote",
+    "Type of Vote",
     "Yeas",
     "Nays",
     "Present",
@@ -132,7 +132,7 @@ ORD_HDRS = (
     "Co-Sponsors",
     "Amended",
     "Outcome",
-    "Vote",
+    "Type of Vote",
     "Yeas",
     "Nays",
     "Present",
@@ -227,7 +227,7 @@ def buildRow(item: agenda.AgendaItem, hdrs: Iterable[str], final_action: Optiona
 
     ## Update with final actions
     if final_action is not None:
-        d['Vote'] = final_action.vote or d['Vote']
+        d['Type of Vote'] = final_action.vote or d['Vote']
         d['Amended'] = (('Amended' in d and d['Amended']) or final_action.amended)
         ## Update the charter righing councilor
         if ('Charter Right' not in d or not d['Charter Right']) and final_action.charter_right:
@@ -236,11 +236,11 @@ def buildRow(item: agenda.AgendaItem, hdrs: Iterable[str], final_action: Optiona
         #no_outcome = ('Outcome' not in d or not d['Outcome'] or d['Outcome'] == 'Charter Right')
         if final_action.action and final_action.vote:
             d['Outcome'] = final_action.action
-        if d['Vote'] is None:
+        if d['Type of Vote'] is None:
             if action_map:
-                d['Vote'] = "Roll Call"
+                d['Type of Vote'] = "Roll Call"
             elif d['Outcome']:
-                d['Vote'] = "Voice Vote"
+                d['Type of Vote'] = "Voice Vote"
 
         yeas = final_action.yeas
         nays = final_action.nays
@@ -248,19 +248,19 @@ def buildRow(item: agenda.AgendaItem, hdrs: Iterable[str], final_action: Optiona
         recused = final_action.recused
         if yeas:
             unanimous = not nays and not present and not recused
-            d['Vote'] = 'Unanimous' if unanimous else 'Roll Call'
+            d['Type of Vote'] = 'Unanimous' if unanimous else 'Roll Call'
 
         for key, val in action_map.items():
             column = key.title()
             if aggrigate_votes:
                 d[column] = ",".join(getattr(final_action, key))
-            if d.get('Vote') != 'Unanimous':
+            if d.get('Type of Vote') != 'Unanimous':
                 for name in getattr(final_action, key):
                     d[name] = val
 
     ## Check vote type
-    if ('Vote' not in d or d['Vote'] is None) and ('Outcome' in d and d['Outcome'] and d['Outcome'] != "Charter Right"):
-        d['Vote'] = "Voice Vote"
+    if ('Type of Vote' not in d or d['Type of Vote'] is None) and ('Outcome' in d and d['Outcome'] and d['Outcome'] != "Charter Right"):
+        d['Type of Vote'] = "Voice Vote"
 
     ## Every row dict must have exactly the keys in the header
     row = {}
@@ -278,23 +278,23 @@ def setCouncillorColumns(names: Iterable[str]):
     ## pylint: disable=global-statement
     global CMA_HDRS, APP_HDRS, RES_HDRS, POR_HDRS, ORD_HDRS
     ## CMA
-    idx = CMA_HDRS.index("Vote") + 1
+    idx = CMA_HDRS.index("Type of Vote") + 1
     CMA_HDRS = CMA_HDRS[:idx] + names + CMA_HDRS[idx:]
 
     ## APP
-    idx = APP_HDRS.index("Vote") + 1
+    idx = APP_HDRS.index("Type of Vote") + 1
     APP_HDRS = APP_HDRS[:idx] + names + APP_HDRS[idx:]
 
     ## RES
-    idx = RES_HDRS.index("Vote") + 1
+    idx = RES_HDRS.index("Type of Vote") + 1
     RES_HDRS = RES_HDRS[:idx] + names + RES_HDRS[idx:]
 
     ## POR
-    idx = POR_HDRS.index("Vote") + 1
+    idx = POR_HDRS.index("Type of Vote") + 1
     POR_HDRS = POR_HDRS[:idx] + names + POR_HDRS[idx:]
 
     ## ORD
-    idx = ORD_HDRS.index("Vote") + 1
+    idx = ORD_HDRS.index("Type of Vote") + 1
     ORD_HDRS = ORD_HDRS[:idx] + names + ORD_HDRS[idx:]
 
 
@@ -426,7 +426,7 @@ def postProcessItems(writers: Dict[str, csv.DictWriter], items: Dict[str, List[A
         ('ORD', ORD_HDRS),
     )
     for key, hdrs in sets:
-        for item in sorted(items[key], key=lambda x: x.uid):
+        for item in sorted(items[key], key=lambda x: (x.meeting_date, int(getattr(x, 'num', 0) or 0))):
             if final_actions is not None and item.uid in final_actions:
                 writers[key].writerow(buildRow(item, hdrs, final_actions[item.uid]))
             else:
