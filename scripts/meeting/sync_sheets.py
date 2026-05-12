@@ -363,6 +363,26 @@ def setCouncillorColumns(names):
             idx_map[name] = idx
 
 
+def fetchSheetHeader(service, sheet_id, sheet_name):
+    """Fetch the first row of a sheet as a list of column names"""
+    sheet = service.spreadsheets()
+    result = sheet.values().get(
+        spreadsheetId=sheet_id,
+        range=f"{sheet_name}!1:1",
+        majorDimension='ROWS',
+    ).execute()
+    values = result.get('values', [])
+    return values[0] if values else []
+
+
+def buildMappingFromHeader(header_row):
+    """Build (col_map, idx_map, row_size) from a header row"""
+    idx_map = {name: i for i, name in enumerate(header_row) if name}
+    col_map = {name: chr(ord('A') + i) for name, i in idx_map.items()}
+    row_size = len(header_row)
+    return col_map, idx_map, row_size
+
+
 def append(service, sheet_id, sheet_range, rows, *, user_entered=True):
     input_opt = 'USER_ENTERED' if user_entered else 'RAW'
     sheet = service.spreadsheets()
@@ -424,15 +444,15 @@ def loadCsvDict(path):
         return tuple(reader)
 
 
-def loadAndProcessItems(item_type, dir_path, existing_uids=None):
+def loadAndProcessItems(item_type, dir_path, existing_uids=None, mapping=None):
     """Load agenda items from file and convert them to sheets rows"""
     path = os.path.join(dir_path, item_csv_map[item_type])
     print(f'Loading "{item_type}" agenda items from "{path}"')
     items = loadCsvDict(path)
-    return processItems(item_type, items, existing_uids)
+    return processItems(item_type, items, existing_uids, mapping)
 
 
-def processItems(item_type, items, existing_uids=None):
+def processItems(item_type, items, existing_uids=None, mapping=None):
     ## Don't add rows if they already exist
     if existing_uids is not None:
         count = len(items)
@@ -441,7 +461,7 @@ def processItems(item_type, items, existing_uids=None):
         print(f"Skipping {count} {item_type} items")
 
     ## Convert item to sheets row by placing values in the correct column
-    _, idx_map, row_size = item_mappings[item_type]
+    _, idx_map, row_size = mapping if mapping is not None else item_mappings[item_type]
     rows = []
     for item in items:
         row = [""] * row_size
@@ -574,6 +594,14 @@ def prepGoogleArgs(args):
 
 
 def add_hdlr(args, service):
+    ## Fetch sheet headers and build dynamic column mappings
+    sheet_mappings = {}
+    for item_type in item_keys:
+        sheet_name = sheet_name_map[item_type]
+        print(f"Fetching header for '{sheet_name}'")
+        header = fetchSheetHeader(service, args.sheet_id, sheet_name)
+        sheet_mappings[item_type] = buildMappingFromHeader(header)
+
     ## Get UIDs
     uids = { x: None for x in item_keys }
     if not args.force_add:
@@ -584,13 +612,19 @@ def add_hdlr(args, service):
 
     ## Add rows
     for item_type in item_keys:
-        rows = loadAndProcessItems(item_type, args.processed_dir, uids[item_type])
+        rows = loadAndProcessItems(item_type, args.processed_dir, uids[item_type], sheet_mappings[item_type])
         add_item_type(service, args.sheet_id, item_type, rows)
 
     return 0
 
 
 def meetings_hdlr(args, service):
+    ## Fetch meetings sheet header and build dynamic column mapping
+    sheet_name = sheet_name_map['meetings']
+    print(f"Fetching header for '{sheet_name}'")
+    header = fetchSheetHeader(service, args.sheet_id, sheet_name)
+    mapping = buildMappingFromHeader(header)
+
     ## Get UIDs
     uids = None
     if not args.force_add:
@@ -602,7 +636,7 @@ def meetings_hdlr(args, service):
 
     ## Load and process meetings
     print(f'Loading meetings from "{args.file}"')
-    rows = processItems('meetings', loadCsvDict(args.file), uids)
+    rows = processItems('meetings', loadCsvDict(args.file), uids, mapping)
     add_item_type(service, args.sheet_id, 'meetings', rows)
     return 0
 

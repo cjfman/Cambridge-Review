@@ -54,4 +54,3 @@ Added type hints to process_meetings.py and the scripts/citylib module.
 
 89dc3315-c344-4a19-9c5c-4e839319ee8a
 Created a new script `sync_to_remote.py` to assist with syncing charts and images to a remote cPanel server
-
