@@ -430,14 +430,19 @@ def processMeeting(meeting: agenda.Meeting, cache_dir, *, force_fetch: bool = Fa
     print(f"Checking {len(item_tables)} item tables for meeting '{meeting}'")
 
     items: Dict[str, List] = defaultdict(list)
+    current_section = ''
     last_item = None
     for table in all_tables:
         classes = table.get('class') or []
         if 'item-table-fromdocx' in classes:
+            if table.get('data-sectionid'):
+                current_section = table.get_text(' ').strip().upper()
+                last_item = None
+                continue
             try:
                 item = _parse_item_table(table, template_id)
-                last_item = item  # None for section headers; prevents RESULT bleed across sections
-                if item is not None:
+                last_item = item
+                if item is not None and 'UNFINISHED BUSINESS' not in current_section:
                     items[item.type].append(item)
                     if verbose:
                         print(item)
