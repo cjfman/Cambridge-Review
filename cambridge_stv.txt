@@ -1,0 +1,86 @@
+Cambridge STV algorithm:
+
+Quota (Droop): ⌊Total Valid Ballots / (Seats + 1)⌋ + 1
+
+ Round structure:
+ 1. Count first-choice votes; elect anyone who reaches quota
+ 2. Transfer surpluses using the Cincinnati Method (see below)
+ 3. Eliminate all candidates with fewer than 50 votes simultaneously; transfer their ballots
+ 4. Eliminate the single lowest candidate; transfer ballots
+ 5. Repeat steps 1–4 until all seats are filled
+ 
+ Cincinnati Method (surplus transfer):
+ - Compute n = ⌊Candidate's total votes / Surplus⌋
+ - Number the candidate's ballots sequentially; extract every nth ballot (#n, #2n, #3n…)
+ - Transfer extracted ballots to each voter's next valid continuing preference
+ - Exhausted ballots stay with the original candidate
+ 
+ Tie-breaking (in priority order):
+ 1. Compare the tied candidates' totals at the previous transfer — eliminate whoever was lower then; recurse backward if still tied
+ 2. Election official decides
+ 3. Random selection
+ 
+ Cambridge-specific quirks vs. standard STV:
+ - Whole-ballot sampling (Cincinnati) instead of fractional transfer
+ - The "under 50 votes" simultaneous elimination round
+ - Backward-recursive historical tie-breaking
+ 
+ Statutory basis: Massachusetts General Laws Chapter 54A. Counting software: ChoicePlus Pro v2.3.4 with "Cambridge Rules."
+
+------
+
+Quota (Droop): ⌊Total Valid Ballots / (Seats + 1)⌋ + 1 [MGL Ch. 54A
+(https://malegislature.gov/Laws/GeneralLaws/PartI/TitleVIII/Chapter54A)] [OpaVote Cambridge STV Rules
+(https://opavote.com/methods/cambridge-stv-rules)]
+
+ Round structure:
+ 1. Count first-choice votes; elect anyone who reaches quota [OpaVote (https://opavote.com/methods/cambridge-stv-rules)]
+ 2. Transfer surpluses using the Cincinnati Method (see below) [OpaVote (https://opavote.com/methods/cambridge-stv-rules)]
+ 3. Eliminate all candidates with fewer than 50 votes simultaneously; transfer their ballots [OpaVote
+ (https://opavote.com/methods/cambridge-stv-rules)]
+ 4. Eliminate the single lowest candidate; transfer ballots [MGL Ch. 54A
+ (https://malegislature.gov/Laws/GeneralLaws/PartI/TitleVIII/Chapter54A)]
+ 5. Repeat until all seats are filled
+ 
+ Cincinnati Method (surplus transfer): [OpaVote (https://opavote.com/methods/cambridge-stv-rules)]
+ - Compute n = ⌊Candidate's total votes / Surplus⌋
+ - Number the candidate's ballots sequentially; extract every nth ballot (#n, #2n, #3n…)
+ - Transfer extracted ballots to each voter's next valid continuing preference
+ - Exhausted ballots stay with the original candidate
+ 
+ Tie-breaking (in priority order): [OpaVote (https://opavote.com/methods/cambridge-stv-rules)] [MGL Ch. 54A
+ (https://malegislature.gov/Laws/GeneralLaws/PartI/TitleVIII/Chapter54A)]
+ 1. Compare tied candidates' totals at the previous transfer — eliminate whoever was lower then; recurse backward if still tied
+ 2. Election official decides
+ 3. Random selection
+ 
+ Cambridge-specific quirks vs. standard STV:
+ - Whole-ballot sampling (Cincinnati) instead of fractional transfer [OpaVote (https://opavote.com/methods/cambridge-stv-rules)]
+ - The "under 50 votes" simultaneous elimination round [OpaVote (https://opavote.com/methods/cambridge-stv-rules)]
+ - Backward-recursive historical tie-breaking [MGL Ch. 54A (https://malegislature.gov/Laws/GeneralLaws/PartI/TitleVIII/Chapter54A)]
+ 
+ Counting software: ChoicePlus Pro v2.3.4 with "Cambridge Rules" [Cambridge Election Commission 2025 results
+ (https://www.cambridgema.gov/Election2025/Council%20Round.htm)]
+ 
+------
+
+Cambridge uses a countback — a re-sort of the original election ballots — not a special election or council appointment (though the
+  latter is a fallback).
+
+  Procedure:
+
+  1. The Election Commission takes all ballots that were credited to the departing councillor at the end of the original STV count
+  2. Any choices for already-elected or ineligible candidates are skipped; ballots are re-sorted to each voter's earliest preference
+  among the remaining unelected candidates from the original election
+  3. If any candidate receives more than half the ballots showing a valid preference, they're elected
+  4. If not, the lowest candidate is eliminated and their ballots redistributed — repeat until one candidate has more than all others
+  combined
+  5. If the winner is willing and eligible, the City Clerk swears them in within 15 days
+  6. If they decline, the countback continues to the next candidate
+
+  Fallback: If no unelected candidate from the original election remains who is willing and eligible, the remaining council members fill
+   the vacancy by majority vote.
+
+  Legal basis: Cambridge City Charter §7-15; MGL Chapter 54A §13. Sources: Cambridge Election Commission notice
+  (https://www.cambridgema.gov/Departments/electioncommission/news/2024/09/noticeofcambridgecitycouncilvacancyrecount) and results
+  (https://www.cambridgema.gov/Departments/electioncommission/news/2024/09/vacancyrecountresults).
