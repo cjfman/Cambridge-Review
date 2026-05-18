@@ -9,7 +9,7 @@ import re
 import sys
 
 from pathlib import Path
-from typing import Dict, NamedTuple
+from typing import Dict, NamedTuple, Optional
 
 import requests
 
@@ -382,6 +382,13 @@ def fetchSheetHeader(service, sheet_id, sheet_name):
     return values[0] if values else []
 
 
+def find_first_councillor_col(mapping: SheetMapping) -> Optional[int]:
+    """Return the 0-based index of the first councillor column in mapping, or None."""
+    names = set(getCouncillorNames())
+    indices = [idx for name, idx in mapping.idx_map.items() if name in names]
+    return min(indices) if indices else None
+
+
 def buildMappingFromHeader(header_row) -> SheetMapping:
     """Build a SheetMapping from a header row"""
     idx_map = {name: i for i, name in enumerate(header_row) if name}
@@ -501,8 +508,10 @@ def add_item_type(service, sheet_id, item_type, rows, mapping=None):
     ## Figure out vote columns
     print("Updating vote aggrigation formulas")
     c_start_int = ord(item_vote_col[item_type])
-    if mapping is not None and "Type of Vote" in mapping.col_map:
-        c_start_int = ord(mapping.col_map["Type of Vote"])
+    if mapping is not None:
+        first_col = find_first_councillor_col(mapping)
+        if first_col is not None:
+            c_start_int = ord('A') + first_col
 
     c_start = chr(c_start_int)
     c_end   = chr(c_start_int + 8)
