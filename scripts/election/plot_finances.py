@@ -65,7 +65,7 @@ def parseArgs():
 
     ## Many filers CMD
     many_parser = subparsers.add_parser('many-filers', parents=[shared_parser], add_help=False,
-        help="Create a chart for a many filer")
+        help="Create a chart for many filers")
     many_parser.set_defaults(func=many_filer_hdlr)
     many_parser.add_argument("--title",
          help="Title of the chart. Default: Finances <REPORT PERIOD>")
@@ -74,7 +74,7 @@ def parseArgs():
 
     ## Contributions CMD
     contributions_parser = subparsers.add_parser('contributions', parents=[shared_parser], add_help=False,
-        help="Create a chart for a contributions filer")
+        help="Create a chart for a filer's contributions")
     contributions_parser.set_defaults(func=contributions_hdlr)
     contributions_parser.add_argument("--title",
           help="Title of the chart. Defautt: Contributions <REPORT PERIOD>")

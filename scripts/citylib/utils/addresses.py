@@ -50,7 +50,7 @@ class AddressMap:
         if self.api_key is None:
             return None
 
-        coord = utils.address_to_coordinates(addr, self.api_key)
+        coord = address_to_coordinates(addr, self.api_key)
         print(f"{addr} >> {coord}")
         self.cache[addr] = coord
         self.updated = True
