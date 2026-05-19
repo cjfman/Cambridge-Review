@@ -521,12 +521,25 @@ def extractAction(action) -> str:
     return action
 
 
+def guess_cma_category(title) -> str:
+    """Guess a CMA category from the item title when no category is available."""
+    t = title.lower()
+    if re.search(r'\bappropriation\b|\btransfer\b', t):
+        return 'Appropriation'
+    if re.search(r'\b(?:re-?)?appointments?\b', t):
+        return 'Appointment'
+    if re.search(r'\bawaiting report\b', t):
+        return 'Awaiting Report Response'
+    return 'Communication'
+
+
 def processCma(info: 'ItemInfo', uid, num: int, title, link, vote, action) -> CMA:
     """Process a CMA agenda item"""
+    category = info.category or guess_cma_category(title)
     ## Clean up title
     title = re.sub(r"(?:A|Transmitting) ?communication (?:transmitted )?from (?:.+), City Manager, relative to ", "", title, flags=re.IGNORECASE)
     title = re.sub(r"^the (?=appropriation|(?:re-?)?appointment|transfer)", "", title, flags=re.IGNORECASE).capitalize()
-    return CMA(uid, num, info.category, info.awaiting, info.order, link, action, vote, info.charter_right, title, info.history)
+    return CMA(uid, num, category, info.awaiting, info.order, link, action, vote, info.charter_right, title, info.history)
 
 
 def processApp(info: 'ItemInfo', uid, num: int, title, link, vote, action) -> Application:
