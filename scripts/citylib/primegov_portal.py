@@ -5,6 +5,8 @@ import re
 from collections import defaultdict
 from typing import Any, Dict, List, Optional, Tuple
 
+import requests
+
 from bs4 import BeautifulSoup
 
 from citylib import agenda
@@ -202,7 +204,79 @@ def _strip_inline_vote(text: str) -> str:
     return text.strip().rstrip('. ').strip()
 
 
-def _parse_item_table(table: Any, template_id: str) -> Optional[agenda.AgendaItem]:
+def _item_link_works(search_id, *, verbose: bool = False) -> bool:
+    """Return True if PrimeGov's item search can find this item.
+
+    The item page (search/itemsearch?searchItemId=...) is a JS app that renders
+    "Sorry, we couldn't find any results matching your search" when the item is
+    not yet indexed — common before a meeting has finished.  We can't see that
+    text from a plain GET, so query the API the page itself calls: an unindexed
+    item comes back with an empty ``results`` list.
+    """
+    url = f"{BASE_URL}/api/v1/Search/GetItemSearchById?itemId={search_id}"
+    try:
+        resp = requests.get(url, headers=REQUEST_HDR, timeout=30)
+        results = resp.json().get('results')
+    except Exception as e:  ## pylint: disable=broad-except
+        ## On any error, assume the link works so we don't replace a good link
+        print_red(f"Failed to check item link {search_id}: {e}")
+        return True
+
+    works = bool(results)
+    if verbose and not works:
+        print(f"Item link {search_id} returned no results")
+    return works
+
+
+def _report_view_url(table: Any) -> Optional[str]:
+    """Return the "view" link for this item's Report attachment, if any.
+
+    Each attachment has a view link (eye icon) titled "View <name> - New Window"
+    and a download link titled "Download <name>".  The agenda item PDF we want is
+    the one whose name ends in "Report"; we return its view link.
+    """
+    holder = table.find('div', class_='attachment-holder')
+    if not holder:
+        return None
+
+    for link in holder.find_all('a'):
+        match = re.match(r'View\s+(.*?)\s+-\s+New Window$', (link.get('title') or '').strip(), re.IGNORECASE)
+        if not match or not match.group(1).strip().lower().endswith('report'):
+            continue
+        href = link.get('href', '')
+        return href if href.startswith('http') else BASE_URL + href
+
+    return None
+
+
+def _resolve_item_url(table: Any, template_id: str, *, check_links: bool = False, verbose: bool = False) -> str:
+    """Pick the best URL for an item: its search page, or the Report PDF as a fallback.
+
+    Prefers the "View Item Details" searchItemId link.  When ``check_links`` is set
+    and that link is broken (the item isn't indexed yet), fall back to the view link
+    for the item's Report attachment instead.
+    """
+    item_url = f"{BASE_URL}/Portal/Meeting?meetingTemplateId={template_id}"
+    search_link = table.find('a', href=re.compile(r'searchItemId=\d+'))
+    if not search_link:
+        return item_url
+
+    href = search_link.get('href', '')
+    item_url = href if href.startswith('http') else BASE_URL + href
+
+    search_id = re.search(r'searchItemId=(\d+)', href).group(1)
+    if check_links and not _item_link_works(search_id, verbose=verbose):
+        report_url = _report_view_url(table)
+        if report_url:
+            if verbose:
+                print(f"Replacing broken item link {search_id} with report PDF {report_url}")
+            return report_url
+        print_red(f"Item link {search_id} is broken and no Report attachment was found")
+
+    return item_url
+
+
+def _parse_item_table(table: Any, template_id: str, *, check_links: bool = False, verbose: bool = False) -> Optional[agenda.AgendaItem]:
     """Parse one PrimeGov item table. Returns None for section headers and unrecognised rows."""
     if table.get('data-sectionid'):
         return None
@@ -310,12 +384,9 @@ def _parse_item_table(table: Any, template_id: str) -> Optional[agenda.AgendaIte
                     amended = r_amended
             break
 
-    # Item URL: prefer "View Item Details" searchItemId link
-    item_url = f"{BASE_URL}/Portal/Meeting?meetingTemplateId={template_id}"
-    search_link = table.find('a', href=re.compile(r'searchItemId=\d+'))
-    if search_link:
-        href = search_link.get('href', '')
-        item_url = href if href.startswith('http') else BASE_URL + href
+    # Item URL: prefer "View Item Details" searchItemId link, falling back to the
+    # item's Report PDF when that link is broken (see _resolve_item_url).
+    item_url = _resolve_item_url(table, template_id, check_links=check_links, verbose=verbose)
 
     info = agenda.ItemInfo(
         category='',
@@ -400,11 +471,13 @@ def _apply_result_table(result_tr: Any, item: agenda.AgendaItem):
         item.amended = r_amended or existing_amended
 
 
-def processMeeting(meeting: agenda.Meeting, cache_dir, *, force_fetch: bool = False, verbose: bool = False) -> Dict[str, List[Any]]:
+def processMeeting(meeting: agenda.Meeting, cache_dir, *, force_fetch: bool = False, check_links: bool = False, verbose: bool = False) -> Dict[str, List[Any]]:
     """Fetch and parse a PrimeGov meeting page.
 
     Uses the Final Actions HTML when meeting.final_actions is set (post-meeting),
-    otherwise falls back to the Agenda HTML (meeting.url).
+    otherwise falls back to the Agenda HTML (meeting.url).  When ``check_links`` is
+    set, each item's search link is verified and broken links are replaced with the
+    item's Report PDF.
     """
     url = (meeting.final_actions or '').strip() or meeting.url
     if not url:
@@ -440,7 +513,9 @@ def processMeeting(meeting: agenda.Meeting, cache_dir, *, force_fetch: bool = Fa
                 last_item = None
                 continue
             try:
-                item = _parse_item_table(table, template_id)
+                ## Don't spend link checks on UNFINISHED BUSINESS items; they're discarded
+                do_check = check_links and 'UNFINISHED BUSINESS' not in current_section
+                item = _parse_item_table(table, template_id, check_links=do_check, verbose=verbose)
                 last_item = item
                 if item is not None and 'UNFINISHED BUSINESS' not in current_section:
                     items[item.type].append(item)

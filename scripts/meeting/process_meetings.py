@@ -163,6 +163,9 @@ def parseArgs() -> argparse.Namespace:
         help="Where to cache downloads from the city website")
     parser.add_argument("--force-fetch", action="store_true",
         help="Force fetching of the meeting html")
+    parser.set_defaults(check_links=True)
+    parser.add_argument("--no-check-links", dest="check_links", action="store_false",
+        help="Don't verify PrimeGov item links; skip replacing broken links with the report PDF")
     parser.add_argument("--exit-on-error", action="store_true",
         help="Stop processing meetings if there is an error")
     parser.add_argument("--num-meetings", type=int, default=0,
@@ -317,10 +320,10 @@ def processNewArs(args: argparse.Namespace, ar_map: Dict, items: Iterable[Any], 
     print_green(f"Wrote {total} awaiting reports")
 
 
-def processMeeting(meeting: agenda.Meeting, base_url, cache_dir, *, force_fetch: bool = False, verbose: bool = False) -> Dict[str, List[Any]]:
+def processMeeting(meeting: agenda.Meeting, base_url, cache_dir, *, force_fetch: bool = False, check_links: bool = False, verbose: bool = False) -> Dict[str, List[Any]]:
     """Process a meeting. Dispatches to PrimeGov parser for primegov.com URLs."""
     if 'primegov.com' in (meeting.url or ''):
-        return primegov_portal.processMeeting(meeting, cache_dir, force_fetch=force_fetch, verbose=verbose)
+        return primegov_portal.processMeeting(meeting, cache_dir, force_fetch=force_fetch, check_links=check_links, verbose=verbose)
 
     return iqm2_portal.processMeeting(meeting, base_url, cache_dir, force_fetch=force_fetch, verbose=verbose)
 
@@ -361,7 +364,7 @@ def processMeetings(args: argparse.Namespace, meetings: Iterable[agenda.Meeting]
                 continue
 
             print(f"Processing meeting '{meeting}'")
-            items = processMeeting(meeting, args.base_url, args.cache_dir, force_fetch=args.force_fetch, verbose=args.verbose)
+            items = processMeeting(meeting, args.base_url, args.cache_dir, force_fetch=args.force_fetch, check_links=args.check_links, verbose=args.verbose)
             if items is not None:
                 ## For IQM2 meetings, final actions live in a separate JSON keyed by
                 ## meeting id then item uid.  For PrimeGov they are already on the item.
