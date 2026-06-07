@@ -324,6 +324,8 @@ def parseArgs():
         help="Type of items comma seperated. Allowed values: " + ",".join(item_keys))
     airtable_parser.add_argument("--communications", action="store_true",
         help="Personal access token. May be a file")
+    airtable_parser.add_argument("--tags", default="configs/tags.yml",
+        help="YAML file of tag definitions for auto-tagging (default: configs/tags.yml)")
 
     ## AirTable Download
     airtable_dl_parser = subparsers.add_parser('airtable-download',
@@ -567,23 +569,61 @@ def downloadAllSheets(service, sheet_id):
     return dict(zip(item_keys, [x['values'] for x in values]))
 
 
-def inject_empty_column(csv_text, column_name):
-    """Add an empty column to CSV text if not already present"""
+def load_tags(tags_path) -> List[Dict]:
+    """Load tag definitions from a YAML file.
+
+    Returns a list of dicts with 'name' and 'keywords' (list of strings to
+    match, always includes the lowercased tag name).
+    """
+    import yaml
+    with open(tags_path, 'r', encoding='utf8') as f:
+        config = yaml.safe_load(f)
+    tags = []
+    for name, extra in (config.get('tags') or {}).items():
+        keywords = [name.lower()]
+        for kw in (extra or []):
+            kw = kw.strip().lower()
+            if kw and kw not in keywords:
+                keywords.append(kw)
+        tags.append({'name': name, 'keywords': keywords})
+    return tags
+
+
+def compute_auto_tags(summary, tags) -> List[str]:
+    """Return tag names whose keywords appear in summary (case-insensitive, whole-word)."""
+    if not summary:
+        return []
+    text = summary.lower()
+    matched = []
+    for t in tags:
+        for kw in t['keywords']:
+            pattern = r'(?<!\w)' + re.escape(kw) + r'(?!\w)'
+            if re.search(pattern, text):
+                matched.append(t['name'])
+                break
+    return matched
+
+
+def add_auto_tags_to_csv(csv_text, tags) -> str:
+    """Return csv_text with an Auto Tags column populated from Summary."""
     reader = csv.DictReader(io.StringIO(csv_text))
-    if not reader.fieldnames or column_name in reader.fieldnames:
+    if not reader.fieldnames:
         return csv_text
-    fieldnames = list(reader.fieldnames) + [column_name]
+    fieldnames = list(reader.fieldnames)
+    if 'Auto Tags' not in fieldnames:
+        fieldnames = fieldnames + ['Auto Tags']
     rows = list(reader)
     out = io.StringIO()
     writer = csv.DictWriter(out, fieldnames=fieldnames, dialect=csv.unix_dialect, extrasaction='ignore')
     writer.writeheader()
     for row in rows:
-        row[column_name] = ''
+        matched = compute_auto_tags(row.get('Summary', ''), tags)
+        row['Auto Tags'] = ','.join(matched)
         writer.writerow(row)
     return out.getvalue()
 
 
-def syncAirTable(path, endpoint, token, extra_columns=None) -> bool:
+def syncAirTable(path, endpoint, token, csv_text=None) -> bool:
     """Attempt to sync an airtable table"""
     ## Update endpoint
     if not endpoint.startswith("http"):
@@ -592,9 +632,8 @@ def syncAirTable(path, endpoint, token, extra_columns=None) -> bool:
     resp = None
     obj = {}
     headers = {'Authorization': f"Bearer {token}", "Content-Type": "text/csv"}
-    csv_text = load_file(path)
-    for col in (extra_columns or []):
-        csv_text = inject_empty_column(csv_text, col)
+    if csv_text is None:
+        csv_text = load_file(path)
     data = csv_text.encode('utf8')
     if not data:
         print(f"File '{path}' was empty")
@@ -790,6 +829,15 @@ def airtable_hdlr(args):
     if args.communications:
         endpoints = item_airtable_comm_endpoint
 
+    ## Tags
+    tags = []
+    if os.path.isfile(args.tags):
+        print(f"Loading tags from '{args.tags}'")
+        tags = load_tags(args.tags)
+        print(f"Loaded {len(tags)} tags")
+    else:
+        print(f"Tags file '{args.tags}' not found — Auto Tags will be empty")
+
     ## Do update
     if args.dir:
         for item_type in item_types:
@@ -804,7 +852,8 @@ def airtable_hdlr(args):
                 print(f"Couldn't find file '{path}'. Skipping")
                 continue
 
-            if syncAirTable(path, endpoints[item_type], args.token, extra_columns=['Auto Tags']):
+            csv_text = add_auto_tags_to_csv(load_file(path), tags)
+            if syncAirTable(path, endpoints[item_type], args.token, csv_text=csv_text):
                 print(f"Successfully synced {name}")
     elif args.meetings:
         print(f"Preparing to sync meetings")
