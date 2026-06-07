@@ -9,7 +9,7 @@ import re
 import sys
 
 from pathlib import Path
-from typing import Dict, NamedTuple, Optional
+from typing import Dict, List, NamedTuple, Optional
 
 import requests
 
@@ -76,6 +76,8 @@ item_csv_map = {
     'ord': 'ordinances.csv',
     'res': 'resolutions.csv',
 }
+
+airtable_csv_map = {**item_csv_map, 'meetings': 'meetings.csv'}
 
 item_airtable_endpoint = {
     'meetings': "app94ZUZhEB9ASRMp/tblzHGtN9Q6xtWzdK/sync/xn7f71iC",
@@ -321,6 +323,20 @@ def parseArgs():
         help="Type of items comma seperated. Allowed values: " + ",".join(item_keys))
     airtable_parser.add_argument("--communications", action="store_true",
         help="Personal access token. May be a file")
+
+    ## AirTable Download
+    airtable_dl_parser = subparsers.add_parser('airtable-download',
+        help="Download from AirTable to CSV files",
+    )
+    airtable_dl_parser.set_defaults(func=airtable_download_hdlr)
+    airtable_dl_parser.add_argument("--dir", required=True,
+        help="Directory to write downloaded CSV files")
+    airtable_dl_parser.add_argument("--token", default="credentials/airtable.token",
+        help="Personal access token. May be a file")
+    airtable_dl_parser.add_argument("--types",
+        help="Type of items comma separated. Allowed values: " + ",".join(item_keys))
+    airtable_dl_parser.add_argument("--communications", action="store_true",
+        help="Use the communications base instead of the main base")
 
     ## Final parse
     args = parser.parse_args()
@@ -584,6 +600,50 @@ def syncAirTable(path, endpoint, token) -> bool:
     return False
 
 
+def fetchAirtableRecords(base_table, token) -> Optional[List[Dict]]:
+    """Fetch all records from an Airtable table, handling pagination"""
+    url = os.path.join(AIRTABLE_API_URL, base_table)
+    headers = {'Authorization': f"Bearer {token}"}
+    records = []
+    params: Dict[str, str] = {}
+
+    while True:
+        try:
+            resp = requests.get(url, headers=headers, params=params)
+            obj = resp.json()
+        except Exception as e:
+            print(f"Exception fetching from {url}: {e}")
+            return None
+
+        if 'error' in obj:
+            print(f"Error from Airtable: {obj['error']}")
+            return None
+
+        records.extend(obj.get('records', []))
+        offset = obj.get('offset')
+        if not offset:
+            break
+        params['offset'] = offset
+
+    return records
+
+
+def recordsToCsv(records) -> List[List]:
+    """Convert Airtable records to CSV rows (header + data)"""
+    if not records:
+        return []
+    seen: Dict[str, None] = {}
+    for rec in records:
+        for key in rec.get('fields', {}):
+            seen[key] = None
+    field_names = list(seen.keys())
+    rows: List[List] = [field_names]
+    for rec in records:
+        fields = rec.get('fields', {})
+        rows.append([str(fields.get(name, '')) for name in field_names])
+    return rows
+
+
 def prepGoogleArgs(args):
     args = copy.copy(args)
     ## Set councillor info
@@ -734,6 +794,49 @@ def airtable_hdlr(args):
     else:
         print("Nothing to do")
         return 1
+
+    return 0
+
+
+def airtable_download_hdlr(args):
+    ## Check token
+    if os.path.isfile(args.token):
+        args.token = load_file(args.token).strip()
+        if args.token is None:
+            print(f"Failed to load token from file {args.token}")
+            return 1
+
+    endpoints = item_airtable_comm_endpoint if args.communications else item_airtable_endpoint
+
+    item_types = list(endpoints.keys())
+    if args.types:
+        item_types = args.types.split(',')
+
+    for item_type in item_types:
+        if item_type not in endpoints:
+            print(f"Skipping '{item_type}': no endpoint defined")
+            continue
+        if item_type not in airtable_csv_map:
+            print(f"Skipping '{item_type}': no CSV filename defined")
+            continue
+
+        parts = endpoints[item_type].split('/')
+        base_table = '/'.join(parts[:2])
+
+        print(f"Downloading '{item_type}' from Airtable")
+        records = fetchAirtableRecords(base_table, args.token)
+        if records is None:
+            print(f"Failed to download '{item_type}'")
+            continue
+
+        print(f"Downloaded {len(records)} records for '{item_type}'")
+        path = os.path.join(args.dir, airtable_csv_map[item_type])
+        rows = recordsToCsv(records)
+        with open(path, 'w', encoding='utf8', newline='') as f:
+            writer = csv.writer(f, dialect=csv.unix_dialect)
+            for row in rows:
+                writer.writerow(row)
+        print(f"Wrote {len(records)} records to '{path}'")
 
     return 0
 
