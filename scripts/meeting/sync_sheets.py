@@ -572,20 +572,26 @@ def downloadAllSheets(service, sheet_id):
 def load_tags(tags_path) -> List[Dict]:
     """Load tag definitions from a YAML file.
 
-    Returns a list of dicts with 'name' and 'keywords' (list of strings to
-    match, always includes the lowercased tag name).
+    Returns a list of dicts with 'name', 'color', and 'keywords' (list of
+    strings to match, always includes the lowercased tag name).
     """
     import yaml
     with open(tags_path, 'r', encoding='utf8') as f:
         config = yaml.safe_load(f)
     tags = []
-    for name, extra in (config.get('tags') or {}).items():
+    for name, entry in (config.get('tags') or {}).items():
+        if isinstance(entry, dict):
+            color = entry.get('color')
+            extra_kws = entry.get('keywords') or []
+        else:
+            color = None
+            extra_kws = entry or []
         keywords = [name.lower()]
-        for kw in (extra or []):
+        for kw in extra_kws:
             kw = kw.strip().lower()
             if kw and kw not in keywords:
                 keywords.append(kw)
-        tags.append({'name': name, 'keywords': keywords})
+        tags.append({'name': name, 'color': color, 'keywords': keywords})
     return tags
 
 
