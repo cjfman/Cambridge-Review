@@ -323,7 +323,7 @@ def parseArgs():
     airtable_parser.add_argument("--types",
         help="Type of items comma seperated. Allowed values: " + ",".join(item_keys))
     airtable_parser.add_argument("--communications", action="store_true",
-        help="Personal access token. May be a file")
+        help="Sync communications")
     airtable_parser.add_argument("--tags", default="configs/tags.yml",
         help="YAML file of tag definitions for auto-tagging (default: configs/tags.yml)")
 
