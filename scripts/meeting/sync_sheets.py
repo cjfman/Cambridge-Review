@@ -3,6 +3,7 @@
 import argparse
 import copy
 import csv
+import io
 import json
 import os
 import re
@@ -566,7 +567,23 @@ def downloadAllSheets(service, sheet_id):
     return dict(zip(item_keys, [x['values'] for x in values]))
 
 
-def syncAirTable(path, endpoint, token) -> bool:
+def inject_empty_column(csv_text, column_name):
+    """Add an empty column to CSV text if not already present"""
+    reader = csv.DictReader(io.StringIO(csv_text))
+    if not reader.fieldnames or column_name in reader.fieldnames:
+        return csv_text
+    fieldnames = list(reader.fieldnames) + [column_name]
+    rows = list(reader)
+    out = io.StringIO()
+    writer = csv.DictWriter(out, fieldnames=fieldnames, dialect=csv.unix_dialect, extrasaction='ignore')
+    writer.writeheader()
+    for row in rows:
+        row[column_name] = ''
+        writer.writerow(row)
+    return out.getvalue()
+
+
+def syncAirTable(path, endpoint, token, extra_columns=None) -> bool:
     """Attempt to sync an airtable table"""
     ## Update endpoint
     if not endpoint.startswith("http"):
@@ -575,7 +592,10 @@ def syncAirTable(path, endpoint, token) -> bool:
     resp = None
     obj = {}
     headers = {'Authorization': f"Bearer {token}", "Content-Type": "text/csv"}
-    data = load_file(path).encode('utf8')
+    csv_text = load_file(path)
+    for col in (extra_columns or []):
+        csv_text = inject_empty_column(csv_text, col)
+    data = csv_text.encode('utf8')
     if not data:
         print(f"File '{path}' was empty")
         return False
@@ -784,7 +804,7 @@ def airtable_hdlr(args):
                 print(f"Couldn't find file '{path}'. Skipping")
                 continue
 
-            if syncAirTable(path, endpoints[item_type], args.token):
+            if syncAirTable(path, endpoints[item_type], args.token, extra_columns=['Auto Tags']):
                 print(f"Successfully synced {name}")
     elif args.meetings:
         print(f"Preparing to sync meetings")
