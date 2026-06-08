@@ -5,571 +5,514 @@
 #
 # Example:
 #   Transportation Safety:
-#     color: yellowLight1
 #     keywords:
 #       - pedestrian fatality
 #       - traffic death
 
 tags:
-
   AHO:
-    color: greenDark1
-    keywords: []
+    keywords:
+      - Affordable Housing Overlay
   ARPA:
-    color: tealLight1
     keywords: []
   Affordability:
-    color: redLight1
     keywords: []
   Affordable Housing:
-    color: grayDark1
     keywords: []
   Affordable Housing Overlay:
-    color: tealDark1
-    keywords: []
+    type: zoning
+    keywords:
+      - AHO
   Affordable Housing Trust:
-    color: cyanLight2
+    type: housing
     keywords: []
   Alewife:
-    color: blueLight2
+    type: location
     keywords: []
   Animal Commission:
-    color: redLight1
+    type: city department
     keywords: []
   Art:
-    color: grayBright
     keywords: []
   Asbestos:
-    color: orangeLight2
-    keywords: []
-  Awareness:
-    color: blueLight2
     keywords: []
   BEUDO:
-    color: orangeDark1
+    type: environment
     keywords: []
   Biking:
-    color: orangeLight1
+    type: transportation
     keywords: []
-  Bishop Allen RFI:
-    color: tealLight2
+  Bishop Allen:
+    type: street
     keywords: []
   Black People:
-    color: purpleBright
+    type: people
     keywords: []
   Bus Lanes:
-    color: yellowBright
+    type: transit
     keywords: []
   Businesses:
-    color: greenLight2
+    type: businesses
     keywords: []
   CDD:
-    color: blueDark1
-    keywords: []
+    type: city department
+    keywords:
+      - Community Development Department
   CHA:
-    color: tealDark1
     keywords: []
   Campaign Finance:
-    color: cyanLight2
+    type: policy
     keywords: []
   Cannabis:
-    color: yellowLight1
     keywords: []
   Cannabis Business Ordinance:
-    color: yellowDark1
+    type: policy
     keywords: []
   Carl Baron Plaza:
-    color: purpleLight1
+    type: location
     keywords: []
   Central Square:
-    color: pinkLight1
+    type: location
     keywords: []
   Charter Review:
-    color: yellowLight2
+    type: policy
     keywords: []
   City Council:
-    color: tealLight2
     keywords: []
   City Finances:
-    color: greenBright
     keywords: []
   City Staff:
-    color: orangeLight2
     keywords: []
   Climate:
-    color: grayLight2
+    type: environment
     keywords: []
   Climate Change:
-    color: cyanLight2
+    type: environment
     keywords: []
+  Community Development Department:
+    type: city department
+    keywords:
+      - CDD
   Community Safety Department:
-    color: tealLight1
-    keywords: []
+    type: city department
+    keywords:
+      - CSD
   Conservation Districts:
-    color: purpleLight2
     keywords: []
   Construction:
-    color: yellowBright
     keywords: []
   Covid 19:
-    color: purpleLight1
-    keywords: []
+    type: health
+    keywords:
+      - Covid
+      - corona
   Credit Rating:
-    color: yellowLight1
+    type: policy
     keywords: []
   Cuba:
-    color: pinkDark1
+    type: places
     keywords: []
   Cultural Sensitivity:
-    color: redLight2
     keywords: []
   Curb Cut Policies:
-    color: grayDark1
-    keywords: []
+    keywords:
+      - curb cut
+  Cycling:
+    keywords:
+      - bikes
+      - biking
+      - cyclists
+      - bikers
   Cycling Safety:
-    color: grayLight1
+    type: transportation
     keywords: []
   Cycling Safety Ordinance:
-    color: redLight1
     keywords: []
   DCR:
-    color: tealLight2
-    keywords: []
+    type: city department
+    keywords:
+      - Department of Conservation and Recreation
   DPW:
-    color: grayBright
-    keywords: []
+    keywords:
+      - Department of Public Works
   Decriminalization:
-    color: blueLight1
-    keywords: []
-  Delay:
-    color: cyanBright
+    type: policy
     keywords: []
   Democracy Center:
-    color: orangeBright
+    type: organizations
     keywords: []
   Digital Equity:
-    color: purpleDark1
+    type: policy
     keywords: []
   Diversity:
-    color: purpleDark1
     keywords: []
   Drought:
-    color: cyanDark1
+    type: environment
     keywords: []
   EZ Ride:
-    color: pinkLight1
+    type: transit
     keywords: []
   Education:
-    color: tealLight2
     keywords: []
   Electric Vehicles:
-    color: greenLight1
+    type: environment
     keywords: []
   Employment:
-    color: redLight2
     keywords: []
   Environment:
-    color: orangeLight2
-    keywords: []
+    type: environment
+    - BEUDO
   Equity:
-    color: pinkBright
     keywords: []
   Eversource:
-    color: blueLight1
+    type: organization
     keywords: []
   Eviction:
-    color: grayBright
     keywords: []
   Federal Government:
-    color: cyanBright
     keywords: []
   Federal Legislation:
-    color: cyanLight1
-    keywords: []
-  Fees:
-    color: greenLight1
     keywords: []
   Flood Zones:
-    color: yellowLight2
+    type: environment
     keywords: []
   Fossil Fuels:
-    color: greenBright
+    type: environment
     keywords: []
   Free Cash:
-    color: blueLight2
+    type: policy
     keywords: []
   Fresh Pond:
-    color: greenLight2
+    type: locations
     keywords: []
   Fresh Pond Apartments:
-    color: pinkLight2
+    type: housing
     keywords: []
   GSU:
-    color: pinkLight2
+    type: organizations
     keywords: []
   Garden Street:
-    color: cyanDark1
+    type: street
     keywords: []
   Gas - Light Building:
-    color: greenLight1
+    type: building
     keywords: []
   Gaza:
-    color: grayLight2
+    type: places
     keywords: []
   Golf Course:
-    color: tealLight2
     keywords: []
   Government:
-    color: orangeBright
     keywords: []
   Grand Junction Multiuse Path:
-    color: purpleLight2
+    type: routes
     keywords: []
   Greater Cambridge Energy Program:
-    color: grayLight2
+    type: environment
     keywords: []
   Green Technology:
-    color: orangeBright
+    type: environment
     keywords: []
   HEART:
-    color: redDark1
-    keywords: []
+    type: safety
+    keywords:
+      - Holistic Emergency Alternative Response Team
   Harvard:
-    color: blueDark1
+    type: university
     keywords: []
   Harvard Square:
-    color: grayDark1
     keywords: []
   Health and Human Services:
-    color: greenBright
+    type: city department
     keywords: []
   Historical Buildings:
-    color: pinkBright
+    type: building
     keywords: []
   Home Rule Petitions:
-    color: greenLight1
+    type: policy
     keywords: []
   Homelessness:
-    color: purpleLight2
     keywords: []
   Housing:
-    color: blueDark1
+    type: housing
     keywords: []
   Immigration:
-    color: yellowLight1
     keywords: []
   Inclusionary Housing:
-    color: greenLight2
-    keywords: []
+    type: housing
+    keywords:
+      - inclusionary
   "Jerry's Pond":
-    color: blueLight1
+    type: locations
     keywords: []
   King Open School:
-    color: blueDark1
+    type: building
     keywords: []
   LGBTQ+:
-    color: cyanDark1
     keywords: []
   Labor Rights:
-    color: cyanLight2
     keywords: []
   Landmarks:
-    color: redBright
     keywords: []
   Lesley University:
-    color: cyanLight1
+    type: university
     keywords: []
   Library:
-    color: purpleBright
     keywords: []
   Litigation:
-    color: purpleDark1
     keywords: []
   Local Businesses:
-    color: orangeLight1
+    type: businesses
     keywords: []
   MBTA:
-    color: cyanDark1
+    type: transit
     keywords: []
   MIT:
-    color: redLight2
+    type: university
     keywords: []
   MIT GSU:
-    color: purpleLight2
     keywords: []
   MWRA:
-    color: purpleDark1
+    type: organization
     keywords: []
   Market Basket:
-    color: yellowLight2
-    keywords: []
-  Mass Ave:
-    color: cyanBright
-    keywords: []
-  Mass. Ave.:
-    color: tealBright
+    type: business
     keywords: []
   MassHealth:
-    color: tealBright
     keywords: []
   Massachusett Tribe:
-    color: greenLight2
+    type: people
     keywords: []
   Massachusetts Avenue:
-    color: blueBright
-    keywords: []
+    keywords:
+      - mass ave
   Meeting Places:
-    color: cyanLight2
     keywords: []
   Memorial Drive:
-    color: tealBright
-    keywords: []
+    type: street
+    keywords:
+      - mem drive
   Mental Health:
-    color: grayDark1
     keywords: []
   Micromobility:
-    color: orangeLight1
+    type: transportation
     keywords: []
-  Multifamily Housing Zoning Petitions:
-    color: blueLight2
+  Multifamily Housing Zoning Petition:
     keywords: []
   Municipal Broadband:
-    color: orangeLight1
     keywords: []
   Municipal Facilities:
-    color: grayBright
     keywords: []
   Municipal Facilities Improvement Plan:
-    color: purpleBright
+    type: policy
     keywords: []
   Municipal Resources:
-    color: cyanDark1
     keywords: []
   Municipal Services:
-    color: yellowDark1
     keywords: []
   Museums:
-    color: pinkDark1
     keywords: []
   Music:
-    color: tealLight1
     keywords: []
   Native Peoples:
-    color: yellowLight2
+    type: people
     keywords: []
   Natural Hazard Mitigation Plan:
-    color: grayLight1
+    type: policy
     keywords: []
   Neighborhood Conservation:
-    color: blueLight2
+    type: policy
     keywords: []
   New York City:
-    color: blueLight1
+    type: places
     keywords: []
   PACE:
-    color: orangeDark1
     keywords: []
   PILOT:
-    color: yellowBright
+    type: policy
     keywords: []
   Pandemic:
-    color: grayLight1
+    type: health
     keywords: []
   Parking:
-    color: cyanLight1
+    type: transportation
     keywords: []
   Parking Enforcement:
-    color: greenLight1
+    type: transportation
     keywords: []
   Passio:
-    color: purpleLight1
     keywords: []
   Pedestrian Safety:
-    color: cyanBright
+    type: safety
     keywords: []
   Planning Board:
-    color: pinkDark1
     keywords: []
   Police Department:
-    color: pinkBright
     keywords: []
   Policing:
-    color: orangeBright
     keywords: []
   Porter Square:
-    color: grayBright
+    type: location
     keywords: []
   Postal Service:
-    color: pinkLight1
     keywords: []
   Public Comment:
-    color: grayLight1
+    type: policy
     keywords: []
   Public Health:
-    color: redBright
     keywords: []
   Public Safety:
-    color: redBright
+    type: safety
     keywords: []
   Public Space:
-    color: blueLight2
+    type: location
     keywords: []
   Public Transit:
-    color: purpleLight1
+    type: transit
     keywords: []
   Real Estate:
-    color: pinkLight1
     keywords: []
   Recycling Center:
-    color: purpleBright
+    type: city department
     keywords: []
   Religion:
-    color: yellowBright
     keywords: []
   Remote Work:
-    color: purpleBright
     keywords: []
   Renewable Energy:
-    color: yellowLight1
+    type: environment
     keywords: []
   Renters:
-    color: yellowDark1
+    type: people
     keywords: []
   Rise Up Cambridge:
-    color: grayDark1
+    type: city programs
     keywords: []
   Riverbend Park:
-    color: greenBright
+    type: location
     keywords: []
   Roads:
-    color: orangeLight2
+    type: transportation
     keywords: []
   Rules:
-    color: blueBright
+    type: policy
     keywords: []
   STIR:
-    color: blueLight1
     keywords: []
   Safety:
-    color: redDark1
+    type: safety
     keywords: []
   Sanctuary City:
-    color: blueBright
+    type: policy
     keywords: []
   School Committee:
-    color: grayLight2
     keywords: []
   School Facilities:
-    color: cyanLight1
+    type: building
     keywords: []
   Sennott Park:
-    color: redLight1
+    type: location
     keywords: []
   Sex Trafficking:
-    color: orangeDark1
     keywords: []
   Sex Work:
-    color: yellowDark1
     keywords: []
   Shelters:
-    color: greenDark1
+    type: housing
     keywords: []
   Short Term Rentals:
-    color: redDark1
+    type: housing
     keywords: []
   Snow:
-    color: purpleLight2
     keywords: []
   Social Media:
-    color: redBright
     keywords: []
   Solar Power:
-    color: pinkLight2
+    type: environment
     keywords: []
   Space Savers:
-    color: tealLight1
+    type: transportation
     keywords: []
   Star Market:
-    color: greenLight2
+    type: business
     keywords: []
   State Law:
-    color: yellowDark1
     keywords: []
   State Legislature:
-    color: orangeDark1
     keywords: []
   Street Cleaning:
-    color: purpleDark1
+    type: transportation
     keywords: []
   Substance Abuse Disorder:
-    color: pinkBright
     keywords: []
   Summer Programs:
-    color: redBright
+    type: city programs
     keywords: []
   Surveillance:
-    color: tealBright
+    type: policy
     keywords: []
   Teamsters:
-    color: grayLight1
+    type: organizations
     keywords: []
   Tenant Protections:
-    color: tealDark1
+    type: housing
     keywords: []
   Tenants:
-    color: greenDark1
+    type: people
     keywords: []
   Towing:
-    color: pinkDark1
+    type: policy
     keywords: []
   Traffic:
-    color: tealBright
+    type: transportation
     keywords: []
   Traffic Enforcement:
-    color: tealLight1
+    type: transportation
     keywords: []
   Transitional Wellness Center:
-    color: redDark1
+    type: housing
     keywords: []
   Transportation:
-    color: blueBright
+    type: transportation
     keywords: []
   Transportation Safety:
-    color: yellowLight1
+    type: transportation
     keywords: []
   Tree Protection:
-    color: redLight2
+    type: environment
     keywords: []
   Tree Protection Ordinance:
-    color: yellowLight2
+    type: environment
     keywords: []
   Unions:
-    color: orangeLight2
-    keywords: []
-  Universities:
-    color: greenBright
+    type: organizations
+    keywords:
+      - GSU
+      - MIT GSU
+  University:
+    type: university
     keywords: []
   Vaccines:
-    color: pinkLight2
+    type: health
     keywords: []
   Vail Court:
-    color: pinkDark1
+    type: housing
     keywords: []
   Water:
-    color: tealDark1
+    type: environment
     keywords: []
   Water Reservoirs:
-    color: blueBright
+    type: environment
     keywords: []
   Water System Regulations:
-    color: purpleLight1
+    type: environment
     keywords: []
   Welcoming Community Ordinance:
-    color: grayLight2
+    type: policy
     keywords: []
   Zero Waste Master Plan:
-    color: greenDark1
+    type: policy
     keywords: []
   Zoning:
-    color: cyanLight1
+    type: zoning
     keywords: []
