@@ -40,7 +40,7 @@ def _check_sponsor_paragraph(p: Any) -> Optional[str]:
 def _check_uid_paragraph(p: Any) -> Optional[str]:
     """If the entire <p> text matches a UID pattern, return the UID string."""
     text = p.get_text(' ').strip()
-    if re.match(r'^(CMA|APP|COM|RES|POR|COF|ORD)\s+\d{4}-\d+$', text):
+    if re.match(r'^(CMA|APP|PET|COM|RES|POR|COF|ORD)\s+\d{4}-\d+$', text):
         return text
     if re.match(r'^AR-\d{2,4}-\d+$', text):
         return text
@@ -402,7 +402,7 @@ def _parse_item_table(table: Any, template_id: str, *, check_links: bool = False
         cosponsors=sponsors[1:],
     )
 
-    uid_type = re.match(r'^(CMA|APP|COM|RES|POR|COF|ORD|AR)', uid)
+    uid_type = re.match(r'^(CMA|APP|PET|COM|RES|POR|COF|ORD|AR)', uid)
     if not uid_type:
         return None
     itype = uid_type.group(1)
@@ -410,6 +410,7 @@ def _parse_item_table(table: Any, template_id: str, *, check_links: bool = False
     handlers = {
         'CMA': agenda.processCma,
         'APP': agenda.processApp,
+        'PET': agenda.processApp,
         'COM': agenda.processCom,
         'RES': agenda.processRes,
         'POR': agenda.processPor,
