@@ -944,6 +944,9 @@ if __name__ == '__main__':
     except HttpError as e:
         print(e)
         sys.exit(1)
+    except RefreshError as e:
+        print(f"Failed to validate credentials: {e}")
+        sys.exit(1)
     except KeyboardInterrupt:
         print("User requested exit")
         sys.exit(1)
