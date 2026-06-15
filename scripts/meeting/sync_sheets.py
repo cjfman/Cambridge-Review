@@ -317,6 +317,8 @@ def parseArgs():
         help="The session year")
     update_parser.add_argument("--processed-dir", required=True,
         help="Directory that contains the processed agenda item csvs")
+    update_parser.add_argument("-t", "--trial", action="store_true",
+        help="Print what would be changed without pushing to Google Sheets")
 
     ## AirTable
     airtable_parser = subparsers.add_parser('airtable',
@@ -896,6 +898,10 @@ def update_hdlr(args, service):
 
     if not all_value_ranges:
         print("No updates needed")
+        return 0
+
+    if args.trial:
+        print(f"Trial mode: {len(all_value_ranges)} cells would be updated. No changes pushed.")
         return 0
 
     print(f"Sending {len(all_value_ranges)} cell updates to Google Sheets")
