@@ -161,7 +161,8 @@ tags:
     keywords: []
   Environment:
     type: environment
-    - BEUDO
+    keywords:
+      - BEUDO
   Equity:
     keywords: []
   Eversource:
