@@ -533,6 +533,20 @@ def guess_cma_category(title) -> str:
     return 'Communication'
 
 
+def guess_app_category(title) -> str:
+    """Guess an APP/PET category from the item title when no category is available."""
+    t = title.lower()
+    if 'curb cut' in t:
+        return 'Curb Cut'
+    if 'banner' in t:
+        return 'Banner'
+    if 'projecting' in t and 'sign' in t:
+        return 'Projecting Sign'
+    if 'zoning' in t:
+        return 'Zoning Amendment'
+    return ''
+
+
 def processCma(info: 'ItemInfo', uid, num: int, title, link, vote, action) -> CMA:
     """Process a CMA agenda item"""
     category = info.category or guess_cma_category(title)
@@ -561,7 +575,8 @@ def processApp(info: 'ItemInfo', uid, num: int, title, link, vote, action) -> Ap
     if match:
         address = match.groups()[0]
 
-    return Application(uid, num, info.category, name, subject, link, action, vote, info.charter_right, address, info.history)
+    category = info.category or guess_app_category(title)
+    return Application(uid, num, category, name, subject, link, action, vote, info.charter_right, address, info.history)
 
 
 def processCom(info: 'ItemInfo', uid, num: int, title, link, vote, action) -> Communication:
