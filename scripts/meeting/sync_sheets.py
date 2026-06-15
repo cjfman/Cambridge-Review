@@ -308,6 +308,16 @@ def parseArgs():
     down_parser.add_argument("--session", type=int, default=2025,
         help="The session year. Defaults to most recent one found in councillor info file")
 
+    ## Update cmd
+    update_parser = subparsers.add_parser('update',
+        help="Fill empty google sheet cells from local processed files"
+    )
+    update_parser.set_defaults(func=update_hdlr, is_google=True, councillor_info=None)
+    update_parser.add_argument("--session", type=int, required=True,
+        help="The session year")
+    update_parser.add_argument("--processed-dir", required=True,
+        help="Directory that contains the processed agenda item csvs")
+
     ## AirTable
     airtable_parser = subparsers.add_parser('airtable',
         help="Sync with AirTable",
@@ -569,6 +579,71 @@ def downloadAllSheets(service, sheet_id):
     return dict(zip(item_keys, [x['values'] for x in values]))
 
 
+def download_sheets_for_update(service, sheet_id) -> Optional[Dict[str, List]]:
+    """Download all item sheets with FORMULA render to detect formula cells."""
+    sheet = service.spreadsheets()
+    result = sheet.values().batchGet(
+        spreadsheetId=sheet_id,
+        ranges=[f"{sheet_name_map[x]}!A:Z" for x in item_keys],
+        majorDimension='ROWS',
+        valueRenderOption='FORMULA',
+    ).execute()
+    values = result.get("valueRanges", [])
+    if not values:
+        return None
+    return dict(zip(item_keys, [x.get('values', []) for x in values]))
+
+
+def compute_sheet_updates(item_type, sheet_rows, local_items) -> List[Dict]:
+    """Return ValueRange dicts for batchUpdate: fill empty sheet cells from local_items.
+
+    Uses FORMULA-rendered sheet data so formula cells (even those evaluating to "")
+    are never overwritten.
+    """
+    if len(sheet_rows) < 2:
+        return []
+
+    header = sheet_rows[0]
+    data_rows = sheet_rows[1:]
+    mapping = buildMappingFromHeader(header)
+    uid_col = mapping.idx_map.get("Unique Identifier", 0)
+
+    uid_to_idx: Dict[str, int] = {}
+    for i, row in enumerate(data_rows):
+        if row and len(row) > uid_col:
+            uid_to_idx[str(row[uid_col])] = i
+
+    sheet_name = sheet_name_map[item_type]
+    value_ranges: List[Dict] = []
+
+    for local_item in local_items:
+        uid = local_item.get("Unique Identifier", "")
+        if not uid or uid not in uid_to_idx:
+            continue
+
+        data_idx = uid_to_idx[uid]
+        sheet_row = data_rows[data_idx]
+        row_num = data_idx + 2  # 1-based; +1 for header row, +1 for 1-based indexing
+
+        for col_name, col_idx in mapping.idx_map.items():
+            local_val = local_item.get(col_name, "")
+            if not local_val:
+                continue
+
+            sheet_val = sheet_row[col_idx] if col_idx < len(sheet_row) else ""
+            if sheet_val:
+                continue  # non-empty (value or formula) — do not overwrite
+
+            col_letter = chr(ord('A') + col_idx)
+            value_ranges.append({
+                'range': f"{sheet_name}!{col_letter}{row_num}",
+                'values': [[local_val]],
+                'majorDimension': 'ROWS',
+            })
+
+    return value_ranges
+
+
 def load_tags(tags_path) -> List[Dict]:
     """Load tag definitions from a YAML file.
 
@@ -797,6 +872,42 @@ def download_hdlr(args, service):
             writer = csv.writer(f, dialect=csv.unix_dialect)
             for row in rows:
                 writer.writerow(row)
+
+
+def update_hdlr(args, service):
+    print(f"Downloading sheets for session {args.session}")
+    all_sheets = download_sheets_for_update(service, args.sheet_id)
+    if all_sheets is None:
+        print("Failed to download sheets")
+        return 1
+
+    all_value_ranges: List[Dict] = []
+    for item_type in item_keys:
+        sheet_rows = all_sheets.get(item_type, [])
+        if not sheet_rows:
+            print(f"No data for '{item_type}', skipping")
+            continue
+        path = os.path.join(args.processed_dir, item_csv_map[item_type])
+        print(f'Loading "{item_type}" from "{path}"')
+        local_items = loadCsvDict(path)
+        value_ranges = compute_sheet_updates(item_type, sheet_rows, local_items)
+        print(f"Found {len(value_ranges)} cells to update for '{item_type}'")
+        all_value_ranges.extend(value_ranges)
+
+    if not all_value_ranges:
+        print("No updates needed")
+        return 0
+
+    print(f"Sending {len(all_value_ranges)} cell updates to Google Sheets")
+    result = service.spreadsheets().values().batchUpdate(
+        spreadsheetId=args.sheet_id,
+        body={
+            'valueInputOption': 'USER_ENTERED',
+            'data': all_value_ranges,
+        },
+    ).execute()
+    print(f"Update complete: {result.get('totalUpdatedCells', '?')} cells updated")
+    return 0
 
 
 def check_credentials(args):
