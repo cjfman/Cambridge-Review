@@ -319,6 +319,8 @@ def parseArgs():
         help="Directory that contains the processed agenda item csvs")
     update_parser.add_argument("-t", "--trial", action="store_true",
         help="Print what would be changed without pushing to Google Sheets")
+    update_parser.add_argument("--columns", nargs="+", metavar="COL",
+        help="Only update these column names; force-overwrites even non-empty cells")
 
     ## AirTable
     airtable_parser = subparsers.add_parser('airtable',
@@ -596,11 +598,14 @@ def download_sheets_for_update(service, sheet_id) -> Optional[Dict[str, List]]:
     return dict(zip(item_keys, [x.get('values', []) for x in values]))
 
 
-def compute_sheet_updates(item_type, sheet_rows, local_items) -> List[Dict]:
+def compute_sheet_updates(item_type, sheet_rows, local_items, force_columns=None) -> List[Dict]:
     """Return ValueRange dicts for batchUpdate: fill empty sheet cells from local_items.
 
     Uses FORMULA-rendered sheet data so formula cells (even those evaluating to "")
-    are never overwritten.
+    are never overwritten — unless the column name is in ``force_columns``, in which
+    case the local value replaces the sheet value unconditionally (empty local values
+    are still skipped).  When ``force_columns`` is given, only those columns are
+    considered.
     """
     if len(sheet_rows) < 2:
         return []
@@ -628,12 +633,16 @@ def compute_sheet_updates(item_type, sheet_rows, local_items) -> List[Dict]:
         row_num = data_idx + 2  # 1-based; +1 for header row, +1 for 1-based indexing
 
         for col_name, col_idx in mapping.idx_map.items():
+            if force_columns is not None and col_name not in force_columns:
+                continue
+
             local_val = local_item.get(col_name, "")
             if not local_val:
                 continue
 
+            forced = force_columns is not None and col_name in force_columns
             sheet_val = sheet_row[col_idx] if col_idx < len(sheet_row) else ""
-            if sheet_val:
+            if sheet_val and not forced:
                 continue  # non-empty (value or formula) — do not overwrite
 
             col_letter = chr(ord('A') + col_idx)
@@ -892,7 +901,8 @@ def update_hdlr(args, service):
         path = os.path.join(args.processed_dir, item_csv_map[item_type])
         print(f'Loading "{item_type}" from "{path}"')
         local_items = loadCsvDict(path)
-        value_ranges = compute_sheet_updates(item_type, sheet_rows, local_items)
+        force_columns = set(args.columns) if args.columns else None
+        value_ranges = compute_sheet_updates(item_type, sheet_rows, local_items, force_columns=force_columns)
         print(f"Found {len(value_ranges)} cells to update for '{item_type}'")
         all_value_ranges.extend(value_ranges)
 

@@ -232,21 +232,30 @@ def _report_view_url(table: Any) -> Optional[str]:
     """Return the "view" link for this item's Report attachment, if any.
 
     Each attachment has a view link (eye icon) titled "View <name> - New Window"
-    and a download link titled "Download <name>".  The agenda item PDF we want is
-    the one whose name ends in "Report"; we return its view link.
+    and a download link titled "Download <name>".  Prefers an attachment whose
+    name starts with "AR-" (an Awaiting Report); falls back to one whose name
+    ends in "Report".
     """
-    holder = table.find('div', class_='attachment-holder')
-    if not holder:
+    holders = table.find_all('div', class_='attachment-holder')
+    if not holders:
         return None
 
-    for link in holder.find_all('a'):
-        match = re.match(r'View\s+(.*?)\s+-\s+New Window$', (link.get('title') or '').strip(), re.IGNORECASE)
-        if not match or not match.group(1).strip().lower().endswith('report'):
-            continue
-        href = link.get('href', '')
-        return href if href.startswith('http') else BASE_URL + href
+    ar_url = None
+    report_url = None
+    for holder in holders:
+        for link in holder.find_all('a'):
+            match = re.match(r'View\s+(.*?)\s+-\s+New Window$', (link.get('title') or '').strip(), re.IGNORECASE)
+            if not match:
+                continue
+            name = match.group(1).strip()
+            href = link.get('href', '')
+            url = href if href.startswith('http') else BASE_URL + href
+            if re.match(r'^AR-', name, re.IGNORECASE):
+                ar_url = url
+            elif name.lower().endswith('report') and report_url is None:
+                report_url = url
 
-    return None
+    return ar_url or report_url
 
 
 def _resolve_item_url(table: Any, template_id: str, *, check_links: bool = False, verbose: bool = False) -> str:
