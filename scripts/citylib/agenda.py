@@ -7,7 +7,7 @@ from dataclasses import dataclass, field ## pylint: disable=import-error,wrong-i
 from typing import Any, Dict, List, Optional, Tuple
 
 from citylib.councillors import lookUpCouncillorName
-from citylib.utils import toTitleCase
+from citylib.utils import capitalizeFirst, toTitleCase
 
 MAX_MSG_LEN = 48
 SUPPORTED_TITLES = (
@@ -552,7 +552,8 @@ def processCma(info: 'ItemInfo', uid, num: int, title, link, vote, action) -> CM
     category = info.category or guess_cma_category(title)
     ## Clean up title
     title = re.sub(r"(?:A|Transmitting) ?communication (?:transmitted )?from (?:.+), City Manager, relative to ", "", title, flags=re.IGNORECASE)
-    title = re.sub(r"^the (?=appropriation|(?:re-?)?appointment|transfer)", "", title, flags=re.IGNORECASE).capitalize()
+    title = re.sub(r"^the (?=appropriation|(?:re-?)?appointment|transfer)", "", title, flags=re.IGNORECASE)
+    title = capitalizeFirst(title)
     return CMA(uid, num, category, info.awaiting, info.order, link, action, vote, info.charter_right, title, info.history)
 
 

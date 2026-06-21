@@ -52,6 +52,14 @@ def toTitleCase(txt) -> str:
     return " ".join(words)
 
 
+def capitalizeFirst(txt) -> str:
+    """Capitalize only the first character, preserving existing capitalization
+    (e.g. proper nouns) in the rest of the string."""
+    if not txt:
+        return txt
+    return txt[0].upper() + txt[1:]
+
+
 def setDefaultValue(d: dict, v: Any, keys: Iterable):
     for key in keys:
         if key not in d:

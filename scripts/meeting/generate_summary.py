@@ -16,6 +16,20 @@ CMA_SECTIONS = ['Reports and Communications', 'Appropriations and Grants', 'Appo
 
 ITEM_RE = re.compile(r'^- #\d+ \(([A-Z]+ \d{4}-\d+)\) (.+)$')
 
+TABLED_RE = re.compile(r'\btabled\b', re.IGNORECASE)
+
+
+def is_tabled(row) -> bool:
+    return bool(TABLED_RE.search(row.get('Summary', '')))
+
+
+def strip_tabled_marker(row) -> Dict:
+    """Drop the trailing 'tabled in council ...' marker, which is redundant once
+    the item is rendered under the Tabled heading."""
+    row = dict(row)
+    row['Summary'] = TABLED_RE.split(row.get('Summary', ''), maxsplit=1)[0].rstrip()
+    return row
+
 
 def make_parser():
     parser = argparse.ArgumentParser(
@@ -230,6 +244,12 @@ def generate_summary(directory, date, meeting_url, summary_length: int,
     pors = load_items(directory, 'policy_orders.csv', date)
     apps = load_items(directory, 'applications_and_petitions.csv', date)
 
+    # Pull tabled items into their own section rather than the main agenda
+    tabled = [strip_tabled_marker(r) for r in cmas + pors + apps if is_tabled(r)]
+    cmas = [r for r in cmas if not is_tabled(r)]
+    pors = [r for r in pors if not is_tabled(r)]
+    apps = [r for r in apps if not is_tabled(r)]
+
     # Classify on original summaries before any rewriting
     cma_sections = build_cma_sections(cmas)
     charter_rights, por_city, por_council = split_pors(pors)
@@ -248,19 +268,19 @@ def generate_summary(directory, date, meeting_url, summary_length: int,
     lines.append("")
     lines.append("Note: Some agenda item links may not work until after the meeting has completed")
     lines.append("")
-    lines.append("## City Manager's Agenda")
+    lines.append("# City Manager's Agenda")
     lines.append("")
     for section in CMA_SECTIONS:
-        render_section(lines, f"### {section}", cma_sections[section], summary_length)
+        render_section(lines, f"## {section}", cma_sections[section], summary_length)
         lines.append("")
 
     lines.append("")
-    lines.append("## Policy Orders")
-    render_section(lines, "### Requests that the city...", por_city, summary_length)
-    render_section(lines, "### That the council...", por_council, summary_length)
+    lines.append("# Policy Orders")
+    render_section(lines, "## Requests that the city...", por_city, summary_length)
+    render_section(lines, "## That the council...", por_council, summary_length)
     lines.append("")
     lines.append("")
-    lines.append("## Charter Rights")
+    lines.append("# Charter Rights")
     for row in charter_rights:
         lines.append(format_item(
             row['Unique Identifier'], row['Agenda Number'],
@@ -268,13 +288,23 @@ def generate_summary(directory, date, meeting_url, summary_length: int,
         ))
     lines.append("")
     lines.append("")
-    lines.append("## Applications and Petitions")
+    lines.append("# Applications and Petitions")
     for row in apps:
         lines.append(format_item(
             row['Unique Identifier'], row['Agenda Number'],
             row.get('Summary', ''), summary_length,
         ))
     lines.append("")
+
+    if tabled:
+        lines.append("")
+        lines.append("# Tabled")
+        for row in tabled:
+            lines.append(format_item(
+                row['Unique Identifier'], row['Agenda Number'],
+                row.get('Summary', ''), summary_length,
+            ))
+        lines.append("")
 
     return "\n".join(lines)
 
