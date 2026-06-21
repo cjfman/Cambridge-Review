@@ -158,6 +158,8 @@ def build_summarize_prompt(examples: List[Tuple[Optional[str], str]]) -> str:
         "Rewrite Cambridge City Council agenda item descriptions to be concise and natural. "
         'Use plain English, sentence case, and omit procedural boilerplate like '
         '"the City Manager is requested to". '
+        "For appropriation items, follow this template: "
+        "<AMOUNT> from <SOURCE> to <fund|support|other verb> <CAUSE|PROGRAM|ETC>. "
         "Return only the rewritten text, no trailing punctuation, nothing else.",
         "",
     ]
