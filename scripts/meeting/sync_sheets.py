@@ -598,6 +598,11 @@ def download_sheets_for_update(service, sheet_id) -> Optional[Dict[str, List]]:
     return dict(zip(item_keys, [x.get('values', []) for x in values]))
 
 
+# Columns that hold Google Sheets array formulas injected by the add command.
+# They must never be force-overwritten, even when listed in --columns.
+FORMULA_COLUMNS = frozenset({"Yeas", "Nays", "Present", "Absent"})
+
+
 def compute_sheet_updates(item_type, sheet_rows, local_items, force_columns=None) -> List[Dict]:
     """Return ValueRange dicts for batchUpdate: fill empty sheet cells from local_items.
 
@@ -605,7 +610,7 @@ def compute_sheet_updates(item_type, sheet_rows, local_items, force_columns=None
     are never overwritten — unless the column name is in ``force_columns``, in which
     case the local value replaces the sheet value unconditionally (empty local values
     are still skipped).  When ``force_columns`` is given, only those columns are
-    considered.
+    considered.  Columns in FORMULA_COLUMNS are never force-overwritten regardless.
     """
     if len(sheet_rows) < 2:
         return []
@@ -640,7 +645,7 @@ def compute_sheet_updates(item_type, sheet_rows, local_items, force_columns=None
             if not local_val:
                 continue
 
-            forced = force_columns is not None and col_name in force_columns
+            forced = force_columns is not None and col_name in force_columns and col_name not in FORMULA_COLUMNS
             sheet_val = sheet_row[col_idx] if col_idx < len(sheet_row) else ""
             if sheet_val and not forced:
                 continue  # non-empty (value or formula) — do not overwrite
