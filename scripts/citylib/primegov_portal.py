@@ -239,7 +239,7 @@ def _fallback_item_url(table: Any, template_id: str) -> str:
     item_id = table.get('data-itemid', '')
     anchor = f"{BASE_URL}/Portal/Meeting?meetingTemplateId={template_id}"
     if item_id:
-        anchor += f"#attachment-icon-{item_id}"
+        anchor += f"#AgendaItem_{item_id}"
 
     holders = table.find_all('div', class_='attachment-holder')
     attachments = []
