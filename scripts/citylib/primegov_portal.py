@@ -40,7 +40,7 @@ def _check_sponsor_paragraph(p: Any) -> Optional[str]:
 def _check_uid_paragraph(p: Any) -> Optional[str]:
     """If the entire <p> text matches a UID pattern, return the UID string."""
     text = p.get_text(' ').strip()
-    if re.match(r'^(CMA|APP|PET|COM|RES|POR|COF|ORD)\s+\d{4}-\d+$', text):
+    if re.match(r'^(CMA|APP|PET|COM|RES|POR|COF|ORD|AR)\s+\d{4}-\d+$', text):
         return text
     if re.match(r'^AR-\d{2,4}-\d+$', text):
         return text

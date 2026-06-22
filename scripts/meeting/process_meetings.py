@@ -313,7 +313,9 @@ def processNewArs(args: argparse.Namespace, ar_map: Dict, items: Iterable[Any], 
         if VERBOSE:
             print(f"New awaiting report: {item}")
 
-        ar_map[item.uid] = iqm2_portal.processAr(item, args.cache_dir, force_fetch=args.force_fetch)
+        if 'primegov.com' not in (item.url or ''):
+            iqm2_portal.processAr(item, args.cache_dir, force_fetch=args.force_fetch)
+        ar_map[item.uid] = item
         writer.writerow(buildRow(item, AR_HDRS, aggrigate_votes=args.aggrigate_votes))
         total += 1
 
