@@ -402,13 +402,22 @@ def _parse_item_table(table: Any, template_id: str, *, check_links: bool = False
     # item's Report PDF when that link is broken (see _resolve_item_url).
     item_url = _resolve_item_url(table, template_id, check_links=check_links, verbose=verbose)
 
+    awaiting = ''
+    if description:
+        m = re.search(
+            r'Awaiting Report\s+(?:AR\s*[-]?|Item\s+Number\s+)?(\d{2,4})[-\s](\d+)',
+            description, re.IGNORECASE,
+        )
+        if m:
+            awaiting = f"AR-{m.group(1)}-{m.group(2)}"
+
     info = agenda.ItemInfo(
         category='',
         charter_right=charter_right,
         cma='',
         order='',
         app='',
-        awaiting='',
+        awaiting=awaiting,
         action=action,
         amended=amended,
         history=None,
