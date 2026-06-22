@@ -228,42 +228,49 @@ def _item_link_works(search_id, *, verbose: bool = False) -> bool:
     return works
 
 
-def _report_view_url(table: Any) -> Optional[str]:
-    """Return the "view" link for this item's Report attachment, if any.
+def _fallback_item_url(table: Any, template_id: str) -> str:
+    """Return the best fallback URL when an item's search link is broken.
 
-    Each attachment has a view link (eye icon) titled "View <name> - New Window"
-    and a download link titled "Download <name>".  Prefers an attachment whose
-    name starts with "AR-" (an Awaiting Report); falls back to one whose name
-    ends in "Report".
+    Collects all attachment view links, ignoring "Item Title Management".
+    - One attachment remaining → use it directly.
+    - Multiple and one is AR-* → use the AR- document.
+    - Otherwise → meeting page anchored to this item's row.
     """
-    holders = table.find_all('div', class_='attachment-holder')
-    if not holders:
-        return None
+    item_id = table.get('data-itemid', '')
+    anchor = f"{BASE_URL}/Portal/Meeting?meetingTemplateId={template_id}"
+    if item_id:
+        anchor += f"#attachment-icon-{item_id}"
 
-    ar_url = None
-    report_url = None
+    holders = table.find_all('div', class_='attachment-holder')
+    attachments = []
     for holder in holders:
         for link in holder.find_all('a'):
             match = re.match(r'View\s+(.*?)\s+-\s+New Window$', (link.get('title') or '').strip(), re.IGNORECASE)
             if not match:
                 continue
             name = match.group(1).strip()
+            if name.lower() == 'item title management':
+                continue
             href = link.get('href', '')
             url = href if href.startswith('http') else BASE_URL + href
-            if re.match(r'^AR-', name, re.IGNORECASE):
-                ar_url = url
-            elif name.lower().endswith('report') and report_url is None:
-                report_url = url
+            attachments.append((name, url))
 
-    return ar_url or report_url
+    if len(attachments) == 1:
+        return attachments[0][1]
+
+    for name, url in attachments:
+        if re.match(r'^AR-', name, re.IGNORECASE):
+            return url
+
+    return anchor
 
 
 def _resolve_item_url(table: Any, template_id: str, *, check_links: bool = False, verbose: bool = False) -> str:
-    """Pick the best URL for an item: its search page, or the Report PDF as a fallback.
+    """Pick the best URL for an item: its search page, or a fallback when broken.
 
     Prefers the "View Item Details" searchItemId link.  When ``check_links`` is set
-    and that link is broken (the item isn't indexed yet), fall back to the view link
-    for the item's Report attachment instead.
+    and that link is broken, falls back to the best available attachment or an
+    anchored link to the item's row on the meeting page.
     """
     item_url = f"{BASE_URL}/Portal/Meeting?meetingTemplateId={template_id}"
     search_link = table.find('a', href=re.compile(r'searchItemId=\d+'))
@@ -275,12 +282,10 @@ def _resolve_item_url(table: Any, template_id: str, *, check_links: bool = False
 
     search_id = re.search(r'searchItemId=(\d+)', href).group(1)
     if check_links and not _item_link_works(search_id, verbose=verbose):
-        report_url = _report_view_url(table)
-        if report_url:
-            if verbose:
-                print(f"Replacing broken item link {search_id} with report PDF {report_url}")
-            return report_url
-        print_red(f"Item link {search_id} is broken and no Report attachment was found")
+        fallback = _fallback_item_url(table, template_id)
+        if verbose:
+            print(f"Replacing broken item link {search_id} with {fallback}")
+        return fallback
 
     return item_url
 
