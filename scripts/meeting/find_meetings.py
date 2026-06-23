@@ -162,12 +162,24 @@ def mainIqm2(args):
 
 ## ── PrimeGov mode ─────────────────────────────────────────────────────────────
 
-def _primegov_doc_url(meeting_json, template_name: str) -> str:
-    """Return the HTML compiled-document URL for the given template name, or ''."""
+def _primegov_doc_url(meeting_json, html_name: str, pdf_name: str = '') -> str:
+    """Return a URL for the given document type, preferring the HTML version.
+
+    Falls back to the PDF version (compileOutputType=1) at /Public/CompiledDocument
+    when no HTML version is available.
+    """
+    pdf_fallback = ''
     for doc in meeting_json.get('documentList', []):
-        if doc.get('templateName') == template_name and doc.get('compileOutputType') == 3:
-            return f"{PRIMEGOV_BASE}/Portal/Meeting?meetingTemplateId={doc['templateId']}"
-    return ''
+        name = doc.get('templateName', '')
+        tid  = doc.get('templateId')
+        if name == html_name and doc.get('compileOutputType') == 3:
+            return f"{PRIMEGOV_BASE}/Portal/Meeting?meetingTemplateId={tid}"
+        if pdf_name and name == pdf_name and doc.get('compileOutputType') == 1:
+            pdf_fallback = (
+                f"{PRIMEGOV_BASE}/Public/CompiledDocument"
+                f"?meetingTemplateId={tid}&compileOutputType=1"
+            )
+    return pdf_fallback
 
 
 def fetchPrimegovMeetings(year: int):
@@ -232,9 +244,9 @@ def parseMeetingPrimegov(meeting_json) -> dict:
     elif meeting_dt <= dt.datetime.now() and meeting_state == 3:
         status = 'completed'
 
-    url_agenda = _primegov_doc_url(meeting_json, 'HTML Agenda')
-    url_final  = _primegov_doc_url(meeting_json, 'HTML Final Actions')
-    url_packet = _primegov_doc_url(meeting_json, 'HTML Packet')
+    url_agenda = _primegov_doc_url(meeting_json, 'HTML Agenda', 'Agenda')
+    url_final  = _primegov_doc_url(meeting_json, 'HTML Final Actions', 'Final Actions')
+    url_packet = _primegov_doc_url(meeting_json, 'HTML Packet', 'Packet')
 
     return                   {
         'Unique Identifier': f"{date_str} {mtype}",
