@@ -321,6 +321,8 @@ def parseArgs():
         help="Print what would be changed without pushing to Google Sheets")
     update_parser.add_argument("--columns", nargs="+", metavar="COL",
         help="Only update these column names; force-overwrites even non-empty cells")
+    update_parser.add_argument("--meetings-file",
+        help="Path to the meetings CSV; when given, also updates the Meetings sheet")
 
     ## AirTable
     airtable_parser = subparsers.add_parser('airtable',
@@ -583,19 +585,20 @@ def downloadAllSheets(service, sheet_id):
     return dict(zip(item_keys, [x['values'] for x in values]))
 
 
-def download_sheets_for_update(service, sheet_id) -> Optional[Dict[str, List]]:
+def download_sheets_for_update(service, sheet_id, include_meetings=False) -> Optional[Dict[str, List]]:
     """Download all item sheets with FORMULA render to detect formula cells."""
+    keys = list(item_keys) + (['meetings'] if include_meetings else [])
     sheet = service.spreadsheets()
     result = sheet.values().batchGet(
         spreadsheetId=sheet_id,
-        ranges=[f"{sheet_name_map[x]}!A:Z" for x in item_keys],
+        ranges=[f"{sheet_name_map[x]}!A:Z" for x in keys],
         majorDimension='ROWS',
         valueRenderOption='FORMULA',
     ).execute()
     values = result.get("valueRanges", [])
     if not values:
         return None
-    return dict(zip(item_keys, [x.get('values', []) for x in values]))
+    return dict(zip(keys, [x.get('values', []) for x in values]))
 
 
 # Columns that hold Google Sheets array formulas injected by the add command.
@@ -891,13 +894,24 @@ def download_hdlr(args, service):
 
 
 def update_hdlr(args, service):
+    include_meetings = bool(getattr(args, 'meetings_file', None))
     print(f"Downloading sheets for session {args.session}")
-    all_sheets = download_sheets_for_update(service, args.sheet_id)
+    all_sheets = download_sheets_for_update(service, args.sheet_id, include_meetings=include_meetings)
     if all_sheets is None:
         print("Failed to download sheets")
         return 1
 
+    force_columns = set(args.columns) if args.columns else None
     all_value_ranges: List[Dict] = []
+
+    if include_meetings:
+        sheet_rows = all_sheets.get('meetings', [])
+        print(f'Loading "meetings" from "{args.meetings_file}"')
+        local_items = loadCsvDict(args.meetings_file)
+        value_ranges = compute_sheet_updates('meetings', sheet_rows, local_items, force_columns=force_columns)
+        print(f"Found {len(value_ranges)} cells to update for 'meetings'")
+        all_value_ranges.extend(value_ranges)
+
     for item_type in item_keys:
         sheet_rows = all_sheets.get(item_type, [])
         if not sheet_rows:
@@ -906,7 +920,6 @@ def update_hdlr(args, service):
         path = os.path.join(args.processed_dir, item_csv_map[item_type])
         print(f'Loading "{item_type}" from "{path}"')
         local_items = loadCsvDict(path)
-        force_columns = set(args.columns) if args.columns else None
         value_ranges = compute_sheet_updates(item_type, sheet_rows, local_items, force_columns=force_columns)
         print(f"Found {len(value_ranges)} cells to update for '{item_type}'")
         all_value_ranges.extend(value_ranges)
