@@ -47,6 +47,63 @@ def _check_uid_paragraph(p: Any) -> Optional[str]:
     return None
 
 
+def _walk_item_children(children: Any) -> Dict[str, Any]:
+    """Walk direct <p>/<ol> children of an item's content cell.
+
+    Returns a dict with description, sponsors, uid, action, and charter_right.
+    Used for both an item's primary content cell and, when the UID isn't found
+    there, a fallback row (see _parse_item_table).
+    """
+    description = None
+    sponsors: List[str] = []
+    uid: Optional[str] = None
+    action = ''
+    charter_right = ''
+
+    for child in children:
+        # A description is usually a <p>, but PrimeGov sometimes renders it as
+        # a lettered/numbered <ol><li> instead (e.g. ordinance petition titles).
+        if not hasattr(child, 'name') or child.name not in ('p', 'ol'):
+            continue
+        p_text = child.get_text(' ').strip()
+        if not p_text or not p_text.replace('\xa0', '').replace(' ', '').strip():
+            continue
+
+        # Sponsor line: bold + text-transform:uppercase span
+        sponsor_name = _check_sponsor_paragraph(child)
+        if sponsor_name is not None:
+            sponsors.append(sponsor_name)
+            continue
+
+        # UID line: bold span matching item-type pattern
+        found_uid = _check_uid_paragraph(child)
+        if found_uid:
+            uid = found_uid
+            continue
+
+        # Standalone vote-result paragraph
+        if _is_vote_only_paragraph(p_text):
+            v_action, v_cr = _parse_vote_text(p_text)
+            if v_action and not action:
+                action, charter_right = v_action, v_cr
+            continue
+
+        # Description paragraph (first one wins); may have inline vote appended
+        if description is None:
+            v_action, v_cr = _parse_vote_text(p_text)
+            if v_action and not action:
+                action, charter_right = v_action, v_cr
+            description = _strip_inline_vote(p_text)
+
+    return {
+        'description': description,
+        'sponsors': sponsors,
+        'uid': uid,
+        'action': action,
+        'charter_right': charter_right,
+    }
+
+
 def _is_vote_only_paragraph(text: str) -> bool:
     """True if this paragraph is entirely a vote-result line, not a description."""
     return bool(re.match(
@@ -307,8 +364,7 @@ def _parse_item_table(table: Any, template_id: str, *, check_links: bool = False
     # Walk cells. The first cell is an attachment-icon cell that has empty text due
     # to a duplicate class= attribute which causes BeautifulSoup to misread it.
     # Identify cells by text: skip empty cells (icon) and optionalButtonsCell.
-    num_cell = None
-    content_cell = None
+    non_skip_cells = []
     for cell in cells:
         classes = cell.get('class') or []
         if isinstance(classes, str):
@@ -317,65 +373,51 @@ def _parse_item_table(table: Any, template_id: str, *, check_links: bool = False
             continue
         if not cell.get_text().strip():
             continue  # attachment icon cell — empty text
-        if num_cell is None:
-            num_cell = cell
-        elif content_cell is None:
-            content_cell = cell
-            break
+        non_skip_cells.append(cell)
 
-    if not num_cell or not content_cell:
+    # Special-meeting items sometimes have no item-number cell — just one
+    # content cell, with the UID relegated to a second row (see below).
+    if len(non_skip_cells) == 1:
+        content_cell = non_skip_cells[0]
+        num_text = ''
+    elif len(non_skip_cells) >= 2:
+        num_text = non_skip_cells[0].get_text().strip().rstrip('.')
+        if not re.match(r'^\d+$', num_text):
+            return None
+        content_cell = non_skip_cells[1]
+    else:
         return None
 
-    # Item number must be a plain integer
-    num_text = num_cell.get_text().strip().rstrip('.')
-    if not re.match(r'^\d+$', num_text):
-        return None
-
-    # Parse direct <p> children of the content cell
-    description = None
-    sponsors: List[str] = []
-    uid: Optional[str] = None
-    action = ''
+    parsed = _walk_item_children(content_cell.children)
+    description = parsed['description']
+    sponsors = parsed['sponsors']
+    uid = parsed['uid']
+    action = parsed['action']
+    charter_right = parsed['charter_right']
     vote = ''
     amended = ''
-    charter_right = ''
     yeas: List[str] = []
     nays: List[str] = []
     present: List[str] = []
     absent: List[str] = []
 
-    for child in content_cell.children:
-        if not hasattr(child, 'name') or child.name != 'p':
-            continue
-        p_text = child.get_text(' ').strip()
-        if not p_text or not p_text.replace('\xa0', '').replace(' ', '').strip():
-            continue
-
-        # Sponsor line: bold + text-transform:uppercase span
-        sponsor_name = _check_sponsor_paragraph(child)
-        if sponsor_name is not None:
-            sponsors.append(sponsor_name)
-            continue
-
-        # UID line: bold span matching item-type pattern
-        found_uid = _check_uid_paragraph(child)
-        if found_uid:
-            uid = found_uid
-            continue
-
-        # Standalone vote-result paragraph
-        if _is_vote_only_paragraph(p_text):
-            v_action, v_cr = _parse_vote_text(p_text)
-            if v_action and not action:
-                action, charter_right = v_action, v_cr
-            continue
-
-        # Description paragraph (first one wins); may have inline vote appended
-        if description is None:
-            v_action, v_cr = _parse_vote_text(p_text)
-            if v_action and not action:
-                action, charter_right = v_action, v_cr
-            description = _strip_inline_vote(p_text)
+    # Some supplemental items put everything — description and UID alike — in
+    # a second row instead of the content cell, e.g. when row 0 is a
+    # decorative "SUPPLEMENTAL AGENDA" sub-header rather than real content.
+    if uid is None:
+        for row in rows[1:]:
+            tds = row.find_all('td', recursive=False)
+            if len(tds) != 1:
+                continue
+            fallback = _walk_item_children(tds[0].children)
+            if not fallback['uid']:
+                continue
+            uid = fallback['uid']
+            description = description or fallback['description']
+            sponsors = sponsors or fallback['sponsors']
+            if fallback['action'] and not action:
+                action, charter_right = fallback['action'], fallback['charter_right']
+            break
 
     if uid is None:
         return None
