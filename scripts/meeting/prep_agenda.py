@@ -40,6 +40,8 @@ def make_parser():
         help='Skip updating the meetings list from PrimeGov')
     parser.add_argument('--skip-google', action='store_true',
         help='Skip syncing to Google Sheets')
+    parser.add_argument('--last-meeting', action='store_true',
+        help='Check the last meeting instead of the next one')
     parser.add_argument('-v', '--verbose', action='store_true',
         help='Print each command before running it')
     return parser
@@ -82,8 +84,12 @@ def step_process_agenda(args: argparse.Namespace) -> int:
         sys.executable, script('process_meetings.py'),
         '--cache-dir', args.cache_dir,
         '--councillor-info', args.councillor_info,
-        '--next-meeting',
     ]
+    if args.last_meeting:
+        cmd.append('--last-meeting')
+    else:
+        cmd.append('--next-meeting')
+
     if args.force_fetch:
         cmd.append('--force-fetch')
     cmd += [args.meetings_file, args.processed_dir]
