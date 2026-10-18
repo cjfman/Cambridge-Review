@@ -19,29 +19,34 @@ REQUEST_HDR = {
 }
 
 
-def _check_sponsor_paragraph(p: Any) -> Optional[str]:
-    """If the entire <p> text is a councillor title + last name, return the councillor name.
+_SPONSOR_RE = r"(?:VICE MAYOR|COUNCILLOR|MAYOR)\s+([\w][\w\-'.]*)"
+
+
+def _check_sponsor_paragraph(p: Any) -> List[str]:
+    """If the entire <p> text is councillor title + last name pairs, return the councillor names.
 
     A sponsor line looks like 'COUNCILLOR SOBRINHO-WHEELER' or 'MAYOR SIDDIQUI' — the whole
-    paragraph is just that and nothing else. Matching on text content is more reliable than
-    matching on CSS styles, which PrimeGov changes between exports.
+    paragraph is just that and nothing else. Final Actions pages sometimes pack several
+    sponsors into one paragraph separated by <br>, e.g. 'COUNCILLOR SIMMONS COUNCILLOR FLAHERTY'.
+    Matching on text content is more reliable than matching on CSS styles, which PrimeGov
+    changes between exports.
     """
     text = ' '.join(p.get_text(' ').split()).strip()
-    upper = text.upper()
-    for prefix in ('VICE MAYOR ', 'COUNCILLOR ', 'MAYOR '):
-        if upper.startswith(prefix):
-            name_part = text[len(prefix):].strip()
-            # A sponsor line is only a name — no spaces (except hyphens), not a sentence
-            if name_part and re.match(r"^[\w][\w\-'.]*$", name_part):
-                return lookUpCouncillorName(name_part)
-    return None
+    if not re.fullmatch(fr"(?:{_SPONSOR_RE}\s*)+", text, re.IGNORECASE):
+        return []
+    return [lookUpCouncillorName(x) for x in re.findall(_SPONSOR_RE, text, re.IGNORECASE)]
 
 
 def _check_uid_paragraph(p: Any) -> Optional[str]:
-    """If the entire <p> text matches a UID pattern, return the UID string."""
+    """If the <p> text starts with a UID pattern, return the UID string.
+
+    The UID usually stands alone, but PrimeGov sometimes appends a status note in
+    the same paragraph, e.g. 'POR 2026-140 RECONSIDERATION FILED BY COUNCILLOR NOLAN'.
+    """
     text = p.get_text(' ').strip()
-    if re.match(r'^(CMA|APP|PET|COM|RES|POR|COF|ORD|AR)\s+\d{4}-\d+$', text):
-        return text
+    match = re.match(r'^((?:CMA|APP|PET|COM|RES|POR|COF|ORD|AR)\s+\d{4}-\d+)(?:\s|$)', text)
+    if match:
+        return match.group(1)
     if re.match(r'^AR-\d{2,4}-\d+$', text):
         return text
     return None
@@ -70,9 +75,9 @@ def _walk_item_children(children: Any) -> Dict[str, Any]:
             continue
 
         # Sponsor line: bold + text-transform:uppercase span
-        sponsor_name = _check_sponsor_paragraph(child)
-        if sponsor_name is not None:
-            sponsors.append(sponsor_name)
+        sponsor_names = _check_sponsor_paragraph(child)
+        if sponsor_names:
+            sponsors.extend(sponsor_names)
             continue
 
         # UID line: bold span matching item-type pattern
@@ -97,7 +102,7 @@ def _walk_item_children(children: Any) -> Dict[str, Any]:
 
     return {
         'description': description,
-        'sponsors': sponsors,
+        'sponsors': list(dict.fromkeys(sponsors)),  # Final Actions pages can repeat a sponsor
         'uid': uid,
         'action': action,
         'charter_right': charter_right,
